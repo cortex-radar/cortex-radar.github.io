@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.local
+.cortex-x-profile/
+*.log
+.env.*
+!.env.example
+.cortex-runtime.env

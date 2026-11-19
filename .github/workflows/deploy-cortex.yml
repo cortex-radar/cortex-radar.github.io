@@ -1,0 +1,70 @@
+name: Deploy CORTEX Serverless Galaxy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */3 * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  models: read
+
+concurrency:
+  group: pages-cortex-deploy
+  cancel-in-progress: false
+
+jobs:
+  bake-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Pre-bake live AI galaxy & L1-L5 literacy spectrum ($0 GitHub Models / Gemini)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: npm run bake:galaxy
+
+      - name: Persist incremental snapshot cache to repository
+        run: |
+          if [ -f public/data/live-galaxy.json ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/data/live-galaxy.json public/rss.xml
+            git diff --staged --quiet || (git commit -m "chore(galaxy): refresh pre-baked live-galaxy snapshot [skip ci]" && git push)
+          fi
+
+      - name: Configure GitHub Pages base path
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Typecheck & build Vite production bundle
+        run: npm run build
+
+      - name: Upload dist artifact to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

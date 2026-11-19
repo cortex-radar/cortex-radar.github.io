@@ -1,0 +1,38 @@
+{
+  "name": "cortex-nexus-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CORTEX // NEXUS — Real-Time AI Consultant Intelligence & Command Deck",
+  "scripts": {
+    "dev": "concurrently -k -n SERVER,CLIENT -c cyan,magenta \"tsx watch server/index.ts\" \"vite --port 5173\"",
+    "dev:server": "tsx server/index.ts",
+    "dev:client": "vite --port 5173",
+    "bake:galaxy": "tsx scripts/bakeStaticGalaxy.ts",
+    "build": "tsc --noEmit && vite build",
+    "start": "NODE_ENV=production tsx server/index.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "discord.js": "^14.28.1",
+    "express": "^4.21.2",
+    "lucide-react": "^0.475.0",
+    "playwright-core": "^1.65.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "tailwindcss": "^4.0.9",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0"
+  }
+}
