@@ -6,8 +6,16 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Nov 2026 16:17:01 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 20:33:27 GMT</lastBuildDate>
     <ttl>180</ttl>
+    <item>
+      <title>Gemini Neon, Carbon, and Hydrogen are now top 3 on Humanity&apos;s Sixth Sense</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y0jny4&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0jny4&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 20:18:38 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Google DeepMind shipped Gemini 4 Neon, its fourth Gemini 4 model in about seven weeks. It has a 1M-words context window and four effort levels. This is a helpful guide to the current leading models and sizes: Because of how distillation, RL, and benchmarking works, Neon technically outperforms Carbon by some measures despite being a smaller model… Also today, Anthropic priced its IPO at $83 per share, above its initial range, and Palo Alto. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y0jny4/gemini_neon_carbon_and_hydrogen_are_now_top_3_on/</description>
+    </item>
     <item>
       <title>GPT-6.2 Astra and Sol models launch, cheaper and more efficient but face mixed feedback</title>
       <link>https://cortex-radar.github.io/?orb=vip-swyx-8e49a725-4572-4981-9894-4fbf63aed272&amp;lens=2</link>
@@ -25,12 +33,12 @@
       <description>The post discusses the concept of recursive self-improvement (RSI) in AI, focusing on how AI models can improve their own performance through better training pipelines and deployment systems. It addresses the bottleneck of AI models needing to improve their own intelligence and deployment systems to enhance overall performance and efficiency. — Upstream (Lilian Weng): https://lilianweng.github.io/posts/2026-07-04-harness/</description>
     </item>
     <item>
-      <title>The most useful thing about the pelican riding a bicycle test continues to be illustrating…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 06:40:15 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>The most useful thing about the pelican riding a bicycle test continues to be illustrating the differences between models in the same family running at different effort levels - here&apos;s Gemini 4 Carbon, the new Gemini 4 Neon. Addresses practical workflow friction around The most useful thing about the pelican riding a bicycle test continues to be illustrating the.. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
+      <title>Great to spend some time back in Ithaca. Very peaceful.</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2otgjrwg32q&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2otgjrwg32q&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 19:43:53 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Great to spend some time back in Ithaca. Addresses practical workflow friction around Great to spend some time back in Ithaca. Very peaceful.. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2otgjrwg32q</description>
     </item>
     <item>
       <title>Google&apos;s Rapid Model Release Cycle Exhausts Element Names</title>
@@ -49,6 +57,14 @@
       <description>Anthropic published &quot;Congrats to my friends at Anthropic! While I don’t agree with all of your positions, I’m extremely impressed by your d&quot;. Open the verified source link above for the full upstream breakdown. While I don’t agree with all of your positions, I’m extremely impressed by your dedication and execution excellence. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2ofn2kjoh2c</description>
     </item>
     <item>
+      <title>The most useful thing about the pelican riding a bicycle test continues to be illustrating…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 06:40:15 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>The most useful thing about the pelican riding a bicycle test continues to be illustrating the differences between models in the same family running at different effort levels - here&apos;s Gemini 4 Carbon, the new Gemini 4 Neon. Addresses practical workflow friction around The most useful thing about the pelican riding a bicycle test continues to be illustrating the.. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
+    </item>
+    <item>
       <title>Rush of Security Patches Explains Recent Banking Outages</title>
       <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2kh6qjgrs2z&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2kh6qjgrs2z&amp;lens=2</guid>
@@ -63,6 +79,22 @@
       <pubDate>Wed, 11 Nov 2026 15:33:06 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>Eric built Yogurt, a free, open-source desktop app that transcribes, summarizes, and chats about your meetings using on-device AI models. Yogurt addresses the need for a private, cost-effective solution for managing meeting notes and summaries, without the risks associated with cloud services. — Upstream (Hacker News): https://github.com/FrigadeHQ/yogurt</description>
+    </item>
+    <item>
+      <title>Sound familiar? GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123506775077077489&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123506775077077489&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 20:00:42 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. Now it can power your apps. Addresses practical workflow friction around Sound familiar? GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2123506775077077489</description>
+    </item>
+    <item>
+      <title>Open models are moving into real enterprise workloads.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123484739248308685&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123484739248308685&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 18:33:08 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>X · @ollama published &quot;Open models are moving into real enterprise workloads.&quot;. Open the verified source link above for the full upstream breakdown. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (X · @ollama): https://x.com/ollama/status/2123484739248308685</description>
     </item>
     <item>
       <title>Le Chonk in London! 🇬🇧 For the first time since our worldwide hackathon, join us for a…</title>
@@ -81,20 +113,28 @@
       <description>X · @MistralAI published &quot;We’re teaming up with @ClickHouseDB for a special one-day hackathon in Paris!&quot;. Open the verified source link above for the full upstream breakdown. Addresses practical workflow friction around We’re teaming up with @ClickHouseDB for a special one-day hackathon in Paris!. — Upstream (X · @MistralAI): https://x.com/MistralAI/status/2123339999244636509</description>
     </item>
     <item>
-      <title>Try Qwen4-Max on Nous Portal and show us your creations.</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123328957022081036&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123328957022081036&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 08:14:07 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (X · @Alibaba_Qwen): https://x.com/Alibaba_Qwen/status/2123328957022081036</description>
+      <title>Autonomous, uncut, 1x speed. This is GR00T 2 controlling real dexterous hands, end to end.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123470587259732200&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123470587259732200&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 17:36:54 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>X · @DrJimFan published &quot;Autonomous, uncut, 1x speed. This is GR00T 2 controlling real dexterous hands, end to end.&quot;. Open the verified source link above for the full upstream breakdown. This is GR00T 2 controlling real dexterous hands, end to end. — Upstream (X · @DrJimFan): https://x.com/DrJimFan/status/2123470587259732200</description>
     </item>
     <item>
-      <title>Gemini 4 Neon: GDM&apos;s New AI Model Competes with Anthropic</title>
-      <link>https://cortex-radar.github.io/?orb=vip-swyx-16b7c005-6ab8-4b06-8b1e-8f29a24d706e&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-16b7c005-6ab8-4b06-8b1e-8f29a24d706e&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 07:07:43 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>Google DeepMind released Gemini 4 Neon, a mid-tier AI model, and Anthropic completed its IPO. To provide a more cost-effective option for businesses while maintaining performance. — Upstream (Swyx · Latent Space): https://latent.space/p/ainews-gemini-4-neon-gdm-s-opus-sol-contender/</description>
+      <title>Introducing Tool Retrieval in the Gemini software connections</title>
+      <link>https://cortex-radar.github.io/?orb=lab-google-ai-opers-toolsgemini-api-tool-retrieval&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-google-ai-opers-toolsgemini-api-tool-retrieval&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 18:00:00 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Tool Retrieval in the Gemini software connections lets agents access hundreds of tools while reducing input words. Addresses practical workflow friction around Introducing Tool Retrieval in the Gemini software connections. — Upstream (Google AI Blog): https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/</description>
+    </item>
+    <item>
+      <title>Walter Isaacson on curiosity and creativity in the AI age.</title>
+      <link>https://cortex-radar.github.io/?orb=lab-google-ai-echnologyaidialogues-walter-isaacson&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-google-ai-echnologyaidialogues-walter-isaacson&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 17:00:00 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Walter Isaacson joins Google to discuss how history’s greatest innovators inspire creativity and human judgment in the AI age. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (Google AI Blog): https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/</description>
     </item>
     <item>
       <title>A 12MB Binary Replacing AI Frameworks for Specific Tasks</title>
@@ -137,14 +177,6 @@
       <description>Hi HN, I’m Alex Southmayd, the founder of Bloomy ( https://bloomylearning.com ) – an AI-powered mastery-learning platform for K-12 students. Bloomy provides students with an AI tutor alongside adaptive curriculum (right now Math, English Language Arts, and Writing). Addresses practical workflow friction around Launch HN: Bloomy (YC S26) – AI-powered mastery learning for K-12. — Upstream (Hacker News): https://news.ycombinator.com/item?id=48981136</description>
     </item>
     <item>
-      <title>I shipped a new version of Datasette Lite recently - my build of the Datasette Python web…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2jlhapz522o&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2jlhapz522o&amp;lens=2</guid>
-      <pubDate>Tue, 17 Nov 2026 17:37:49 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>I shipped a new version of Datasette Lite recently - my build of the Datasette Python web app that runs entirely in the browser with WebAssembly and Pyodide - here&apos;s what&apos;s new and how it all works simonwillison.net/2026/Nov/17/... Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2jlhapz522o</description>
-    </item>
-    <item>
       <title>Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy…</title>
       <link>https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2jb3gn6hg2w&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2jb3gn6hg2w&amp;lens=2</guid>
@@ -153,60 +185,28 @@
       <description>Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over. In reality: It&apos;s the same strategy they&apos;ve had for years. Addresses practical workflow friction around Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over.. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2jb3gn6hg2w</description>
     </item>
     <item>
+      <title>Ideogram 4.6 released (soon opensource)</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y0jw4n&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0jw4n&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 20:27:18 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>r/LocalLLaMA Engineering Community published &quot;Ideogram 4.6 released (soon opensource)&quot;. Open the verified source link above for the full upstream breakdown. Addresses practical workflow friction around Ideogram 4.6 released (soon opensource). — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y0jw4n/ideogram_46_released_soon_opensource/</description>
+    </item>
+    <item>
+      <title>One command to give Hermes Agent my GitHub Copilot subscription</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y0jfbl&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0jfbl&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 20:09:11 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>I wanted my Copilot subscription behind Hermes Agent without a proxy I had to keep alive by hand, so I wrote a Hermes model-provider plugin.hermes plugins install paq85/hermes-plugin-github-copilot --enableOn first use it downloads a pinned bridge release (v1.0.1), runs npm ci and starts it on 127.0.0.1:8788. Node 20.19+ and a Copilot CLI login on the same machine are all it needs.Limits: sessions live in memory, so a bridge restart replays the transcript once. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y0jfbl/one_command_to_give_hermes_agent_my_github/</description>
+    </item>
+    <item>
       <title>Anthropic IPO Launch Details</title>
       <link>https://cortex-radar.github.io/?orb=x-fx-2123196808675405860&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123196808675405860&amp;lens=2</guid>
       <pubDate>Wed, 18 Nov 2026 23:29:00 GMT</pubDate>
       <category>Economics &amp; FinOps</category>
       <description>Anthropic has set the IPO price at $83 per share and trading is set to begin on Nasdaq tomorrow. The company needed to go public to raise capital and provide liquidity for its investors. — Upstream (X · @AnthropicAI): https://x.com/AnthropicAI/status/2123196808675405860</description>
-    </item>
-    <item>
-      <title>We&apos;re sharing new data on how AI is changing research at OpenAI.</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123191365983248653&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123191365983248653&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 23:07:23 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>We find researchers&apos; AI use continues to rise exponentially, and agents are completing longer tasks, but human involvement remains central in research. Researchers are also spending more time on safety and alignment, with human effort in these areas growing faster than in any other individual research area. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (X · @OpenAI): https://x.com/OpenAI/status/2123191365983248653</description>
-    </item>
-    <item>
-      <title>Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh…</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123167889976905966&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123167889976905966&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 21:34:06 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>X · @GoogleDeepMind published &quot;Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.&quot;. Open the verified source link above for the full upstream breakdown. Addresses practical workflow friction around Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh.. — Upstream (X · @GoogleDeepMind): https://x.com/GoogleDeepMind/status/2123167889976905966</description>
-    </item>
-    <item>
-      <title>Genie 4 Interactive World Model Now Available</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123130606162985350&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123130606162985350&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 19:05:57 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Genie 4, an interactive world model, is now available for eligible Ultra subscribers to try in Project Genie. It addresses the need for more realistic and interactive simulations in real-time, enhancing the capabilities of AI models in various applications. — Upstream (X · @demishassabis): https://x.com/demishassabis/status/2123130606162985350</description>
-    </item>
-    <item>
-      <title>It&apos;s rolling out to eligible Google AI Ultra subscribers with a community gallery to…</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123117735374659636&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123117735374659636&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 18:14:48 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>It&apos;s rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. Addresses practical workflow friction around It&apos;s rolling out to eligible Google AI Ultra subscribers with a community gallery to discover.. — Upstream (X · @GoogleDeepMind): https://x.com/GoogleDeepMind/status/2123117735374659636</description>
-    </item>
-    <item>
-      <title>Working with @AMD, our models identified up to 14% PPA improvement on flagship high-speed…</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123100386638877054&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123100386638877054&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 17:05:52 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Working with @AMD, our models identified up to 14% PPA improvement on flagship high-speed computer chips IP in less than five months—building on designs AMD’s engineers had already spent years optimizing. New evaluations also show our models getting better at certain chip design tasks. Addresses practical workflow friction around Working with @AMD, our models identified up to 14% PPA improvement on flagship high-speed computer chips IP in less.. — Upstream (X · @OpenAI): https://x.com/OpenAI/status/2123100386638877054</description>
-    </item>
-    <item>
-      <title>Turnloom: an open-source coding agent for any OpenAI-compatible endpoint (Ollama included)…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y0cdtt&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0cdtt&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 15:37:10 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Active engineering thread in r/ollama (1 upvotes, 0 comments): Turnloom: an open-source coding agent for any OpenAI-compatible endpoint (Ollama included) that folds old tool output out of the prompt without losing. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y0cdtt/turnloom_an_opensource_coding_agent_for_any/</description>
     </item>
   </channel>
 </rss>
