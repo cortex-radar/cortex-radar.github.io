@@ -49,6 +49,7 @@ import { cockpitAudio } from '../utils/cockpitAudio';
 import { buildCortexDeepLinkUrl } from '../utils/deepLink';
 import { renderShareCardPngBlob } from '../utils/shareCardCanvas';
 import { LENS_SHORT_LABELS } from '../utils/signalRanking';
+import { EvidenceProvenancePanel } from './EvidenceProvenancePanel';
 import { InstrumentButton, Kbd } from './ui/cockpit-primitives';
 
 // Persistent module-level GPU synthesis & quote caches so 60fps physics / HUD ticks NEVER orphan in-flight promises!
@@ -132,6 +133,9 @@ interface DiegeticPoolProps {
   ollamaModel: string;
   isMobileViewport?: boolean;
   isStaticPublicMode?: boolean;
+  staticBakedAtMs?: number | null;
+  viewMode?: 'RADAR' | 'FEED';
+  onSwitchToRadar?: () => void;
   briefingBar?: PlanetariumBriefingBarProps | null;
   onSynthesisTelemetry?: (stats: {
     engineUsed: SynthesisEngineId;
@@ -539,6 +543,9 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
   ollamaModel,
   isMobileViewport = false,
   isStaticPublicMode = false,
+  staticBakedAtMs = null,
+  viewMode = 'RADAR',
+  onSwitchToRadar,
   briefingBar = null,
   onSynthesisTelemetry,
   onCloseFocused,
@@ -1003,7 +1010,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
       : 'Rules';
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-[26] overflow-hidden">
       {/* =================================================================== */}
       {/* SLOT 0: PRECISION HOLOGRAM READER (Desktop Float / Mobile Sheet)    */}
       {/* =================================================================== */}
@@ -1050,6 +1057,17 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 pointerEvents: focusedSignal ? 'auto' : 'none',
                 transform: focusedSignal ? 'translate3d(0, 0, 0)' : 'translate3d(0, 108%, 0)',
               }
+            : viewMode === 'FEED'
+            ? {
+                position: 'fixed',
+                right: 12,
+                bottom: 12,
+                left: 'auto',
+                transform: 'none',
+                willChange: 'opacity',
+                opacity: focusedSignal ? 1 : 0,
+                pointerEvents: focusedSignal ? 'auto' : 'none',
+              }
             : {
                 position: 'fixed',
                 top: 0,
@@ -1061,7 +1079,9 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
         }
         className={
           isMobileViewport
-            ? 'w-full max-w-full max-h-[78dvh] overflow-y-auto overflow-x-hidden overscroll-contain cockpit-obsidian rounded-t-2xl rounded-b-none px-4 pt-2 pb-6 text-zinc-100 border-t border-white/15 shadow-[0_-16px_48px_rgba(0,0,0,0.82)] transition-all duration-200'
+            ? 'w-full max-w-full max-h-[78dvh] overflow-y-auto overflow-x-hidden overscroll-contain cockpit-obsidian !bg-[#09090B]/[0.97] backdrop-blur-xl rounded-t-2xl rounded-b-none px-4 pt-2 pb-6 text-zinc-100 border-t border-white/15 shadow-[0_-16px_48px_rgba(0,0,0,0.88)] transition-all duration-200'
+            : viewMode === 'FEED'
+            ? 'top-[92px] 2xl:top-[58px] w-[360px] lg:w-[420px] xl:w-[452px] max-w-[calc(100vw-24px)] max-h-[calc(100dvh-104px)] 2xl:max-h-[calc(100dvh-70px)] overflow-y-auto overflow-x-hidden cockpit-obsidian rounded-xl p-3.5 text-zinc-100 border border-white/12 shadow-2xl transition-opacity duration-150'
             : 'w-[432px] max-w-[calc(100vw-32px)] max-h-[calc(100dvh-178px)] overflow-y-auto overflow-x-hidden cockpit-obsidian rounded-xl p-3.5 text-zinc-100 transition-opacity duration-150'
         }
       >
@@ -1321,17 +1341,36 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                   </a>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={onCloseFocused}
-                  className={`rounded-md hover:bg-zinc-800/80 text-zinc-400 hover:text-zinc-100 cursor-pointer shrink-0 flex items-center justify-center ${
-                    isMobileViewport ? 'min-h-[44px] min-w-[44px] -mr-2' : 'p-1'
-                  }`}
-                  title="Close Reader (Esc)"
-                >
-                  <X className={isMobileViewport ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
-                </button>
+                <div className="flex items-center gap-1 shrink-0">
+                  {viewMode === 'FEED' && onSwitchToRadar && (
+                    <button
+                      type="button"
+                      onClick={onSwitchToRadar}
+                      title="Locate this orb on 3D Radar"
+                      className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-teal-500/14 hover:bg-teal-500/24 border border-teal-400/35 font-mono text-[10px] text-teal-200 cursor-pointer transition-colors"
+                    >
+                      <Orbit className="w-3 h-3" />
+                      <span>Radar</span>
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={onCloseFocused}
+                    className={`rounded-md hover:bg-zinc-800/80 text-zinc-400 hover:text-zinc-100 cursor-pointer shrink-0 flex items-center justify-center ${
+                      isMobileViewport ? 'min-h-[44px] min-w-[44px] -mr-2' : 'p-1'
+                    }`}
+                    title="Close Reader (Esc)"
+                  >
+                    <X className={isMobileViewport ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
+                  </button>
+                </div>
               </div>
+
+              {/* Compact Evidence & Provenance Panel (Dual Timestamps, Primary vs Commentary, Grouped Coverage, Verbatim Excerpt) */}
+              <EvidenceProvenancePanel
+                signal={effectiveSignal}
+                snapshotBakedAtMs={staticBakedAtMs}
+              />
 
               {/* Universal Visual Header: Real Scraped Visual (with Lightbox Zoom) OR 56px Deterministic SVG Strip */}
               {primaryHeaderMedia ? (
@@ -1470,15 +1509,25 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
               </div>
 
               {/* =============================================================== */}
-              {/* PRECISION-MACHINED SEGMENTED L1 -> L5 SCRUBBER TRACK            */}
+              {/* AI SYNTHESIS BOUNDARY + L1 -> L5 SCRUBBER TRACK                 */}
               {/* =============================================================== */}
               <div
                 className={
                   isMobileViewport
                     ? 'sticky top-0 z-20 -mx-4 px-4 py-2 bg-[#09090B]/95 backdrop-blur-md border-y border-white/10 space-y-1.5'
-                    : 'space-y-1.5 pt-2 border-t border-white/8'
+                    : 'space-y-1.5 pt-2 border-t border-white/10'
                 }
               >
+                <div className="flex items-center justify-between gap-2 font-mono text-[9px] uppercase tracking-wider text-teal-300/90">
+                  <span className="inline-flex items-center gap-1">
+                    <Sparkles className="w-2.5 h-2.5 text-teal-400" />
+                    <span>
+                      AI Synthesis ·{' '}
+                      {lit.generatedBy === 'DETERMINISTIC' ? 'Structured Rules' : lit.generatedBy}
+                    </span>
+                  </span>
+                  <span className="text-zinc-500">Generated Summary</span>
+                </div>
                 <div className="flex items-center justify-between gap-2 font-mono text-[10px]">
                   <span className="text-zinc-300 font-medium truncate min-w-0">
                     {showCrossfire
@@ -2706,7 +2755,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
         const geminiOverride = geminiKey ? geminiBlastCache[geminiKey]?.[satSlot] : undefined;
 
         const sat = !horizon ? blastSatellites[satSlot] : null;
-        const visible = Boolean(horizon || sat);
+        const visible = viewMode === 'RADAR' && Boolean(horizon || sat);
 
         return (
           <div

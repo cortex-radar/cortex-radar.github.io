@@ -290,8 +290,23 @@ export const CosmosDecoderHUD: React.FC<CosmosDecoderHUDProps> = ({
                 </svg>
                 <div>
                   <span className="font-mono font-semibold text-zinc-100">Supernova Ring:</span>{' '}
-                  <span className="text-zinc-400">Multi-Network Entity Convergence</span>
+                  <span className="text-zinc-400">Grouped Multi-Source Event</span>
                 </div>
+              </div>
+            </div>
+
+            <div className="cockpit-well px-2.5 py-2 rounded-lg text-[10.5px] text-zinc-400 leading-snug space-y-1">
+              <div>
+                <span className="font-mono text-[9.5px] font-semibold text-emerald-300">
+                  PRIMARY SOURCE:
+                </span>{' '}
+                Official AI lab blogs, arXiv preprints, Hugging Face releases, and GitHub repositories.
+              </div>
+              <div>
+                <span className="font-mono text-[9.5px] font-semibold text-zinc-200">
+                  COMMENTARY:
+                </span>{' '}
+                Hacker News, Reddit, X, Bluesky, and expert newsletters linked alongside verbatim upstream text.
               </div>
             </div>
 

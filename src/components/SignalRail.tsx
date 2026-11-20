@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Activity, PanelRightClose, PanelRightOpen, Sparkles } from 'lucide-react';
+import { getGroupedSourcesForSignal } from '../../shared/provenance';
 import {
   LiteracyLevel,
   SECTOR_BY_ID,
@@ -118,7 +119,9 @@ export const SignalRail: React.FC<SignalRailProps> = ({
               const origin =
                 signal.originFeedName || (signal.isDemoSeed ? '72h Seed' : signal.source);
               const ups = signal.engagementVelocity?.likesOrUps ?? 0;
+              const groupedCount = getGroupedSourcesForSignal(signal).length;
               const isMultiSource =
+                groupedCount >= 2 ||
                 signal.isSupernova ||
                 (signal.networkFamilies?.length || 0) >= 2 ||
                 (signal.sourceProvenance?.length || 0) >= 2;
@@ -158,10 +161,10 @@ export const SignalRail: React.FC<SignalRailProps> = ({
                       <span className="text-zinc-300 font-medium">{sec.code}</span>
                       {isMultiSource && (
                         <span
-                          title="Multi-Source: corroborated across 2+ independent third-party feeds"
+                          title={`One development · ${Math.max(2, groupedCount)} independent third-party sources`}
                           className="px-1 py-0.2 rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[8.5px]"
                         >
-                          MULTI
+                          {groupedCount >= 2 ? `${groupedCount} SRC` : 'MULTI'}
                         </span>
                       )}
                       {isNew && (

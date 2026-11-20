@@ -21,6 +21,11 @@ import {
   synthesizeRawItemToSpatialSignal,
 } from '../shared/seed72h';
 import {
+  buildSupportingSourceEntry,
+  isPrimarySourceSignal,
+  normalizeProvenanceUrl,
+} from '../shared/provenance';
+import {
   computeDivergenceMetrics,
   shouldClusterIntoSupernova,
 } from '../shared/supernovaEngine';
@@ -30,6 +35,7 @@ import {
   type LiteracySpectrumPayload,
   type SpatialSignal,
   type StaticGalaxySnapshot,
+  type SupportingSourceLink,
 } from '../shared/types';
 import {
   computeSignalMomentumScore,
@@ -458,6 +464,10 @@ function mergeSignalClusterTarget(
   clusterTarget: SpatialSignal,
   synthesized: SpatialSignal
 ): void {
+  const existingWasPrimary = isPrimarySourceSignal(clusterTarget);
+  const incomingIsPrimary = isPrimarySourceSignal(synthesized);
+  const previousPrimaryPubMs = clusterTarget.publishedAtMs;
+
   const provSet = new Set([
     ...clusterTarget.sourceProvenance,
     ...synthesized.sourceProvenance,
@@ -468,21 +478,85 @@ function mergeSignalClusterTarget(
     ...(synthesized.networkFamilies || []),
   ]);
   clusterTarget.networkFamilies = Array.from(netSet);
-  if (clusterTarget.networkFamilies.length >= 2) {
+
+  // Preserve ALL merged links in supportingSources (never silently discard duplicate coverage)
+  const supMap = new Map<string, SupportingSourceLink>();
+  const addSup = (entry: SupportingSourceLink) => {
+    const key = normalizeProvenanceUrl(entry.url);
+    if (!key) return;
+    const prev = supMap.get(key);
+    if (!prev || (!prev.isPrimary && entry.isPrimary)) {
+      supMap.set(key, entry);
+    }
+  };
+  addSup(buildSupportingSourceEntry(clusterTarget));
+  for (const s of clusterTarget.supportingSources || []) addSup(s);
+  addSup(buildSupportingSourceEntry(synthesized));
+  for (const s of synthesized.supportingSources || []) addSup(s);
+
+  const mergedSupporting = Array.from(supMap.values())
+    .sort((a, b) => {
+      if (a.isPrimary !== b.isPrimary) return a.isPrimary ? -1 : 1;
+      const ta = a.publishedAtMs ?? (Date.parse(a.publishedAt) || 0);
+      const tb = b.publishedAtMs ?? (Date.parse(b.publishedAt) || 0);
+      return tb - ta;
+    })
+    .slice(0, 10);
+  clusterTarget.supportingSources = mergedSupporting;
+
+  // Promote Primary Source (official lab, arXiv, HF, GH) over commentary if target was commentary
+  if (!existingWasPrimary && incomingIsPrimary) {
+    clusterTarget.title = synthesized.title;
+    clusterTarget.shortLabel = synthesized.shortLabel;
+    clusterTarget.url = synthesized.url;
+    clusterTarget.source = synthesized.source;
+    clusterTarget.sourceCategory = synthesized.sourceCategory;
+    clusterTarget.originFeedName = synthesized.originFeedName;
+    if (
+      typeof synthesized.publishedAtMs === 'number' &&
+      Number.isFinite(synthesized.publishedAtMs) &&
+      synthesized.publishedAtMs > 0
+    ) {
+      clusterTarget.publishedAtMs = synthesized.publishedAtMs;
+    }
+  }
+
+  // Track latest update timestamp separately from primary/original publish time
+  let latestUpdate = Math.max(
+    clusterTarget.lastUpdatedAtMs || 0,
+    previousPrimaryPubMs || 0,
+    clusterTarget.publishedAtMs || 0
+  );
+  if (
+    typeof synthesized.publishedAtMs === 'number' &&
+    Number.isFinite(synthesized.publishedAtMs) &&
+    synthesized.publishedAtMs > latestUpdate
+  ) {
+    latestUpdate = synthesized.publishedAtMs;
+  }
+  clusterTarget.lastUpdatedAtMs = latestUpdate || clusterTarget.publishedAtMs;
+
+  if (synthesized.engagementVelocity) {
+    const prevUps = clusterTarget.engagementVelocity?.likesOrUps ?? 0;
+    if (synthesized.engagementVelocity.likesOrUps > prevUps) {
+      clusterTarget.engagementVelocity = synthesized.engagementVelocity;
+    }
+  }
+
+  if (clusterTarget.networkFamilies.length >= 2 || mergedSupporting.length >= 2) {
     clusterTarget.isSupernova = true;
-    clusterTarget.supernovaLevel = clusterTarget.networkFamilies.length >= 3 ? 2 : 1;
+    clusterTarget.supernovaLevel =
+      clusterTarget.networkFamilies.length >= 3 || mergedSupporting.length >= 3 ? 2 : 1;
     clusterTarget.mass = Math.min(
       5.2,
-      Math.max(clusterTarget.mass, synthesized.mass, 4.1 + clusterTarget.networkFamilies.length * 0.35)
+      Math.max(
+        clusterTarget.mass,
+        synthesized.mass,
+        4.1 + Math.max(clusterTarget.networkFamilies.length, mergedSupporting.length) * 0.25
+      )
     );
   } else {
     clusterTarget.mass = Math.max(clusterTarget.mass, synthesized.mass);
-  }
-  if (
-    Number.isFinite(synthesized.publishedAtMs) &&
-    synthesized.publishedAtMs > clusterTarget.publishedAtMs
-  ) {
-    clusterTarget.publishedAtMs = synthesized.publishedAtMs;
   }
   if ((synthesized.rawAbstract || '').length > (clusterTarget.rawAbstract || '').length + 80) {
     clusterTarget.rawAbstract = synthesized.rawAbstract;
@@ -529,6 +603,8 @@ function clusterAndBuildSpatialSignals(
     if (!isWithinFreshnessWindow(raw.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)) continue;
     const normUrl = normalizeBakeUrl(raw.url);
     const synthesized = synthesizeRawItemToSpatialSignal(raw, true);
+    synthesized.supportingSources = [buildSupportingSourceEntry(synthesized)];
+    synthesized.lastUpdatedAtMs = synthesized.publishedAtMs;
 
     const exactUrlHit = urlMap.get(normUrl);
     if (exactUrlHit) {
@@ -767,16 +843,35 @@ async function main(): Promise<void> {
     literacyBySignalId[sig.id] = baseDet;
   }
 
-  // Final post-synthesis deduplication, 7d ceiling guard & unique plainFullTitle enforcement
+  // Final post-synthesis deduplication (preserving supportingSources), 7d ceiling guard & unique plainFullTitle enforcement
   const nowMs = Date.now();
   const dedupedFinal: SpatialSignal[] = [];
-  const seenTitleKeys = new Set<string>();
+  const seenByTitleKey = new Map<string, SpatialSignal>();
   const seenPlainKeys = new Set<string>();
   for (const sig of signals) {
     if (!isWithinFreshnessWindow(sig.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)) continue;
     const titleKey = normalizeHeadlineKey(sig.title);
-    if (titleKey && seenTitleKeys.has(titleKey)) continue;
-    if (titleKey) seenTitleKeys.add(titleKey);
+    const existingDup = titleKey ? seenByTitleKey.get(titleKey) : undefined;
+    if (existingDup) {
+      const prevLit = existingDup.literacy;
+      mergeSignalClusterTarget(existingDup, sig);
+      if (prevLit && prevLit.generatedBy !== 'DETERMINISTIC') {
+        existingDup.literacy = prevLit;
+      } else if (sig.literacy && sig.literacy.generatedBy !== 'DETERMINISTIC') {
+        existingDup.literacy = sig.literacy;
+      }
+      if (existingDup.literacy) {
+        literacyBySignalId[existingDup.id] = existingDup.literacy;
+      }
+      continue;
+    }
+    if (!sig.supportingSources || sig.supportingSources.length === 0) {
+      sig.supportingSources = [buildSupportingSourceEntry(sig)];
+    }
+    if (!sig.lastUpdatedAtMs) {
+      sig.lastUpdatedAtMs = sig.publishedAtMs;
+    }
+    if (titleKey) seenByTitleKey.set(titleKey, sig);
 
     if (sig.literacy) {
       let cleanLit = repairLegacyClonedTitles(sig.literacy, sig.title);

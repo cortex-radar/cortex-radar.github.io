@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Compass, Layers, Play, X } from 'lucide-react';
+import { Layers, Orbit, Play, X } from 'lucide-react';
 import { computeDeterministicBlastRadius } from '../shared/blastRadiusEngine';
 import {
   ATTRACTOR_STRIDE,
@@ -7,6 +7,7 @@ import {
   NODE_OFFSET,
 } from '../shared/frameLayout';
 import { buildDeterministicLiteracyPayload } from '../shared/literacyEngine';
+import { matchesSignalSearchQuery } from '../shared/provenance';
 import {
   BlastOrderConsequence,
   ClientIndustry,
@@ -35,7 +36,7 @@ import {
   PlanetariumBriefingBarProps,
   StandupFusionState,
 } from './components/DiegeticPool';
-import { MobileSignalDeck, MobileSignalDeckEntry } from './components/MobileSignalDeck';
+import { SignalFeedEntry, SignalFeedView } from './components/SignalFeedView';
 import { SignalRail, SignalRailEntry } from './components/SignalRail';
 import { SourcesRadarDrawer } from './components/SourcesRadarDrawer';
 import { SpatialHorizonHUD } from './components/SpatialHorizonHUD';
@@ -312,11 +313,11 @@ export const App: React.FC = () => {
   const isMobileViewportRef = useRef<boolean>(isMobileViewport);
   isMobileViewportRef.current = isMobileViewport;
 
-  const [mobileViewMode, setMobileViewMode] = useState<'FEED' | 'MAP'>(() =>
-    typeof window !== 'undefined' && window.innerWidth < 768 ? 'FEED' : 'MAP'
+  const [viewMode, setViewMode] = useState<'RADAR' | 'FEED'>(() =>
+    typeof window !== 'undefined' && window.innerWidth < 768 ? 'FEED' : 'RADAR'
   );
-  const mobileViewModeRef = useRef(mobileViewMode);
-  mobileViewModeRef.current = mobileViewMode;
+  const viewModeRef = useRef(viewMode);
+  viewModeRef.current = viewMode;
 
   const [signalRailOpen, setSignalRailOpen] = useState<boolean>(() =>
     typeof window !== 'undefined' ? window.innerWidth >= 1024 : true
@@ -324,6 +325,7 @@ export const App: React.FC = () => {
   const signalRailOpenRef = useRef(signalRailOpen);
   signalRailOpenRef.current = signalRailOpen;
 
+  const [searchQuery, setSearchQuery] = useState('');
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [canvasHoveredNodeIdx, setCanvasHoveredNodeIdx] = useState(-1);
   const [railHoveredNodeIdx, setRailHoveredNodeIdx] = useState(-1);
@@ -658,8 +660,8 @@ export const App: React.FC = () => {
     setBattlecardPair(null);
     setStandupFusion(null);
     setBlastWaveActiveForNodeIdx(-1);
-    if (isMobileViewportRef.current) {
-      setMobileViewMode('MAP');
+    if (viewModeRef.current === 'FEED') {
+      setViewMode('RADAR');
     }
 
     const all = signalsRef.current;
@@ -844,8 +846,8 @@ export const App: React.FC = () => {
     return { newSignalIdSet: freshSet, newSignalsCount: freshSet.size };
   }, [signalsVersion, enabledCategories, mutedSectors, seenNodeIds]);
 
-  // Top 10 Ranked Signals for Desktop Signal Rail (strict <=48h gate, <=72h fallback only if <10) & Mobile Signal Deck
-  const { top10Signals, mobileDeckSignals } = useMemo(() => {
+  // Shared Ranked Pools for Desktop Signal Rail (strict <=48h gate, <=72h fallback only if <10) & Unified Feed View
+  const { top10Signals, feedSignals, totalFeedPoolCount } = useMemo(() => {
     void signalsVersion;
     const all = signalsRef.current;
     const nowMs = Date.now();
@@ -859,7 +861,8 @@ export const App: React.FC = () => {
 
     const railFresh48: SignalRailEntry[] = [];
     const railFallback72: SignalRailEntry[] = [];
-    const deckPool: Array<MobileSignalDeckEntry & { momentum: number }> = [];
+    const feedPool: SignalFeedEntry[] = [];
+    let unfilteredCount = 0;
 
     for (let i = 0; i < all.length; i++) {
       const s = all[i];
@@ -870,7 +873,7 @@ export const App: React.FC = () => {
       const isSeed = Boolean(s.isDemoSeed || s.sourceCategory === 'DEMO_SEED');
       if (!showDemoSeed && isSeed && hasEnoughLive) continue;
       if (isSeed && hasEnoughLive) {
-        // Keep Top 10 & Mobile Feed clean of demo seeds once live/baked signals exist
+        // Keep Top 10 & Feed clean of demo seeds once live/baked signals exist
         continue;
       }
 
@@ -883,29 +886,29 @@ export const App: React.FC = () => {
       const ageMs = nowMs - s.publishedAtMs;
       if (ageMs < -FUTURE_SKEW_MS || ageMs > GALAXY_MAX_AGE_MS) continue;
 
+      unfilteredCount++;
       const momentumScore = computeSignalMomentumScore(s, nowMs);
       const isNew = !isSeed && newSignalIdSet.has(s.id);
+      const matchesSearch = matchesSignalSearchQuery(s, searchQuery);
 
       if (
         !mutedSectors.has(s.primarySector) &&
-        (!onlyNewFilterActive || isNew)
+        (!onlyNewFilterActive || isNew) &&
+        matchesSearch
       ) {
-        const entry: SignalRailEntry = { nodeIndex: i, signal: s, momentumScore, isNew };
+        const railEntry: SignalRailEntry = { nodeIndex: i, signal: s, momentumScore, isNew };
         if (ageMs <= TOP10_PRIMARY_AGE_MS) {
-          railFresh48.push(entry);
+          railFresh48.push(railEntry);
         } else if (ageMs <= TOP10_FALLBACK_AGE_MS) {
-          railFallback72.push(entry);
+          railFallback72.push(railEntry);
         }
-      }
-
-      if (!onlyNewFilterActive || isNew) {
-        deckPool.push({ nodeIndex: i, signal: s, isNew, momentum: momentumScore });
+        feedPool.push({ nodeIndex: i, signal: s, isNew, momentumScore });
       }
     }
 
     railFresh48.sort((a, b) => b.momentumScore - a.momentumScore);
     railFallback72.sort((a, b) => b.momentumScore - a.momentumScore);
-    deckPool.sort((a, b) => b.momentum - a.momentum);
+    feedPool.sort((a, b) => b.momentumScore - a.momentumScore);
 
     const rankedTop10 =
       railFresh48.length >= 10
@@ -914,11 +917,18 @@ export const App: React.FC = () => {
 
     return {
       top10Signals: rankedTop10,
-      mobileDeckSignals: deckPool
-        .slice(0, 40)
-        .map(({ nodeIndex, signal, isNew }) => ({ nodeIndex, signal, isNew })),
+      feedSignals: feedPool,
+      totalFeedPoolCount: unfilteredCount,
     };
-  }, [signalsVersion, showDemoSeed, enabledCategories, mutedSectors, onlyNewFilterActive, newSignalIdSet]);
+  }, [
+    signalsVersion,
+    showDemoSeed,
+    enabledCategories,
+    mutedSectors,
+    onlyNewFilterActive,
+    newSignalIdSet,
+    searchQuery,
+  ]);
 
   // Sync Source Category + My Radar Muted Categories (completely hidden) vs "+N New" (smoothly dimmed)
   useEffect(() => {
@@ -942,10 +952,15 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     void signalsVersion;
+    const trimmedSearch = searchQuery.trim();
     const dimmedIds: string[] = [];
-    if (onlyNewFilterActive) {
+    if (onlyNewFilterActive || trimmedSearch) {
       for (const s of signalsRef.current) {
-        if (s.isDemoSeed || s.sourceCategory === 'DEMO_SEED' || !newSignalIdSet.has(s.id)) {
+        const failedNew =
+          onlyNewFilterActive &&
+          (s.isDemoSeed || s.sourceCategory === 'DEMO_SEED' || !newSignalIdSet.has(s.id));
+        const failedSearch = Boolean(trimmedSearch) && !matchesSignalSearchQuery(s, trimmedSearch);
+        if (failedNew || failedSearch) {
           dimmedIds.push(s.id);
         }
       }
@@ -954,8 +969,9 @@ export const App: React.FC = () => {
       type: 'SET_DIMMED_SIGNAL_IDS',
       ids: dimmedIds,
     });
-    hasActiveFilterRef.current = onlyNewFilterActive || mutedSectors.size > 0;
-  }, [onlyNewFilterActive, mutedSectors.size, newSignalIdSet, signalsVersion]);
+    hasActiveFilterRef.current =
+      onlyNewFilterActive || mutedSectors.size > 0 || Boolean(trimmedSearch);
+  }, [onlyNewFilterActive, mutedSectors.size, newSignalIdSet, searchQuery, signalsVersion]);
 
   // Sync Spotlight Dimming (~15% non-matching) & Constellation Arcs on Orb / Rail / Category Hover
   useEffect(() => {
@@ -1161,14 +1177,15 @@ export const App: React.FC = () => {
       const slot0 = poolSlotRefs.current[0];
       if (slot0) {
         if (isMobile) {
-          // On <768px mobile/tablet, DiegeticPool docks Slot 0 cleanly as a thumb-friendly bottom sheet (hidden in FEED mode)
+          // On <768px mobile/tablet, DiegeticPool docks Slot 0 cleanly as a thumb-friendly bottom sheet when a card is open
           const showMobileSheet =
-            mobileViewModeRef.current === 'MAP' &&
             focusIdx >= 0 &&
             focusIdx < (packet[0] | 0);
           slot0.style.transform = showMobileSheet
             ? 'translate3d(0px, 0px, 0)'
             : 'translate3d(0px, 108%, 0)';
+        } else if (viewModeRef.current === 'FEED') {
+          slot0.style.transform = 'none';
         } else if (focusIdx >= 0 && focusIdx < (packet[0] | 0)) {
           const off = NODE_OFFSET + focusIdx * NODE_STRIDE;
           const nx = toSx(packet[off]);
@@ -1492,7 +1509,7 @@ export const App: React.FC = () => {
       hasAutoSelectedInitialRef.current = true;
       shouldSyncUrlRef.current = true;
       if (isMobileViewportRef.current) {
-        setMobileViewMode('MAP');
+        setViewMode('RADAR');
       }
       setShowWelcomeModal(false);
       setSelectedNodeIdx(idx);
@@ -1748,7 +1765,7 @@ export const App: React.FC = () => {
     handleResize();
     window.addEventListener('resize', handleResize);
 
-    // RAF Render & Telemetry Loop
+    // RAF Render & Telemetry Loop (suspends cleanly whenever viewMode === 'FEED')
     let rafId = 0;
     let lastRafMs = performance.now();
     let lastHudSyncMs = lastRafMs;
@@ -1756,6 +1773,10 @@ export const App: React.FC = () => {
     let ringPtr = 0;
 
     const tick = (nowMs: number) => {
+      if (viewModeRef.current === 'FEED') {
+        rafId = 0;
+        return;
+      }
       rafId = requestAnimationFrame(tick);
       if (document.hidden) {
         lastRafMs = nowMs;
@@ -1931,10 +1952,28 @@ export const App: React.FC = () => {
       }
     };
 
-    rafId = requestAnimationFrame(tick);
+    setRenderLoopActiveRef.current = (active: boolean) => {
+      if (active) {
+        handleResize();
+        lastRafMs = performance.now();
+        if (!rafId) {
+          rafId = requestAnimationFrame(tick);
+        }
+      } else if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+    };
+
+    if (viewModeRef.current === 'FEED') {
+      physicsWorker.postMessage({ type: 'SET_PAUSED', paused: true });
+    } else {
+      rafId = requestAnimationFrame(tick);
+    }
 
     return () => {
-      cancelAnimationFrame(rafId);
+      setRenderLoopActiveRef.current = null;
+      if (rafId) cancelAnimationFrame(rafId);
       if (autoFocusFallbackTimer) clearTimeout(autoFocusFallbackTimer);
       if ('speechSynthesis' in window) {
         try {
@@ -2494,7 +2533,7 @@ export const App: React.FC = () => {
       shouldSyncUrlRef.current = true;
       setSelectedNodeIdx(idx);
       setBlastWaveActiveForNodeIdx(-1);
-      if (isMobileViewportRef.current) setMobileViewMode('MAP');
+      if (isMobileViewportRef.current || viewModeRef.current === 'FEED') setViewMode('RADAR');
       const pkt = latestPacketRef.current;
       if (pkt && idx < (pkt[0] | 0)) {
         const off = NODE_OFFSET + idx * NODE_STRIDE;
@@ -2507,6 +2546,8 @@ export const App: React.FC = () => {
     },
     [stop15sTour]
   );
+
+  const setRenderLoopActiveRef = useRef<((active: boolean) => void) | null>(null);
 
   const handleSelectSignalFromUI = useCallback(
     (idx: number) => {
@@ -2527,16 +2568,62 @@ export const App: React.FC = () => {
       }
       hasAutoSelectedInitialRef.current = true;
       shouldSyncUrlRef.current = true;
-      if (isMobileViewportRef.current) {
-        setMobileViewMode('MAP');
-      }
       setSelectedNodeIdx(idx);
       setBlastWaveActiveForNodeIdx(-1);
-      flyCameraToNodeIndex(idx);
+      if (viewModeRef.current === 'RADAR') {
+        flyCameraToNodeIndex(idx);
+      }
       physicsWorkerRef.current?.postMessage({ type: 'SELECT_NODE', nodeIndex: idx });
     },
     [flyCameraToNodeIndex, stop15sTour]
   );
+
+  const handleSwitchViewMode = useCallback(
+    (nextMode: 'RADAR' | 'FEED') => {
+      setViewMode(nextMode);
+      if (nextMode === 'FEED') {
+        stop15sTour();
+      } else {
+        setTimeout(() => {
+          if (selectedNodeIdxRef.current >= 0) {
+            flyCameraToNodeIndex(selectedNodeIdxRef.current);
+          }
+        }, 40);
+      }
+    },
+    [flyCameraToNodeIndex, stop15sTour]
+  );
+
+  const handleInspectOnRadar = useCallback(
+    (idx: number) => {
+      stop15sTour();
+      if (idx < 0 || !signalsRef.current[idx]) return;
+      const sig = signalsRef.current[idx];
+      if (mutedSectorsRef.current.has(sig.primarySector)) {
+        setMutedSectors((prev) => {
+          const next = new Set(prev);
+          next.delete(sig.primarySector);
+          return next;
+        });
+      }
+      hasAutoSelectedInitialRef.current = true;
+      shouldSyncUrlRef.current = true;
+      setViewMode('RADAR');
+      setSelectedNodeIdx(idx);
+      setBlastWaveActiveForNodeIdx(-1);
+      physicsWorkerRef.current?.postMessage({ type: 'SET_PAUSED', paused: false });
+      setRenderLoopActiveRef.current?.(true);
+      physicsWorkerRef.current?.postMessage({ type: 'SELECT_NODE', nodeIndex: idx });
+      setTimeout(() => flyCameraToNodeIndex(idx), 40);
+    },
+    [flyCameraToNodeIndex, stop15sTour]
+  );
+
+  useEffect(() => {
+    const isFeed = viewMode === 'FEED';
+    physicsWorkerRef.current?.postMessage({ type: 'SET_PAUSED', paused: isFeed });
+    setRenderLoopActiveRef.current?.(!isFeed);
+  }, [viewMode]);
 
   return (
     <div className="relative w-screen min-h-[100dvh] h-[100dvh] overflow-hidden bg-[#030711]">
@@ -2625,6 +2712,15 @@ export const App: React.FC = () => {
         ollamaModel={synthesisStatus?.ollama.selectedModel || ''}
         isMobileViewport={isMobileViewport}
         isStaticPublicMode={isStaticPublicMode}
+        staticBakedAtMs={staticBakedAtMs}
+        viewMode={viewMode}
+        onSwitchToRadar={() => {
+          if (activeFocusIdx >= 0) {
+            handleInspectOnRadar(activeFocusIdx);
+          } else {
+            handleSwitchViewMode('RADAR');
+          }
+        }}
         briefingBar={
           briefingState.active
             ? ({
@@ -2737,25 +2833,32 @@ export const App: React.FC = () => {
         onSelectGlobalLiteracyLevel={handleSelectLiteracyLevel}
       />
 
-      {/* Z-24: Collapsible Desktop Right-Hand "Top 10 Signals Today" Rail */}
-      <SignalRail
-        isOpen={signalRailOpen}
-        onToggleOpen={() => setSignalRailOpen((v) => !v)}
-        topSignals={top10Signals}
-        selectedNodeIdx={activeFocusIdx}
-        hoveredNodeIdx={canvasHoveredNodeIdx >= 0 ? canvasHoveredNodeIdx : railHoveredNodeIdx}
-        activeLiteracyLevel={globalLiteracyLevel}
-        onHoverSignal={setRailHoveredNodeIdx}
-        onSelectSignal={handleSelectSignalFromUI}
-      />
+      {/* Z-24: Collapsible Desktop Right-Hand "Top 10 Signals Today" Rail (Radar Mode Only) */}
+      {viewMode === 'RADAR' && (
+        <SignalRail
+          isOpen={signalRailOpen}
+          onToggleOpen={() => setSignalRailOpen((v) => !v)}
+          topSignals={top10Signals}
+          selectedNodeIdx={activeFocusIdx}
+          hoveredNodeIdx={canvasHoveredNodeIdx >= 0 ? canvasHoveredNodeIdx : railHoveredNodeIdx}
+          activeLiteracyLevel={globalLiteracyLevel}
+          onHoverSignal={setRailHoveredNodeIdx}
+          onSelectSignal={handleSelectSignalFromUI}
+        />
+      )}
 
-      {/* Z-22: Mobile-First <768px Swipeable Signal Deck over softly blurred galaxy */}
-      {isMobileViewport && mobileViewMode === 'FEED' && (
-        <MobileSignalDeck
-          signals={mobileDeckSignals}
+      {/* Z-19: Unified Responsive Scannable Feed View (Shares Search, Filters & Selected Story with Radar) */}
+      {viewMode === 'FEED' && (
+        <SignalFeedView
+          signals={feedSignals}
+          totalUnfilteredCount={totalFeedPoolCount}
+          selectedNodeIdx={activeFocusIdx}
           activeLiteracyLevel={globalLiteracyLevel}
           onSelectLiteracyLevel={handleSelectLiteracyLevel}
-          onInspectOnMap={handleSelectSignalFromUI}
+          onSelectSignal={handleSelectSignalFromUI}
+          onInspectOnRadar={handleInspectOnRadar}
+          searchQuery={searchQuery}
+          onSearchQueryChange={setSearchQuery}
           onlyNewFilterActive={onlyNewFilterActive}
           newSignalsCount={newSignalsCount}
           onToggleOnlyNewFilter={() => {
@@ -2764,6 +2867,9 @@ export const App: React.FC = () => {
           }}
           mutedSectors={mutedSectors}
           onToggleMuteSector={toggleMuteSector}
+          onResetMutedSectors={resetMutedSectors}
+          isMobileViewport={isMobileViewport}
+          hasSelectedDetailOpen={Boolean(focusedSignal)}
         />
       )}
 
@@ -2772,7 +2878,7 @@ export const App: React.FC = () => {
         !focusedSignal &&
         !battlecardPair &&
         !standupFusion &&
-        !(isMobileViewport && mobileViewMode === 'FEED') && (
+        viewMode === 'RADAR' && (
         <div
           role="region"
           aria-label="Onboarding Coachmark"
@@ -2854,8 +2960,11 @@ export const App: React.FC = () => {
         onToggleMuteSector={toggleMuteSector}
         onResetMutedSectors={resetMutedSectors}
         onHoverSectorIndex={setHoveredSectorIdx}
-        mobileViewMode={mobileViewMode}
-        mobileSheetOpen={isMobileViewport && Boolean(focusedSignal) && mobileViewMode === 'MAP'}
+        viewMode={viewMode}
+        onSelectViewMode={handleSwitchViewMode}
+        searchQuery={searchQuery}
+        onClearSearchQuery={() => setSearchQuery('')}
+        mobileSheetOpen={isMobileViewport && Boolean(focusedSignal)}
         isStaticPublicMode={isStaticPublicMode}
         staticBakedAtMs={staticBakedAtMs}
         onDismissHint={() => setShowCalibrationHint(false)}
@@ -2927,19 +3036,21 @@ export const App: React.FC = () => {
       />
 
       {/* Z-35: Bottom-Left Collapsible "COSMOS DECODER" Visual Legend + First-Visit Welcome + 15s Tour */}
-      <CosmosDecoderHUD
-        isOpen={decoderOpen}
-        showWelcomeModal={showWelcomeModal}
-        tourState={tourState}
-        onToggleOpen={() => setDecoderOpen((prev) => !prev)}
-        onFocusAndPulseSector={handleFocusAndPulseSector}
-        onStart15sTour={start15sTour}
-        onDismissWelcome={dismissWelcome}
-        onStopTour={stop15sTour}
-      />
+      {(viewMode === 'RADAR' || showWelcomeModal || Boolean(tourState?.active)) && (
+        <CosmosDecoderHUD
+          isOpen={decoderOpen}
+          showWelcomeModal={showWelcomeModal}
+          tourState={tourState}
+          onToggleOpen={() => setDecoderOpen((prev) => !prev)}
+          onFocusAndPulseSector={handleFocusAndPulseSector}
+          onStart15sTour={start15sTour}
+          onDismissWelcome={dismissWelcome}
+          onStopTour={stop15sTour}
+        />
+      )}
 
-      {/* Z-35: Mobile <768px Persistent Bottom Switcher [Feed | 3D Map] */}
-      {isMobileViewport && !(mobileViewMode === 'MAP' && Boolean(focusedSignal)) && (
+      {/* Z-35: Mobile <768px Persistent Bottom Switcher [Feed | Radar] */}
+      {isMobileViewport && !focusedSignal && (
         <div
           role="tablist"
           aria-label="Mobile View Switcher"
@@ -2948,10 +3059,10 @@ export const App: React.FC = () => {
           <button
             type="button"
             role="tab"
-            aria-selected={mobileViewMode === 'FEED'}
-            onClick={() => setMobileViewMode('FEED')}
+            aria-selected={viewMode === 'FEED'}
+            onClick={() => handleSwitchViewMode('FEED')}
             className={`inline-flex items-center justify-center gap-1.5 min-h-[36px] px-3.5 rounded-full font-mono text-[11px] font-semibold whitespace-nowrap transition-colors cursor-pointer ${
-              mobileViewMode === 'FEED'
+              viewMode === 'FEED'
                 ? 'bg-teal-500/22 text-teal-100 border border-teal-400/50'
                 : 'text-zinc-400 hover:text-zinc-200 border border-transparent'
             }`}
@@ -2962,16 +3073,16 @@ export const App: React.FC = () => {
           <button
             type="button"
             role="tab"
-            aria-selected={mobileViewMode === 'MAP'}
-            onClick={() => setMobileViewMode('MAP')}
+            aria-selected={viewMode === 'RADAR'}
+            onClick={() => handleSwitchViewMode('RADAR')}
             className={`inline-flex items-center justify-center gap-1.5 min-h-[36px] px-3.5 rounded-full font-mono text-[11px] font-semibold whitespace-nowrap transition-colors cursor-pointer ${
-              mobileViewMode === 'MAP'
+              viewMode === 'RADAR'
                 ? 'bg-teal-500/22 text-teal-100 border border-teal-400/50'
                 : 'text-zinc-400 hover:text-zinc-200 border border-transparent'
             }`}
           >
-            <Compass className="w-3.5 h-3.5 text-teal-300 shrink-0" />
-            <span>3D Map</span>
+            <Orbit className="w-3.5 h-3.5 text-teal-300 shrink-0" />
+            <span>Radar</span>
           </button>
         </div>
       )}
@@ -2983,6 +3094,8 @@ export const App: React.FC = () => {
         signals={signalsRef.current}
         mutedSectors={mutedSectors}
         activeLiteracyLevel={globalLiteracyLevel}
+        searchQuery={searchQuery}
+        onSearchQueryChange={setSearchQuery}
         onSelectNodeIndex={handleSelectSignalFromUI}
       />
 

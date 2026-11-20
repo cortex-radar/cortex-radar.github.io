@@ -6,23 +6,63 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2026 16:37:10 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 17:12:28 GMT</lastBuildDate>
     <ttl>180</ttl>
+    <item>
+      <title>Global stock markets slump as Anthropic&apos;s IPO struggles</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50574383&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50574383&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Asian markets experienced their worst week since 2020, with investors selling off AI-related stocks following Anthropic&apos;s record-breaking IPO. Investors are concerned about the financial viability and long-term returns of AI investments, leading to a market downturn. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
+    </item>
     <item>
       <title>Mathematicians Buckmaster and Alpöge Claim Proof of Unforced Navier-Stokes Blowup</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y174f6&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y174f6&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 16:30:48 GMT</pubDate>
+      <pubDate>Fri, 20 Nov 2026 16:00:18 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>Tristan Buckmaster and Levent Alpöge claimed a proof of finite-time blowup for the unforced 3D Navier-Stokes equations. It addresses the challenge of fluid dynamics without external forces, a key issue in mathematical physics. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/</description>
+    </item>
+    <item>
+      <title>Agents Using GPT-6.2 in Responses software connections Deliver Enhanced Results</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 23:56:07 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>GPT-6.2 in the Responses software connections now ties reasoning to conversation history, causing the software connections to reset reasoning when earlier messages are edited. The system previously struggled with maintaining coherent reasoning across edits, leading to confusion and inefficiency. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2123566018866151579</description>
     </item>
     <item>
       <title>Introducing Gemini 4 Neon: Lower-cost AI for complex tasks</title>
       <link>https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 11:17:42 GMT</pubDate>
+      <pubDate>Wed, 18 Nov 2026 21:35:43 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
       <description>Google has introduced Gemini 4 Neon, a new AI system designed to handle complex coding and analysis tasks at a lower cost than previous systems. The system addresses the high cost and complexity of previous AI solutions, making advanced AI accessible for more tasks in the banking sector. — Upstream (Google DeepMind): https://deepmind.google/blog/introducing-gemini-4-neon/</description>
+    </item>
+    <item>
+      <title>v0.40.17: Batch Verification with Speculative Decoding</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04017-rc2&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04017-rc2&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 00:25:30 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>The ollama team introduced a new feature in version 0.40.17 that allows batch speculative verification, enabling concurrent generation while preserving per-request sampling and cache rollback. This addresses the bottleneck in processing multiple requests concurrently without sacrificing the integrity of individual tasks. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.17-rc2</description>
+    </item>
+    <item>
+      <title>v2.1.329: Enhanced Security Warnings and Updates for Claude Code</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21329&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21329&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 22:14:41 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>v2.1.329 added trust dialog warnings, conversation warnings, and error messages for managed settings. It also improved session management and fixed issues with saved configurations and sign-outs. These updates address potential security and usability issues, ensuring that users are aware of and can manage any problems in their workflows. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.329</description>
+    </item>
+    <item>
+      <title>Lightweight coding agent for terminal - 0.173.0-alpha.1</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01730-alpha1&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01730-alpha1&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 02:54:54 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>The release 0.173.0-alpha.1 introduces a lightweight coding agent that runs in your terminal. It addresses the need for a more efficient and direct coding environment, especially for quick prototyping and testing. — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.1</description>
     </item>
     <item>
       <title>Frostbite: AI-Discovered CPU Surpasses Human Designs</title>
@@ -33,20 +73,20 @@
       <description>AI systems discovered and designed a new CPU architecture called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs. Addressed the stagnation in CPU core improvements and the need for more efficient hardware. — Upstream (Hacker News): https://architectlabs.com/blog/frostbite</description>
     </item>
     <item>
-      <title>Global stock markets slump as Anthropic&apos;s IPO struggles</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50574383&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50574383&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 13:29:59 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Asian markets experienced their worst week since 2020, with investors selling off AI-related stocks following Anthropic&apos;s record-breaking IPO. Investors are concerned about the financial viability and long-term returns of AI investments, leading to a market downturn. — Upstream (Hacker News): https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off</description>
+      <title>vLLM v0.34.0 Release with 1,061 Commits and 10 New Models</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-vllm-ithubcom2008Repository599547518v0340&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-vllm-ithubcom2008Repository599547518v0340&amp;lens=2</guid>
+      <pubDate>Wed, 18 Nov 2026 21:02:33 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>vLLM v0.34.0 includes 1,061 commits from 412 contributors, adding 10 new models and improving the default short-term working notes cache to use actual free memory. The update addresses memory utilization and throughput issues, improving the efficiency of model processing. — Upstream (vLLM Release): https://github.com/vllm-project/vllm/releases/tag/v0.34.0</description>
     </item>
     <item>
-      <title>6.2 Sol and Astra Models Now Available; Highly Efficient and Versatile</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2122798039899263456&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2122798039899263456&amp;lens=2</guid>
-      <pubDate>Tue, 17 Nov 2026 22:43:06 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>The 6.2 Sol and Astra models have been released, offering ultrafast performance and words efficiency. The ultrafast feature is now available on Pro 200 plans. These models address the bottleneck of slow processing and high words usage, improving overall workflow efficiency. — Upstream (X · @sama): https://x.com/sama/status/2122798039899263456</description>
+      <title>langchain-openrouter 0.3.0 Drops Python 3.10 Support</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-langchain-tory552661142langchain-openrouter030&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-langchain-tory552661142langchain-openrouter030&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 15:03:21 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>langchain-openrouter 0.3.0 has dropped support for Python 3.10, now requiring at least Python 3.11. The minimum langchain-core version is now 1.8.3. This update addresses the end-of-life status of Python 3.10, ensuring the software remains up-to-date and secure. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-openrouter%3D%3D0.3.0</description>
     </item>
     <item>
       <title>Riemann Hypothesis Solved with AI Assistance</title>
@@ -97,22 +137,6 @@
       <description>The author created a voice clone using a free open-source model, demonstrating how easily AI can automate certain tasks. The author addressed the bottleneck of needing to manually create voice clones, showing a real-world application of AI. — Upstream (Hacker News): https://www.robertpeake.com/archives/104254-ai-came-for-the-coders-understanding-why-tells-us-whos-next.html</description>
     </item>
     <item>
-      <title>No Bailout for the AI Bubble, Anthropic IPO Protesters Say</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50564282&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50564282&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 18:42:13 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Anthropic executives held an IPO opening ceremony at Nasdaq, while protesters gathered outside to voice concerns about the AI industry&apos;s potential economic and environmental impacts. The protest highlights the need for transparency and accountability in the AI industry, addressing concerns about the economic and social risks associated with AI technology. — Upstream (Hacker News): https://www.techpolicy.press/no-bailout-for-the-ai-bubble-anthropic-ipo-protesters-say/</description>
-    </item>
-    <item>
-      <title>Anthropic Completes Largest IPO, Valued at $1.5T</title>
-      <link>https://cortex-radar.github.io/?orb=vip-swyx-a954b2a3-7633-4f51-bdca-627a4cc7f380&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-a954b2a3-7633-4f51-bdca-627a4cc7f380&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 07:12:24 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>Anthropic successfully completed its IPO, raising $81.3B, surpassing SpaceX&apos;s previous record, and opening at $111.50, up 34% from the IPO price of $83. The primary challenge was to ensure the safe and controlled deployment of powerful AI systems, as highlighted in Dario&apos;s IPO remarks. — Upstream (Swyx · Latent Space): https://latent.space/p/ainews-anthropic-successfully-completes-largest-ipo-in-history-valued-at-1-5t/</description>
-    </item>
-    <item>
       <title>Gemini 4 Carbon vs Gemini 4 Neon: Illustrating Model Variations</title>
       <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</guid>
@@ -145,68 +169,44 @@
       <description>A software engineer with 5-10 years of experience is concerned about the future of the software industry and job security due to the increasing use of AI. The engineer seeks advice on how to adapt to the changing landscape of software development and whether they should consider other industries. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50565484</description>
     </item>
     <item>
-      <title>I built an engine that puts ADA users near BLACKWELL performance</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y16xqe&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y16xqe&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 15:52:44 GMT</pubDate>
+      <title>Testing 4B, 9B, and 27B Models in Household Manuals</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y0z0g2&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0z0g2&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 09:21:01 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>I have been working on a chip software engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. I have benchmarked both sides of the engine (small community bench nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better). — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y16xqe/i_built_an_engine_that_puts_ada_users_near/</description>
+      <description>A household assistant named Hearth, using models of 4B, 9B, and compact scale, was tested on answering questions from manuals. Despite strict instructions, the smaller models sometimes followed a hidden note, while the larger model did not. The test revealed that smaller models can be tricked by hidden instructions, while larger models are more reliable, addressing the need for robust security in AI applications. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y0z0g2/4b_vs_9b_vs_27b_answering_from_household_manuals/</description>
     </item>
     <item>
-      <title>compact AI model “super adapter”: one rank-96 lightweight skill add-on that improves 3 agent…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y16sam&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y16sam&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 15:46:32 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>compact AI model super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their trained model files updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 lightweight skill add-on. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y16sam/qwen3827b_super_adapter_one_rank96_lora_that/</description>
-    </item>
-    <item>
-      <title>Agents using GPT-6.2 in the Responses software connections can build on earlier reasoning to…</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 23:56:18 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the software connections to drop reasoning that follows the change. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2123566018866151579</description>
-    </item>
-    <item>
-      <title>Accepted Apology for Misidentifying Team Member</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123567986565173289&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123567986565173289&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 00:03:56 GMT</pubDate>
+      <title>acmdthat - CLI commands with in-process AI for banking</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y18t0x&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y18t0x&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 17:05:16 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Demis Hassabis accepted an apology from someone who misidentified a team member, correcting the mistake. The issue was a misidentification of a team member, which needed to be corrected for accurate communication and record-keeping. — Upstream (X · @demishassabis): https://x.com/demishassabis/status/2123567986565173289</description>
+      <description>The r/LocalLLaMA community developed a CLI tool called acmdthat that allows for in-process AI live answering work, enabling faster task execution. It addresses the bottleneck of data transfer and model loading, which can slow down AI processing in real-time applications like banking. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y18t0x/acmdthat_vibe_cli_commands_with_inprocess/</description>
     </item>
     <item>
-      <title>words fraud is here and it’s BAD for free trials in AI platforms</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-Nov20token-fraud-is-here-and-its-bad&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-Nov20token-fraud-is-here-and-its-bad&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 02:49:57 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Claire Vo, who runs ChatPRD, an AI platform, has seen a flood of words fraud from scammers abusing free trials to get free AI usage or to resell words. The issue is that free trials are being misused, leading to a need for stricter controls and potentially shutting down free trials entirely. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/</description>
-    </item>
-    <item>
-      <title>PostgreSQL 19 Adds &apos;Read-Your-Writes&apos; Consistency for Banking Applications</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov19postgresql-19&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov19postgresql-19&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 20:43:57 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>PostgreSQL 19 introduced a new feature called &apos;read-your-writes&apos; consistency with the WAIT FOR LSN command. It addresses the issue of data staleness in standby databases, ensuring that applications can read the data they just wrote. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/19/postgresql-19/</description>
-    </item>
-    <item>
-      <title>Scaling Linear&apos;s GTM to $100M ARR — Cristina Cordova, COO</title>
-      <link>https://cortex-radar.github.io/?orb=vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 23:58:21 GMT</pubDate>
-      <category>Market &amp; Strategy</category>
-      <description>Linear, a company that started as an issue tracker, has transformed into a product development system using digital helpers to automate issue management, reducing manual work for users. The problem was the inefficiency and manual workload in traditional issue tracking systems, which were slowing down product development. — Upstream (Swyx · Latent Space): https://latent.space/p/linear-scaling/</description>
-    </item>
-    <item>
-      <title>Introducing Tool Retrieval in the Gemini software connections for Enhanced Agent Efficiency</title>
-      <link>https://cortex-radar.github.io/?orb=lab-google-ai-opers-toolsgemini-api-tool-retrieval&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-google-ai-opers-toolsgemini-api-tool-retrieval&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 18:00:00 GMT</pubDate>
+      <title>Unsloth Prepares to Release 4 New AI Models</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y18qbs&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y18qbs&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 17:02:27 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>Agents can now access hundreds of tools directly through the Gemini software connections, reducing the need for input words. Addresses the bottleneck of agents needing to input more words to access tools, improving efficiency. — Upstream (Google AI Blog): https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/</description>
+      <description>Unsloth is preparing to release 4 new AI models, though Huggingface lists 15 items, suggesting there are additional models not visible in the collection. The bottleneck is in managing and organizing a growing number of AI models, ensuring they are accessible and properly categorized. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y18qbs/unsloth_is_preparing_to_release_4_new_models/</description>
+    </item>
+    <item>
+      <title>Cheaper high-speed computer chips are coming next year, impacting the banking sector</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y18brw&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y18brw&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 16:47:32 GMT</pubDate>
+      <category>Market &amp; Strategy</category>
+      <description>The post suggests that cheaper high-speed computer chips will be available in 2027, driven by hyper-scalers offloading excess inventories and failing AI startups selling their stock. The bottleneck is the high cost of high-speed computer chips, which can limit the adoption of AI technologies in the banking sector. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y18brw/cheaper_gpus_are_coming_next_year/</description>
+    </item>
+    <item>
+      <title>Self-Hosted GPT with Local Research Mode and Customization</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y18h07&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y18h07&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 16:53:04 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>The user built ENZO, a self-hosted AI workspace that can be installed on a desktop with a one-click installer. It supports various providers and updates itself automatically. ENZO addresses the need for a self-hosted AI solution that can be easily installed and updated, providing a secure and private environment for users. — Upstream (r/ChatGPTCoding): https://www.reddit.com/r/ChatGPTCoding/comments/1y18h07/i_built_self_hosted_gpt_with_a_oneclick_desktop/</description>
     </item>
   </channel>
 </rss>

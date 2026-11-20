@@ -124,10 +124,63 @@ function extractDistinctHyphenatedSlug(rawTitle: string): string | null {
   return match?.[1] || null;
 }
 
+const MODEL_VERSION_REGEX =
+  /\b(gemini|claude|gpt|qwen|llama|mistral|deepseek|grok|genie|veo|sora|gemma|olmo|phi)[-\s]?(\d+(?:\.\d+)?)(?:[-\s]+(ultra|pro|flash|mini|nano|max|plus|lite|neon|hydrogen|sonnet|opus|haiku|codex|vibe|coder|omni|live))?\b/gi;
+
+interface ModelVersionKey {
+  family: string;
+  variant: string;
+}
+
+function extractModelVersionKeys(rawTitle: string): ModelVersionKey[] {
+  const cleaned = stripFeedPrefixForClustering(rawTitle);
+  if (/\b(?:vs\.?|versus)\b/i.test(cleaned)) return [];
+  const results = new Map<string, ModelVersionKey>();
+
+  const matches = cleaned.matchAll(MODEL_VERSION_REGEX);
+  for (const m of matches) {
+    const base = (m[1] || '').toLowerCase();
+    const ver = (m[2] || '').toLowerCase();
+    const variant = (m[3] || '').toLowerCase();
+    if (!base || !ver) continue;
+    const family = `${base}${ver}`;
+    const prev = results.get(family);
+    if (!prev || (!prev.variant && variant)) {
+      results.set(family, { family, variant });
+    }
+  }
+
+  const namedSlug = cleaned.match(/\b(mistral[-\s]+vibe|claude[-\s]+code|openai[-\s]+codex)\b/i);
+  if (namedSlug?.[1]) {
+    const family = namedSlug[1].toLowerCase().replace(/\s+/g, '-');
+    if (!results.has(family)) {
+      results.set(family, { family, variant: '' });
+    }
+  }
+
+  return Array.from(results.values());
+}
+
+function extractLabCorporateEventKey(rawTitle: string): string | null {
+  const cleaned = stripFeedPrefixForClustering(rawTitle)
+    .toLowerCase()
+    .replace(/\binitial public offering\b/g, 'ipo');
+  const labMatch = cleaned.match(
+    /\b(anthropic|openai|deepmind|mistral|xai|nvidia|perplexity|cohere|databricks|scale ai)\b/
+  );
+  const eventMatch = cleaned.match(/\b(ipo|acquisition|acquires|acquired)\b/);
+  if (!labMatch?.[1] || !eventMatch?.[1]) return null;
+  const eventNorm = eventMatch[1].startsWith('acquir') || eventMatch[1] === 'acquisition'
+    ? 'acquire'
+    : eventMatch[1];
+  return `corp:${labMatch[1]}:${eventNorm}`;
+}
+
 /**
  * Strict Supernova clustering predicate:
- * Requires an exact canonical URL / repo / arXiv match OR >= 2 shared rare proper-noun entity tokens
- * in the headline with zero conflicting model-checkpoint slugs.
+ * Requires an exact canonical URL / repo / arXiv match, an unambiguous matching model+version
+ * (with zero conflicting variant names), a named lab corporate milestone, OR >= 2 shared rare
+ * proper-noun entity tokens in the headline with zero conflicting model-checkpoint slugs.
  */
 export function shouldClusterIntoSupernova(
   a: { title: string; url?: string; originFeedName?: string },
@@ -143,6 +196,27 @@ export function shouldClusterIntoSupernova(
   const artB = extractCanonicalArtifactId(b.url || '', b.title);
   if (artA && artB) {
     return artA === artB;
+  }
+
+  const mvA = extractModelVersionKeys(a.title);
+  const mvB = extractModelVersionKeys(b.title);
+  if (mvA.length === 1 && mvB.length === 1) {
+    const ma = mvA[0];
+    const mb = mvB[0];
+    if (ma.family === mb.family) {
+      if (ma.variant && mb.variant && ma.variant !== mb.variant) {
+        return false;
+      }
+      if (ma.variant === mb.variant || !ma.variant || !mb.variant) {
+        return true;
+      }
+    }
+  }
+
+  const corpA = extractLabCorporateEventKey(a.title);
+  const corpB = extractLabCorporateEventKey(b.title);
+  if (corpA && corpB && corpA === corpB) {
+    return true;
   }
 
   // Block merging if either headline names a specific multi-hyphen model/repo slug (e.g. "voi-slop-detect-300M")

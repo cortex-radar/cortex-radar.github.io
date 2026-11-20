@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { CornerDownLeft, Search, VolumeX, X } from 'lucide-react';
+import { matchesSignalSearchQuery } from '../../shared/provenance';
 import {
   LiteracyLevel,
   SECTOR_BY_ID,
@@ -19,6 +20,8 @@ interface CommandPaletteProps {
   signals: SpatialSignal[];
   mutedSectors: ReadonlySet<SectorId>;
   activeLiteracyLevel: LiteracyLevel;
+  searchQuery: string;
+  onSearchQueryChange: (q: string) => void;
   onSelectNodeIndex: (nodeIndex: number) => void;
 }
 
@@ -28,15 +31,15 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   signals,
   mutedSectors,
   activeLiteracyLevel,
+  searchQuery,
+  onSearchQueryChange,
   onSelectNodeIndex,
 }) => {
-  const [query, setQuery] = useState('');
   const [activeIdx, setActiveIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (isOpen) {
-      setQuery('');
       setActiveIdx(0);
       const timer = setTimeout(() => inputRef.current?.focus(), 20);
       return () => clearTimeout(timer);
@@ -45,7 +48,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
   const matches = useMemo(() => {
     const nowMs = Date.now();
-    const q = query.trim().toLowerCase();
+    const q = searchQuery.trim();
     const indexed = signals.map((signal, nodeIndex) => ({
       nodeIndex,
       signal,
@@ -53,32 +56,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     }));
 
     const filtered = q
-      ? indexed.filter(({ signal }) => {
-          const secName = SECTOR_BY_ID[signal.primarySector]?.name || '';
-          const haystack = [
-            signal.title,
-            signal.literacy?.plainFullTitle || '',
-            signal.rawAbstract,
-            signal.originFeedName || '',
-            signal.source,
-            signal.primarySector,
-            secName,
-            signal.canonicalEntity || '',
-            ...(signal.affectedEnterpriseStacks || []),
-          ]
-            .join(' ')
-            .toLowerCase();
-          return haystack.includes(q);
-        })
+      ? indexed.filter(({ signal }) => matchesSignalSearchQuery(signal, q))
       : indexed;
 
     filtered.sort((a, b) => b.momentum - a.momentum);
     return filtered.slice(0, 14);
-  }, [signals, query]);
+  }, [signals, searchQuery]);
 
   useEffect(() => {
     setActiveIdx(0);
-  }, [query]);
+  }, [searchQuery]);
 
   if (!isOpen) return null;
 
@@ -105,8 +92,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           <input
             ref={inputRef}
             type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            value={searchQuery}
+            onChange={(e) => onSearchQueryChange(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'ArrowDown') {
                 e.preventDefault();
@@ -127,9 +114,18 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                 onClose();
               }
             }}
-            placeholder="Search orbs by headline, source, sector, stack, or keyword..."
+            placeholder="Filter Radar & Feed by headline, source, sector, stack, or keyword..."
             className="flex-1 bg-transparent text-[13px] font-sans text-zinc-100 placeholder:text-zinc-500 focus:outline-none"
           />
+          {searchQuery.trim() && (
+            <button
+              type="button"
+              onClick={() => onSearchQueryChange('')}
+              className="px-1.5 py-0.5 rounded bg-zinc-900 border border-white/10 font-mono text-[9.5px] text-zinc-300 hover:text-white cursor-pointer"
+            >
+              Clear
+            </button>
+          )}
           <Kbd>ESC</Kbd>
           <button
             type="button"
@@ -145,7 +141,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         <div className="max-h-[54vh] overflow-y-auto divide-y divide-white/6">
           {matches.length === 0 ? (
             <div className="p-6 text-center font-mono text-xs text-zinc-500">
-              No matching signals found for &ldquo;{query}&rdquo;.
+              No matching signals found for &ldquo;{searchQuery}&rdquo;.
             </div>
           ) : (
             matches.map((item, idx) => {

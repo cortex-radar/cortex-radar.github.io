@@ -405,6 +405,15 @@ export interface ModelSpecs {
   };
 }
 
+export interface SupportingSourceLink {
+  source: string;
+  title: string;
+  url: string;
+  publishedAt: string;
+  publishedAtMs?: number;
+  isPrimary: boolean;
+}
+
 export interface SpatialSignal {
   id: string;
   title: string;
@@ -427,6 +436,8 @@ export interface SpatialSignal {
   isDemoSeed?: boolean;
   sourceProvenance: string[];
   networkFamilies?: string[];
+  supportingSources?: SupportingSourceLink[];
+  lastUpdatedAtMs?: number;
   canonicalEntity?: string;
   isSupernova?: boolean;
   supernovaLevel?: number; // 0 = normal, 1 = 2-network Supernova, 2 = 3+ network DEFCON Supernova

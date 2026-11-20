@@ -705,7 +705,10 @@ function emitFramePacket(
   self.postMessage({ type: 'FRAME', buffer: pkt.buffer }, [pkt.buffer]);
 }
 
+let isSimulationPaused = false;
+
 setInterval(() => {
+  if (isSimulationPaused) return;
   stepPhysics(1 / 60);
 }, 1000 / 60);
 
@@ -714,6 +717,14 @@ self.onmessage = (ev: MessageEvent) => {
   if (!msg || typeof msg.type !== 'string') return;
 
   switch (msg.type) {
+    case 'SET_PAUSED': {
+      const nextPaused = Boolean(msg.paused);
+      isSimulationPaused = nextPaused;
+      if (!nextPaused) {
+        stepPhysics(1 / 60);
+      }
+      break;
+    }
     case 'RETURN_BUFFER': {
       if (msg.buffer instanceof ArrayBuffer) {
         packetPool.push(new Float32Array(msg.buffer));
@@ -728,6 +739,9 @@ self.onmessage = (ev: MessageEvent) => {
       for (const s of signals) {
         addSignalNode(s, true);
       }
+      if (isSimulationPaused) {
+        stepPhysics(1 / 60);
+      }
       self.postMessage({ type: 'BASE_EPOCH_SYNC', baseNowMs });
       break;
     }
@@ -735,6 +749,9 @@ self.onmessage = (ev: MessageEvent) => {
       const signals = msg.signals as SpatialSignal[];
       for (const s of signals) {
         addSignalNode(s, true);
+      }
+      if (isSimulationPaused) {
+        stepPhysics(1 / 60);
       }
       break;
     }

@@ -5,8 +5,10 @@ import {
   Cpu,
   FastForward,
   KeyRound,
+  Layers,
   ListFilter,
   Menu,
+  Orbit,
   Play,
   Radar,
   Radio,
@@ -72,7 +74,10 @@ interface SpatialHorizonHUDProps {
   onToggleMuteSector: (sec: SectorId) => void;
   onResetMutedSectors: () => void;
   onHoverSectorIndex: (idx: number) => void;
-  mobileViewMode?: 'FEED' | 'MAP';
+  viewMode?: 'RADAR' | 'FEED';
+  onSelectViewMode: (mode: 'RADAR' | 'FEED') => void;
+  searchQuery?: string;
+  onClearSearchQuery?: () => void;
   mobileSheetOpen?: boolean;
   isStaticPublicMode?: boolean;
   staticBakedAtMs?: number | null;
@@ -132,7 +137,10 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
   onToggleMuteSector,
   onResetMutedSectors,
   onHoverSectorIndex,
-  mobileViewMode = 'MAP',
+  viewMode = 'RADAR',
+  onSelectViewMode,
+  searchQuery = '',
+  onClearSearchQuery,
   mobileSheetOpen = false,
   isStaticPublicMode = false,
   staticBakedAtMs = null,
@@ -297,6 +305,41 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
                 />
                 <span>{newSignalsCount > 0 ? `+${newSignalsCount}` : '0'}</span>
               </button>
+
+              <div
+                role="tablist"
+                aria-label="Mobile View Switch"
+                className="cockpit-well inline-grid grid-cols-2 p-0.5 rounded-[7px] shrink-0"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={viewMode === 'RADAR'}
+                  onClick={() => onSelectViewMode('RADAR')}
+                  className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-[5px] font-mono text-[10px] cursor-pointer transition-colors ${
+                    viewMode === 'RADAR'
+                      ? 'bg-zinc-800 text-teal-200 border border-teal-400/35 font-semibold'
+                      : 'text-zinc-400 border border-transparent'
+                  }`}
+                >
+                  <Orbit className="w-2.5 h-2.5 shrink-0" />
+                  <span>Radar</span>
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={viewMode === 'FEED'}
+                  onClick={() => onSelectViewMode('FEED')}
+                  className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-[5px] font-mono text-[10px] cursor-pointer transition-colors ${
+                    viewMode === 'FEED'
+                      ? 'bg-zinc-800 text-teal-200 border border-teal-400/35 font-semibold'
+                      : 'text-zinc-400 border border-transparent'
+                  }`}
+                >
+                  <Layers className="w-2.5 h-2.5 shrink-0" />
+                  <span>Feed</span>
+                </button>
+              </div>
             </div>
 
             <div className="flex items-center gap-1.5 shrink-0">
@@ -490,22 +533,63 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
         </ObsidianPanel>
 
         {/* >= 768px Desktop Consolidated Instrument Bar */}
-        <ObsidianPanel className="hidden md:flex pointer-events-auto w-full px-2 py-1.5 rounded-lg flex-wrap xl:flex-nowrap items-center justify-between gap-1.5">
-          {/* Group 1: Cockpit Identity + Tabular Engine Telemetry */}
-          <div className="flex items-center gap-1.5 shrink-0">
-            <span className="h-2 w-2 rounded-full bg-teal-400 shrink-0" />
-            <span className="cockpit-heading font-sans text-xs font-semibold text-zinc-100 tracking-tight">
-              CORTEX
-            </span>
-            <span className="h-3.5 w-px bg-white/10" />
-            <span className="font-mono text-[10.5px] text-zinc-400 tabular-nums">
-              <span className="text-zinc-200">{zoom.toFixed(2)}x</span>
-              <span className="hidden 2xl:inline">
-                {' '}
-                · <span className="text-teal-300">{fps}</span>fps · {workerMs.toFixed(1)}ms ·{' '}
-                {visibleCount}n
+        <ObsidianPanel className="hidden md:flex pointer-events-auto w-full px-2 py-1.5 rounded-lg flex-wrap 2xl:flex-nowrap items-center justify-between gap-1.5">
+          {/* Group 1: Cockpit Identity + Radar/Feed Toggle + Tabular Engine Telemetry */}
+          <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-teal-400 shrink-0" />
+              <span className="cockpit-heading font-sans text-xs font-semibold text-zinc-100 tracking-tight">
+                CORTEX
               </span>
-            </span>
+            </div>
+
+            <div
+              role="tablist"
+              aria-label="Workspace View Mode"
+              className="cockpit-well inline-grid grid-cols-2 p-0.5 rounded-[7px] shrink-0"
+            >
+              <button
+                type="button"
+                role="tab"
+                aria-selected={viewMode === 'RADAR'}
+                onClick={() => onSelectViewMode('RADAR')}
+                title="3D WebGL2 Spatial Radar View"
+                className={`inline-flex items-center justify-center gap-1 px-2 py-0.5 rounded-[5px] font-mono text-[10.5px] cursor-pointer transition-colors ${
+                  viewMode === 'RADAR'
+                    ? 'bg-zinc-800 text-teal-200 border border-teal-400/40 font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]'
+                    : 'text-zinc-400 hover:text-zinc-200 border border-transparent'
+                }`}
+              >
+                <Orbit className="w-3 h-3 text-teal-400 shrink-0" />
+                <span>Radar</span>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={viewMode === 'FEED'}
+                onClick={() => onSelectViewMode('FEED')}
+                title="Scannable Feed View (suspends 3D render)"
+                className={`inline-flex items-center justify-center gap-1 px-2 py-0.5 rounded-[5px] font-mono text-[10.5px] cursor-pointer transition-colors ${
+                  viewMode === 'FEED'
+                    ? 'bg-zinc-800 text-teal-200 border border-teal-400/40 font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]'
+                    : 'text-zinc-400 hover:text-zinc-200 border border-transparent'
+                }`}
+              >
+                <Layers className="w-3 h-3 text-teal-400 shrink-0" />
+                <span>Feed</span>
+              </button>
+            </div>
+
+            {viewMode === 'RADAR' && (
+              <span className="hidden 2xl:inline font-mono text-[10.5px] text-zinc-400 tabular-nums">
+                <span className="text-zinc-200">{zoom.toFixed(2)}x</span>
+                <span>
+                  {' '}
+                  · <span className="text-teal-300">{fps}</span>fps · {workerMs.toFixed(1)}ms ·{' '}
+                  {visibleCount}n
+                </span>
+              </span>
+            )}
           </div>
 
           {/* Group 2: Global 5-Step Universal Literacy Segmented Track (L1 -> L5) */}
@@ -594,15 +678,14 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
                       ).toLocaleString()})`
                     : ''
                 }. Headlines reflect linked third-party sources.`}
-                className="cockpit-well inline-flex items-center gap-1.5 px-2 py-1 rounded-[7px] font-mono text-[10px] text-teal-200 tabular-nums"
+                className="cockpit-well inline-flex items-center gap-1 px-2 py-1 rounded-[7px] font-mono text-[10px] text-teal-200 tabular-nums"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                <span>Live Snapshot</span>
+                <span className="hidden 2xl:inline">Live </span>
+                <span>Snapshot</span>
                 <span className="text-zinc-500">·</span>
                 <span className="text-zinc-300">
-                  {staticBakedAtMs
-                    ? `Updated ${formatRelativeAgeShort(staticBakedAtMs)} ago`
-                    : 'Auto-Updated · 3h Cycle'}
+                  {staticBakedAtMs ? `${formatRelativeAgeShort(staticBakedAtMs)} ago` : '3h Cycle'}
                 </span>
               </div>
             ) : (
@@ -670,14 +753,27 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
           <div className="flex items-center gap-1 shrink-0">
             <InstrumentButton
               size="xs"
+              active={Boolean(searchQuery.trim())}
               onClick={onOpenCommandPalette}
               title="Instant Command Search (Ctrl+K or /)"
               className="gap-1.5"
             >
               <Search className="w-3 h-3 text-teal-400" />
-              <span className="hidden xl:inline">Search</span>
+              <span className="hidden 2xl:inline">Search</span>
               <Kbd className="hidden 2xl:inline-block">Ctrl+K</Kbd>
             </InstrumentButton>
+
+            {searchQuery.trim() && onClearSearchQuery && (
+              <button
+                type="button"
+                onClick={onClearSearchQuery}
+                title={`Active shared filter: "${searchQuery.trim()}" — click to clear`}
+                className="inline-flex items-center gap-1 px-1.5 py-1 rounded-md bg-teal-500/18 border border-teal-400/45 font-mono text-[10px] text-teal-100 hover:bg-teal-500/28 cursor-pointer max-w-[110px]"
+              >
+                <span className="truncate">&ldquo;{searchQuery.trim()}&rdquo;</span>
+                <X className="w-2.5 h-2.5 shrink-0" />
+              </button>
+            )}
 
             <InstrumentButton
               size="xs"
@@ -685,7 +781,9 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
               onClick={onToggleOnlyNewFilter}
               title={
                 onlyNewFilterActive
-                  ? 'Showing only new signals since last visit — click to restore all'
+                  ? `Showing ${newSignalsCount} new signals since last visit — click to restore all`
+                  : isReturnVisit
+                  ? `${newSignalsCount} new since last visit — click to filter`
                   : 'Filter galaxy to new signals since your last visit'
               }
               className="tabular-nums"
@@ -696,11 +794,7 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
                 }`}
               />
               <span>
-                {newSignalsCount > 0
-                  ? isReturnVisit
-                    ? `+${newSignalsCount} new since last visit`
-                    : `+${newSignalsCount} New`
-                  : '0 New'}
+                {newSignalsCount > 0 ? `+${newSignalsCount} New` : '0 New'}
               </span>
             </InstrumentButton>
 
@@ -727,15 +821,18 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
               )}
             </InstrumentButton>
 
-            <InstrumentButton
-              size="xs"
-              active={signalRailOpen}
-              onClick={onToggleSignalRail}
-              title="Toggle Top 10 Signals Today sidebar"
-            >
-              <ListFilter className="w-3 h-3 text-teal-400" />
-              <span className="hidden lg:inline">Top 10</span>
-            </InstrumentButton>
+            {viewMode === 'RADAR' && (
+              <InstrumentButton
+                size="xs"
+                active={signalRailOpen}
+                onClick={onToggleSignalRail}
+                title="Toggle Top 10 Signals Today sidebar"
+                className="px-1.5"
+              >
+                <ListFilter className="w-3 h-3 text-teal-400" />
+                <span className="hidden lg:inline">Top 10</span>
+              </InstrumentButton>
+            )}
 
             {!isStaticPublicMode && (
               <InstrumentButton
@@ -769,7 +866,7 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
                 {showDemoSeed
                   ? 'Seed+Feed'
                   : isStaticPublicMode
-                  ? 'Auto-Updated · 3h'
+                  ? '3h Snapshot'
                   : 'Live Stream'}
               </span>
             </InstrumentButton>
@@ -887,7 +984,7 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
 
         {/* Calibration Strip + Live Inbound Arrival Ticker */}
         <div className="flex flex-wrap items-center justify-between gap-2 max-w-full">
-          {showCalibrationHint && (
+          {showCalibrationHint && viewMode === 'RADAR' && (
             <div className="hidden md:inline-flex pointer-events-auto cockpit-obsidian items-center gap-2 px-2.5 py-1 rounded-md text-[10.5px] font-mono text-zinc-400">
               <span className="text-zinc-200 font-medium">CONTROLS</span>
               <span className="h-3 w-px bg-white/10" />
@@ -922,7 +1019,7 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
               role="status"
               aria-live="polite"
               className={`pointer-events-none cockpit-obsidian items-center gap-2 px-2.5 py-1 rounded-md text-[10.5px] font-mono text-zinc-200 ml-auto max-w-full overflow-hidden ${
-                mobileViewMode === 'FEED' ? 'hidden md:inline-flex' : 'inline-flex'
+                viewMode === 'FEED' ? 'hidden' : 'inline-flex'
               } ${signalRailOpen ? 'md:mr-[324px]' : ''}`}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse shrink-0" />
@@ -987,8 +1084,8 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
       {/* =================================================================== */}
       <div
         className={`w-full max-w-full space-y-1.5 flex flex-col items-center transition-opacity duration-150 ${
-          mobileSheetOpen || mobileViewMode === 'FEED'
-            ? 'max-md:hidden'
+          mobileSheetOpen || viewMode === 'FEED'
+            ? 'hidden'
             : 'max-md:pb-12'
         }`}
       >
