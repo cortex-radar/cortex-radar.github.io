@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2026 18:49:12 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 18:51:39 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>Anthropic Announces Largest IPO in History, Valued at $1.5T</title>
@@ -17,20 +17,20 @@
       <description>Anthropic completed its IPO, selling 1.127 billion shares at $83 each, raising $93.5 billion. They also sold 313 million shares privately to tech giants. The IPO addresses Anthropic’s need for capital to fund its AI research and development, ensuring financial stability and growth. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
     </item>
     <item>
-      <title>Gemini 4 Neon: Lower-cost AI for complex coding and analysis</title>
-      <link>https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 21:35:43 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>Google introduced Gemini 4 Neon, a new AI model that can handle complex coding and analysis tasks at a lower cost. It addresses the high cost and complexity of traditional AI solutions, making advanced AI capabilities more accessible to a broader range of organizations, including banks. — Upstream (Google DeepMind): https://deepmind.google/blog/introducing-gemini-4-neon/</description>
-    </item>
-    <item>
       <title>Test Qwen4-Max on Nous Portal for 5 days and share your creations</title>
       <link>https://cortex-radar.github.io/?orb=x-fx-2123328957022081036&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123328957022081036&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 08:14:07 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>Qwen4-Max, a new flagship model from Alibaba, is available for free on the Nous Portal for 5 days in partnership with @inferact. It addresses the need for long-horizon work with integrated vision capabilities, solving complex tasks that require extensive context. — Upstream (X · @Alibaba_Qwen): https://x.com/Alibaba_Qwen/status/2123328957022081036</description>
+    </item>
+    <item>
+      <title>Introducing Gemini 4 Neon</title>
+      <link>https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</guid>
+      <pubDate>Wed, 18 Nov 2026 21:35:43 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Google DeepMind): https://deepmind.google/blog/introducing-gemini-4-neon/</description>
     </item>
     <item>
       <title>Enhancements to Ollama CLI for Better ChatGPT Integration and Performance</title>
@@ -63,14 +63,6 @@
       <pubDate>Fri, 20 Nov 2026 10:01:41 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>AI systems discovered and designed a new CPU architecture called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs. Addressed the stagnation in CPU core improvements and the need for more efficient hardware. — Upstream (Hacker News): https://architectlabs.com/blog/frostbite</description>
-    </item>
-    <item>
-      <title>GPT-6.2 Sol and Astra models released for ultrafast processing</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2122798039899263456&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2122798039899263456&amp;lens=2</guid>
-      <pubDate>Tue, 17 Nov 2026 21:04:27 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>GPT-6.2 Sol and Astra models were released, with the Sol model being ultrafast for everyday tasks. The bottleneck of slow processing times for everyday tasks has been addressed with these new models. — Upstream (X · @sama): https://x.com/sama/status/2122798039899263456</description>
     </item>
     <item>
       <title>RL Post-Training in Diffusion Transformers Improves Visual Quality and Compositional Accuracy</title>
@@ -169,12 +161,12 @@
       <description>The post compares the performance of two Gemini 4 models, showing how they differ when running at different effort levels, similar to a pelican riding a bicycle. It addresses the need to understand the differences between models within the same family, ensuring better performance and efficiency in various applications. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
     </item>
     <item>
-      <title>FBI agent contacts user about AI chat activity, raising privacy concerns</title>
+      <title>An FBI agent called a Claude user about his chats</title>
       <link>https://cortex-radar.github.io/?orb=hn-50567485&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50567485&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 22:36:51 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>An FBI agent contacted a user about their AI chat activity, leading to a police visit to the user&apos;s former home and a subsequent summons to the station. The issue addressed is the potential for AI-generated chat logs to be used as a basis for law enforcement inquiries, highlighting the need for robust privacy and security measures. — Upstream (Hacker News): https://austinpatrick.substack.com/p/when-should-ai-labs-alert-police</description>
+      <category>Architecture &amp; Infra</category>
+      <description>Published on austinpatrick.substack.com (discussed on Hacker News) published &quot;An FBI agent called a Claude user about his chats&quot;. Open the linked third-party source above for the full upstream breakdown. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://austinpatrick.substack.com/p/when-should-ai-labs-alert-police</description>
     </item>
     <item>
       <title>Where Will Software Be in 5 Years? AI and Job Security Concerns</title>
@@ -207,6 +199,14 @@
       <pubDate>Fri, 20 Nov 2026 18:43:06 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>The US government is planning to ban the construction of datacenters outside the country, aiming to keep data within U.S. borders. The main issue is the need for data sovereignty and security, ensuring that sensitive information is not stored abroad. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y1bbr3/trump_to_not_allow_datacenters_to_be_built/</description>
+    </item>
+    <item>
+      <title>words fraud is here and it’s BAD for free trials in AI platforms</title>
+      <link>https://cortex-radar.github.io/?orb=vip-willison-Nov20token-fraud-is-here-and-its-bad&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-Nov20token-fraud-is-here-and-its-bad&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 02:49:57 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Claire Vo, who runs ChatPRD, an AI platform, has seen a flood of words fraud from scammers abusing free trials to get free AI usage or to resell words. The issue is that free trials are being misused, leading to a need for stricter controls and potentially shutting down free trials entirely. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/</description>
     </item>
   </channel>
 </rss>
