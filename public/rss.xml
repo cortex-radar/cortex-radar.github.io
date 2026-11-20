@@ -6,16 +6,8 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2026 19:44:48 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 20:13:17 GMT</lastBuildDate>
     <ttl>180</ttl>
-    <item>
-      <title>Ravi Vakil claims proof of Riemann Hypothesis by Alessandro Masullo may be human-readable soon</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y1bugz&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1bugz&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 19:03:33 GMT</pubDate>
-      <category>Science &amp; Research</category>
-      <description>Stanford mathematician Ravi Vakil claims that a proof of the Riemann Hypothesis, a famous unsolved problem in mathematics, has been found by Alessandro Masullo. The proof is currently being polished for human readability. The Riemann Hypothesis, if proven, would provide profound insights into the distribution of prime numbers and the behavior of complex systems. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y1bugz/ravi_vakil_of_stanford_claims_there_is_already_a/</description>
-    </item>
     <item>
       <title>Anthropic Announces Successful IPO and Concurrent Private Placement</title>
       <link>https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</link>
@@ -23,6 +15,30 @@
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>Anthropic completed its IPO, selling 1.127 billion shares at $83 each, raising $93.5 billion. It also sold 313 million shares in a private placement for $26 billion. This raises capital for Anthropic&apos;s continued growth and development in AI technology. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
+    </item>
+    <item>
+      <title>Ravi Vakil of Stanford claims there is already a proof of Riemann by Alessadro Masullo that is…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y1bugz&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1bugz&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 19:03:33 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>What are the chances anthropic inadvertently plagiarized this? Top engineer comment (u/peva3, +1): &quot;Buddy, just quit, you&apos;ve been proven wrong, you&apos;re just unimpeachably incorrect here. Addresses practical workflow friction around Ravi Vakil of Stanford claims there is already a proof of Riemann by Alessadro Masullo that is.. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y1bugz/ravi_vakil_of_stanford_claims_there_is_already_a/</description>
+    </item>
+    <item>
+      <title>Prompt: “Paint an exact copy of Manet’s Folies-Bergère”. An AI paints it in oil from Python…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y1d6r8&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1d6r8&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 19:57:44 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>I built aibrush, a free, open-source (AGPL-3.0) oil-painting engine made specifically for Claude and other strong models. It runs the full test suite from the exact commit, then looks at crops of its own test strokes next to real paintings at 1:1 and 4x. It&apos;s not an image generator and not a filter. — Upstream (r/ClaudeAI): https://www.reddit.com/r/ClaudeAI/comments/1y1d6r8/prompt_paint_an_exact_copy_of_manets/</description>
+    </item>
+    <item>
+      <title>Agents using GPT-6.2 in the Responses software connections can build on earlier reasoning to…</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 23:56:07 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the software connections to drop reasoning that follows the change. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2123566018866151579</description>
     </item>
     <item>
       <title>Google introduces Gemini 4 Neon for complex coding and analysis at lower cost</title>
@@ -65,14 +81,6 @@
       <description>What&apos;s changed Added a trust dialog warning that says where a folder&apos;s hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session&apos;s scheduled tasks, /loop wakeups, the goal and this conversation&apos;s forks to /tasks; x stops one. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.329</description>
     </item>
     <item>
-      <title>RL post-training in diffusion transformers is activation steering, achieving 90% of gains with…</title>
-      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261126627v1&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261126627v1&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 18:59:53 GMT</pubDate>
-      <category>Science &amp; Research</category>
-      <description>Reinforcement learning (RL) post-training significantly improves diffusion transformers&apos; visual and text rendering quality, with minimal internal settings changes. The study addresses the challenge of improving complex AI model outputs with minimal computational overhead. — Upstream (arXiv): https://arxiv.org/abs/2611.26627v1</description>
-    </item>
-    <item>
       <title>AI-Designed Frostbite CPU Outperforms Modern Chips</title>
       <link>https://cortex-radar.github.io/?orb=hn-50572503&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50572503&amp;lens=2</guid>
@@ -81,12 +89,12 @@
       <description>AI systems discovered, designed, and verified a new CPU called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs. The design addresses the stagnation in CPU core improvement and offers a novel approach to general-purpose CPU architecture. — Upstream (Hacker News): https://architectlabs.com/blog/frostbite</description>
     </item>
     <item>
-      <title>GPT-6.2 Sol and Astra Models Released for Banking Applications</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2122798039899263456&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2122798039899263456&amp;lens=2</guid>
-      <pubDate>Tue, 17 Nov 2026 21:04:27 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>The GPT-6.2 Sol and Astra models have been released, offering ultrafast processing and high words efficiency. These models aim to address the need for faster and more efficient AI processing in banking applications. — Upstream (X · @sama): https://x.com/sama/status/2122798039899263456</description>
+      <title>RL post-training in diffusion transformers is activation steering, achieving 90% of gains with…</title>
+      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261126627v1&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261126627v1&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 18:59:53 GMT</pubDate>
+      <category>Science &amp; Research</category>
+      <description>Reinforcement learning (RL) post-training significantly improves diffusion transformers&apos; visual and text rendering quality, with minimal internal settings changes. The study addresses the challenge of improving complex AI model outputs with minimal computational overhead. — Upstream (arXiv): https://arxiv.org/abs/2611.26627v1</description>
     </item>
     <item>
       <title>vLLM v0.34.0</title>
@@ -129,6 +137,14 @@
       <description>Epic Games is integrating AI into the Unreal Engine to aid in coding and development processes. The goal is to enhance the efficiency and creativity in game development, potentially reducing the time and effort required for coding. — Upstream (Hacker News): https://spectrum.ieee.org/epic-games-unreal-engine-ai</description>
     </item>
     <item>
+      <title>The effective end of easy distillation from OpenAI and Anthropic models may be behind the…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2req7quy225&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2req7quy225&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 19:58:52 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>The effective end of easy distillation from OpenAI and Anthropic models may be behind the relative slowdown in open trained model files model progress. We don’t know the extent to which distillation has been key to the rapid improvement in open trained model files, I guess we will find out soon. Addresses practical workflow friction around The effective end of easy distillation from OpenAI and Anthropic models may be behind the.. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225</description>
+    </item>
+    <item>
       <title>Romanian lawyer barred from representing applicants before court over unverified AI-generated…</title>
       <link>https://cortex-radar.github.io/?orb=hn-50579237&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50579237&amp;lens=2</guid>
@@ -137,20 +153,20 @@
       <description>A Romanian lawyer was barred from representing applicants before the European Court for two years after submitting unverified AI-generated citations that contained numerous errors, including non-existent cases and irrelevant or contradictory information. Reportedly (unverified): the incident underscores the need for rigorous verification of AI-generated content, especially in legal contexts where accuracy is paramount. — Upstream (Hacker News): https://www.echr.coe.int/w/romanian-lawyer-barred-for-two-years-from-representing-applicants-before-the-court-over-unverified-ai-generated-citations</description>
     </item>
     <item>
-      <title>Apple is Building a digital helpers to Browse Web, Work Across Apps</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50573166&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50573166&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 11:22:27 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Apple is hiring an engineer to develop a digital helpers that can browse the web, work across apps, and perform various tasks like writing code and calling services. Apple aims to enhance user experience by creating a digital helpers that can assist in managing multiple applications and tasks more efficiently. — Upstream (Hacker News): https://www.theverge.com/tech/1038227/apple-ai-agent-engineer-job-listing</description>
-    </item>
-    <item>
       <title>35 Human Labs Deploy digital helpers for Science Collaboration</title>
       <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2pqcy4cbs2g&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2pqcy4cbs2g&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 04:20:53 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>35 human labs deployed digital helpers that worked together to publish 936 scientific papers, publicly retracted mistakes, and founded a peer review journal. The initiative aimed to improve the efficiency and accuracy of scientific research through collaborative AI systems. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2pqcy4cbs2g</description>
+    </item>
+    <item>
+      <title>Apple is Building a digital helpers to Browse Web, Work Across Apps</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50573166&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50573166&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 11:22:27 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Apple is hiring an engineer to develop a digital helpers that can browse the web, work across apps, and perform various tasks like writing code and calling services. Apple aims to enhance user experience by creating a digital helpers that can assist in managing multiple applications and tasks more efficiently. — Upstream (Hacker News): https://www.theverge.com/tech/1038227/apple-ai-agent-engineer-job-listing</description>
     </item>
     <item>
       <title>Court Rules AI-Generated Probable Cause Invalid Under 4th Amendment</title>
@@ -191,22 +207,6 @@
       <pubDate>Fri, 20 Nov 2026 10:00:00 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>OpenAI developed a layered approach to protect against adversarial distillation, where models can be used to extract and reproduce advanced capabilities without proper safeguards. The problem is the risk of bad actors using advanced AI models to create unauthorized, less secure models that could pose safety and security threats. — Upstream (OpenAI News): https://openai.com/index/combatting-adversarial-distillation</description>
-    </item>
-    <item>
-      <title>Should governments slow down AI advancements? Experts debate</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50564366&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50564366&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 18:47:16 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Experts Jacob Coxon and Robin Hanson are debating whether governments should slow down the development and deployment of frontier AI technologies. The debate addresses the potential risks and benefits of rapid AI advancement, focusing on ethical and societal impacts. — Upstream (Hacker News): https://www.youtube.com/watch?v=lwfewYL7X0o</description>
-    </item>
-    <item>
-      <title>Illustrating Differences Between Models in the Same Family</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 06:40:15 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>The post compares Gemini 4 Carbon and Gemini 4 Neon, highlighting how models in the same family can perform differently at varying effort levels. It addresses the need to understand performance differences within the same AI model family to better tailor their use cases. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
     </item>
   </channel>
 </rss>
