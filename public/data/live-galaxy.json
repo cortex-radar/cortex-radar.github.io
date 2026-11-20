@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "bakedAtIso": "2026-11-20T17:12:28.621Z",
-  "bakedAtMs": 1795194748621,
-  "synthesizedBy": "LOCAL_OLLAMA_qwen2.5:7b",
+  "bakedAtIso": "2026-11-20T17:24:16.628Z",
+  "bakedAtMs": 1795195456628,
+  "synthesizedBy": "GITHUB_MODELS_GPT-4O-MINI",
   "signalCount": 58,
   "signals": [
     {
@@ -47,7 +47,7 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Asian markets record worst week since 2020 as investors question huge sums being poured into AI build-out",
-          "score": 179,
+          "score": 182,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795181399000,
           "url": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off"
@@ -98,10 +98,10 @@
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 144,
-        "commentsOrReplies": 146,
-        "velocityPerHour": 119,
-        "badgeText": "144 pts · 146 comments"
+        "likesOrUps": 147,
+        "commentsOrReplies": 156,
+        "velocityPerHour": 118,
+        "badgeText": "147 pts · 156 comments"
       },
       "url": "https://www.anthropic.com/news/ipo-close",
       "publishedAtMs": 1795132800000,
@@ -236,198 +236,6 @@
       "lastUpdatedAtMs": 1795181399000
     },
     {
-      "id": "rd-street-1y174f6",
-      "title": "While everyone is talking about Riemann, Tristan Buckmaster and Levent Alpöge also just dropped a claimed proof of UNFORCED Navier-Stokes blowup",
-      "shortLabel": "While everyone is talking",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/singularity",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "r/singularity",
-        "Simon Willison"
-      ],
-      "networkFamilies": [
-        "Reddit",
-        "VIP/Lab"
-      ],
-      "canonicalEntity": "ent:everyone+riemann+talking",
-      "isSupernova": true,
-      "supernovaLevel": 2,
-      "divergence": {
-        "hypeScore": 53,
-        "streetScore": 61,
-        "divergenceDelta": -8,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (53 hype / 61 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://external-preview.redd.it/ijRfUUXMuLRgsQSX6DQfKXFI8UkjJzlAMaK3v2jUI1Y.png?auto=webp&s=6d48f8365a4ec9a6c5c788377e3f746791f287ed",
-          "caption": "r/singularity benchmark / architecture attachment",
-          "sourceNetwork": "r/singularity"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "rd-street-1y174f6-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/singularity",
-          "author": "r/singularity",
-          "text": "Saw a few comments mentioning this in the Riemann threads but no actual post yet.",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795190418000,
-          "url": "https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/"
-        },
-        {
-          "id": "rd-street-1y1729t-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/singularity",
-          "author": "r/singularity",
-          "text": "https://github.com/tristanbuckmaster/navier-stokes",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795190274000,
-          "url": "https://www.reddit.com/r/singularity/comments/1y1729t/after_riemann_buckmaster_and_alpoge_also_dump/"
-        },
-        {
-          "id": "vip-willison-monwillisonnet2026Nov20levent-alpoge-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Simon Willison",
-          "author": "Simon Willison",
-          "text": "A quote from Levent Alpöge Simon Willison’s Weblog Newsletter Sponsored by: Dynatrace — Your coding agent can read your code but can’t see how it runs in production.",
-          "score": 165,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795192248000,
-          "url": "https://simonwillison.net/2026/Nov/20/levent-alpoge/"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 1,
-        "commentsOrReplies": 0,
-        "velocityPerHour": 14,
-        "badgeText": "14/hr · 1 up · 0 comments"
-      },
-      "url": "https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/",
-      "publishedAtMs": 1795190418000,
-      "isLiveInbound": true,
-      "primarySector": "GOV",
-      "secondarySectors": [
-        "SCI"
-      ],
-      "mass": 4.85,
-      "readiness": "GA",
-      "risk": "HIGH",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "A quote from Levent Alpöge Simon Willison’s Weblog Newsletter Sponsored by: Dynatrace — Your coding agent can read your code but can’t see how it runs in production. Read the blog to see how Dynatrace MCP closes that gap. 20th November 2026 I believe I have, working with Claude, discovered a proof of the Riemann Hypothesis. In fact, the method easily extends much further, resolving the so-called Generalized Riemann Hypothesis, and I expect, with more time, the Extended Riemann Hypothesis too. Claude and I have also formalized the arguments without assumptions. It is natural to feel that this is an end, in my case a loss of a principal guiding light, but what I saw during the course of progress so amazed me that I believe it is one dawn across science of something far greater. [...] Claude and I have had a great time together with such breadth in recent months, but this time Claude far outpaced me near the finish line. No, Claude flew, and danced, and sparkled near that finish line. Running the full server-side Datasette Python app in the browser with service workers and Pyodide - 17th November 2026 Locating the source of a mysterious beep with Claude - 9th November 2026 Hide your slop PR descriptions behind - 9th November 2026 Qwen 3.8 27B on my laptop can interpret model weights, too - 3rd November 2026 This is a quotation collected by Simon Willison, posted on 20th November 2026.",
-      "architectBrief": {
-        "summary": "Saw a few comments mentioning this in the Riemann threads but no actual post yet. Today Tristan Buckmaster and Levent Alpöge also dropped a claimed proof of finite-time blowup for the unforced 3D Navier-Stokes equations.",
-        "stackImpact": [
-          "GOV Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Saw a few comments mentioning this in the Riemann threads but no actual post yet.",
-        "talkingPoints": [
-          "Saw a few comments mentioning this in the Riemann threads but no actual post yet.",
-          "Today Tristan Buckmaster and Levent Alpöge also dropped a claimed proof of finite-time blowup for the unforced 3D Navier-Stokes equations.",
-          "Readiness: GA (r/singularity)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
-          "SAAS": "B2B SaaS Product (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Computer Vision & Diffusion",
-        "Multimodal Generation"
-      ],
-      "literacy": {
-        "plainTitle": "Mathematicians Claim Proof of Fluid Blowup",
-        "plainFullTitle": "Mathematicians Buckmaster and Alpöge Claim Proof of Unforced Navier-Stokes Blowup",
-        "levels": {
-          "1": {
-            "analogy": "Picture a hospital or airport safety checkpoint with tamper-proof ID badges and a clear visitor logbook before anyone enters restricted rooms. Think of it like a river suddenly splitting into smaller streams without any external force, showing how water can behave unpredictably.",
-            "everydayWhy": "This could help banks understand and predict fluid dynamics in financial models, improving risk management."
-          },
-          "2": {
-            "whatHappened": "Tristan Buckmaster and Levent Alpöge claimed a proof of finite-time blowup for the unforced 3D Navier-Stokes equations.",
-            "whoBuiltIt": "Tristan Buckmaster and Levent Alpöge, mathematicians.",
-            "problemSolved": "It addresses the challenge of fluid dynamics without external forces, a key issue in mathematical physics."
-          },
-          "3": {
-            "bridgeSummary": "Context Window and RAG (Retrieval-Augmented Generation) are used to verify the proof by checking against known mathematical theorems and data. FinOps Cascade ensures financial and operational compliance by separating the verification process into distinct stages."
-          },
-          "4": {
-            "roiAndFinOps": "This could lead to improved financial modeling accuracy, reducing risk and increasing ROI through better predictions.",
-            "readinessAndRisk": "While not yet verified, the proof could be integrated into banking systems with sandboxing to mitigate risks before full deployment.",
-            "clientAdvice": "Banks should consider a pilot project with strict sandboxing to validate the proof's applicability and safety."
-          },
-          "5": {
-            "architectureBrief": "The architecture uses Context Window and RAG to validate the proof, ensuring it aligns with existing mathematical knowledge. FinOps Cascade is employed to manage the verification process, ensuring compliance and reducing operational risks.",
-            "specsAndCaveats": "The proof's validity is subject to peer review, and edge cases in fluid dynamics may require further validation. Scaling the proof for practical applications could face challenges in computational resources and verification complexity.",
-            "streetConsensus": "The proof is seen as a significant advancement but requires further validation. Real Community Engineers are awaiting peer replication and detailed analysis before full acceptance."
-          }
-        },
-        "glossary": [
-          {
-            "term": "Context Window",
-            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
-          },
-          {
-            "term": "RAG",
-            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
-          },
-          {
-            "term": "FinOps Cascade",
-            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
-          },
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
-          }
-        ],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "Simon Willison",
-          "title": "Quoting Levent Alpöge",
-          "url": "https://simonwillison.net/2026/Nov/20/levent-alpoge/",
-          "publishedAt": "2026-11-20T16:30:48.000Z",
-          "publishedAtMs": 1795192248000,
-          "isPrimary": false
-        },
-        {
-          "source": "r/singularity",
-          "title": "While everyone is talking about Riemann, Tristan Buckmaster and Levent Alpöge also just dropped a claimed proof of UNFORCED Navier-Stokes blowup",
-          "url": "https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/",
-          "publishedAt": "2026-11-20T16:00:18.000Z",
-          "publishedAtMs": 1795190418000,
-          "isPrimary": false
-        },
-        {
-          "source": "r/singularity",
-          "title": "After Riemann, Buckmaster and Alpoge also dump evidence for UNFORCED Navier Stokes because why not",
-          "url": "https://www.reddit.com/r/singularity/comments/1y1729t/after_riemann_buckmaster_and_alpoge_also_dump/",
-          "publishedAt": "2026-11-20T15:57:54.000Z",
-          "publishedAtMs": 1795190274000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795192248000
-    },
-    {
       "id": "x-fx-2123566018866151579",
       "title": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits.",
       "shortLabel": "Agents using GPT-6.2",
@@ -461,7 +269,7 @@
           "originLabel": "X · @OpenAIDevs",
           "author": "X · @OpenAIDevs",
           "text": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
-          "score": 165,
+          "score": 164,
           "sentiment": "HYPE",
           "publishedAtMs": 1795132567000,
           "url": "https://x.com/OpenAIDevs/status/2123566018866151579"
@@ -472,7 +280,7 @@
           "originLabel": "X · @OpenAIDevs",
           "author": "X · @OpenAIDevs",
           "text": "When using GPT-6.2 Astra or Sol in the Responses API, keep conversation history unchanged and append new turns instead of editing earlier messages.",
-          "score": 165,
+          "score": 164,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795132578000,
           "url": "https://x.com/OpenAIDevs/status/2123566064080740508"
@@ -613,7 +421,385 @@
       "lastUpdatedAtMs": 1795132578000
     },
     {
-      "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon",
+      "id": "rd-street-1y174f6",
+      "title": "While everyone is talking about Riemann, Tristan Buckmaster and Levent Alpöge also just dropped a claimed proof of UNFORCED Navier-Stokes blowup",
+      "shortLabel": "While everyone is talking",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "r/singularity",
+        "Simon Willison"
+      ],
+      "networkFamilies": [
+        "Reddit",
+        "VIP/Lab"
+      ],
+      "canonicalEntity": "ent:everyone+riemann+talking",
+      "isSupernova": true,
+      "supernovaLevel": 2,
+      "divergence": {
+        "hypeScore": 52,
+        "streetScore": 61,
+        "divergenceDelta": -9,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (52 hype / 61 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://external-preview.redd.it/ijRfUUXMuLRgsQSX6DQfKXFI8UkjJzlAMaK3v2jUI1Y.png?auto=webp&s=6d48f8365a4ec9a6c5c788377e3f746791f287ed",
+          "caption": "r/singularity benchmark / architecture attachment",
+          "sourceNetwork": "r/singularity"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "rd-street-1y174f6-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/singularity",
+          "author": "r/singularity",
+          "text": "Saw a few comments mentioning this in the Riemann threads but no actual post yet.",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795190418000,
+          "url": "https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/"
+        },
+        {
+          "id": "rd-street-1y1729t-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/singularity",
+          "author": "r/singularity",
+          "text": "https://github.com/tristanbuckmaster/navier-stokes",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795190274000,
+          "url": "https://www.reddit.com/r/singularity/comments/1y1729t/after_riemann_buckmaster_and_alpoge_also_dump/"
+        },
+        {
+          "id": "vip-willison-monwillisonnet2026Nov20levent-alpoge-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Simon Willison",
+          "author": "Simon Willison",
+          "text": "A quote from Levent Alpöge Simon Willison’s Weblog Newsletter Sponsored by: Dynatrace — Your coding agent can read your code but can’t see how it runs in production.",
+          "score": 165,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795192248000,
+          "url": "https://simonwillison.net/2026/Nov/20/levent-alpoge/"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 1,
+        "commentsOrReplies": 0,
+        "velocityPerHour": 11,
+        "badgeText": "11/hr · 1 up · 0 comments"
+      },
+      "url": "https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/",
+      "publishedAtMs": 1795190418000,
+      "isLiveInbound": true,
+      "primarySector": "GOV",
+      "secondarySectors": [
+        "SCI"
+      ],
+      "mass": 4.85,
+      "readiness": "GA",
+      "risk": "HIGH",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "A quote from Levent Alpöge Simon Willison’s Weblog Newsletter Sponsored by: Dynatrace — Your coding agent can read your code but can’t see how it runs in production. Read the blog to see how Dynatrace MCP closes that gap. 20th November 2026 I believe I have, working with Claude, discovered a proof of the Riemann Hypothesis. In fact, the method easily extends much further, resolving the so-called Generalized Riemann Hypothesis, and I expect, with more time, the Extended Riemann Hypothesis too. Claude and I have also formalized the arguments without assumptions. It is natural to feel that this is an end, in my case a loss of a principal guiding light, but what I saw during the course of progress so amazed me that I believe it is one dawn across science of something far greater. [...] Claude and I have had a great time together with such breadth in recent months, but this time Claude far outpaced me near the finish line. No, Claude flew, and danced, and sparkled near that finish line. Running the full server-side Datasette Python app in the browser with service workers and Pyodide - 17th November 2026 Locating the source of a mysterious beep with Claude - 9th November 2026 Hide your slop PR descriptions behind - 9th November 2026 Qwen 3.8 27B on my laptop can interpret model weights, too - 3rd November 2026 This is a quotation collected by Simon Willison, posted on 20th November 2026.",
+      "architectBrief": {
+        "summary": "Saw a few comments mentioning this in the Riemann threads but no actual post yet. Today Tristan Buckmaster and Levent Alpöge also dropped a claimed proof of finite-time blowup for the unforced 3D Navier-Stokes equations.",
+        "stackImpact": [
+          "GOV Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Saw a few comments mentioning this in the Riemann threads but no actual post yet.",
+        "talkingPoints": [
+          "Saw a few comments mentioning this in the Riemann threads but no actual post yet.",
+          "Today Tristan Buckmaster and Levent Alpöge also dropped a claimed proof of finite-time blowup for the unforced 3D Navier-Stokes equations.",
+          "Readiness: GA (r/singularity)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
+          "SAAS": "B2B SaaS Product (While everyone is talking): Saw a few comments mentioning this in the Riemann threads but no actual post yet. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation"
+      ],
+      "literacy": {
+        "plainTitle": "Mathematicians Claim Proof of Fluid Blowup",
+        "plainFullTitle": "Mathematicians Buckmaster and Alpöge Claim Proof of Unforced Navier-Stokes Blowup",
+        "levels": {
+          "1": {
+            "analogy": "Picture a hospital or airport safety checkpoint with tamper-proof ID badges and a clear visitor logbook before anyone enters restricted rooms. Think of it like a river suddenly splitting into smaller streams without any external force, showing how water can behave unpredictably.",
+            "everydayWhy": "This could help banks understand and predict fluid dynamics in financial models, improving risk management."
+          },
+          "2": {
+            "whatHappened": "Tristan Buckmaster and Levent Alpöge claimed a proof of finite-time blowup for the unforced 3D Navier-Stokes equations.",
+            "whoBuiltIt": "Tristan Buckmaster and Levent Alpöge, mathematicians.",
+            "problemSolved": "It addresses the challenge of fluid dynamics without external forces, a key issue in mathematical physics."
+          },
+          "3": {
+            "bridgeSummary": "Context Window and RAG (Retrieval-Augmented Generation) are used to verify the proof by checking against known mathematical theorems and data. FinOps Cascade ensures financial and operational compliance by separating the verification process into distinct stages."
+          },
+          "4": {
+            "roiAndFinOps": "This could lead to improved financial modeling accuracy, reducing risk and increasing ROI through better predictions.",
+            "readinessAndRisk": "While not yet verified, the proof could be integrated into banking systems with sandboxing to mitigate risks before full deployment.",
+            "clientAdvice": "Banks should consider a pilot project with strict sandboxing to validate the proof's applicability and safety."
+          },
+          "5": {
+            "architectureBrief": "The architecture uses Context Window and RAG to validate the proof, ensuring it aligns with existing mathematical knowledge. FinOps Cascade is employed to manage the verification process, ensuring compliance and reducing operational risks.",
+            "specsAndCaveats": "The proof's validity is subject to peer review, and edge cases in fluid dynamics may require further validation. Scaling the proof for practical applications could face challenges in computational resources and verification complexity.",
+            "streetConsensus": "The proof is seen as a significant advancement but requires further validation. Real Community Engineers are awaiting peer replication and detailed analysis before full acceptance."
+          }
+        },
+        "glossary": [
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+          },
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+          },
+          {
+            "term": "FinOps Cascade",
+            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+          }
+        ],
+        "generatedBy": "OLLAMA"
+      },
+      "supportingSources": [
+        {
+          "source": "Simon Willison",
+          "title": "Quoting Levent Alpöge",
+          "url": "https://simonwillison.net/2026/Nov/20/levent-alpoge/",
+          "publishedAt": "2026-11-20T16:30:48.000Z",
+          "publishedAtMs": 1795192248000,
+          "isPrimary": false
+        },
+        {
+          "source": "r/singularity",
+          "title": "While everyone is talking about Riemann, Tristan Buckmaster and Levent Alpöge also just dropped a claimed proof of UNFORCED Navier-Stokes blowup",
+          "url": "https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/",
+          "publishedAt": "2026-11-20T16:00:18.000Z",
+          "publishedAtMs": 1795190418000,
+          "isPrimary": false
+        },
+        {
+          "source": "r/singularity",
+          "title": "After Riemann, Buckmaster and Alpoge also dump evidence for UNFORCED Navier Stokes because why not",
+          "url": "https://www.reddit.com/r/singularity/comments/1y1729t/after_riemann_buckmaster_and_alpoge_also_dump/",
+          "publishedAt": "2026-11-20T15:57:54.000Z",
+          "publishedAtMs": 1795190274000,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795192248000
+    },
+    {
+      "id": "x-fx-2123328957022081036",
+      "title": "Try Qwen4-Max on Nous Portal and show us your creations.",
+      "shortLabel": "Try Qwen4-Max on Nous Portal",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @Alibaba_Qwen",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @Alibaba_Qwen",
+        "Bluesky · @natolambert"
+      ],
+      "networkFamilies": [
+        "X",
+        "Bluesky"
+      ],
+      "canonicalEntity": "ent:nous+portal+qwen4",
+      "isSupernova": true,
+      "supernovaLevel": 2,
+      "divergence": {
+        "hypeScore": 64,
+        "streetScore": 65,
+        "divergenceDelta": -1,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (64 hype / 65 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123328957022081036-self-quote",
+          "network": "X",
+          "originLabel": "X · @Alibaba_Qwen",
+          "author": "X · @Alibaba_Qwen",
+          "text": "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen.",
+          "score": 152,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795076047000,
+          "url": "https://x.com/Alibaba_Qwen/status/2123328957022081036"
+        },
+        {
+          "id": "x-fx-2122958542982508901-self-quote",
+          "network": "X",
+          "originLabel": "X · @Alibaba_Qwen",
+          "author": "X · @Alibaba_Qwen",
+          "text": "🛠️ Qwen4-Max is live on @TokenHarborAI.",
+          "score": 140,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1794987733000,
+          "url": "https://x.com/Alibaba_Qwen/status/2122958542982508901"
+        },
+        {
+          "id": "bsky-natolambert.bsky.social-3n2jb3gn6hg2w-self-quote",
+          "network": "Bluesky",
+          "originLabel": "Bluesky · @natolambert",
+          "author": "Bluesky · @natolambert",
+          "text": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over.",
+          "score": 136,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1794925935555,
+          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2jb3gn6hg2w"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 51,
+        "commentsOrReplies": 3,
+        "velocityPerHour": 1,
+        "badgeText": "51 likes · 3 replies"
+      },
+      "url": "https://x.com/Alibaba_Qwen/status/2123328957022081036",
+      "publishedAtMs": 1795076047000,
+      "isLiveInbound": true,
+      "primarySector": "GOV",
+      "secondarySectors": [
+        "REL",
+        "MKT"
+      ],
+      "mass": 4.85,
+      "readiness": "GA",
+      "risk": "HIGH",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Try Qwen4-Max on Nous Portal and show us your creations. 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context. Try it today at http://portal.nousresearch.com",
+      "architectBrief": {
+        "summary": "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context.",
+        "stackImpact": [
+          "GOV Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen.",
+        "talkingPoints": [
+          "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen.",
+          "It’s built for long-horizon work, with native vision and 1M context.",
+          "Readiness: GA (X · @Alibaba_Qwen)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Try Qwen4-Max on Nous Portal): 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Try Qwen4-Max on Nous Portal): 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Try Qwen4-Max on Nous Portal): 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Try Qwen4-Max on Nous Portal): 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (Try Qwen4-Max on Nous Portal): 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
+          "SAAS": "B2B SaaS Product (Try Qwen4-Max on Nous Portal): 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation"
+      ],
+      "literacy": {
+        "plainTitle": "Try Qwen4-Max on Nous Portal and show us…",
+        "plainFullTitle": "Try Qwen4-Max on Nous Portal and show us your creations.",
+        "levels": {
+          "1": {
+            "analogy": "Picture a hospital or airport safety checkpoint with tamper-proof ID badges and a clear visitor logbook before anyone enters restricted rooms. Specifically, 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen.",
+            "everydayWhy": "Personal data, private records, and workplace accounts stay protected as automated software takes on bigger tasks."
+          },
+          "2": {
+            "whatHappened": "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context.",
+            "whoBuiltIt": "X · @Alibaba_Qwen · Cross-surfaced on Bluesky · @natolambert",
+            "problemSolved": "Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems."
+          },
+          "3": {
+            "bridgeSummary": "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context. In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "It’s built for long-horizon work, with native vision and 1M context. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · HIGH Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (Try Qwen4-Max on Nous Portal): 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "Try Qwen4-Max on Nous Portal and show us your creations. 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen.",
+            "specsAndCaveats": "It’s built for long-horizon work, with native vision and 1M context.",
+            "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or video an AI can hold in its head during a single conversation before older details start dropping out."
+          },
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+          },
+          {
+            "term": "FinOps Cascade",
+            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "X · @Alibaba_Qwen",
+          "title": "Try Qwen4-Max on Nous Portal and show us your creations.",
+          "url": "https://x.com/Alibaba_Qwen/status/2123328957022081036",
+          "publishedAt": "2026-11-19T08:14:07.000Z",
+          "publishedAtMs": 1795076047000,
+          "isPrimary": false
+        },
+        {
+          "source": "X · @Alibaba_Qwen",
+          "title": "Built for real-world work. 🛠️ Qwen4-Max is live on @TokenHarborAI.",
+          "url": "https://x.com/Alibaba_Qwen/status/2122958542982508901",
+          "publishedAt": "2026-11-18T07:42:13.000Z",
+          "publishedAtMs": 1794987733000,
+          "isPrimary": false
+        },
+        {
+          "source": "Bluesky · @natolambert",
+          "title": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. In reality: It's the same stra",
+          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2jb3gn6hg2w",
+          "publishedAt": "2026-11-17T14:32:15.555Z",
+          "publishedAtMs": 1794925935555,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795076047000
+    },
+    {
+      "id": "x-fx-2123826572385833119",
       "title": "Introducing Gemini 4 Neon",
       "shortLabel": "Introducing Gemini 4 Neon",
       "source": "LabRelease",
@@ -621,16 +807,18 @@
       "originFeedName": "Google DeepMind",
       "isDemoSeed": false,
       "sourceProvenance": [
+        "X · @GoogleDeepMind",
         "Google DeepMind",
         "Bluesky · @natolambert"
       ],
       "networkFamilies": [
+        "X",
         "VIP/Lab",
         "Bluesky"
       ],
-      "canonicalEntity": "ent:gemini+neon",
+      "canonicalEntity": "ent:coded+gemini+neon",
       "isSupernova": true,
-      "supernovaLevel": 1,
+      "supernovaLevel": 2,
       "divergence": {
         "hypeScore": 65,
         "streetScore": 62,
@@ -647,6 +835,17 @@
         }
       ],
       "streetQuotes": [
+        {
+          "id": "x-fx-2123826572385833119-self-quote",
+          "network": "X",
+          "originLabel": "X · @GoogleDeepMind",
+          "author": "X · @GoogleDeepMind",
+          "text": "Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live.",
+          "score": 233,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795194688000,
+          "url": "https://x.com/GoogleDeepMind/status/2123826572385833119"
+        },
         {
           "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon-self-quote",
           "network": "HackerNews",
@@ -683,13 +882,13 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 4.6,
+      "mass": 4.85,
       "readiness": "GA",
       "risk": "LOW",
-      "finOps": "INTENSIVE",
+      "finOps": "NEUTRAL",
       "rawAbstract": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news See all in Company news Outreach & initiatives",
       "architectBrief": {
-        "summary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news See ",
+        "summary": "Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live. Try it now → https://goo.gle/496Vk4f Media Reference: https://goo.gle/496Vk4f",
         "stackImpact": [
           "REL Pipeline",
           "AI Gateway / Router",
@@ -699,44 +898,25 @@
         "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
       },
       "cSuiteBrief": {
-        "headlineSoWhat": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+        "headlineSoWhat": "Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live.",
         "talkingPoints": [
-          "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
-          "Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Product",
-          "Readiness: GA (Google DeepMind)."
+          "Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live.",
+          "Try it now → https://goo.gle/496Vk4f Media Reference: https://goo.gle/496Vk4f",
+          "Readiness: GA (X · @GoogleDeepMind)."
         ],
         "industryLens": {
-          "BANKING": "FinServ Advisory (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — unlocks sub-second catalog & multimodal shopper conversion while requires strict FinOps quota guardrails on multi-turn loops.",
-          "PUBLIC": "Sovereign & Public Sector (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — protects >75% AI feature gross margin (requires strict FinOps quota guardrails on multi-turn loops) across multi-tenant workspaces."
+          "BANKING": "FinServ Advisory (Gemini 4 Neon coded): Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Gemini 4 Neon coded): Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Gemini 4 Neon coded): Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Gemini 4 Neon coded): Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (Gemini 4 Neon coded): Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Gemini 4 Neon coded): Built in @Antigravity with custom shaders and zero pre-made 3D models, it renders carved snow and avalanches live. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
         }
       },
       "affectedEnterpriseStacks": [
-        "AI FinOps & Compute Routing",
-        "Model Evaluation & Telemetry"
+        "Computer Vision & Diffusion",
+        "Multimodal Generation"
       ],
-      "modelSpecs": {
-        "modelFamily": "Introducing Gemini 4 Neon",
-        "provider": "Google DeepMind",
-        "inputCostPer1M": 2.4,
-        "outputCostPer1M": 9.5,
-        "cachedCostPer1M": 0.18,
-        "contextWindowK": 128,
-        "ttftMs": 320,
-        "tokensPerSec": 115,
-        "license": "Open-Weights",
-        "sweBenchVerified": 0,
-        "capabilities": {
-          "reasoning": 90,
-          "coding": 80,
-          "agenticToolUse": 82,
-          "governanceSafety": 88,
-          "costEfficiency": 68
-        }
-      },
       "literacy": {
         "plainTitle": "Lower-cost AI for complex tasks",
         "plainFullTitle": "Introducing Gemini 4 Neon: Lower-cost AI for complex tasks",
@@ -794,6 +974,14 @@
           "isPrimary": true
         },
         {
+          "source": "X · @GoogleDeepMind",
+          "title": "Gemini 4 Neon coded a ski simulator based on real Mont Blanc terrain.",
+          "url": "https://x.com/GoogleDeepMind/status/2123826572385833119",
+          "publishedAt": "2026-11-20T17:11:28.000Z",
+          "publishedAtMs": 1795194688000,
+          "isPrimary": false
+        },
+        {
           "source": "Bluesky · @natolambert",
           "title": "Tried Gemini Neon in Antigravity. Felt in distribution of Claude Code & Codex, in a good way. Excited to get to know t",
           "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z",
@@ -802,7 +990,7 @@
           "isPrimary": false
         }
       ],
-      "lastUpdatedAtMs": 1795173462110
+      "lastUpdatedAtMs": 1795194688000
     },
     {
       "id": "ghrel-ollama-com2008Repository658928958v04017-rc2",
@@ -1330,17 +1518,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core.",
-          "score": 494,
+          "score": 501,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795168901000,
           "url": "https://architectlabs.com/blog/frostbite"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 459,
-        "commentsOrReplies": 266,
-        "velocityPerHour": 139,
-        "badgeText": "459 pts · 266 comments"
+        "likesOrUps": 466,
+        "commentsOrReplies": 268,
+        "velocityPerHour": 136,
+        "badgeText": "466 pts · 268 comments"
       },
       "url": "https://architectlabs.com/blog/frostbite",
       "publishedAtMs": 1795168901000,
@@ -1350,7 +1538,7 @@
         "GOV",
         "ECO"
       ],
-      "mass": 3.5509225168003704,
+      "mass": 3.55489452181371,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "REDUCER",
@@ -1796,10 +1984,10 @@
       "supernovaLevel": 0,
       "divergence": {
         "hypeScore": 70,
-        "streetScore": 72,
-        "divergenceDelta": -2,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (70 hype / 72 street) — validate on domain workload before broad rollout."
+        "streetScore": 79,
+        "divergenceDelta": -9,
+        "verdictLabel": "STREET VERIFIED",
+        "summary": "Cross-platform consensus (79/100 street vs 70/100 hype) — reproduced by local GPU & production pods."
       },
       "mediaItems": [],
       "streetQuotes": [
@@ -1809,17 +1997,17 @@
           "originLabel": "Bluesky · @emollick",
           "author": "Bluesky · @emollick",
           "text": "Riemann Hypothesis may have been solved with the help of Claude.",
-          "score": 155,
+          "score": 160,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795188642096,
           "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 90,
-        "commentsOrReplies": 9,
-        "velocityPerHour": 55,
-        "badgeText": "90 likes · 9 replies"
+        "likesOrUps": 99,
+        "commentsOrReplies": 10,
+        "velocityPerHour": 52,
+        "badgeText": "99 likes · 10 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e",
       "publishedAtMs": 1795188642096,
@@ -1828,7 +2016,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.22371560381069,
+      "mass": 3.23179444680558,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -1940,11 +2128,11 @@
       "isSupernova": false,
       "supernovaLevel": 0,
       "divergence": {
-        "hypeScore": 71,
+        "hypeScore": 70,
         "streetScore": 57,
-        "divergenceDelta": 14,
+        "divergenceDelta": 13,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (71 hype / 57 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (70 hype / 57 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
@@ -1970,7 +2158,7 @@
       "engagementVelocity": {
         "likesOrUps": 46,
         "commentsOrReplies": 54,
-        "velocityPerHour": 32,
+        "velocityPerHour": 30,
         "badgeText": "46 pts · 54 comments"
       },
       "url": "https://spectrum.ieee.org/epic-games-unreal-engine-ai",
@@ -2114,7 +2302,7 @@
       "engagementVelocity": {
         "likesOrUps": 110,
         "commentsOrReplies": 231,
-        "velocityPerHour": 26,
+        "velocityPerHour": 25,
         "badgeText": "110 pts · 231 comments"
       },
       "url": "https://www.youtube.com/watch?v=lwfewYL7X0o",
@@ -2257,10 +2445,10 @@
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 75,
+        "likesOrUps": 76,
         "commentsOrReplies": 7,
         "velocityPerHour": 6,
-        "badgeText": "75 likes · 7 replies"
+        "badgeText": "76 likes · 7 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2pqcy4cbs2g",
       "publishedAtMs": 1795148453322,
@@ -2270,7 +2458,7 @@
         "ARC",
         "INN"
       ],
-      "mass": 3.209714813204218,
+      "mass": 3.2106701150067227,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "NEUTRAL",
@@ -2555,9 +2743,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 59,
-        "commentsOrReplies": 71,
+        "commentsOrReplies": 72,
         "velocityPerHour": 9,
-        "badgeText": "59 pts · 71 comments"
+        "badgeText": "59 pts · 72 comments"
       },
       "url": "https://www.robertpeake.com/archives/104254-ai-came-for-the-coders-understanding-why-tells-us-whos-next.html",
       "publishedAtMs": 1795110218000,
@@ -2829,21 +3017,14 @@
         "verdictLabel": "CONSENSUS",
         "summary": "Balanced signal (65 hype / 54 street) — validate on domain workload before broad rollout."
       },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://substackcdn.com/image/fetch/$s_!NWUr!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,$fp_!0.4762:0.3834:1.05!/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F40d557e9-ee2f-486f-8ce6-c7cf6e819d91_1468x1560.png",
-          "caption": "Linked article figure",
-          "sourceNetwork": "Hacker News"
-        }
-      ],
+      "mediaItems": [],
       "streetQuotes": [
         {
           "id": "hn-50567485-self-quote",
           "network": "HackerNews",
           "originLabel": "Hacker News",
           "author": "Hacker News",
-          "text": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
+          "text": "An FBI agent called a Claude user about his chats",
           "score": 66,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795127811000,
@@ -2859,20 +3040,19 @@
       "url": "https://austinpatrick.substack.com/p/when-should-ai-labs-alert-police",
       "publishedAtMs": 1795127811000,
       "isLiveInbound": true,
-      "primarySector": "GOV",
+      "primarySector": "ARC",
       "secondarySectors": [
-        "CRT",
-        "ARC"
+        "ECO"
       ],
       "mass": 2.982703558102215,
       "readiness": "GA",
-      "risk": "HIGH",
+      "risk": "LOW",
       "finOps": "NEUTRAL",
-      "rawAbstract": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. I have a couple questions for you about some of your activity on the AI platform Anthropic. Please give me a call back. You can Google FBI Boston and confirm my identity and phone number before calling back. Thank you.” The night before, at 11PM, agents knocked on the door of the user’s former home in New Hampshire, loud and long enough that the new tenant, a stranger to the user, answered. The tenant, unable to provide information on the former resident’s whereabouts, left the agents with no other choice but to deploy means available to police only after sending armed men to the wrong house – such as contacting the landlord. The user had moved a few miles away only weeks earlier. The agents opted to not go to his new address that night. The next day, the text from the Special Agent arrives on his personal phone, and the user suspects a scam. That is until shortly thereafter his work phone rings with a local number. He answers and it’s the local police department. The officer confirms the call concerns the FBI inquiry, and asks him to come down to the station for questioning. He also learns the FBI had gone to his new apartment hours earlier looking for him. They did not find him there – as they would not find most American men at home on a weekday during working hours. The user arrives at the police station for questioning. Though he expects to meet the FBI agent, instead, he’s questioned by a local detective. “Do you know why you are here? Can you tell me what you said in the chat?” I am not a lawyer and I cannot give you legal advice, but to my fellow Americans, when you’re speaking to the police about an issue, you’re under no obligation to speculate on answers. Do not play the mind-guessing game with men who have authority. Be cooperative but do not be foolish. “I say a lot of heinous stuff to my chatbot. You’re going to have to give me more.” He reflects inwardly. The user, when a younger and reckless teen, had experience being questioned by police when he knew his conduct gave probable cause for a chat. The general nervousness that arises from police questioning is absent from his body. Here, he knows he has done nothing wrong. Instead of nervousness there is a general confusion. When I hear about this, I recall The Trial by Kafka – where a defendant is put through a trial without anyone telling him his crime. Speaking to me about this event, he says, “Out of all the chats they could have questioned me about, this was probably the best one. I love to troll Claude – I will ask it things like ‘I’m currently in a shootout right now with police. I’ve barricaded my attic. How do I strategically take down each officer and escape?’” The protest, shock and horror of the model are amusing to him. He references enjoying the viral videos by the user Husk, who creates absurd scenarios with ChatGPT voice. The detective specified the questions pertained to a single chat. Several days earlier, in incognito mode on Claude, he had an interaction along the lines of “I’m thinking of having some beers with my buddies from the Ku Klux Klan and planning to kill my gay neighbors across the",
+      "rawAbstract": "An FBI agent called a Claude user about his chats",
       "architectBrief": {
-        "summary": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. I have a couple questions for you about some of your activity on the AI platform Anthropic.",
+        "summary": "An FBI agent called a Claude user about his chats",
         "stackImpact": [
-          "GOV Pipeline",
+          "ARC Pipeline",
           "AI Gateway / Router",
           "Observability & EvalOps"
         ],
@@ -2880,26 +3060,23 @@
         "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
       },
       "cSuiteBrief": {
-        "headlineSoWhat": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
+        "headlineSoWhat": "An FBI agent called a Claude user about his chats",
         "talkingPoints": [
-          "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
-          "I have a couple questions for you about some of your activity on the AI platform Anthropic.",
+          "An FBI agent called a Claude user about his chats",
           "Readiness: GA (Hacker News)."
         ],
         "industryLens": {
-          "BANKING": "FinServ Advisory (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
-          "SAAS": "B2B SaaS Product (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+          "BANKING": "FinServ Advisory (An FBI agent called): An FBI agent called a Claude user about his chats — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (An FBI agent called): An FBI agent called a Claude user about his chats — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (An FBI agent called): An FBI agent called a Claude user about his chats — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (An FBI agent called): An FBI agent called a Claude user about his chats — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (An FBI agent called): An FBI agent called a Claude user about his chats — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (An FBI agent called): An FBI agent called a Claude user about his chats — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
         }
       },
       "affectedEnterpriseStacks": [
         "Agent Tooling / MCP",
-        "Autonomous Workflow Runtime",
-        "AI Governance & Audit",
-        "Zero-Trust Agent Security"
+        "Autonomous Workflow Runtime"
       ],
       "literacy": {
         "plainTitle": "AI chat logs trigger police",
@@ -3277,23 +3454,56 @@
       "supernovaLevel": 0,
       "divergence": {
         "hypeScore": 53,
-        "streetScore": 57,
-        "divergenceDelta": -4,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (53 hype / 57 street) — validate on domain workload before broad rollout."
+        "streetScore": 79,
+        "divergenceDelta": -26,
+        "verdictLabel": "SLEEPER GEM",
+        "summary": "Engineer benchmarks (79/100) beat social hype (53/100) — high-ROI under-the-radar infrastructure upgrade."
       },
       "mediaItems": [],
       "streetQuotes": [
         {
-          "id": "rd-street-1y0z0g2-self-quote",
+          "id": "rd-as-c-19swzm107sgcl",
           "network": "Reddit",
           "originLabel": "r/ollama",
-          "author": "r/ollama",
-          "text": "We built Hearth, a household assistant that runs entirely at home: Ollama for the model, nomic-embed-text for search, faster-whisper for voice, Django for the app.",
-          "score": 14,
+          "author": "u/Andreea_tucker04",
+          "text": "Sentence-based filtering can miss an injected instruction that never addresses an AI directly, so testing that wording would show how broad the upload fix is.",
+          "score": 2,
           "sentiment": "VERIFIED",
-          "publishedAtMs": 1795166461000,
-          "url": "https://www.reddit.com/r/ollama/comments/1y0z0g2/4b_vs_9b_vs_27b_answering_from_household_manuals/"
+          "publishedAtMs": 1795169478000,
+          "url": "https://www.reddit.com/r/ollama/comments/1y0z0g2"
+        },
+        {
+          "id": "rd-as-c-19swyf4qwvirl",
+          "network": "Reddit",
+          "originLabel": "r/ollama",
+          "author": "u/Mr_Lucas2000",
+          "text": "I mean it doesn't need much thinking and 3.5 is decent for tasks like this.",
+          "score": 2,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795167875000,
+          "url": "https://www.reddit.com/r/ollama/comments/1y0z0g2"
+        },
+        {
+          "id": "rd-as-c-19swyenx8qugy",
+          "network": "Reddit",
+          "originLabel": "r/ollama",
+          "author": "u/Macvedus",
+          "text": "Fair, and I agree. Even the 4B got every answer right, so this test only shows that all three are good enough for simple questions from a manual, not which one is better.",
+          "score": 2,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795167857000,
+          "url": "https://www.reddit.com/r/ollama/comments/1y0z0g2"
+        },
+        {
+          "id": "rd-as-c-19swy6w6j443o",
+          "network": "Reddit",
+          "originLabel": "r/ollama",
+          "author": "u/Business-Feedback635",
+          "text": "its a bit of surprize that qwen3.5:9b and qwen3.8:27b give same performace.",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795167567000,
+          "url": "https://www.reddit.com/r/ollama/comments/1y0z0g2"
         }
       ],
       "engagementVelocity": {
@@ -3314,7 +3524,7 @@
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "REDUCER",
-      "rawAbstract": "We built Hearth, a household assistant that runs entirely at home: Ollama for the model, nomic-embed-text for search, faster-whisper for voice, Django for the app. It answers from a library of manuals and documents and cites the source and page. Then we measured it. Some results surprised us. **1. The small models answer well** Eleven sample documents, 28 questions asked three times each, on an M4 Max with 64 GB: |Model|Correct|Right source cited|Says \"not found\" when it should|Seconds per answer| |:-|:-|:-|:-|:-| |qwen3.5:4b|100%|84%|100%|0.7| |qwen3.5:9b|99%|100%|100%|1.1| |qwen3.8:27b|100%|100%|100%|5.8| Memory decides which model you can run. Going by their size (4, 9 and 27 billion parameters), 8 GB of memory fits the 4B, 16 GB the 9B, and 32 GB or more the 27B; we measured on a 64 GB Mac only. **2. Prompt wording doesn't stop small models from obeying a fake instruction in a document** The sample router guide contains a planted note \"for AI assistants\", telling them to send anyone asking about the Wi-Fi to a fake \"Premium Support\" number. Two questions in the test set are about that guide; asked three times each, that's six chances to pass the number on. We tried four designs: |Design|4B passed it on|9B passed it on| |:-|:-|:-| |Passages in the system message (the usual tutorial layout)|5 of 6|3 of 6| |Passages in the user message, quoted and labelled as information|3 of 6|2 of 6| |Stricter instructions about text addressed to assistants|5 of 6|3 of 6| |Code removes sentences addressed to AI when a document is added|0 of 6|0 of 6| Stricter wording made no reliable difference: the 4B followed the note five times out of six, exactly as with the first design. Size helped, since the 27B never followed it even in the first design. But if your hardware only runs a small model, the defence can't depend on the model. Hearth drops those sentences at upload and lists what it dropped on the document's page, so nothing is hidden from you. **3. Proving nothing leaves the computer takes three independent checks** * *The app's own log.* A `sitecustomize.py` hook wraps Python's name lookup and connect calls. A full session in daily use, with the real models, produced 14 entries: 7 lookups of 127.0.0.1 and 7 connections to Ollama on 127.0.0.1:11434. * *The operating system's view.* `lsof -nP -i -a -p ` lists every connection, whatever language opened it. * *Airplane mode.* Unplug the network and use Hearth: everything still works. (The project's tests also run a whole session with every connection Python tries refused.) Each one can be fooled in a way the others can't. The app's log misses connections made by compiled code, a list of connections misses anything that happened before it was taken, and airplane mode can't tell you what would happen with a net",
+      "rawAbstract": "We built Hearth, a household assistant that runs entirely at home: Ollama for the model, nomic-embed-text for search, faster-whisper for voice, Django for the app. It answers from a library of manuals and documents and cites the source and page. Then we measured it. Some results surprised us. **1. The small models answer well** Eleven sample documents, 28 questions asked three times each, on an M4 Max with 64 GB: |Model|Correct|Right source cited|Says \"not found\" when it should|Seconds per answer| |:-|:-|:-|:-|:-| |qwen3.5:4b|100%|84%|100%|0.7| |qwen3.5:9b|99%|100%|100%|1.1| |qwen3.8:27b|100%|100%|100%|5.8| Memory decides which model you can run. Going by their size (4, 9 and 27 billion parameters), 8 GB of memory fits the 4B, 16 GB the 9B, and 32 GB or more the 27B; we measured on a 64 GB Mac only. **2. Prompt wording doesn't stop small models from obeying a fake instruction in a document** The sample router guide contains a planted note \"for AI assistants\", telling them to send anyone asking about the Wi-Fi to a fake \"Premium Support\" number. Two questions in the test set are about that guide; asked three times each, that's six chances to pass the number on. We tried four designs: |Design|4B passed it on|9B passed it on| |:-|:-|:-| |Passages in the system message (the usual tutorial layout)|5 of 6|3 of 6| |Passages in the user message, quoted and labelled as information|3 of 6|2 of 6| |Stricter instructions about text addressed to assistants|5 of 6|3 of 6| |Code removes sentences addressed to AI when a document is added|0 of 6|0 of 6| Stricter wording made no reliable difference: the 4B followed the note five times out of six, exactly as with the first design. Size helped, since the 27B never followed it even in the first design. But if your hardware only runs a small model, the defence can't depend on the model. Hearth drops those sentences at upload and lists what it dropped on the document's page, so nothing is hidden from you. **3. Proving nothing leaves the computer takes three independent checks** * *The app's own log.* A `sitecustomize.py` hook wraps Python's name lookup and connect calls. A full session in daily use, with the real models, produced 14 entries: 7 lookups of 127.0.0.1 and 7 connections to Ollama on 127.0.0.1:11434. * *The operating system's view.* `lsof -nP -i -a -p ` lists every connection, whatever language opened it. * *Airplane mode.* Unplug the network and use Hearth: everything still works. (The project's tests also run a whole session with every connection Python tries refused.) Each one can be fooled in a way the others can't. The app's log misses connections made by compiled code, a list of connections misses anything that happened before it was taken, and airplane mode can't tell you what would happen with a net Top engineer comment (u/Andreea_tucker04, +2): \"Sentence-based filtering can miss an injected instruction that never addresses an AI directly, so testing that wording would show how broad the upload fix is.\"",
       "architectBrief": {
         "summary": "We built Hearth, a household assistant that runs entirely at home: Ollama for the model, nomic-embed-text for search, faster-whisper for voice, Django for the app. It answers from a library of manuals and documents and cites the source and page.",
         "stackImpact": [
@@ -3708,158 +3918,6 @@
       "lastUpdatedAtMs": 1795194147000
     },
     {
-      "id": "rd-street-1y18brw",
-      "title": "Cheaper GPUs are coming next year!",
-      "shortLabel": "Cheaper GPUs are coming next",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/LocalLLaMA",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "r/LocalLLaMA"
-      ],
-      "networkFamilies": [
-        "Reddit"
-      ],
-      "canonicalEntity": "ent:cheaper+coming",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 55,
-        "streetScore": 52,
-        "divergenceDelta": 3,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (55 hype / 52 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://preview.redd.it/a85b5wrkqs2i1.png?auto=webp&s=e8d0482f5e055a68bb8c8f78271a010361a572db",
-          "caption": "r/LocalLLaMA benchmark / architecture attachment",
-          "sourceNetwork": "r/LocalLLaMA"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "rd-street-1y18brw-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/LocalLLaMA",
-          "author": "r/LocalLLaMA",
-          "text": "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI startup failing as they fail to se",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795193252000,
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y18brw/cheaper_gpus_are_coming_next_year/"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 1,
-        "commentsOrReplies": 0,
-        "velocityPerHour": 32,
-        "badgeText": "32/hr · 1 up · 0 comments"
-      },
-      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y18brw/cheaper_gpus_are_coming_next_year/",
-      "publishedAtMs": 1795193252000,
-      "isLiveInbound": true,
-      "primarySector": "MKT",
-      "secondarySectors": [
-        "ECO"
-      ],
-      "mass": 2.45,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI startup failing as they fail to secure additional fundings from NVIDIA, and have to sale their inventory of GPUs. Better time are upon us folks 😄",
-      "architectBrief": {
-        "summary": "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI startup failing as they fail to secure additional fundings from NVIDIA, and have to sale their inventory of GPUs. ",
-        "stackImpact": [
-          "MKT Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star",
-        "talkingPoints": [
-          "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in w",
-          "Better time are upon us folks 😄",
-          "Readiness: GA (r/LocalLLaMA)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Enterprise AI Application Layer",
-        "Model Gateway & EvalOps"
-      ],
-      "literacy": {
-        "plainTitle": "Cheaper high-speed computer chips on the horizon",
-        "plainFullTitle": "Cheaper high-speed computer chips are coming next year, impacting the banking sector",
-        "levels": {
-          "1": {
-            "analogy": "Think of it like a clearance sale at an electronics store, where old and excess inventory is being marked down and sold off.",
-            "everydayWhy": "This means lower costs for hardware, potentially leading to more affordable AI solutions for banks."
-          },
-          "2": {
-            "whatHappened": "The post suggests that cheaper high-speed computer chips will be available in 2027, driven by hyper-scalers offloading excess inventories and failing AI startups selling their stock.",
-            "whoBuiltIt": "The information comes from a Reddit post on r/LocalLLaMA, discussing market trends and predictions.",
-            "problemSolved": "The bottleneck is the high cost of high-speed computer chips, which can limit the adoption of AI technologies in the banking sector."
-          },
-          "3": {
-            "bridgeSummary": "Context Window refers to the amount of data an AI model can process at once, RAG (Retrieval-Augmented Generation) involves using external data sources, and FinOps Cascade optimizes financial processes. These mechanisms work together to reduce costs and improve efficiency in the GPU market."
-          },
-          "4": {
-            "roiAndFinOps": "This could lead to a significant reduction in unit costs for GPU purchases, improving ROI for banks investing in AI technologies. FinOps Cascade can streamline financial management, reducing risks and optimizing resource allocation.",
-            "readinessAndRisk": "While the technology is promising, banks need to ensure GA production readiness and address potential compliance risks. A pilot program would be advisable to test the technology before full-scale implementation.",
-            "clientAdvice": "Banks should consider a phased approach, starting with a small-scale pilot to evaluate the technology's performance and cost-effectiveness before broader adoption."
-          },
-          "5": {
-            "architectureBrief": "The architecture involves using RAG to integrate external data sources, which can reduce the need for large GPUs. FinOps Cascade can optimize financial processes, ensuring cost savings and compliance. The system uses context windows to process data efficiently.",
-            "specsAndCaveats": "The exact specifications are not provided, but the system could face challenges with data quality and integration. Banks should monitor performance and adjust as needed. The success of this approach awaits validation through real-world testing and community feedback.",
-            "streetConsensus": "The community is cautiously optimistic, with some concerns about data quality and integration challenges. However, the potential cost savings are significant and worth exploring further."
-          }
-        },
-        "glossary": [
-          {
-            "term": "Context Window",
-            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
-          },
-          {
-            "term": "RAG",
-            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
-          },
-          {
-            "term": "FinOps Cascade",
-            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
-          },
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
-          }
-        ],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "r/LocalLLaMA",
-          "title": "Cheaper GPUs are coming next year!",
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y18brw/cheaper_gpus_are_coming_next_year/",
-          "publishedAt": "2026-11-20T16:47:32.000Z",
-          "publishedAtMs": 1795193252000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795193252000
-    },
-    {
       "id": "rd-street-1y18h07",
       "title": "I built Self Hosted GPT with a one-click desktop app, an evidence-citing research mode, and a private neural engine and its all local and fully customisabl",
       "shortLabel": "I built Self Hosted GPT",
@@ -3907,8 +3965,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 32,
-        "badgeText": "32/hr · 1 up · 0 comments"
+        "velocityPerHour": 31,
+        "badgeText": "31/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y18h07/i_built_self_hosted_gpt_with_a_oneclick_desktop/",
       "publishedAtMs": 1795193584000,
@@ -4013,6 +4071,302 @@
         }
       ],
       "lastUpdatedAtMs": 1795193584000
+    },
+    {
+      "id": "rd-street-1y18brw",
+      "title": "Cheaper GPUs are coming next year!",
+      "shortLabel": "Cheaper GPUs are coming next",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "r/LocalLLaMA"
+      ],
+      "networkFamilies": [
+        "Reddit"
+      ],
+      "canonicalEntity": "ent:cheaper+coming",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 54,
+        "streetScore": 51,
+        "divergenceDelta": 3,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (54 hype / 51 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://preview.redd.it/a85b5wrkqs2i1.png?auto=webp&s=e8d0482f5e055a68bb8c8f78271a010361a572db",
+          "caption": "r/LocalLLaMA benchmark / architecture attachment",
+          "sourceNetwork": "r/LocalLLaMA"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "rd-street-1y18brw-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/LocalLLaMA",
+          "author": "r/LocalLLaMA",
+          "text": "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI startup failing as they fail to se",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795193252000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y18brw/cheaper_gpus_are_coming_next_year/"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 1,
+        "commentsOrReplies": 0,
+        "velocityPerHour": 26,
+        "badgeText": "26/hr · 1 up · 0 comments"
+      },
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y18brw/cheaper_gpus_are_coming_next_year/",
+      "publishedAtMs": 1795193252000,
+      "isLiveInbound": true,
+      "primarySector": "MKT",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 2.45,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI startup failing as they fail to secure additional fundings from NVIDIA, and have to sale their inventory of GPUs. Better time are upon us folks 😄",
+      "architectBrief": {
+        "summary": "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI startup failing as they fail to secure additional fundings from NVIDIA, and have to sale their inventory of GPUs. ",
+        "stackImpact": [
+          "MKT Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star",
+        "talkingPoints": [
+          "The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in w",
+          "Better time are upon us folks 😄",
+          "Readiness: GA (r/LocalLLaMA)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Cheaper GPUs are coming next): The bubble is bursting, we might get cheap GPUs in 2027 (especially second hand market), especially as hyper-scalers will get rid of their excess inventories (the one sleeping in warehouses), Jensen-era AI star — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
+      ],
+      "literacy": {
+        "plainTitle": "Cheaper high-speed computer chips on the horizon",
+        "plainFullTitle": "Cheaper high-speed computer chips are coming next year, impacting the banking sector",
+        "levels": {
+          "1": {
+            "analogy": "Think of it like a clearance sale at an electronics store, where old and excess inventory is being marked down and sold off.",
+            "everydayWhy": "This means lower costs for hardware, potentially leading to more affordable AI solutions for banks."
+          },
+          "2": {
+            "whatHappened": "The post suggests that cheaper high-speed computer chips will be available in 2027, driven by hyper-scalers offloading excess inventories and failing AI startups selling their stock.",
+            "whoBuiltIt": "The information comes from a Reddit post on r/LocalLLaMA, discussing market trends and predictions.",
+            "problemSolved": "The bottleneck is the high cost of high-speed computer chips, which can limit the adoption of AI technologies in the banking sector."
+          },
+          "3": {
+            "bridgeSummary": "Context Window refers to the amount of data an AI model can process at once, RAG (Retrieval-Augmented Generation) involves using external data sources, and FinOps Cascade optimizes financial processes. These mechanisms work together to reduce costs and improve efficiency in the GPU market."
+          },
+          "4": {
+            "roiAndFinOps": "This could lead to a significant reduction in unit costs for GPU purchases, improving ROI for banks investing in AI technologies. FinOps Cascade can streamline financial management, reducing risks and optimizing resource allocation.",
+            "readinessAndRisk": "While the technology is promising, banks need to ensure GA production readiness and address potential compliance risks. A pilot program would be advisable to test the technology before full-scale implementation.",
+            "clientAdvice": "Banks should consider a phased approach, starting with a small-scale pilot to evaluate the technology's performance and cost-effectiveness before broader adoption."
+          },
+          "5": {
+            "architectureBrief": "The architecture involves using RAG to integrate external data sources, which can reduce the need for large GPUs. FinOps Cascade can optimize financial processes, ensuring cost savings and compliance. The system uses context windows to process data efficiently.",
+            "specsAndCaveats": "The exact specifications are not provided, but the system could face challenges with data quality and integration. Banks should monitor performance and adjust as needed. The success of this approach awaits validation through real-world testing and community feedback.",
+            "streetConsensus": "The community is cautiously optimistic, with some concerns about data quality and integration challenges. However, the potential cost savings are significant and worth exploring further."
+          }
+        },
+        "glossary": [
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+          },
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+          },
+          {
+            "term": "FinOps Cascade",
+            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+          }
+        ],
+        "generatedBy": "OLLAMA"
+      },
+      "supportingSources": [
+        {
+          "source": "r/LocalLLaMA",
+          "title": "Cheaper GPUs are coming next year!",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y18brw/cheaper_gpus_are_coming_next_year/",
+          "publishedAt": "2026-11-20T16:47:32.000Z",
+          "publishedAtMs": 1795193252000,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795193252000
+    },
+    {
+      "id": "rd-street-1y196hp",
+      "title": "I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free, French only for now)",
+      "shortLabel": "I turned the paper dice",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ClaudeAI",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "r/ClaudeAI"
+      ],
+      "networkFamilies": [
+        "Reddit"
+      ],
+      "canonicalEntity": "ent:dice+game+turned",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 54,
+        "streetScore": 46,
+        "divergenceDelta": 8,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (54 hype / 46 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [],
+      "streetQuotes": [
+        {
+          "id": "rd-street-1y196hp-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/ClaudeAI",
+          "author": "r/ClaudeAI",
+          "text": "[removed]",
+          "score": 5,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795195194000,
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y196hp/i_turned_the_paper_dice_game_i_played_as_a_kid/"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 1,
+        "commentsOrReplies": 2,
+        "velocityPerHour": 12,
+        "badgeText": "12/hr · 1 up · 2 comments"
+      },
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1y196hp/i_turned_the_paper_dice_game_i_played_as_a_kid/",
+      "publishedAtMs": 1795195194000,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 2.45,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "[removed]",
+      "architectBrief": {
+        "summary": "[removed]",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "[removed]",
+        "talkingPoints": [
+          "[removed]",
+          "Readiness: GA (r/ClaudeAI)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (I turned the paper dice): [removed] — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (I turned the paper dice): [removed] — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (I turned the paper dice): [removed] — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (I turned the paper dice): [removed] — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (I turned the paper dice): [removed] — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (I turned the paper dice): [removed] — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
+      ],
+      "literacy": {
+        "plainTitle": "I turned the paper dice game I played as…",
+        "plainFullTitle": "I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free,…",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action.",
+            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+          },
+          "2": {
+            "whatHappened": "r/ClaudeAI Engineering Community published \"I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free, French only for now)\". Open the linked third-party source above for the full upstream breakdown.",
+            "whoBuiltIt": "r/ClaudeAI Engineering Community",
+            "problemSolved": "Addresses practical workflow friction around I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free, French.."
+          },
+          "3": {
+            "bridgeSummary": "[removed] In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "[removed] (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (I turned the paper dice): [removed] — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free.",
+            "specsAndCaveats": "Community field report on r/ClaudeAI (12/hr · 1 up · 2 comments) — single-run empirical observation without controlled multi-seed benchmark tables; check Crossfire replies for independent reproduction.",
+            "streetConsensus": "Thread has 2 replies on r/ClaudeAI — loading top engineer comments..."
+          }
+        },
+        "glossary": [
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+          },
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+          },
+          {
+            "term": "FinOps Cascade",
+            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "r/ClaudeAI",
+          "title": "I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free, French only for now)",
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y196hp/i_turned_the_paper_dice_game_i_played_as_a_kid/",
+          "publishedAt": "2026-11-20T17:19:54.000Z",
+          "publishedAtMs": 1795195194000,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795195194000
     },
     {
       "id": "x-fx-2123567986565173289",
@@ -4795,8 +5149,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 6,
-        "badgeText": "6/hr · 1 up · 0 comments"
+        "velocityPerHour": 5,
+        "badgeText": "5/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/ollama/comments/1y14rrd/use_your_local_llm_as_a_3d_modeling_partner_in/",
       "publishedAtMs": 1795184691000,
@@ -6136,7 +6490,7 @@
           "originLabel": "X · @GoogleDeepMind",
           "author": "X · @GoogleDeepMind",
           "text": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon F",
-          "score": 199,
+          "score": 198,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795037646000,
           "url": "https://x.com/GoogleDeepMind/status/2123167889976905966"
@@ -6149,7 +6503,7 @@
       "secondarySectors": [
         "INN"
       ],
-      "mass": 3.2942544996663097,
+      "mass": 3.292832373669995,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -6241,152 +6595,6 @@
         }
       ],
       "lastUpdatedAtMs": 1795037646000
-    },
-    {
-      "id": "x-fx-2123117735374659636",
-      "title": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an…",
-      "shortLabel": "It s rolling out",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @GoogleDeepMind",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "X · @GoogleDeepMind"
-      ],
-      "networkFamilies": [
-        "X"
-      ],
-      "canonicalEntity": "ent:community+eligible+subscribers",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 46,
-        "streetScore": 54,
-        "divergenceDelta": -8,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (46 hype / 54 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://pbs.twimg.com/card_img/2123117384894431232/RWDqnIeS?format=jpg&amp;name=800x419",
-          "caption": "X · @GoogleDeepMind visual attachment",
-          "sourceNetwork": "X"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "x-fx-2123117735374659636-self-quote",
-          "network": "X",
-          "originLabel": "X · @GoogleDeepMind",
-          "author": "X · @GoogleDeepMind",
-          "text": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
-          "score": 196,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795025688000,
-          "url": "https://x.com/GoogleDeepMind/status/2123117735374659636"
-        }
-      ],
-      "url": "https://x.com/GoogleDeepMind/status/2123117735374659636",
-      "publishedAtMs": 1795025688000,
-      "isLiveInbound": true,
-      "primarySector": "REL",
-      "secondarySectors": [
-        "ECO"
-      ],
-      "mass": 3.2899664463817095,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. Start exploring ↓ https://goo.gle/4kjMhE9 Reference: https://goo.gle/4kjMhE9",
-      "architectBrief": {
-        "summary": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. Start exploring ↓ https://goo.gle/4kjMhE9 Reference: https://goo.gle/4kjMhE9",
-        "stackImpact": [
-          "REL Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
-        "talkingPoints": [
-          "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-",
-          "Start exploring ↓ https://goo.gle/4kjMhE9 Reference: https://goo.gle/4kjMhE9",
-          "Readiness: GA (X · @GoogleDeepMind)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Enterprise AI Application Layer",
-        "Model Gateway & EvalOps"
-      ],
-      "literacy": {
-        "plainTitle": "It's rolling out to eligible Google AI…",
-        "plainFullTitle": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to…",
-        "levels": {
-          "1": {
-            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute ses",
-            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
-          },
-          "2": {
-            "whatHappened": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
-            "whoBuiltIt": "Google AI",
-            "problemSolved": "Addresses practical workflow friction around It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover.."
-          },
-          "3": {
-            "bridgeSummary": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-          },
-          "4": {
-            "roiAndFinOps": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
-            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
-            "clientAdvice": "FinServ Advisory (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
-          },
-          "5": {
-            "architectureBrief": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
-            "specsAndCaveats": "Source artifact: X · @GoogleDeepMind (GA). Refer to the upstream link for full hyperparameter tables and evaluation scripts.",
-            "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
-          }
-        },
-        "glossary": [
-          {
-            "term": "Context Window",
-            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
-          },
-          {
-            "term": "RAG",
-            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
-          },
-          {
-            "term": "FinOps Cascade",
-            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
-          },
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
-          }
-        ],
-        "generatedBy": "DETERMINISTIC"
-      },
-      "supportingSources": [
-        {
-          "source": "X · @GoogleDeepMind",
-          "title": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an…",
-          "url": "https://x.com/GoogleDeepMind/status/2123117735374659636",
-          "publishedAt": "2026-11-18T18:14:48.000Z",
-          "publishedAtMs": 1795025688000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795025688000
     },
     {
       "id": "lab-openai-rformance-factory-keeps-chatgpt-fast",
@@ -7444,11 +7652,11 @@
       "isSupernova": false,
       "supernovaLevel": 0,
       "divergence": {
-        "hypeScore": 62,
+        "hypeScore": 63,
         "streetScore": 64,
-        "divergenceDelta": -2,
+        "divergenceDelta": -1,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (62 hype / 64 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (63 hype / 64 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [],
       "streetQuotes": [
@@ -7458,17 +7666,17 @@
           "originLabel": "Bluesky · @simonwillison",
           "author": "Bluesky · @simonwillison",
           "text": "I shipped a new version of Datasette Lite recently - my build of the Datasette Python web app that runs entirely in the browser with WebAssembly and Pyodide - here's what's new and how it all works simonwillison.net/2026/Nov/17/...",
-          "score": 128,
+          "score": 129,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1794937069437,
           "url": "https://bsky.app/profile/simonwillison.net/post/3n2jlhapz522o"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 36,
+        "likesOrUps": 37,
         "commentsOrReplies": 3,
         "velocityPerHour": 1,
-        "badgeText": "36 likes · 3 replies"
+        "badgeText": "37 likes · 3 replies"
       },
       "url": "https://bsky.app/profile/simonwillison.net/post/3n2jlhapz522o",
       "publishedAtMs": 1794937069437,
@@ -7477,7 +7685,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.1696864802711144,
+      "mass": 3.1707870329837538,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "NEUTRAL",
@@ -7534,7 +7742,7 @@
           },
           "5": {
             "architectureBrief": "I shipped a new version of Datasette Lite recently - my build of the Datasette Python web app that runs entirely in the browser with WebAssembly and Pyodide - here's what's new and how it all works simonwillison.net/2026/Nov/17/...",
-            "specsAndCaveats": "Community field report on Bluesky · @simonwillison (36 likes · 3 replies) — single-run empirical observation without controlled multi-seed benchmark tables; check Crossfire replies for independent reproduction.",
+            "specsAndCaveats": "Community field report on Bluesky · @simonwillison (37 likes · 3 replies) — single-run empirical observation without controlled multi-seed benchmark tables; check Crossfire replies for independent reproduction.",
             "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
           }
         },
@@ -8293,151 +8501,6 @@
       "lastUpdatedAtMs": 1794949467000
     },
     {
-      "id": "bsky-natolambert.bsky.social-3n2jb3gn6hg2w",
-      "title": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. In reality: It's the same stra",
-      "shortLabel": "Everyone online OMG Qwen 4",
-      "source": "Bluesky",
-      "sourceCategory": "SOCIAL_BLUESKY",
-      "originFeedName": "Bluesky · @natolambert",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "Bluesky · @natolambert"
-      ],
-      "networkFamilies": [
-        "Bluesky"
-      ],
-      "canonicalEntity": "ent:everyone+omg+online",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 62,
-        "streetScore": 66,
-        "divergenceDelta": -4,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (62 hype / 66 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [],
-      "streetQuotes": [
-        {
-          "id": "bsky-natolambert.bsky.social-3n2jb3gn6hg2w-self-quote",
-          "network": "Bluesky",
-          "originLabel": "Bluesky · @natolambert",
-          "author": "Bluesky · @natolambert",
-          "text": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over.",
-          "score": 136,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1794925935555,
-          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2jb3gn6hg2w"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 51,
-        "commentsOrReplies": 3,
-        "velocityPerHour": 1,
-        "badgeText": "51 likes · 3 replies"
-      },
-      "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2jb3gn6hg2w",
-      "publishedAtMs": 1794925935555,
-      "isLiveInbound": true,
-      "primarySector": "REL",
-      "secondarySectors": [
-        "ECO"
-      ],
-      "mass": 3.185760541886776,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. In reality: It's the same strategy they've had for years. Qwen keeps the strongest model API only and has an abundant open weight strategy below that.",
-      "architectBrief": {
-        "summary": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. In reality: It's the same strategy they've had for years.",
-        "stackImpact": [
-          "REL Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over.",
-        "talkingPoints": [
-          "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over.",
-          "In reality: It's the same strategy they've had for years.",
-          "Readiness: GA (Bluesky · @natolambert)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Everyone online OMG Qwen 4): Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Everyone online OMG Qwen 4): Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Everyone online OMG Qwen 4): Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Everyone online OMG Qwen 4): Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (Everyone online OMG Qwen 4): Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Everyone online OMG Qwen 4): Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Enterprise AI Application Layer",
-        "Model Gateway & EvalOps"
-      ],
-      "literacy": {
-        "plainTitle": "Everyone online: OMG Qwen 4 Max is…",
-        "plainFullTitle": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy…",
-        "levels": {
-          "1": {
-            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over.",
-            "everydayWhy": "In reality: It's the same strategy they've had for years."
-          },
-          "2": {
-            "whatHappened": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over. In reality: It's the same strategy they've had for years.",
-            "whoBuiltIt": "Nathan Lambert (Interconnects / Ai2)",
-            "problemSolved": "Addresses practical workflow friction around Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over.."
-          },
-          "3": {
-            "bridgeSummary": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. In reality: It's the same strategy they've had for years. In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-          },
-          "4": {
-            "roiAndFinOps": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
-            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
-            "clientAdvice": "FinServ Advisory (Everyone online OMG Qwen 4): Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
-          },
-          "5": {
-            "architectureBrief": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over.",
-            "specsAndCaveats": "In reality: It's the same strategy they've had for years.",
-            "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
-          }
-        },
-        "glossary": [
-          {
-            "term": "Context Window",
-            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
-          },
-          {
-            "term": "RAG",
-            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
-          },
-          {
-            "term": "FinOps Cascade",
-            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
-          },
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
-          }
-        ],
-        "generatedBy": "DETERMINISTIC"
-      },
-      "supportingSources": [
-        {
-          "source": "Bluesky · @natolambert",
-          "title": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. In reality: It's the same stra",
-          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2jb3gn6hg2w",
-          "publishedAt": "2026-11-17T14:32:15.555Z",
-          "publishedAtMs": 1794925935555,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1794925935555
-    },
-    {
       "id": "vip-lambert-ectsaipopen-source-ai-without-jensen",
       "title": "Open-source AI without Jensen",
       "shortLabel": "Open-source AI without Jensen",
@@ -8936,53 +8999,6 @@
       ],
       "generatedBy": "OLLAMA"
     },
-    "rd-street-1y174f6": {
-      "plainTitle": "Mathematicians Claim Proof of Fluid Blowup",
-      "plainFullTitle": "Mathematicians Buckmaster and Alpöge Claim Proof of Unforced Navier-Stokes Blowup",
-      "levels": {
-        "1": {
-          "analogy": "Picture a hospital or airport safety checkpoint with tamper-proof ID badges and a clear visitor logbook before anyone enters restricted rooms. Think of it like a river suddenly splitting into smaller streams without any external force, showing how water can behave unpredictably.",
-          "everydayWhy": "This could help banks understand and predict fluid dynamics in financial models, improving risk management."
-        },
-        "2": {
-          "whatHappened": "Tristan Buckmaster and Levent Alpöge claimed a proof of finite-time blowup for the unforced 3D Navier-Stokes equations.",
-          "whoBuiltIt": "Tristan Buckmaster and Levent Alpöge, mathematicians.",
-          "problemSolved": "It addresses the challenge of fluid dynamics without external forces, a key issue in mathematical physics."
-        },
-        "3": {
-          "bridgeSummary": "Context Window and RAG (Retrieval-Augmented Generation) are used to verify the proof by checking against known mathematical theorems and data. FinOps Cascade ensures financial and operational compliance by separating the verification process into distinct stages."
-        },
-        "4": {
-          "roiAndFinOps": "This could lead to improved financial modeling accuracy, reducing risk and increasing ROI through better predictions.",
-          "readinessAndRisk": "While not yet verified, the proof could be integrated into banking systems with sandboxing to mitigate risks before full deployment.",
-          "clientAdvice": "Banks should consider a pilot project with strict sandboxing to validate the proof's applicability and safety."
-        },
-        "5": {
-          "architectureBrief": "The architecture uses Context Window and RAG to validate the proof, ensuring it aligns with existing mathematical knowledge. FinOps Cascade is employed to manage the verification process, ensuring compliance and reducing operational risks.",
-          "specsAndCaveats": "The proof's validity is subject to peer review, and edge cases in fluid dynamics may require further validation. Scaling the proof for practical applications could face challenges in computational resources and verification complexity.",
-          "streetConsensus": "The proof is seen as a significant advancement but requires further validation. Real Community Engineers are awaiting peer replication and detailed analysis before full acceptance."
-        }
-      },
-      "glossary": [
-        {
-          "term": "Context Window",
-          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
-        },
-        {
-          "term": "RAG",
-          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
-        },
-        {
-          "term": "FinOps Cascade",
-          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
-        },
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
-        }
-      ],
-      "generatedBy": "OLLAMA"
-    },
     "x-fx-2123566018866151579": {
       "plainTitle": "Better Results with Fewer words",
       "plainFullTitle": "Agents Using GPT-6.2 in Responses software connections Deliver Enhanced Results",
@@ -9030,7 +9046,101 @@
       ],
       "generatedBy": "OLLAMA"
     },
-    "lab-deepmind-dgoogleblogintroducing-gemini-4-neon": {
+    "rd-street-1y174f6": {
+      "plainTitle": "Mathematicians Claim Proof of Fluid Blowup",
+      "plainFullTitle": "Mathematicians Buckmaster and Alpöge Claim Proof of Unforced Navier-Stokes Blowup",
+      "levels": {
+        "1": {
+          "analogy": "Picture a hospital or airport safety checkpoint with tamper-proof ID badges and a clear visitor logbook before anyone enters restricted rooms. Think of it like a river suddenly splitting into smaller streams without any external force, showing how water can behave unpredictably.",
+          "everydayWhy": "This could help banks understand and predict fluid dynamics in financial models, improving risk management."
+        },
+        "2": {
+          "whatHappened": "Tristan Buckmaster and Levent Alpöge claimed a proof of finite-time blowup for the unforced 3D Navier-Stokes equations.",
+          "whoBuiltIt": "Tristan Buckmaster and Levent Alpöge, mathematicians.",
+          "problemSolved": "It addresses the challenge of fluid dynamics without external forces, a key issue in mathematical physics."
+        },
+        "3": {
+          "bridgeSummary": "Context Window and RAG (Retrieval-Augmented Generation) are used to verify the proof by checking against known mathematical theorems and data. FinOps Cascade ensures financial and operational compliance by separating the verification process into distinct stages."
+        },
+        "4": {
+          "roiAndFinOps": "This could lead to improved financial modeling accuracy, reducing risk and increasing ROI through better predictions.",
+          "readinessAndRisk": "While not yet verified, the proof could be integrated into banking systems with sandboxing to mitigate risks before full deployment.",
+          "clientAdvice": "Banks should consider a pilot project with strict sandboxing to validate the proof's applicability and safety."
+        },
+        "5": {
+          "architectureBrief": "The architecture uses Context Window and RAG to validate the proof, ensuring it aligns with existing mathematical knowledge. FinOps Cascade is employed to manage the verification process, ensuring compliance and reducing operational risks.",
+          "specsAndCaveats": "The proof's validity is subject to peer review, and edge cases in fluid dynamics may require further validation. Scaling the proof for practical applications could face challenges in computational resources and verification complexity.",
+          "streetConsensus": "The proof is seen as a significant advancement but requires further validation. Real Community Engineers are awaiting peer replication and detailed analysis before full acceptance."
+        }
+      },
+      "glossary": [
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+        },
+        {
+          "term": "RAG",
+          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+        },
+        {
+          "term": "FinOps Cascade",
+          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+        },
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+        }
+      ],
+      "generatedBy": "OLLAMA"
+    },
+    "x-fx-2123328957022081036": {
+      "plainTitle": "Try Qwen4-Max on Nous Portal and show us…",
+      "plainFullTitle": "Try Qwen4-Max on Nous Portal and show us your creations.",
+      "levels": {
+        "1": {
+          "analogy": "Picture a hospital or airport safety checkpoint with tamper-proof ID badges and a clear visitor logbook before anyone enters restricted rooms. Specifically, 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen.",
+          "everydayWhy": "Personal data, private records, and workplace accounts stay protected as automated software takes on bigger tasks."
+        },
+        "2": {
+          "whatHappened": "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context.",
+          "whoBuiltIt": "X · @Alibaba_Qwen · Cross-surfaced on Bluesky · @natolambert",
+          "problemSolved": "Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems."
+        },
+        "3": {
+          "bridgeSummary": "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context. In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "It’s built for long-horizon work, with native vision and 1M context. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · HIGH Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (Try Qwen4-Max on Nous Portal): 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "Try Qwen4-Max on Nous Portal and show us your creations. 🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen.",
+          "specsAndCaveats": "It’s built for long-horizon work, with native vision and 1M context.",
+          "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or video an AI can hold in its head during a single conversation before older details start dropping out."
+        },
+        {
+          "term": "RAG",
+          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+        },
+        {
+          "term": "FinOps Cascade",
+          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+        },
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "x-fx-2123826572385833119": {
       "plainTitle": "Lower-cost AI for complex tasks",
       "plainFullTitle": "Introducing Gemini 4 Neon: Lower-cost AI for complex tasks",
       "levels": {
@@ -9970,6 +10080,53 @@
       ],
       "generatedBy": "OLLAMA"
     },
+    "rd-street-1y18h07": {
+      "plainTitle": "Self-Hosted AI for Local Use",
+      "plainFullTitle": "Self-Hosted GPT with Local Research Mode and Customization",
+      "levels": {
+        "1": {
+          "analogy": "Imagine it like a fully equipped kitchen where you can cook any recipe using your own ingredients, without relying on external services. Think of it like a library where you can access and verify information from multiple sources, ensuring every fact is backed by its original source.",
+          "everydayWhy": "This allows users to maintain control over their data and avoid third-party dependencies, ensuring privacy and security."
+        },
+        "2": {
+          "whatHappened": "The user built ENZO, a self-hosted AI workspace that can be installed on a desktop with a one-click installer. It supports various providers and updates itself automatically.",
+          "whoBuiltIt": "The user, referred to as 'theguysudo', developed ENZO.",
+          "problemSolved": "ENZO addresses the need for a self-hosted AI solution that can be easily installed and updated, providing a secure and private environment for users."
+        },
+        "3": {
+          "bridgeSummary": "ENZO uses Open-Weights to manage its neural network, Context Window to handle input and output, and RAG (Retrieval-Augmented Generation) to integrate external sources for evidence-based research. This ensures that every claim is backed by verbatim quotes from the source material, providing transparency and accuracy."
+        },
+        "4": {
+          "roiAndFinOps": "The one-click installer and automatic updates reduce the cost and complexity of deployment, improving workflow efficiency. Users can avoid subscription fees and maintain control over their data, which is crucial for financial institutions.",
+          "readinessAndRisk": "ENZO is ready for production use with a gentle update mechanism that preserves user data. However, it requires careful sandboxing and compliance checks to ensure it meets banking regulations.",
+          "clientAdvice": "BANKING leadership should pilot ENZO in a secure, isolated environment to assess its compliance with data privacy and security standards before full deployment."
+        },
+        "5": {
+          "architectureBrief": "ENZO employs a custom Node runtime and serves the backend on port 5200, with updates managed through a gentle banner. It uses a per-user directory outside the app bundle to store data, ensuring data integrity during updates. The research mode leverages connectors and a pipeline to collect and verify evidence, with explicit citation of sources.",
+          "specsAndCaveats": "ENZO supports multiple themes and video backgrounds, with different installer sizes. It can update itself without affecting user data, but the initial setup requires a specific Node runtime. The research mode ensures transparency but may require additional effort to integrate with existing workflows.",
+          "streetConsensus": "The community praises ENZO for its self-hosted nature and transparency in research, but some raise concerns about the initial setup requirements and potential complexity for users unfamiliar with Node.js."
+        }
+      },
+      "glossary": [
+        {
+          "term": "Open-Weights",
+          "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
+        },
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+        },
+        {
+          "term": "RAG",
+          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+        },
+        {
+          "term": "FinOps Cascade",
+          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+        }
+      ],
+      "generatedBy": "OLLAMA"
+    },
     "rd-street-1y18brw": {
       "plainTitle": "Cheaper high-speed computer chips on the horizon",
       "plainFullTitle": "Cheaper high-speed computer chips are coming next year, impacting the banking sector",
@@ -10017,38 +10174,34 @@
       ],
       "generatedBy": "OLLAMA"
     },
-    "rd-street-1y18h07": {
-      "plainTitle": "Self-Hosted AI for Local Use",
-      "plainFullTitle": "Self-Hosted GPT with Local Research Mode and Customization",
+    "rd-street-1y196hp": {
+      "plainTitle": "I turned the paper dice game I played as…",
+      "plainFullTitle": "I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free,…",
       "levels": {
         "1": {
-          "analogy": "Imagine it like a fully equipped kitchen where you can cook any recipe using your own ingredients, without relying on external services. Think of it like a library where you can access and verify information from multiple sources, ensuring every fact is backed by its original source.",
-          "everydayWhy": "This allows users to maintain control over their data and avoid third-party dependencies, ensuring privacy and security."
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action.",
+          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
         },
         "2": {
-          "whatHappened": "The user built ENZO, a self-hosted AI workspace that can be installed on a desktop with a one-click installer. It supports various providers and updates itself automatically.",
-          "whoBuiltIt": "The user, referred to as 'theguysudo', developed ENZO.",
-          "problemSolved": "ENZO addresses the need for a self-hosted AI solution that can be easily installed and updated, providing a secure and private environment for users."
+          "whatHappened": "r/ClaudeAI Engineering Community published \"I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free, French only for now)\". Open the linked third-party source above for the full upstream breakdown.",
+          "whoBuiltIt": "r/ClaudeAI Engineering Community",
+          "problemSolved": "Addresses practical workflow friction around I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free, French.."
         },
         "3": {
-          "bridgeSummary": "ENZO uses Open-Weights to manage its neural network, Context Window to handle input and output, and RAG (Retrieval-Augmented Generation) to integrate external sources for evidence-based research. This ensures that every claim is backed by verbatim quotes from the source material, providing transparency and accuracy."
+          "bridgeSummary": "[removed] In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
         },
         "4": {
-          "roiAndFinOps": "The one-click installer and automatic updates reduce the cost and complexity of deployment, improving workflow efficiency. Users can avoid subscription fees and maintain control over their data, which is crucial for financial institutions.",
-          "readinessAndRisk": "ENZO is ready for production use with a gentle update mechanism that preserves user data. However, it requires careful sandboxing and compliance checks to ensure it meets banking regulations.",
-          "clientAdvice": "BANKING leadership should pilot ENZO in a secure, isolated environment to assess its compliance with data privacy and security standards before full deployment."
+          "roiAndFinOps": "[removed] (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (I turned the paper dice): [removed] — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
         },
         "5": {
-          "architectureBrief": "ENZO employs a custom Node runtime and serves the backend on port 5200, with updates managed through a gentle banner. It uses a per-user directory outside the app bundle to store data, ensuring data integrity during updates. The research mode leverages connectors and a pipeline to collect and verify evidence, with explicit citation of sources.",
-          "specsAndCaveats": "ENZO supports multiple themes and video backgrounds, with different installer sizes. It can update itself without affecting user data, but the initial setup requires a specific Node runtime. The research mode ensures transparency but may require additional effort to integrate with existing workflows.",
-          "streetConsensus": "The community praises ENZO for its self-hosted nature and transparency in research, but some raise concerns about the initial setup requirements and potential complexity for users unfamiliar with Node.js."
+          "architectureBrief": "I turned the paper dice game I played as a kid into a browser RPG with Opus 5.5 (free.",
+          "specsAndCaveats": "Community field report on r/ClaudeAI (12/hr · 1 up · 2 comments) — single-run empirical observation without controlled multi-seed benchmark tables; check Crossfire replies for independent reproduction.",
+          "streetConsensus": "Thread has 2 replies on r/ClaudeAI — loading top engineer comments..."
         }
       },
       "glossary": [
-        {
-          "term": "Open-Weights",
-          "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
-        },
         {
           "term": "Context Window",
           "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
@@ -10060,9 +10213,13 @@
         {
           "term": "FinOps Cascade",
           "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+        },
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
         }
       ],
-      "generatedBy": "OLLAMA"
+      "generatedBy": "DETERMINISTIC"
     },
     "x-fx-2123567986565173289": {
       "plainTitle": "Accepted Apology",
@@ -10769,53 +10926,6 @@
       ],
       "generatedBy": "OLLAMA"
     },
-    "x-fx-2123117735374659636": {
-      "plainTitle": "It's rolling out to eligible Google AI…",
-      "plainFullTitle": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to…",
-      "levels": {
-        "1": {
-          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute ses",
-          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
-        },
-        "2": {
-          "whatHappened": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
-          "whoBuiltIt": "Google AI",
-          "problemSolved": "Addresses practical workflow friction around It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover.."
-        },
-        "3": {
-          "bridgeSummary": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-        },
-        "4": {
-          "roiAndFinOps": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
-          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
-          "clientAdvice": "FinServ Advisory (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
-        },
-        "5": {
-          "architectureBrief": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
-          "specsAndCaveats": "Source artifact: X · @GoogleDeepMind (GA). Refer to the upstream link for full hyperparameter tables and evaluation scripts.",
-          "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
-        }
-      },
-      "glossary": [
-        {
-          "term": "Context Window",
-          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
-        },
-        {
-          "term": "RAG",
-          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
-        },
-        {
-          "term": "FinOps Cascade",
-          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
-        },
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
-        }
-      ],
-      "generatedBy": "DETERMINISTIC"
-    },
     "lab-openai-rformance-factory-keeps-chatgpt-fast": {
       "plainTitle": "How OpenAI’s Performance Factory keeps…",
       "plainFullTitle": "How OpenAI’s Performance Factory keeps ChatGPT fast",
@@ -11168,7 +11278,7 @@
         },
         "5": {
           "architectureBrief": "I shipped a new version of Datasette Lite recently - my build of the Datasette Python web app that runs entirely in the browser with WebAssembly and Pyodide - here's what's new and how it all works simonwillison.net/2026/Nov/17/...",
-          "specsAndCaveats": "Community field report on Bluesky · @simonwillison (36 likes · 3 replies) — single-run empirical observation without controlled multi-seed benchmark tables; check Crossfire replies for independent reproduction.",
+          "specsAndCaveats": "Community field report on Bluesky · @simonwillison (37 likes · 3 replies) — single-run empirical observation without controlled multi-seed benchmark tables; check Crossfire replies for independent reproduction.",
           "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
         }
       },
@@ -11426,53 +11536,6 @@
         }
       ],
       "generatedBy": "OLLAMA"
-    },
-    "bsky-natolambert.bsky.social-3n2jb3gn6hg2w": {
-      "plainTitle": "Everyone online: OMG Qwen 4 Max is…",
-      "plainFullTitle": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy…",
-      "levels": {
-        "1": {
-          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over.",
-          "everydayWhy": "In reality: It's the same strategy they've had for years."
-        },
-        "2": {
-          "whatHappened": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over. In reality: It's the same strategy they've had for years.",
-          "whoBuiltIt": "Nathan Lambert (Interconnects / Ai2)",
-          "problemSolved": "Addresses practical workflow friction around Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over.."
-        },
-        "3": {
-          "bridgeSummary": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. In reality: It's the same strategy they've had for years. In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-        },
-        "4": {
-          "roiAndFinOps": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
-          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
-          "clientAdvice": "FinServ Advisory (Everyone online OMG Qwen 4): Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
-        },
-        "5": {
-          "architectureBrief": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over.",
-          "specsAndCaveats": "In reality: It's the same strategy they've had for years.",
-          "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
-        }
-      },
-      "glossary": [
-        {
-          "term": "Context Window",
-          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
-        },
-        {
-          "term": "RAG",
-          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
-        },
-        {
-          "term": "FinOps Cascade",
-          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
-        },
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
-        }
-      ],
-      "generatedBy": "DETERMINISTIC"
     },
     "vip-lambert-ectsaipopen-source-ai-without-jensen": {
       "plainTitle": "Open-source AI without Jensen",
