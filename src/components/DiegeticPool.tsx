@@ -446,6 +446,14 @@ function extractVerifiedPostMetrics(sig: SpatialSignal): VerifiedPostMetric[] {
   return found.slice(0, 3);
 }
 
+const THIRD_PARTY_SOURCE_DISCLAIMER =
+  'Headlines and summaries reflect linked third-party sources; open upstream links directly to inspect primary claims.';
+
+function formatVerdictDisplayLabel(verdict?: string): string {
+  if (!verdict || verdict === 'STREET VERIFIED') return 'MULTI-SOURCE';
+  return verdict;
+}
+
 function isAuthenticModelEntity(sig: SpatialSignal): boolean {
   if (!sig.modelSpecs) return false;
   if (
@@ -1166,6 +1174,12 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
           const distinctQuoteNets = Array.from(new Set(quotes.map((q) => q.network)));
           const hasRealCrossPlatformQuotes =
             !focusedSignal.isDemoSeed && distinctQuoteNets.length >= 2;
+          const distinctSourceCount = Math.max(
+            focusedSignal.networkFamilies?.length || 0,
+            focusedSignal.sourceProvenance?.length || 0,
+            1
+          );
+          const isMultiSource = focusedSignal.isSupernova || distinctSourceCount >= 2;
           const isPlainBubble = activeLevel <= 2 && !showCrossfire;
           const focusedTerm = activeGlossaryTerm || lit.glossary[0] || null;
 
@@ -1255,7 +1269,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 </div>
               )}
 
-              {/* Row 1: Sector Dot + Supernova Tag + Verified Origin Link + Close */}
+              {/* Row 1: Sector Dot + Supernova Tag + Honest Provenance & Third-Party Link + Close */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-1.5 flex-wrap min-w-0">
                   <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5 rounded bg-zinc-900 border border-white/10 text-[10px] font-mono font-medium text-zinc-200">
@@ -1267,10 +1281,26 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                   </span>
 
                   {focusedSignal.isSupernova && (
-                    <span className="px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 tabular-nums">
+                    <span
+                      title={`Corroborated across ${focusedSignal.networkFamilies?.length || 2} independent networks. ${THIRD_PARTY_SOURCE_DISCLAIMER}`}
+                      className="px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 tabular-nums"
+                    >
                       {activeLevel === 1
-                        ? 'Major Story'
-                        : `Supernova · ${focusedSignal.networkFamilies?.length || 2} Nets`}
+                        ? 'Multi-Source'
+                        : `Multi-Source · ${focusedSignal.networkFamilies?.length || 2} Nets`}
+                    </span>
+                  )}
+
+                  {!focusedSignal.isSupernova && (
+                    <span
+                      title={
+                        isMultiSource
+                          ? `Corroborated across ${distinctSourceCount} linked third-party sources. ${THIRD_PARTY_SOURCE_DISCLAIMER}`
+                          : `Single linked upstream source. ${THIRD_PARTY_SOURCE_DISCLAIMER}`
+                      }
+                      className="px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-zinc-900 border border-white/10 text-zinc-400 tabular-nums"
+                    >
+                      {isMultiSource ? 'Multi-Source' : 'Source-Linked'}
                     </span>
                   )}
 
@@ -1278,7 +1308,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                     href={focusedSignal.url}
                     target="_blank"
                     rel="noreferrer"
-                    title={`Open verified source: ${focusedSignal.url}`}
+                    title={`Open linked third-party source: ${focusedSignal.url} — ${THIRD_PARTY_SOURCE_DISCLAIMER}`}
                     className="inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-mono text-zinc-300 hover:text-teal-200 rounded bg-zinc-900/90 border border-white/10 hover:border-teal-400/40 transition-colors"
                   >
                     <span
@@ -1723,15 +1753,15 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
               </div>
 
               {/* =============================================================== */}
-              {/* 2. VERIFIED POST METRICS & DIVERGENCE (Tucked into L4-L5 Only!) */}
+              {/* 2. REPORTED POST METRICS & DIVERGENCE (Tucked into L4-L5 Only!) */}
               {/* =============================================================== */}
               {!showCrossfire && activeLevel >= 4 && verifiedMetrics.length > 0 && (
                 <div className="cockpit-well rounded-lg p-2.5 space-y-2 font-mono text-[10px] tabular-nums">
                   <div className="flex items-center justify-between gap-2 text-[9.5px] uppercase tracking-wider text-zinc-400">
-                    <span>Extracted Post Telemetry</span>
+                    <span title={THIRD_PARTY_SOURCE_DISCLAIMER}>Extracted Post Telemetry</span>
                     {hasRealCrossPlatformQuotes && (
-                      <span className="text-teal-300 shrink-0">
-                        Verified across {distinctQuoteNets.join(' + ')}
+                      <span title={THIRD_PARTY_SOURCE_DISCLAIMER} className="text-teal-300 shrink-0">
+                        Multi-Source · {distinctQuoteNets.join(' + ')}
                       </span>
                     )}
                   </div>
@@ -1766,13 +1796,14 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                       STREET <span className="text-teal-300 font-semibold">{div.streetScore}</span>
                     </span>
                     <span
+                      title={THIRD_PARTY_SOURCE_DISCLAIMER}
                       className={`px-1.5 py-0.2 rounded-[4px] border text-[9.5px] font-medium shrink-0 whitespace-nowrap ${
                         div.verdictLabel === 'HYPE > REALITY'
                           ? 'bg-rose-500/12 text-rose-300 border-rose-400/30'
                           : 'bg-teal-500/12 text-teal-300 border-teal-400/30'
                       }`}
                     >
-                      {div.verdictLabel}
+                      {formatVerdictDisplayLabel(div.verdictLabel)}
                     </span>
                   </div>
                   <div className="grid grid-cols-2 gap-1.5">
@@ -2441,7 +2472,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                     <div className="p-2 space-y-0.5">
                       <div className="text-zinc-500 uppercase">Sentiment A</div>
                       <div className="text-zinc-200">
-                        {modelA.divergence?.verdictLabel || 'COMMUNITY SIGNAL'} ·{' '}
+                        {formatVerdictDisplayLabel(modelA.divergence?.verdictLabel)} ·{' '}
                         <span className="text-teal-300">
                           {modelA.divergence?.streetScore ?? 72}/100
                         </span>
@@ -2450,7 +2481,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                     <div className="p-2 space-y-0.5">
                       <div className="text-zinc-500 uppercase">Sentiment B</div>
                       <div className="text-zinc-200">
-                        {modelB.divergence?.verdictLabel || 'COMMUNITY SIGNAL'} ·{' '}
+                        {formatVerdictDisplayLabel(modelB.divergence?.verdictLabel)} ·{' '}
                         <span className="text-teal-300">
                           {modelB.divergence?.streetScore ?? 72}/100
                         </span>

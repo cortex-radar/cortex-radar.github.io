@@ -23,8 +23,21 @@ export function computeSignalMomentumScore(
     18,
     Math.log10(ups + 1) * 4.5 + Math.min(6, velPerHr * 0.05)
   );
-  const ageHrs = Math.max(0, (nowMs - sig.publishedAtMs) / 3_600_000);
-  const recencyBoost = ageHrs <= 12 ? 12 : ageHrs <= 24 ? 6 : ageHrs <= 48 ? 2 : 0;
+  const hasValidTs =
+    typeof sig.publishedAtMs === 'number' &&
+    Number.isFinite(sig.publishedAtMs) &&
+    sig.publishedAtMs > 0;
+  const ageHrs = hasValidTs ? Math.max(0, (nowMs - sig.publishedAtMs) / 3_600_000) : 9999;
+  const recencyBoost =
+    ageHrs <= 12
+      ? 14
+      : ageHrs <= 24
+      ? 8
+      : ageHrs <= 48
+      ? 3
+      : ageHrs <= 72
+      ? -2
+      : -10;
   const supernovaBonus = sig.isSupernova ? 14 : 0;
   const seedPenalty = sig.isDemoSeed ? -18 : 0;
   return sig.mass * 10 + supernovaBonus + engBoost + recencyBoost + seedPenalty;
@@ -34,6 +47,9 @@ export function isRecentSignal12h(
   sig: SpatialSignal,
   nowMs: number = Date.now()
 ): boolean {
+  if (typeof sig.publishedAtMs !== 'number' || !Number.isFinite(sig.publishedAtMs) || sig.publishedAtMs <= 0) {
+    return false;
+  }
   const ageMs = nowMs - sig.publishedAtMs;
   return ageMs >= -600_000 && ageMs <= 12 * 3_600_000;
 }
@@ -42,6 +58,9 @@ export function formatRelativeAgeShort(
   publishedAtMs: number,
   nowMs: number = Date.now()
 ): string {
+  if (typeof publishedAtMs !== 'number' || !Number.isFinite(publishedAtMs) || publishedAtMs <= 0) {
+    return '—';
+  }
   const diffMin = Math.max(1, Math.round((nowMs - publishedAtMs) / 60_000));
   if (diffMin < 60) return `${diffMin}m`;
   const diffHrs = Math.round(diffMin / 60);

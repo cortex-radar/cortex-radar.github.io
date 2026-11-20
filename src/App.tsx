@@ -86,7 +86,7 @@ const TOUR_STEPS: Array<{ title: string; caption: string }> = [
   {
     title: 'SEMANTIC ZOOM & LIVE INBOUND COMETS',
     caption:
-      'Zooming shifts lenses automatically (C-Suite → Architect → Raw Signal) while verified live $0 VIP, Lab & arXiv signals enter on comet trajectories.',
+      'Zooming shifts lenses automatically (C-Suite → Architect → Raw Signal) while source-linked $0 VIP, Lab, X & arXiv signals enter on comet trajectories.',
   },
   {
     title: '30/60/90d BLAST-RADIUS & 72h TIME-WARP',
@@ -844,15 +844,21 @@ export const App: React.FC = () => {
     return { newSignalIdSet: freshSet, newSignalsCount: freshSet.size };
   }, [signalsVersion, enabledCategories, mutedSectors, seenNodeIds]);
 
-  // Top 10 Ranked Signals for Desktop Signal Rail & Mobile Signal Deck
+  // Top 10 Ranked Signals for Desktop Signal Rail (strict <=48h gate, <=72h fallback only if <10) & Mobile Signal Deck
   const { top10Signals, mobileDeckSignals } = useMemo(() => {
     void signalsVersion;
     const all = signalsRef.current;
     const nowMs = Date.now();
+    const TOP10_PRIMARY_AGE_MS = 48 * 3_600_000;
+    const TOP10_FALLBACK_AGE_MS = 72 * 3_600_000;
+    const GALAXY_MAX_AGE_MS = 7 * 24 * 3_600_000;
+    const FUTURE_SKEW_MS = 600_000;
+
     const hasEnoughLive =
       all.filter((s) => !s.isDemoSeed && s.sourceCategory !== 'DEMO_SEED').length >= 5;
 
-    const railPool: SignalRailEntry[] = [];
+    const railFresh48: SignalRailEntry[] = [];
+    const railFallback72: SignalRailEntry[] = [];
     const deckPool: Array<MobileSignalDeckEntry & { momentum: number }> = [];
 
     for (let i = 0; i < all.length; i++) {
@@ -868,6 +874,15 @@ export const App: React.FC = () => {
         continue;
       }
 
+      const validTs =
+        typeof s.publishedAtMs === 'number' &&
+        Number.isFinite(s.publishedAtMs) &&
+        s.publishedAtMs > 0;
+      if (!validTs) continue;
+
+      const ageMs = nowMs - s.publishedAtMs;
+      if (ageMs < -FUTURE_SKEW_MS || ageMs > GALAXY_MAX_AGE_MS) continue;
+
       const momentumScore = computeSignalMomentumScore(s, nowMs);
       const isNew = !isSeed && newSignalIdSet.has(s.id);
 
@@ -875,7 +890,12 @@ export const App: React.FC = () => {
         !mutedSectors.has(s.primarySector) &&
         (!onlyNewFilterActive || isNew)
       ) {
-        railPool.push({ nodeIndex: i, signal: s, momentumScore, isNew });
+        const entry: SignalRailEntry = { nodeIndex: i, signal: s, momentumScore, isNew };
+        if (ageMs <= TOP10_PRIMARY_AGE_MS) {
+          railFresh48.push(entry);
+        } else if (ageMs <= TOP10_FALLBACK_AGE_MS) {
+          railFallback72.push(entry);
+        }
       }
 
       if (!onlyNewFilterActive || isNew) {
@@ -883,11 +903,17 @@ export const App: React.FC = () => {
       }
     }
 
-    railPool.sort((a, b) => b.momentumScore - a.momentumScore);
+    railFresh48.sort((a, b) => b.momentumScore - a.momentumScore);
+    railFallback72.sort((a, b) => b.momentumScore - a.momentumScore);
     deckPool.sort((a, b) => b.momentum - a.momentum);
 
+    const rankedTop10 =
+      railFresh48.length >= 10
+        ? railFresh48.slice(0, 10)
+        : [...railFresh48, ...railFallback72].slice(0, 10);
+
     return {
-      top10Signals: railPool.slice(0, 10),
+      top10Signals: rankedTop10,
       mobileDeckSignals: deckPool
         .slice(0, 40)
         .map(({ nodeIndex, signal, isNew }) => ({ nodeIndex, signal, isNew })),
@@ -1402,21 +1428,33 @@ export const App: React.FC = () => {
       const hasLive = all.some((s) => !s.isDemoSeed && s.sourceCategory !== 'DEMO_SEED');
       if (!hasLive && !allowSeedFallback) return;
 
-      let bestIdx = -1;
-      let bestScore = -Infinity;
+      let bestFresh48Idx = -1;
+      let bestFresh48Score = -Infinity;
+      let bestFallbackIdx = -1;
+      let bestFallbackScore = -Infinity;
       for (let i = 0; i < all.length; i++) {
         const s = all[i];
         if (!s) continue;
         const isSeed = Boolean(s.isDemoSeed || s.sourceCategory === 'DEMO_SEED');
         if (hasLive && isSeed) continue;
         if (mutedSectorsRef.current.has(s.primarySector)) continue;
+        const ageMs =
+          typeof s.publishedAtMs === 'number' && Number.isFinite(s.publishedAtMs) && s.publishedAtMs > 0
+            ? nowMs - s.publishedAtMs
+            : Number.POSITIVE_INFINITY;
         const sc = computeSignalMomentumScore(s, nowMs);
-        if (sc > bestScore) {
-          bestScore = sc;
-          bestIdx = i;
+        if (ageMs >= -600_000 && ageMs <= 48 * 3_600_000) {
+          if (sc > bestFresh48Score) {
+            bestFresh48Score = sc;
+            bestFresh48Idx = i;
+          }
+        } else if (sc > bestFallbackScore) {
+          bestFallbackScore = sc;
+          bestFallbackIdx = i;
         }
       }
 
+      const bestIdx = bestFresh48Idx >= 0 ? bestFresh48Idx : bestFallbackIdx;
       if (bestIdx < 0) return;
       hasAutoSelectedInitialRef.current = true;
       shouldSyncUrlRef.current = false;
@@ -1435,7 +1473,7 @@ export const App: React.FC = () => {
       pendingDeepLinkRef.current.signalId = null;
 
       // Only keep Demo Seed visible if the deep-linked node itself is a 72h seed item;
-      // otherwise leave Pure Live auto-switch untouched!
+      // otherwise leave Live Snapshot auto-switch untouched!
       if (matched.isDemoSeed || matched.sourceCategory === 'DEMO_SEED') {
         userManuallyToggledSeedRef.current = true;
         setShowDemoSeed(true);
@@ -1495,7 +1533,7 @@ export const App: React.FC = () => {
           signals: liveBatch,
         });
 
-        // Automatically default 72h Demo Seed to OFF (100% LIVE) once >= 15 verified live signals arrive!
+        // Automatically default 72h Demo Seed to OFF once >= 15 source-linked signals arrive!
         const liveCount = signalsRef.current.filter(
           (s) => !s.isDemoSeed && s.sourceCategory !== 'DEMO_SEED'
         ).length;

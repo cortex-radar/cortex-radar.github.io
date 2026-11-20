@@ -28,6 +28,41 @@ const PER_REQUEST_TIMEOUT_MS = 8_000;
 const MAX_PER_HANDLE = 2;
 const MAX_TOTAL_X_SIGNALS = 12;
 
+const TECHNICAL_HOST_REGEX =
+  /(?:^|\.)(?:arxiv\.org|huggingface\.co|github\.com|openreview\.net|paperswithcode\.com)$/i;
+
+const AI_TECH_SIGNAL_REGEX =
+  /\b(ai|ml|agi|asi|llm|llms|vlm|slm|gpt(?:-\d[\w.-]*)?|o[134](?:-mini|-pro)?|claude(?:[\s-]\d[\w.-]*)?|gemini(?:[\s-]\d[\w.-]*)?|gemma|qwen(?:[\s-]?\d[\w.-]*)?|mistral|mixtral|codestral|devstral|pixtral|llama(?:[\s-]?\d[\w.-]*)?|deepseek|grok(?:[\s-]?\d[\w.-]*)?|genie|veo|sora|whisper|flux|sdxl|ollama|vllm|sglang|gguf|mlx|onnx|tensorrt|triton|cuda|rocm|gpu|gpus|tpu|tpus|npu|h100|h200|b200|gb200|blackwell|rubin|inference|pretrain\w*|post-train\w*|fine[- ]?tun\w*|rlhf|grpo|dpo|distill\w*|quantiz\w*|fp4|fp8|int4|int8|moe|transformer|diffusion|mamba|(?:self-|cross-|multi-head\s+|flash\s*)?attention\s+(?:mechanism|layer|layers|head|heads)|flashattention|context window|token|tokens|tok\/s|benchmark|benchmarks|eval|evals|swe-bench|mmlu|aime|gpqa|arena|leaderboard|paper|preprint|arxiv|weights|checkpoint|checkpoints|dataset|datasets|open[- ]weights?|open[- ]source|github|repo|sdk|api|cli|mcp|rag|agent|agents|agentic|tool[- ]use|function calling|reasoning|coding|codebase|codex|cursor|copilot|multimodal|vision|voice|speech|audio|video|robotics|humanoid|world model|embodied|neural|deep learning|machine learning|reinforcement learning|synthetic data|interpretability|alignment|ai safety|red[- ]?team\w*|prompt injection|sandbox|compute|datacenter|data center|cluster|kernel|kernels|compiler|silicon|chip|chips|wafer|release notes?|changelog|v\d+\.\d+)\b/i;
+
+const SOCIAL_CHATTER_REJECT_REGEX =
+  /(?:^so fun to\b|\bdealbook\b|^fantastic to be partnering\b|^thrilled to be partnering\b|legal disclaimer:\s*a registration statement|^we(?:'ve|’ve| have) priced our ipo\b|\bhackathon in\b|\bgreat to spend some time\b)/i;
+
+const VAGUE_FRAGMENT_REGEX =
+  /^(?:download the\b|it['’]s rolling out\b|it is rolling out\b|availability\s*&|more details\b|read more\b|link in\b|see the thread\b|thread\b[:\s])/i;
+
+const CONCRETE_ARTIFACT_REGEX =
+  /\b(gpt(?:-\d[\w.-]*)?|o[134](?:-mini|-pro)?|claude[\s-]?\d[\w.-]*|gemini[\s-]?\d[\w.-]*|gemma[\s-]?\d?|qwen[\s-]?\d[\w.-]*|mistral|mixtral|codestral|devstral|llama[\s-]?\d[\w.-]*|deepseek|grok[\s-]?\d?|genie|veo|sora|ollama|vllm|sglang|arxiv|github|weights|open[- ]source|sdk|api|cli|mcp|v\d+\.\d+)\b/i;
+
+const PINNED_MARKER_REGEX =
+  /(?:^📌|\[\s*pinned\s*\]|(?:^|\b)pinned\s+(?:tweet|post|by\b))/i;
+
+function hasTechnicalExternalUrl(externalUrls: string[]): boolean {
+  return externalUrls.some((raw) => {
+    try {
+      const host = new URL(raw).hostname.toLowerCase().replace(/^www\./, '');
+      return TECHNICAL_HOST_REGEX.test(host);
+    } catch {
+      return false;
+    }
+  });
+}
+
+function hasAiTechRelevance(textWithoutUrls: string, externalUrls: string[]): boolean {
+  if (SOCIAL_CHATTER_REJECT_REGEX.test(textWithoutUrls)) return false;
+  if (hasTechnicalExternalUrl(externalUrls)) return true;
+  return AI_TECH_SIGNAL_REGEX.test(textWithoutUrls.slice(0, 260));
+}
+
 function unwrapCdata(raw: string): string {
   return (raw || '')
     .trim()
@@ -248,14 +283,51 @@ function parseHandleXSignals(handle: string, xml: string, nowMs: number): Ranked
   const accepted: Array<{ qualityScore: number; signal: RawUpstreamSignal }> = [];
   const seenIds = new Set<string>();
 
-  for (const itemXml of itemMatches) {
+  const parsedItems = itemMatches.map((itemXml, idx) => {
     const rawLink = extractTagText(itemXml, 'link') || extractTagText(itemXml, 'guid');
     const rawTitle = extractTagText(itemXml, 'title');
     const rawPubDate = extractTagText(itemXml, 'pubDate');
     const rawDesc = extractTagText(itemXml, 'description');
-
     const publishedAtMs = Date.parse(rawPubDate);
-    if (!Number.isFinite(publishedAtMs) || publishedAtMs < cutoffMs || publishedAtMs > nowMs + 600_000) {
+    return {
+      idx,
+      itemXml,
+      rawLink,
+      rawTitle,
+      rawPubDate,
+      rawDesc,
+      publishedAtMs,
+    };
+  });
+
+  // FxTwitter sometimes places a pinned tweet first at idx 0 even when newer posts exist at idx 1+
+  let maxSubsequentPubMs = 0;
+  for (let i = 1; i < parsedItems.length; i++) {
+    const ts = parsedItems[i].publishedAtMs;
+    if (Number.isFinite(ts) && ts > 0 && ts <= nowMs + 600_000 && ts > maxSubsequentPubMs) {
+      maxSubsequentPubMs = ts;
+    }
+  }
+
+  for (const item of parsedItems) {
+    const { idx, itemXml, rawLink, rawTitle, rawDesc, publishedAtMs } = item;
+
+    if (
+      !Number.isFinite(publishedAtMs) ||
+      publishedAtMs <= 0 ||
+      publishedAtMs < cutoffMs ||
+      publishedAtMs > nowMs + 600_000
+    ) {
+      continue;
+    }
+
+    const rawTitlePlain = stripHtmlMarkupAndEntities(rawTitle);
+    const rawDescPlainPrefix = stripHtmlMarkupAndEntities(rawDesc.slice(0, 160));
+    if (
+      PINNED_MARKER_REGEX.test(rawTitlePlain) ||
+      PINNED_MARKER_REGEX.test(rawDescPlainPrefix) ||
+      (idx === 0 && maxSubsequentPubMs > 0 && maxSubsequentPubMs - publishedAtMs > 3_600_000)
+    ) {
       continue;
     }
 
@@ -263,8 +335,8 @@ function parseHandleXSignals(handle: string, xml: string, nowMs: number): Ranked
     if (!canonicalUrl) continue;
 
     // Exclude reposts/retweets: explicit RT/@Reposted prefix OR status URL owned by a different author
-    const rawTitlePlain = stripHtmlMarkupAndEntities(rawTitle);
     if (/^(?:RT\s+@|Reposted\b|Retweeted\b)/i.test(rawTitlePlain)) continue;
+    if (/^(?:@|Replying to\s+@|R to @)/i.test(rawTitlePlain)) continue;
     if (linkAuthor && linkAuthor.toLowerCase() !== handle.toLowerCase()) continue;
 
     // Separate quoted-tweet blockquote from primary post content before extracting headline/body
@@ -287,8 +359,8 @@ function parseHandleXSignals(handle: string, xml: string, nowMs: number): Ranked
     const fallbackTitleClean = rawTitlePlain.replace(/\u2026+$/g, '').trim();
     const rawBody = primaryWithNewlines || fallbackTitleClean;
 
-    // Exclude pure replies starting with '@' or 'Replying to @'
-    if (/^(?:@|Replying to\s+@)/i.test(rawBody)) continue;
+    // Exclude pure replies starting with '@' or 'Replying to @' and repost bodies
+    if (/^(?:@|Replying to\s+@|R to @|RT\s+@|Reposted\b|Retweeted\b)/i.test(rawBody)) continue;
 
     const allUrls = rawBody.match(/https?:\/\/[^\s<>"')\]]+/gi) || [];
     const externalUrls = allUrls.filter((u) => !isXInternalHost(u));
@@ -297,8 +369,16 @@ function parseHandleXSignals(handle: string, xml: string, nowMs: number): Ranked
       .replace(/\s{2,}/g, ' ')
       .trim();
 
-    // Signal-to-noise gate: drop short one-liners without an external URL/paper/repo link
+    const hasTechHost = hasTechnicalExternalUrl(externalUrls);
+    const hasConcreteArtifact = hasTechHost || CONCRETE_ARTIFACT_REGEX.test(textWithoutUrls);
+
+    // Signal-to-noise gate: drop short one-liners and vague thread/app-link stubs
     if (textWithoutUrls.length < 65 && externalUrls.length === 0) continue;
+    if (textWithoutUrls.length < 40 && !hasConcreteArtifact) continue;
+    if (VAGUE_FRAGMENT_REGEX.test(textWithoutUrls) && !hasConcreteArtifact) continue;
+
+    // Mandatory AI/ML/LLM/model/paper/tech relevance gate
+    if (!hasAiTechRelevance(textWithoutUrls, externalUrls)) continue;
 
     const cleanTitle = buildCleanXHeadline(textWithoutUrls, externalUrls);
     if (!cleanTitle || cleanTitle.length < 16) continue;

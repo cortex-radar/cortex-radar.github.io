@@ -33,7 +33,7 @@ import {
   SynthesisEngineId,
   SynthesisEngineStatus,
 } from '../../shared/types';
-import { LENS_SHORT_LABELS } from '../utils/signalRanking';
+import { formatRelativeAgeShort, LENS_SHORT_LABELS } from '../utils/signalRanking';
 import { InstrumentButton, Kbd, ObsidianPanel } from './ui/cockpit-primitives';
 
 interface SpatialHorizonHUDProps {
@@ -445,7 +445,13 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
                   onClick={() => onToggleDemoSeed(!showDemoSeed)}
                   className="min-h-[36px]"
                 >
-                  <span>{showDemoSeed ? 'Seed+Live' : 'Pure Live'}</span>
+                  <span>
+                    {showDemoSeed
+                      ? 'Seed+Feed'
+                      : isStaticPublicMode
+                      ? 'Auto-Updated · 3h'
+                      : 'Live Stream'}
+                  </span>
                 </InstrumentButton>
                 <InstrumentButton
                   size="xs"
@@ -581,16 +587,23 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
             {/* 3-Way Synthesis Brain Track (Local Mode) OR Static Cloud Snapshot Badge */}
             {isStaticPublicMode ? (
               <div
-                title={
+                title={`Auto-Updated · 3h Cycle${
                   staticBakedAtMs
-                    ? `Pre-baked serverless snapshot (${new Date(staticBakedAtMs).toLocaleString()})`
-                    : 'Pre-baked serverless cloud snapshot'
-                }
+                    ? ` — Snapshot generated ${formatRelativeAgeShort(staticBakedAtMs)} ago (${new Date(
+                        staticBakedAtMs
+                      ).toLocaleString()})`
+                    : ''
+                }. Headlines reflect linked third-party sources.`}
                 className="cockpit-well inline-flex items-center gap-1.5 px-2 py-1 rounded-[7px] font-mono text-[10px] text-teal-200 tabular-nums"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>CLOUD · 5L</span>
-                <span className="hidden 2xl:inline">BAKED</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                <span>Live Snapshot</span>
+                <span className="text-zinc-500">·</span>
+                <span className="text-zinc-300">
+                  {staticBakedAtMs
+                    ? `Updated ${formatRelativeAgeShort(staticBakedAtMs)} ago`
+                    : 'Auto-Updated · 3h Cycle'}
+                </span>
               </div>
             ) : (
               <div
@@ -740,7 +753,11 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
               size="xs"
               active={!showDemoSeed}
               onClick={() => onToggleDemoSeed(!showDemoSeed)}
-              title="Toggle 72h historical seed vs. 100% verified live arrivals"
+              title={
+                isStaticPublicMode
+                  ? 'Toggle 72h historical baseline vs. Auto-Updated 3h Cycle snapshot (source-linked feeds)'
+                  : 'Toggle 72h historical baseline vs. source-linked live stream'
+              }
               className="tabular-nums"
             >
               <span
@@ -748,7 +765,13 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
                   showDemoSeed ? 'bg-amber-400' : 'bg-emerald-400'
                 }`}
               />
-              <span>{showDemoSeed ? 'Seed+Live' : 'Pure Live'}</span>
+              <span>
+                {showDemoSeed
+                  ? 'Seed+Feed'
+                  : isStaticPublicMode
+                  ? 'Auto-Updated · 3h'
+                  : 'Live Stream'}
+              </span>
             </InstrumentButton>
 
             {!isStaticPublicMode && (

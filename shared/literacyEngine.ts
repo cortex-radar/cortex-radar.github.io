@@ -1069,7 +1069,7 @@ function buildDynamicAnalogy(
   }
   return {
     analogy: enforceZeroJargonL1(
-      `Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, verified checklist ready for action.${groundedClause}`
+      `Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action.${groundedClause}`
     ),
     everydayWhy: enforceZeroJargonL1(
       facts.detailSentence
@@ -1371,7 +1371,7 @@ export function buildDeterministicLiteracyPayload(
       : truncateCleanly(facts.leadSentence, 340)
     : realCommunityQuotes[0]
     ? `Community discussion around "${facts.cleanHeadline}" — top comment (${realCommunityQuotes[0].author}): "${truncateCleanly(realCommunityQuotes[0].text, 220)}"`
-    : `${resolvedBuilder} published "${facts.cleanHeadline}". Open the verified source link above for the full upstream breakdown.`;
+    : `${resolvedBuilder} published "${facts.cleanHeadline}". Open the linked third-party source above for the full upstream breakdown.`;
 
   const dynamicProblemSolved = (() => {
     if (

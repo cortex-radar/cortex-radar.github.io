@@ -80,7 +80,10 @@ export const SignalRail: React.FC<SignalRailProps> = ({
     >
       <ObsidianPanel className="flex flex-col h-full w-full overflow-hidden border border-white/12 shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between gap-2 px-3 py-2.5 border-b border-white/8 shrink-0">
+        <div
+          title="Top signals from the last 48h (72h fallback if fewer than 10). Headlines and summaries reflect linked third-party sources."
+          className="flex items-center justify-between gap-2 px-3 py-2.5 border-b border-white/8 shrink-0"
+        >
           <div className="flex items-center gap-1.5 min-w-0">
             <span className="h-2 w-2 rounded-full bg-teal-400 shrink-0" />
             <span className="font-mono text-[10.5px] font-semibold uppercase tracking-wider text-zinc-100 truncate">
@@ -115,6 +118,10 @@ export const SignalRail: React.FC<SignalRailProps> = ({
               const origin =
                 signal.originFeedName || (signal.isDemoSeed ? '72h Seed' : signal.source);
               const ups = signal.engagementVelocity?.likesOrUps ?? 0;
+              const isMultiSource =
+                signal.isSupernova ||
+                (signal.networkFamilies?.length || 0) >= 2 ||
+                (signal.sourceProvenance?.length || 0) >= 2;
 
               return (
                 <button
@@ -149,9 +156,12 @@ export const SignalRail: React.FC<SignalRailProps> = ({
                         className="h-1.5 w-1.5 rounded-full shrink-0"
                       />
                       <span className="text-zinc-300 font-medium">{sec.code}</span>
-                      {signal.isSupernova && (
-                        <span className="px-1 py-0.2 rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[8.5px]">
-                          NOVA
+                      {isMultiSource && (
+                        <span
+                          title="Multi-Source: corroborated across 2+ independent third-party feeds"
+                          className="px-1 py-0.2 rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[8.5px]"
+                        >
+                          MULTI
                         </span>
                       )}
                       {isNew && (
@@ -177,7 +187,12 @@ export const SignalRail: React.FC<SignalRailProps> = ({
                   </p>
 
                   <div className="flex items-center justify-between gap-2 font-mono text-[9.5px] text-zinc-400 tabular-nums">
-                    <span className="truncate">{origin}</span>
+                    <span
+                      title="Headlines reflect linked third-party sources."
+                      className="truncate"
+                    >
+                      {origin} · {isMultiSource ? 'Multi-Source' : 'Source-Linked'}
+                    </span>
                     {ups > 0 ? (
                       <span className="inline-flex items-center gap-1 text-teal-300 shrink-0">
                         <Activity className="w-2.5 h-2.5" />

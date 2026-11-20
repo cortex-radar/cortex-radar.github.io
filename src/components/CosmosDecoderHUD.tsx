@@ -85,7 +85,7 @@ export const CosmosDecoderHUD: React.FC<CosmosDecoderHUDProps> = ({
             </div>
 
             <p className="text-[12.5px] text-zinc-400 leading-[1.55]">
-              Every luminous body is a verified live or historical AI signal carrying physical mass, readiness rings, and cross-sector causal tethers—streaming from arXiv, Hugging Face, VIP Substacks, Bluesky, 12 Reddit engineering communities, AI Labs, and GitHub Releases.
+              Every luminous body is a source-linked AI signal (refreshed on an auto-updated 3h cycle) carrying physical mass, readiness rings, and cross-sector causal tethers—streaming from arXiv, Hugging Face, VIP Substacks, X, Bluesky, 12 Reddit engineering communities, AI Labs, and GitHub Releases.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
@@ -278,7 +278,7 @@ export const CosmosDecoderHUD: React.FC<CosmosDecoderHUDProps> = ({
                 </svg>
                 <div>
                   <span className="font-mono font-semibold text-zinc-100">Entry Comet:</span>{' '}
-                  <span className="text-zinc-400">Verified Live Inbound Arrival</span>
+                  <span className="text-zinc-400">Source-Linked Inbound Signal</span>
                 </div>
               </div>
 

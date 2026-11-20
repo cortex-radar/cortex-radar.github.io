@@ -42,6 +42,23 @@ const OUTPUT_PATH = path.resolve(__dirname, '../public/data/live-galaxy.json');
 const RSS_OUTPUT_PATH = path.resolve(__dirname, '../public/rss.xml');
 const SITE_BASE_URL = 'https://cortex-radar.github.io/';
 
+const MAX_GALAXY_AGE_MS = 7 * 24 * 3_600_000;
+const TOP_PRIMARY_AGE_MS = 48 * 3_600_000;
+const TOP_FALLBACK_AGE_MS = 72 * 3_600_000;
+const MAX_FUTURE_SKEW_MS = 3_600_000;
+
+function isWithinFreshnessWindow(
+  publishedAtMs: number | undefined,
+  nowMs: number,
+  maxAgeMs: number = MAX_GALAXY_AGE_MS
+): boolean {
+  if (typeof publishedAtMs !== 'number' || !Number.isFinite(publishedAtMs) || publishedAtMs <= 0) {
+    return false;
+  }
+  const ageMs = nowMs - publishedAtMs;
+  return ageMs >= -MAX_FUTURE_SKEW_MS && ageMs <= maxAgeMs;
+}
+
 function escapeXml(input: string): string {
   return (input || '')
     .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, '')
@@ -53,9 +70,19 @@ function escapeXml(input: string): string {
 }
 
 function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): string {
-  const nonSeed = signals.filter((s) => !s.isDemoSeed && s.sourceCategory !== 'DEMO_SEED');
-  const pool = nonSeed.length > 0 ? nonSeed : signals;
-  const top25 = [...pool]
+  const nonSeed = signals.filter(
+    (s) =>
+      !s.isDemoSeed &&
+      s.sourceCategory !== 'DEMO_SEED' &&
+      isWithinFreshnessWindow(s.publishedAtMs, bakedAtMs, MAX_GALAXY_AGE_MS)
+  );
+  const pool =
+    nonSeed.length > 0
+      ? nonSeed
+      : signals.filter((s) => isWithinFreshnessWindow(s.publishedAtMs, bakedAtMs, MAX_GALAXY_AGE_MS));
+  const fresh72 = pool.filter((s) => isWithinFreshnessWindow(s.publishedAtMs, bakedAtMs, TOP_FALLBACK_AGE_MS));
+  const orderedPool = fresh72.length >= 10 ? fresh72 : pool;
+  const top25 = [...orderedPool]
     .sort((a, b) => computeSignalMomentumScore(b, bakedAtMs) - computeSignalMomentumScore(a, bakedAtMs))
     .slice(0, 25);
 
@@ -451,6 +478,12 @@ function mergeSignalClusterTarget(
   } else {
     clusterTarget.mass = Math.max(clusterTarget.mass, synthesized.mass);
   }
+  if (
+    Number.isFinite(synthesized.publishedAtMs) &&
+    synthesized.publishedAtMs > clusterTarget.publishedAtMs
+  ) {
+    clusterTarget.publishedAtMs = synthesized.publishedAtMs;
+  }
   if ((synthesized.rawAbstract || '').length > (clusterTarget.rawAbstract || '').length + 80) {
     clusterTarget.rawAbstract = synthesized.rawAbstract;
   }
@@ -484,12 +517,16 @@ function mergeSignalClusterTarget(
   );
 }
 
-function clusterAndBuildSpatialSignals(rawItems: RawUpstreamSignal[]): SpatialSignal[] {
+function clusterAndBuildSpatialSignals(
+  rawItems: RawUpstreamSignal[],
+  nowMs: number = Date.now()
+): SpatialSignal[] {
   const signals: SpatialSignal[] = [];
   const urlMap = new Map<string, SpatialSignal>();
 
   for (const raw of rawItems) {
     if (!raw?.title || !raw?.url) continue;
+    if (!isWithinFreshnessWindow(raw.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)) continue;
     const normUrl = normalizeBakeUrl(raw.url);
     const synthesized = synthesizeRawItemToSpatialSignal(raw, true);
 
@@ -514,23 +551,35 @@ function clusterAndBuildSpatialSignals(rawItems: RawUpstreamSignal[]): SpatialSi
     signals.push(synthesized);
   }
 
-  return signals.sort(
-    (a, b) => (b.isSupernova ? 10 : 0) + b.mass - ((a.isSupernova ? 10 : 0) + a.mass)
-  );
+  return signals.sort((a, b) => {
+    const aFresh = isWithinFreshnessWindow(a.publishedAtMs, nowMs, TOP_PRIMARY_AGE_MS) ? 1 : 0;
+    const bFresh = isWithinFreshnessWindow(b.publishedAtMs, nowMs, TOP_PRIMARY_AGE_MS) ? 1 : 0;
+    if (aFresh !== bFresh) return bFresh - aFresh;
+    return computeSignalMomentumScore(b, nowMs) - computeSignalMomentumScore(a, nowMs);
+  });
 }
 
 function selectBalancedSnapshotSignals(
   sortedSignals: SpatialSignal[],
+  nowMs: number,
   maxTotal: number = 64,
   maxXCount: number = 12
 ): SpatialSignal[] {
-  const xSignals = sortedSignals.filter((s) => s.source === 'XBridge').slice(0, maxXCount);
+  const freshOnly = sortedSignals.filter((s) =>
+    isWithinFreshnessWindow(s.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)
+  );
+  const rankScore = (s: SpatialSignal): number => {
+    const fresh48Boost = isWithinFreshnessWindow(s.publishedAtMs, nowMs, TOP_PRIMARY_AGE_MS) ? 20 : 0;
+    return computeSignalMomentumScore(s, nowMs) + fresh48Boost;
+  };
+  const prioritized = [...freshOnly].sort((a, b) => rankScore(b) - rankScore(a));
+  const xSignals = prioritized.filter((s) => s.source === 'XBridge').slice(0, maxXCount);
   const pickedIds = new Set(xSignals.map((s) => s.id));
   const nonXSlots = Math.max(0, maxTotal - xSignals.length);
-  const nonXSignals = sortedSignals.filter((s) => !pickedIds.has(s.id) && s.source !== 'XBridge').slice(0, nonXSlots);
-  return [...xSignals, ...nonXSignals].sort(
-    (a, b) => (b.isSupernova ? 10 : 0) + b.mass - ((a.isSupernova ? 10 : 0) + a.mass)
-  );
+  const nonXSignals = prioritized
+    .filter((s) => !pickedIds.has(s.id) && s.source !== 'XBridge')
+    .slice(0, nonXSlots);
+  return [...xSignals, ...nonXSignals].sort((a, b) => rankScore(b) - rankScore(a));
 }
 
 async function main(): Promise<void> {
@@ -595,20 +644,36 @@ async function main(): Promise<void> {
     // Offline / sandboxed environment fallback handled below
   }
 
+  const bakeNowMs = Date.now();
+  const totalRawCollected = rawCollected.length;
+  const freshRawCollected = rawCollected.filter((item) =>
+    isWithinFreshnessWindow(item.publishedAtMs, bakeNowMs, MAX_GALAXY_AGE_MS)
+  );
+  const droppedStaleRaw = totalRawCollected - freshRawCollected.length;
+  if (droppedStaleRaw > 0) {
+    console.log(
+      `[CORTEX // BAKE] Freshness gate dropped ${droppedStaleRaw} stale/undated raw items (>7d or invalid timestamp); ${freshRawCollected.length} fresh candidates remain.`
+    );
+  }
+
   let signals = selectBalancedSnapshotSignals(
-    clusterAndBuildSpatialSignals(rawCollected),
+    clusterAndBuildSpatialSignals(freshRawCollected, bakeNowMs),
+    bakeNowMs,
     64,
     12
   );
   if (signals.length === 0) {
-    if (previousSignals.length > 0) {
+    const freshPrevious = previousSignals.filter((s) =>
+      isWithinFreshnessWindow(s.publishedAtMs, bakeNowMs, MAX_GALAXY_AGE_MS)
+    );
+    if (freshPrevious.length > 0) {
       console.log(
-        `[CORTEX // BAKE] Network unreachable; reusing ${previousSignals.length} cached signals.`
+        `[CORTEX // BAKE] Network unreachable; reusing ${freshPrevious.length} cached signals within 7d window.`
       );
-      signals = previousSignals;
+      signals = freshPrevious;
     } else {
       console.log('[CORTEX // BAKE] Network unreachable; hydrating deterministic 72h baseline.');
-      signals = buildInitial72hSeed(Date.now()).map((s) => ({ ...s, isDemoSeed: false }));
+      signals = buildInitial72hSeed(bakeNowMs).map((s) => ({ ...s, isDemoSeed: false }));
     }
   }
 
@@ -702,11 +767,13 @@ async function main(): Promise<void> {
     literacyBySignalId[sig.id] = baseDet;
   }
 
-  // Final post-synthesis deduplication & unique plainFullTitle enforcement
+  // Final post-synthesis deduplication, 7d ceiling guard & unique plainFullTitle enforcement
+  const nowMs = Date.now();
   const dedupedFinal: SpatialSignal[] = [];
   const seenTitleKeys = new Set<string>();
   const seenPlainKeys = new Set<string>();
   for (const sig of signals) {
+    if (!isWithinFreshnessWindow(sig.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)) continue;
     const titleKey = normalizeHeadlineKey(sig.title);
     if (titleKey && seenTitleKeys.has(titleKey)) continue;
     if (titleKey) seenTitleKeys.add(titleKey);
@@ -736,7 +803,6 @@ async function main(): Promise<void> {
   }
   signals = dedupedFinal;
 
-  const nowMs = Date.now();
   const snapshot: StaticGalaxySnapshot = {
     version: 1,
     bakedAtIso: new Date(nowMs).toISOString(),

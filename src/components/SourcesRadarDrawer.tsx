@@ -391,18 +391,18 @@ export const SourcesRadarDrawer: React.FC<SourcesRadarDrawerProps> = ({
           <div className="min-w-0">
             <div className="flex items-center gap-1.5 font-mono text-[10.5px] font-medium text-zinc-100">
               <ShieldCheck className="w-3.5 h-3.5 text-teal-400 shrink-0" />
-              <span>100% PURE LIVE FILTER</span>
+              <span>LIVE SNAPSHOT FILTER</span>
             </div>
             <div className="font-mono text-[10px] text-zinc-400 tabular-nums mt-0.5">
               {showDemoSeed
-                ? `${demoSeedCount} historical seed + ${liveVerifiedCount} verified live`
-                : `Active: ${liveVerifiedCount} verified live signals only`}
+                ? `${demoSeedCount} baseline seed + ${liveVerifiedCount} source-linked`
+                : `Active: ${liveVerifiedCount} source-linked signals only`}
             </div>
           </div>
           <CockpitSwitch
             checked={!showDemoSeed}
             onCheckedChange={(pureLive) => onToggleDemoSeed(!pureLive)}
-            label="Toggle Pure Live Signal Filter"
+            label="Toggle Live Snapshot Signal Filter"
           />
         </div>
 

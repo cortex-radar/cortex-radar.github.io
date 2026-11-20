@@ -372,7 +372,8 @@ function parseUniversalFeedXml(
       const dateMatch =
         chunk.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i) ||
         chunk.match(/<published[^>]*>([\s\S]*?)<\/published>/i) ||
-        chunk.match(/<updated[^>]*>([\s\S]*?)<\/updated>/i);
+        chunk.match(/<updated[^>]*>([\s\S]*?)<\/updated>/i) ||
+        chunk.match(/<dc:date[^>]*>([\s\S]*?)<\/dc:date>/i);
       const parsedDate = dateMatch?.[1] ? Date.parse(stripHtmlAndEntities(dateMatch[1])) : NaN;
 
       const guidMatch = chunk.match(/<(?:guid|id)[^>]*>([\s\S]*?)<\/(?:guid|id)>/i);
@@ -388,7 +389,7 @@ function parseUniversalFeedXml(
         source: sourceType,
         sourceCategory: category,
         originFeedName: originName,
-        publishedAtMs: Number.isFinite(parsedDate) ? parsedDate : Date.now(),
+        publishedAtMs: Number.isFinite(parsedDate) && parsedDate > 0 ? parsedDate : 0,
         score: category === 'AI_LAB' || category === 'VIP_VOICE' ? 165 : 120,
         mediaItems,
       };
@@ -479,7 +480,20 @@ function makeBlueskyDescriptor(id: string, displayName: string, actorHandle: str
       };
       return (data.feed || [])
         .map((entry) => entry.post)
-        .filter((p) => p?.record?.text && p.record.text.trim().length > 24)
+        .filter((p) => {
+          const text = stripHtmlAndEntities(p?.record?.text || '');
+          if (text.length < 45) return false;
+          if (
+            /\b(great to spend some time|snarky quote-posts?|congrats to my friends|happy birthday|very peaceful)\b/i.test(
+              text
+            )
+          ) {
+            return false;
+          }
+          return /\b(ai|ml|agi|llm|llms|vlm|claude|gpt(?:-\d[\w.-]*)?|gemini|gemma|qwen|mistral|llama|deepseek|grok|ollama|vllm|model|models|agent|agents|agentic|benchmark|benchmarks|eval|evals|paper|arxiv|weights|checkpoint|dataset|reasoning|inference|training|fine[- ]?tun\w*|quantiz\w*|token|tokens|gpu|tpu|cuda|mcp|rag|open[- ]source|github|python|datasette|sqlite|coding|codebase|compiler|robotics|neural|transformer|diffusion|alignment|safety|labs?\s+deployed)\b/i.test(
+            text
+          );
+        })
         .slice(0, 3)
         .map((p, i) => {
           const text = stripHtmlAndEntities(p!.record!.text!);
@@ -487,8 +501,8 @@ function makeBlueskyDescriptor(id: string, displayName: string, actorHandle: str
           const handle = p!.author?.handle || actorHandle;
           const likes = Number(p!.likeCount || 0);
           const replies = Number(p!.replyCount || 0);
-          const publishedAtMs = Date.parse(p!.record?.createdAt || p!.indexedAt || '') || Date.now();
-          const ageHrs = Math.max(0.5, (Date.now() - publishedAtMs) / 3_600_000);
+          const publishedAtMs = Date.parse(p!.record?.createdAt || p!.indexedAt || '') || 0;
+          const ageHrs = publishedAtMs > 0 ? Math.max(0.5, (Date.now() - publishedAtMs) / 3_600_000) : 999;
           return {
             id: `bsky-${handle}-${rkey}`,
             title: text.slice(0, 118),
@@ -579,8 +593,8 @@ function buildCoreDescriptors(): FeedDescriptor[] {
           .map((it) => {
             const pid = it.paper!.id || '';
             const upvotes = Number(it.paper!.upvotes || 0);
-            const publishedAtMs = Date.parse(it.paper!.publishedAt || '') || Date.now();
-            const ageHrs = Math.max(1, (Date.now() - publishedAtMs) / 3_600_000);
+            const publishedAtMs = Date.parse(it.paper!.publishedAt || '') || 0;
+            const ageHrs = publishedAtMs > 0 ? Math.max(1, (Date.now() - publishedAtMs) / 3_600_000) : 999;
             const hfThumb =
               it.thumbnail && isValidContentImageUrl(it.thumbnail)
                 ? it.thumbnail
@@ -643,13 +657,13 @@ function buildCoreDescriptors(): FeedDescriptor[] {
       name: 'Hacker News AI Stream',
       category: 'HN_COMMUNITY',
       sourceType: 'HackerNews',
-      url: 'https://hn.algolia.com/api/v1/search_by_date?query=AI%20OR%20LLM%20OR%20MCP&tags=story&hitsPerPage=6',
+      url: 'https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&hitsPerPage=10',
       fetcher: async () => {
-        const res = await fetchFast(
-          'https://hn.algolia.com/api/v1/search_by_date?query=AI%20OR%20LLM%20OR%20MCP%20OR%20Anthropic%20OR%20OpenAI&tags=story&hitsPerPage=6'
-        );
+        const sevenDaysAgoSec = Math.floor((Date.now() - 7 * 86_400_000) / 1000);
+        const primaryUrl = `https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&numericFilters=created_at_i>${sevenDaysAgoSec},points>15&hitsPerPage=10`;
+        const res = await fetchFast(primaryUrl);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = (await res.json()) as {
+        let data = (await res.json()) as {
           hits?: Array<{
             objectID: string;
             title?: string;
@@ -660,13 +674,21 @@ function buildCoreDescriptors(): FeedDescriptor[] {
             created_at_i?: number;
           }>;
         };
+        if (!data.hits || data.hits.length === 0) {
+          const fallbackRes = await fetchFast(
+            `https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&numericFilters=created_at_i>${sevenDaysAgoSec}&hitsPerPage=10`
+          );
+          if (fallbackRes.ok) {
+            data = (await fallbackRes.json()) as typeof data;
+          }
+        }
         const mapped: RawUpstreamSignal[] = (data.hits || [])
           .filter((h) => h.title)
           .map((h) => {
             const pts = Number(h.points || 0);
             const comments = Number(h.num_comments || 0);
-            const publishedAtMs = h.created_at_i ? h.created_at_i * 1000 : Date.now();
-            const ageHrs = Math.max(0.5, (Date.now() - publishedAtMs) / 3_600_000);
+            const publishedAtMs = h.created_at_i ? h.created_at_i * 1000 : 0;
+            const ageHrs = publishedAtMs > 0 ? Math.max(0.5, (Date.now() - publishedAtMs) / 3_600_000) : 999;
             const storyText = stripHtmlAndEntities(h.story_text || '').slice(0, 1400);
             return {
               id: `hn-${h.objectID}`,
@@ -742,7 +764,7 @@ function buildCoreDescriptors(): FeedDescriptor[] {
         return (data.items || []).map((repo) => {
           const stars = Number(repo.stargazers_count || 0);
           const forks = Number(repo.forks_count || 0);
-          const publishedAtMs = Date.parse(repo.pushed_at || '') || Date.now();
+          const publishedAtMs = Date.parse(repo.pushed_at || '') || 0;
           const ghOg = resolveGitHubOpenGraphImage(repo.html_url);
           return {
             id: `gh-${repo.id}`,

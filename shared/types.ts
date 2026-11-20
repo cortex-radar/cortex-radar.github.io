@@ -271,7 +271,7 @@ export const SECTORS: SectorMeta[] = [
     index: 3,
     code: 'INN',
     name: 'Innovation & ROI',
-    subtitle: 'Verified enterprise deployments & vertical case studies',
+    subtitle: 'Production enterprise deployments & vertical case studies',
     colorHex: '#F59E0B',
     rgb: [0.96, 0.62, 0.04],
     orbitAngleRad: Math.PI * 0.75,
