@@ -6,31 +6,31 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Nov 2026 20:33:27 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 02:18:28 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
-      <title>Gemini Neon, Carbon, and Hydrogen are now top 3 on Humanity&apos;s Sixth Sense</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y0jny4&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0jny4&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 20:18:38 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Google DeepMind shipped Gemini 4 Neon, its fourth Gemini 4 model in about seven weeks. It has a 1M-words context window and four effort levels. This is a helpful guide to the current leading models and sizes: Because of how distillation, RL, and benchmarking works, Neon technically outperforms Carbon by some measures despite being a smaller model… Also today, Anthropic priced its IPO at $83 per share, above its initial range, and Palo Alto. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y0jny4/gemini_neon_carbon_and_hydrogen_are_now_top_3_on/</description>
+      <title>GPT Sol 6.1 vs Sol 6.2 - a simple prompt comparison - plus account</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y0pd05&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0pd05&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 00:24:18 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Prompt: &quot;Create the GTA game which looks as good as possible.&quot; Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y0pd05/gpt_sol_61_vs_sol_62_a_simple_prompt_comparison/</description>
     </item>
     <item>
-      <title>GPT-6.2 Astra and Sol models launch, cheaper and more efficient but face mixed feedback</title>
-      <link>https://cortex-radar.github.io/?orb=vip-swyx-8e49a725-4572-4981-9894-4fbf63aed272&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-8e49a725-4572-4981-9894-4fbf63aed272&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 10:19:04 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>OpenAI released GPT-6.2 Astra and Sol, which are more cost-effective and efficient compared to previous models. The new models address the high cost and inefficiency of previous AI models, making them more practical for widespread use. — Upstream (Swyx · Latent Space): https://latent.space/p/ainews-gpt-6-2-astra-the-2-frontier-model-is-better-and-20-600-cheaper-but-has-mixed-reviews-6-2-sol/</description>
+      <title>I see a lot of snarky quote-posts here, but I do not see the &quot;alternate vision&quot; Brendan…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-tedunderwood.com-3n2oup53nrs2k&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-tedunderwood.com-3n2oup53nrs2k&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 20:06:36 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>I see a lot of snarky quote-posts here, but I do not see the &quot;alternate vision&quot; Brendan asked for. In a world where AI assistants are clearly accelerating discovery in math and theoretical CS—and where 56% of US adults use them weekly—what is the plan? Addresses practical workflow friction around I see a lot of snarky quote-posts here, but I do not see the &quot;alternate vision&quot; Brendan asked.. — Upstream (Bluesky · @emollick): https://bsky.app/profile/tedunderwood.com/post/3n2oup53nrs2k</description>
     </item>
     <item>
-      <title>Harness Engineering for Self-Improvement in AI</title>
-      <link>https://cortex-radar.github.io/?orb=vip-lilian-nwenggithubioposts2026-07-04-harness&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-lilian-nwenggithubioposts2026-07-04-harness&amp;lens=2</guid>
-      <pubDate>Sat, 04 Jul 2026 00:00:00 GMT</pubDate>
+      <title>Hy4-flash first impression: it&apos;s got AMAZING coding taste</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y0ofce&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0ofce&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 23:42:08 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>The post discusses the concept of recursive self-improvement (RSI) in AI, focusing on how AI models can improve their own performance through better training pipelines and deployment systems. It addresses the bottleneck of AI models needing to improve their own intelligence and deployment systems to enhance overall performance and efficiency. — Upstream (Lilian Weng): https://lilianweng.github.io/posts/2026-07-04-harness/</description>
+      <description>I&apos;m one of those boring SWEs that still insist on reviewing and tweaking everything the AI assistants writes before it can go in a PR. Reduce a half page worth of inane inline comments down to 2 lines. Reduces clinical documentation, chart synthesis, and administrative coordination overhead inside HIPAA/enterprise-governed care workflows. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y0ofce/hy4flash_first_impression_its_got_amazing_coding/</description>
     </item>
     <item>
       <title>Great to spend some time back in Ithaca. Very peaceful.</title>
@@ -39,6 +39,14 @@
       <pubDate>Thu, 19 Nov 2026 19:43:53 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Great to spend some time back in Ithaca. Addresses practical workflow friction around Great to spend some time back in Ithaca. Very peaceful.. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2otgjrwg32q</description>
+    </item>
+    <item>
+      <title>Playing GTA &amp; not following the Anthropic IPO? Following the IPO &amp; not playing GTA? Why not…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2oxmes2es2g&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2oxmes2es2g&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 20:58:45 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>Playing GTA &amp; not following the Anthropic IPO? Following the IPO &amp; not playing GTA? Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2oxmes2es2g</description>
     </item>
     <item>
       <title>Google&apos;s Rapid Model Release Cycle Exhausts Element Names</title>
@@ -65,20 +73,20 @@
       <description>The most useful thing about the pelican riding a bicycle test continues to be illustrating the differences between models in the same family running at different effort levels - here&apos;s Gemini 4 Carbon, the new Gemini 4 Neon. Addresses practical workflow friction around The most useful thing about the pelican riding a bicycle test continues to be illustrating the.. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
     </item>
     <item>
-      <title>Rush of Security Patches Explains Recent Banking Outages</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2kh6qjgrs2z&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2kh6qjgrs2z&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 01:54:08 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>CIOs reported exhaustion from addressing security patch demands, which have been overwhelming their ability to manage normal operations, leading to recent outages. The bottleneck is the inability to balance security patching with regular operations, leading to system failures. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2kh6qjgrs2z</description>
-    </item>
-    <item>
       <title>Free, Private, Open-Source Meeting Transcription App Yogurt</title>
       <link>https://cortex-radar.github.io/?orb=hn-50454625&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50454625&amp;lens=2</guid>
       <pubDate>Wed, 11 Nov 2026 15:33:06 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>Eric built Yogurt, a free, open-source desktop app that transcribes, summarizes, and chats about your meetings using on-device AI models. Yogurt addresses the need for a private, cost-effective solution for managing meeting notes and summaries, without the risks associated with cloud services. — Upstream (Hacker News): https://github.com/FrigadeHQ/yogurt</description>
+    </item>
+    <item>
+      <title>Shared resource on developers.openai.com</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123566075707261252&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123566075707261252&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 23:56:21 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>https://developers.openai.com/software connections/docs/guides/keep-prefix-unchanged Reference: https://developers.openai.com/software connections/docs/guides/keep. Addresses practical workflow friction around Shared resource on developers.openai.com. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2123566075707261252</description>
     </item>
     <item>
       <title>Sound familiar? GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.</title>
@@ -97,28 +105,28 @@
       <description>X · @ollama published &quot;Open models are moving into real enterprise workloads.&quot;. Open the verified source link above for the full upstream breakdown. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (X · @ollama): https://x.com/ollama/status/2123484739248308685</description>
     </item>
     <item>
-      <title>Le Chonk in London! 🇬🇧 For the first time since our worldwide hackathon, join us for a…</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123418013278114139&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123418013278114139&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 14:08:00 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>🇬🇧 For the first time since our worldwide hackathon, join us for a special Le Chonk hackathon! 📅 Saturday, Nov 21 📍 London📷 https://luma.com/le-chonk-in-london Reference: https://luma.com/le. Addresses practical workflow friction around Le Chonk in London! 🇬🇧 For the first time since our worldwide hackathon, join us for a.. — Upstream (X · @MistralAI): https://x.com/MistralAI/status/2123418013278114139</description>
-    </item>
-    <item>
-      <title>We’re teaming up with @ClickHouseDB for a special one-day hackathon in Paris!</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123339999244636509&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123339999244636509&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 08:58:00 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>X · @MistralAI published &quot;We’re teaming up with @ClickHouseDB for a special one-day hackathon in Paris!&quot;. Open the verified source link above for the full upstream breakdown. Addresses practical workflow friction around We’re teaming up with @ClickHouseDB for a special one-day hackathon in Paris!. — Upstream (X · @MistralAI): https://x.com/MistralAI/status/2123339999244636509</description>
-    </item>
-    <item>
       <title>Autonomous, uncut, 1x speed. This is GR00T 2 controlling real dexterous hands, end to end.</title>
       <link>https://cortex-radar.github.io/?orb=x-fx-2123470587259732200&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123470587259732200&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 17:36:54 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
       <description>X · @DrJimFan published &quot;Autonomous, uncut, 1x speed. This is GR00T 2 controlling real dexterous hands, end to end.&quot;. Open the verified source link above for the full upstream breakdown. This is GR00T 2 controlling real dexterous hands, end to end. — Upstream (X · @DrJimFan): https://x.com/DrJimFan/status/2123470587259732200</description>
+    </item>
+    <item>
+      <title>PostgreSQL 19 Released</title>
+      <link>https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov19postgresql-19&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov19postgresql-19&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 20:43:57 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>PostgreSQL 19 Released Most years PostgreSQL ships a new release in September, but this year&apos;s release came two months later thanks mainly to the flurry of issues that the PostgreSQL team needed to address as part of the ongoing AI-reported vulnerability apocalypse. This release was definitely worth the wait. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/19/postgresql-19/</description>
+    </item>
+    <item>
+      <title>Scaling Linear’s GTM to $100M ARR — Cristina Cordova, COO</title>
+      <link>https://cortex-radar.github.io/?orb=vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 23:58:21 GMT</pubDate>
+      <category>Market &amp; Strategy</category>
+      <description>Open video on YouTube ↗ Linear was founded to build a better issue tracker. We talk about why she stopped chasing enterprise deals three weeks after joining, why Linear has never hired a single SDR, why it won&apos;t let an AI assistants answer support tickets on its own, and what the AI budgets behind $100M-in-months ARR mean for everyone else. Since then it has shipped a universal app connector server, a platform for building agents into Linear, integrations with Codex, Cursor and GitHub Copilot, and its own Linear Agent. — Upstream (Swyx · Latent Space): https://latent.space/p/linear-scaling/</description>
     </item>
     <item>
       <title>Introducing Tool Retrieval in the Gemini software connections</title>
@@ -145,6 +153,14 @@
       <description>A developer built Axe, a 12MB binary, to replace AI frameworks by focusing on specific tasks like code review or log analysis. The problem addressed is the inefficiency and fragility of AI frameworks that require long-lived sessions and massive context windows, which are expensive and slow. — Upstream (Hacker News): https://github.com/jrswab/axe</description>
     </item>
     <item>
+      <title>v0.40.17</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04017-rc2&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04017-rc2&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 00:25:30 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>mlxrunner: batch speculative verification Keep drafting active for concurrent generation by sharing target verification while preserving per-request sampling and cache rollback. Learn draft depth for each concurrent workload separately from isolated requests, and preserve probes that short requests never execute. Addresses practical workflow friction around v0.40.17. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.17-rc2</description>
+    </item>
+    <item>
       <title>langchain-openrouter==0.3.0</title>
       <link>https://cortex-radar.github.io/?orb=ghrel-langchain-tory552661142langchain-openrouter030&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-langchain-tory552661142langchain-openrouter030&amp;lens=2</guid>
@@ -153,20 +169,20 @@
       <description>langchain-openrouter 0.3.0 drops support for Python 3.10, which has reached end-of-life. The minimum supported version is now Python 3.11, and the minimum langchain-core version is now 1.8.3. Addresses practical workflow friction around langchain-openrouter==0.3.0. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-openrouter%3D%3D0.3.0</description>
     </item>
     <item>
-      <title>0.172.0-alpha.2</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01720-alpha2&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01720-alpha2&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 15:49:51 GMT</pubDate>
+      <title>v2.1.329</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21329&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21329&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 22:14:41 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Lightweight coding agent that runs in your terminal - Release 0.172.0-alpha.2 · openai/codex 0.172.0-alpha.2 Pre-release Pre-release Choose a tag to compare Sorry, something went wrong. Filter Loading Sorry, something went wrong. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.172.0-alpha.2</description>
+      <description>What&apos;s changed Added a trust dialog warning that says where a folder&apos;s hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session&apos;s scheduled tasks, /loop wakeups, the goal and this conversation&apos;s forks to /tasks; x stops one. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.329</description>
     </item>
     <item>
-      <title>All of that aside, the fact that an AI can make all of this, including creating 3D assets in…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2kjxvwt6c2z&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2kjxvwt6c2z&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 02:44:00 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>All of that aside, the fact that an AI can make all of this, including creating 3D assets in Blender is still nuts. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2kjxvwt6c2z</description>
+      <title>rust-v0.173.0-alpha.1</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01730-alpha1&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01730-alpha1&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 01:44:36 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Lightweight coding agent that runs in your terminal - Release rust-v0.173.0-alpha.1 · openai/codex Choose a tag to compare Sorry, something went wrong. Filter Loading Sorry, something went wrong. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.1</description>
     </item>
     <item>
       <title>Launch HN: Bloomy (YC S26) – AI-powered mastery learning for K-12</title>
@@ -185,28 +201,12 @@
       <description>Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over. In reality: It&apos;s the same strategy they&apos;ve had for years. Addresses practical workflow friction around Everyone online: OMG Qwen 4 Max is closed source, Chinese open-trained model files strategy is over.. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2jb3gn6hg2w</description>
     </item>
     <item>
-      <title>Ideogram 4.6 released (soon opensource)</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y0jw4n&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0jw4n&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 20:27:18 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>r/LocalLLaMA Engineering Community published &quot;Ideogram 4.6 released (soon opensource)&quot;. Open the verified source link above for the full upstream breakdown. Addresses practical workflow friction around Ideogram 4.6 released (soon opensource). — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y0jw4n/ideogram_46_released_soon_opensource/</description>
-    </item>
-    <item>
-      <title>One command to give Hermes Agent my GitHub Copilot subscription</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y0jfbl&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0jfbl&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 20:09:11 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>I wanted my Copilot subscription behind Hermes Agent without a proxy I had to keep alive by hand, so I wrote a Hermes model-provider plugin.hermes plugins install paq85/hermes-plugin-github-copilot --enableOn first use it downloads a pinned bridge release (v1.0.1), runs npm ci and starts it on 127.0.0.1:8788. Node 20.19+ and a Copilot CLI login on the same machine are all it needs.Limits: sessions live in memory, so a bridge restart replays the transcript once. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y0jfbl/one_command_to_give_hermes_agent_my_github/</description>
-    </item>
-    <item>
-      <title>Anthropic IPO Launch Details</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123196808675405860&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123196808675405860&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 23:29:00 GMT</pubDate>
+      <title>A stealth model beating Fable 5.2 and Human designers on Frontier Design Benchmark</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y0r64v&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0r64v&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 01:51:30 GMT</pubDate>
       <category>Economics &amp; FinOps</category>
-      <description>Anthropic has set the IPO price at $83 per share and trading is set to begin on Nasdaq tomorrow. The company needed to go public to raise capital and provide liquidity for its investors. — Upstream (X · @AnthropicAI): https://x.com/AnthropicAI/status/2123196808675405860</description>
+      <description>r/singularity Engineering Community published &quot;A stealth model beating Fable 5.2 and Human designers on Frontier Design Benchmark&quot;. Open the verified source link above for the full upstream breakdown. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y0r64v/a_stealth_model_beating_fable_52_and_human/</description>
     </item>
   </channel>
 </rss>
