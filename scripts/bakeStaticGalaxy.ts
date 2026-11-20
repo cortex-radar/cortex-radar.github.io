@@ -7,6 +7,7 @@ process.env.CORTEX_CLI_IMPORT_ONLY = '1';
 
 import {
   buildDeterministicLiteracyPayload,
+  enforceEpistemicAndDomainFidelity,
   enforceZeroJargonL1,
   isSubstantiveVividMetaphor,
   sanitizeLiteracyPayloadPlainLevels,
@@ -22,8 +23,13 @@ import {
 } from '../shared/seed72h';
 import {
   buildSupportingSourceEntry,
+  getSignalReleaseMetadata,
+  hasTechnicalEngineeringContent,
+  isHedgedOrUnverifiedClaim,
+  isNonToolNewsOrMarketSignal,
   isPrimarySourceSignal,
   normalizeProvenanceUrl,
+  parseGitHubReleaseMetadata,
   truncateAtWordBoundary,
 } from '../shared/provenance';
 import {
@@ -145,6 +151,7 @@ function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): string {
 
 const GITHUB_MODELS_ENDPOINT = 'https://models.inference.ai.azure.com/chat/completions';
 const GITHUB_MODELS_MODEL = process.env.GITHUB_MODELS_MODEL || 'gpt-4o-mini';
+const LITERACY_SCHEMA_VERSION = 'v2.2';
 
 function normalizeBakeUrl(url: string): string {
   return (url || '').trim().toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
@@ -209,25 +216,28 @@ function loadPreviousSnapshotCache(): {
     }
     const raw = fs.readFileSync(OUTPUT_PATH, 'utf8');
     const parsed = JSON.parse(raw) as Partial<StaticGalaxySnapshot>;
+    const schemaMatches = parsed.promptVersion === LITERACY_SCHEMA_VERSION;
     const sigById = new Map<string, SpatialSignal>();
     if (Array.isArray(parsed.signals)) {
       previousSignals = parsed.signals;
-      for (const s of parsed.signals) {
-        if (s?.id) sigById.set(s.id, s);
-        if (s?.id && s.literacy && s.literacy.generatedBy !== 'DETERMINISTIC') {
-          const clean = repairLegacyClonedTitles(s.literacy, s.title);
-          const entry: CachedLiteracyEntry = {
-            literacy: clean,
-            titleKey: normalizeHeadlineKey(s.title || ''),
-            abstractFingerprint: makeAbstractFingerprint(s),
-            sourceCount: s.supportingSources?.length || 1,
-          };
-          byId.set(s.id, entry);
-          if (s.url) byUrl.set(normalizeBakeUrl(s.url), entry);
+      if (schemaMatches) {
+        for (const s of parsed.signals) {
+          if (s?.id) sigById.set(s.id, s);
+          if (s?.id && s.literacy && s.literacy.generatedBy !== 'DETERMINISTIC') {
+            const clean = repairLegacyClonedTitles(s.literacy, s.title);
+            const entry: CachedLiteracyEntry = {
+              literacy: clean,
+              titleKey: normalizeHeadlineKey(s.title || ''),
+              abstractFingerprint: makeAbstractFingerprint(s),
+              sourceCount: s.supportingSources?.length || 1,
+            };
+            byId.set(s.id, entry);
+            if (s.url) byUrl.set(normalizeBakeUrl(s.url), entry);
+          }
         }
       }
     }
-    if (parsed.literacyBySignalId && typeof parsed.literacyBySignalId === 'object') {
+    if (schemaMatches && parsed.literacyBySignalId && typeof parsed.literacyBySignalId === 'object') {
       for (const [id, lit] of Object.entries(parsed.literacyBySignalId)) {
         if (lit && lit.generatedBy !== 'DETERMINISTIC' && !byId.has(id)) {
           const matchedSig = sigById.get(id);
@@ -279,11 +289,26 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
   const supportingBlock = siblingSources
     .map((s) => `[${s.isPrimary ? 'Primary' : 'Commentary'} · ${s.source}] "${s.title}"`)
     .join('\n- ');
+  const isTechnical = hasTechnicalEngineeringContent(sig);
+  const isHedged = isHedgedOrUnverifiedClaim(sig);
+  const relMeta = getSignalReleaseMetadata(sig);
   const glossaryHint = baseFallback.glossary
     .slice(0, 3)
     .map((g) => g.term)
     .join(', ');
   const bodyContext = stripTrailingIncompleteClause((sig.rawAbstract || sig.title).slice(0, 2800));
+
+  const domainConstraintLine = !isTechnical
+    ? `NO TECHNICAL SPECS IN SOURCE: This source has NO software/hardware engineering specs. NEVER invent Context Window, RAG, FinOps Cascade, latency, VRAM, parameter counts, or benchmarks. In levels["5"].architectureBrief begin verbatim with "Source provides no technical specifications or architecture details."`
+    : glossaryHint
+    ? `Required Level 3 Glossary Terms (mention verbatim in Level 3 bridgeSummary): ${glossaryHint}`
+    : '';
+  const epistemicConstraintLine = isHedged
+    ? `EPISTEMIC FIDELITY REQUIRED: The source uses hedged or unverified language (may / claims / purports / reportedly / unverified). Preserve this uncertainty in plainTitle, plainFullTitle, and ALL levels 1-5; NEVER rewrite as settled fact.`
+    : '';
+  const releaseConstraintLine = relMeta
+    ? `RELEASE IDENTITY REQUIRED: Preserve "${relMeta.displayTitle}" (${relMeta.stabilityLabel}) verbatim in plainTitle and plainFullTitle; ${relMeta.isPreRelease ? 'never label this pre-release as Production GA.' : 'cite the stable version accurately.'}`
+    : '';
 
   return `You are a Principal AI Technical Writer & Architecture Strategist translating this source-linked signal into a rich, insightful 5-level literacy JSON object for an enterprise engineering & executive audience.
 
@@ -297,22 +322,25 @@ ${
   supportingBlock
     ? `Supporting Coverage in This Event Group (context only — do NOT let secondary titles override the Primary Headline facts):\n- ${supportingBlock}\n`
     : ''
-}${quotesBlock ? `Real Community Engineer Replies:\n- ${quotesBlock}\n` : ''}Required Level 3 Glossary Terms (mention verbatim in Level 3 bridgeSummary): ${glossaryHint}
-
+}${quotesBlock ? `Real Community Engineer Replies:\n- ${quotesBlock}\n` : ''}${
+    domainConstraintLine ? `${domainConstraintLine}\n` : ''
+  }${epistemicConstraintLine ? `${epistemicConstraintLine}\n` : ''}${
+    releaseConstraintLine ? `${releaseConstraintLine}\n` : ''
+  }
 STRICT RULES:
-1. PRIMARY ALIGNMENT: Anchor plainTitle, plainFullTitle, and levels["2"].whatHappened strictly on the Primary Headline & Primary Post Body above so AI Synthesis never contradicts the verbatim source headline/excerpt.
+1. PRIMARY & EPISTEMIC ALIGNMENT: Anchor plainTitle, plainFullTitle, and levels["2"].whatHappened strictly on the Primary Headline & Primary Post Body above. Preserve uncertainty markers (may, claims, reportedly, unverified) across ALL 5 lenses and never invent technical specs on non-engineering business/IPO/policy/social posts.
 2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (kitchen prep line, library desk, post office sorting room, hospital chart clipboard, or highway lane). Zero technical acronyms in Level 1.
 3. LEVEL 2 MUST BE PLAIN ENGLISH (zero Markdown pipe tables, zero code blocks, concrete facts). For non-tool corporate/market/policy news (e.g. IPOs, funding, legal rulings), name key organizations in whoBuiltIt and explain why the news matters in problemSolved.
-4. LEVEL 5 MUST BE CONCRETE & DENSE (2-3 substantive technical sentences per block citing exact architecture, benchmarks, failure modes, and community consensus).
+4. LEVEL 5 MUST BE CONCRETE & HONEST: Cite verified architecture, benchmarks, failure modes, and community consensus ONLY when grounded in the source; if no technical specs exist, explicitly state "Source provides no technical specifications or architecture details."
 
 Return ONLY valid JSON:
 {
-  "plainTitle": "Humanized outcome badge <=42 chars",
-  "plainFullTitle": "Plain-English headline <=88 chars",
+  "plainTitle": "${relMeta ? relMeta.displayTitle : 'Humanized outcome badge <=48 chars'}",
+  "plainFullTitle": "${relMeta ? relMeta.displayTitle : 'Plain-English headline <=96 chars'}",
   "levels": {
     "1": { "analogy": "...", "everydayWhy": "..." },
     "2": { "whatHappened": "...", "whoBuiltIt": "...", "problemSolved": "..." },
-    "3": { "bridgeSummary": "... explicitly mentioning ${glossaryHint} ..." },
+    "3": { "bridgeSummary": "${isTechnical && glossaryHint ? `... explicitly mentioning ${glossaryHint} ...` : 'Factual operational bridge without fabricated technical jargon.'}" },
     "4": { "roiAndFinOps": "...", "readinessAndRisk": "...", "clientAdvice": "..." },
     "5": { "architectureBrief": "...", "specsAndCaveats": "...", "streetConsensus": "..." }
   }
@@ -320,6 +348,7 @@ Return ONLY valid JSON:
 }
 
 function mergeParsedWithFallback(
+  sig: SpatialSignal,
   parsed: Partial<LiteracySpectrumPayload>,
   baseFallback: LiteracySpectrumPayload,
   generatedBy: 'OLLAMA' | 'GEMINI'
@@ -329,15 +358,17 @@ function mergeParsedWithFallback(
   const finalAnalogy = isSubstantiveVividMetaphor(candidateAnalogy)
     ? candidateAnalogy
     : baseFallback.levels[1].analogy;
+  const isTechnical = hasTechnicalEngineeringContent(sig);
 
-  const cleanGlossary: GlossaryTerm[] =
-    Array.isArray(parsed.glossary) && parsed.glossary.length >= 2
-      ? parsed.glossary
-          .filter((g) => g && typeof g.term === 'string' && typeof g.definition === 'string')
-          .slice(0, 5)
-      : baseFallback.glossary;
+  const cleanGlossary: GlossaryTerm[] = !isTechnical
+    ? baseFallback.glossary
+    : Array.isArray(parsed.glossary) && parsed.glossary.length >= 2
+    ? parsed.glossary
+        .filter((g) => g && typeof g.term === 'string' && typeof g.definition === 'string')
+        .slice(0, 5)
+    : baseFallback.glossary;
 
-  return sanitizeLiteracyPayloadPlainLevels({
+  const sanitized = sanitizeLiteracyPayloadPlainLevels({
     plainTitle: parsed.plainTitle
       ? truncateAtWordBoundary(enforceZeroJargonL1(parsed.plainTitle), 48)
       : baseFallback.plainTitle,
@@ -387,6 +418,8 @@ function mergeParsedWithFallback(
     glossary: cleanGlossary,
     generatedBy,
   });
+
+  return enforceEpistemicAndDomainFidelity(sig, sanitized, 'BANKING');
 }
 
 async function synthesizeViaGemini(
@@ -418,7 +451,7 @@ async function synthesizeViaGemini(
     candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
   };
   const parsed = safeParseJsonObject(data.candidates?.[0]?.content?.parts?.[0]?.text || '');
-  return parsed ? mergeParsedWithFallback(parsed, baseFallback, 'GEMINI') : null;
+  return parsed ? mergeParsedWithFallback(sig, parsed, baseFallback, 'GEMINI') : null;
 }
 
 async function synthesizeViaGitHubModels(
@@ -454,7 +487,7 @@ async function synthesizeViaGitHubModels(
     choices?: Array<{ message?: { content?: string } }>;
   };
   const parsed = safeParseJsonObject(data.choices?.[0]?.message?.content || '');
-  return parsed ? mergeParsedWithFallback(parsed, baseFallback, 'GEMINI') : null;
+  return parsed ? mergeParsedWithFallback(sig, parsed, baseFallback, 'GEMINI') : null;
 }
 
 const HEADLINE_STOPWORDS = new Set([
@@ -733,8 +766,9 @@ async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const isRssOnly = args.includes('--rss-only');
   const isDryRun = args.includes('--dry-run');
+  const noCache = args.includes('--no-cache');
   const limitArg = args.find((a) => a.startsWith('--limit='));
-  const maxSynthCount = limitArg ? Math.max(1, Number(limitArg.split('=')[1]) || 12) : 20;
+  const maxSynthCount = limitArg ? Math.max(1, Number(limitArg.split('=')[1]) || 24) : 24;
 
   if (isRssOnly) {
     if (!fs.existsSync(OUTPUT_PATH)) {
@@ -866,8 +900,13 @@ async function main(): Promise<void> {
   let cacheHits = 0;
   let newlySynthesized = 0;
 
-  // Synthesize grouped multi-source events first so promoted primary cards always get fresh synthesis
+  // Synthesize hedged claims, non-tool market/news, and grouped multi-link events first so complex cards always get faithful v2.2 synthesis
   const synthOrder = [...signals].sort((a, b) => {
+    const aSpecial =
+      isHedgedOrUnverifiedClaim(a) || isNonToolNewsOrMarketSignal(a) ? 1 : 0;
+    const bSpecial =
+      isHedgedOrUnverifiedClaim(b) || isNonToolNewsOrMarketSignal(b) ? 1 : 0;
+    if (aSpecial !== bSpecial) return bSpecial - aSpecial;
     const aGrouped = (a.supportingSources?.length || 1) >= 2 ? 1 : 0;
     const bGrouped = (b.supportingSources?.length || 1) >= 2 ? 1 : 0;
     if (aGrouped !== bGrouped) return bGrouped - aGrouped;
@@ -881,14 +920,16 @@ async function main(): Promise<void> {
     const sigAbsFp = makeAbstractFingerprint(sig);
     const sigSrcCount = sig.supportingSources?.length || 1;
     const cacheValid =
+      !noCache &&
       Boolean(cachedHit) &&
       cachedHit!.titleKey === sigTitleKey &&
       cachedHit!.abstractFingerprint === sigAbsFp &&
       cachedHit!.sourceCount === sigSrcCount;
 
     if (cacheValid && cachedHit) {
-      sig.literacy = cachedHit.literacy;
-      literacyBySignalId[sig.id] = cachedHit.literacy;
+      const fid = enforceEpistemicAndDomainFidelity(sig, cachedHit.literacy, 'BANKING');
+      sig.literacy = fid;
+      literacyBySignalId[sig.id] = fid;
       cacheHits++;
       continue;
     }
@@ -912,7 +953,11 @@ async function main(): Promise<void> {
             signal: sig,
           });
           if (res.literacy && res.literacy.generatedBy !== 'DETERMINISTIC') {
-            upgraded = sanitizeLiteracyPayloadPlainLevels(res.literacy);
+            upgraded = enforceEpistemicAndDomainFidelity(
+              sig,
+              sanitizeLiteracyPayloadPlainLevels(res.literacy),
+              'BANKING'
+            );
           }
         }
       } catch {
@@ -938,6 +983,14 @@ async function main(): Promise<void> {
   const seenPlainKeys = new Set<string>();
   for (const sig of signals) {
     if (!isWithinFreshnessWindow(sig.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)) continue;
+    const relMeta = getSignalReleaseMetadata(sig);
+    if (relMeta) {
+      sig.title = relMeta.displayTitle;
+      sig.shortLabel = relMeta.displayTitle;
+      if (relMeta.isPreRelease && sig.readiness === 'GA') {
+        sig.readiness = 'PREVIEW';
+      }
+    }
     const titleKey = normalizeHeadlineKey(sig.title);
     const existingDup = titleKey ? seenByTitleKey.get(titleKey) : undefined;
     if (existingDup) {
@@ -949,6 +1002,11 @@ async function main(): Promise<void> {
         existingDup.literacy = sig.literacy;
       }
       if (existingDup.literacy) {
+        existingDup.literacy = enforceEpistemicAndDomainFidelity(
+          existingDup,
+          existingDup.literacy,
+          'BANKING'
+        );
         literacyBySignalId[existingDup.id] = existingDup.literacy;
       }
       continue;
@@ -971,13 +1029,14 @@ async function main(): Promise<void> {
           plainTitle:
             fallbackHeadline.length <= 44
               ? fallbackHeadline
-              : `${fallbackHeadline.slice(0, 41).replace(/\s+\S*$/, '')}…`,
+              : truncateAtWordBoundary(fallbackHeadline, 44),
           plainFullTitle:
             fallbackHeadline.length <= 96
               ? fallbackHeadline
-              : `${fallbackHeadline.slice(0, 93).replace(/\s+\S*$/, '')}…`,
+              : truncateAtWordBoundary(fallbackHeadline, 96),
         };
       }
+      cleanLit = enforceEpistemicAndDomainFidelity(sig, cleanLit, 'BANKING');
       seenPlainKeys.add(normalizeHeadlineKey(cleanLit.plainFullTitle || sig.title));
       sig.literacy = cleanLit;
       literacyBySignalId[sig.id] = cleanLit;
@@ -986,19 +1045,28 @@ async function main(): Promise<void> {
   }
   signals = dedupedFinal;
 
-  // Enforce clean word-boundary titles on final signals and preserve original order
+  // Enforce clean word-boundary titles and preserve GitHub Release product+prerelease tags on all links
   for (const sig of signals) {
-    sig.title = truncateAtWordBoundary(stripHtmlMarkupAndEntities(sig.title || ''), 220);
+    const relMeta = getSignalReleaseMetadata(sig);
+    sig.title = relMeta
+      ? relMeta.displayTitle
+      : truncateAtWordBoundary(stripHtmlMarkupAndEntities(sig.title || ''), 220);
     if (sig.supportingSources) {
-      sig.supportingSources = sig.supportingSources.map((s) => ({
-        ...s,
-        title: truncateAtWordBoundary(stripHtmlMarkupAndEntities(s.title || ''), 220),
-      }));
+      sig.supportingSources = sig.supportingSources.map((s) => {
+        const sRel = parseGitHubReleaseMetadata(s.title || '', s.url || '');
+        return {
+          ...s,
+          title: sRel
+            ? sRel.displayTitle
+            : truncateAtWordBoundary(stripHtmlMarkupAndEntities(s.title || ''), 220),
+        };
+      });
     }
   }
 
   const snapshot: StaticGalaxySnapshot = {
     version: 1,
+    promptVersion: LITERACY_SCHEMA_VERSION,
     bakedAtIso: new Date(nowMs).toISOString(),
     bakedAtMs: nowMs,
     synthesizedBy: synthProviderLabel,

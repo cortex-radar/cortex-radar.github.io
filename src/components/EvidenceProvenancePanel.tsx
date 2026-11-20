@@ -10,15 +10,39 @@ import {
   Shield,
 } from 'lucide-react';
 import {
+  analyzeClusterCoverage,
+  extractPublisherDisplayName,
   extractVerbatimSourceExcerpt,
   formatUtcTimestamp,
   getEventLastUpdatedMs,
-  getGroupedSourcesForSignal,
-  getIndependentSourceCount,
+  inferSupportingLinkRole,
   isPrimarySourceSignal,
+  parseGitHubReleaseMetadata,
+  SupportingLinkRole,
 } from '../../shared/provenance';
 import { SpatialSignal } from '../../shared/types';
 import { formatRelativeAgeShort } from '../utils/signalRanking';
+
+function getRolePillClass(role: SupportingLinkRole): string {
+  switch (role) {
+    case 'Primary':
+      return 'bg-emerald-500/12 border-emerald-400/35 text-emerald-200';
+    case 'Release candidate':
+    case 'Alpha':
+    case 'Beta':
+    case 'Preview':
+      return 'bg-amber-500/15 border-amber-400/35 text-amber-200';
+    case 'Closing':
+    case 'Pricing':
+    case 'Filing':
+    case 'Release':
+    case 'Paper':
+    case 'Model weights':
+      return 'bg-teal-500/12 border-teal-400/30 text-teal-200';
+    default:
+      return 'bg-zinc-900 border-white/12 text-zinc-300';
+  }
+}
 
 interface EvidenceProvenancePanelProps {
   signal: SpatialSignal;
@@ -39,9 +63,8 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
 
   const nowMs = Date.now();
   const isPrimary = isPrimarySourceSignal(signal);
-  const groupedSources = getGroupedSourcesForSignal(signal);
-  const independentCount = getIndependentSourceCount(signal);
-  const isCorroborated = independentCount >= 2;
+  const coverage = analyzeClusterCoverage(signal);
+  const groupedSources = coverage.groupedLinks;
   const lastUpdatedMs = getEventLastUpdatedMs(signal);
   const verbatimExcerpt = extractVerbatimSourceExcerpt(signal);
 
@@ -76,18 +99,21 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
 
         <span
           className={`inline-flex items-center gap-1 text-[9.5px] ${
-            isCorroborated ? 'text-teal-300' : 'text-zinc-400'
+            coverage.hasIndependentCorroboration ? 'text-teal-300' : 'text-zinc-400'
           }`}
         >
-          {isCorroborated ? (
+          {coverage.hasIndependentCorroboration ? (
             <>
               <CheckCircle2 className="w-3 h-3 text-teal-400 shrink-0" />
-              <span>Corroborated across {independentCount} sources</span>
+              <span>{coverage.provenanceHeadlineLabel}</span>
             </>
           ) : (
             <>
               <AlertCircle className="w-3 h-3 text-amber-400/80 shrink-0" />
-              <span>Claim not independently verified — linked to third-party source</span>
+              <span>
+                {coverage.verificationNote ||
+                  'Claim not independently verified — linked to third-party source'}
+              </span>
             </>
           )}
         </span>
@@ -117,7 +143,7 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
         </div>
       </div>
 
-      {/* Grouped Multi-Source Event Strip & Expandable Supporting Coverage */}
+      {/* Related Links Timeline & Expandable Publisher + Role List */}
       {groupedSources.length >= 2 && (
         <div className="rounded-md bg-teal-500/[0.06] border border-teal-400/25 overflow-hidden">
           <button
@@ -129,7 +155,7 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
             <span className="inline-flex items-center gap-1.5 min-w-0 truncate">
               <Layers className="w-3 h-3 text-teal-400 shrink-0" />
               <span className="truncate font-medium">
-                One development · {groupedSources.length} sources · Updated{' '}
+                {coverage.provenanceHeadlineLabel} · Updated{' '}
                 {formatRelativeAgeShort(lastUpdatedMs, nowMs)} ago
               </span>
             </span>
@@ -145,43 +171,43 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
 
           {sourcesExpanded && (
             <div className="divide-y divide-white/6 border-t border-teal-400/20 bg-zinc-950/75">
-              {groupedSources.map((srcItem) => {
+              {groupedSources.map((srcItem, idx) => {
                 const age = srcItem.publishedAtMs
                   ? `${formatRelativeAgeShort(srcItem.publishedAtMs, nowMs)} ago`
                   : srcItem.publishedAt
                   ? `${formatRelativeAgeShort(Date.parse(srcItem.publishedAt) || nowMs, nowMs)} ago`
                   : '';
+                const role = inferSupportingLinkRole(srcItem, idx === 0);
+                const publisher = extractPublisherDisplayName(srcItem);
+                const relMeta = parseGitHubReleaseMetadata(srcItem.title, srcItem.url);
+                const displayLabel = relMeta?.versionLabel
+                  ? `${publisher} · ${relMeta.versionLabel}`
+                  : publisher;
                 return (
                   <a
                     key={srcItem.url}
                     href={srcItem.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="block px-2.5 py-1.5 hover:bg-white/[0.03] transition-colors space-y-0.5"
+                    title={srcItem.title}
+                    className="flex items-center justify-between gap-2 px-2.5 py-2 hover:bg-white/[0.03] transition-colors font-mono text-[10px] tabular-nums"
                   >
-                    <div className="flex items-center justify-between gap-2 font-mono text-[9.5px] tabular-nums">
-                      <span className="inline-flex items-center gap-1.5 min-w-0">
-                        <span
-                          className={`px-1 py-0.2 rounded border text-[8.5px] shrink-0 ${
-                            srcItem.isPrimary
-                              ? 'bg-emerald-500/12 border-emerald-400/35 text-emerald-200'
-                              : 'bg-zinc-900 border-white/10 text-zinc-400'
-                          }`}
-                        >
-                          {srcItem.isPrimary ? 'Primary' : 'Commentary'}
-                        </span>
-                        <span className="text-zinc-200 font-medium truncate">
-                          {srcItem.source}
-                        </span>
+                    <span className="inline-flex items-center gap-1.5 min-w-0">
+                      <span
+                        className={`px-1.5 py-0.5 rounded border text-[9px] font-medium shrink-0 ${getRolePillClass(
+                          role
+                        )}`}
+                      >
+                        {role}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-zinc-500 shrink-0">
-                        {age && <span>{age}</span>}
-                        <ExternalLink className="w-2.5 h-2.5" />
+                      <span className="text-zinc-200 font-medium truncate">
+                        {displayLabel}
                       </span>
-                    </div>
-                    <p title={srcItem.title} className="text-[11px] text-zinc-300 leading-snug line-clamp-2">
-                      {srcItem.title}
-                    </p>
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-zinc-500 shrink-0">
+                      {age && <span>{age}</span>}
+                      <ExternalLink className="w-2.5 h-2.5" />
+                    </span>
                   </a>
                 );
               })}

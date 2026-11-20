@@ -2548,9 +2548,13 @@ export const App: React.FC = () => {
   );
 
   const setRenderLoopActiveRef = useRef<((active: boolean) => void) | null>(null);
+  const lastSheetClosedAtRef = useRef<number>(0);
 
   const handleSelectSignalFromUI = useCallback(
     (idx: number) => {
+      if (viewModeRef.current === 'FEED' && performance.now() - lastSheetClosedAtRef.current < 320) {
+        return;
+      }
       stop15sTour();
       if (idx < 0 || !signalsRef.current[idx]) return;
       const sig = signalsRef.current[idx];
@@ -2808,6 +2812,7 @@ export const App: React.FC = () => {
           });
         }}
         onCloseFocused={() => {
+          lastSheetClosedAtRef.current = performance.now();
           stopPlanetariumBriefing();
           setSelectedNodeIdx(-1);
           setZoomHoverNodeIdx(-1);
@@ -2965,6 +2970,12 @@ export const App: React.FC = () => {
         searchQuery={searchQuery}
         onClearSearchQuery={() => setSearchQuery('')}
         mobileSheetOpen={isMobileViewport && Boolean(focusedSignal)}
+        onBackToResults={() => {
+          lastSheetClosedAtRef.current = performance.now();
+          setSelectedNodeIdx(-1);
+          setBlastWaveActiveForNodeIdx(-1);
+          physicsWorkerRef.current?.postMessage({ type: 'SELECT_NODE', nodeIndex: -1 });
+        }}
         isStaticPublicMode={isStaticPublicMode}
         staticBakedAtMs={staticBakedAtMs}
         onDismissHint={() => setShowCalibrationHint(false)}
@@ -3047,44 +3058,6 @@ export const App: React.FC = () => {
           onDismissWelcome={dismissWelcome}
           onStopTour={stop15sTour}
         />
-      )}
-
-      {/* Z-35: Mobile <768px Persistent Bottom Switcher [Feed | Radar] */}
-      {isMobileViewport && !focusedSignal && (
-        <div
-          role="tablist"
-          aria-label="Mobile View Switcher"
-          className="fixed bottom-2.5 left-1/2 -translate-x-1/2 z-[35] md:hidden cockpit-obsidian inline-grid grid-cols-2 p-1 rounded-full border border-white/15 shadow-2xl"
-        >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={viewMode === 'FEED'}
-            onClick={() => handleSwitchViewMode('FEED')}
-            className={`inline-flex items-center justify-center gap-1.5 min-h-[36px] px-3.5 rounded-full font-mono text-[11px] font-semibold whitespace-nowrap transition-colors cursor-pointer ${
-              viewMode === 'FEED'
-                ? 'bg-teal-500/22 text-teal-100 border border-teal-400/50'
-                : 'text-zinc-400 hover:text-zinc-200 border border-transparent'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5 text-teal-300 shrink-0" />
-            <span>Feed</span>
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={viewMode === 'RADAR'}
-            onClick={() => handleSwitchViewMode('RADAR')}
-            className={`inline-flex items-center justify-center gap-1.5 min-h-[36px] px-3.5 rounded-full font-mono text-[11px] font-semibold whitespace-nowrap transition-colors cursor-pointer ${
-              viewMode === 'RADAR'
-                ? 'bg-teal-500/22 text-teal-100 border border-teal-400/50'
-                : 'text-zinc-400 hover:text-zinc-200 border border-transparent'
-            }`}
-          >
-            <Orbit className="w-3.5 h-3.5 text-teal-300 shrink-0" />
-            <span>Radar</span>
-          </button>
-        </div>
       )}
 
       {/* Z-45: Instant Command Palette (Ctrl+K / /) */}

@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { truncateAtWordBoundary } from '../shared/provenance';
+import { parseGitHubReleaseMetadata, truncateAtWordBoundary } from '../shared/provenance';
 import type { RawUpstreamSignal } from '../shared/seed72h';
 import type {
   AdapterId,
@@ -381,11 +381,16 @@ function parseUniversalFeedXml(
       const stableKey = stripHtmlAndEntities(guidMatch?.[1] || link || `${cleanTitle}-${idx}`)
         .replace(/[^a-zA-Z0-9_-]/g, '')
         .slice(-36);
+      const relMeta =
+        sourceType === 'GHRelease' || /github\.com\/[^/\s]+\/[^/\s]+\/releases\/tag\//i.test(link)
+          ? parseGitHubReleaseMetadata(cleanTitle, link, originName)
+          : null;
+      const finalTitle = relMeta ? relMeta.displayTitle : cleanTitle;
 
       return {
         id: `${feedId}-${stableKey || idx}`,
-        title: cleanTitle,
-        summary: cleanSummary || cleanTitle,
+        title: finalTitle,
+        summary: cleanSummary || finalTitle,
         url: link,
         source: sourceType,
         sourceCategory: category,

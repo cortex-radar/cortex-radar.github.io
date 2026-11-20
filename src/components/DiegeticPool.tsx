@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Activity,
+  ArrowLeft,
   BookOpen,
   Check,
   ChevronLeft,
@@ -26,12 +27,14 @@ import {
 } from 'lucide-react';
 import {
   buildDeterministicLiteracyPayload,
+  enforceEpistemicAndDomainFidelity,
   inferDomainEnterpriseStacks,
   matchGlossaryTextSegments,
   sanitizeLiteracyPayloadPlainLevels,
 } from '../../shared/literacyEngine';
 import {
-  getIndependentSourceCount,
+  analyzeClusterCoverage,
+  getSignalReleaseMetadata,
   isNonToolNewsOrMarketSignal,
 } from '../../shared/provenance';
 import { computeDivergenceMetrics } from '../../shared/supernovaEngine';
@@ -1134,10 +1137,15 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 }
               : cachedGpuLit
             : baseDetLit;
-          // Guarantee zero Markdown pipe soup and clean "a"/"an" grammar on L1/L2 across both Rules and GPU synthesis
-          const lit = sanitizeLiteracyPayloadPlainLevels(rawLit);
+          // Guarantee zero Markdown pipe soup, clean grammar, and v2.2 epistemic/non-tool/release fidelity
+          const lit = enforceEpistemicAndDomainFidelity(
+            effectiveSignal,
+            sanitizeLiteracyPayloadPlainLevels(rawLit),
+            activeClient
+          );
 
-          const cleanHeadline = stripSignalOriginPrefix(effectiveSignal);
+          const relMeta = getSignalReleaseMetadata(effectiveSignal);
+          const cleanHeadline = relMeta ? relMeta.displayTitle : stripSignalOriginPrefix(effectiveSignal);
 
           const originBadge =
             effectiveSignal.originFeedName ||
@@ -1198,8 +1206,8 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
           const distinctQuoteNets = Array.from(new Set(quotes.map((q) => q.network)));
           const hasRealCrossPlatformQuotes =
             !focusedSignal.isDemoSeed && distinctQuoteNets.length >= 2;
-          const groupedSourceCount = getIndependentSourceCount(effectiveSignal);
-          const isMultiSource = focusedSignal.isSupernova || groupedSourceCount >= 2;
+          const coverage = analyzeClusterCoverage(effectiveSignal);
+          const isMultiSource = focusedSignal.isSupernova || coverage.relatedLinkCount >= 2;
           const isNonToolNews = isNonToolNewsOrMarketSignal(effectiveSignal);
           const isPlainBubble = activeLevel <= 2 && !showCrossfire;
           const focusedTerm = activeGlossaryTerm || lit.glossary[0] || null;
@@ -1303,12 +1311,10 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
 
                   {isMultiSource ? (
                     <span
-                      title={`Corroborated across ${groupedSourceCount} linked sources. ${THIRD_PARTY_SOURCE_DISCLAIMER}`}
+                      title={`${coverage.provenanceHeadlineLabel}. ${THIRD_PARTY_SOURCE_DISCLAIMER}`}
                       className="px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 tabular-nums"
                     >
-                      {groupedSourceCount >= 2
-                        ? `Multi-Source · ${groupedSourceCount} Sources`
-                        : 'Multi-Source'}
+                      {coverage.relatedLinkCount >= 2 ? coverage.headerBadgeLabel : 'Multi-Source'}
                     </span>
                   ) : (
                     <span
@@ -1337,27 +1343,46 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 </div>
 
                 <div className="flex items-center gap-1 shrink-0">
-                  {viewMode === 'FEED' && onSwitchToRadar && (
+                  {isMobileViewport && viewMode === 'FEED' ? (
                     <button
                       type="button"
-                      onClick={onSwitchToRadar}
-                      title="Locate this orb on 3D Radar"
-                      className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-teal-500/14 hover:bg-teal-500/24 border border-teal-400/35 font-mono text-[10px] text-teal-200 cursor-pointer transition-colors"
+                      onPointerDown={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        onCloseFocused();
+                      }}
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md bg-teal-500/18 hover:bg-teal-500/28 border border-teal-400/45 font-mono text-[10.5px] font-semibold text-teal-100 cursor-pointer transition-colors min-h-[36px]"
                     >
-                      <Orbit className="w-3 h-3" />
-                      <span>Radar</span>
+                      <ArrowLeft className="w-3 h-3 shrink-0" />
+                      <span>Back to results</span>
                     </button>
+                  ) : (
+                    <>
+                      {viewMode === 'FEED' && onSwitchToRadar && (
+                        <button
+                          type="button"
+                          onClick={onSwitchToRadar}
+                          title="Locate this orb on 3D Radar"
+                          className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-teal-500/14 hover:bg-teal-500/24 border border-teal-400/35 font-mono text-[10px] text-teal-200 cursor-pointer transition-colors"
+                        >
+                          <Orbit className="w-3 h-3" />
+                          <span>Radar</span>
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        onClick={onCloseFocused}
+                        className={`rounded-md hover:bg-zinc-800/80 text-zinc-400 hover:text-zinc-100 cursor-pointer shrink-0 flex items-center justify-center ${
+                          isMobileViewport ? 'min-h-[44px] min-w-[44px] -mr-2' : 'p-1'
+                        }`}
+                        title="Close Reader (Esc)"
+                      >
+                        <X className={isMobileViewport ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
+                      </button>
+                    </>
                   )}
-                  <button
-                    type="button"
-                    onClick={onCloseFocused}
-                    className={`rounded-md hover:bg-zinc-800/80 text-zinc-400 hover:text-zinc-100 cursor-pointer shrink-0 flex items-center justify-center ${
-                      isMobileViewport ? 'min-h-[44px] min-w-[44px] -mr-2' : 'p-1'
-                    }`}
-                    title="Close Reader (Esc)"
-                  >
-                    <X className={isMobileViewport ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
-                  </button>
                 </div>
               </div>
 
@@ -1443,17 +1468,29 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-mono tabular-nums text-zinc-400">
                   {!isNonToolNews ? (
                     <>
-                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-zinc-900/80 border border-white/8 text-zinc-200">
+                      <span
+                        className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded border ${
+                          relMeta?.isPreRelease
+                            ? 'bg-amber-500/14 border-amber-400/35 text-amber-200'
+                            : 'bg-zinc-900/80 border-white/8 text-zinc-200'
+                        }`}
+                      >
                         <span
                           className={`h-1.5 w-1.5 rounded-full ${
-                            focusedSignal.readiness === 'GA'
+                            relMeta
+                              ? relMeta.isPreRelease
+                                ? 'bg-amber-400'
+                                : 'bg-emerald-400'
+                              : focusedSignal.readiness === 'GA'
                               ? 'bg-emerald-400'
                               : focusedSignal.readiness === 'PREVIEW'
                               ? 'bg-amber-400'
                               : 'bg-violet-400'
                           }`}
                         />
-                        {isPlainBubble
+                        {relMeta
+                          ? relMeta.stabilityLabel
+                          : isPlainBubble
                           ? focusedSignal.readiness === 'GA'
                             ? 'Ready Today'
                             : focusedSignal.readiness === 'PREVIEW'

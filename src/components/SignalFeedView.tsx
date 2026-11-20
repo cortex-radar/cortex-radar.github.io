@@ -15,12 +15,18 @@ import {
 } from 'lucide-react';
 import {
   buildDeterministicLiteracyPayload,
+  enforceEpistemicAndDomainFidelity,
   sanitizeLiteracyPayloadPlainLevels,
 } from '../../shared/literacyEngine';
 import {
+  analyzeClusterCoverage,
+  extractPublisherDisplayName,
   getEventLastUpdatedMs,
   getGroupedSourcesForSignal,
+  getSignalReleaseMetadata,
+  inferSupportingLinkRole,
   isPrimarySourceSignal,
+  parseGitHubReleaseMetadata,
 } from '../../shared/provenance';
 import {
   LITERACY_LEVELS,
@@ -95,6 +101,16 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [pngSavedId, setPngSavedId] = useState<string | null>(null);
   const cardRefs = useRef<Map<number, HTMLElement | null>>(new Map());
+  const feedScrollRef = useRef<HTMLDivElement | null>(null);
+  const savedScrollTopRef = useRef<number>(0);
+  const prevDetailOpenRef = useRef<boolean>(hasSelectedDetailOpen);
+
+  const openSignalCard = (nodeIndex: number) => {
+    if (feedScrollRef.current) {
+      savedScrollTopRef.current = feedScrollRef.current.scrollTop;
+    }
+    onSelectSignal(nodeIndex);
+  };
 
   const nowMs = Date.now();
 
@@ -115,17 +131,36 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
   }, [signals, primaryOnly, groupedOnly, sortBy]);
 
   useEffect(() => {
-    if (selectedNodeIdx < 0) return;
+    if (isMobileViewport || selectedNodeIdx < 0) return;
     const el = cardRefs.current.get(selectedNodeIdx);
     if (el) {
       el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
-  }, [selectedNodeIdx]);
+  }, [selectedNodeIdx, isMobileViewport]);
+
+  useEffect(() => {
+    const wasOpen = prevDetailOpenRef.current;
+    prevDetailOpenRef.current = hasSelectedDetailOpen;
+    if (wasOpen && !hasSelectedDetailOpen && isMobileViewport) {
+      const targetScroll = savedScrollTopRef.current;
+      requestAnimationFrame(() => {
+        if (feedScrollRef.current) {
+          feedScrollRef.current.scrollTop = targetScroll;
+        }
+      });
+    }
+  }, [hasSelectedDetailOpen, isMobileViewport]);
 
   return (
     <div
+      ref={feedScrollRef}
+      onScroll={(e) => {
+        if (!hasSelectedDetailOpen) {
+          savedScrollTopRef.current = e.currentTarget.scrollTop;
+        }
+      }}
       aria-label="Signal Feed View"
-      className={`fixed inset-0 z-[19] overflow-y-auto overscroll-contain bg-[#09090B]/92 backdrop-blur-md pointer-events-auto pt-[116px] md:pt-[92px] 2xl:pt-[58px] pb-[90px] md:pb-8 px-3 md:px-5 transition-all ${
+      className={`fixed inset-0 z-[19] overflow-y-auto overscroll-contain bg-[#09090B]/92 backdrop-blur-md pointer-events-auto pt-[116px] md:pt-[92px] 2xl:pt-[58px] pb-8 px-3 md:px-5 transition-all ${
         !isMobileViewport && hasSelectedDetailOpen
           ? 'md:pr-[376px] lg:pr-[436px] xl:pr-[468px]'
           : ''
@@ -308,7 +343,9 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
               const sec = SECTOR_BY_ID[signal.primarySector];
               const isSelected = nodeIndex === selectedNodeIdx;
               const isPrimary = isPrimarySourceSignal(signal);
-              const groupedSources = getGroupedSourcesForSignal(signal);
+              const coverage = analyzeClusterCoverage(signal);
+              const groupedSources = coverage.groupedLinks;
+              const relMeta = getSignalReleaseMetadata(signal);
               const lastUpdatedMs = getEventLastUpdatedMs(signal);
               const isEventExpanded = Boolean(expandedEventIds[signal.id]);
               const heroMedia = (signal.mediaItems || []).find(
@@ -317,8 +354,12 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                   !m.url.startsWith('data:image/svg+xml') &&
                   !brokenImages[m.url]
               );
-              const lit = sanitizeLiteracyPayloadPlainLevels(
-                signal.literacy || buildDeterministicLiteracyPayload(signal, 'BANKING')
+              const lit = enforceEpistemicAndDomainFidelity(
+                signal,
+                sanitizeLiteracyPayloadPlainLevels(
+                  signal.literacy || buildDeterministicLiteracyPayload(signal, 'BANKING')
+                ),
+                'BANKING'
               );
               const takeaway = getActiveLensTakeaway(signal, lit, activeLiteracyLevel);
               const cleanTitle = getCleanDisplayHeadline(signal, activeLiteracyLevel);
@@ -336,7 +377,7 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                   }}
                 >
                   <ObsidianPanel
-                    onClick={() => onSelectSignal(nodeIndex)}
+                    onClick={() => openSignalCard(nodeIndex)}
                     className={`p-3.5 space-y-2.5 border transition-colors cursor-pointer ${
                       isSelected
                         ? 'border-teal-400/65 bg-teal-500/[0.06] shadow-[0_0_24px_rgba(45,212,191,0.12)]'
@@ -365,6 +406,18 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                           <Shield className="w-2.5 h-2.5" />
                           <span>{isPrimary ? 'Primary' : 'Commentary'}</span>
                         </span>
+
+                        {relMeta && (
+                          <span
+                            className={`px-1.5 py-0.5 rounded border text-[9.5px] font-medium ${
+                              relMeta.isPreRelease
+                                ? 'bg-amber-500/14 border-amber-400/35 text-amber-200'
+                                : 'bg-teal-500/12 border-teal-400/30 text-teal-200'
+                            }`}
+                          >
+                            {relMeta.stabilityLabel}
+                          </span>
+                        )}
 
                         <span
                           className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded border ${
@@ -440,7 +493,7 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                       )}
                     </div>
 
-                    {/* Grouped Multi-Source Event Strip */}
+                    {/* Grouped Multi-Link Event Strip */}
                     {groupedSources.length >= 2 && (
                       <div
                         onClick={(e) => e.stopPropagation()}
@@ -460,12 +513,12 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                           <span className="inline-flex items-center gap-1.5 min-w-0 truncate">
                             <Layers className="w-3 h-3 text-teal-400 shrink-0" />
                             <span className="truncate font-medium">
-                              One development · {groupedSources.length} sources · Updated{' '}
+                              {coverage.provenanceHeadlineLabel} · Updated{' '}
                               {formatRelativeAgeShort(lastUpdatedMs, nowMs)} ago
                             </span>
                           </span>
                           <span className="inline-flex items-center gap-1 text-[9.5px] text-teal-300 shrink-0">
-                            <span>{isEventExpanded ? 'Hide' : 'Sources'}</span>
+                            <span>{isEventExpanded ? 'Hide' : 'Links'}</span>
                             {isEventExpanded ? (
                               <ChevronUp className="w-3 h-3" />
                             ) : (
@@ -476,32 +529,51 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
 
                         {isEventExpanded && (
                           <div className="divide-y divide-white/6 border-t border-teal-400/20 bg-zinc-950/75">
-                            {groupedSources.map((srcItem) => (
-                              <a
-                                key={srcItem.url}
-                                href={srcItem.url}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="flex items-center justify-between gap-2 px-2.5 py-1.5 hover:bg-white/[0.03] text-[11px] text-zinc-300"
-                              >
-                                <span className="inline-flex items-center gap-1.5 min-w-0">
-                                  <span
-                                    className={`px-1 py-0.2 rounded border font-mono text-[8.5px] shrink-0 ${
-                                      srcItem.isPrimary
-                                        ? 'bg-emerald-500/12 border-emerald-400/35 text-emerald-200'
-                                        : 'bg-zinc-900 border-white/10 text-zinc-400'
-                                    }`}
-                                  >
-                                    {srcItem.isPrimary ? 'Primary' : 'Commentary'}
+                            {groupedSources.map((srcItem, linkIdx) => {
+                              const role = inferSupportingLinkRole(srcItem, linkIdx === 0);
+                              const publisher = extractPublisherDisplayName(srcItem);
+                              const sRel = parseGitHubReleaseMetadata(srcItem.title, srcItem.url);
+                              const rowLabel = sRel?.versionLabel
+                                ? `${publisher} · ${sRel.versionLabel}`
+                                : publisher;
+                              const ageStr = srcItem.publishedAtMs
+                                ? `${formatRelativeAgeShort(srcItem.publishedAtMs, nowMs)} ago`
+                                : '';
+                              return (
+                                <a
+                                  key={srcItem.url}
+                                  href={srcItem.url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  title={srcItem.title}
+                                  className="flex items-center justify-between gap-2 px-2.5 py-1.5 hover:bg-white/[0.03] font-mono text-[10px] tabular-nums text-zinc-300"
+                                >
+                                  <span className="inline-flex items-center gap-1.5 min-w-0">
+                                    <span
+                                      className={`px-1.5 py-0.5 rounded border text-[8.5px] shrink-0 ${
+                                        role === 'Primary'
+                                          ? 'bg-emerald-500/12 border-emerald-400/35 text-emerald-200'
+                                          : role === 'Release candidate' ||
+                                            role === 'Alpha' ||
+                                            role === 'Beta' ||
+                                            role === 'Preview'
+                                          ? 'bg-amber-500/14 border-amber-400/35 text-amber-200'
+                                          : 'bg-zinc-900 border-white/10 text-zinc-300'
+                                      }`}
+                                    >
+                                      {role}
+                                    </span>
+                                    <span className="text-zinc-200 font-medium truncate">
+                                      {rowLabel}
+                                    </span>
                                   </span>
-                                  <span className="font-mono text-[9.5px] text-zinc-400 shrink-0">
-                                    {srcItem.source}
+                                  <span className="inline-flex items-center gap-1 text-zinc-500 shrink-0">
+                                    {ageStr && <span>{ageStr}</span>}
+                                    <ExternalLink className="w-2.5 h-2.5 shrink-0" />
                                   </span>
-                                  <span className="truncate">{srcItem.title}</span>
-                                </span>
-                                <ExternalLink className="w-2.5 h-2.5 shrink-0 text-zinc-500" />
-                              </a>
-                            ))}
+                                </a>
+                              );
+                            })}
                           </div>
                         )}
                       </div>
@@ -537,7 +609,7 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                         <InstrumentButton
                           size="xs"
                           variant={isSelected ? 'accent' : 'default'}
-                          onClick={() => onSelectSignal(nodeIndex)}
+                          onClick={() => openSignalCard(nodeIndex)}
                           className="min-h-[34px] px-2.5"
                         >
                           <span>{isSelected ? 'Inspecting' : 'Evidence'}</span>

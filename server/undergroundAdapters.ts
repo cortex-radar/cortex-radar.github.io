@@ -3,11 +3,18 @@ import path from 'node:path';
 import { Client, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
 import {
   buildDeterministicLiteracyPayload,
+  enforceEpistemicAndDomainFidelity,
   enforceZeroJargonL1,
   isSubstantiveVividMetaphor,
   simplifyPlainEnglishL2,
   stripTrailingIncompleteClause,
 } from '../shared/literacyEngine';
+import {
+  getSignalReleaseMetadata,
+  hasTechnicalEngineeringContent,
+  isHedgedOrUnverifiedClaim,
+  truncateAtWordBoundary,
+} from '../shared/provenance';
 import {
   type RawUpstreamSignal,
   synthesizeRawItemToSpatialSignal,
@@ -1890,6 +1897,9 @@ export async function runTriEngineLiteracySpectrum(params: {
     .slice(0, 3)
     .map((g) => g.term)
     .join(', ');
+  const isTechnicalSignal = hasTechnicalEngineeringContent(params.signal);
+  const isHedgedClaim = isHedgedOrUnverifiedClaim(params.signal);
+  const relMeta = getSignalReleaseMetadata(params.signal);
 
   const normPrimaryUrl = (params.signal.url || '')
     .trim()
@@ -1915,6 +1925,20 @@ export async function runTriEngineLiteracySpectrum(params: {
     (params.signal.rawAbstract || params.signal.title).slice(0, 2800)
   );
 
+  const domainConstraintBlock = !isTechnicalSignal
+    ? `NO TECHNICAL SPECS IN SOURCE: This source contains NO software/hardware engineering specs. NEVER invent Context Window, RAG, FinOps Cascade, latency, token throughput, VRAM, parameters, or benchmarks. Keep glossary as []. In levels["5"].architectureBrief explicitly begin with "Source provides no technical specifications or architecture details."`
+    : glossaryTermsHint
+    ? `Required Level 3 Glossary Terms (mention verbatim in Level 3 bridgeSummary): ${glossaryTermsHint}`
+    : '';
+
+  const epistemicConstraintBlock = isHedgedClaim
+    ? `EPISTEMIC FIDELITY REQUIRED: The source uses hedged or unverified language (may / claims / purports / reportedly / unverified). Preserve this uncertainty across plainTitle, plainFullTitle, and ALL levels 1-5. NEVER rewrite this as a settled fact or confirmed breakthrough.`
+    : '';
+
+  const releaseConstraintBlock = relMeta
+    ? `GITHUB RELEASE IDENTITY REQUIRED: Keep exact product & tag "${relMeta.displayTitle}" (${relMeta.stabilityLabel}) in plainTitle and plainFullTitle; ${relMeta.isPreRelease ? 'never label this pre-release as Production GA.' : 'cite the stable version accurately.'}`
+    : '';
+
   const schemaPrompt = `You are a Principal AI Technical Writer & Architecture Strategist translating this source-linked signal into a rich, insightful 5-level literacy JSON object for a ${clientInd} audience.
 
 Primary Origin Source: ${params.signal.originFeedName || params.signal.source} (${params.signal.url})
@@ -1931,39 +1955,40 @@ ${
   topQuotesContext
     ? `Real Community Engineer Replies (cite these objections/praise in Level 5 streetConsensus):\n- ${topQuotesContext}\n`
     : ''
-}Required Level 3 Glossary Terms (mention verbatim in Level 3 bridgeSummary): ${glossaryTermsHint}
-
+}${domainConstraintBlock ? `${domainConstraintBlock}\n` : ''}${
+    epistemicConstraintBlock ? `${epistemicConstraintBlock}\n` : ''
+  }${releaseConstraintBlock ? `${releaseConstraintBlock}\n` : ''}
 STRICT ANTI-VAGUENESS & DEPTH RULES:
 1. NO TELEGRAPHIC FRAGMENTS OR FORTUNE-COOKIE TRUISMS: Never output vague 6-word filler like "AI agents help solve mysteries", "Tasks vary from small to complex", or "Positive early results, awaiting validation".
-2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Explicitly start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (a kitchen prep line, library desk, post office sorting room, hospital chart clipboard, thermostat, or highway lane). NEVER explain "AI agents" by saying "AI agents do X". STRICTLY BAN technical acronyms in Level 1 (no LLM, RAG, KV, MCP, VRAM, API, GPU, parameters, tokens, weights). Write levels["1"].everydayWhy as 1-2 full, natural human sentences.
-3. PRIMARY FACT ALIGNMENT & NON-TOOL NEWS: Anchor plainTitle, plainFullTitle, Level 1, and Level 2 whatHappened strictly to the Primary Headline and Primary Post Body above so AI Synthesis never contradicts the verbatim source headline or excerpt. For non-tool corporate/market/policy news (IPOs, funding, legal rulings), use whoBuiltIt for key organizations involved and problemSolved for why the development matters.
-4. LEVEL 5 MUST BE CONCRETE & DENSE (2-3 substantive technical sentences per block): Extract specific architectural mechanisms, sandboxing/auth boundaries, named tools/models, numbers/benchmarks, observed failure modes, and real community engineer objections or praise directly from the Post Body and Replies above. Never repeat the same sentence across sections.
+2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Explicitly start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (a kitchen prep line, library desk, post office sorting room, hospital chart clipboard, thermostat, or highway lane). Strictly ban technical acronyms in Level 1. Write levels["1"].everydayWhy as 1-2 full, natural human sentences.
+3. PRIMARY FACT & EPISTEMIC ALIGNMENT: Anchor plainTitle, plainFullTitle, Level 1, and Level 2 whatHappened strictly to the Primary Headline and Primary Post Body above. Preserve uncertainty words (may, claims, reportedly, unverified) when present, and NEVER invent technical specs on non-engineering business/IPO/legal/social signals.
+4. LEVEL 5 MUST BE CONCRETE & ACCURATE: Extract real architectural mechanisms/metrics ONLY when actually present in the source; otherwise explicitly state "Source provides no technical specifications or architecture details." and summarize concrete factual/operational implications. Never repeat the same sentence across sections.
 
 Return ONLY valid JSON matching this exact structure:
 {
-  "plainTitle": "Humanized outcome-focused badge <=42 chars, zero jargon",
-  "plainFullTitle": "Specific plain-English headline <=88 chars",
+  "plainTitle": "${relMeta ? relMeta.displayTitle : 'Humanized outcome-focused badge <=48 chars, zero jargon'}",
+  "plainFullTitle": "${relMeta ? relMeta.displayTitle : 'Specific plain-English headline <=96 chars'}",
   "levels": {
     "1": {
-      "analogy": "2-3 full sentences starting with 'Think of it like...' or 'Imagine...' using a concrete physical metaphor tied to this post's exact mechanism. Zero technical acronyms.",
+      "analogy": "2-3 full sentences starting with 'Think of it like...' or 'Imagine...' using a concrete physical metaphor tied strictly to the source facts/uncertainty.",
       "everydayWhy": "1-2 full natural human sentences explaining why everyday people or workers care."
     },
     "2": {
-      "whatHappened": "2 clear plain-English sentences detailing the exact concrete facts, findings, or experiment in the post.",
-      "whoBuiltIt": "Exact lab team, open-source project, researcher, or subreddit practitioner.",
-      "problemSolved": "1-2 plain sentences on the specific real-world bottleneck or failure mode addressed."
+      "whatHappened": "2 clear plain-English sentences detailing the exact concrete facts or claims in the post without exaggerating certainty.",
+      "whoBuiltIt": "Exact lab team, open-source project, author, or organization.",
+      "problemSolved": "1-2 plain sentences on the real-world problem, claim, or business shift addressed."
     },
     "3": {
-      "bridgeSummary": "2-3 clear builder sentences explaining how the technical mechanism works and explicitly using ${glossaryTermsHint}."
+      "bridgeSummary": "${isTechnicalSignal && glossaryTermsHint ? `2-3 clear builder sentences explaining how the mechanism works and explicitly using ${glossaryTermsHint}.` : '2-3 clear factual sentences explaining operational/domain significance without fabricating engineering specs.'}"
     },
     "4": {
-      "roiAndFinOps": "2 sentences on concrete unit-cost, throughput, or workflow efficiency impact.",
-      "readinessAndRisk": "2 sentences on ${params.signal.readiness} production readiness, sandboxing, and ${clientInd} compliance risk.",
-      "clientAdvice": "1-2 concrete architectural/pilot recommendations for a ${clientInd} leadership team."
+      "roiAndFinOps": "2 sentences on concrete operational, cost, or strategic impact grounded strictly in source facts.",
+      "readinessAndRisk": "2 sentences on realistic maturity, uncertainty/pre-release status, and ${clientInd} governance attention.",
+      "clientAdvice": "1-2 concrete, grounded recommendations for a ${clientInd} leadership team."
     },
     "5": {
-      "architectureBrief": "2-3 dense technical sentences citing exact architecture, protocols, sandboxing/auth, or experimental method from the post.",
-      "specsAndCaveats": "2-3 dense technical sentences citing distinct quantitative metrics, failure modes, edge cases, or scaling caveats.",
+      "architectureBrief": "${isTechnicalSignal ? '2-3 dense technical sentences citing exact architecture, protocols, or experimental method from the post.' : 'Begin verbatim with: Source provides no technical specifications or architecture details. Then summarize concrete factual/operational details from the source in 1-2 sentences.'}",
+      "specsAndCaveats": "2-3 concrete sentences citing verified metrics/release channel OR explicitly noting absence of specs/benchmarks.",
       "streetConsensus": "2 sentences summarizing the specific praise/objections from the Real Community Engineer Replies above (or 'Awaiting peer replication (newly indexed paper/release)' if zero replies exist)."
     }
   }
@@ -1974,12 +1999,13 @@ Return ONLY valid JSON matching this exact structure:
     engineId: SynthesisEngineId
   ): LiteracySpectrumPayload => {
     const rawL1 = parsed.levels?.[1];
-    const cleanGlossary: GlossaryTerm[] =
-      Array.isArray(parsed.glossary) && parsed.glossary.length >= 2
-        ? parsed.glossary
-            .filter((g) => g && typeof g.term === 'string' && typeof g.definition === 'string')
-            .slice(0, 5)
-        : baseFallback.glossary;
+    const cleanGlossary: GlossaryTerm[] = !isTechnicalSignal
+      ? baseFallback.glossary
+      : Array.isArray(parsed.glossary) && parsed.glossary.length >= 2
+      ? parsed.glossary
+          .filter((g) => g && typeof g.term === 'string' && typeof g.definition === 'string')
+          .slice(0, 5)
+      : baseFallback.glossary;
 
     // Guarantee Level 1 analogy is a genuine multi-sentence vivid metaphor (>22 words), never a 6-word truism!
     const candidateAnalogy = rawL1?.analogy ? enforceZeroJargonL1(rawL1.analogy) : '';
@@ -2000,11 +2026,15 @@ Return ONLY valid JSON matching this exact structure:
       txt.trim().split(/\s+/).length < 9 ||
       /tasks vary from small to complex|positive early results,?\s*awaiting/i.test(txt);
 
-    return {
-      plainTitle: enforceZeroJargonL1(parsed.plainTitle || baseFallback.plainTitle).slice(0, 48),
-      plainFullTitle: enforceZeroJargonL1(
-        parsed.plainFullTitle || baseFallback.plainFullTitle
-      ).slice(0, 105),
+    const assembled: LiteracySpectrumPayload = {
+      plainTitle: truncateAtWordBoundary(
+        enforceZeroJargonL1(parsed.plainTitle || baseFallback.plainTitle),
+        48
+      ),
+      plainFullTitle: truncateAtWordBoundary(
+        enforceZeroJargonL1(parsed.plainFullTitle || baseFallback.plainFullTitle),
+        96
+      ),
       levels: {
         1: {
           analogy: enforceZeroJargonL1(finalAnalogy),
@@ -2052,6 +2082,8 @@ Return ONLY valid JSON matching this exact structure:
       glossary: cleanGlossary,
       generatedBy: engineId,
     };
+
+    return enforceEpistemicAndDomainFidelity(params.signal, assembled, params.clientIndustry);
   };
 
   if (targetEngine === 'OLLAMA') {

@@ -505,6 +505,7 @@ export function getZoomBand(zoom: number): SemanticZoomBand {
 
 export interface StaticGalaxySnapshot {
   version: 1;
+  promptVersion?: string;
   bakedAtIso: string;
   bakedAtMs: number;
   synthesizedBy: string;

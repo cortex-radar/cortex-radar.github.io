@@ -3,7 +3,7 @@ import {
   inferDomainEnterpriseStacks,
   stripHtmlMarkupAndEntities,
 } from './literacyEngine';
-import { truncateAtWordBoundary } from './provenance';
+import { parseGitHubReleaseMetadata, truncateAtWordBoundary } from './provenance';
 import {
   computeDivergenceMetrics,
   extractCanonicalEntity,
@@ -1006,8 +1006,21 @@ export function synthesizeRawItemToSpatialSignal(
     secondarySectors.push(primarySector === 'SCI' ? 'ARC' : 'ECO');
   }
 
+  const relMeta =
+    raw.source === 'GHRelease' || /github\.com\/[^/\s]+\/[^/\s]+\/releases\/tag\//i.test(raw.url || '')
+      ? parseGitHubReleaseMetadata(raw.title, raw.url, raw.originFeedName)
+      : null;
+
   const readiness: ReadinessState =
-    raw.source === 'arXiv' ? 'RESEARCH' : hay.includes('preview') || hay.includes('beta') ? 'PREVIEW' : 'GA';
+    raw.source === 'arXiv'
+      ? 'RESEARCH'
+      : relMeta
+      ? relMeta.isPreRelease
+        ? 'PREVIEW'
+        : 'GA'
+      : /\b(preview|beta|alpha|-rc\d*)\b/i.test(hay)
+      ? 'PREVIEW'
+      : 'GA';
 
   const risk: RiskLevel =
     primarySector === 'GOV' || hay.includes('vulnerab') || hay.includes('exploit')
@@ -1025,11 +1038,12 @@ export function synthesizeRawItemToSpatialSignal(
 
   const originLabel = raw.originFeedName || raw.source;
   const escapedOrigin = originLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const displayTitle = stripHtmlMarkupAndEntities(raw.title)
+  const rawDisplayTitle = stripHtmlMarkupAndEntities(raw.title)
     .replace(new RegExp(`^${escapedOrigin}\\s*[:—-]\\s*`, 'i'), '')
     .replace(/^(?:OpenAI News|Google DeepMind|Anthropic News|Meta AI Eng|HF Paper|arXiv)\s*:\s*/i, '')
     .replace(/^r\/[A-Za-z0-9_]+:\s*/i, '')
     .trim();
+  const displayTitle = relMeta ? relMeta.displayTitle : rawDisplayTitle;
 
   const cleanTitle = displayTitle
     .replace(/^\[[^\]]+\]\s*/, '')
@@ -1041,10 +1055,11 @@ export function synthesizeRawItemToSpatialSignal(
     labelWords = labelWords.slice(0, -1);
   }
   const joinedLabel = labelWords.join(' ');
-  const shortLabel =
-    joinedLabel.length <= 32
-      ? joinedLabel || raw.source
-      : `${joinedLabel.slice(0, 30).replace(/\s+\S*$/, '')}…`;
+  const shortLabel = relMeta
+    ? relMeta.displayTitle
+    : joinedLabel.length <= 32
+    ? joinedLabel || raw.source
+    : `${joinedLabel.slice(0, 30).replace(/\s+\S*$/, '')}…`;
 
   const baseScore = raw.score ?? 80;
   const mass = Math.min(4.2, Math.max(1.6, 1.8 + Math.log10(Math.max(10, baseScore)) * 0.65));

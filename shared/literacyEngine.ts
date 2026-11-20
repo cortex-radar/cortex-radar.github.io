@@ -5,6 +5,12 @@ import {
   LiteracySpectrumPayload,
   SpatialSignal,
 } from './types';
+import {
+  getSignalReleaseMetadata,
+  hasTechnicalEngineeringContent,
+  isHedgedOrUnverifiedClaim,
+  isNonToolNewsOrMarketSignal,
+} from './provenance';
 
 /**
  * Strictly banned technical acronyms & jargon words in Level 1 (Zero-Jargon Everyday Analogy).
@@ -995,16 +1001,40 @@ function resolveBuilderIdentity(sig: SpatialSignal): string {
   return builder;
 }
 
+function truncateWordBoundaryPlain(text: string, maxChars: number): string {
+  const clean = (text || '').replace(/\s+/g, ' ').trim();
+  if (!clean || clean.length <= maxChars) return clean;
+  const slice = clean.slice(0, maxChars - 1);
+  const lastSpace = slice.lastIndexOf(' ');
+  const trimmed = lastSpace >= Math.floor((maxChars - 1) * 0.45) ? slice.slice(0, lastSpace) : slice;
+  return `${trimmed.replace(/[,;:\-–—(\s]+$/g, '').trim()}…`;
+}
+
 function humanizeDynamicPlainTitle(sig: SpatialSignal): { plainTitle: string; plainFullTitle: string } {
+  const relMeta = getSignalReleaseMetadata(sig);
+  if (relMeta) {
+    return {
+      plainTitle: relMeta.displayTitle,
+      plainFullTitle: relMeta.displayTitle,
+    };
+  }
+
   const cleanTitle = stripOriginPrefixFromHeadline(sig.title, sig.originFeedName);
   const stripped = enforceZeroJargonL1(cleanTitle);
-  const shortPlain =
-    stripped.length <= 44 ? stripped : `${stripped.slice(0, 41).replace(/\s+\S*$/, '')}…`;
-  const fullPlain =
-    stripped.length <= 96 ? stripped : `${stripped.slice(0, 93).replace(/\s+\S*$/, '')}…`;
+
+  if (isHedgedOrUnverifiedClaim(sig)) {
+    const hedgedHeadline = cleanTitle.trim() || stripped;
+    return {
+      plainTitle: truncateWordBoundaryPlain(hedgedHeadline, 64),
+      plainFullTitle: truncateWordBoundaryPlain(hedgedHeadline, 112),
+    };
+  }
+
+  const shortPlain = truncateWordBoundaryPlain(stripped, 48);
+  const fullPlain = truncateWordBoundaryPlain(stripped, 96);
   return {
-    plainTitle: shortPlain || 'Practical AI Engineering Update',
-    plainFullTitle: fullPlain || cleanTitle.slice(0, 96),
+    plainTitle: shortPlain || 'Practical AI Update',
+    plainFullTitle: fullPlain || truncateWordBoundaryPlain(cleanTitle, 96),
   };
 }
 
@@ -1016,6 +1046,28 @@ function buildDynamicAnalogy(
   const groundedClause = facts.leadSentence
     ? ` Specifically, ${enforceZeroJargonL1(facts.leadSentence.slice(0, 190))}`
     : '';
+
+  if (isHedgedOrUnverifiedClaim(sig)) {
+    return {
+      analogy: enforceZeroJargonL1(
+        `Think of an unverified early announcement at a scientific conference — before anyone treats a dramatic claim as settled fact, independent researchers still need to check every step on paper.${groundedClause}`
+      ),
+      everydayWhy: enforceZeroJargonL1(
+        'Unverified claims remain tentative until independent domain experts reproduce or confirm the evidence.'
+      ),
+    };
+  }
+
+  if (isNonToolNewsOrMarketSignal(sig)) {
+    return {
+      analogy: enforceZeroJargonL1(
+        `Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool.${groundedClause}`
+      ),
+      everydayWhy: enforceZeroJargonL1(
+        'Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships.'
+      ),
+    };
+  }
 
   if (/\b(healthcare|clinical|hospital|patient|medical|doctor|nurse|care)\b/.test(hay)) {
     return {
@@ -1080,7 +1132,11 @@ function buildDynamicAnalogy(
 }
 
 export function selectRelevantGlossary(sig: SpatialSignal): GlossaryTerm[] {
-  const hay = `${sig.title} ${sig.rawAbstract} ${sig.architectBrief.summary} ${sig.architectBrief.integrationPattern}`;
+  if (!hasTechnicalEngineeringContent(sig)) {
+    return [];
+  }
+
+  const hay = `${sig.title} ${sig.rawAbstract}`;
   const matched: GlossaryTerm[] = [];
 
   for (const item of MASTER_GLOSSARY_BANK) {
@@ -1088,37 +1144,6 @@ export function selectRelevantGlossary(sig: SpatialSignal): GlossaryTerm[] {
       matched.push({ term: item.term, definition: item.definition });
     }
     if (matched.length >= 5) break;
-  }
-
-  // Ensure every signal always has at least 3 rich builder glossary pills for L3!
-  const defaults: GlossaryTerm[] = [
-    {
-      term: 'Context Window',
-      definition:
-        'A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request.',
-    },
-    {
-      term: 'RAG',
-      definition:
-        'Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data.',
-    },
-    {
-      term: 'FinOps Cascade',
-      definition:
-        'A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models.',
-    },
-    {
-      term: 'Agentic Tool Use',
-      definition:
-        'Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously.',
-    },
-  ];
-
-  for (const d of defaults) {
-    if (matched.length >= 4) break;
-    if (!matched.some((m) => m.term.toLowerCase() === d.term.toLowerCase())) {
-      matched.push(d);
-    }
   }
 
   return matched.slice(0, 5);
@@ -1257,6 +1282,22 @@ function buildDisjointL5Sections(
     .map((s) => s.trim())
     .filter((s) => s.length >= 24 && /[.!?]["')\]]*$/.test(s));
 
+  if (!hasTechnicalEngineeringContent(sig)) {
+    const isHedged = isHedgedOrUnverifiedClaim(sig);
+    const factualSummary =
+      completeSentences.length > 0
+        ? truncateOnSentenceBoundary(completeSentences.slice(0, 2).join(' '), 500)
+        : stripTrailingIncompleteClause(cleanHeadline);
+    const noTechPrefix = 'Source provides no technical specifications or architecture details.';
+    const architectureBrief = factualSummary
+      ? `${noTechPrefix} ${factualSummary}`
+      : noTechPrefix;
+    const specsAndCaveats = isHedged
+      ? `Unverified claim from ${sig.originFeedName || sig.source} — no reproducible benchmarks, proof artifacts, or technical specifications accompany this post.`
+      : `Non-engineering business, policy, or commentary signal (${sig.originFeedName || sig.source}) — no model weights, API specs, latency figures, or code parameters were published.`;
+    return { architectureBrief, specsAndCaveats };
+  }
+
   if (sig.modelSpecs) {
     const s = sig.modelSpecs;
     const specStr = `${s.modelFamily} (${s.license}) · $${s.inputCostPer1M.toFixed(2)}/$${s.outputCostPer1M.toFixed(2)} per 1M tok (cached $${s.cachedCostPer1M.toFixed(2)}) · ${s.contextWindowK}K ctx · ${s.ttftMs}ms TTFT · ${s.tokensPerSec} tok/s${
@@ -1305,28 +1346,33 @@ function buildDisjointL5Sections(
   if (specSentences.length > 0) {
     specsAndCaveats = truncateOnSentenceBoundary(specSentences.join(' '), 340);
   } else {
-    const isCommunityPost =
-      sig.source === 'Reddit' ||
-      sig.source === 'HackerNews' ||
-      sig.source === 'Bluesky' ||
-      sig.source === 'Discord';
-    if (isCommunityPost) {
-      const threadStats = sig.engagementVelocity?.badgeText
-        ? ` (${sig.engagementVelocity.badgeText})`
-        : '';
-      specsAndCaveats = `Community field report on ${sig.originFeedName || sig.source}${threadStats} — single-run empirical observation without controlled multi-seed benchmark tables; check Crossfire replies for independent reproduction.`;
+    const relMeta = getSignalReleaseMetadata(sig);
+    if (relMeta) {
+      specsAndCaveats = `GitHub ${relMeta.stabilityLabel.toLowerCase()} (${relMeta.owner}/${relMeta.repo} · ${relMeta.versionLabel}). Check release notes upstream for full changelog and breaking-change flags.`;
     } else {
-      const domainTag =
-        sig.source === 'arXiv'
-          ? 'arXiv preprint'
-          : sig.source === 'HuggingFace'
-          ? 'Hugging Face paper'
-          : sig.source === 'GHRelease' || sig.source === 'GitHub'
-          ? 'GitHub open-source repository'
-          : sig.originFeedName || sig.source;
-      specsAndCaveats = `Source artifact: ${domainTag} (${
-        sig.readiness === 'RESEARCH' ? 'Research Preprint' : sig.readiness
-      }). Refer to the upstream link for full hyperparameter tables and evaluation scripts.`;
+      const isCommunityPost =
+        sig.source === 'Reddit' ||
+        sig.source === 'HackerNews' ||
+        sig.source === 'Bluesky' ||
+        sig.source === 'Discord';
+      if (isCommunityPost) {
+        const threadStats = sig.engagementVelocity?.badgeText
+          ? ` (${sig.engagementVelocity.badgeText})`
+          : '';
+        specsAndCaveats = `Community field report on ${sig.originFeedName || sig.source}${threadStats} — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.`;
+      } else {
+        const domainTag =
+          sig.source === 'arXiv'
+            ? 'arXiv preprint'
+            : sig.source === 'HuggingFace'
+            ? 'Hugging Face paper'
+            : sig.source === 'GitHub'
+            ? 'GitHub open-source repository'
+            : sig.originFeedName || sig.source;
+        specsAndCaveats = `Source artifact: ${domainTag} (${
+          sig.readiness === 'RESEARCH' ? 'Research Preprint' : sig.readiness
+        }). Refer to the upstream link for full artifacts and methodology.`;
+      }
     }
   }
 
@@ -1373,7 +1419,26 @@ export function buildDeterministicLiteracyPayload(
     ? `Community discussion around "${facts.cleanHeadline}" — top comment (${realCommunityQuotes[0].author}): "${truncateCleanly(realCommunityQuotes[0].text, 220)}"`
     : `${resolvedBuilder} published "${facts.cleanHeadline}". Open the linked third-party source above for the full upstream breakdown.`;
 
+  const isTechnical = hasTechnicalEngineeringContent(sig);
+  const isHedged = isHedgedOrUnverifiedClaim(sig);
+  const isNonTool = isNonToolNewsOrMarketSignal(sig);
+  const relMeta = getSignalReleaseMetadata(sig);
+
   const dynamicProblemSolved = (() => {
+    if (isHedged) {
+      return `Explores an unverified claim or open question around "${truncateCleanly(
+        facts.cleanHeadline,
+        115
+      )}" — awaiting independent verification.`;
+    }
+    if (isNonTool) {
+      return facts.detailSentence && !usedDetailInWhatHappened
+        ? truncateCleanly(facts.detailSentence, 280)
+        : `Shapes vendor governance, funding expectations, or enterprise buying decisions around "${truncateCleanly(
+            facts.cleanHeadline,
+            100
+          )}" rather than shipping a software tool.`;
+    }
     if (
       facts.workflowSentence &&
       facts.workflowSentence !== facts.leadSentence &&
@@ -1426,36 +1491,58 @@ export function buildDeterministicLiteracyPayload(
 
   const coreMechanismSummary = facts.hasRichBody
     ? `${facts.leadSentence}${facts.detailSentence ? ` ${facts.detailSentence}` : ''}`.slice(0, 340)
-    : sig.architectBrief.summary;
+    : isTechnical
+    ? sig.architectBrief.summary
+    : `${resolvedBuilder} shared: "${facts.cleanHeadline}".`;
 
-  // Guarantee every glossary term appears verbatim inside L3 bridgeSummary so interactive dotted pills light up inline!
+  // Guarantee every glossary term appears verbatim inside L3 bridgeSummary only when technical
   const missingTerms = glossary
     .map((g) => g.term)
     .filter((t) => !coreMechanismSummary.toLowerCase().includes(t.toLowerCase()));
 
-  const l3Bridge =
-    `${coreMechanismSummary} ` +
-    (missingTerms.length > 0
-      ? `In stack terms, this connects to ${glossaryMentionList} (${sig.architectBrief.integrationPattern})`
-      : `Stack integration: ${sig.architectBrief.integrationPattern}`);
+  const l3Bridge = !isTechnical
+    ? isHedged
+      ? `Unverified claim reported by ${sig.originFeedName || sig.source}: ${coreMechanismSummary} No technical specifications, APIs, or reproducible proofs have been independently confirmed.`
+      : `${coreMechanismSummary} Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source.`
+    : `${coreMechanismSummary} ` +
+      (missingTerms.length > 0
+        ? `In stack terms, this connects to ${glossaryMentionList} (${sig.architectBrief.integrationPattern})`
+        : `Stack integration: ${sig.architectBrief.integrationPattern}`);
 
   const clientMeta = CLIENT_INDUSTRIES.find((c) => c.id === activeClient) || CLIENT_INDUSTRIES[0];
-  const readinessLabel =
-    sig.readiness === 'GA'
-      ? 'Production GA (ready for governed enterprise pilot)'
-      : sig.readiness === 'PREVIEW'
-      ? 'Public Preview (sandbox & non-critical canary workloads only)'
-      : 'R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs)';
+  const readinessLabel = relMeta
+    ? relMeta.isPreRelease
+      ? `${relMeta.stabilityLabel} (pre-release channel — test in non-production environments)`
+      : 'Stable Release (pin explicit version tags and review upstream changelog)'
+    : isHedged
+    ? 'Unverified External Report (wait for independent expert verification)'
+    : isNonTool
+    ? 'Market & Policy Signal (no software artifact to deploy)'
+    : sig.readiness === 'GA'
+    ? 'Production GA (ready for governed enterprise pilot)'
+    : sig.readiness === 'PREVIEW'
+    ? 'Public Preview (sandbox & non-critical canary workloads only)'
+    : 'R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs)';
 
-  const l4 = {
-    roiAndFinOps: facts.quantSentence
-      ? `${facts.quantSentence} (${sig.architectBrief.latencyAndCostNote})`
-      : `${facts.leadSentence || sig.cSuiteBrief.headlineSoWhat} (${sig.architectBrief.latencyAndCostNote})`,
-    readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Risk under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
-    clientAdvice:
-      sig.cSuiteBrief.industryLens[activeClient] ||
-      `For ${clientMeta.label}: validate "${facts.cleanHeadline.slice(0, 68)}" behind an audited gateway with domain evals before broad rollout.`,
-  };
+  const l4 = !isTechnical
+    ? {
+        roiAndFinOps: isHedged
+          ? `Unverified claim — do not base roadmap, procurement, or budget decisions on unconfirmed reports. ${facts.leadSentence || facts.cleanHeadline}`
+          : `${facts.leadSentence || facts.cleanHeadline} (Operational/market development — no direct token-cost or compute telemetry in source).`,
+        readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Attention under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
+        clientAdvice: isHedged
+          ? `For ${clientMeta.label}: monitor for independent verification before citing or acting on "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}".`
+          : `For ${clientMeta.label}: track vendor, regulatory, and counterparty implications of "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}" with legal and procurement leads.`,
+      }
+    : {
+        roiAndFinOps: facts.quantSentence
+          ? `${facts.quantSentence} (${sig.architectBrief.latencyAndCostNote})`
+          : `${facts.leadSentence || sig.cSuiteBrief.headlineSoWhat} (${sig.architectBrief.latencyAndCostNote})`,
+        readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Risk under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
+        clientAdvice:
+          sig.cSuiteBrief.industryLens[activeClient] ||
+          `For ${clientMeta.label}: validate "${facts.cleanHeadline.slice(0, 68)}" behind an audited gateway with domain evals before broad rollout.`,
+      };
 
   const disjointL5 = buildDisjointL5Sections(sig, facts.cleanHeadline);
 
@@ -1482,7 +1569,9 @@ export function buildDeterministicLiteracyPayload(
       ? 'Awaiting peer replication (newly indexed paper/release)'
       : sig.source === 'GHRelease' || sig.source === 'GitHub'
       ? 'Awaiting community benchmark runs (newly indexed repository release)'
-      : 'Awaiting independent engineer replication (newly indexed publication)';
+      : isHedged
+      ? 'Awaiting independent expert verification (unconfirmed upstream post)'
+      : 'Awaiting independent coverage confirmation (newly indexed publication)';
 
   const l5 = {
     architectureBrief: disjointL5.architectureBrief,
@@ -1490,17 +1579,231 @@ export function buildDeterministicLiteracyPayload(
     streetConsensus: topStreetQuotes || seedQuotes || honestZeroCommentStatus,
   };
 
+  return enforceEpistemicAndDomainFidelity(
+    sig,
+    {
+      plainTitle: dynamicTitles.plainTitle,
+      plainFullTitle: dynamicTitles.plainFullTitle,
+      levels: {
+        1: l1,
+        2: l2,
+        3: { bridgeSummary: l3Bridge },
+        4: l4,
+        5: l5,
+      },
+      glossary,
+      generatedBy: 'DETERMINISTIC',
+    },
+    activeClient,
+    true
+  );
+}
+
+const HEDGE_MARKER_REGEX =
+  /\b(may|might|could|claims?|claimed|purports?|reportedly|allegedly|unverified|unconfirmed|rumou?r(?:ed)?|tentative|awaiting|not (?:yet |independently )?verified|potential(?:ly)?|speculat)\b/i;
+
+const ASSERTIVE_SOLVE_REGEX =
+  /\b(solves|solved|proves|proved|proven|confirmed|achieves|achieved|breakthrough)\b/i;
+
+const FABRICATED_TECH_SPEC_REGEX =
+  /\b(context window|rag|retrieval[- ]augmented|finops cascade|agentic tool use|tokens?\/s|tok\/s|vram|ttft|kv[- ]cache|quantiz\w*|hyperparameters?|fine[- ]tun\w*|mixture of experts|control(?:ling)? trading volume|inference latency|parameter counts?|benchmark tables?|evaluation scripts?|cuda|triton|q?lora|peft|rlhf)\b/gi;
+
+function preserveUncertaintyInProse(text: string): string {
+  const cleaned = (text || '').trim();
+  if (!cleaned) return cleaned;
+
+  let out = cleaned
+    .replace(/\bAI solves\b/gi, 'Unverified claim suggests AI may have solved')
+    .replace(
+      /(?<!\b(?:may|might|could)\s+have\s+)\b(?:has|was)\s+been\s+solved\b/gi,
+      'may have been solved (unverified)'
+    )
+    .replace(/\bis\s+solved\b/gi, 'may be solved (unverified)')
+    .replace(
+      /(?<!\b(?:potentially|possibly|reportedly|allegedly)\s+)\bsolving\s+a\b/gi,
+      'potentially addressing a'
+    )
+    .replace(
+      /(?<!\b(?:potentially|possibly|reportedly|allegedly)\s+)\bsolving\b/gi,
+      'potentially solving'
+    )
+    .replace(
+      /(?<!\b(?:claims?\s+to|purports?\s+to|may|might|could)\s+)\bsolves\b/gi,
+      'claims to solve'
+    )
+    .replace(
+      /(?<!\b(?:may|might|could)\s+have\s+been\s+)(?<!\b(?:may|might|could)\s+have\s+)(?<!\b(?:may|might|could)\s+be\s+)(?<!\b(?:reportedly|allegedly|purportedly|potentially)\s+)\bsolved\b/gi,
+      'purportedly solved'
+    )
+    .replace(/(?<!\b(?:reportedly|allegedly|purportedly)\s+)\bproved\b/gi, 'purportedly proved')
+    .replace(/(?<!\b(?:claims?\s+to|purports?\s+to)\s+)\bproves\b/gi, 'claims to prove');
+
+  if (!HEDGE_MARKER_REGEX.test(out)) {
+    const lowerLead = out.charAt(0).toLowerCase() + out.slice(1);
+    out = `Reportedly (unverified): ${lowerLead}`;
+  }
+  return out;
+}
+
+function hasUnbackedHeadlineNumbersOrSuperlatives(
+  headline: string,
+  sourceHaystackLower: string
+): boolean {
+  if (!headline) return false;
+  if (/\blargest\s+(?:ipo\s+)?in\s+history\b/i.test(headline) && !sourceHaystackLower.includes('largest')) {
+    return true;
+  }
+  const currencyMatches = headline.match(/\$\d+(?:\.\d+)?\s*(?:t|trillion|b|billion|m|million)?/gi);
+  if (!currencyMatches) return false;
+  return currencyMatches.some((amt) => !sourceHaystackLower.includes(amt.toLowerCase()));
+}
+
+function hasUnbackedTechSpecs(text: string, sourceHaystackLower: string): boolean {
+  const matches = (text || '').match(FABRICATED_TECH_SPEC_REGEX);
+  if (!matches) return false;
+  return matches.some((m) => !sourceHaystackLower.includes(m.toLowerCase()));
+}
+
+/**
+ * Post-synthesis epistemic, non-engineering, and release-identity fidelity gate applied to BOTH
+ * baked LLM payloads (Ollama/Gemini/GitHub Models) and runtime deterministic payloads.
+ */
+export function enforceEpistemicAndDomainFidelity(
+  sig: SpatialSignal,
+  payload: LiteracySpectrumPayload,
+  activeClient: ClientIndustry = 'BANKING',
+  skipDeterministicRecursion = false
+): LiteracySpectrumPayload {
+  const isHedged = isHedgedOrUnverifiedClaim(sig);
+  const isTechnical = hasTechnicalEngineeringContent(sig);
+  const isNonTool = isNonToolNewsOrMarketSignal(sig);
+  const relMeta = getSignalReleaseMetadata(sig);
+  const sourceHayLower = `${sig.title || ''} ${sig.rawAbstract || ''}`.toLowerCase();
+
+  let plainTitle = payload.plainTitle;
+  let plainFullTitle = payload.plainFullTitle;
+  let l1 = { ...payload.levels[1] };
+  let l2 = { ...payload.levels[2] };
+  let l3 = { ...payload.levels[3] };
+  let l4 = { ...payload.levels[4] };
+  let l5 = { ...payload.levels[5] };
+  let glossary = [...(payload.glossary || [])];
+
+  // 1. Preserve GitHub product + full version tag + prerelease markers (never drop -rc2 / -alpha.1 or show GA)
+  if (relMeta) {
+    const hasProductAndVersion = (txt: string) =>
+      txt.toLowerCase().includes(relMeta.productName.toLowerCase()) &&
+      txt.toLowerCase().includes(relMeta.versionLabel.toLowerCase());
+    if (!hasProductAndVersion(plainTitle)) {
+      plainTitle = relMeta.displayTitle;
+    }
+    if (!hasProductAndVersion(plainFullTitle)) {
+      plainFullTitle = relMeta.displayTitle;
+    }
+    if (relMeta.isPreRelease) {
+      l4.readinessAndRisk = (l4.readinessAndRisk || '').replace(
+        /\bProduction\s+GA\b/gi,
+        `${relMeta.stabilityLabel} (Pre-release)`
+      );
+      l5.specsAndCaveats = (l5.specsAndCaveats || '').replace(
+        /\bProduction\s+GA\b|\bGA release\b/gi,
+        relMeta.stabilityLabel
+      );
+    }
+  }
+
+  // 2. Block unbacked currency/valuation superlatives fabricated in headlines
+  if (hasUnbackedHeadlineNumbersOrSuperlatives(plainTitle, sourceHayLower)) {
+    plainTitle = humanizeDynamicPlainTitle(sig).plainTitle;
+  }
+  if (hasUnbackedHeadlineNumbersOrSuperlatives(plainFullTitle, sourceHayLower)) {
+    plainFullTitle = humanizeDynamicPlainTitle(sig).plainFullTitle;
+  }
+
+  // 3. Preserve hedged / unverified epistemic qualifiers across titles + ALL 5 lenses
+  if (isHedged) {
+    const safeHeadline = humanizeDynamicPlainTitle(sig);
+    const titleLostHedge = (txt: string) =>
+      !HEDGE_MARKER_REGEX.test(txt) ||
+      (ASSERTIVE_SOLVE_REGEX.test(txt) && !/\bmay have\b|\bclaims?\b|\breportedly\b|\bunverified\b/i.test(txt));
+
+    if (titleLostHedge(plainTitle)) {
+      plainTitle = safeHeadline.plainTitle;
+    }
+    if (titleLostHedge(plainFullTitle)) {
+      plainFullTitle = safeHeadline.plainFullTitle;
+    }
+
+    l1 = {
+      analogy: preserveUncertaintyInProse(l1.analogy),
+      everydayWhy: preserveUncertaintyInProse(l1.everydayWhy),
+    };
+    l2 = {
+      whatHappened: preserveUncertaintyInProse(l2.whatHappened),
+      whoBuiltIt: l2.whoBuiltIt,
+      problemSolved: preserveUncertaintyInProse(l2.problemSolved),
+    };
+    l3 = {
+      bridgeSummary: preserveUncertaintyInProse(l3.bridgeSummary),
+    };
+    l4 = {
+      ...l4,
+      roiAndFinOps: preserveUncertaintyInProse(l4.roiAndFinOps),
+      readinessAndRisk: preserveUncertaintyInProse(l4.readinessAndRisk),
+      clientAdvice: preserveUncertaintyInProse(l4.clientAdvice),
+    };
+    l5 = {
+      ...l5,
+      architectureBrief: preserveUncertaintyInProse(l5.architectureBrief),
+      specsAndCaveats: preserveUncertaintyInProse(l5.specsAndCaveats),
+    };
+  }
+
+  // 3. Block fabricated technical specs / fake glossary pills on non-engineering stories
+  if (!isTechnical) {
+    glossary = isNonTool
+      ? []
+      : glossary.filter((g) => sourceHayLower.includes(g.term.toLowerCase()));
+
+    const det = skipDeterministicRecursion
+      ? null
+      : buildDeterministicLiteracyPayload(sig, activeClient);
+
+    if (det && hasUnbackedTechSpecs(l3.bridgeSummary, sourceHayLower)) {
+      l3 = { bridgeSummary: det.levels[3].bridgeSummary };
+    }
+    if (det && hasUnbackedTechSpecs(l4.roiAndFinOps, sourceHayLower)) {
+      l4.roiAndFinOps = det.levels[4].roiAndFinOps;
+    }
+    if (det && isNonTool && /\baudit(?:ed)? gateway\b|\bRAG\b|\bContext Window\b/i.test(l4.clientAdvice)) {
+      l4.clientAdvice = det.levels[4].clientAdvice;
+    }
+    if (det && hasUnbackedTechSpecs(l5.architectureBrief, sourceHayLower)) {
+      l5.architectureBrief = det.levels[5].architectureBrief;
+    }
+    if (det && hasUnbackedTechSpecs(l5.specsAndCaveats, sourceHayLower)) {
+      l5.specsAndCaveats = det.levels[5].specsAndCaveats;
+    }
+
+    const noSpecNote = 'Source provides no technical specifications or architecture details.';
+    if (!/no technical specifications or architecture details/i.test(l5.architectureBrief || '')) {
+      l5.architectureBrief = l5.architectureBrief
+        ? `${noSpecNote} ${l5.architectureBrief}`
+        : noSpecNote;
+    }
+  }
+
   return {
-    plainTitle: dynamicTitles.plainTitle,
-    plainFullTitle: dynamicTitles.plainFullTitle,
+    ...payload,
+    plainTitle,
+    plainFullTitle,
     levels: {
       1: l1,
       2: l2,
-      3: { bridgeSummary: l3Bridge },
+      3: l3,
       4: l4,
       5: l5,
     },
     glossary,
-    generatedBy: 'DETERMINISTIC',
   };
 }

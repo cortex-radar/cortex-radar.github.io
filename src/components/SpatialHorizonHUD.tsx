@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   AlertTriangle,
+  ArrowLeft,
   Compass,
   Cpu,
   FastForward,
@@ -79,6 +80,7 @@ interface SpatialHorizonHUDProps {
   searchQuery?: string;
   onClearSearchQuery?: () => void;
   mobileSheetOpen?: boolean;
+  onBackToResults?: () => void;
   isStaticPublicMode?: boolean;
   staticBakedAtMs?: number | null;
   onDismissHint: () => void;
@@ -142,6 +144,7 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
   searchQuery = '',
   onClearSearchQuery,
   mobileSheetOpen = false,
+  onBackToResults,
   isStaticPublicMode = false,
   staticBakedAtMs = null,
   onDismissHint,
@@ -289,81 +292,101 @@ export const SpatialHorizonHUD: React.FC<SpatialHorizonHUDProps> = ({
               <span className="cockpit-heading font-sans text-xs font-semibold text-zinc-100 tracking-tight">
                 CORTEX
               </span>
-              <button
-                type="button"
-                onClick={onToggleOnlyNewFilter}
-                className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded font-mono text-[10px] tabular-nums border cursor-pointer ${
-                  onlyNewFilterActive
-                    ? 'bg-teal-500/20 border-teal-400/50 text-teal-200'
-                    : 'bg-zinc-900 border-white/10 text-zinc-300'
-                }`}
-              >
-                <span
-                  className={`h-1.5 w-1.5 rounded-full ${
-                    newSignalsCount > 0 ? 'bg-teal-400 animate-pulse' : 'bg-zinc-500'
+              {!(mobileSheetOpen && viewMode === 'FEED') && (
+                <button
+                  type="button"
+                  onClick={onToggleOnlyNewFilter}
+                  className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded font-mono text-[10px] tabular-nums border cursor-pointer ${
+                    onlyNewFilterActive
+                      ? 'bg-teal-500/20 border-teal-400/50 text-teal-200'
+                      : 'bg-zinc-900 border-white/10 text-zinc-300'
                   }`}
-                />
-                <span>{newSignalsCount > 0 ? `+${newSignalsCount}` : '0'}</span>
-              </button>
+                >
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${
+                      newSignalsCount > 0 ? 'bg-teal-400 animate-pulse' : 'bg-zinc-500'
+                    }`}
+                  />
+                  <span>{newSignalsCount > 0 ? `+${newSignalsCount}` : '0'}</span>
+                </button>
+              )}
 
-              <div
-                role="tablist"
-                aria-label="Mobile View Switch"
-                className="cockpit-well inline-grid grid-cols-2 p-0.5 rounded-[7px] shrink-0"
-              >
+              {mobileSheetOpen && viewMode === 'FEED' && onBackToResults ? (
                 <button
                   type="button"
-                  role="tab"
-                  aria-selected={viewMode === 'RADAR'}
-                  onClick={() => onSelectViewMode('RADAR')}
-                  className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-[5px] font-mono text-[10px] cursor-pointer transition-colors ${
-                    viewMode === 'RADAR'
-                      ? 'bg-zinc-800 text-teal-200 border border-teal-400/35 font-semibold'
-                      : 'text-zinc-400 border border-transparent'
-                  }`}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onBackToResults();
+                  }}
+                  className="inline-flex items-center gap-1.5 min-h-[34px] px-2.5 py-1 rounded-[7px] bg-teal-500/18 hover:bg-teal-500/28 border border-teal-400/45 font-mono text-[10.5px] font-semibold text-teal-100 cursor-pointer shrink-0 transition-colors"
                 >
-                  <Orbit className="w-2.5 h-2.5 shrink-0" />
-                  <span>Radar</span>
+                  <ArrowLeft className="w-3 h-3 shrink-0" />
+                  <span>Back to results</span>
                 </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={viewMode === 'FEED'}
-                  onClick={() => onSelectViewMode('FEED')}
-                  className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-[5px] font-mono text-[10px] cursor-pointer transition-colors ${
-                    viewMode === 'FEED'
-                      ? 'bg-zinc-800 text-teal-200 border border-teal-400/35 font-semibold'
-                      : 'text-zinc-400 border border-transparent'
-                  }`}
+              ) : (
+                <div
+                  role="tablist"
+                  aria-label="Mobile View Switch"
+                  className="cockpit-well inline-grid grid-cols-2 p-0.5 rounded-[7px] shrink-0"
                 >
-                  <Layers className="w-2.5 h-2.5 shrink-0" />
-                  <span>Feed</span>
-                </button>
-              </div>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={viewMode === 'RADAR'}
+                    onClick={() => onSelectViewMode('RADAR')}
+                    className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-[5px] font-mono text-[10px] cursor-pointer transition-colors ${
+                      viewMode === 'RADAR'
+                        ? 'bg-zinc-800 text-teal-200 border border-teal-400/35 font-semibold'
+                        : 'text-zinc-400 border border-transparent'
+                    }`}
+                  >
+                    <Orbit className="w-2.5 h-2.5 shrink-0" />
+                    <span>Radar</span>
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={viewMode === 'FEED'}
+                    onClick={() => onSelectViewMode('FEED')}
+                    className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-[5px] font-mono text-[10px] cursor-pointer transition-colors ${
+                      viewMode === 'FEED'
+                        ? 'bg-zinc-800 text-teal-200 border border-teal-400/35 font-semibold'
+                        : 'text-zinc-400 border border-transparent'
+                    }`}
+                  >
+                    <Layers className="w-2.5 h-2.5 shrink-0" />
+                    <span>Feed</span>
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="flex items-center gap-1.5 shrink-0">
-              <InstrumentButton
-                size="xs"
-                variant="accent"
-                active={briefingActive}
-                onClick={onToggleBriefing}
-                className="min-h-[34px] px-2.5 tabular-nums"
-              >
-                {briefingActive ? (
-                  <>
-                    <Square className="w-2.5 h-2.5 fill-current text-teal-300" />
-                    <span>
-                      {briefingStepIndex + 1}/{briefingTotalSteps}
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <Play className="w-3 h-3 fill-current text-teal-300" />
-                    <span>Briefing</span>
-                  </>
-                )}
-              </InstrumentButton>
+              {!(mobileSheetOpen && viewMode === 'FEED') && (
+                <InstrumentButton
+                  size="xs"
+                  variant="accent"
+                  active={briefingActive}
+                  onClick={onToggleBriefing}
+                  className="min-h-[34px] px-2.5 tabular-nums"
+                >
+                  {briefingActive ? (
+                    <>
+                      <Square className="w-2.5 h-2.5 fill-current text-teal-300" />
+                      <span>
+                        {briefingStepIndex + 1}/{briefingTotalSteps}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-3 h-3 fill-current text-teal-300" />
+                      <span>Briefing</span>
+                    </>
+                  )}
+                </InstrumentButton>
+              )}
 
               <InstrumentButton
                 size="icon"

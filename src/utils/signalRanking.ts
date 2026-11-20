@@ -1,3 +1,4 @@
+import { getSignalReleaseMetadata } from '../../shared/provenance';
 import { extractSpecificEntityTokens } from '../../shared/supernovaEngine';
 import type {
   LiteracyLevel,
@@ -182,6 +183,10 @@ export function getCleanDisplayHeadline(
   sig: SpatialSignal,
   level: LiteracyLevel
 ): string {
+  const relMeta = getSignalReleaseMetadata(sig);
+  if (relMeta) {
+    return relMeta.displayTitle;
+  }
   if (level <= 2 && sig.literacy?.plainFullTitle) {
     return sig.literacy.plainFullTitle;
   }

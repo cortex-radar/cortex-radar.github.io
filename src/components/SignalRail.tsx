@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Activity, PanelRightClose, PanelRightOpen, Sparkles } from 'lucide-react';
-import { getGroupedSourcesForSignal } from '../../shared/provenance';
+import { analyzeClusterCoverage } from '../../shared/provenance';
 import {
   LiteracyLevel,
   SECTOR_BY_ID,
@@ -119,12 +119,8 @@ export const SignalRail: React.FC<SignalRailProps> = ({
               const origin =
                 signal.originFeedName || (signal.isDemoSeed ? '72h Seed' : signal.source);
               const ups = signal.engagementVelocity?.likesOrUps ?? 0;
-              const groupedCount = getGroupedSourcesForSignal(signal).length;
-              const isMultiSource =
-                groupedCount >= 2 ||
-                signal.isSupernova ||
-                (signal.networkFamilies?.length || 0) >= 2 ||
-                (signal.sourceProvenance?.length || 0) >= 2;
+              const coverage = analyzeClusterCoverage(signal);
+              const showGroupPill = coverage.relatedLinkCount >= 2;
 
               return (
                 <button
@@ -159,12 +155,12 @@ export const SignalRail: React.FC<SignalRailProps> = ({
                         className="h-1.5 w-1.5 rounded-full shrink-0"
                       />
                       <span className="text-zinc-300 font-medium">{sec.code}</span>
-                      {isMultiSource && (
+                      {showGroupPill && (
                         <span
-                          title={`One development · ${Math.max(2, groupedCount)} independent third-party sources`}
+                          title={coverage.provenanceHeadlineLabel}
                           className="px-1 py-0.2 rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[8.5px]"
                         >
-                          {groupedCount >= 2 ? `${groupedCount} SRC` : 'MULTI'}
+                          {coverage.compactRailLabel}
                         </span>
                       )}
                       {isNew && (
@@ -194,7 +190,10 @@ export const SignalRail: React.FC<SignalRailProps> = ({
                       title="Headlines reflect linked third-party sources."
                       className="truncate"
                     >
-                      {origin} · {isMultiSource ? 'Multi-Source' : 'Source-Linked'}
+                      {origin} ·{' '}
+                      {coverage.relatedLinkCount >= 2
+                        ? coverage.headerBadgeLabel
+                        : 'Source-Linked'}
                     </span>
                     {ups > 0 ? (
                       <span className="inline-flex items-center gap-1 text-teal-300 shrink-0">
