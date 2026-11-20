@@ -10,9 +10,12 @@ import {
   stripTrailingIncompleteClause,
 } from '../shared/literacyEngine';
 import {
+  extractBenchmarkClaimSpec,
   getSignalReleaseMetadata,
   hasTechnicalEngineeringContent,
   isHedgedOrUnverifiedClaim,
+  isReleaseWithoutNotes,
+  stripUiChromeBoilerplate,
   truncateAtWordBoundary,
 } from '../shared/provenance';
 import {
@@ -1866,6 +1869,18 @@ export async function runTriEngineLiteracySpectrum(params: {
     };
   }
 
+  if (isReleaseWithoutNotes(params.signal)) {
+    return {
+      literacy: baseFallback,
+      hydratedQuotes,
+      preemptedBackgroundJob,
+      engineUsed: 'DETERMINISTIC',
+      modelUsed: 'CORTEX-No-Release-Notes-Guard',
+      tokensPerSec: 999,
+      latencyMs: 1,
+    };
+  }
+
   const exactKey = `${params.signal.id}-${clientInd}-OLLAMA`;
   const bankKey = `${params.signal.id}-BANKING-OLLAMA`;
   const normUrl = normalizeCacheUrl(params.signal.url);
@@ -1900,6 +1915,7 @@ export async function runTriEngineLiteracySpectrum(params: {
   const isTechnicalSignal = hasTechnicalEngineeringContent(params.signal);
   const isHedgedClaim = isHedgedOrUnverifiedClaim(params.signal);
   const relMeta = getSignalReleaseMetadata(params.signal);
+  const benchClaim = extractBenchmarkClaimSpec(params.signal);
 
   const normPrimaryUrl = (params.signal.url || '')
     .trim()
@@ -1922,7 +1938,7 @@ export async function runTriEngineLiteracySpectrum(params: {
     .join('\n- ');
 
   const fullPostContext = stripTrailingIncompleteClause(
-    (params.signal.rawAbstract || params.signal.title).slice(0, 2800)
+    stripUiChromeBoilerplate(params.signal.rawAbstract || params.signal.title).slice(0, 2800)
   );
 
   const domainConstraintBlock = !isTechnicalSignal
@@ -1937,6 +1953,10 @@ export async function runTriEngineLiteracySpectrum(params: {
 
   const releaseConstraintBlock = relMeta
     ? `GITHUB RELEASE IDENTITY REQUIRED: Keep exact product & tag "${relMeta.displayTitle}" (${relMeta.stabilityLabel}) in plainTitle and plainFullTitle; ${relMeta.isPreRelease ? 'never label this pre-release as Production GA.' : 'cite the stable version accurately.'}`
+    : '';
+
+  const benchmarkConstraintBlock = benchClaim
+    ? `BENCHMARK LOCK REQUIRED ACROSS ALL 5 LENSES: Any mention of "${benchClaim.multiplier}" MUST preserve ALL three elements together: (1) exact metric "${benchClaim.metric}", (2) exact comparison baseline "${benchClaim.baseline}", and (3) attribution "${benchClaim.attribution}". NEVER broaden the baseline to "modern CPUs" or "leading chips", and NEVER write unqualified "${benchClaim.multiplier} better" without metric + baseline.`
     : '';
 
   const schemaPrompt = `You are a Principal AI Technical Writer & Architecture Strategist translating this source-linked signal into a rich, insightful 5-level literacy JSON object for a ${clientInd} audience.
@@ -1957,7 +1977,9 @@ ${
     : ''
 }${domainConstraintBlock ? `${domainConstraintBlock}\n` : ''}${
     epistemicConstraintBlock ? `${epistemicConstraintBlock}\n` : ''
-  }${releaseConstraintBlock ? `${releaseConstraintBlock}\n` : ''}
+  }${releaseConstraintBlock ? `${releaseConstraintBlock}\n` : ''}${
+    benchmarkConstraintBlock ? `${benchmarkConstraintBlock}\n` : ''
+  }
 STRICT ANTI-VAGUENESS & DEPTH RULES:
 1. NO TELEGRAPHIC FRAGMENTS OR FORTUNE-COOKIE TRUISMS: Never output vague 6-word filler like "AI agents help solve mysteries", "Tasks vary from small to complex", or "Positive early results, awaiting validation".
 2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Explicitly start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (a kitchen prep line, library desk, post office sorting room, hospital chart clipboard, thermostat, or highway lane). Strictly ban technical acronyms in Level 1. Write levels["1"].everydayWhy as 1-2 full, natural human sentences.

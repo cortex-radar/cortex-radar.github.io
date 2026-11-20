@@ -30,12 +30,14 @@ import {
   enforceEpistemicAndDomainFidelity,
   inferDomainEnterpriseStacks,
   matchGlossaryTextSegments,
+  NO_RELEASE_NOTES_NOTICE,
   sanitizeLiteracyPayloadPlainLevels,
 } from '../../shared/literacyEngine';
 import {
   analyzeClusterCoverage,
   getSignalReleaseMetadata,
   isNonToolNewsOrMarketSignal,
+  isReleaseWithoutNotes,
 } from '../../shared/provenance';
 import { computeDivergenceMetrics } from '../../shared/supernovaEngine';
 import {
@@ -977,7 +979,15 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
 
   // Immediately trigger POST /api/synthesize/literacy whenever ANY focused orb currently has Rules copy!
   useEffect(() => {
-    if (isStaticPublicMode || !focusedSignal || userLockedRules || !preferredLiveEngine) return;
+    if (
+      isStaticPublicMode ||
+      !focusedSignal ||
+      userLockedRules ||
+      !preferredLiveEngine ||
+      isReleaseWithoutNotes(focusedSignal)
+    ) {
+      return;
+    }
     const autoKey = `${focusedSignal.id}-${activeClient}-${preferredLiveEngine}`;
     const defaultBankKey = `${focusedSignal.id}-BANKING-${preferredLiveEngine}`;
     const existing =
@@ -1207,6 +1217,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
           const hasRealCrossPlatformQuotes =
             !focusedSignal.isDemoSeed && distinctQuoteNets.length >= 2;
           const coverage = analyzeClusterCoverage(effectiveSignal);
+          const noReleaseNotes = isReleaseWithoutNotes(effectiveSignal);
           const isMultiSource = focusedSignal.isSupernova || coverage.relatedLinkCount >= 2;
           const isNonToolNews = isNonToolNewsOrMarketSignal(effectiveSignal);
           const isPlainBubble = activeLevel <= 2 && !showCrossfire;
@@ -1548,14 +1559,35 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 </div>
 
                 <h3 className="cockpit-heading text-[14.5px] font-semibold leading-[1.35] text-zinc-100">
-                  {isPlainBubble ? lit.plainFullTitle : cleanHeadline}
+                  {noReleaseNotes && relMeta
+                    ? `${relMeta.displayTitle} · ${relMeta.stabilityLabel}`
+                    : isPlainBubble
+                    ? lit.plainFullTitle
+                    : cleanHeadline}
                 </h3>
               </div>
 
-              {/* =============================================================== */}
-              {/* AI SYNTHESIS BOUNDARY + L1 -> L5 SCRUBBER TRACK                 */}
-              {/* =============================================================== */}
-              <div
+              {noReleaseNotes ? (
+                <div className="cockpit-well rounded-lg border border-white/10 p-3 space-y-2">
+                  <p className="font-mono text-[11px] text-zinc-300">
+                    {NO_RELEASE_NOTES_NOTICE}
+                  </p>
+                  <a
+                    href={focusedSignal.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-teal-500/14 hover:bg-teal-500/24 border border-teal-400/35 font-mono text-[10.5px] text-teal-200 transition-colors"
+                  >
+                    <span>Open Release on GitHub</span>
+                    <ExternalLink className="w-3 h-3 shrink-0" />
+                  </a>
+                </div>
+              ) : (
+                <>
+                  {/* =============================================================== */}
+                  {/* AI SYNTHESIS BOUNDARY + L1 -> L5 SCRUBBER TRACK                 */}
+                  {/* =============================================================== */}
+                  <div
                 className={
                   isMobileViewport
                     ? 'sticky top-0 z-20 -mx-4 px-4 py-2 bg-[#09090B]/95 backdrop-blur-md border-y border-white/10 space-y-1.5'
@@ -1915,9 +1947,11 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                   </div>
                 </div>
               )}
+                </>
+              )}
 
               {/* Affected Enterprise Stacks (L3-L5, Domain-Inferred — Zero Enum Leaks) */}
-              {activeLevel >= 3 && !showCrossfire && (
+              {activeLevel >= 3 && !showCrossfire && !noReleaseNotes && (
                 <div className="pt-2 border-t border-white/8">
                   <div className="flex items-center gap-1.5 text-[9.5px] font-mono uppercase tracking-wider text-zinc-500 mb-1.5">
                     <Layers className="w-3 h-3 text-zinc-400" />

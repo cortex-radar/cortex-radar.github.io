@@ -4,15 +4,19 @@ import assert from 'node:assert/strict';
 import {
   buildDeterministicLiteracyPayload,
   enforceEpistemicAndDomainFidelity,
+  NO_RELEASE_NOTES_NOTICE,
 } from '../shared/literacyEngine';
 import {
   analyzeClusterCoverage,
+  extractBenchmarkClaimSpec,
   extractPublisherDisplayName,
   getSignalReleaseMetadata,
   hasTechnicalEngineeringContent,
   inferSupportingLinkRole,
   isHedgedOrUnverifiedClaim,
+  isReleaseWithoutNotes,
   parseGitHubReleaseMetadata,
+  sanitizeReleaseNotesText,
 } from '../shared/provenance';
 import { synthesizeRawItemToSpatialSignal } from '../shared/seed72h';
 import type { LiteracySpectrumPayload, SpatialSignal, StaticGalaxySnapshot } from '../shared/types';
@@ -321,12 +325,161 @@ function runFixtureAssertions(): void {
   assert.equal(relCoverage.relatedLinkCount, 2);
   assert.equal(relCoverage.hasIndependentCorroboration, false);
   assert.equal(relCoverage.provenanceHeadlineLabel, '2 related links · Release history');
+
+  // 4. Ollama UI-Chrome Boilerplate Fixture
+  const pollutedOllamaSig = makeSyntheticSignal({
+    id: 'ghrel-ollama-polluted-test',
+    title: 'Ollama v0.40.17-rc3',
+    source: 'GHRelease',
+    sourceCategory: 'GH_RELEASE',
+    originFeedName: 'ollama Release',
+    readiness: 'PREVIEW',
+    url: 'https://github.com/ollama/ollama/releases/tag/v0.40.17-rc3',
+    rawAbstract:
+      'Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models. - Release v0.40.17-rc3 · ollama/ollama Choose a tag to compare Sorry, something went wrong. Filter Loading Sorry, something went wrong. Uh oh! There was an error while loading. Please reload this page. Assets 2 Loading',
+  });
+
+  const sanOllama = sanitizeReleaseNotesText(pollutedOllamaSig.rawAbstract, pollutedOllamaSig.title);
+  assert.equal(sanOllama.hadBoilerplate, true, 'Must detect GitHub page-shell boilerplate');
+  assert.equal(sanOllama.isEmptyOrUseless, true, 'Boilerplate-only release must flag isEmptyOrUseless');
+  assert.equal(sanOllama.cleanText, '', 'Boilerplate must be completely stripped');
+  assert.equal(isReleaseWithoutNotes(pollutedOllamaSig), true, 'Polluted release must be treated as no-notes');
+
+  const adversarialOllamaLlm: LiteracySpectrumPayload = {
+    plainTitle: 'Ollama Update',
+    plainFullTitle: 'Ollama v0.40.17-rc3',
+    levels: {
+      1: {
+        analogy: 'Imagine a kitchen prep line mixing models.',
+        everydayWhy: 'Adds Inkling 2 Mini though there were some loading errors reported.',
+      },
+      2: {
+        whatHappened:
+          'Release v0.40.17-rc3 adds Assets 2 Loading, though there were some loading errors reported.',
+        whoBuiltIt: 'Ollama',
+        problemSolved: 'Please reload this page.',
+      },
+      3: { bridgeSummary: 'Uses Open-Weights and Context Window despite loading errors reported.' },
+      4: {
+        roiAndFinOps: 'Reduces costs despite loading errors.',
+        readinessAndRisk: 'Production GA ready today.',
+        clientAdvice: 'Deploy immediately.',
+      },
+      5: {
+        architectureBrief: 'There was an error while loading.',
+        specsAndCaveats: 'Assets 2 Loading.',
+        streetConsensus: 'Awaiting peer replication',
+      },
+    },
+    glossary: [{ term: 'Context Window', definition: 'Fake' }],
+    generatedBy: 'OLLAMA',
+  };
+
+  const fixedPollutedOllama = enforceEpistemicAndDomainFidelity(
+    pollutedOllamaSig,
+    adversarialOllamaLlm,
+    'BANKING'
+  );
+  const detPollutedOllama = buildDeterministicLiteracyPayload(pollutedOllamaSig, 'BANKING');
+  for (const p of [fixedPollutedOllama, detPollutedOllama]) {
+    const dumped = JSON.stringify(p);
+    assert.ok(!/error while loading|please reload|loading errors reported|sorry,\s*something went wrong|assets 2/i.test(dumped),
+      `Polluted release payload leaked boilerplate or fake errors: ${dumped}`
+    );
+    assert.equal(p.glossary.length, 0, 'No-notes release must have empty glossary');
+    assert.ok(
+      p.levels[2].whatHappened.includes(NO_RELEASE_NOTES_NOTICE),
+      `Expected neutral no-notes fallback message, got: ${p.levels[2].whatHappened}`
+    );
+  }
+
+  // 5. Frostbite Quantitative Benchmark Lock Fixture (Metric + Baseline + Attribution across ALL 5 lenses)
+  const frostbiteSig = makeSyntheticSignal({
+    id: 'hn-frostbite-bench-test',
+    title: 'Frostbite: A new CPU architecture discovered, designed and verified by AI',
+    source: 'HackerNews',
+    sourceCategory: 'HN_COMMUNITY',
+    originFeedName: 'HN · architectlabs.com',
+    primarySector: 'ARC',
+    url: 'https://architectlabs.com/blog/frostbite',
+    rawAbstract:
+      'Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59× the performance per watt of a dual-issue, in-order CPU core.',
+  });
+
+  assert.equal(hasTechnicalEngineeringContent(frostbiteSig), true, 'Frostbite CPU signal must classify as technical');
+  const benchSpec = extractBenchmarkClaimSpec(frostbiteSig);
+  assert.ok(benchSpec, 'Frostbite signal must extract quantitative BenchmarkClaimSpec');
+  assert.equal(benchSpec.metric, 'performance per watt');
+  assert.ok(benchSpec.baseline.toLowerCase().includes('dual-issue, in-order cpu core'));
+  assert.equal(benchSpec.attribution, 'Architect Labs');
+
+  const adversarialFrostbiteLlm: LiteracySpectrumPayload = {
+    plainTitle: 'Frostbite CPU is 4.59x better than modern CPUs',
+    plainFullTitle: 'AI designs Frostbite CPU achieving 4.59x better efficiency than modern CPUs',
+    levels: {
+      1: {
+        analogy:
+          'Imagine a kitchen prep line that works 4.59x better than modern CPUs in every restaurant.',
+        everydayWhy: 'Electronics run cooler.',
+      },
+      2: {
+        whatHappened:
+          'AI systems designed a new CPU called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs.',
+        whoBuiltIt: 'Architect Labs',
+        problemSolved: 'Beats modern CPUs cleanly.',
+      },
+      3: {
+        bridgeSummary:
+          'Frostbite uses interaction nets to run 4.59x faster vs leading chips with zero compromises.',
+      },
+      4: {
+        roiAndFinOps: 'Data centers gain 4.59x better efficiency over traditional CPUs.',
+        readinessAndRisk: 'Early research silicon compared to current hardware.',
+        clientAdvice: 'Monitor hardware availability.',
+      },
+      5: {
+        architectureBrief: 'General-purpose CPU built around interaction nets verified end-to-end.',
+        specsAndCaveats: 'Reportedly 4.59x better than modern CPUs in internal benchmarks.',
+        streetConsensus: 'Awaiting independent silicon tape-out verification.',
+      },
+    },
+    glossary: [],
+    generatedBy: 'OLLAMA',
+  };
+
+  const fixedFrostbite = enforceEpistemicAndDomainFidelity(
+    frostbiteSig,
+    adversarialFrostbiteLlm,
+    'BANKING'
+  );
+  const detFrostbite = buildDeterministicLiteracyPayload(frostbiteSig, 'BANKING');
+
+  for (const p of [fixedFrostbite, detFrostbite]) {
+    const headlineDump = `${p.plainTitle} ${p.plainFullTitle}`;
+    assert.ok(!/modern cpus|leading chips/i.test(headlineDump), `Headline broadened baseline: ${headlineDump}`);
+    assert.ok(!/4\.59\s*[x×]\s*better\b/i.test(headlineDump), `Headline used unqualified 4.59x better: ${headlineDump}`);
+
+    const lensBlocks = [
+      `${p.levels[1].analogy} ${p.levels[1].everydayWhy}`,
+      `${p.levels[2].whatHappened} ${p.levels[2].problemSolved}`,
+      p.levels[3].bridgeSummary,
+      `${p.levels[4].roiAndFinOps} ${p.levels[4].readinessAndRisk} ${p.levels[4].clientAdvice}`,
+      `${p.levels[5].architectureBrief} ${p.levels[5].specsAndCaveats}`,
+    ];
+    lensBlocks.forEach((txt, idx) => {
+      assert.ok(!/modern cpus|leading chips|traditional cpus/i.test(txt), `L${idx + 1} broadened baseline: ${txt}`);
+      assert.ok(!/4\.59\s*[x×]\s*better\b/i.test(txt), `L${idx + 1} used unqualified 4.59x better: ${txt}`);
+      assert.ok(/performance per watt/i.test(txt), `L${idx + 1} missing exact metric "performance per watt": ${txt}`);
+      assert.ok(/dual-issue,\s*in-order cpu core/i.test(txt), `L${idx + 1} missing baseline "dual-issue, in-order CPU core": ${txt}`);
+      assert.ok(/architect labs/i.test(txt), `L${idx + 1} missing attribution "Architect Labs": ${txt}`);
+    });
+  }
 }
 
 function runLiveSnapshotAssertions(): void {
   assert.ok(fs.existsSync(SNAPSHOT_PATH), `Missing baked snapshot at ${SNAPSHOT_PATH}`);
   const snapshot = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf8')) as StaticGalaxySnapshot;
-  assert.equal(snapshot.promptVersion, 'v2.2', 'Snapshot must carry promptVersion v2.2');
+  assert.equal(snapshot.promptVersion, 'v2.2.1', 'Snapshot must carry promptVersion v2.2.1');
   assert.ok(Array.isArray(snapshot.signals) && snapshot.signals.length > 0, 'Snapshot must contain signals');
 
   const refNowMs = snapshot.bakedAtMs || Date.now();
@@ -340,6 +493,44 @@ function runLiveSnapshotAssertions(): void {
 
     const lit = snapshot.literacyBySignalId[sig.id] || sig.literacy;
     assert.ok(lit, `Missing literacy for ${sig.id}`);
+
+    const serializedSignalAndLit = `${sig.rawAbstract} ${JSON.stringify(lit)}`;
+    assert.ok(
+      !/error while loading|please reload this page|loading errors reported|sorry,\s*something went wrong/i.test(
+        serializedSignalAndLit
+      ),
+      `Live signal ${sig.id} leaked UI-chrome boilerplate: ${sig.title}`
+    );
+
+    if (isReleaseWithoutNotes(sig)) {
+      assert.ok(
+        lit.levels[2].whatHappened.includes(NO_RELEASE_NOTES_NOTICE),
+        `Live no-notes release ${sig.id} must use neutral NO_RELEASE_NOTES_NOTICE`
+      );
+      assert.equal(lit.glossary.length, 0, `Live no-notes release ${sig.id} must have empty glossary`);
+    }
+
+    const liveBench = extractBenchmarkClaimSpec(sig);
+    if (liveBench) {
+      const liveLensBlocks = [
+        `${lit.levels[1].analogy} ${lit.levels[1].everydayWhy}`,
+        `${lit.levels[2].whatHappened}`,
+        lit.levels[3].bridgeSummary,
+        `${lit.levels[4].roiAndFinOps}`,
+        `${lit.levels[5].architectureBrief} ${lit.levels[5].specsAndCaveats}`,
+      ];
+      liveLensBlocks.forEach((txt, idx) => {
+        assert.ok(!/modern cpus|leading chips/i.test(txt), `Live signal ${sig.id} L${idx + 1} broadened baseline: ${txt}`);
+        assert.ok(
+          txt.toLowerCase().includes(liveBench.metric.toLowerCase()),
+          `Live signal ${sig.id} L${idx + 1} missing metric ${liveBench.metric}`
+        );
+        assert.ok(
+          txt.toLowerCase().includes(liveBench.attribution.toLowerCase()),
+          `Live signal ${sig.id} L${idx + 1} missing attribution ${liveBench.attribution}`
+        );
+      });
+    }
 
     if (isHedgedOrUnverifiedClaim(sig)) {
       const checkedFields = [

@@ -196,7 +196,14 @@ export function extractVerbatimSourceExcerpt(sig: SpatialSignal): string {
     .replace(/\s+/g, ' ')
     .trim();
 
-  const cleanedRaw = stripHtmlMarkupAndEntities(sig.rawAbstract || '')
+  const isRel =
+    sig.source === 'GHRelease' ||
+    /github\.com\/[^/\s]+\/[^/\s]+\/releases\/tag\//i.test(sig.url || '');
+  const sanitizedInput = isRel
+    ? sanitizeReleaseNotesText(sig.rawAbstract || '', sig.title).cleanText
+    : stripUiChromeBoilerplate(sig.rawAbstract || '');
+
+  const cleanedRaw = stripHtmlMarkupAndEntities(sanitizedInput)
     .replace(/^\s*\|[^\n]*\|(?:\s*\n\s*\|[^\n]*\|)*/gm, ' ')
     .replace(/\bQuoted context:\s*/gi, 'Quoted: ')
     .replace(/\s*Reference:\s*https?:\/\/\S+/gi, '')
@@ -255,7 +262,7 @@ export function isHedgedOrUnverifiedClaim(
 }
 
 const CONCRETE_TECH_SPEC_REGEX =
-  /\b(api|apis|sdk|cli|weights|open[- ]source|open[- ]weights|benchmark|context window|tokens?\/s|tok\/s|latency|throughput|vram|tpu|cuda|rocm|gguf|fp8|fp16|int4|int8|quantiz(?:ed|ation)|fine-tun(?:e|ing|ed)|distill(?:ed|ation)|kv cache|mixture of experts|moe\b|mcp\b|tool[- ]calling|function calling|json schema|oauth|docker|kubernetes|helm|wasm|rust|python|typescript|pip install|npm install|brew install|v\d+\.\d+\.\d+)\b|\b\d+(?:\.\d+)?[bm]\s*(?:params?|parameters?)\b|\bgithub\.com\/|\bhuggingface\.co\/|\barxiv\.org\/abs\//i;
+  /\b(api|apis|sdk|cli|weights|open[- ]source|open[- ]weights|benchmark|context window|tokens?\/s|tok\/s|latency|throughput|vram|tpu|cuda|rocm|cpu|cpus|asic|fpga|silicon|rtl|superscalar|in-order|interaction nets|performance[- ]per[- ]watt|perf[- ]per[- ]watt|accelerator|instruction set|isa\b|gguf|fp8|fp16|int4|int8|quantiz(?:ed|ation)|fine-tun(?:e|ing|ed)|distill(?:ed|ation)|kv cache|mixture of experts|moe\b|mcp\b|tool[- ]calling|function calling|json schema|oauth|docker|kubernetes|helm|wasm|rust|python|typescript|pip install|npm install|brew install|v\d+\.\d+\.\d+)\b|\b\d+(?:\.\d+)?[bm]\s*(?:params?|parameters?)\b|\bgithub\.com\/|\bhuggingface\.co\/|\barxiv\.org\/abs\//i;
 
 /**
  * Returns true only when the upstream source is an inherently technical artifact (code release,
@@ -433,6 +440,7 @@ export function getSignalReleaseMetadata(
 
 const KNOWN_PUBLISHER_DISPLAY_BY_HOST: Record<string, string> = {
   'anthropic.com': 'Anthropic News',
+  'architectlabs.com': 'Architect Labs',
   'openai.com': 'OpenAI',
   'deepmind.google': 'Google DeepMind',
   'blog.google': 'Google Blog',
@@ -786,4 +794,160 @@ export function matchesSignalSearchQuery(sig: SpatialSignal, rawQuery: string): 
     .toLowerCase();
 
   return haystack.includes(q);
+}
+
+const UI_CHROME_LINE_PATTERNS: RegExp[] = [
+  /Uh oh!\s*There was an error while loading\.?/gi,
+  /There was an error while loading\.?/gi,
+  /Please reload this page\.?/gi,
+  /Sorry,\s*something went wrong\.?/gi,
+  /Choose a tag to compare/gi,
+  /Skip to content/gi,
+  /You signed in with another tab or window\.?/gi,
+  /You signed out in another tab or window\.?/gi,
+  /Reload to refresh your session\.?/gi,
+  /Could not load (?:tags|branches)\.?/gi,
+  /\bFilter\s+Loading\b/gi,
+  /\bAssets\s+\d+\s*(?:Loading)?\b/gi,
+  /\bLoading\s*…?/gi,
+];
+
+export function hasUiChromeBoilerplate(text: string): boolean {
+  const s = text || '';
+  return UI_CHROME_LINE_PATTERNS.some((rx) => {
+    rx.lastIndex = 0;
+    return rx.test(s);
+  });
+}
+
+export function stripUiChromeBoilerplate(text: string): string {
+  let out = stripHtmlMarkupAndEntities(text || '');
+  for (const rx of UI_CHROME_LINE_PATTERNS) {
+    out = out.replace(rx, ' ');
+  }
+  return out.replace(/\s+/g, ' ').trim();
+}
+
+export interface SanitizedReleaseNotesResult {
+  cleanText: string;
+  hadBoilerplate: boolean;
+  isEmptyOrUseless: boolean;
+}
+
+/**
+ * Cleans GitHub release notes (API body or Atom content), removing HTML page-shell chrome,
+ * repo <meta description> taglines, and bare tag banners. Flags polluted/empty releases so the
+ * pipeline never asks an LLM to hallucinate summaries over page error strings.
+ */
+export function sanitizeReleaseNotesText(
+  rawText: string,
+  titleOrTag = ''
+): SanitizedReleaseNotesResult {
+  const decoded = stripHtmlMarkupAndEntities(rawText || '');
+  const hadBoilerplate = hasUiChromeBoilerplate(decoded);
+  let cleaned = stripUiChromeBoilerplate(decoded);
+
+  // Strip GitHub HTML <meta description> banner: "<repo tagline> - Release <tag> · <owner>/<repo>"
+  cleaned = cleaned
+    .replace(
+      /^.{0,240}?\s+-\s+Release\s+[^\s·]+\s+·\s+[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\s*/i,
+      ''
+    )
+    .replace(/\bRelease\s+(?:[a-z]+-)?v?\d+\.\d+[^\s]*\s*·\s*[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+/gi, ' ')
+    .replace(/\bRelease\s+(?:[a-z]+-)?v?\d+\.\d+[^\s]*/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (titleOrTag) {
+    const bareTitle = stripHtmlMarkupAndEntities(titleOrTag).trim();
+    if (bareTitle && cleaned.toLowerCase() === bareTitle.toLowerCase()) {
+      cleaned = '';
+    }
+  }
+
+  // Empty, tag-only, or tiny commit stub (<48 chars) without substantive release notes
+  const isEmptyOrUseless = !cleaned || cleaned.length < 48;
+
+  return {
+    cleanText: isEmptyOrUseless ? '' : cleaned,
+    hadBoilerplate,
+    isEmptyOrUseless,
+  };
+}
+
+export function isReleaseWithoutNotes(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract' | 'url' | 'source' | 'originFeedName' | 'canonicalEntity'>
+): boolean {
+  if (!getSignalReleaseMetadata(sig)) return false;
+  return sanitizeReleaseNotesText(sig.rawAbstract || '', sig.title || '').isEmptyOrUseless;
+}
+
+export interface BenchmarkClaimSpec {
+  multiplier: string;
+  metric: string;
+  baseline: string;
+  attribution: string;
+  canonicalSentence: string;
+}
+
+const BENCHMARK_CLAIM_REGEX =
+  /(\b\d+(?:\.\d+)?\s*[x×]|\b\d+(?:\.\d+)?%)(?:\s+(?:the|better|higher|lower|faster|more|improved))?\s+(performance[- ]per[- ]watt|perf[- ]per[- ]watt|energy[- ]efficiency|power[- ]efficiency|memory[- ]efficiency|throughput|tokens?[- ]per[- ]second|tok\/s|latency|speedup)\s+(?:of|than|vs\.?|versus|compared\s+to|compared\s+with|over)\s+([^.;!\n]{5,110})/i;
+
+function normalizeBenchmarkMetric(rawMetric: string): string {
+  const lower = (rawMetric || '').trim().toLowerCase();
+  if (/^perf(?:ormance)?[- ]per[- ]watt$/.test(lower)) return 'performance per watt';
+  if (/^tokens?[- ]per[- ]second$|^tok\/s$/.test(lower)) return 'tokens per second';
+  return lower.replace(/-/g, ' ');
+}
+
+function normalizeComparisonBaseline(rawBaseline: string): string {
+  let clean = (rawBaseline || '')
+    .replace(/\s*(?:;|\bwhich\b|\bthat\b).*$/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  // Preserve specific technical microarchitecture parentheticals (e.g. "a modern superscalar (dual-issue, in-order) CPU core" -> "a dual-issue, in-order CPU core")
+  clean = clean
+    .replace(
+      /^(a|an|the)?\s*(?:modern|current|leading|typical|standard)\s+(?:[a-z0-9-]+\s+)?\(([^)]+)\)\s*/i,
+      (_m, art: string | undefined, inner: string) =>
+        `${art ? `${art.toLowerCase()} ` : ''}${inner.trim()} `
+    )
+    .replace(/\s+/g, ' ')
+    .replace(/[,:;]+$/g, '')
+    .trim();
+  return clean;
+}
+
+/**
+ * Extracts quantitative benchmark claims that include an explicit metric, comparison baseline,
+ * and source attribution so L1-L5 synthesis never drops or broadens baseline specifics.
+ */
+export function extractBenchmarkClaimSpec(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract' | 'url' | 'source' | 'originFeedName'>
+): BenchmarkClaimSpec | null {
+  const text = `${sig.title || ''}. ${stripUiChromeBoilerplate(sig.rawAbstract || '')}`;
+  const m = text.match(BENCHMARK_CLAIM_REGEX);
+  if (!m) return null;
+
+  const multiplier = m[1].replace(/\s+/g, '');
+  const metric = normalizeBenchmarkMetric(m[2]);
+  const baseline = normalizeComparisonBaseline(m[3]);
+  if (!baseline || baseline.length < 6) return null;
+
+  const rawPublisher = extractPublisherDisplayName({
+    source: sig.originFeedName || sig.source,
+    title: sig.title || '',
+    url: sig.url || '',
+  });
+  const attribution =
+    rawPublisher.replace(/\s*\(via\s+[^)]+\)$/i, '').trim() || sig.originFeedName || sig.source;
+
+  const canonicalSentence = `${attribution} reports ${multiplier} ${metric} compared to ${baseline}.`;
+  return {
+    multiplier,
+    metric,
+    baseline,
+    attribution,
+    canonicalSentence,
+  };
 }

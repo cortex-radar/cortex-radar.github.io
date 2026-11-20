@@ -3,7 +3,12 @@ import {
   inferDomainEnterpriseStacks,
   stripHtmlMarkupAndEntities,
 } from './literacyEngine';
-import { parseGitHubReleaseMetadata, truncateAtWordBoundary } from './provenance';
+import {
+  parseGitHubReleaseMetadata,
+  sanitizeReleaseNotesText,
+  stripUiChromeBoilerplate,
+  truncateAtWordBoundary,
+} from './provenance';
 import {
   computeDivergenceMetrics,
   extractCanonicalEntity,
@@ -1064,11 +1069,16 @@ export function synthesizeRawItemToSpatialSignal(
   const baseScore = raw.score ?? 80;
   const mass = Math.min(4.2, Math.max(1.6, 1.8 + Math.log10(Math.max(10, baseScore)) * 0.65));
 
-  const cleanSummary =
-    stripHtmlMarkupAndEntities(raw.summary)
-      .replace(new RegExp(`^${escapedOrigin}\\s*[:—-]\\s*`, 'i'), '')
-      .trim()
-      .slice(0, 3200) || displayTitle;
+  const rawSummaryClean = relMeta
+    ? sanitizeReleaseNotesText(raw.summary, displayTitle).cleanText
+    : stripUiChromeBoilerplate(
+        stripHtmlMarkupAndEntities(raw.summary)
+          .replace(new RegExp(`^${escapedOrigin}\\s*[:—-]\\s*`, 'i'), '')
+          .trim()
+      );
+  const cleanSummary = relMeta
+    ? rawSummaryClean.slice(0, 3200)
+    : rawSummaryClean.slice(0, 3200) || displayTitle;
 
   const summarySentences = cleanSummary
     .split(/(?<=[.!?])\s+/)
@@ -1087,7 +1097,7 @@ export function synthesizeRawItemToSpatialSignal(
 
   const isExplicitModelRelease =
     !isDiscussionPost &&
-    (raw.source === 'LabRelease' || raw.source === 'GHRelease') &&
+    raw.source === 'LabRelease' &&
     /\b(gemini|claude|gpt-\d|o3|o4|deepseek|qwen|llama|mistral|codestral|vllm|ollama|sglang)\b/i.test(
       cleanTitle
     );

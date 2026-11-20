@@ -6,11 +6,17 @@ import {
   SpatialSignal,
 } from './types';
 import {
+  BenchmarkClaimSpec,
+  extractBenchmarkClaimSpec,
   getSignalReleaseMetadata,
   hasTechnicalEngineeringContent,
   isHedgedOrUnverifiedClaim,
   isNonToolNewsOrMarketSignal,
+  isReleaseWithoutNotes,
+  stripUiChromeBoilerplate,
 } from './provenance';
+
+export const NO_RELEASE_NOTES_NOTICE = 'No release notes extracted — see linked release';
 
 /**
  * Strictly banned technical acronyms & jargon words in Level 1 (Zero-Jargon Everyday Analogy).
@@ -1379,10 +1385,60 @@ function buildDisjointL5Sections(
   return { architectureBrief, specsAndCaveats };
 }
 
+export function buildNoReleaseNotesPayload(
+  sig: SpatialSignal
+): LiteracySpectrumPayload {
+  const relMeta = getSignalReleaseMetadata(sig);
+  const displayHeadline = relMeta
+    ? `${relMeta.displayTitle} · ${relMeta.stabilityLabel}`
+    : stripOriginPrefixFromHeadline(sig.title, sig.originFeedName);
+  const shortTitle = relMeta ? relMeta.displayTitle : truncateWordBoundaryPlain(displayHeadline, 48);
+  const ownerProject = relMeta ? `${relMeta.owner}/${relMeta.repo}` : sig.originFeedName || sig.source;
+
+  return {
+    plainTitle: shortTitle,
+    plainFullTitle: displayHeadline,
+    levels: {
+      1: {
+        analogy: `${NO_RELEASE_NOTES_NOTICE}.`,
+        everydayWhy: `${displayHeadline} (${ownerProject}) published a new ${
+          relMeta ? relMeta.stabilityLabel.toLowerCase() : 'release tag'
+        }; open the upstream release link for full details.`,
+      },
+      2: {
+        whatHappened: `${displayHeadline} was published on GitHub (${ownerProject}). ${NO_RELEASE_NOTES_NOTICE}.`,
+        whoBuiltIt: ownerProject,
+        problemSolved: NO_RELEASE_NOTES_NOTICE,
+      },
+      3: {
+        bridgeSummary: `${displayHeadline} (${ownerProject}). ${NO_RELEASE_NOTES_NOTICE}.`,
+      },
+      4: {
+        roiAndFinOps: `${NO_RELEASE_NOTES_NOTICE}.`,
+        readinessAndRisk: relMeta
+          ? `${relMeta.stabilityLabel} (${relMeta.isPreRelease ? 'pre-release channel' : 'tagged release'}) — inspect upstream notes before upgrading.`
+          : NO_RELEASE_NOTES_NOTICE,
+        clientAdvice: `Review the linked upstream release (${shortTitle}) directly before scheduling updates.`,
+      },
+      5: {
+        architectureBrief: `${displayHeadline} (${ownerProject}). ${NO_RELEASE_NOTES_NOTICE}.`,
+        specsAndCaveats: NO_RELEASE_NOTES_NOTICE,
+        streetConsensus: NO_RELEASE_NOTES_NOTICE,
+      },
+    },
+    glossary: [],
+    generatedBy: 'DETERMINISTIC',
+  };
+}
+
 export function buildDeterministicLiteracyPayload(
   sig: SpatialSignal,
   activeClient: ClientIndustry = 'BANKING'
 ): LiteracySpectrumPayload {
+  if (isReleaseWithoutNotes(sig)) {
+    return buildNoReleaseNotesPayload(sig);
+  }
+
   const seedOverride = SEED_PLAIN_OVERRIDES[sig.id];
   const facts = extractSignalFacts(sig);
   const dynamicTitles = seedOverride
@@ -1600,7 +1656,7 @@ export function buildDeterministicLiteracyPayload(
 }
 
 const HEDGE_MARKER_REGEX =
-  /\b(may|might|could|claims?|claimed|purports?|reportedly|allegedly|unverified|unconfirmed|rumou?r(?:ed)?|tentative|awaiting|not (?:yet |independently )?verified|potential(?:ly)?|speculat)\b/i;
+  /\b(may|might|could|claims?|claimed|purports?|reportedly|allegedly|unverified|unconfirmed|rumou?r(?:ed)?|tentative|awaiting|not (?:yet |independently )?verified|potentially|speculat)\b/i;
 
 const ASSERTIVE_SOLVE_REGEX =
   /\b(solves|solved|proves|proved|proven|confirmed|achieves|achieved|breakthrough)\b/i;
@@ -1664,9 +1720,96 @@ function hasUnbackedTechSpecs(text: string, sourceHaystackLower: string): boolea
   return matches.some((m) => !sourceHaystackLower.includes(m.toLowerCase()));
 }
 
+function scrubBoilerplateArtifacts(text: string): string {
+  let out = stripUiChromeBoilerplate(text || '');
+  out = out
+    .replace(/,?\s*\bthough\s+there\s+were\s+some\s+loading\s+errors\s+reported\.?/gi, '.')
+    .replace(/\b(?:there\s+were\s+)?some\s+loading\s+errors\s+reported\.?/gi, '')
+    .replace(/\s+\./g, '.')
+    .replace(/\.{2,}/g, '.')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return out;
+}
+
+function lockBenchmarkFidelityInText(
+  text: string,
+  bench: BenchmarkClaimSpec,
+  appendCanonicalIfIncomplete: boolean
+): string {
+  let out = scrubBoilerplateArtifacts(text || '');
+  if (!out) {
+    return appendCanonicalIfIncomplete ? bench.canonicalSentence : out;
+  }
+
+  // Normalize metric phrasing so hyphenated "performance-per-watt" becomes consistent "performance per watt"
+  if (bench.metric === 'performance per watt') {
+    out = out.replace(/\bperformance[- ]per[- ]watt\b|\bperf[- ]per[- ]watt\b/gi, 'performance per watt');
+  }
+
+  const escapedMult = bench.multiplier
+    .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    .replace(/[x×]/gi, '\\s*[x×]');
+  const escapedMetric = bench.metric
+    .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    .replace(/\s+/g, '\\s+');
+
+  // Remove vague adjective insertion like "4.59x better performance per watt" -> "4.59x performance per watt"
+  out = out.replace(
+    new RegExp(
+      `(${escapedMult})\\s+(?:better|faster|higher|more\\s+efficient|improved)\\s+(${escapedMetric})`,
+      'gi'
+    ),
+    '$1 $2'
+  );
+
+  // Replace broadened baselines ("than modern CPUs", "compared to leading chips") with exact baseline
+  out = out
+    .replace(
+      /\b(?:of|than|vs\.?|versus|compared\s+to|compared\s+with|over)\s+(?:a\s+|an\s+|the\s+)?(?:modern|current|leading|traditional|standard|existing)\s+(?:[a-z0-9-]+\s+)?(?:cpus?|chips?|processors?|hardware|systems?)\b/gi,
+      `compared to ${bench.baseline}`
+    )
+    .replace(
+      /\b(?:modern|current|leading|traditional|standard|existing)\s+(?:cpus?|chips?|processors?|hardware)\b/gi,
+      bench.baseline
+    );
+
+  // Rewrite unqualified multiplier claims like "4.59x better" / "4.59× faster"
+  out = out.replace(
+    new RegExp(
+      `(${escapedMult})\\s+(?:better|faster|higher|more\\s+efficient|improvements?|gains?)(?!\\s+(?:in\\s+)?${escapedMetric})`,
+      'gi'
+    ),
+    `${bench.multiplier} ${bench.metric}`
+  );
+
+  out = out.replace(/\s+/g, ' ').trim();
+
+  if (appendCanonicalIfIncomplete) {
+    const low = out.toLowerCase();
+    const hasMetric = low.includes(bench.metric.toLowerCase());
+    const baselineCoreTokens = bench.baseline
+      .toLowerCase()
+      .replace(/\b(a|an|the|core|cpu|cpus|system|systems)\b/g, ' ')
+      .split(/[\s,()]+/)
+      .filter((t) => t.length >= 4);
+    const hasBaseline =
+      low.includes(bench.baseline.toLowerCase()) ||
+      (baselineCoreTokens.length > 0 && baselineCoreTokens.every((tok) => low.includes(tok)));
+    const hasAttribution = low.includes(bench.attribution.toLowerCase());
+
+    if (!hasMetric || !hasBaseline || !hasAttribution) {
+      const punct = /[.!?]["')\]]*$/.test(out) ? '' : '.';
+      out = `${out}${punct} ${bench.canonicalSentence}`.trim();
+    }
+  }
+
+  return out;
+}
+
 /**
- * Post-synthesis epistemic, non-engineering, and release-identity fidelity gate applied to BOTH
- * baked LLM payloads (Ollama/Gemini/GitHub Models) and runtime deterministic payloads.
+ * Post-synthesis epistemic, non-engineering, UI-chrome, and benchmark-lock fidelity gate
+ * applied to BOTH baked LLM payloads and runtime deterministic payloads.
  */
 export function enforceEpistemicAndDomainFidelity(
   sig: SpatialSignal,
@@ -1674,19 +1817,42 @@ export function enforceEpistemicAndDomainFidelity(
   activeClient: ClientIndustry = 'BANKING',
   skipDeterministicRecursion = false
 ): LiteracySpectrumPayload {
+  // Gate 0: Never generate or retain fabricated AI synthesis for releases with empty or UI-chrome-only text
+  if (isReleaseWithoutNotes(sig)) {
+    return buildNoReleaseNotesPayload(sig);
+  }
+
   const isHedged = isHedgedOrUnverifiedClaim(sig);
   const isTechnical = hasTechnicalEngineeringContent(sig);
   const isNonTool = isNonToolNewsOrMarketSignal(sig);
   const relMeta = getSignalReleaseMetadata(sig);
+  const bench = extractBenchmarkClaimSpec(sig);
   const sourceHayLower = `${sig.title || ''} ${sig.rawAbstract || ''}`.toLowerCase();
 
-  let plainTitle = payload.plainTitle;
-  let plainFullTitle = payload.plainFullTitle;
-  let l1 = { ...payload.levels[1] };
-  let l2 = { ...payload.levels[2] };
-  let l3 = { ...payload.levels[3] };
-  let l4 = { ...payload.levels[4] };
-  let l5 = { ...payload.levels[5] };
+  let plainTitle = scrubBoilerplateArtifacts(payload.plainTitle);
+  let plainFullTitle = scrubBoilerplateArtifacts(payload.plainFullTitle);
+  let l1 = {
+    analogy: scrubBoilerplateArtifacts(payload.levels[1].analogy),
+    everydayWhy: scrubBoilerplateArtifacts(payload.levels[1].everydayWhy),
+  };
+  let l2 = {
+    whatHappened: scrubBoilerplateArtifacts(payload.levels[2].whatHappened),
+    whoBuiltIt: scrubBoilerplateArtifacts(payload.levels[2].whoBuiltIt),
+    problemSolved: scrubBoilerplateArtifacts(payload.levels[2].problemSolved),
+  };
+  let l3 = {
+    bridgeSummary: scrubBoilerplateArtifacts(payload.levels[3].bridgeSummary),
+  };
+  let l4 = {
+    roiAndFinOps: scrubBoilerplateArtifacts(payload.levels[4].roiAndFinOps),
+    readinessAndRisk: scrubBoilerplateArtifacts(payload.levels[4].readinessAndRisk),
+    clientAdvice: scrubBoilerplateArtifacts(payload.levels[4].clientAdvice),
+  };
+  let l5 = {
+    architectureBrief: scrubBoilerplateArtifacts(payload.levels[5].architectureBrief),
+    specsAndCaveats: scrubBoilerplateArtifacts(payload.levels[5].specsAndCaveats),
+    streetConsensus: scrubBoilerplateArtifacts(payload.levels[5].streetConsensus),
+  };
   let glossary = [...(payload.glossary || [])];
 
   // 1. Preserve GitHub product + full version tag + prerelease markers (never drop -rc2 / -alpha.1 or show GA)
@@ -1759,7 +1925,7 @@ export function enforceEpistemicAndDomainFidelity(
     };
   }
 
-  // 3. Block fabricated technical specs / fake glossary pills on non-engineering stories
+  // 4. Block fabricated technical specs / fake glossary pills on non-engineering stories
   if (!isTechnical) {
     glossary = isNonTool
       ? []
@@ -1791,6 +1957,34 @@ export function enforceEpistemicAndDomainFidelity(
         ? `${noSpecNote} ${l5.architectureBrief}`
         : noSpecNote;
     }
+  }
+
+  // 5. Quantitative Benchmark Lock: keep exact metric + exact comparison baseline + attribution across ALL 5 lenses
+  if (bench) {
+    plainTitle = lockBenchmarkFidelityInText(plainTitle, bench, false);
+    plainFullTitle = lockBenchmarkFidelityInText(plainFullTitle, bench, false);
+    l1 = {
+      analogy: lockBenchmarkFidelityInText(l1.analogy, bench, false),
+      everydayWhy: lockBenchmarkFidelityInText(l1.everydayWhy, bench, true),
+    };
+    l2 = {
+      whatHappened: lockBenchmarkFidelityInText(l2.whatHappened, bench, true),
+      whoBuiltIt: scrubBoilerplateArtifacts(l2.whoBuiltIt),
+      problemSolved: lockBenchmarkFidelityInText(l2.problemSolved, bench, false),
+    };
+    l3 = {
+      bridgeSummary: lockBenchmarkFidelityInText(l3.bridgeSummary, bench, true),
+    };
+    l4 = {
+      roiAndFinOps: lockBenchmarkFidelityInText(l4.roiAndFinOps, bench, true),
+      readinessAndRisk: lockBenchmarkFidelityInText(l4.readinessAndRisk, bench, false),
+      clientAdvice: lockBenchmarkFidelityInText(l4.clientAdvice, bench, false),
+    };
+    l5 = {
+      architectureBrief: lockBenchmarkFidelityInText(l5.architectureBrief, bench, false),
+      specsAndCaveats: lockBenchmarkFidelityInText(l5.specsAndCaveats, bench, true),
+      streetConsensus: scrubBoilerplateArtifacts(l5.streetConsensus),
+    };
   }
 
   return {

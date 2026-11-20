@@ -16,6 +16,7 @@ import {
 import {
   buildDeterministicLiteracyPayload,
   enforceEpistemicAndDomainFidelity,
+  NO_RELEASE_NOTES_NOTICE,
   sanitizeLiteracyPayloadPlainLevels,
 } from '../../shared/literacyEngine';
 import {
@@ -26,6 +27,7 @@ import {
   getSignalReleaseMetadata,
   inferSupportingLinkRole,
   isPrimarySourceSignal,
+  isReleaseWithoutNotes,
   parseGitHubReleaseMetadata,
 } from '../../shared/provenance';
 import {
@@ -361,6 +363,7 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                 ),
                 'BANKING'
               );
+              const noReleaseNotes = isReleaseWithoutNotes(signal);
               const takeaway = getActiveLensTakeaway(signal, lit, activeLiteracyLevel);
               const cleanTitle = getCleanDisplayHeadline(signal, activeLiteracyLevel);
               const origin =
@@ -464,12 +467,18 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                         <h3 className="cockpit-heading text-[15px] font-semibold leading-snug text-zinc-100">
                           {cleanTitle}
                         </h3>
-                        <p className="text-[12.5px] text-zinc-300 leading-relaxed line-clamp-2">
-                          <span className="font-mono text-[9.5px] uppercase tracking-wider text-teal-300 mr-1.5">
-                            {takeaway.label}
-                          </span>
-                          {takeaway.text}
-                        </p>
+                        {noReleaseNotes ? (
+                          <p className="text-[11.5px] font-mono text-zinc-400">
+                            {NO_RELEASE_NOTES_NOTICE}
+                          </p>
+                        ) : (
+                          <p className="text-[12.5px] text-zinc-300 leading-relaxed line-clamp-2">
+                            <span className="font-mono text-[9.5px] uppercase tracking-wider text-teal-300 mr-1.5">
+                              {takeaway.label}
+                            </span>
+                            {takeaway.text}
+                          </p>
+                        )}
                       </div>
                       {heroMedia && (
                         <img

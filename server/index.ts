@@ -2,7 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseGitHubReleaseMetadata, truncateAtWordBoundary } from '../shared/provenance';
+import {
+  parseGitHubReleaseMetadata,
+  sanitizeReleaseNotesText,
+  stripUiChromeBoilerplate,
+  truncateAtWordBoundary,
+} from '../shared/provenance';
 import type { RawUpstreamSignal } from '../shared/seed72h';
 import type {
   AdapterId,
@@ -192,10 +197,61 @@ function extractMetaContent(html: string, attrPattern: string): string {
  * Fast, cached full-text HTML & OpenGraph extractor (2.5s hard timeout) for thin RSS/blog/HN links.
  * Strips chrome (<script>/<style>/<nav>/<header>/<footer>/<aside>) and extracts multi-paragraph facts + og:image / twitter:image.
  */
+async function fetchStructuredGitHubReleaseBody(
+  releaseUrl: string
+): Promise<{ body: string; ogImage?: string } | null> {
+  const m = (releaseUrl || '').match(
+    /github\.com\/([^/\s]+)\/([^/\s]+)\/releases\/tag\/([^/?#\s]+)/i
+  );
+  if (!m) return null;
+  const [, owner, repo, rawTag] = m;
+  const tag = decodeURIComponent(rawTag);
+  const ghOg = resolveGitHubOpenGraphImage(releaseUrl);
+
+  try {
+    const headers: Record<string, string> = {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'CORTEX-Radar/2.2',
+      'X-GitHub-Api-Version': '2022-11-28',
+    };
+    const token = (process.env.GITHUB_TOKEN || '').trim();
+    if (token) {
+      headers.Authorization = `Bearer ${token}`;
+    }
+
+    const res = await fetch(
+      `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(
+        repo
+      )}/releases/tags/${encodeURIComponent(tag)}`,
+      {
+        headers,
+        signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
+      }
+    );
+    if (!res.ok) {
+      return { body: '', ogImage: ghOg };
+    }
+    const data = (await res.json()) as { body?: string | null };
+    const decoded = stripHtmlAndEntities(data.body || '');
+    const cleaned = sanitizeReleaseNotesText(decoded, tag);
+    return {
+      body: cleaned.cleanText.slice(0, 3200),
+      ogImage: ghOg,
+    };
+  } catch {
+    return { body: '', ogImage: ghOg };
+  }
+}
+
 async function enrichThinArticle(rawUrl: string): Promise<ArticleEnrichmentResult | null> {
   if (!rawUrl || !rawUrl.startsWith('http')) return null;
 
   const ghOg = resolveGitHubOpenGraphImage(rawUrl);
+  // Never scrape raw HTML on GitHub release pages (prone to SPA "There was an error while loading" chrome)
+  if (/github\.com\/[^/\s]+\/[^/\s]+\/releases\/tag\//i.test(rawUrl)) {
+    return ghOg ? { fullText: '', ogImage: ghOg } : null;
+  }
+
   if (rawUrl.includes('github.com/') && ghOg) {
     const cachedGh = articleEnrichmentCache.get(rawUrl);
     if (cachedGh) return cachedGh;
@@ -232,9 +288,8 @@ async function enrichThinArticle(rawUrl: string): Promise<ArticleEnrichmentResul
     }
 
     const rawHtml = (await res.text()).slice(0, 260_000);
-    const ogDesc = extractMetaContent(
-      rawHtml,
-      'og:description|twitter:description|description'
+    const ogDesc = stripUiChromeBoilerplate(
+      extractMetaContent(rawHtml, 'og:description|twitter:description|description')
     );
     const rawOgImg = extractMetaContent(
       rawHtml,
@@ -265,7 +320,7 @@ async function enrichThinArticle(rawUrl: string): Promise<ArticleEnrichmentResul
     const pRegex = /<(?:p|li)[^>]*>([\s\S]*?)<\/(?:p|li)>/gi;
     let m: RegExpExecArray | null;
     while ((m = pRegex.exec(targetRegion)) !== null) {
-      const text = stripHtmlAndEntities(m[1]);
+      const text = stripUiChromeBoilerplate(stripHtmlAndEntities(m[1]));
       if (text.length < 48) continue;
       if (
         /^(cookie|privacy policy|terms of use|subscribe to|sign up for|all rights reserved|share this|follow us on|read more at)/i.test(
@@ -390,7 +445,10 @@ function parseUniversalFeedXml(
       return {
         id: `${feedId}-${stableKey || idx}`,
         title: finalTitle,
-        summary: cleanSummary || finalTitle,
+        summary:
+          sourceType === 'GHRelease'
+            ? sanitizeReleaseNotesText(cleanSummary, finalTitle).cleanText
+            : stripUiChromeBoilerplate(cleanSummary) || finalTitle,
         url: link,
         source: sourceType,
         sourceCategory: category,
@@ -427,8 +485,31 @@ function makeRssDescriptor(
           isHighSignalRedditPost({ title: item.title, selftext: item.summary, ups: 25, num_comments: 8 })
       );
 
-      // Enrich thin AI_LAB / VIP_VOICE / GHRelease RSS items with real article paragraphs + og:image
-      if (category === 'AI_LAB' || category === 'VIP_VOICE' || category === 'GH_RELEASE') {
+      // For GitHub Releases, prefer structured GitHub Releases API body + cleaned Atom <content>; never scrape HTML shells
+      if (category === 'GH_RELEASE') {
+        await Promise.allSettled(
+          parsed.map(async (item) => {
+            const sanitizedAtom = sanitizeReleaseNotesText(item.summary, item.title);
+            item.summary = sanitizedAtom.cleanText;
+            const structured = await fetchStructuredGitHubReleaseBody(item.url);
+            if (structured?.body && structured.body.length > item.summary.length) {
+              item.summary = structured.body;
+            }
+            const ogUrl = structured?.ogImage || resolveGitHubOpenGraphImage(item.url);
+            if (ogUrl && (!item.mediaItems || item.mediaItems.length === 0)) {
+              item.mediaItems = [
+                {
+                  type: 'image',
+                  url: ogUrl,
+                  caption: `${name} release card`,
+                  sourceNetwork: name,
+                },
+              ];
+            }
+          })
+        );
+      } else if (category === 'AI_LAB' || category === 'VIP_VOICE') {
+        // Enrich thin AI_LAB / VIP_VOICE RSS items with real article paragraphs + og:image
         await Promise.allSettled(
           parsed.map(async (item) => {
             const isThin =

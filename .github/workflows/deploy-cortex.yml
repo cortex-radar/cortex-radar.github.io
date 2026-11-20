@@ -15,15 +15,17 @@ permissions:
   models: read
 
 concurrency:
-  group: pages-cortex-deploy
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
-  bake-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      models: read
 
     steps:
       - name: Checkout repository
@@ -44,15 +46,6 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: npm run bake:galaxy
 
-      - name: Persist incremental snapshot cache to repository
-        run: |
-          if [ -f public/data/live-galaxy.json ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add public/data/live-galaxy.json public/rss.xml
-            git diff --staged --quiet || (git commit -m "chore(galaxy): refresh pre-baked live-galaxy snapshot [skip ci]" && git push)
-          fi
-
       - name: Configure GitHub Pages base path
         id: pages
         uses: actions/configure-pages@v5
@@ -61,10 +54,77 @@ jobs:
         run: npm run build
 
       - name: Upload dist artifact to GitHub Pages
+        id: upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: dist
 
+      - name: Stage baked snapshot artifact for post-deploy commit
+        run: |
+          mkdir -p .baked-snapshot
+          cp public/data/live-galaxy.json .baked-snapshot/live-galaxy.json
+          if [ -f public/rss.xml ]; then
+            cp public/rss.xml .baked-snapshot/rss.xml
+          fi
+
+      - name: Upload baked snapshot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: baked-snapshot
+          path: .baked-snapshot
+          retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
+
+  persist-snapshot:
+    needs: deploy
+    if: success()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Download baked snapshot artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: baked-snapshot
+          path: .baked-snapshot
+
+      - name: Persist incremental snapshot cache to repository
+        run: |
+          mkdir -p public/data
+          cp .baked-snapshot/live-galaxy.json public/data/live-galaxy.json
+          if [ -f .baked-snapshot/rss.xml ]; then
+            cp .baked-snapshot/rss.xml public/rss.xml
+          fi
+          rm -rf .baked-snapshot
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/live-galaxy.json public/rss.xml
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(galaxy): refresh pre-baked live-galaxy snapshot [skip ci]"
+            git pull --rebase -X theirs origin main || (git rebase --abort || true)
+            git push
+          fi

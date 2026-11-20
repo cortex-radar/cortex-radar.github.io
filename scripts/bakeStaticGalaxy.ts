@@ -23,13 +23,17 @@ import {
 } from '../shared/seed72h';
 import {
   buildSupportingSourceEntry,
+  extractBenchmarkClaimSpec,
   getSignalReleaseMetadata,
   hasTechnicalEngineeringContent,
   isHedgedOrUnverifiedClaim,
   isNonToolNewsOrMarketSignal,
   isPrimarySourceSignal,
+  isReleaseWithoutNotes,
   normalizeProvenanceUrl,
   parseGitHubReleaseMetadata,
+  sanitizeReleaseNotesText,
+  stripUiChromeBoilerplate,
   truncateAtWordBoundary,
 } from '../shared/provenance';
 import {
@@ -151,7 +155,7 @@ function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): string {
 
 const GITHUB_MODELS_ENDPOINT = 'https://models.inference.ai.azure.com/chat/completions';
 const GITHUB_MODELS_MODEL = process.env.GITHUB_MODELS_MODEL || 'gpt-4o-mini';
-const LITERACY_SCHEMA_VERSION = 'v2.2';
+const LITERACY_SCHEMA_VERSION = 'v2.2.1';
 
 function normalizeBakeUrl(url: string): string {
   return (url || '').trim().toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
@@ -292,11 +296,14 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
   const isTechnical = hasTechnicalEngineeringContent(sig);
   const isHedged = isHedgedOrUnverifiedClaim(sig);
   const relMeta = getSignalReleaseMetadata(sig);
+  const benchClaim = extractBenchmarkClaimSpec(sig);
   const glossaryHint = baseFallback.glossary
     .slice(0, 3)
     .map((g) => g.term)
     .join(', ');
-  const bodyContext = stripTrailingIncompleteClause((sig.rawAbstract || sig.title).slice(0, 2800));
+  const bodyContext = stripTrailingIncompleteClause(
+    stripUiChromeBoilerplate(sig.rawAbstract || sig.title).slice(0, 2800)
+  );
 
   const domainConstraintLine = !isTechnical
     ? `NO TECHNICAL SPECS IN SOURCE: This source has NO software/hardware engineering specs. NEVER invent Context Window, RAG, FinOps Cascade, latency, VRAM, parameter counts, or benchmarks. In levels["5"].architectureBrief begin verbatim with "Source provides no technical specifications or architecture details."`
@@ -308,6 +315,9 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
     : '';
   const releaseConstraintLine = relMeta
     ? `RELEASE IDENTITY REQUIRED: Preserve "${relMeta.displayTitle}" (${relMeta.stabilityLabel}) verbatim in plainTitle and plainFullTitle; ${relMeta.isPreRelease ? 'never label this pre-release as Production GA.' : 'cite the stable version accurately.'}`
+    : '';
+  const benchmarkConstraintLine = benchClaim
+    ? `BENCHMARK LOCK REQUIRED ACROSS ALL 5 LENSES: Any reference to "${benchClaim.multiplier}" MUST retain ALL three: metric "${benchClaim.metric}", exact comparison baseline "${benchClaim.baseline}", and source attribution "${benchClaim.attribution}". Never broaden to "modern CPUs" or write unqualified "${benchClaim.multiplier} better".`
     : '';
 
   return `You are a Principal AI Technical Writer & Architecture Strategist translating this source-linked signal into a rich, insightful 5-level literacy JSON object for an enterprise engineering & executive audience.
@@ -326,7 +336,7 @@ ${
     domainConstraintLine ? `${domainConstraintLine}\n` : ''
   }${epistemicConstraintLine ? `${epistemicConstraintLine}\n` : ''}${
     releaseConstraintLine ? `${releaseConstraintLine}\n` : ''
-  }
+  }${benchmarkConstraintLine ? `${benchmarkConstraintLine}\n` : ''}
 STRICT RULES:
 1. PRIMARY & EPISTEMIC ALIGNMENT: Anchor plainTitle, plainFullTitle, and levels["2"].whatHappened strictly on the Primary Headline & Primary Post Body above. Preserve uncertainty markers (may, claims, reportedly, unverified) across ALL 5 lenses and never invent technical specs on non-engineering business/IPO/policy/social posts.
 2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (kitchen prep line, library desk, post office sorting room, hospital chart clipboard, or highway lane). Zero technical acronyms in Level 1.
@@ -858,6 +868,16 @@ async function main(): Promise<void> {
     }
   }
 
+  // Pre-sanitize release boilerplate and page-shell chrome across all signals before synthesis
+  for (const sig of signals) {
+    if (getSignalReleaseMetadata(sig)) {
+      const san = sanitizeReleaseNotesText(sig.rawAbstract || '', sig.title);
+      sig.rawAbstract = san.cleanText;
+    } else {
+      sig.rawAbstract = stripUiChromeBoilerplate(sig.rawAbstract || '');
+    }
+  }
+
   // Hydrate missing Reddit .rss engineer comments on top Reddit threads when online
   if (!isDryRun) {
     const redditMissingQuotes = signals
@@ -900,12 +920,20 @@ async function main(): Promise<void> {
   let cacheHits = 0;
   let newlySynthesized = 0;
 
-  // Synthesize hedged claims, non-tool market/news, and grouped multi-link events first so complex cards always get faithful v2.2 synthesis
+  // Synthesize hedged claims, non-tool market/news, benchmark claims, and grouped events first
   const synthOrder = [...signals].sort((a, b) => {
     const aSpecial =
-      isHedgedOrUnverifiedClaim(a) || isNonToolNewsOrMarketSignal(a) ? 1 : 0;
+      isHedgedOrUnverifiedClaim(a) ||
+      isNonToolNewsOrMarketSignal(a) ||
+      Boolean(extractBenchmarkClaimSpec(a))
+        ? 1
+        : 0;
     const bSpecial =
-      isHedgedOrUnverifiedClaim(b) || isNonToolNewsOrMarketSignal(b) ? 1 : 0;
+      isHedgedOrUnverifiedClaim(b) ||
+      isNonToolNewsOrMarketSignal(b) ||
+      Boolean(extractBenchmarkClaimSpec(b))
+        ? 1
+        : 0;
     if (aSpecial !== bSpecial) return bSpecial - aSpecial;
     const aGrouped = (a.supportingSources?.length || 1) >= 2 ? 1 : 0;
     const bGrouped = (b.supportingSources?.length || 1) >= 2 ? 1 : 0;
@@ -914,6 +942,14 @@ async function main(): Promise<void> {
   });
 
   for (const sig of synthOrder) {
+    // Skip LLM synthesis completely when a release has empty or polluted boilerplate-only notes
+    if (isReleaseWithoutNotes(sig)) {
+      const neutralDet = buildDeterministicLiteracyPayload(sig, 'BANKING');
+      sig.literacy = neutralDet;
+      literacyBySignalId[sig.id] = neutralDet;
+      continue;
+    }
+
     const normUrl = normalizeBakeUrl(sig.url);
     const cachedHit = cachedById.get(sig.id) || cachedByUrl.get(normUrl);
     const sigTitleKey = normalizeHeadlineKey(sig.title || '');
