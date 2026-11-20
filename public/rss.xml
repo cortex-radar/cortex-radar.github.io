@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2026 20:30:34 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 20:33:54 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>Anthropic Announces Successful IPO and Concurrent Private Placement</title>
@@ -23,6 +23,14 @@
       <pubDate>Fri, 20 Nov 2026 19:03:33 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Ravi Vakil, a professor at Stanford, claims there is a proof of the Riemann Hypothesis by Alessandro Masullo that is currently being polished for human readability. The Riemann Hypothesis, a long-standing problem in mathematics, if proven, could have significant implications for number theory and related fields. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y1bugz/ravi_vakil_of_stanford_claims_there_is_already_a/</description>
+    </item>
+    <item>
+      <title>Introducing Gemini 4 Neon</title>
+      <link>https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</guid>
+      <pubDate>Wed, 18 Nov 2026 21:35:43 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Google DeepMind): https://deepmind.google/blog/introducing-gemini-4-neon/</description>
     </item>
     <item>
       <title>Ollama v0.40.17-rc3</title>
@@ -47,14 +55,6 @@
       <pubDate>Thu, 19 Nov 2026 08:14:07 GMT</pubDate>
       <category>Governance &amp; Security</category>
       <description>Qwen4-Max, a new AI model from Alibaba, is available for free on the Nous Portal for 5 days in partnership with @inferact. It addresses the need for businesses to test advanced AI models without significant upfront investment. — Upstream (X · @Alibaba_Qwen): https://x.com/Alibaba_Qwen/status/2123328957022081036</description>
-    </item>
-    <item>
-      <title>Google&apos;s Gemini 4 Neon for complex coding and analysis at lower cost</title>
-      <link>https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 21:35:43 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>Google has introduced Gemini 4 Neon, a new model that offers advanced intelligence for complex coding and analysis at a lower cost. The new model aims to address the need for more powerful and cost-effective tools for complex coding and analysis in the banking sector. — Upstream (Google DeepMind): https://deepmind.google/blog/introducing-gemini-4-neon/</description>
     </item>
     <item>
       <title>Claude Code v2.1.329</title>
@@ -113,20 +113,20 @@
       <description>Hundreds of Google workers are protesting a new policy that would block schools from using Google&apos;s Gemini AI tools if they choose not to. The issue is about balancing innovation with parental and community concerns over AI&apos;s role in education. — Upstream (Hacker News): https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/</description>
     </item>
     <item>
-      <title>Riemann Hypothesis May Have Been Solved with AI Assistance</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 15:30:42 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>A researcher claims that Claude, an AI, may have assisted in potentially solving the Riemann Hypothesis, a long-standing mathematical problem. The researcher expresses amazement at the progress made during the process. Reportedly (unverified): the Riemann Hypothesis, a conjecture about the distribution of prime numbers, has been a central problem in mathematics for over a century. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e</description>
-    </item>
-    <item>
       <title>Inkling 2 Mini: Reasoning model for laptops and real-time tasks</title>
       <link>https://cortex-radar.github.io/?orb=hn-50581260&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50581260&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 20:12:19 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
       <description>Inkling 2 Mini, a looped transformer model, is released. It runs middle layers three times per words to enhance reasoning and reduce words usage. It has compact scale and can run on consumer laptops. The model addresses the need for powerful reasoning capabilities on limited hardware, such as laptops, for tasks requiring detailed processing. — Upstream (Hacker News): https://thinkingmachines.ai/news/inkling-2-mini/</description>
+    </item>
+    <item>
+      <title>Riemann Hypothesis May Have Been Solved with AI Assistance</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 15:30:42 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>A researcher claims that Claude, an AI, may have assisted in potentially solving the Riemann Hypothesis, a long-standing mathematical problem. The researcher expresses amazement at the progress made during the process. Reportedly (unverified): the Riemann Hypothesis, a conjecture about the distribution of prime numbers, has been a central problem in mathematics for over a century. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e</description>
     </item>
     <item>
       <title>Epic Games Explores AI for Unreal Engine</title>

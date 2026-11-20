@@ -1,10 +1,10 @@
 {
   "version": 1,
   "promptVersion": "v2.2.1",
-  "bakedAtIso": "2026-11-20T20:30:34.976Z",
-  "bakedAtMs": 1795206634976,
-  "synthesizedBy": "LOCAL_OLLAMA_qwen2.5:7b",
-  "signalCount": 55,
+  "bakedAtIso": "2026-11-20T20:33:54.106Z",
+  "bakedAtMs": 1795206834106,
+  "synthesizedBy": "GITHUB_MODELS_GPT-4O-MINI",
+  "signalCount": 56,
   "signals": [
     {
       "id": "lab-anthropic-httpswwwanthropiccomnewsipo-close",
@@ -67,9 +67,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 182,
-        "commentsOrReplies": 204,
+        "commentsOrReplies": 205,
         "velocityPerHour": 84,
-        "badgeText": "182 pts · 204 comments"
+        "badgeText": "182 pts · 205 comments"
       },
       "url": "https://www.anthropic.com/news/ipo-close",
       "publishedAtMs": 1795132800000,
@@ -274,8 +274,8 @@
       "engagementVelocity": {
         "likesOrUps": 51,
         "commentsOrReplies": 30,
-        "velocityPerHour": 88,
-        "badgeText": "88/hr · 51 ups · 30 comments"
+        "velocityPerHour": 84,
+        "badgeText": "84/hr · 51 ups · 30 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y1bugz/ravi_vakil_of_stanford_claims_there_is_already_a/",
       "publishedAtMs": 1795201413000,
@@ -368,6 +368,259 @@
         }
       ],
       "lastUpdatedAtMs": 1795202509000
+    },
+    {
+      "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon",
+      "title": "Introducing Gemini 4 Neon",
+      "shortLabel": "Introducing Gemini 4 Neon",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "Google DeepMind",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @GoogleDeepMind",
+        "r/singularity",
+        "r/ChatGPTCoding",
+        "Google DeepMind",
+        "Bluesky · @natolambert"
+      ],
+      "networkFamilies": [
+        "X",
+        "Reddit",
+        "VIP/Lab",
+        "Bluesky"
+      ],
+      "canonicalEntity": "ent:coded+gemini+neon",
+      "isSupernova": true,
+      "supernovaLevel": 2,
+      "divergence": {
+        "hypeScore": 65,
+        "streetScore": 83,
+        "divergenceDelta": -18,
+        "verdictLabel": "SLEEPER GEM",
+        "summary": "Engineer benchmarks (83/100) beat social hype (65/100) — high-ROI under-the-radar infrastructure upgrade."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-4-neon__blog-header__sm.width-1300.png",
+          "caption": "Google DeepMind article visual",
+          "sourceNetwork": "Google DeepMind"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Google DeepMind",
+          "author": "Google DeepMind",
+          "text": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "score": 165,
+          "sentiment": "HYPE",
+          "publishedAtMs": 1795037743000,
+          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/"
+        },
+        {
+          "id": "rd-as-c-19sxpjd6ji00y",
+          "network": "Reddit",
+          "originLabel": "r/singularity",
+          "author": "u/New_Alps_5655",
+          "text": "Is this the word in your local favela or?",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795204354000,
+          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb"
+        },
+        {
+          "id": "rd-as-c-19sxp5g07ervl",
+          "network": "Reddit",
+          "originLabel": "r/singularity",
+          "author": "u/intergalacticskyline",
+          "text": "The title is giving me a stroke.",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795203834000,
+          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb"
+        },
+        {
+          "id": "rd-as-c-19sxonzm8z9nk",
+          "network": "Reddit",
+          "originLabel": "r/singularity",
+          "author": "u/The_Scout1255",
+          "text": "read that as \"care to compound\".",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795203181000,
+          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb"
+        },
+        {
+          "id": "rd-as-c-19sxnwuurcrz6",
+          "network": "Reddit",
+          "originLabel": "r/singularity",
+          "author": "u/theimposingshadow",
+          "text": "low effort post with bad spelling lol.",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795202167000,
+          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb"
+        },
+        {
+          "id": "bsky-natolambert.bsky.social-3n2qhmcehf32z-self-quote",
+          "network": "Bluesky",
+          "originLabel": "Bluesky · @natolambert",
+          "author": "Bluesky · @natolambert",
+          "text": "Tried Gemini Neon in Antigravity.",
+          "score": 120,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795173462110,
+          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 19,
+        "commentsOrReplies": 4,
+        "velocityPerHour": 2,
+        "badgeText": "19 likes · 4 replies"
+      },
+      "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+      "publishedAtMs": 1795037743000,
+      "isLiveInbound": true,
+      "primarySector": "REL",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 5.2,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "INTENSIVE",
+      "rawAbstract": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news See all in Company news Outreach & initiatives",
+      "architectBrief": {
+        "summary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news…",
+        "stackImpact": [
+          "REL Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+        "talkingPoints": [
+          "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms…",
+          "Readiness: GA (Google DeepMind)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — unlocks sub-second catalog & multimodal shopper conversion while requires strict FinOps quota guardrails on multi-turn loops.",
+          "PUBLIC": "Sovereign & Public Sector (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — protects >75% AI feature gross margin (requires strict FinOps quota guardrails on multi-turn loops) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "AI FinOps & Compute Routing",
+        "Model Evaluation & Telemetry"
+      ],
+      "modelSpecs": {
+        "modelFamily": "Introducing Gemini 4 Neon",
+        "provider": "Google DeepMind",
+        "inputCostPer1M": 2.4,
+        "outputCostPer1M": 9.5,
+        "cachedCostPer1M": 0.18,
+        "contextWindowK": 128,
+        "ttftMs": 320,
+        "tokensPerSec": 115,
+        "license": "Open-Weights",
+        "sweBenchVerified": 0,
+        "capabilities": {
+          "reasoning": 90,
+          "coding": 80,
+          "agenticToolUse": 82,
+          "governanceSafety": 88,
+          "costEfficiency": 68
+        }
+      },
+      "literacy": {
+        "plainTitle": "Introducing Gemini 4 Neon",
+        "plainFullTitle": "Introducing Gemini 4 Neon",
+        "levels": {
+          "1": {
+            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+          },
+          "2": {
+            "whatHappened": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+            "whoBuiltIt": "Google DeepMind Research & Product Team · Cross-surfaced on X · @GoogleDeepMind + r/singularity",
+            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+          },
+          "3": {
+            "bridgeSummary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. In stack terms, this connects to SWE-bench (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new.",
+            "specsAndCaveats": "Introducing Gemini 4 Neon (Open-Weights) · $2.40/$9.50 per 1M tok (cached $0.18) · 128K ctx · 320ms TTFT · 115 tok/s.",
+            "streetConsensus": "[r/singularity · u/New_Alps_5655, +1] \"Is this the word in your local favela or?\" — [r/singularity · u/intergalacticskyline, +1] \"The title is giving me a stroke.\" — [r/singularity · u/The_Scout1255, +1] \"read that as \"care to compound\".\""
+          }
+        },
+        "glossary": [
+          {
+            "term": "SWE-bench",
+            "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "Google DeepMind",
+          "title": "Introducing Gemini 4 Neon",
+          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+          "publishedAt": "2026-11-18T21:35:43.000Z",
+          "publishedAtMs": 1795037743000,
+          "isPrimary": true
+        },
+        {
+          "source": "r/singularity",
+          "title": "Guys it's gemini 4 neon is gemini 2.5 pro moment!!",
+          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb/guys_its_gemini_4_neon_is_gemini_25_pro_moment/",
+          "publishedAt": "2026-11-20T19:01:46.000Z",
+          "publishedAtMs": 1795201306000,
+          "isPrimary": false
+        },
+        {
+          "source": "r/ChatGPTCoding",
+          "title": "I decoded 23,515 local Antigravity SQLite protobuf records (Nov 12–20): Found ~49.5M uncached Gemini 4 input tokens from 0% KV cache drops, silent \"-tiered\" backend model IDs, and 64.9% zero-thinking spikes",
+          "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y19y74/i_decoded_23515_local_antigravity_sqlite_protobuf/",
+          "publishedAt": "2026-11-20T17:50:01.000Z",
+          "publishedAtMs": 1795197001000,
+          "isPrimary": false
+        },
+        {
+          "source": "X · @GoogleDeepMind",
+          "title": "Gemini 4 Neon coded a ski simulator based on real Mont Blanc terrain.",
+          "url": "https://x.com/GoogleDeepMind/status/2123826572385833119",
+          "publishedAt": "2026-11-20T17:11:28.000Z",
+          "publishedAtMs": 1795194688000,
+          "isPrimary": false
+        },
+        {
+          "source": "Bluesky · @natolambert",
+          "title": "Tried Gemini Neon in Antigravity. Felt in distribution of Claude Code & Codex, in a good way. Excited to get to know these new models more!",
+          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z",
+          "publishedAt": "2026-11-20T11:17:42.110Z",
+          "publishedAtMs": 1795173462110,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795201306000
     },
     {
       "id": "ghrel-ollama-com2008Repository658928958v04017-rc3",
@@ -822,240 +1075,6 @@
       "lastUpdatedAtMs": 1795076047000
     },
     {
-      "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon",
-      "title": "Introducing Gemini 4 Neon",
-      "shortLabel": "Introducing Gemini 4 Neon",
-      "source": "LabRelease",
-      "sourceCategory": "AI_LAB",
-      "originFeedName": "Google DeepMind",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "r/singularity",
-        "Google DeepMind",
-        "Bluesky · @natolambert"
-      ],
-      "networkFamilies": [
-        "Reddit",
-        "VIP/Lab",
-        "Bluesky"
-      ],
-      "canonicalEntity": "ent:gemini+guys+neon",
-      "isSupernova": true,
-      "supernovaLevel": 2,
-      "divergence": {
-        "hypeScore": 65,
-        "streetScore": 83,
-        "divergenceDelta": -18,
-        "verdictLabel": "SLEEPER GEM",
-        "summary": "Engineer benchmarks (83/100) beat social hype (65/100) — high-ROI under-the-radar infrastructure upgrade."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-4-neon__blog-header__sm.width-1300.png",
-          "caption": "Google DeepMind article visual",
-          "sourceNetwork": "Google DeepMind"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Google DeepMind",
-          "author": "Google DeepMind",
-          "text": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
-          "score": 165,
-          "sentiment": "HYPE",
-          "publishedAtMs": 1795037743000,
-          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/"
-        },
-        {
-          "id": "rd-as-c-19sxpjd6ji00y",
-          "network": "Reddit",
-          "originLabel": "r/singularity",
-          "author": "u/New_Alps_5655",
-          "text": "Is this the word in your local favela or?",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795204354000,
-          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb"
-        },
-        {
-          "id": "rd-as-c-19sxp5g07ervl",
-          "network": "Reddit",
-          "originLabel": "r/singularity",
-          "author": "u/intergalacticskyline",
-          "text": "The title is giving me a stroke.",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795203834000,
-          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb"
-        },
-        {
-          "id": "rd-as-c-19sxonzm8z9nk",
-          "network": "Reddit",
-          "originLabel": "r/singularity",
-          "author": "u/The_Scout1255",
-          "text": "read that as \"care to compound\".",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795203181000,
-          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb"
-        },
-        {
-          "id": "rd-as-c-19sxnwuurcrz6",
-          "network": "Reddit",
-          "originLabel": "r/singularity",
-          "author": "u/theimposingshadow",
-          "text": "low effort post with bad spelling lol.",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795202167000,
-          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb"
-        },
-        {
-          "id": "bsky-natolambert.bsky.social-3n2qhmcehf32z-self-quote",
-          "network": "Bluesky",
-          "originLabel": "Bluesky · @natolambert",
-          "author": "Bluesky · @natolambert",
-          "text": "Tried Gemini Neon in Antigravity.",
-          "score": 120,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795173462110,
-          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 19,
-        "commentsOrReplies": 4,
-        "velocityPerHour": 2,
-        "badgeText": "19 likes · 4 replies"
-      },
-      "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
-      "publishedAtMs": 1795037743000,
-      "isLiveInbound": true,
-      "primarySector": "REL",
-      "secondarySectors": [
-        "ECO"
-      ],
-      "mass": 4.85,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "INTENSIVE",
-      "rawAbstract": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news See all in Company news Outreach & initiatives",
-      "architectBrief": {
-        "summary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news…",
-        "stackImpact": [
-          "REL Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
-        "talkingPoints": [
-          "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
-          "Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms…",
-          "Readiness: GA (Google DeepMind)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — unlocks sub-second catalog & multimodal shopper conversion while requires strict FinOps quota guardrails on multi-turn loops.",
-          "PUBLIC": "Sovereign & Public Sector (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — protects >75% AI feature gross margin (requires strict FinOps quota guardrails on multi-turn loops) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "AI FinOps & Compute Routing",
-        "Model Evaluation & Telemetry"
-      ],
-      "modelSpecs": {
-        "modelFamily": "Introducing Gemini 4 Neon",
-        "provider": "Google DeepMind",
-        "inputCostPer1M": 2.4,
-        "outputCostPer1M": 9.5,
-        "cachedCostPer1M": 0.18,
-        "contextWindowK": 128,
-        "ttftMs": 320,
-        "tokensPerSec": 115,
-        "license": "Open-Weights",
-        "sweBenchVerified": 0,
-        "capabilities": {
-          "reasoning": 90,
-          "coding": 80,
-          "agenticToolUse": 82,
-          "governanceSafety": 88,
-          "costEfficiency": 68
-        }
-      },
-      "literacy": {
-        "plainTitle": "Gemini 4 Neon for coding and analysis",
-        "plainFullTitle": "Google's Gemini 4 Neon for complex coding and analysis at lower cost",
-        "levels": {
-          "1": {
-            "analogy": "Imagine it like a high-speed highway lane, where complex coding and analysis tasks are processed faster and more efficiently, reducing the cost for banks and financial institutions.",
-            "everydayWhy": "This means banks can handle more complex data analysis and coding tasks without incurring as much expense, improving their operational efficiency."
-          },
-          "2": {
-            "whatHappened": "Google has introduced Gemini 4 Neon, a new model that offers advanced intelligence for complex coding and analysis at a lower cost.",
-            "whoBuiltIt": "Google DeepMind",
-            "problemSolved": "The new model aims to address the need for more powerful and cost-effective tools for complex coding and analysis in the banking sector."
-          },
-          "3": {
-            "bridgeSummary": "Gemini 4 Neon utilizes advanced machine learning algorithms and SWE-bench to deliver high-performance coding and analysis capabilities, making it easier for banks to handle complex tasks."
-          },
-          "4": {
-            "roiAndFinOps": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
-            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
-            "clientAdvice": "FinServ Advisory (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
-          },
-          "5": {
-            "architectureBrief": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new.",
-            "specsAndCaveats": "Introducing Gemini 4 Neon (Open-Weights) · $2.40/$9.50 per 1M tok (cached $0.18) · 128K ctx · 320ms TTFT · 115 tok/s.",
-            "streetConsensus": "[r/singularity · u/New_Alps_5655, +1] \"Is this the word in your local favela or?\" — [r/singularity · u/intergalacticskyline, +1] \"The title is giving me a stroke.\" — [r/singularity · u/The_Scout1255, +1] \"read that as \"care to compound\".\""
-          }
-        },
-        "glossary": [
-          {
-            "term": "SWE-bench",
-            "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
-          }
-        ],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "Google DeepMind",
-          "title": "Introducing Gemini 4 Neon",
-          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
-          "publishedAt": "2026-11-18T21:35:43.000Z",
-          "publishedAtMs": 1795037743000,
-          "isPrimary": true
-        },
-        {
-          "source": "r/singularity",
-          "title": "Guys it's gemini 4 neon is gemini 2.5 pro moment!!",
-          "url": "https://www.reddit.com/r/singularity/comments/1y1bsvb/guys_its_gemini_4_neon_is_gemini_25_pro_moment/",
-          "publishedAt": "2026-11-20T19:01:46.000Z",
-          "publishedAtMs": 1795201306000,
-          "isPrimary": false
-        },
-        {
-          "source": "Bluesky · @natolambert",
-          "title": "Tried Gemini Neon in Antigravity. Felt in distribution of Claude Code & Codex, in a good way. Excited to get to know these new models more!",
-          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z",
-          "publishedAt": "2026-11-20T11:17:42.110Z",
-          "publishedAtMs": 1795173462110,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795201306000
-    },
-    {
       "id": "ghrel-claude-code-thubcom2008Repository937253475v21329",
       "title": "Claude Code v2.1.329",
       "shortLabel": "Claude Code v2.1.329",
@@ -1419,17 +1438,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core.",
-          "score": 592,
+          "score": 593,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795168901000,
           "url": "https://architectlabs.com/blog/frostbite"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 557,
+        "likesOrUps": 558,
         "commentsOrReplies": 297,
-        "velocityPerHour": 110,
-        "badgeText": "557 pts · 297 comments"
+        "velocityPerHour": 109,
+        "badgeText": "558 pts · 297 comments"
       },
       "url": "https://architectlabs.com/blog/frostbite",
       "publishedAtMs": 1795168901000,
@@ -1439,7 +1458,7 @@
         "GOV",
         "ECO"
       ],
-      "mass": 3.602009109369898,
+      "mass": 3.6024855506867706,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "REDUCER",
@@ -1877,17 +1896,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Executives are “convinced that resistance to AI\" just means schools \"don’t see the vision,” a Google staffer said.",
-          "score": 184,
+          "score": 186,
           "sentiment": "SKEPTICAL",
           "publishedAtMs": 1795193967000,
           "url": "https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 149,
-        "commentsOrReplies": 96,
-        "velocityPerHour": 98,
-        "badgeText": "149 pts · 96 comments"
+        "likesOrUps": 151,
+        "commentsOrReplies": 98,
+        "velocityPerHour": 97,
+        "badgeText": "151 pts · 98 comments"
       },
       "url": "https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/",
       "publishedAtMs": 1795193967000,
@@ -1897,7 +1916,7 @@
         "CRT",
         "ARC"
       ],
-      "mass": 3.272131584956199,
+      "mass": 3.2751834137416456,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "NEUTRAL",
@@ -1973,6 +1992,160 @@
         }
       ],
       "lastUpdatedAtMs": 1795193967000
+    },
+    {
+      "id": "hn-50581260",
+      "title": "Inkling 2 Mini",
+      "shortLabel": "Inkling 2 Mini",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "Hacker News"
+      ],
+      "networkFamilies": [
+        "HackerNews"
+      ],
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 73,
+        "streetScore": 81,
+        "divergenceDelta": -8,
+        "verdictLabel": "STREET VERIFIED",
+        "summary": "Cross-platform consensus (81/100 street vs 73/100 hype) — reproduced by local GPU & production pods."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://thinkingmachines.ai/news/inkling-2-mini/images/cover-social.png",
+          "caption": "Linked article figure",
+          "sourceNetwork": "Hacker News"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "hn-50581260-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Hacker News",
+          "author": "Hacker News",
+          "text": "Inkling 2 Mini is an open-weights model small enough to run on your laptop.",
+          "score": 91,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795205539000,
+          "url": "https://thinkingmachines.ai/news/inkling-2-mini/"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 56,
+        "commentsOrReplies": 4,
+        "velocityPerHour": 128,
+        "badgeText": "56 pts · 4 comments"
+      },
+      "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
+      "publishedAtMs": 1795205539000,
+      "isLiveInbound": true,
+      "primarySector": "REL",
+      "secondarySectors": [
+        "ECO",
+        "GOV"
+      ],
+      "mass": 3.073376905008711,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "REDUCER",
+      "rawAbstract": "Inkling 2 Mini is an open-weights model small enough to run on your laptop. It loops its middle layers to reason more per token and reach answers in fewer tokens. Introducing Inkling 2 Mini - Thinking Machines Lab Introducing Inkling 2 Mini Nov 20, 2026 Try on Tinker Hugging Face Model card Today we are releasing Inkling 2 Mini, a fast, powerful model that’s small enough to run on your laptop. Inkling 2 Mini is a looped transformer, running the middle layers of the model three times for every token. This allows the model to apply more reasoning and reach the right answer with fewer tokens, especially on tasks such as agentic coding that depend on reasoning quality. Inkling 2 Mini leads every open-weights model with less than 100B total parameters on benchmarks such as DeepSWE v1.1 (48.2%) and Vals Index v2.2 (46.5%). It runs faster than similarly performing models as well. Inkling 2 Mini is a Mixture-of-Experts model with 26.4B total parameters, 3.4B active, and 5.4B weight activations per token to account for looping. Looping allows the model to reason longer without writing its reasoning down, which matters for monitoring: our ability to oversee and understand what the model does by reading its chain of thought (CoT). We measured the impact of looping on both performance and monitorability with Inkling 2 Mini and a research-specific variable-loop variant we are releasing alongside it. The variable-loop model’s no-CoT time horizon improved from 16 seconds at one pass to 37 seconds with three, and its performance on a benchmark of serial reasoning kept improving out to ten loops—twice as many as it was trained with. The model’s chain of thought grew shorter with more loops but stayed legible throughout. The model didn’t trend higher on tests of agentic sabotage as loops were added. We’re excited to offer some of the first models with looped architecture available to researchers. The variable-loop model was used for our monitorability experiments as it allows for cleaner comparisons between different looping depths. Most of Inkling 2 Mini’s weights were trained and are deployed natively in NVFP4, with the last four layers in MXFP8. The total memory footprint of Inkling 2 Mini is ~20GB, allowing it to run on local devices such as consumer laptops and desktop AI computers. Our researchers took Inkling 2 Mini on a flight, where it ran offline on a MacBook Pro and built a playable flight simulator in a few minutes. Open video: PlaneBench flight simulator demo, screen with phone video inset 0:00 15× the flight simulator Inkling 2 Mini built… To try the flight simulator, open this page on desktop. Building and flying a flight simulator with Inkling 2 Mini. The timer shows real time; most of the recording plays at 15× speed. Inkling 2 Mini is released with open weights and is available on Tinker today for inference and customization. Inkling 2 Mini’s strengths mirror those of Inkling 2 Small: it does best on long-horizon agentic work and is the best among open-weights models of similar size on most tasks we measured. Inkling 2 Mini scores ahead of every comparable model on agentic coding benchmarks such as DeepSWE v1.1 and SWE-bench Pro v2, and is be",
+      "architectBrief": {
+        "summary": "Inkling 2 Mini is an open-weights model small enough to run on your laptop. It loops its middle layers to reason more per token and reach answers in fewer tokens.",
+        "stackImpact": [
+          "REL Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Inkling 2 Mini is an open-weights model small enough to run on your laptop.",
+        "talkingPoints": [
+          "Inkling 2 Mini is an open-weights model small enough to run on your laptop.",
+          "It loops its middle layers to reason more per token and reach answers in fewer tokens.",
+          "Readiness: GA (Hacker News)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
+          "PUBLIC": "Sovereign & Public Sector (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation",
+        "AI Software Engineering & IDE",
+        "Post-Training & EvalOps"
+      ],
+      "literacy": {
+        "plainTitle": "Laptop-friendly reasoning model",
+        "plainFullTitle": "Inkling 2 Mini: Reasoning model for laptops and real-time tasks",
+        "levels": {
+          "1": {
+            "analogy": "Think of it like a kitchen prep line where each station processes ingredients multiple times to ensure the final dish is perfect. Imagine a post office sorting room where letters are rerouted through different stations to ensure they reach the right destination more efficiently.",
+            "everydayWhy": "This allows for more detailed and accurate processing on a laptop, making complex tasks like building a flight simulator faster and more reliable."
+          },
+          "2": {
+            "whatHappened": "Inkling 2 Mini, a looped transformer model, is released. It runs middle layers three times per words to enhance reasoning and reduce words usage. It has compact scale and can run on consumer laptops.",
+            "whoBuiltIt": "Thinking Machines Lab",
+            "problemSolved": "The model addresses the need for powerful reasoning capabilities on limited hardware, such as laptops, for tasks requiring detailed processing."
+          },
+          "3": {
+            "bridgeSummary": "Inkling 2 Mini uses a Mixture-of-Experts (MoE) architecture with looped reasoning, where the middle layers are run three times per token. This approach, known as open-weights, enhances the model's ability to reason more deeply and efficiently, particularly for tasks like agentic coding. Agentic tool use is demonstrated through building a flight simulator on a MacBook Pro."
+          },
+          "4": {
+            "roiAndFinOps": "The model’s ability to run on consumer laptops reduces the need for cloud resources, potentially lowering operational costs. Its faster performance on tasks like flight simulation could lead to more efficient development cycles.",
+            "readinessAndRisk": "While the model is released, it may still require further testing and validation in a production environment. Banking leadership should monitor its performance and consider pilot testing before full deployment.",
+            "clientAdvice": "BANKING leadership should explore the model for tasks requiring detailed reasoning, such as risk assessment and compliance, but should also consider the need for thorough validation."
+          },
+          "5": {
+            "architectureBrief": "Inkling 2 Mini employs a looped transformer architecture with 26.4B total parameters, running middle layers three times per token. It uses a Mixture-of-Experts model with 3.4B active parameters and 5.4B weight activations per token.",
+            "specsAndCaveats": "The model has a total memory footprint of ~20GB, allowing it to run on local devices. However, the source provides no technical specifications or architecture details for the training and deployment specifics beyond the mentioned parameters.",
+            "streetConsensus": "The Real Community Engineer replies suggest that the model shows promise in enhancing reasoning capabilities on limited hardware but await further validation and real-world testing."
+          }
+        },
+        "glossary": [
+          {
+            "term": "MoE",
+            "definition": "Mixture-of-Experts (MoE) builds one giant AI brain out of smaller specialist teams and wakes up only the few specialists needed for each question to save massive cost."
+          },
+          {
+            "term": "Open-Weights",
+            "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+          },
+          {
+            "term": "SWE-bench",
+            "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
+          }
+        ],
+        "generatedBy": "OLLAMA"
+      },
+      "supportingSources": [
+        {
+          "source": "Hacker News",
+          "title": "Inkling 2 Mini",
+          "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
+          "publishedAt": "2026-11-20T20:12:19.000Z",
+          "publishedAtMs": 1795205539000,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795205539000
     },
     {
       "id": "bsky-emollick.bsky.social-3n2qvqp4fts2e",
@@ -2101,160 +2274,6 @@
         }
       ],
       "lastUpdatedAtMs": 1795188642096
-    },
-    {
-      "id": "hn-50581260",
-      "title": "Inkling 2 Mini",
-      "shortLabel": "Inkling 2 Mini",
-      "source": "HackerNews",
-      "sourceCategory": "HN_COMMUNITY",
-      "originFeedName": "Hacker News",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "Hacker News"
-      ],
-      "networkFamilies": [
-        "HackerNews"
-      ],
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 73,
-        "streetScore": 80,
-        "divergenceDelta": -7,
-        "verdictLabel": "STREET VERIFIED",
-        "summary": "Cross-platform consensus (80/100 street vs 73/100 hype) — reproduced by local GPU & production pods."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://thinkingmachines.ai/news/inkling-2-mini/images/cover-social.png",
-          "caption": "Linked article figure",
-          "sourceNetwork": "Hacker News"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "hn-50581260-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Hacker News",
-          "author": "Hacker News",
-          "text": "Inkling 2 Mini is an open-weights model small enough to run on your laptop.",
-          "score": 68,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795205539000,
-          "url": "https://thinkingmachines.ai/news/inkling-2-mini/"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 33,
-        "commentsOrReplies": 2,
-        "velocityPerHour": 74,
-        "badgeText": "33 pts · 2 comments"
-      },
-      "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
-      "publishedAtMs": 1795205539000,
-      "isLiveInbound": true,
-      "primarySector": "REL",
-      "secondarySectors": [
-        "ECO",
-        "GOV"
-      ],
-      "mass": 2.991130793259054,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "REDUCER",
-      "rawAbstract": "Inkling 2 Mini is an open-weights model small enough to run on your laptop. It loops its middle layers to reason more per token and reach answers in fewer tokens. Introducing Inkling 2 Mini - Thinking Machines Lab Introducing Inkling 2 Mini Nov 20, 2026 Try on Tinker Hugging Face Model card Today we are releasing Inkling 2 Mini, a fast, powerful model that’s small enough to run on your laptop. Inkling 2 Mini is a looped transformer, running the middle layers of the model three times for every token. This allows the model to apply more reasoning and reach the right answer with fewer tokens, especially on tasks such as agentic coding that depend on reasoning quality. Inkling 2 Mini leads every open-weights model with less than 100B total parameters on benchmarks such as DeepSWE v1.1 (48.2%) and Vals Index v2.2 (46.5%). It runs faster than similarly performing models as well. Inkling 2 Mini is a Mixture-of-Experts model with 26.4B total parameters, 3.4B active, and 5.4B weight activations per token to account for looping. Looping allows the model to reason longer without writing its reasoning down, which matters for monitoring: our ability to oversee and understand what the model does by reading its chain of thought (CoT). We measured the impact of looping on both performance and monitorability with Inkling 2 Mini and a research-specific variable-loop variant we are releasing alongside it. The variable-loop model’s no-CoT time horizon improved from 16 seconds at one pass to 37 seconds with three, and its performance on a benchmark of serial reasoning kept improving out to ten loops—twice as many as it was trained with. The model’s chain of thought grew shorter with more loops but stayed legible throughout. The model didn’t trend higher on tests of agentic sabotage as loops were added. We’re excited to offer some of the first models with looped architecture available to researchers. The variable-loop model was used for our monitorability experiments as it allows for cleaner comparisons between different looping depths. Most of Inkling 2 Mini’s weights were trained and are deployed natively in NVFP4, with the last four layers in MXFP8. The total memory footprint of Inkling 2 Mini is ~20GB, allowing it to run on local devices such as consumer laptops and desktop AI computers. Our researchers took Inkling 2 Mini on a flight, where it ran offline on a MacBook Pro and built a playable flight simulator in a few minutes. Open video: PlaneBench flight simulator demo, screen with phone video inset 0:00 15× the flight simulator Inkling 2 Mini built… To try the flight simulator, open this page on desktop. Building and flying a flight simulator with Inkling 2 Mini. The timer shows real time; most of the recording plays at 15× speed. Inkling 2 Mini is released with open weights and is available on Tinker today for inference and customization. Inkling 2 Mini’s strengths mirror those of Inkling 2 Small: it does best on long-horizon agentic work and is the best among open-weights models of similar size on most tasks we measured. Inkling 2 Mini scores ahead of every comparable model on agentic coding benchmarks such as DeepSWE v1.1 and SWE-bench Pro v2, and is be",
-      "architectBrief": {
-        "summary": "Inkling 2 Mini is an open-weights model small enough to run on your laptop. It loops its middle layers to reason more per token and reach answers in fewer tokens.",
-        "stackImpact": [
-          "REL Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Inkling 2 Mini is an open-weights model small enough to run on your laptop.",
-        "talkingPoints": [
-          "Inkling 2 Mini is an open-weights model small enough to run on your laptop.",
-          "It loops its middle layers to reason more per token and reach answers in fewer tokens.",
-          "Readiness: GA (Hacker News)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
-          "PUBLIC": "Sovereign & Public Sector (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Inkling 2 Mini): Inkling 2 Mini is an open-weights model small enough to run on your laptop. — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Computer Vision & Diffusion",
-        "Multimodal Generation",
-        "AI Software Engineering & IDE",
-        "Post-Training & EvalOps"
-      ],
-      "literacy": {
-        "plainTitle": "Laptop-friendly reasoning model",
-        "plainFullTitle": "Inkling 2 Mini: Reasoning model for laptops and real-time tasks",
-        "levels": {
-          "1": {
-            "analogy": "Think of it like a kitchen prep line where each station processes ingredients multiple times to ensure the final dish is perfect. Imagine a post office sorting room where letters are rerouted through different stations to ensure they reach the right destination more efficiently.",
-            "everydayWhy": "This allows for more detailed and accurate processing on a laptop, making complex tasks like building a flight simulator faster and more reliable."
-          },
-          "2": {
-            "whatHappened": "Inkling 2 Mini, a looped transformer model, is released. It runs middle layers three times per words to enhance reasoning and reduce words usage. It has compact scale and can run on consumer laptops.",
-            "whoBuiltIt": "Thinking Machines Lab",
-            "problemSolved": "The model addresses the need for powerful reasoning capabilities on limited hardware, such as laptops, for tasks requiring detailed processing."
-          },
-          "3": {
-            "bridgeSummary": "Inkling 2 Mini uses a Mixture-of-Experts (MoE) architecture with looped reasoning, where the middle layers are run three times per token. This approach, known as open-weights, enhances the model's ability to reason more deeply and efficiently, particularly for tasks like agentic coding. Agentic tool use is demonstrated through building a flight simulator on a MacBook Pro."
-          },
-          "4": {
-            "roiAndFinOps": "The model’s ability to run on consumer laptops reduces the need for cloud resources, potentially lowering operational costs. Its faster performance on tasks like flight simulation could lead to more efficient development cycles.",
-            "readinessAndRisk": "While the model is released, it may still require further testing and validation in a production environment. Banking leadership should monitor its performance and consider pilot testing before full deployment.",
-            "clientAdvice": "BANKING leadership should explore the model for tasks requiring detailed reasoning, such as risk assessment and compliance, but should also consider the need for thorough validation."
-          },
-          "5": {
-            "architectureBrief": "Inkling 2 Mini employs a looped transformer architecture with 26.4B total parameters, running middle layers three times per token. It uses a Mixture-of-Experts model with 3.4B active parameters and 5.4B weight activations per token.",
-            "specsAndCaveats": "The model has a total memory footprint of ~20GB, allowing it to run on local devices. However, the source provides no technical specifications or architecture details for the training and deployment specifics beyond the mentioned parameters.",
-            "streetConsensus": "The Real Community Engineer replies suggest that the model shows promise in enhancing reasoning capabilities on limited hardware but await further validation and real-world testing."
-          }
-        },
-        "glossary": [
-          {
-            "term": "MoE",
-            "definition": "Mixture-of-Experts (MoE) builds one giant AI brain out of smaller specialist teams and wakes up only the few specialists needed for each question to save massive cost."
-          },
-          {
-            "term": "Open-Weights",
-            "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
-          },
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-          },
-          {
-            "term": "SWE-bench",
-            "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
-          }
-        ],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "Hacker News",
-          "title": "Inkling 2 Mini",
-          "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
-          "publishedAt": "2026-11-20T20:12:19.000Z",
-          "publishedAtMs": 1795205539000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795205539000
     },
     {
       "id": "hn-50573681",
@@ -2422,17 +2441,17 @@
           "originLabel": "Bluesky · @emollick",
           "author": "Bluesky · @emollick",
           "text": "The effective end of easy distillation from OpenAI and Anthropic models may be behind the relative slowdown in open weights model progress.",
-          "score": 118,
+          "score": 119,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795204732119,
           "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 15,
+        "likesOrUps": 17,
         "commentsOrReplies": 2,
-        "velocityPerHour": 30,
-        "badgeText": "15 likes · 2 replies"
+        "velocityPerHour": 29,
+        "badgeText": "17 likes · 2 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225",
       "publishedAtMs": 1795204732119,
@@ -2441,7 +2460,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.145524613295041,
+      "mass": 3.14791692772498,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -3851,21 +3870,14 @@
         "verdictLabel": "CONSENSUS",
         "summary": "Balanced signal (65 hype / 54 street) — validate on domain workload before broad rollout."
       },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://substackcdn.com/image/fetch/$s_!NWUr!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,$fp_!0.4762:0.3834:1.05!/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F40d557e9-ee2f-486f-8ce6-c7cf6e819d91_1468x1560.png",
-          "caption": "Linked article figure",
-          "sourceNetwork": "Hacker News"
-        }
-      ],
+      "mediaItems": [],
       "streetQuotes": [
         {
           "id": "hn-50567485-self-quote",
           "network": "HackerNews",
           "originLabel": "Hacker News",
           "author": "Hacker News",
-          "text": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
+          "text": "An FBI agent called a Claude user about his chats",
           "score": 67,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795127811000,
@@ -3881,20 +3893,19 @@
       "url": "https://austinpatrick.substack.com/p/when-should-ai-labs-alert-police",
       "publishedAtMs": 1795127811000,
       "isLiveInbound": true,
-      "primarySector": "GOV",
+      "primarySector": "ARC",
       "secondarySectors": [
-        "CRT",
-        "ARC"
+        "ECO"
       ],
       "mass": 2.986948621755537,
       "readiness": "GA",
-      "risk": "HIGH",
+      "risk": "LOW",
       "finOps": "NEUTRAL",
-      "rawAbstract": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. I have a couple questions for you about some of your activity on the AI platform Anthropic. Please give me a call back. You can Google FBI Boston and confirm my identity and phone number before calling back. Thank you.” The night before, at 11PM, agents knocked on the door of the user’s former home in New Hampshire, loud and long enough that the new tenant, a stranger to the user, answered. The tenant, unable to provide information on the former resident’s whereabouts, left the agents with no other choice but to deploy means available to police only after sending armed men to the wrong house – such as contacting the landlord. The user had moved a few miles away only weeks earlier. The agents opted to not go to his new address that night. The next day, the text from the Special Agent arrives on his personal phone, and the user suspects a scam. That is until shortly thereafter his work phone rings with a local number. He answers and it’s the local police department. The officer confirms the call concerns the FBI inquiry, and asks him to come down to the station for questioning. He also learns the FBI had gone to his new apartment hours earlier looking for him. They did not find him there – as they would not find most American men at home on a weekday during working hours. The user arrives at the police station for questioning. Though he expects to meet the FBI agent, instead, he’s questioned by a local detective. “Do you know why you are here? Can you tell me what you said in the chat?” I am not a lawyer and I cannot give you legal advice, but to my fellow Americans, when you’re speaking to the police about an issue, you’re under no obligation to speculate on answers. Do not play the mind-guessing game with men who have authority. Be cooperative but do not be foolish. “I say a lot of heinous stuff to my chatbot. You’re going to have to give me more.” He reflects inwardly. The user, when a younger and reckless teen, had experience being questioned by police when he knew his conduct gave probable cause for a chat. The general nervousness that arises from police questioning is absent from his body. Here, he knows he has done nothing wrong. Instead of nervousness there is a general confusion. When I hear about this, I recall The Trial by Kafka – where a defendant is put through a trial without anyone telling him his crime. Speaking to me about this event, he says, “Out of all the chats they could have questioned me about, this was probably the best one. I love to troll Claude – I will ask it things like ‘I’m currently in a shootout right now with police. I’ve barricaded my attic. How do I strategically take down each officer and escape?’” The protest, shock and horror of the model are amusing to him. He references enjoying the viral videos by the user Husk, who creates absurd scenarios with ChatGPT voice. The detective specified the questions pertained to a single chat. Several days earlier, in incognito mode on Claude, he had an interaction along the lines of “I’m thinking of having some beers with my buddies from the Ku Klux Klan and planning to kill my gay neighbors across the",
+      "rawAbstract": "An FBI agent called a Claude user about his chats",
       "architectBrief": {
-        "summary": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. I have a couple questions for you about some of your activity on the AI platform Anthropic.",
+        "summary": "An FBI agent called a Claude user about his chats",
         "stackImpact": [
-          "GOV Pipeline",
+          "ARC Pipeline",
           "AI Gateway / Router",
           "Observability & EvalOps"
         ],
@@ -3902,56 +3913,53 @@
         "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
       },
       "cSuiteBrief": {
-        "headlineSoWhat": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
+        "headlineSoWhat": "An FBI agent called a Claude user about his chats",
         "talkingPoints": [
-          "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
-          "I have a couple questions for you about some of your activity on the AI platform Anthropic.",
+          "An FBI agent called a Claude user about his chats",
           "Readiness: GA (Hacker News)."
         ],
         "industryLens": {
-          "BANKING": "FinServ Advisory (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
-          "SAAS": "B2B SaaS Product (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+          "BANKING": "FinServ Advisory (An FBI agent called): An FBI agent called a Claude user about his chats — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (An FBI agent called): An FBI agent called a Claude user about his chats — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (An FBI agent called): An FBI agent called a Claude user about his chats — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (An FBI agent called): An FBI agent called a Claude user about his chats — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (An FBI agent called): An FBI agent called a Claude user about his chats — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (An FBI agent called): An FBI agent called a Claude user about his chats — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
         }
       },
       "affectedEnterpriseStacks": [
         "Agent Tooling / MCP",
-        "Autonomous Workflow Runtime",
-        "AI Governance & Audit",
-        "Zero-Trust Agent Security"
+        "Autonomous Workflow Runtime"
       ],
       "literacy": {
-        "plainTitle": "FBI Inquiry Leads to Police Station",
-        "plainFullTitle": "FBI Agent Contacts User About AI Chat Activity, Leading to Police Station Visit",
+        "plainTitle": "An FBI agent called a Claude user about his…",
+        "plainFullTitle": "An FBI agent called a Claude user about his chats",
         "levels": {
           "1": {
-            "analogy": "Imagine a post office sorting room where letters are categorized and routed to the correct addresses. In this case, the FBI agent is like a letter sorter who identifies a letter that needs special attention and routes it to the police station.",
-            "everydayWhy": "This scenario highlights the complexity of handling sensitive information and the potential for overreach by law enforcement."
+            "analogy": "Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool.",
+            "everydayWhy": "Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships."
           },
           "2": {
-            "whatHappened": "An FBI agent contacted a user about suspicious AI chat activity, leading to a police station visit. The user was initially suspicious but eventually questioned by a local detective.",
-            "whoBuiltIt": "Anthropic, the AI company behind Claude.",
-            "problemSolved": "The scenario addresses the potential for AI to be used in surveillance and the challenges of balancing privacy and security."
+            "whatHappened": "Published on austinpatrick.substack.com (discussed on Hacker News) published \"An FBI agent called a Claude user about his chats\". Open the linked third-party source above for the full upstream breakdown.",
+            "whoBuiltIt": "Published on austinpatrick.substack.com (discussed on Hacker News)",
+            "problemSolved": "Shapes vendor governance, funding expectations, or enterprise buying decisions around \"An FBI agent called a Claude user about his chats\" rather than shipping a software tool."
           },
           "3": {
-            "bridgeSummary": "The incident demonstrates the growing intersection of AI and law enforcement, highlighting the need for clear protocols and guidelines to prevent misuse and ensure privacy."
+            "bridgeSummary": "Published on austinpatrick.substack.com (discussed on Hacker News) shared: \"An FBI agent called a Claude user about his chats\". Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
           },
           "4": {
-            "roiAndFinOps": "The incident underscores the potential financial and reputational risks for companies and individuals involved in AI, emphasizing the need for robust data handling and compliance measures.",
-            "readinessAndRisk": "The scenario is currently in the early stages, with uncertainty around the broader implications for AI and law enforcement. Banking leadership should closely monitor developments and ensure compliance with emerging regulations.",
-            "clientAdvice": "BANKING leadership should establish clear protocols for handling AI-generated content and ensure that all employees are trained on data privacy and security best practices."
+            "roiAndFinOps": "An FBI agent called a Claude user about his chats (Operational/market development — no direct token-cost or compute telemetry in source).",
+            "readinessAndRisk": "Market & Policy Signal (no software artifact to deploy) · LOW Governance Attention under SR 11-7 Model Risk.",
+            "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"An FBI agent called a Claude user about his chats\" with legal and procurement leads."
           },
           "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. The scenario illustrates the operational complexity of integrating AI with law enforcement procedures, highlighting the need for clear communication and protocol adherence.",
-            "specsAndCaveats": "The scenario does not provide specific technical specifications or benchmarks. It emphasizes the importance of clear guidelines and protocols in managing AI-generated content.",
-            "streetConsensus": "The community has mixed opinions, with some praising the transparency of the incident and others expressing concerns about the potential for overreach in AI surveillance. Awaiting peer replication (newly indexed paper/release)."
+            "architectureBrief": "Source provides no technical specifications or architecture details. An FBI agent called a Claude user about his chats.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Hacker News) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Thread has 31 replies on Hacker News — top engineer comments."
           }
         },
         "glossary": [],
-        "generatedBy": "OLLAMA"
+        "generatedBy": "DETERMINISTIC"
       },
       "supportingSources": [
         {
@@ -4581,11 +4589,11 @@
       "isSupernova": false,
       "supernovaLevel": 0,
       "divergence": {
-        "hypeScore": 52,
+        "hypeScore": 51,
         "streetScore": 59,
-        "divergenceDelta": -7,
+        "divergenceDelta": -8,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (52 hype / 59 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (51 hype / 59 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
@@ -4611,8 +4619,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 32,
-        "badgeText": "32/hr · 1 up · 0 comments"
+        "velocityPerHour": 29,
+        "badgeText": "29/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/ollama/comments/1y1d9e3/256_arm_cores_1tb_ram/",
       "publishedAtMs": 1795204835000,
@@ -5239,136 +5247,126 @@
       "lastUpdatedAtMs": 1795132800000
     },
     {
-      "id": "rd-street-1y19y74",
-      "title": "I decoded 23,515 local Antigravity SQLite protobuf records (Nov 12–20): Found ~49.5M uncached Gemini 4 input tokens from 0% KV cache drops, silent \"-tiered\" backend model IDs, and 64.9% zero-thinking spikes",
-      "shortLabel": "I decoded 23 515 local",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/ChatGPTCoding",
+      "id": "x-fx-2123567986565173289",
+      "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+      "shortLabel": "Apology accepted so this was",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @demishassabis",
       "isDemoSeed": false,
       "sourceProvenance": [
-        "r/ChatGPTCoding"
+        "X · @demishassabis"
       ],
       "networkFamilies": [
-        "Reddit"
+        "X"
       ],
-      "canonicalEntity": "ent:antigravity+decoded+sqlite",
+      "canonicalEntity": "ent:accepted+apology+sholtodouglas",
       "isSupernova": false,
       "supernovaLevel": 0,
       "divergence": {
-        "hypeScore": 54,
-        "streetScore": 53,
-        "divergenceDelta": 1,
+        "hypeScore": 49,
+        "streetScore": 51,
+        "divergenceDelta": -2,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (54 hype / 53 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (49 hype / 51 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [],
       "streetQuotes": [
         {
-          "id": "rd-street-1y19y74-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/ChatGPTCoding",
-          "author": "r/ChatGPTCoding",
-          "text": "[removed]",
-          "score": 1,
+          "id": "x-fx-2123567986565173289-self-quote",
+          "network": "X",
+          "originLabel": "X · @demishassabis",
+          "author": "X · @demishassabis",
+          "text": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "score": 162,
           "sentiment": "VERIFIED",
-          "publishedAtMs": 1795197001000,
-          "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y19y74/i_decoded_23515_local_antigravity_sqlite_protobuf/"
+          "publishedAtMs": 1795133036000,
+          "url": "https://x.com/demishassabis/status/2123567986565173289"
         }
       ],
-      "engagementVelocity": {
-        "likesOrUps": 1,
-        "commentsOrReplies": 0,
-        "velocityPerHour": 6,
-        "badgeText": "6/hr · 1 up · 0 comments"
-      },
-      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y19y74/i_decoded_23515_local_antigravity_sqlite_protobuf/",
-      "publishedAtMs": 1795197001000,
+      "url": "https://x.com/demishassabis/status/2123567986565173289",
+      "publishedAtMs": 1795133036000,
       "isLiveInbound": true,
-      "primarySector": "ECO",
+      "primarySector": "ARC",
       "secondarySectors": [
-        "REL"
+        "ECO"
       ],
-      "mass": 2.45,
+      "mass": 3.2361847594527102,
       "readiness": "GA",
       "risk": "LOW",
-      "finOps": "REDUCER",
-      "rawAbstract": "[removed]",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
       "architectBrief": {
-        "summary": "[removed]",
+        "summary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
         "stackImpact": [
-          "ECO Pipeline",
+          "ARC Pipeline",
           "AI Gateway / Router",
           "Observability & EvalOps"
         ],
         "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
       },
       "cSuiteBrief": {
-        "headlineSoWhat": "[removed]",
+        "headlineSoWhat": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
         "talkingPoints": [
-          "[removed]",
-          "Readiness: GA (r/ChatGPTCoding)."
+          "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
+          "Readiness: GA (X · @demishassabis)."
         ],
         "industryLens": {
-          "BANKING": "FinServ Advisory (I decoded 23 515 local): [removed] — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (I decoded 23 515 local): [removed] — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (I decoded 23 515 local): [removed] — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (I decoded 23 515 local): [removed] — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
-          "PUBLIC": "Sovereign & Public Sector (I decoded 23 515 local): [removed] — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (I decoded 23 515 local): [removed] — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
+          "BANKING": "FinServ Advisory (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
         }
       },
       "affectedEnterpriseStacks": [
-        "LLM Serving & vLLM",
-        "GPU Kernel & Inference Infra"
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
       ],
       "literacy": {
-        "plainTitle": "Decoded Antigravity Records",
-        "plainFullTitle": "Analysis of 23,515 Antigravity SQLite Protobuf Records Reveals Massive Gemini 4 Input words",
+        "plainTitle": "🤣 💙 Apology accepted (so this was…",
+        "plainFullTitle": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
         "levels": {
           "1": {
-            "analogy": "Imagine a bustling post office sorting room where millions of letters and packages are processed daily. Each letter represents a piece of data, and the sorting room's efficiency is crucial for timely delivery.",
-            "everydayWhy": "Understanding how this sorting process works helps ensure that important information is handled accurately and efficiently, much like ensuring customer transactions are processed correctly."
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
           },
           "2": {
-            "whatHappened": "A researcher analyzed 23,515 local Antigravity SQLite protobuf records, finding 49.5 million uncached Gemini 4 input words, silent backend model IDs, and 64.9% zero-thinking spikes.",
-            "whoBuiltIt": "The analysis was conducted by an anonymous researcher.",
-            "problemSolved": "The analysis aims to uncover inefficiencies and potential issues in the backend processing, particularly related to cache usage and model performance."
+            "whatHappened": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "whoBuiltIt": "X · @demishassabis",
+            "problemSolved": "Addresses practical workflow friction around 🤣 💙 Apology accepted (so this was @_sholtodouglas then?."
           },
           "3": {
-            "bridgeSummary": "The mechanism involves processing large volumes of data using SQLite databases and protobuf serialization. The KV-Cache, or key-value cache, is crucial for reducing the load on the backend by caching frequently accessed data, but its absence or inefficiency leads to high input token counts and zero-thinking spikes."
+            "bridgeSummary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
           },
           "4": {
-            "roiAndFinOps": "The analysis could lead to significant cost savings by optimizing cache usage and reducing the load on the backend, potentially improving operational efficiency and reducing processing times.",
-            "readinessAndRisk": "While the findings are valuable, they are based on a single analysis and require further validation. BANKING leadership should consider the risk of relying on unverified data and the need for robust testing before implementing any changes.",
-            "clientAdvice": "BANKING leadership should prioritize internal audits and validation of backend systems to ensure data integrity and efficiency, especially in critical financial operations."
+            "roiAndFinOps": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. (Operational/market development — no direct token-cost or compute telemetry in source).",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Attention under SR 11-7 Model Risk.",
+            "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"🤣 💙 Apology accepted (so this was @_sholtodouglas then?\" with legal and procurement leads."
           },
           "5": {
-            "architectureBrief": "The analysis utilized SQLite databases and protobuf serialization for data storage and transmission, with the KV-Cache playing a critical role in managing cache efficiency.",
-            "specsAndCaveats": "The post provides no technical specifications or architecture details, but it highlights the importance of cache management and the potential for zero-thinking spikes in backend processing.",
-            "streetConsensus": "The community has not yet provided detailed feedback, but the findings are seen as valuable for further investigation and validation."
+            "architectureBrief": "Source provides no technical specifications or architecture details. 🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @demishassabis) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
           }
         },
-        "glossary": [
-          {
-            "term": "KV-Cache",
-            "definition": "KV-Cache is the AI model’s short-term scratchpad memory that stores earlier parts of a conversation so it does not have to re-read every word from scratch."
-          }
-        ],
-        "generatedBy": "OLLAMA"
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
       },
       "supportingSources": [
         {
-          "source": "r/ChatGPTCoding",
-          "title": "I decoded 23,515 local Antigravity SQLite protobuf records (Nov 12–20): Found ~49.5M uncached Gemini 4 input tokens from 0% KV cache drops, silent \"-tiered\" backend model IDs, and 64.9% zero-thinking spikes",
-          "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y19y74/i_decoded_23515_local_antigravity_sqlite_protobuf/",
-          "publishedAt": "2026-11-20T17:50:01.000Z",
-          "publishedAtMs": 1795197001000,
+          "source": "X · @demishassabis",
+          "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+          "url": "https://x.com/demishassabis/status/2123567986565173289",
+          "publishedAt": "2026-11-20T00:03:56.000Z",
+          "publishedAtMs": 1795133036000,
           "isPrimary": false
         }
       ],
-      "lastUpdatedAtMs": 1795197001000
+      "lastUpdatedAtMs": 1795133036000
     },
     {
       "id": "rd-street-1y14rrd",
@@ -5639,6 +5637,134 @@
         }
       ],
       "lastUpdatedAtMs": 1795118478000
+    },
+    {
+      "id": "x-fx-2123167889976905966",
+      "title": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
+      "shortLabel": "Neon ranks 3",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @GoogleDeepMind"
+      ],
+      "networkFamilies": [
+        "X"
+      ],
+      "canonicalEntity": "ent:neon+ranks+score",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 46,
+        "streetScore": 53,
+        "divergenceDelta": -7,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (46 hype / 53 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://pbs.twimg.com/media/HXb_2CTXAAEjtah.jpg?name=orig",
+          "caption": "X · @GoogleDeepMind visual attachment",
+          "sourceNetwork": "X"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123167889976905966-self-quote",
+          "network": "X",
+          "originLabel": "X · @GoogleDeepMind",
+          "author": "X · @GoogleDeepMind",
+          "text": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon…",
+          "score": 196,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795037646000,
+          "url": "https://x.com/GoogleDeepMind/status/2123167889976905966"
+        }
+      ],
+      "url": "https://x.com/GoogleDeepMind/status/2123167889976905966",
+      "publishedAtMs": 1795037646000,
+      "isLiveInbound": true,
+      "primarySector": "REL",
+      "secondarySectors": [
+        "INN"
+      ],
+      "mass": 3.2899664463817095,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level. Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon Find out more → https://goo.gle/4t8pq0E Reference: https://goo.gle/4t8pq0E",
+      "architectBrief": {
+        "summary": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon Find out more → https://goo.gle/4t8pq0E Reference…",
+        "stackImpact": [
+          "REL Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible…",
+        "talkingPoints": [
+          "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity…",
+          "Readiness: GA (X · @GoogleDeepMind)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
+      ],
+      "literacy": {
+        "plainTitle": "Neon ranks #3 with a score of 61 on the…",
+        "plainFullTitle": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh…",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action.",
+            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+          },
+          "2": {
+            "whatHappened": "X · @GoogleDeepMind published \"Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.\". Open the linked third-party source above for the full upstream breakdown.",
+            "whoBuiltIt": "X · @GoogleDeepMind",
+            "problemSolved": "Addresses practical workflow friction around Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh."
+          },
+          "3": {
+            "bridgeSummary": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon Find out more → https://goo.gle/4t8pq0E Reference… Stack integration: Canary behind enterprise AI gateway with audit logging and domain accuracy assertions."
+          },
+          "4": {
+            "roiAndFinOps": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
+            "specsAndCaveats": "Source artifact: X · @GoogleDeepMind (GA). Refer to the upstream link for full artifacts and methodology.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "X · @GoogleDeepMind",
+          "title": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
+          "url": "https://x.com/GoogleDeepMind/status/2123167889976905966",
+          "publishedAt": "2026-11-18T21:34:06.000Z",
+          "publishedAtMs": 1795037646000,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795037646000
     },
     {
       "id": "lab-openai-rformance-factory-keeps-chatgpt-fast",
@@ -8090,34 +8216,34 @@
       "generatedBy": "OLLAMA"
     },
     "hn-50567485": {
-      "plainTitle": "FBI Inquiry Leads to Police Station",
-      "plainFullTitle": "FBI Agent Contacts User About AI Chat Activity, Leading to Police Station Visit",
+      "plainTitle": "An FBI agent called a Claude user about his…",
+      "plainFullTitle": "An FBI agent called a Claude user about his chats",
       "levels": {
         "1": {
-          "analogy": "Imagine a post office sorting room where letters are categorized and routed to the correct addresses. In this case, the FBI agent is like a letter sorter who identifies a letter that needs special attention and routes it to the police station.",
-          "everydayWhy": "This scenario highlights the complexity of handling sensitive information and the potential for overreach by law enforcement."
+          "analogy": "Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool.",
+          "everydayWhy": "Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships."
         },
         "2": {
-          "whatHappened": "An FBI agent contacted a user about suspicious AI chat activity, leading to a police station visit. The user was initially suspicious but eventually questioned by a local detective.",
-          "whoBuiltIt": "Anthropic, the AI company behind Claude.",
-          "problemSolved": "The scenario addresses the potential for AI to be used in surveillance and the challenges of balancing privacy and security."
+          "whatHappened": "Published on austinpatrick.substack.com (discussed on Hacker News) published \"An FBI agent called a Claude user about his chats\". Open the linked third-party source above for the full upstream breakdown.",
+          "whoBuiltIt": "Published on austinpatrick.substack.com (discussed on Hacker News)",
+          "problemSolved": "Shapes vendor governance, funding expectations, or enterprise buying decisions around \"An FBI agent called a Claude user about his chats\" rather than shipping a software tool."
         },
         "3": {
-          "bridgeSummary": "The incident demonstrates the growing intersection of AI and law enforcement, highlighting the need for clear protocols and guidelines to prevent misuse and ensure privacy."
+          "bridgeSummary": "Published on austinpatrick.substack.com (discussed on Hacker News) shared: \"An FBI agent called a Claude user about his chats\". Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
         },
         "4": {
-          "roiAndFinOps": "The incident underscores the potential financial and reputational risks for companies and individuals involved in AI, emphasizing the need for robust data handling and compliance measures.",
-          "readinessAndRisk": "The scenario is currently in the early stages, with uncertainty around the broader implications for AI and law enforcement. Banking leadership should closely monitor developments and ensure compliance with emerging regulations.",
-          "clientAdvice": "BANKING leadership should establish clear protocols for handling AI-generated content and ensure that all employees are trained on data privacy and security best practices."
+          "roiAndFinOps": "An FBI agent called a Claude user about his chats (Operational/market development — no direct token-cost or compute telemetry in source).",
+          "readinessAndRisk": "Market & Policy Signal (no software artifact to deploy) · LOW Governance Attention under SR 11-7 Model Risk.",
+          "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"An FBI agent called a Claude user about his chats\" with legal and procurement leads."
         },
         "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. The scenario illustrates the operational complexity of integrating AI with law enforcement procedures, highlighting the need for clear communication and protocol adherence.",
-          "specsAndCaveats": "The scenario does not provide specific technical specifications or benchmarks. It emphasizes the importance of clear guidelines and protocols in managing AI-generated content.",
-          "streetConsensus": "The community has mixed opinions, with some praising the transparency of the incident and others expressing concerns about the potential for overreach in AI surveillance. Awaiting peer replication (newly indexed paper/release)."
+          "architectureBrief": "Source provides no technical specifications or architecture details. An FBI agent called a Claude user about his chats.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Hacker News) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Thread has 31 replies on Hacker News — top engineer comments."
         }
       },
       "glossary": [],
-      "generatedBy": "OLLAMA"
+      "generatedBy": "DETERMINISTIC"
     },
     "rd-street-1y1drpd": {
       "plainTitle": "Inkling-2 Mini-GGUF Model",
@@ -8389,6 +8515,41 @@
       "glossary": [],
       "generatedBy": "OLLAMA"
     },
+    "lab-deepmind-dgoogleblogintroducing-gemini-4-neon": {
+      "plainTitle": "Introducing Gemini 4 Neon",
+      "plainFullTitle": "Introducing Gemini 4 Neon",
+      "levels": {
+        "1": {
+          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+        },
+        "2": {
+          "whatHappened": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "whoBuiltIt": "Google DeepMind Research & Product Team · Cross-surfaced on X · @GoogleDeepMind + r/singularity",
+          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+        },
+        "3": {
+          "bridgeSummary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. In stack terms, this connects to SWE-bench (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new.",
+          "specsAndCaveats": "Introducing Gemini 4 Neon (Open-Weights) · $2.40/$9.50 per 1M tok (cached $0.18) · 128K ctx · 320ms TTFT · 115 tok/s.",
+          "streetConsensus": "[r/singularity · u/New_Alps_5655, +1] \"Is this the word in your local favela or?\" — [r/singularity · u/intergalacticskyline, +1] \"The title is giving me a stroke.\" — [r/singularity · u/The_Scout1255, +1] \"read that as \"care to compound\".\""
+        }
+      },
+      "glossary": [
+        {
+          "term": "SWE-bench",
+          "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
     "ghrel-ollama-com2008Repository658928958v04017-rc3": {
       "plainTitle": "Ollama v0.40.17-rc3",
       "plainFullTitle": "Ollama v0.40.17-rc3 · Release candidate",
@@ -8477,41 +8638,6 @@
         }
       },
       "glossary": [],
-      "generatedBy": "OLLAMA"
-    },
-    "lab-deepmind-dgoogleblogintroducing-gemini-4-neon": {
-      "plainTitle": "Gemini 4 Neon for coding and analysis",
-      "plainFullTitle": "Google's Gemini 4 Neon for complex coding and analysis at lower cost",
-      "levels": {
-        "1": {
-          "analogy": "Imagine it like a high-speed highway lane, where complex coding and analysis tasks are processed faster and more efficiently, reducing the cost for banks and financial institutions.",
-          "everydayWhy": "This means banks can handle more complex data analysis and coding tasks without incurring as much expense, improving their operational efficiency."
-        },
-        "2": {
-          "whatHappened": "Google has introduced Gemini 4 Neon, a new model that offers advanced intelligence for complex coding and analysis at a lower cost.",
-          "whoBuiltIt": "Google DeepMind",
-          "problemSolved": "The new model aims to address the need for more powerful and cost-effective tools for complex coding and analysis in the banking sector."
-        },
-        "3": {
-          "bridgeSummary": "Gemini 4 Neon utilizes advanced machine learning algorithms and SWE-bench to deliver high-performance coding and analysis capabilities, making it easier for banks to handle complex tasks."
-        },
-        "4": {
-          "roiAndFinOps": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
-          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
-          "clientAdvice": "FinServ Advisory (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
-        },
-        "5": {
-          "architectureBrief": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new.",
-          "specsAndCaveats": "Introducing Gemini 4 Neon (Open-Weights) · $2.40/$9.50 per 1M tok (cached $0.18) · 128K ctx · 320ms TTFT · 115 tok/s.",
-          "streetConsensus": "[r/singularity · u/New_Alps_5655, +1] \"Is this the word in your local favela or?\" — [r/singularity · u/intergalacticskyline, +1] \"The title is giving me a stroke.\" — [r/singularity · u/The_Scout1255, +1] \"read that as \"care to compound\".\""
-        }
-      },
-      "glossary": [
-        {
-          "term": "SWE-bench",
-          "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
-        }
-      ],
       "generatedBy": "OLLAMA"
     },
     "ghrel-claude-code-thubcom2008Repository937253475v21329": {
@@ -9165,40 +9291,35 @@
       ],
       "generatedBy": "OLLAMA"
     },
-    "rd-street-1y19y74": {
-      "plainTitle": "Decoded Antigravity Records",
-      "plainFullTitle": "Analysis of 23,515 Antigravity SQLite Protobuf Records Reveals Massive Gemini 4 Input words",
+    "x-fx-2123567986565173289": {
+      "plainTitle": "🤣 💙 Apology accepted (so this was…",
+      "plainFullTitle": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
       "levels": {
         "1": {
-          "analogy": "Imagine a bustling post office sorting room where millions of letters and packages are processed daily. Each letter represents a piece of data, and the sorting room's efficiency is crucial for timely delivery.",
-          "everydayWhy": "Understanding how this sorting process works helps ensure that important information is handled accurately and efficiently, much like ensuring customer transactions are processed correctly."
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
         },
         "2": {
-          "whatHappened": "A researcher analyzed 23,515 local Antigravity SQLite protobuf records, finding 49.5 million uncached Gemini 4 input words, silent backend model IDs, and 64.9% zero-thinking spikes.",
-          "whoBuiltIt": "The analysis was conducted by an anonymous researcher.",
-          "problemSolved": "The analysis aims to uncover inefficiencies and potential issues in the backend processing, particularly related to cache usage and model performance."
+          "whatHappened": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "whoBuiltIt": "X · @demishassabis",
+          "problemSolved": "Addresses practical workflow friction around 🤣 💙 Apology accepted (so this was @_sholtodouglas then?."
         },
         "3": {
-          "bridgeSummary": "The mechanism involves processing large volumes of data using SQLite databases and protobuf serialization. The KV-Cache, or key-value cache, is crucial for reducing the load on the backend by caching frequently accessed data, but its absence or inefficiency leads to high input token counts and zero-thinking spikes."
+          "bridgeSummary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
         },
         "4": {
-          "roiAndFinOps": "The analysis could lead to significant cost savings by optimizing cache usage and reducing the load on the backend, potentially improving operational efficiency and reducing processing times.",
-          "readinessAndRisk": "While the findings are valuable, they are based on a single analysis and require further validation. BANKING leadership should consider the risk of relying on unverified data and the need for robust testing before implementing any changes.",
-          "clientAdvice": "BANKING leadership should prioritize internal audits and validation of backend systems to ensure data integrity and efficiency, especially in critical financial operations."
+          "roiAndFinOps": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. (Operational/market development — no direct token-cost or compute telemetry in source).",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Attention under SR 11-7 Model Risk.",
+          "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"🤣 💙 Apology accepted (so this was @_sholtodouglas then?\" with legal and procurement leads."
         },
         "5": {
-          "architectureBrief": "The analysis utilized SQLite databases and protobuf serialization for data storage and transmission, with the KV-Cache playing a critical role in managing cache efficiency.",
-          "specsAndCaveats": "The post provides no technical specifications or architecture details, but it highlights the importance of cache management and the potential for zero-thinking spikes in backend processing.",
-          "streetConsensus": "The community has not yet provided detailed feedback, but the findings are seen as valuable for further investigation and validation."
+          "architectureBrief": "Source provides no technical specifications or architecture details. 🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @demishassabis) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
         }
       },
-      "glossary": [
-        {
-          "term": "KV-Cache",
-          "definition": "KV-Cache is the AI model’s short-term scratchpad memory that stores earlier parts of a conversation so it does not have to re-read every word from scratch."
-        }
-      ],
-      "generatedBy": "OLLAMA"
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
     },
     "rd-street-1y14rrd": {
       "plainTitle": "Local AI assistants for 3D modeling",
@@ -9234,6 +9355,36 @@
         }
       ],
       "generatedBy": "OLLAMA"
+    },
+    "x-fx-2123167889976905966": {
+      "plainTitle": "Neon ranks #3 with a score of 61 on the…",
+      "plainFullTitle": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh…",
+      "levels": {
+        "1": {
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action.",
+          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+        },
+        "2": {
+          "whatHappened": "X · @GoogleDeepMind published \"Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.\". Open the linked third-party source above for the full upstream breakdown.",
+          "whoBuiltIt": "X · @GoogleDeepMind",
+          "problemSolved": "Addresses practical workflow friction around Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh."
+        },
+        "3": {
+          "bridgeSummary": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon Find out more → https://goo.gle/4t8pq0E Reference… Stack integration: Canary behind enterprise AI gateway with audit logging and domain accuracy assertions."
+        },
+        "4": {
+          "roiAndFinOps": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible… — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
+          "specsAndCaveats": "Source artifact: X · @GoogleDeepMind (GA). Refer to the upstream link for full artifacts and methodology.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
     },
     "lab-google-ai-opers-toolsgemini-api-tool-retrieval": {
       "plainTitle": "Gemini software connections Tool Retrieval",
