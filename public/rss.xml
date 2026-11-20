@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2026 16:35:09 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 16:37:10 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>Mathematicians Buckmaster and Alpöge Claim Proof of Unforced Navier-Stokes Blowup</title>
@@ -145,6 +145,30 @@
       <description>A software engineer with 5-10 years of experience is concerned about the future of the software industry and job security due to the increasing use of AI. The engineer seeks advice on how to adapt to the changing landscape of software development and whether they should consider other industries. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50565484</description>
     </item>
     <item>
+      <title>I built an engine that puts ADA users near BLACKWELL performance</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y16xqe&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y16xqe&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 15:52:44 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>I have been working on a chip software engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. I have benchmarked both sides of the engine (small community bench nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better). — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y16xqe/i_built_an_engine_that_puts_ada_users_near/</description>
+    </item>
+    <item>
+      <title>compact AI model “super adapter”: one rank-96 lightweight skill add-on that improves 3 agent…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y16sam&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y16sam&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 15:46:32 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>compact AI model super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their trained model files updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 lightweight skill add-on. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y16sam/qwen3827b_super_adapter_one_rank96_lora_that/</description>
+    </item>
+    <item>
+      <title>Agents using GPT-6.2 in the Responses software connections can build on earlier reasoning to…</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 23:56:18 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the software connections to drop reasoning that follows the change. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2123566018866151579</description>
+    </item>
+    <item>
       <title>Accepted Apology for Misidentifying Team Member</title>
       <link>https://cortex-radar.github.io/?orb=x-fx-2123567986565173289&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123567986565173289&amp;lens=2</guid>
@@ -183,30 +207,6 @@
       <pubDate>Thu, 19 Nov 2026 18:00:00 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
       <description>Agents can now access hundreds of tools directly through the Gemini software connections, reducing the need for input words. Addresses the bottleneck of agents needing to input more words to access tools, improving efficiency. — Upstream (Google AI Blog): https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/</description>
-    </item>
-    <item>
-      <title>Walter Isaacson on AI creativity in banking</title>
-      <link>https://cortex-radar.github.io/?orb=lab-google-ai-echnologyaidialogues-walter-isaacson&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-google-ai-echnologyaidialogues-walter-isaacson&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 17:00:00 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Walter Isaacson discussed how AI can inspire creativity and human judgment in the banking sector. The discussion addressed the challenge of integrating AI to enhance human creativity and decision-making in banking. — Upstream (Google AI Blog): https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/</description>
-    </item>
-    <item>
-      <title>Anthropic Announces IPO and Concurrent Private Placement</title>
-      <link>https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Anthropic completed its IPO, selling 1.127 billion shares at $83 each, and also sold 313.25 million shares privately to tech giants. The process addressed the need for Anthropic to raise significant capital for growth and operations, overcoming the bottleneck of traditional fundraising methods. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
-    </item>
-    <item>
-      <title>RL Post-Training in Diffusion Transformers Is Activation Steering</title>
-      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261126627v1&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261126627v1&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 18:59:53 GMT</pubDate>
-      <category>Science &amp; Research</category>
-      <description>Researchers found that a small set of fixed steering vectors, added to a diffusion model, could achieve most of the gains from full reinforcement learning tuning. The challenge of creating highly complex, input-dependent transformations was simplified, making the models more practical for real-world applications. — Upstream (arXiv): https://arxiv.org/abs/2611.26627v1</description>
     </item>
   </channel>
 </rss>

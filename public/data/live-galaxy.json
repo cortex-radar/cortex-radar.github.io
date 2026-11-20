@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "bakedAtIso": "2026-11-20T16:35:09.243Z",
-  "bakedAtMs": 1795192509243,
-  "synthesizedBy": "LOCAL_OLLAMA_qwen2.5:7b",
-  "signalCount": 53,
+  "bakedAtIso": "2026-11-20T16:37:10.415Z",
+  "bakedAtMs": 1795192630415,
+  "synthesizedBy": "GITHUB_MODELS_GPT-4O-MINI",
+  "signalCount": 60,
   "signals": [
     {
       "id": "rd-street-1y174f6",
@@ -77,8 +77,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 29,
-        "badgeText": "29/hr · 1 up · 0 comments"
+        "velocityPerHour": 26,
+        "badgeText": "26/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/",
       "publishedAtMs": 1795192248000,
@@ -376,17 +376,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core.",
-          "score": 464,
+          "score": 470,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795168901000,
           "url": "https://architectlabs.com/blog/frostbite"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 429,
-        "commentsOrReplies": 260,
+        "likesOrUps": 435,
+        "commentsOrReplies": 261,
         "velocityPerHour": 145,
-        "badgeText": "429 pts · 260 comments"
+        "badgeText": "435 pts · 261 comments"
       },
       "url": "https://architectlabs.com/blog/frostbite",
       "publishedAtMs": 1795168901000,
@@ -396,7 +396,7 @@
         "GOV",
         "ECO"
       ],
-      "mass": 3.5332366873606724,
+      "mass": 3.5368636076582165,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "REDUCER",
@@ -518,17 +518,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Asian markets record worst week since 2020 as investors question huge sums being poured into AI build-out",
-          "score": 160,
+          "score": 162,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795181399000,
           "url": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 125,
-        "commentsOrReplies": 106,
+        "likesOrUps": 127,
+        "commentsOrReplies": 108,
         "velocityPerHour": 110,
-        "badgeText": "125 pts · 106 comments"
+        "badgeText": "127 pts · 108 comments"
       },
       "url": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off",
       "publishedAtMs": 1795181399000,
@@ -537,7 +537,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.2326779887263513,
+      "mass": 3.2361847594527102,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -651,17 +651,17 @@
           "originLabel": "Bluesky · @emollick",
           "author": "Bluesky · @emollick",
           "text": "Riemann Hypothesis may have been solved with the help of Claude.",
-          "score": 146,
+          "score": 147,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795188642096,
           "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 72,
+        "likesOrUps": 74,
         "commentsOrReplies": 7,
-        "velocityPerHour": 69,
-        "badgeText": "72 likes · 7 replies"
+        "velocityPerHour": 67,
+        "badgeText": "74 likes · 7 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e",
       "publishedAtMs": 1795188642096,
@@ -670,7 +670,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.206829356259884,
+      "mass": 3.2087562675863146,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -801,7 +801,7 @@
       "engagementVelocity": {
         "likesOrUps": 45,
         "commentsOrReplies": 50,
-        "velocityPerHour": 34,
+        "velocityPerHour": 33,
         "badgeText": "45 pts · 50 comments"
       },
       "url": "https://spectrum.ieee.org/epic-games-unreal-engine-ai",
@@ -2269,6 +2269,433 @@
       }
     },
     {
+      "id": "rd-street-1y16xqe",
+      "title": "I built an engine that puts ADA users near BLACKWELL performance",
+      "shortLabel": "I built an engine",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "r/LocalLLaMA"
+      ],
+      "networkFamilies": [
+        "Reddit"
+      ],
+      "canonicalEntity": "ent:ada+puts+users",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 52,
+        "streetScore": 58,
+        "divergenceDelta": -6,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (52 hype / 58 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://external-preview.redd.it/rxuNzJsjAXGqdj0tG-OkYxw-3uDDPQYTPRTDGv0nFB8.png?auto=webp&s=14a062662a99c366aaf90784aae5d80924bfd4b8",
+          "caption": "r/LocalLLaMA benchmark / architecture attachment",
+          "sourceNetwork": "r/LocalLLaMA"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "rd-street-1y16xqe-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/LocalLLaMA",
+          "author": "r/LocalLLaMA",
+          "text": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost.",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795189964000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y16xqe/i_built_an_engine_that_puts_ada_users_near/"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 1,
+        "commentsOrReplies": 0,
+        "velocityPerHour": 22,
+        "badgeText": "22/hr · 1 up · 0 comments"
+      },
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y16xqe/i_built_an_engine_that_puts_ada_users_near/",
+      "publishedAtMs": 1795189964000,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "ECO",
+        "REL"
+      ],
+      "mass": 2.45,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. It runs both Dense (27B) and Sparse (QFN). I have benchmarked both sides of the engine (small community bench -- nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better). I have IQ4\\_XS as an option for the Dense path but I choose to setup Q4\\_K\\_XL with 4bit rotated KV instead **QFN Bench Results:** * 25mins, 49/49, UD-IQ4\\_XS (staying on the leaderboard with IQ3\\_S) #13 on the board [https://airbench.ai/checkup/64baefc1-476e-41e8-ab11-938f248f8389/report](https://airbench.ai/checkup/64baefc1-476e-41e8-ab11-938f248f8389/report) **27B Bench Results:** * 1hr 29mins, 48/49 (vision 1 failed), UD-Q4\\_K\\_XL (competes with NVFP4 quasar 27B within 4 mins finish on RTX 5090) #65 on the board [**https://airbench.ai/checkup/02db2264-4211-4dc1-93ba-da42b616e7cc/report**](https://airbench.ai/checkup/02db2264-4211-4dc1-93ba-da42b616e7cc/report) Happy to take suggestions or speak with others that are working on ADA currently",
+      "architectBrief": {
+        "summary": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. It runs both Dense (27B) and Sparse (QFN).",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost.",
+        "talkingPoints": [
+          "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I",
+          "It runs both Dense (27B) and Sparse (QFN).",
+          "Readiness: GA (r/LocalLLaMA)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (I built an engine): I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (I built an engine): I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (I built an engine): I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (I built an engine): I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (I built an engine): I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (I built an engine): I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation",
+        "LLM Serving & vLLM",
+        "GPU Kernel & Inference Infra"
+      ],
+      "literacy": {
+        "plainTitle": "I built an engine that puts ADA users…",
+        "plainFullTitle": "I built an engine that puts ADA users near BLACKWELL performance",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, I have been working on a chip software engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should no",
+            "everydayWhy": "I have benchmarked both sides of the engine (small community bench nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better"
+          },
+          "2": {
+            "whatHappened": "I have been working on a chip software engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost.",
+            "whoBuiltIt": "r/LocalLLaMA Engineering Community",
+            "problemSolved": "I have benchmarked both sides of the engine (small community bench nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better)."
+          },
+          "3": {
+            "bridgeSummary": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. I have benchmarked both sides of the engine (small community bench nothing official like SWE) I am for quality, lower mean KLD over speed In stack terms, this connects to VRAM, Context Window, RAG, FinOps Cascade (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (I built an engine): I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. It runs both Dense (27B) and Sparse (QFN).",
+            "specsAndCaveats": "I have benchmarked both sides of the engine (small community bench -- nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better).",
+            "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "VRAM",
+            "definition": "VRAM (Video RAM) is the ultra-fast memory soldered directly onto an AI graphics chip—the single biggest bottleneck determining how large an AI model you can run."
+          },
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+          },
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+          },
+          {
+            "term": "FinOps Cascade",
+            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      }
+    },
+    {
+      "id": "rd-street-1y16sam",
+      "title": "Qwen3.8-27B “super adapter”: one rank-96 LoRA that improves 3 agent harnesses at once (SWE-Bench Pro 55% → 63% mean, up to 53–73% fewer tool calls)",
+      "shortLabel": "Qwen3.8-27B super adapter one…",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "r/LocalLLaMA"
+      ],
+      "networkFamilies": [
+        "Reddit"
+      ],
+      "canonicalEntity": "ent:adapter+qwen3.8+super",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 54,
+        "streetScore": 55,
+        "divergenceDelta": -1,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (54 hype / 55 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://external-preview.redd.it/u5ZoRNYcmjZxYcRv99igtcYSQephAf7DrIv_E6XctK0.png?auto=webp&s=8fbb9b2b8248a8e31457d2ceef3b6ba3021b88c7",
+          "caption": "r/LocalLLaMA benchmark / architecture attachment",
+          "sourceNetwork": "r/LocalLLaMA"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "rd-street-1y16sam-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/LocalLLaMA",
+          "author": "r/LocalLLaMA",
+          "text": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi).",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795189592000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y16sam/qwen3827b_super_adapter_one_rank96_lora_that/"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 1,
+        "commentsOrReplies": 0,
+        "velocityPerHour": 19,
+        "badgeText": "19/hr · 1 up · 0 comments"
+      },
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y16sam/qwen3827b_super_adapter_one_rank96_lora_that/",
+      "publishedAtMs": 1795189592000,
+      "isLiveInbound": true,
+      "primarySector": "ECO",
+      "secondarySectors": [
+        "GOV",
+        "ARC"
+      ],
+      "mass": 2.45,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "REDUCER",
+      "rawAbstract": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their weight updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 LoRA. The merged adapter beats the base thinking model across harnesses and solves tasks with noticeably fewer tool calls. **Results (thinking on, xhigh), base → super-adapter** |Harness|SWE-Bench Pro (hard 51)|Terminal-Bench 2.1| |:-|:-|:-| |Hermes Agent|45% → 61%|\\+4 to +6 pts| |OpenCode|47% → 67%|\\+4 to +6 pts| |pi|74% → 74%|\\+4 to +6 pts| Mean across all 6 harness/benchmark pairs: **55.5% → 63.5%** To be upfront: pi on SWE-Bench Pro didn't move. The big gains come from Hermes Agent and OpenCode. **Efficiency** (counting only tasks that both base and adapter solve): * 53–73% fewer tool calls with thinking off * 19–48% fewer tool calls with thinking on **How the merge works** The three adapters' weight updates are almost orthogonal (cosine similarity \\~0.01). We concatenate them along the rank dimension at weight ½ each. That gives one rank-96 LoRA that applies all three updates exactly, with no lossy merging step (no TIES/DARE needed). **Train your own** The main point of the blog post is that you can train a harness adapter for your own model, your own harness, and your own tasks. The full recipe, experiments, and open questions are all in there. * Model: [https://huggingface.co/harness-hub/Qwen3.8-27B-super-adapter](https://huggingface.co/harness-hub/Qwen3.8-27B-super-adapter) * Blog post: [https://huggingface.co/blog/harness-adapters-at-scale](https://huggingface.co/blog/harness-adapters-at-scale) Happy to answer questions!",
+      "architectBrief": {
+        "summary": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their weight updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 LoRA.",
+        "stackImpact": [
+          "ECO Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi).",
+        "talkingPoints": [
+          "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi).",
+          "Their weight updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 LoRA.",
+          "Readiness: GA (r/LocalLLaMA)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Qwen3.8-27B super adapter one…): Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Qwen3.8-27B super adapter one…): Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Qwen3.8-27B super adapter one…): Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Qwen3.8-27B super adapter one…): Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
+          "PUBLIC": "Sovereign & Public Sector (Qwen3.8-27B super adapter one…): Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Qwen3.8-27B super adapter one…): Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Agent Tooling / MCP",
+        "Autonomous Workflow Runtime",
+        "AI Software Engineering & IDE",
+        "Post-Training & EvalOps"
+      ],
+      "literacy": {
+        "plainTitle": "compact AI model “super adapter”: one…",
+        "plainFullTitle": "compact AI model “super adapter”: one rank-96 lightweight skill add-on that improves 3 agent…",
+        "levels": {
+          "1": {
+            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, compact AI model super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi).",
+            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+          },
+          "2": {
+            "whatHappened": "compact AI model super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their trained model files updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 lightweight skill add-on.",
+            "whoBuiltIt": "r/LocalLLaMA Engineering Community",
+            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+          },
+          "3": {
+            "bridgeSummary": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their weight updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 LoRA. In stack terms, this connects to Open-Weights, LoRA, Agentic Tool Use, SWE-bench (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (Qwen3.8-27B super adapter one…): Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their weight updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 LoRA. The merged adapter beats the base thinking model across harnesses and solves tasks with noticeably fewer tool calls.",
+            "specsAndCaveats": "That gives one rank-96 LoRA that applies all three updates exactly, with no lossy merging step (no TIES/DARE needed).",
+            "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "Open-Weights",
+            "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
+          },
+          {
+            "term": "LoRA",
+            "definition": "Low-Rank Adaptation (LoRA) teaches an existing AI model a specialized company skill by training a tiny plug-in layer instead of retraining the entire model from scratch."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+          },
+          {
+            "term": "SWE-bench",
+            "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      }
+    },
+    {
+      "id": "x-fx-2123566018866151579",
+      "title": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits.",
+      "shortLabel": "Agents using GPT-6.2",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAIDevs",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @OpenAIDevs"
+      ],
+      "networkFamilies": [
+        "X"
+      ],
+      "canonicalEntity": "ent:earlier+gpt+responses",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 54,
+        "streetScore": 52,
+        "divergenceDelta": 2,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (54 hype / 52 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123566018866151579-self-quote",
+          "network": "X",
+          "originLabel": "X · @OpenAIDevs",
+          "author": "X · @OpenAIDevs",
+          "text": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
+          "score": 165,
+          "sentiment": "HYPE",
+          "publishedAtMs": 1795132567000,
+          "url": "https://x.com/OpenAIDevs/status/2123566018866151579"
+        },
+        {
+          "id": "x-fx-2123566064080740508-self-quote",
+          "network": "X",
+          "originLabel": "X · @OpenAIDevs",
+          "author": "X · @OpenAIDevs",
+          "text": "When using GPT-6.2 Astra or Sol in the Responses API, keep conversation history unchanged and append new turns instead of editing earlier messages.",
+          "score": 165,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795132578000,
+          "url": "https://x.com/OpenAIDevs/status/2123566064080740508"
+        }
+      ],
+      "url": "https://x.com/OpenAIDevs/status/2123566018866151579",
+      "publishedAtMs": 1795132578000,
+      "isLiveInbound": true,
+      "primarySector": "ECO",
+      "secondarySectors": [
+        "REL",
+        "ARC"
+      ],
+      "mass": 3.2413645637390394,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "REDUCER",
+      "rawAbstract": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits. Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. Media",
+      "architectBrief": {
+        "summary": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
+        "stackImpact": [
+          "ECO Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
+        "talkingPoints": [
+          "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that f",
+          "Readiness: GA (X · @OpenAIDevs)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
+          "PUBLIC": "Sovereign & Public Sector (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Post-Training & EvalOps",
+        "Model Evaluation & Telemetry"
+      ],
+      "literacy": {
+        "plainTitle": "Agents using GPT-6.2 in the Responses…",
+        "plainFullTitle": "Agents using GPT-6.2 in the Responses software connections can build on earlier reasoning to…",
+        "levels": {
+          "1": {
+            "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity. Specifically, Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the software connections to drop reasoning that follows the",
+            "everydayWhy": "Digital tools respond faster and cost noticeably less to run for everyday users and organizations."
+          },
+          "2": {
+            "whatHappened": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the software connections to drop reasoning that follows the change.",
+            "whoBuiltIt": "X · @OpenAIDevs",
+            "problemSolved": "Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy."
+          },
+          "3": {
+            "bridgeSummary": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. In stack terms, this connects to Agentic Tool Use, Context Window, RAG, FinOps Cascade (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits.",
+            "specsAndCaveats": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
+            "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+          },
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+          },
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+          },
+          {
+            "term": "FinOps Cascade",
+            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      }
+    },
+    {
       "id": "x-fx-2123567986565173289",
       "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
       "shortLabel": "Apology accepted so this was",
@@ -3226,6 +3653,170 @@
           }
         ],
         "generatedBy": "OLLAMA"
+      }
+    },
+    {
+      "id": "rd-street-1y16cmw",
+      "title": "I measured how much VRAM Qwen3.5 9B and Gemma 4 E4B really use on a 3060 12 GB, and built a free calculator around it",
+      "shortLabel": "I measured how much VRAM",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "r/LocalLLaMA"
+      ],
+      "networkFamilies": [
+        "Reddit"
+      ],
+      "canonicalEntity": "ent:gemma+measured+qwen3.5",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 52,
+        "streetScore": 68,
+        "divergenceDelta": -16,
+        "verdictLabel": "SLEEPER GEM",
+        "summary": "Engineer benchmarks (68/100) beat social hype (52/100) — high-ROI under-the-radar infrastructure upgrade."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://external-preview.redd.it/UXIqzM0kWBCelpmsK5zVogALu-zVWuYumTU9J5uD8qc.png?auto=webp&s=48e5d87955633021287bd1d7f9a6811946a06973",
+          "caption": "r/LocalLLaMA benchmark / architecture attachment",
+          "sourceNetwork": "r/LocalLLaMA"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "rd-as-c-19sxe0yo0oyw4",
+          "network": "Reddit",
+          "originLabel": "r/LocalLLaMA",
+          "author": "u/tres_pares",
+          "text": "The per-1K number checks out against your own table: 6.66 to 7.63 GB from 4K to 32K is 0.97 GB over 28K tokens, so about 0.035 per 1K. What I'd want to see is the \"within 1%\" tested on a model and card you didn't fit the estimate to. Right now the calibration set and the test set are the same three rows.",
+          "score": 2,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795188869000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y16cmw"
+        },
+        {
+          "id": "rd-as-c-19sxdt7qpv735",
+          "network": "Reddit",
+          "originLabel": "r/LocalLLaMA",
+          "author": "u/sdatta11",
+          "text": "How I measured: LM Studio's llama.cpp CUDA runtime, full GPU offload, `nvidia-smi` memory.used before and after loading, 3 runs each, temperature 0, 400-token answers. The 27B run used LM Studio's automatic GPU/RAM split.",
+          "score": 5,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795188579000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y16cmw"
+        },
+        {
+          "id": "rd-as-c-19sxdsoziba90",
+          "network": "Reddit",
+          "originLabel": "r/LocalLLaMA",
+          "author": "u/stylome-ai-detection",
+          "text": "**Notice:** This post appears to be AI generated. --- Stylome AI detector · [scan results](https://stylome.io/r/0311b36be029203e).",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795188560000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y16cmw"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 1,
+        "commentsOrReplies": 1,
+        "velocityPerHour": 5,
+        "badgeText": "5/hr · 1 up · 1 comment"
+      },
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y16cmw/i_measured_how_much_vram_qwen35_9b_and_gemma_4/",
+      "publishedAtMs": 1795188550000,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "REL",
+        "ECO"
+      ],
+      "mass": 2.45,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "REDUCER",
+      "rawAbstract": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. Measured with LM Studio (llama.cpp CUDA), Q4\\_K\\_M, full GPU offload, \\`nvidia-smi\\` before/after: | Model | 4K ctx | 16K ctx | 32K ctx | Speed | |---|---|---|---|---| | Gemma 4 E4B | 4.51 GB | 4.72 GB | 5.01 GB | 74 tok/s | | Qwen3.5 9B | 6.66 GB | 7.07 GB | 7.63 GB | 54 tok/s | | Qwen3.8 27B | doesn't fit: 9.5 GB on GPU, rest in RAM | | | 5.4 tok/s | Two things I found interesting: \\- **The hybrid models barely grow with context.** Qwen3.5 only keeps a KV cache on 8 of its 32 layers (the rest are linear attention), so it's about 0.034 GB per 1K tokens. A Qwen2.5-style 7B of similar size is roughly double that, and older models like Gemma 2 9B are 10× more. \\- **Gemma 4 E-models use less VRAM than their parameter count suggests.** E4B is 8B parameters on paper, but about 2.8B of that is per-layer embeddings that llama.cpp keeps in system RAM. The calculator: pick your GPU (54 desktop and laptop cards, or type your VRAM), RAM and context length, and it shows \\~40 models at Q4/Q5/Q8/FP16 as \"runs on GPU\", \"runs slowly (spills to RAM)\" or \"won't run\", plus the \\`ollama run\\` command for the biggest one that fits. The estimate is weights + KV cache (full-attention layers only for hybrid models, from each model's HF config) + \\~0.6 GB runtime. Against my measurements it's within 1%. https://techtulna.in/ai/model-fit?utm\\_source=reddit&utm\\_campaign=launch It runs entirely in your browser, no sign-up. Disclosure: I made it; it's part of a small site of free tech tools I'm building. If your numbers on another card differ, tell me and I'll add a \"tested\" entry for it. Top engineer comment (u/tres_pares, +2): \"The per-1K number checks out against your own table: 6.66 to 7.63 GB from 4K to 32K is 0.97 GB over 28K tokens, so about 0.035 per 1K. What I'd want to see is the \"within 1%\" tested on a model and card you didn't fit the estimate to. Right now the calibration set and the test set are the same three rows.\"",
+      "architectBrief": {
+        "summary": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. Measured with LM Studio (llama.cpp CUDA), Q4\\_K\\_M, full GPU offload, \\`nvidia-smi\\` before/after: | Model | 4K ctx | 16K ctx | 32K ctx | Speed | |---|---|---|---|---| | Gemma 4 E4B | 4.51 GB |",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers.",
+        "talkingPoints": [
+          "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers.",
+          "Measured with LM Studio (llama.cpp CUDA), Q4\\_K\\_M, full GPU offload, \\`nvidia-smi\\` before/after: | Model | 4K ctx | 16K ctx | 32K ctx | Speed | |---|---|---|---|---| | Gemma 4 E4",
+          "Readiness: GA (r/LocalLLaMA)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (I measured how much VRAM): I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (I measured how much VRAM): I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (I measured how much VRAM): I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (I measured how much VRAM): I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
+          "PUBLIC": "Sovereign & Public Sector (I measured how much VRAM): I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (I measured how much VRAM): I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "LLM Serving & vLLM",
+        "GPU Kernel & Inference Infra"
+      ],
+      "literacy": {
+        "plainTitle": "I measured how much computer memory…",
+        "plainFullTitle": "I measured how much computer memory Qwen3.5 9B and Gemma 4 E4B really use on a 3060 12 GB,…",
+        "levels": {
+          "1": {
+            "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity. Specifically, I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers.",
+            "everydayWhy": "Digital tools respond faster and cost noticeably less to run for everyday users and organizations."
+          },
+          "2": {
+            "whatHappened": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers.",
+            "whoBuiltIt": "Community thread in r/LocalLLaMA (top contributor: u/tres_pares)",
+            "problemSolved": "Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy."
+          },
+          "3": {
+            "bridgeSummary": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. In stack terms, this connects to KV-Cache, Open-Weights, VRAM, Context Window (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (I measured how much VRAM): I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers.",
+            "specsAndCaveats": "Top engineer comment (u/tres_pares, +2): \"The per-1K number checks out against your own table: 6.66 to 7.63 GB from 4K to 32K is 0.97 GB over 28K tokens, so about 0.035 per 1K.",
+            "streetConsensus": "[r/LocalLLaMA · u/tres_pares, +2] \"The per-1K number checks out against your own table: 6.66 to 7.63 GB from 4K to 32K is 0.97 GB over 28K tokens, so about 0.035 per 1K. What I'd want to see is the \"within 1%\" tested on a model and card you didn't fit the estimate to. Right now the calibration set and the test set are the same three rows.\" — [r/LocalLLaMA · u/sdatta11, +5] \"How I measured: LM Studio's llama.cpp CUDA runtime, full GPU offload, `nvidia-smi` memory.used before and after loading, 3 runs each, temperature 0, 400-token answers. The 27B run used LM Studio's automatic GPU/RAM split.\" — [r/LocalLLaMA · u/stylome-ai-detection, +1] \"**Notice:** This post appears to be AI generated. --- Stylome AI detector · [scan results](https://stylome.io/r/0311b36be029203e).\""
+          }
+        },
+        "glossary": [
+          {
+            "term": "KV-Cache",
+            "definition": "KV-Cache is the AI model’s short-term scratchpad memory that stores earlier parts of a conversation so it does not have to re-read every word from scratch."
+          },
+          {
+            "term": "Open-Weights",
+            "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
+          },
+          {
+            "term": "VRAM",
+            "definition": "VRAM (Video RAM) is the ultra-fast memory soldered directly onto an AI graphics chip—the single biggest bottleneck determining how large an AI model you can run."
+          },
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or video an AI can hold in its head during a single conversation before older details start dropping out."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
       }
     },
     {
@@ -4912,6 +5503,140 @@
       }
     },
     {
+      "id": "x-fx-2123167889976905966",
+      "title": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
+      "shortLabel": "Neon ranks 3",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @GoogleDeepMind"
+      ],
+      "networkFamilies": [
+        "X"
+      ],
+      "canonicalEntity": "ent:neon+ranks+score",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 46,
+        "streetScore": 53,
+        "divergenceDelta": -7,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (46 hype / 53 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://pbs.twimg.com/media/HXb_2CTXAAEjtah.jpg?name=orig",
+          "caption": "X · @GoogleDeepMind visual attachment",
+          "sourceNetwork": "X"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123167889976905966-self-quote",
+          "network": "X",
+          "originLabel": "X · @GoogleDeepMind",
+          "author": "X · @GoogleDeepMind",
+          "text": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon F",
+          "score": 199,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795037646000,
+          "url": "https://x.com/GoogleDeepMind/status/2123167889976905966"
+        }
+      ],
+      "url": "https://x.com/GoogleDeepMind/status/2123167889976905966",
+      "publishedAtMs": 1795037646000,
+      "isLiveInbound": true,
+      "primarySector": "REL",
+      "secondarySectors": [
+        "INN"
+      ],
+      "mass": 3.2942544996663097,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level. Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon Find out more → https://goo.gle/4t8pq0E Reference: https://goo.gle/4t8pq0E",
+      "architectBrief": {
+        "summary": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon Find out more → https://goo.gle/4t8pq0E Reference: https://go",
+        "stackImpact": [
+          "REL Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F",
+        "talkingPoints": [
+          "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for ",
+          "Readiness: GA (X · @GoogleDeepMind)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
+      ],
+      "literacy": {
+        "plainTitle": "Neon ranks #3 with a score of 61 on the…",
+        "plainFullTitle": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh…",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action.",
+            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+          },
+          "2": {
+            "whatHappened": "X · @GoogleDeepMind published \"Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.\". Open the linked third-party source above for the full upstream breakdown.",
+            "whoBuiltIt": "X · @GoogleDeepMind",
+            "problemSolved": "Addresses practical workflow friction around Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh.."
+          },
+          "3": {
+            "bridgeSummary": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon Find out more → https://goo.gle/4t8pq0E Reference: https://go In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
+            "specsAndCaveats": "Source artifact: X · @GoogleDeepMind (GA). Refer to the upstream link for full hyperparameter tables and evaluation scripts.",
+            "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+          },
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+          },
+          {
+            "term": "FinOps Cascade",
+            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      }
+    },
+    {
       "id": "x-fx-2123130606162985350",
       "title": "Genie 4 is available!",
       "shortLabel": "Genie 4 is available",
@@ -5022,6 +5747,141 @@
           {
             "term": "Context Window",
             "definition": "A Context Window is how much text, code, or video an AI can hold in its head during a single conversation before older details start dropping out."
+          },
+          {
+            "term": "RAG",
+            "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+          },
+          {
+            "term": "FinOps Cascade",
+            "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      }
+    },
+    {
+      "id": "x-fx-2123117735374659636",
+      "title": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an…",
+      "shortLabel": "It s rolling out",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @GoogleDeepMind"
+      ],
+      "networkFamilies": [
+        "X"
+      ],
+      "canonicalEntity": "ent:community+eligible+subscribers",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 46,
+        "streetScore": 54,
+        "divergenceDelta": -8,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (46 hype / 54 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://pbs.twimg.com/card_img/2123117384894431232/RWDqnIeS?format=jpg&amp;name=800x419",
+          "caption": "X · @GoogleDeepMind visual attachment",
+          "sourceNetwork": "X"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123117735374659636-self-quote",
+          "network": "X",
+          "originLabel": "X · @GoogleDeepMind",
+          "author": "X · @GoogleDeepMind",
+          "text": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
+          "score": 196,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795025688000,
+          "url": "https://x.com/GoogleDeepMind/status/2123117735374659636"
+        }
+      ],
+      "url": "https://x.com/GoogleDeepMind/status/2123117735374659636",
+      "publishedAtMs": 1795025688000,
+      "isLiveInbound": true,
+      "primarySector": "REL",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 3.2899664463817095,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. Start exploring ↓ https://goo.gle/4kjMhE9 Reference: https://goo.gle/4kjMhE9",
+      "architectBrief": {
+        "summary": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. Start exploring ↓ https://goo.gle/4kjMhE9 Reference: https://goo.gle/4kjMhE9",
+        "stackImpact": [
+          "REL Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
+        "talkingPoints": [
+          "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-",
+          "Start exploring ↓ https://goo.gle/4kjMhE9 Reference: https://goo.gle/4kjMhE9",
+          "Readiness: GA (X · @GoogleDeepMind)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
+      ],
+      "literacy": {
+        "plainTitle": "It's rolling out to eligible Google AI…",
+        "plainFullTitle": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to…",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute ses",
+            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+          },
+          "2": {
+            "whatHappened": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
+            "whoBuiltIt": "Google AI",
+            "problemSolved": "Addresses practical workflow friction around It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover.."
+          },
+          "3": {
+            "bridgeSummary": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
+            "specsAndCaveats": "Source artifact: X · @GoogleDeepMind (GA). Refer to the upstream link for full hyperparameter tables and evaluation scripts.",
+            "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
           },
           {
             "term": "RAG",
@@ -6164,7 +7024,7 @@
           "originLabel": "X · @Alibaba_Qwen",
           "author": "X · @Alibaba_Qwen",
           "text": "🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen.",
-          "score": 153,
+          "score": 152,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795076047000,
           "url": "https://x.com/Alibaba_Qwen/status/2123328957022081036"
@@ -6178,7 +7038,7 @@
         "REL",
         "MKT"
       ],
-      "mass": 3.2200494300314393,
+      "mass": 3.2181983321641026,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "NEUTRAL",
@@ -6256,6 +7116,153 @@
           {
             "term": "Agentic Tool Use",
             "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      }
+    },
+    {
+      "id": "ghrel-vllm-ithubcom2008Repository599547518v0340",
+      "title": "v0.34.0",
+      "shortLabel": "v0.34.0",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "vLLM Release",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "vLLM Release"
+      ],
+      "networkFamilies": [
+        "GitHub"
+      ],
+      "canonicalEntity": "gh:vllm-project/vllm",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 50,
+        "streetScore": 46,
+        "divergenceDelta": 4,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (50 hype / 46 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://opengraph.githubassets.com/1/vllm-project/vllm",
+          "caption": "vLLM Release repository preview",
+          "sourceNetwork": "vLLM Release"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "ghrel-vllm-ithubcom2008Repository599547518v0340-self-quote",
+          "network": "GitHub",
+          "originLabel": "vLLM Release",
+          "author": "vLLM Release",
+          "text": "v0.34.0 1,061 commits from 412 contributors (120 new).",
+          "score": 120,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795035753000,
+          "url": "https://github.com/vllm-project/vllm/releases/tag/v0.34.0"
+        },
+        {
+          "id": "ghrel-vllm-ubcom2008Repository599547518v0340rc4-self-quote",
+          "network": "GitHub",
+          "originLabel": "vLLM Release",
+          "author": "vLLM Release",
+          "text": "[Release][Tests] Give the #67296 warmup-gate test runner num_speculat…",
+          "score": 120,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1794651355000,
+          "url": "https://github.com/vllm-project/vllm/releases/tag/v0.34.0rc4"
+        }
+      ],
+      "url": "https://github.com/vllm-project/vllm/releases/tag/v0.34.0",
+      "publishedAtMs": 1795035753000,
+      "isLiveInbound": true,
+      "primarySector": "REL",
+      "secondarySectors": [
+        "ARC",
+        "ECO"
+      ],
+      "mass": 3.1514678099309563,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "REDUCER",
+      "rawAbstract": "v0.34.0 1,061 commits from 412 contributors (120 new). Thank you! TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible KV cache is on by default: vLLM sizes the KV cache from memory actually free after warmup, so most models get a bigger cache and more throughput - in most cases you should now remove gpu_memory_utilization from your configs. Model Runner V1 is gone. Model Runner V2 is now the only GPU runner. Big speedups on Blackwell and MI355X: up to 1.95× decode (Step5 on GB200), 1.6× throughput (GLM-5.3-Flash), 1.24–1.40× faster long-prompt TTFT (GLM-5.3). Upgrade check: default block size is now 64, ROCm 7.2 images are gone, and huggingface_hub >= 2.0.0 is required. See Before you upgrade. Before you upgrade Important These changes can break existing setups. Change What to do PR Model Runner V1 removed Remove VLLM_USE_V2_MODEL_RUNNER=0; it now fails at startup. Port V1 logits processors to vllm.v1.worker.gpu.sample.logits_processor. #63373 Default --block-size is 64 (was 16) Pass --block-size 16 to keep the old behavior. ROCm paged attention still uses 16. #63231 Extensible KV cache on by default; gpu_memory_utilization defaults to 1.0 In most cases it's now best to not set gpu_memory_utilization. This sho",
+      "architectBrief": {
+        "summary": "v0.34.0 1,061 commits from 412 contributors (120 new). TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible KV cache is on by default: vLLM sizes the KV cache from memory actually free after warmup, so most models get a bigger cache and more throughput - in most cases",
+        "stackImpact": [
+          "REL Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "v0.34.0 1,061 commits from 412 contributors (120 new).",
+        "talkingPoints": [
+          "v0.34.0 1,061 commits from 412 contributors (120 new).",
+          "TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible KV cache is on by default: vLLM sizes the KV cache from memory actually fre",
+          "Readiness: GA (vLLM Release)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (v0.34.0): v0.34.0 1,061 commits from 412 contributors (120 new). — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (v0.34.0): v0.34.0 1,061 commits from 412 contributors (120 new). — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (v0.34.0): v0.34.0 1,061 commits from 412 contributors (120 new). — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (v0.34.0): v0.34.0 1,061 commits from 412 contributors (120 new). — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
+          "PUBLIC": "Sovereign & Public Sector (v0.34.0): v0.34.0 1,061 commits from 412 contributors (120 new). — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (v0.34.0): v0.34.0 1,061 commits from 412 contributors (120 new). — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "LLM Serving & vLLM",
+        "GPU Kernel & Inference Infra"
+      ],
+      "literacy": {
+        "plainTitle": "v0.34.0",
+        "plainFullTitle": "v0.34.0",
+        "levels": {
+          "1": {
+            "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity. Specifically, v0.34.0 1,061 commits from 412 contributors (120 new).",
+            "everydayWhy": "Digital tools respond faster and cost noticeably less to run for everyday users and organizations."
+          },
+          "2": {
+            "whatHappened": "v0.34.0 1,061 commits from 412 contributors (120 new).",
+            "whoBuiltIt": "vllm-project/vllm Open-Source Maintainers",
+            "problemSolved": "TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible short-term working notes cache is on by default: vLLM sizes the short-term working notes cache from memory actually free after warmup, so most models get a bigger cache and more throughput - in most cases you should now remove."
+          },
+          "3": {
+            "bridgeSummary": "v0.34.0 1,061 commits from 412 contributors (120 new). TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible KV cache is on by default: vLLM sizes the KV cache from memory actually free after warmup, so most models get a bigger cache and more throughput - in most cases you should now remo In stack terms, this connects to KV-Cache, vLLM, VRAM, TTFT (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "v0.34.0 1,061 commits from 412 contributors (120 new). (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+            "clientAdvice": "FinServ Advisory (v0.34.0): v0.34.0 1,061 commits from 412 contributors (120 new). — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+          },
+          "5": {
+            "architectureBrief": "v0.34.0 1,061 commits from 412 contributors (120 new). TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible KV cache is on by default: vLLM sizes the KV cache from memory actually free after warmup, so most models get a bigger cache and more throughput - in most cases you should now remove gpu_memory_utilization from your configs. Model Runner V1 is gone. Model Runner V2 is now the only GPU runner.",
+            "specsAndCaveats": "Change What to do PR Model Runner V1 removed Remove VLLM_USE_V2_MODEL_RUNNER=0; it now fails at startup.",
+            "streetConsensus": "Awaiting community benchmark runs (newly indexed repository release)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "KV-Cache",
+            "definition": "KV-Cache is the AI model’s short-term scratchpad memory that stores earlier parts of a conversation so it does not have to re-read every word from scratch."
+          },
+          {
+            "term": "vLLM",
+            "definition": "vLLM is the leading open-source serving engine that lets companies run AI models on their own servers for thousands of users at once without wasting chip memory."
+          },
+          {
+            "term": "VRAM",
+            "definition": "VRAM (Video RAM) is the ultra-fast memory soldered directly onto an AI graphics chip—the single biggest bottleneck determining how large an AI model you can run."
+          },
+          {
+            "term": "TTFT",
+            "definition": "Time-To-First-Token (TTFT) measures the milliseconds between pressing Enter and seeing the AI’s very first word appear on screen."
           }
         ],
         "generatedBy": "DETERMINISTIC"
@@ -8105,6 +9112,147 @@
       ],
       "generatedBy": "OLLAMA"
     },
+    "rd-street-1y16xqe": {
+      "plainTitle": "I built an engine that puts ADA users…",
+      "plainFullTitle": "I built an engine that puts ADA users near BLACKWELL performance",
+      "levels": {
+        "1": {
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, I have been working on a chip software engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should no",
+          "everydayWhy": "I have benchmarked both sides of the engine (small community bench nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better"
+        },
+        "2": {
+          "whatHappened": "I have been working on a chip software engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost.",
+          "whoBuiltIt": "r/LocalLLaMA Engineering Community",
+          "problemSolved": "I have benchmarked both sides of the engine (small community bench nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better)."
+        },
+        "3": {
+          "bridgeSummary": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. I have benchmarked both sides of the engine (small community bench nothing official like SWE) I am for quality, lower mean KLD over speed In stack terms, this connects to VRAM, Context Window, RAG, FinOps Cascade (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (I built an engine): I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "I have been working on a CUDA engine for a minute now, since around 0.2.10 for strata as the releases after that felt like I was losing performance as an ADA (RTX 4090) user that I should not have lost. It runs both Dense (27B) and Sparse (QFN).",
+          "specsAndCaveats": "I have benchmarked both sides of the engine (small community bench -- nothing official like SWE) I am for quality, lower mean KLD over speed, and BPW (higher the better).",
+          "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "VRAM",
+          "definition": "VRAM (Video RAM) is the ultra-fast memory soldered directly onto an AI graphics chip—the single biggest bottleneck determining how large an AI model you can run."
+        },
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+        },
+        {
+          "term": "RAG",
+          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+        },
+        {
+          "term": "FinOps Cascade",
+          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "rd-street-1y16sam": {
+      "plainTitle": "compact AI model “super adapter”: one…",
+      "plainFullTitle": "compact AI model “super adapter”: one rank-96 lightweight skill add-on that improves 3 agent…",
+      "levels": {
+        "1": {
+          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, compact AI model super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi).",
+          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+        },
+        "2": {
+          "whatHappened": "compact AI model super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their trained model files updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 lightweight skill add-on.",
+          "whoBuiltIt": "r/LocalLLaMA Engineering Community",
+          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+        },
+        "3": {
+          "bridgeSummary": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their weight updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 LoRA. In stack terms, this connects to Open-Weights, LoRA, Agentic Tool Use, SWE-bench (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (Qwen3.8-27B super adapter one…): Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "Qwen3.8-27B super harness adapter for three agent harnesses (Hermes Agent, OpenCode, pi). Their weight updates turned out to be nearly orthogonal, so we stacked them into a single rank-96 LoRA. The merged adapter beats the base thinking model across harnesses and solves tasks with noticeably fewer tool calls.",
+          "specsAndCaveats": "That gives one rank-96 LoRA that applies all three updates exactly, with no lossy merging step (no TIES/DARE needed).",
+          "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "Open-Weights",
+          "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
+        },
+        {
+          "term": "LoRA",
+          "definition": "Low-Rank Adaptation (LoRA) teaches an existing AI model a specialized company skill by training a tiny plug-in layer instead of retraining the entire model from scratch."
+        },
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+        },
+        {
+          "term": "SWE-bench",
+          "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "x-fx-2123566018866151579": {
+      "plainTitle": "Agents using GPT-6.2 in the Responses…",
+      "plainFullTitle": "Agents using GPT-6.2 in the Responses software connections can build on earlier reasoning to…",
+      "levels": {
+        "1": {
+          "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity. Specifically, Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the software connections to drop reasoning that follows the",
+          "everydayWhy": "Digital tools respond faster and cost noticeably less to run for everyday users and organizations."
+        },
+        "2": {
+          "whatHappened": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the software connections to drop reasoning that follows the change.",
+          "whoBuiltIt": "X · @OpenAIDevs",
+          "problemSolved": "Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy."
+        },
+        "3": {
+          "bridgeSummary": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. In stack terms, this connects to Agentic Tool Use, Context Window, RAG, FinOps Cascade (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits.",
+          "specsAndCaveats": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
+          "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+        },
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+        },
+        {
+          "term": "RAG",
+          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+        },
+        {
+          "term": "FinOps Cascade",
+          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
     "x-fx-2123567986565173289": {
       "plainTitle": "Accepted Apology",
       "plainFullTitle": "Accepted Apology for Misidentifying Team Member",
@@ -8433,6 +9581,53 @@
         }
       ],
       "generatedBy": "OLLAMA"
+    },
+    "rd-street-1y16cmw": {
+      "plainTitle": "I measured how much computer memory…",
+      "plainFullTitle": "I measured how much computer memory Qwen3.5 9B and Gemma 4 E4B really use on a 3060 12 GB,…",
+      "levels": {
+        "1": {
+          "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity. Specifically, I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers.",
+          "everydayWhy": "Digital tools respond faster and cost noticeably less to run for everyday users and organizations."
+        },
+        "2": {
+          "whatHappened": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers.",
+          "whoBuiltIt": "Community thread in r/LocalLLaMA (top contributor: u/tres_pares)",
+          "problemSolved": "Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy."
+        },
+        "3": {
+          "bridgeSummary": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. In stack terms, this connects to KV-Cache, Open-Weights, VRAM, Context Window (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (I measured how much VRAM): I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "I kept guessing which models would fit on my RTX 3060 12 GB, so I measured it and built a small calculator around the numbers.",
+          "specsAndCaveats": "Top engineer comment (u/tres_pares, +2): \"The per-1K number checks out against your own table: 6.66 to 7.63 GB from 4K to 32K is 0.97 GB over 28K tokens, so about 0.035 per 1K.",
+          "streetConsensus": "[r/LocalLLaMA · u/tres_pares, +2] \"The per-1K number checks out against your own table: 6.66 to 7.63 GB from 4K to 32K is 0.97 GB over 28K tokens, so about 0.035 per 1K. What I'd want to see is the \"within 1%\" tested on a model and card you didn't fit the estimate to. Right now the calibration set and the test set are the same three rows.\" — [r/LocalLLaMA · u/sdatta11, +5] \"How I measured: LM Studio's llama.cpp CUDA runtime, full GPU offload, `nvidia-smi` memory.used before and after loading, 3 runs each, temperature 0, 400-token answers. The 27B run used LM Studio's automatic GPU/RAM split.\" — [r/LocalLLaMA · u/stylome-ai-detection, +1] \"**Notice:** This post appears to be AI generated. --- Stylome AI detector · [scan results](https://stylome.io/r/0311b36be029203e).\""
+        }
+      },
+      "glossary": [
+        {
+          "term": "KV-Cache",
+          "definition": "KV-Cache is the AI model’s short-term scratchpad memory that stores earlier parts of a conversation so it does not have to re-read every word from scratch."
+        },
+        {
+          "term": "Open-Weights",
+          "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
+        },
+        {
+          "term": "VRAM",
+          "definition": "VRAM (Video RAM) is the ultra-fast memory soldered directly onto an AI graphics chip—the single biggest bottleneck determining how large an AI model you can run."
+        },
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or video an AI can hold in its head during a single conversation before older details start dropping out."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
     },
     "x-fx-2122798039899263456": {
       "plainTitle": "New AI Models Released",
@@ -8998,6 +10193,53 @@
       ],
       "generatedBy": "DETERMINISTIC"
     },
+    "x-fx-2123167889976905966": {
+      "plainTitle": "Neon ranks #3 with a score of 61 on the…",
+      "plainFullTitle": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh…",
+      "levels": {
+        "1": {
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action.",
+          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+        },
+        "2": {
+          "whatHappened": "X · @GoogleDeepMind published \"Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.\". Open the linked third-party source above for the full upstream breakdown.",
+          "whoBuiltIt": "X · @GoogleDeepMind",
+          "problemSolved": "Addresses practical workflow friction around Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh.."
+        },
+        "3": {
+          "bridgeSummary": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon Find out more → https://goo.gle/4t8pq0E Reference: https://go In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (Neon ranks 3): Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible F — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
+          "specsAndCaveats": "Source artifact: X · @GoogleDeepMind (GA). Refer to the upstream link for full hyperparameter tables and evaluation scripts.",
+          "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
+        },
+        {
+          "term": "RAG",
+          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+        },
+        {
+          "term": "FinOps Cascade",
+          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+        },
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
     "x-fx-2123130606162985350": {
       "plainTitle": "Genie 4 is available!",
       "plainFullTitle": "Genie 4 is available!",
@@ -9029,6 +10271,53 @@
         {
           "term": "Context Window",
           "definition": "A Context Window is how much text, code, or video an AI can hold in its head during a single conversation before older details start dropping out."
+        },
+        {
+          "term": "RAG",
+          "definition": "Retrieval-Augmented Generation (RAG) grounds AI answers in trusted external documents fetched at query time rather than relying purely on memorized training data."
+        },
+        {
+          "term": "FinOps Cascade",
+          "definition": "A FinOps Cascade routes routine prompts to fast, low-cost models first and escalates only complex reasoning steps to flagship models."
+        },
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "x-fx-2123117735374659636": {
+      "plainTitle": "It's rolling out to eligible Google AI…",
+      "plainFullTitle": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to…",
+      "levels": {
+        "1": {
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute ses",
+          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+        },
+        "2": {
+          "whatHappened": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
+          "whoBuiltIt": "Google AI",
+          "problemSolved": "Addresses practical workflow friction around It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover.."
+        },
+        "3": {
+          "bridgeSummary": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. In stack terms, this connects to Context Window, RAG, FinOps Cascade, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (It s rolling out): It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "It's rolling out to eligible Google AI Ultra subscribers with a community gallery to discover, remix, and share creations - and an updated Genie 3 in the model picker with up to 3-minute sessions.",
+          "specsAndCaveats": "Source artifact: X · @GoogleDeepMind (GA). Refer to the upstream link for full hyperparameter tables and evaluation scripts.",
+          "streetConsensus": "Awaiting independent engineer replication (newly indexed publication)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or data an AI model can keep in active working memory during a single request."
         },
         {
           "term": "RAG",
@@ -9464,6 +10753,53 @@
         {
           "term": "Agentic Tool Use",
           "definition": "Agentic Tool Use enables an AI model to plan multi-step workflows, invoke external APIs, and verify outcomes autonomously."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "ghrel-vllm-ithubcom2008Repository599547518v0340": {
+      "plainTitle": "v0.34.0",
+      "plainFullTitle": "v0.34.0",
+      "levels": {
+        "1": {
+          "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity. Specifically, v0.34.0 1,061 commits from 412 contributors (120 new).",
+          "everydayWhy": "Digital tools respond faster and cost noticeably less to run for everyday users and organizations."
+        },
+        "2": {
+          "whatHappened": "v0.34.0 1,061 commits from 412 contributors (120 new).",
+          "whoBuiltIt": "vllm-project/vllm Open-Source Maintainers",
+          "problemSolved": "TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible short-term working notes cache is on by default: vLLM sizes the short-term working notes cache from memory actually free after warmup, so most models get a bigger cache and more throughput - in most cases you should now remove."
+        },
+        "3": {
+          "bridgeSummary": "v0.34.0 1,061 commits from 412 contributors (120 new). TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible KV cache is on by default: vLLM sizes the KV cache from memory actually free after warmup, so most models get a bigger cache and more throughput - in most cases you should now remo In stack terms, this connects to KV-Cache, vLLM, VRAM, TTFT (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "v0.34.0 1,061 commits from 412 contributors (120 new). (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
+          "clientAdvice": "FinServ Advisory (v0.34.0): v0.34.0 1,061 commits from 412 contributors (120 new). — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
+        },
+        "5": {
+          "architectureBrief": "v0.34.0 1,061 commits from 412 contributors (120 new). TL;DR 10 new models (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) Extensible KV cache is on by default: vLLM sizes the KV cache from memory actually free after warmup, so most models get a bigger cache and more throughput - in most cases you should now remove gpu_memory_utilization from your configs. Model Runner V1 is gone. Model Runner V2 is now the only GPU runner.",
+          "specsAndCaveats": "Change What to do PR Model Runner V1 removed Remove VLLM_USE_V2_MODEL_RUNNER=0; it now fails at startup.",
+          "streetConsensus": "Awaiting community benchmark runs (newly indexed repository release)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "KV-Cache",
+          "definition": "KV-Cache is the AI model’s short-term scratchpad memory that stores earlier parts of a conversation so it does not have to re-read every word from scratch."
+        },
+        {
+          "term": "vLLM",
+          "definition": "vLLM is the leading open-source serving engine that lets companies run AI models on their own servers for thousands of users at once without wasting chip memory."
+        },
+        {
+          "term": "VRAM",
+          "definition": "VRAM (Video RAM) is the ultra-fast memory soldered directly onto an AI graphics chip—the single biggest bottleneck determining how large an AI model you can run."
+        },
+        {
+          "term": "TTFT",
+          "definition": "Time-To-First-Token (TTFT) measures the milliseconds between pressing Enter and seeing the AI’s very first word appear on screen."
         }
       ],
       "generatedBy": "DETERMINISTIC"
