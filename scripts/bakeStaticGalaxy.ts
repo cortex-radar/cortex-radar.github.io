@@ -24,6 +24,7 @@ import {
   buildSupportingSourceEntry,
   isPrimarySourceSignal,
   normalizeProvenanceUrl,
+  truncateAtWordBoundary,
 } from '../shared/provenance';
 import {
   computeDivergenceMetrics,
@@ -170,11 +171,11 @@ function repairLegacyClonedTitles(
   const nextShort =
     uniqueHeadline.length <= 44
       ? uniqueHeadline
-      : `${uniqueHeadline.slice(0, 41).replace(/\s+\S*$/, '')}…`;
+      : truncateAtWordBoundary(uniqueHeadline, 44);
   const nextFull =
     uniqueHeadline.length <= 96
       ? uniqueHeadline
-      : `${uniqueHeadline.slice(0, 93).replace(/\s+\S*$/, '')}…`;
+      : truncateAtWordBoundary(uniqueHeadline, 96);
   return {
     ...clean,
     plainTitle: nextShort || clean.plainTitle,
@@ -182,13 +183,24 @@ function repairLegacyClonedTitles(
   };
 }
 
+interface CachedLiteracyEntry {
+  literacy: LiteracySpectrumPayload;
+  titleKey: string;
+  abstractFingerprint: string;
+  sourceCount: number;
+}
+
+function makeAbstractFingerprint(sig: Pick<SpatialSignal, 'rawAbstract' | 'title'>): string {
+  return normalizeHeadlineKey((sig.rawAbstract || sig.title || '').slice(0, 140));
+}
+
 function loadPreviousSnapshotCache(): {
-  byId: Map<string, LiteracySpectrumPayload>;
-  byUrl: Map<string, LiteracySpectrumPayload>;
+  byId: Map<string, CachedLiteracyEntry>;
+  byUrl: Map<string, CachedLiteracyEntry>;
   previousSignals: SpatialSignal[];
 } {
-  const byId = new Map<string, LiteracySpectrumPayload>();
-  const byUrl = new Map<string, LiteracySpectrumPayload>();
+  const byId = new Map<string, CachedLiteracyEntry>();
+  const byUrl = new Map<string, CachedLiteracyEntry>();
   let previousSignals: SpatialSignal[] = [];
 
   try {
@@ -197,22 +209,35 @@ function loadPreviousSnapshotCache(): {
     }
     const raw = fs.readFileSync(OUTPUT_PATH, 'utf8');
     const parsed = JSON.parse(raw) as Partial<StaticGalaxySnapshot>;
-    const titleById = new Map<string, string>();
+    const sigById = new Map<string, SpatialSignal>();
     if (Array.isArray(parsed.signals)) {
       previousSignals = parsed.signals;
       for (const s of parsed.signals) {
-        if (s?.id && s.title) titleById.set(s.id, s.title);
+        if (s?.id) sigById.set(s.id, s);
         if (s?.id && s.literacy && s.literacy.generatedBy !== 'DETERMINISTIC') {
           const clean = repairLegacyClonedTitles(s.literacy, s.title);
-          byId.set(s.id, clean);
-          if (s.url) byUrl.set(normalizeBakeUrl(s.url), clean);
+          const entry: CachedLiteracyEntry = {
+            literacy: clean,
+            titleKey: normalizeHeadlineKey(s.title || ''),
+            abstractFingerprint: makeAbstractFingerprint(s),
+            sourceCount: s.supportingSources?.length || 1,
+          };
+          byId.set(s.id, entry);
+          if (s.url) byUrl.set(normalizeBakeUrl(s.url), entry);
         }
       }
     }
     if (parsed.literacyBySignalId && typeof parsed.literacyBySignalId === 'object') {
       for (const [id, lit] of Object.entries(parsed.literacyBySignalId)) {
         if (lit && lit.generatedBy !== 'DETERMINISTIC' && !byId.has(id)) {
-          byId.set(id, repairLegacyClonedTitles(lit, titleById.get(id)));
+          const matchedSig = sigById.get(id);
+          if (!matchedSig) continue;
+          byId.set(id, {
+            literacy: repairLegacyClonedTitles(lit, matchedSig.title),
+            titleKey: normalizeHeadlineKey(matchedSig.title || ''),
+            abstractFingerprint: makeAbstractFingerprint(matchedSig),
+            sourceCount: matchedSig.supportingSources?.length || 1,
+          });
         }
       }
     }
@@ -247,26 +272,38 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
   const quotesBlock = realQuotes
     .map((q) => `[${q.originLabel} · ${q.author}, +${q.score}] "${q.text}"`)
     .join('\n- ');
+  const normCanonical = normalizeProvenanceUrl(sig.url);
+  const siblingSources = (sig.supportingSources || [])
+    .filter((s) => normalizeProvenanceUrl(s.url) !== normCanonical)
+    .slice(0, 4);
+  const supportingBlock = siblingSources
+    .map((s) => `[${s.isPrimary ? 'Primary' : 'Commentary'} · ${s.source}] "${s.title}"`)
+    .join('\n- ');
   const glossaryHint = baseFallback.glossary
     .slice(0, 3)
     .map((g) => g.term)
     .join(', ');
   const bodyContext = stripTrailingIncompleteClause((sig.rawAbstract || sig.title).slice(0, 2800));
 
-  return `You are a Principal AI Technical Writer & Architecture Strategist translating this verified signal into a rich, insightful 5-level literacy JSON object for an enterprise engineering & executive audience.
+  return `You are a Principal AI Technical Writer & Architecture Strategist translating this source-linked signal into a rich, insightful 5-level literacy JSON object for an enterprise engineering & executive audience.
 
-Origin Source: ${sig.originFeedName || sig.source} (${sig.url})
-Headline: "${sig.title}"
-Post Body / Technical Content:
+Primary Origin Source: ${sig.originFeedName || sig.source} (${sig.url})
+Primary Headline: "${sig.title}"
+Primary Post Body / Excerpt:
 """
 ${bodyContext}
 """
-${quotesBlock ? `Real Community Engineer Replies:\n- ${quotesBlock}\n` : ''}Required Level 3 Glossary Terms (mention verbatim in Level 3 bridgeSummary): ${glossaryHint}
+${
+  supportingBlock
+    ? `Supporting Coverage in This Event Group (context only — do NOT let secondary titles override the Primary Headline facts):\n- ${supportingBlock}\n`
+    : ''
+}${quotesBlock ? `Real Community Engineer Replies:\n- ${quotesBlock}\n` : ''}Required Level 3 Glossary Terms (mention verbatim in Level 3 bridgeSummary): ${glossaryHint}
 
 STRICT RULES:
-1. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (kitchen prep line, library desk, post office sorting room, hospital chart clipboard, or highway lane). Zero technical acronyms in Level 1.
-2. LEVEL 2 MUST BE PLAIN ENGLISH (zero Markdown pipe tables, zero code blocks, concrete facts).
-3. LEVEL 5 MUST BE CONCRETE & DENSE (2-3 substantive technical sentences per block citing exact architecture, benchmarks, failure modes, and community consensus).
+1. PRIMARY ALIGNMENT: Anchor plainTitle, plainFullTitle, and levels["2"].whatHappened strictly on the Primary Headline & Primary Post Body above so AI Synthesis never contradicts the verbatim source headline/excerpt.
+2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (kitchen prep line, library desk, post office sorting room, hospital chart clipboard, or highway lane). Zero technical acronyms in Level 1.
+3. LEVEL 2 MUST BE PLAIN ENGLISH (zero Markdown pipe tables, zero code blocks, concrete facts). For non-tool corporate/market/policy news (e.g. IPOs, funding, legal rulings), name key organizations in whoBuiltIt and explain why the news matters in problemSolved.
+4. LEVEL 5 MUST BE CONCRETE & DENSE (2-3 substantive technical sentences per block citing exact architecture, benchmarks, failure modes, and community consensus).
 
 Return ONLY valid JSON:
 {
@@ -302,10 +339,10 @@ function mergeParsedWithFallback(
 
   return sanitizeLiteracyPayloadPlainLevels({
     plainTitle: parsed.plainTitle
-      ? enforceZeroJargonL1(parsed.plainTitle).slice(0, 48)
+      ? truncateAtWordBoundary(enforceZeroJargonL1(parsed.plainTitle), 48)
       : baseFallback.plainTitle,
     plainFullTitle: parsed.plainFullTitle
-      ? enforceZeroJargonL1(parsed.plainFullTitle).slice(0, 98)
+      ? truncateAtWordBoundary(enforceZeroJargonL1(parsed.plainFullTitle), 96)
       : baseFallback.plainFullTitle,
     levels: {
       1: {
@@ -504,8 +541,10 @@ function mergeSignalClusterTarget(
     .slice(0, 10);
   clusterTarget.supportingSources = mergedSupporting;
 
-  // Promote Primary Source (official lab, arXiv, HF, GH) over commentary if target was commentary
-  if (!existingWasPrimary && incomingIsPrimary) {
+  // Promote Primary Source (official lab, arXiv, HF, GH) over commentary and sync ALL canonical primary metadata
+  const promotedToPrimary = !existingWasPrimary && incomingIsPrimary;
+  if (promotedToPrimary) {
+    clusterTarget.id = synthesized.id;
     clusterTarget.title = synthesized.title;
     clusterTarget.shortLabel = synthesized.shortLabel;
     clusterTarget.url = synthesized.url;
@@ -518,6 +557,22 @@ function mergeSignalClusterTarget(
       synthesized.publishedAtMs > 0
     ) {
       clusterTarget.publishedAtMs = synthesized.publishedAtMs;
+    }
+    clusterTarget.rawAbstract = synthesized.rawAbstract;
+    clusterTarget.mediaItems =
+      synthesized.mediaItems && synthesized.mediaItems.length > 0
+        ? synthesized.mediaItems.slice(0, 1)
+        : [];
+    clusterTarget.primarySector = synthesized.primarySector;
+    clusterTarget.secondarySectors = synthesized.secondarySectors;
+    clusterTarget.readiness = synthesized.readiness;
+    clusterTarget.risk = synthesized.risk;
+    clusterTarget.finOps = synthesized.finOps;
+    clusterTarget.architectBrief = synthesized.architectBrief;
+    clusterTarget.cSuiteBrief = synthesized.cSuiteBrief;
+    clusterTarget.affectedEnterpriseStacks = synthesized.affectedEnterpriseStacks;
+    if (synthesized.modelSpecs) {
+      clusterTarget.modelSpecs = synthesized.modelSpecs;
     }
   }
 
@@ -558,21 +613,37 @@ function mergeSignalClusterTarget(
   } else {
     clusterTarget.mass = Math.max(clusterTarget.mass, synthesized.mass);
   }
-  if ((synthesized.rawAbstract || '').length > (clusterTarget.rawAbstract || '').length + 80) {
+
+  const sameCanonicalUrl =
+    normalizeProvenanceUrl(clusterTarget.url) === normalizeProvenanceUrl(synthesized.url);
+  if (
+    !promotedToPrimary &&
+    sameCanonicalUrl &&
+    (synthesized.rawAbstract || '').length > (clusterTarget.rawAbstract || '').length + 80
+  ) {
     clusterTarget.rawAbstract = synthesized.rawAbstract;
   }
   if (
+    !promotedToPrimary &&
     (!clusterTarget.mediaItems || clusterTarget.mediaItems.length === 0) &&
+    (sameCanonicalUrl || (!isPrimarySourceSignal(clusterTarget) && !incomingIsPrimary)) &&
     synthesized.mediaItems &&
     synthesized.mediaItems.length > 0
   ) {
     clusterTarget.mediaItems = synthesized.mediaItems.slice(0, 1);
   }
+
+  const baseQuotes = promotedToPrimary
+    ? [
+        ...(synthesized.streetQuotes || []),
+        ...(clusterTarget.streetQuotes || []).filter((q) => !q.id.endsWith('-self-quote')),
+      ]
+    : [...(clusterTarget.streetQuotes || [])];
   const seenQuoteKeys = new Set(
-    (clusterTarget.streetQuotes || []).map((q) => `${q.originLabel}:${q.text.slice(0, 60)}`)
+    baseQuotes.map((q) => `${q.originLabel}:${q.text.slice(0, 60)}`)
   );
-  const mergedQuotes = [...(clusterTarget.streetQuotes || [])];
-  for (const q of synthesized.streetQuotes || []) {
+  const mergedQuotes = [...baseQuotes];
+  for (const q of promotedToPrimary ? [] : synthesized.streetQuotes || []) {
     const k = `${q.originLabel}:${q.text.slice(0, 60)}`;
     if (!seenQuoteKeys.has(k)) {
       seenQuoteKeys.add(k);
@@ -663,7 +734,7 @@ async function main(): Promise<void> {
   const isRssOnly = args.includes('--rss-only');
   const isDryRun = args.includes('--dry-run');
   const limitArg = args.find((a) => a.startsWith('--limit='));
-  const maxSynthCount = limitArg ? Math.max(1, Number(limitArg.split('=')[1]) || 12) : 16;
+  const maxSynthCount = limitArg ? Math.max(1, Number(limitArg.split('=')[1]) || 12) : 20;
 
   if (isRssOnly) {
     if (!fs.existsSync(OUTPUT_PATH)) {
@@ -795,12 +866,29 @@ async function main(): Promise<void> {
   let cacheHits = 0;
   let newlySynthesized = 0;
 
-  for (const sig of signals) {
+  // Synthesize grouped multi-source events first so promoted primary cards always get fresh synthesis
+  const synthOrder = [...signals].sort((a, b) => {
+    const aGrouped = (a.supportingSources?.length || 1) >= 2 ? 1 : 0;
+    const bGrouped = (b.supportingSources?.length || 1) >= 2 ? 1 : 0;
+    if (aGrouped !== bGrouped) return bGrouped - aGrouped;
+    return computeSignalMomentumScore(b, bakeNowMs) - computeSignalMomentumScore(a, bakeNowMs);
+  });
+
+  for (const sig of synthOrder) {
     const normUrl = normalizeBakeUrl(sig.url);
     const cachedHit = cachedById.get(sig.id) || cachedByUrl.get(normUrl);
-    if (cachedHit) {
-      sig.literacy = cachedHit;
-      literacyBySignalId[sig.id] = cachedHit;
+    const sigTitleKey = normalizeHeadlineKey(sig.title || '');
+    const sigAbsFp = makeAbstractFingerprint(sig);
+    const sigSrcCount = sig.supportingSources?.length || 1;
+    const cacheValid =
+      Boolean(cachedHit) &&
+      cachedHit!.titleKey === sigTitleKey &&
+      cachedHit!.abstractFingerprint === sigAbsFp &&
+      cachedHit!.sourceCount === sigSrcCount;
+
+    if (cacheValid && cachedHit) {
+      sig.literacy = cachedHit.literacy;
+      literacyBySignalId[sig.id] = cachedHit.literacy;
       cacheHits++;
       continue;
     }
@@ -897,6 +985,17 @@ async function main(): Promise<void> {
     dedupedFinal.push(sig);
   }
   signals = dedupedFinal;
+
+  // Enforce clean word-boundary titles on final signals and preserve original order
+  for (const sig of signals) {
+    sig.title = truncateAtWordBoundary(stripHtmlMarkupAndEntities(sig.title || ''), 220);
+    if (sig.supportingSources) {
+      sig.supportingSources = sig.supportingSources.map((s) => ({
+        ...s,
+        title: truncateAtWordBoundary(stripHtmlMarkupAndEntities(s.title || ''), 220),
+      }));
+    }
+  }
 
   const snapshot: StaticGalaxySnapshot = {
     version: 1,

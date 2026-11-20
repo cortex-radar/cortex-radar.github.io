@@ -6,55 +6,39 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2026 17:24:16 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 18:49:12 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
-      <title>Global stock markets slump as Anthropic&apos;s IPO struggles</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50574383&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50574383&amp;lens=2</guid>
+      <title>Anthropic Announces Largest IPO in History, Valued at $1.5T</title>
+      <link>https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Asian markets experienced their worst week since 2020, with investors selling off AI-related stocks following Anthropic&apos;s record-breaking IPO. Investors are concerned about the financial viability and long-term returns of AI investments, leading to a market downturn. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
-    </item>
-    <item>
-      <title>Agents Using GPT-6.2 in Responses software connections Deliver Enhanced Results</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123566018866151579&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 23:56:07 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>GPT-6.2 in the Responses software connections now ties reasoning to conversation history, causing the software connections to reset reasoning when earlier messages are edited. The system previously struggled with maintaining coherent reasoning across edits, leading to confusion and inefficiency. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2123566018866151579</description>
-    </item>
-    <item>
-      <title>Mathematicians Buckmaster and Alpöge Claim Proof of Unforced Navier-Stokes Blowup</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y174f6&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y174f6&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 16:00:18 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>Tristan Buckmaster and Levent Alpöge claimed a proof of finite-time blowup for the unforced 3D Navier-Stokes equations. It addresses the challenge of fluid dynamics without external forces, a key issue in mathematical physics. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y174f6/while_everyone_is_talking_about_riemann_tristan/</description>
+      <description>Anthropic completed its IPO, selling 1.127 billion shares at $83 each, raising $93.5 billion. They also sold 313 million shares privately to tech giants. The IPO addresses Anthropic’s need for capital to fund its AI research and development, ensuring financial stability and growth. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
     </item>
     <item>
-      <title>Try Qwen4-Max on Nous Portal and show us your creations.</title>
+      <title>Gemini 4 Neon: Lower-cost AI for complex coding and analysis</title>
+      <link>https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-deepmind-dgoogleblogintroducing-gemini-4-neon&amp;lens=2</guid>
+      <pubDate>Wed, 18 Nov 2026 21:35:43 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Google introduced Gemini 4 Neon, a new AI model that can handle complex coding and analysis tasks at a lower cost. It addresses the high cost and complexity of traditional AI solutions, making advanced AI capabilities more accessible to a broader range of organizations, including banks. — Upstream (Google DeepMind): https://deepmind.google/blog/introducing-gemini-4-neon/</description>
+    </item>
+    <item>
+      <title>Test Qwen4-Max on Nous Portal for 5 days and share your creations</title>
       <link>https://cortex-radar.github.io/?orb=x-fx-2123328957022081036&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123328957022081036&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 08:14:07 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>🔥 @NousResearch @inferact 🫶 Quoted context: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (X · @Alibaba_Qwen): https://x.com/Alibaba_Qwen/status/2123328957022081036</description>
+      <description>Qwen4-Max, a new flagship model from Alibaba, is available for free on the Nous Portal for 5 days in partnership with @inferact. It addresses the need for long-horizon work with integrated vision capabilities, solving complex tasks that require extensive context. — Upstream (X · @Alibaba_Qwen): https://x.com/Alibaba_Qwen/status/2123328957022081036</description>
     </item>
     <item>
-      <title>Introducing Gemini 4 Neon: Lower-cost AI for complex tasks</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123826572385833119&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123826572385833119&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 21:35:43 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>Google has introduced Gemini 4 Neon, a new AI system designed to handle complex coding and analysis tasks at a lower cost than previous systems. The system addresses the high cost and complexity of previous AI solutions, making advanced AI accessible for more tasks in the banking sector. — Upstream (Google DeepMind): https://deepmind.google/blog/introducing-gemini-4-neon/</description>
-    </item>
-    <item>
-      <title>v0.40.17: Batch Verification with Speculative Decoding</title>
+      <title>Enhancements to Ollama CLI for Better ChatGPT Integration and Performance</title>
       <link>https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04017-rc2&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04017-rc2&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 00:25:30 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>The ollama team introduced a new feature in version 0.40.17 that allows batch speculative verification, enabling concurrent generation while preserving per-request sampling and cache rollback. This addresses the bottleneck in processing multiple requests concurrently without sacrificing the integrity of individual tasks. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.17-rc2</description>
+      <description>The Ollama team improved the ChatGPT CLI for better restore and restart functionality, optimized settings for OpenCode, and enhanced performance on Vulkan high-speed computer chips. These changes address issues with restoring sessions and graceful restarts, ensuring smoother operation and better performance on specific hardware. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.17-rc2</description>
     </item>
     <item>
       <title>v2.1.329: Enhanced Security Warnings and Updates for Claude Code</title>
@@ -81,6 +65,22 @@
       <description>AI systems discovered and designed a new CPU architecture called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs. Addressed the stagnation in CPU core improvements and the need for more efficient hardware. — Upstream (Hacker News): https://architectlabs.com/blog/frostbite</description>
     </item>
     <item>
+      <title>GPT-6.2 Sol and Astra models released for ultrafast processing</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2122798039899263456&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2122798039899263456&amp;lens=2</guid>
+      <pubDate>Tue, 17 Nov 2026 21:04:27 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>GPT-6.2 Sol and Astra models were released, with the Sol model being ultrafast for everyday tasks. The bottleneck of slow processing times for everyday tasks has been addressed with these new models. — Upstream (X · @sama): https://x.com/sama/status/2122798039899263456</description>
+    </item>
+    <item>
+      <title>RL Post-Training in Diffusion Transformers Improves Visual Quality and Compositional Accuracy</title>
+      <link>https://cortex-radar.github.io/?orb=hf-2611.26627&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hf-2611.26627&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Science &amp; Research</category>
+      <description>Researchers found that adding a fixed set of steering vectors to a pre-trained diffusion transformer model significantly improved its visual quality and compositional accuracy, matching the gains of more complex RL-tuned models. This method addresses the challenge of needing complex, input-dependent transformations to achieve high-quality outputs, offering a simpler and more efficient solution. — Upstream (HF Daily Papers): https://huggingface.co/papers/2611.26627</description>
+    </item>
+    <item>
       <title>vLLM v0.34.0 Release with 1,061 Commits and 10 New Models</title>
       <link>https://cortex-radar.github.io/?orb=ghrel-vllm-ithubcom2008Repository599547518v0340&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-vllm-ithubcom2008Repository599547518v0340&amp;lens=2</guid>
@@ -97,12 +97,20 @@
       <description>langchain-openrouter 0.3.0 has dropped support for Python 3.10, now requiring at least Python 3.11. The minimum langchain-core version is now 1.8.3. This update addresses the end-of-life status of Python 3.10, ensuring the software remains up-to-date and secure. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-openrouter%3D%3D0.3.0</description>
     </item>
     <item>
-      <title>Riemann Hypothesis Solved with AI Assistance</title>
+      <title>AI breakthrough in Riemann Hypothesis with Claude&apos;s help</title>
       <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 15:30:42 GMT</pubDate>
       <category>Certifications &amp; Labs</category>
-      <description>The Riemann Hypothesis, a long-standing mathematical problem, may have been solved with the help of an AI assistant named Claude. The problem addressed was the longstanding challenge of proving the Riemann Hypothesis, a critical unsolved problem in mathematics. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e</description>
+      <description>Claude, an AI, reportedly helped solve the Riemann Hypothesis, a long-standing math problem, according to a post by @emollick. The Riemann Hypothesis, a critical unsolved problem in mathematics, has been a bottleneck in advancing certain areas of finance and cryptography. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e</description>
+    </item>
+    <item>
+      <title>Google workers push back against AI policy in schools</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50577901&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50577901&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 16:59:27 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Hundreds of Google workers are protesting a new policy that would block schools from using Google’s Gemini AI tools if they choose not to. The policy aims to address teachers and parents&apos; concerns about AI in the classroom, but it has sparked backlash from communities. — Upstream (Hacker News): https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/</description>
     </item>
     <item>
       <title>Epic Games Integrates AI for Unreal Engine</title>
@@ -113,20 +121,20 @@
       <description>Epic Games is using AI to automate coding tasks in the Unreal Engine, improving development speed and efficiency. The bottleneck in coding tasks, such as repetitive and mundane coding, which can slow down development. — Upstream (Hacker News): https://spectrum.ieee.org/epic-games-unreal-engine-ai</description>
     </item>
     <item>
-      <title>Should governments slow down AI advancements in banking?</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50564366&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50564366&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 18:47:16 GMT</pubDate>
+      <title>Apple Developing digital helpers for Web Browsing and App Tasks</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50573166&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50573166&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 11:22:27 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Jacob Coxon and Robin Hanson debated whether governments should slow down AI advancements, focusing on potential risks and benefits. They discussed how AI advancements could lead to over-reliance and potential risks, such as financial instability, which need to be managed. — Upstream (Hacker News): https://www.youtube.com/watch?v=lwfewYL7X0o</description>
+      <description>Apple is hiring an engineer to develop a digital helpers that can browse the web, work across apps, write code, and call services. Apple aims to enhance user experience by automating tasks that are currently done manually, thus improving productivity and convenience. — Upstream (Hacker News): https://www.theverge.com/tech/1038227/apple-ai-agent-engineer-job-listing</description>
     </item>
     <item>
-      <title>digital helpers in Human Labs Publish 936 Papers</title>
+      <title>35 human labs deploy digital helpers for collaborative scientific research</title>
       <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2pqcy4cbs2g&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2pqcy4cbs2g&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 04:20:53 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>35 human labs deployed digital helpers to work together, publishing 936 papers and founding a peer review journal, all while publicly retracting mistakes. The system addressed the bottleneck of human researchers handling large volumes of data and the risk of human error in scientific publishing. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2pqcy4cbs2g</description>
+      <description>35 human labs deployed digital helpers that worked together to publish 936 scientific papers, retracted mistakes publicly, and founded a peer review journal. The initiative aimed to address the challenges of collaboration and accuracy in scientific research, particularly in the context of AI. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2pqcy4cbs2g</description>
     </item>
     <item>
       <title>Court Rules AI-Generated Probable Cause Unconstitutional</title>
@@ -137,36 +145,36 @@
       <description>A court ruled that AI-generated probable cause cannot be used in law enforcement, citing the 4th Amendment of the U.S. Constitution. The court addressed the potential for AI to bypass the human judgment required by the 4th Amendment, ensuring that probable cause must be based on human reasoning. — Upstream (Hacker News): https://www.techdirt.com/2026/11/19/court-tells-cops-that-the-4th-amendment-doesnt-cover-ai-generated-probable-cause/</description>
     </item>
     <item>
-      <title>AI&apos;s Impact on Software Engineering and Beyond</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50563328&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50563328&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 17:43:38 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>The author created a voice clone using a free open-source model, demonstrating how easily AI can automate certain tasks. The author addressed the bottleneck of needing to manually create voice clones, showing a real-world application of AI. — Upstream (Hacker News): https://www.robertpeake.com/archives/104254-ai-came-for-the-coders-understanding-why-tells-us-whos-next.html</description>
+      <title>digital helpers Prove Riemann Hypothesis and Generalizations</title>
+      <link>https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov20levent-alpoge&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov20levent-alpoge&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 16:30:48 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Levent Alpöge and Claude AI collaborated to prove the Riemann Hypothesis and its generalizations, formalizing the proof without assumptions. The proof addresses a long-standing mathematical conjecture that has implications for number theory and cryptography. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/20/levent-alpoge/</description>
     </item>
     <item>
-      <title>Gemini 4 Carbon vs Gemini 4 Neon: Illustrating Model Variations</title>
+      <title>Should governments slow down AI advancements in banking?</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50564366&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50564366&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 18:47:16 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Jacob Coxon and Robin Hanson debated whether governments should slow down AI advancements, focusing on potential risks and benefits. They discussed how AI advancements could lead to over-reliance and potential risks, such as financial instability, which need to be managed. — Upstream (Hacker News): https://www.youtube.com/watch?v=lwfewYL7X0o</description>
+    </item>
+    <item>
+      <title>Pelican riding a bicycle test highlights Gemini 4 variations</title>
       <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 06:40:15 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>The post compares Gemini 4 Carbon and Gemini 4 Neon, two models from the same family, to highlight their performance differences at varying effort levels. It addresses the challenge of selecting the appropriate model for different tasks within the same family of digital helpers. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
+      <description>The post compares the performance of two Gemini 4 models, showing how they differ when running at different effort levels, similar to a pelican riding a bicycle. It addresses the need to understand the differences between models within the same family, ensuring better performance and efficiency in various applications. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
     </item>
     <item>
       <title>FBI agent contacts user about AI chat activity, raising privacy concerns</title>
       <link>https://cortex-radar.github.io/?orb=hn-50567485&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50567485&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 22:36:51 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
+      <category>Governance &amp; Security</category>
       <description>An FBI agent contacted a user about their AI chat activity, leading to a police visit to the user&apos;s former home and a subsequent summons to the station. The issue addressed is the potential for AI-generated chat logs to be used as a basis for law enforcement inquiries, highlighting the need for robust privacy and security measures. — Upstream (Hacker News): https://austinpatrick.substack.com/p/when-should-ai-labs-alert-police</description>
-    </item>
-    <item>
-      <title>High Stakes Are Strongly Typed: Protocols as Fossils of Disaster</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50564064&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50564064&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 18:30:04 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>The post describes how protocols, like the ones used on aircraft carriers, are developed in response to disasters, ensuring safety and preventing future accidents. The protocols address the complexity and potential failures in systems, ensuring that critical steps are not overlooked. — Upstream (Hacker News): https://www.motivenotes.ai/p/high-stakes-are-strongly-typed</description>
     </item>
     <item>
       <title>Where Will Software Be in 5 Years? AI and Job Security Concerns</title>
@@ -177,36 +185,28 @@
       <description>A software engineer with 5-10 years of experience is concerned about the future of the software industry and job security due to the increasing use of AI. The engineer seeks advice on how to adapt to the changing landscape of software development and whether they should consider other industries. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50565484</description>
     </item>
     <item>
-      <title>Testing 4B, 9B, and 27B Models in Household Manuals</title>
+      <title>Testing 4B, 9B, and 27B Models for Household Manuals</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y0z0g2&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y0z0g2&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 09:21:01 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>A household assistant named Hearth, using models of 4B, 9B, and compact scale, was tested on answering questions from manuals. Despite strict instructions, the smaller models sometimes followed a hidden note, while the larger model did not. The test revealed that smaller models can be tricked by hidden instructions, while larger models are more reliable, addressing the need for robust security in AI applications. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y0z0g2/4b_vs_9b_vs_27b_answering_from_household_manuals/</description>
+      <description>A household assistant named Hearth, using models of 4B, 9B, and compact scale, was tested on answering questions from manuals. Small models followed a hidden instruction to send customers to a fake support number, while larger models did not. The test revealed that small AI models can be manipulated by hidden instructions, highlighting the need for robust security measures in AI applications. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y0z0g2/4b_vs_9b_vs_27b_answering_from_household_manuals/</description>
     </item>
     <item>
-      <title>acmdthat - CLI commands with in-process AI for banking</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y18t0x&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y18t0x&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 17:05:16 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>The r/LocalLLaMA community developed a CLI tool called acmdthat that allows for in-process AI live answering work, enabling faster task execution. It addresses the bottleneck of data transfer and model loading, which can slow down AI processing in real-time applications like banking. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y18t0x/acmdthat_vibe_cli_commands_with_inprocess/</description>
+      <title>Hy4-flash Q4 Benchmark on MacBook Pro M5 Max Achieves 1000 tps Prefill, 36 tps Decode</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y1b2aa&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1b2aa&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 18:32:34 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>The author added Hy4-flash support to Kapitsa, an open-source Apple silicon live answering work engine, and benchmarked its performance on a MacBook Pro M5 Max. The benchmark addresses the need for efficient processing of large context windows, which is crucial for handling complex banking queries. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y1b2aa/run_hy4flash_q4_on_a_macbook_pro_m5_max_1000_tps/</description>
     </item>
     <item>
-      <title>Unsloth Prepares to Release 4 New AI Models</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y18qbs&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y18qbs&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 17:02:27 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>Unsloth is preparing to release 4 new AI models, though Huggingface lists 15 items, suggesting there are additional models not visible in the collection. The bottleneck is in managing and organizing a growing number of AI models, ensuring they are accessible and properly categorized. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y18qbs/unsloth_is_preparing_to_release_4_new_models/</description>
-    </item>
-    <item>
-      <title>Self-Hosted GPT with Local Research Mode and Customization</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y18h07&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y18h07&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 16:53:04 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>The user built ENZO, a self-hosted AI workspace that can be installed on a desktop with a one-click installer. It supports various providers and updates itself automatically. ENZO addresses the need for a self-hosted AI solution that can be easily installed and updated, providing a secure and private environment for users. — Upstream (r/ChatGPTCoding): https://www.reddit.com/r/ChatGPTCoding/comments/1y18h07/i_built_self_hosted_gpt_with_a_oneclick_desktop/</description>
+      <title>Trump&apos;s Policy to Prohibit Datacenters Outside US</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y1bbr3&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1bbr3&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 18:43:06 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>The US government is planning to ban the construction of datacenters outside the country, aiming to keep data within U.S. borders. The main issue is the need for data sovereignty and security, ensuring that sensitive information is not stored abroad. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y1bbr3/trump_to_not_allow_datacenters_to_be_built/</description>
     </item>
   </channel>
 </rss>

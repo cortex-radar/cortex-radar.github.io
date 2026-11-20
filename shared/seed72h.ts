@@ -3,6 +3,7 @@ import {
   inferDomainEnterpriseStacks,
   stripHtmlMarkupAndEntities,
 } from './literacyEngine';
+import { truncateAtWordBoundary } from './provenance';
 import {
   computeDivergenceMetrics,
   extractCanonicalEntity,
@@ -1059,10 +1060,10 @@ export function synthesizeRawItemToSpatialSignal(
     .map((s) => s.trim())
     .filter((s) => s.length >= 32 && s.toLowerCase() !== displayTitle.toLowerCase());
 
-  const leadFactSentence = summarySentences[0] || cleanSummary.slice(0, 220);
+  const leadFactSentence = summarySentences[0] || truncateAtWordBoundary(cleanSummary, 220);
   const secondaryFactSentence = summarySentences[1] || '';
 
-  const headlineSoWhat = leadFactSentence.slice(0, 210);
+  const headlineSoWhat = truncateAtWordBoundary(leadFactSentence, 210);
 
   const isDiscussionPost =
     /\b(discussion hub|megathread|weekly|daily thread|i think|unpopular opinion|thoughts on|anyone else|question|ask hn|show hn|rant|hiring|who is hiring)\b/i.test(
@@ -1144,7 +1145,7 @@ export function synthesizeRawItemToSpatialSignal(
                 : 'HackerNews',
             originLabel,
             author: originLabel,
-            text: leadFactSentence.slice(0, 240),
+            text: truncateAtWordBoundary(leadFactSentence, 240),
             score: Math.round(baseScore),
             sentiment: scoreStreetSentiment(`${displayTitle} ${cleanSummary}`),
             publishedAtMs: raw.publishedAtMs,
@@ -1169,7 +1170,7 @@ export function synthesizeRawItemToSpatialSignal(
 
   const built: SpatialSignal = {
     id: raw.id,
-    title: (displayTitle || raw.title).slice(0, 155),
+    title: truncateAtWordBoundary(displayTitle || raw.title, 220),
     shortLabel,
     source: raw.source,
     sourceCategory: inferredCategory,
@@ -1197,8 +1198,8 @@ export function synthesizeRawItemToSpatialSignal(
     rawAbstract: cleanSummary,
     architectBrief: {
       summary: secondaryFactSentence
-        ? `${leadFactSentence} ${secondaryFactSentence}`.slice(0, 320)
-        : leadFactSentence.slice(0, 300),
+        ? truncateAtWordBoundary(`${leadFactSentence} ${secondaryFactSentence}`, 320)
+        : truncateAtWordBoundary(leadFactSentence, 300),
       stackImpact: [`${primarySector} Pipeline`, 'AI Gateway / Router', 'Observability & EvalOps'],
       integrationPattern:
         readiness === 'RESEARCH'
@@ -1212,8 +1213,8 @@ export function synthesizeRawItemToSpatialSignal(
     cSuiteBrief: {
       headlineSoWhat,
       talkingPoints: [
-        leadFactSentence.slice(0, 180),
-        ...(secondaryFactSentence ? [secondaryFactSentence.slice(0, 180)] : []),
+        truncateAtWordBoundary(leadFactSentence, 180),
+        ...(secondaryFactSentence ? [truncateAtWordBoundary(secondaryFactSentence, 180)] : []),
         `Readiness: ${readiness} (${originLabel}).`,
       ],
       industryLens: buildIndustryLens(primarySector, shortLabel, headlineSoWhat, finOps, risk),

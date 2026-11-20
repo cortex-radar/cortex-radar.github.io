@@ -30,6 +30,10 @@ import {
   matchGlossaryTextSegments,
   sanitizeLiteracyPayloadPlainLevels,
 } from '../../shared/literacyEngine';
+import {
+  getIndependentSourceCount,
+  isNonToolNewsOrMarketSignal,
+} from '../../shared/provenance';
 import { computeDivergenceMetrics } from '../../shared/supernovaEngine';
 import {
   BlastOrderConsequence,
@@ -1194,12 +1198,9 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
           const distinctQuoteNets = Array.from(new Set(quotes.map((q) => q.network)));
           const hasRealCrossPlatformQuotes =
             !focusedSignal.isDemoSeed && distinctQuoteNets.length >= 2;
-          const distinctSourceCount = Math.max(
-            focusedSignal.networkFamilies?.length || 0,
-            focusedSignal.sourceProvenance?.length || 0,
-            1
-          );
-          const isMultiSource = focusedSignal.isSupernova || distinctSourceCount >= 2;
+          const groupedSourceCount = getIndependentSourceCount(effectiveSignal);
+          const isMultiSource = focusedSignal.isSupernova || groupedSourceCount >= 2;
+          const isNonToolNews = isNonToolNewsOrMarketSignal(effectiveSignal);
           const isPlainBubble = activeLevel <= 2 && !showCrossfire;
           const focusedTerm = activeGlossaryTerm || lit.glossary[0] || null;
 
@@ -1300,27 +1301,21 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                     <span>{activeLevel === 1 ? sec.name : sec.code}</span>
                   </span>
 
-                  {focusedSignal.isSupernova && (
+                  {isMultiSource ? (
                     <span
-                      title={`Corroborated across ${focusedSignal.networkFamilies?.length || 2} independent networks. ${THIRD_PARTY_SOURCE_DISCLAIMER}`}
+                      title={`Corroborated across ${groupedSourceCount} linked sources. ${THIRD_PARTY_SOURCE_DISCLAIMER}`}
                       className="px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 tabular-nums"
                     >
-                      {activeLevel === 1
-                        ? 'Multi-Source'
-                        : `Multi-Source · ${focusedSignal.networkFamilies?.length || 2} Nets`}
+                      {groupedSourceCount >= 2
+                        ? `Multi-Source · ${groupedSourceCount} Sources`
+                        : 'Multi-Source'}
                     </span>
-                  )}
-
-                  {!focusedSignal.isSupernova && (
+                  ) : (
                     <span
-                      title={
-                        isMultiSource
-                          ? `Corroborated across ${distinctSourceCount} linked third-party sources. ${THIRD_PARTY_SOURCE_DISCLAIMER}`
-                          : `Single linked upstream source. ${THIRD_PARTY_SOURCE_DISCLAIMER}`
-                      }
+                      title={`Single linked upstream source. ${THIRD_PARTY_SOURCE_DISCLAIMER}`}
                       className="px-1.5 py-0.5 text-[10px] font-mono font-medium rounded bg-zinc-900 border border-white/10 text-zinc-400 tabular-nums"
                     >
-                      {isMultiSource ? 'Multi-Source' : 'Source-Linked'}
+                      Source-Linked
                     </span>
                   )}
 
@@ -1446,54 +1441,66 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
               {/* Row 2: Enterprise Metadata Strip + Headline */}
               <div className="space-y-1.5">
                 <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-mono tabular-nums text-zinc-400">
-                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-zinc-900/80 border border-white/8 text-zinc-200">
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full ${
-                        focusedSignal.readiness === 'GA'
-                          ? 'bg-emerald-400'
-                          : focusedSignal.readiness === 'PREVIEW'
-                          ? 'bg-amber-400'
-                          : 'bg-violet-400'
-                      }`}
-                    />
-                    {isPlainBubble
-                      ? focusedSignal.readiness === 'GA'
-                        ? 'Ready Today'
-                        : focusedSignal.readiness === 'PREVIEW'
-                        ? 'Early Access'
-                        : 'Lab Study'
-                      : focusedSignal.readiness}
-                  </span>
+                  {!isNonToolNews ? (
+                    <>
+                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-zinc-900/80 border border-white/8 text-zinc-200">
+                        <span
+                          className={`h-1.5 w-1.5 rounded-full ${
+                            focusedSignal.readiness === 'GA'
+                              ? 'bg-emerald-400'
+                              : focusedSignal.readiness === 'PREVIEW'
+                              ? 'bg-amber-400'
+                              : 'bg-violet-400'
+                          }`}
+                        />
+                        {isPlainBubble
+                          ? focusedSignal.readiness === 'GA'
+                            ? 'Ready Today'
+                            : focusedSignal.readiness === 'PREVIEW'
+                            ? 'Early Access'
+                            : 'Lab Study'
+                          : focusedSignal.readiness}
+                      </span>
 
-                  <span
-                    className={`px-1.5 py-0.5 rounded border ${
-                      focusedSignal.risk === 'HIGH'
-                        ? 'border-rose-400/35 bg-rose-500/12 text-rose-200'
-                        : 'border-white/8 bg-zinc-900/80 text-zinc-300'
-                    }`}
-                  >
-                    {isPlainBubble
-                      ? focusedSignal.risk === 'HIGH'
-                        ? 'Safety Review'
-                        : focusedSignal.risk === 'MODERATE'
-                        ? 'Human Check'
-                        : 'Standard Safe'
-                      : `${focusedSignal.risk} RISK`}
-                  </span>
+                      <span
+                        className={`px-1.5 py-0.5 rounded border ${
+                          focusedSignal.risk === 'HIGH'
+                            ? 'border-rose-400/35 bg-rose-500/12 text-rose-200'
+                            : 'border-white/8 bg-zinc-900/80 text-zinc-300'
+                        }`}
+                      >
+                        {isPlainBubble
+                          ? focusedSignal.risk === 'HIGH'
+                            ? 'Safety Review'
+                            : focusedSignal.risk === 'MODERATE'
+                            ? 'Human Check'
+                            : 'Standard Safe'
+                          : `${focusedSignal.risk} RISK`}
+                      </span>
 
-                  <span className="px-1.5 py-0.5 rounded border border-white/8 bg-zinc-900/80 text-zinc-300">
-                    {isPlainBubble
-                      ? focusedSignal.finOps === 'REDUCER'
-                        ? 'Lowers Bills'
-                        : focusedSignal.finOps === 'INTENSIVE'
-                        ? 'Heavy Compute'
-                        : 'Standard Cost'
-                      : focusedSignal.finOps === 'REDUCER'
-                      ? 'OPEX REDUCER'
-                      : focusedSignal.finOps === 'INTENSIVE'
-                      ? 'COMPUTE HEAVY'
-                      : 'FINOPS NEUTRAL'}
-                  </span>
+                      <span className="px-1.5 py-0.5 rounded border border-white/8 bg-zinc-900/80 text-zinc-300">
+                        {isPlainBubble
+                          ? focusedSignal.finOps === 'REDUCER'
+                            ? 'Lowers Bills'
+                            : focusedSignal.finOps === 'INTENSIVE'
+                            ? 'Heavy Compute'
+                            : 'Standard Cost'
+                          : focusedSignal.finOps === 'REDUCER'
+                          ? 'OPEX REDUCER'
+                          : focusedSignal.finOps === 'INTENSIVE'
+                          ? 'COMPUTE HEAVY'
+                          : 'FINOPS NEUTRAL'}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-zinc-900/80 border border-white/8 text-zinc-300">
+                      <span
+                        style={{ backgroundColor: sec.colorHex }}
+                        className="h-1.5 w-1.5 rounded-full shrink-0"
+                      />
+                      <span>Market &amp; Policy Brief</span>
+                    </span>
+                  )}
 
                   {hasAuthenticEngagementVelocity(focusedSignal) && activeLevel >= 2 && (
                     <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded border border-white/8 bg-zinc-900/80 text-teal-300 tabular-nums">
@@ -1676,13 +1683,13 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                     </div>
                     <div className="p-2.5 space-y-0.5">
                       <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400 block">
-                        Who Built It
+                        {isNonToolNews ? 'Key Organizations' : 'Who Built It'}
                       </span>
                       <p className="text-zinc-200 max-w-[65ch]">{lit.levels[2].whoBuiltIt}</p>
                     </div>
                     <div className="p-2.5 space-y-0.5">
                       <span className="font-mono text-[10px] uppercase tracking-wider text-teal-300 block">
-                        Problem Solved
+                        {isNonToolNews ? 'Why It Matters' : 'Problem Solved'}
                       </span>
                       <p className="text-zinc-100 max-w-[65ch]">{lit.levels[2].problemSolved}</p>
                     </div>

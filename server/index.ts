@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { truncateAtWordBoundary } from '../shared/provenance';
 import type { RawUpstreamSignal } from '../shared/seed72h';
 import type {
   AdapterId,
@@ -505,7 +506,7 @@ function makeBlueskyDescriptor(id: string, displayName: string, actorHandle: str
           const ageHrs = publishedAtMs > 0 ? Math.max(0.5, (Date.now() - publishedAtMs) / 3_600_000) : 999;
           return {
             id: `bsky-${handle}-${rkey}`,
-            title: text.slice(0, 118),
+            title: truncateAtWordBoundary(text, 140),
             summary: text.slice(0, 900),
             url: `https://bsky.app/profile/${handle}/post/${rkey}`,
             source: 'Bluesky' as const,
@@ -768,7 +769,10 @@ function buildCoreDescriptors(): FeedDescriptor[] {
           const ghOg = resolveGitHubOpenGraphImage(repo.html_url);
           return {
             id: `gh-${repo.id}`,
-            title: `${repo.full_name}${repo.description ? ` — ${repo.description}` : ''}`.slice(0, 150),
+            title: truncateAtWordBoundary(
+              `${repo.full_name}${repo.description ? ` — ${repo.description}` : ''}`,
+              180
+            ),
             summary:
               repo.description ||
               `Open-source repository ${repo.full_name} updated on GitHub (${stars.toLocaleString()} stars).`,

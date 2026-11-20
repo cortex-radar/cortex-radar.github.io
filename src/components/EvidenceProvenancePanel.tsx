@@ -179,7 +179,7 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
                         <ExternalLink className="w-2.5 h-2.5" />
                       </span>
                     </div>
-                    <p className="text-[11px] text-zinc-300 leading-snug line-clamp-2">
+                    <p title={srcItem.title} className="text-[11px] text-zinc-300 leading-snug line-clamp-2">
                       {srcItem.title}
                     </p>
                   </a>
@@ -200,9 +200,10 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
           href={signal.url}
           target="_blank"
           rel="noreferrer"
+          title={signal.title}
           className="inline-flex items-start gap-1 text-[11.5px] font-medium text-zinc-200 hover:text-teal-200 leading-snug transition-colors"
         >
-          <span>{signal.title}</span>
+          <span className="line-clamp-3">{signal.title}</span>
           <ExternalLink className="w-2.5 h-2.5 mt-0.5 shrink-0 text-zinc-500" />
         </a>
         {verbatimExcerpt && (

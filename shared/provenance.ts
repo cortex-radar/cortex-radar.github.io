@@ -147,6 +147,53 @@ export function formatUtcTimestamp(ms: number | null | undefined): string {
   return `${UTC_FORMATTER.format(new Date(ms))} UTC`;
 }
 
+export function truncateAtWordBoundary(text: string, maxChars: number): string {
+  const cleaned = (text || '').replace(/\s+/g, ' ').trim();
+  if (!cleaned || maxChars <= 1) return cleaned;
+  if (cleaned.length <= maxChars) return cleaned;
+
+  const slice = cleaned.slice(0, maxChars - 1);
+  const lastSpaceIdx = slice.lastIndexOf(' ');
+  const trimmed =
+    lastSpaceIdx >= Math.floor((maxChars - 1) * 0.45)
+      ? slice.slice(0, lastSpaceIdx)
+      : slice;
+  const cleanEnd = trimmed.replace(/[,;:\-–—(\s]+$/g, '').trim();
+  return cleanEnd ? `${cleanEnd}…` : `${slice.trim()}…`;
+}
+
+const NON_TOOL_NEWS_MARKET_REGEX =
+  /\b(ipo|initial public offering|underwriters?|nasdaq|nyse|stock markets?|share price|valuation|funding|series [a-f]|acquisition|acquires|antitrust|lawsuit|4th amendment|court|ruling|protesters?|bailout|fbi|senate|congress|regulation|eu ai act|debate|who['’]s next|came for the coders|gtm|arr|sell-off)\b/i;
+
+const EXPLICIT_TOOL_RELEASE_REGEX =
+  /\b(introducing|announcing|releasing|are out|v\d+\.\d+|api|sdk|cli|weights|models?|qwen[-\s]?\d|gpt[-\s]?\d|claude[-\s]?\d|gemini[-\s]?\d|open[- ]source|github|framework|runtime|server)\b/i;
+
+export function isNonToolNewsOrMarketSignal(
+  sig: Pick<SpatialSignal, 'title' | 'primarySector' | 'source' | 'sourceCategory' | 'url'>
+): boolean {
+  if (
+    sig.source === 'GHRelease' ||
+    sig.source === 'GitHub' ||
+    sig.source === 'arXiv' ||
+    sig.source === 'HuggingFace'
+  ) {
+    return false;
+  }
+  const title = sig.title || '';
+  if (NON_TOOL_NEWS_MARKET_REGEX.test(title)) {
+    return true;
+  }
+  if (
+    (sig.primarySector === 'ECO' ||
+      sig.primarySector === 'MKT' ||
+      sig.primarySector === 'GOV') &&
+    !EXPLICIT_TOOL_RELEASE_REGEX.test(title)
+  ) {
+    return true;
+  }
+  return false;
+}
+
 export function extractVerbatimSourceExcerpt(sig: SpatialSignal): string {
   const cleanTitle = stripHtmlMarkupAndEntities(sig.title || '')
     .toLowerCase()
@@ -169,21 +216,27 @@ export function extractVerbatimSourceExcerpt(sig: SpatialSignal): string {
     .replace(/[^a-z0-9\s]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  if (!normRaw || normRaw === cleanTitle || (cleanTitle.length > 20 && normRaw.startsWith(cleanTitle) && normRaw.length <= cleanTitle.length + 12)) {
+  if (
+    !normRaw ||
+    normRaw === cleanTitle ||
+    (cleanTitle.length > 20 &&
+      normRaw.startsWith(cleanTitle) &&
+      normRaw.length <= cleanTitle.length + 12)
+  ) {
     return '';
   }
 
   // Strip duplicated leading title prefix if rawAbstract starts verbatim with the headline
   let excerpt = cleanedRaw;
-  const rawHeadline = stripHtmlMarkupAndEntities(sig.title || '').replace(/[\u2026.]+$/, '').trim();
+  const rawHeadline = stripHtmlMarkupAndEntities(sig.title || '')
+    .replace(/[\u2026.]+$/, '')
+    .trim();
   if (rawHeadline.length >= 20 && excerpt.toLowerCase().startsWith(rawHeadline.toLowerCase())) {
     const stripped = excerpt.slice(rawHeadline.length).replace(/^[\s.:—–-]+/, '').trim();
     if (stripped.length >= 28) excerpt = stripped;
   }
 
-  if (excerpt.length <= 240) return excerpt;
-  const cut = excerpt.slice(0, 237).replace(/\s+\S*$/, '').trim();
-  return `${cut}…`;
+  return truncateAtWordBoundary(excerpt, 240);
 }
 
 export function matchesSignalSearchQuery(sig: SpatialSignal, rawQuery: string): boolean {

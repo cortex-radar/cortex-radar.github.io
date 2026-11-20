@@ -1891,19 +1891,43 @@ export async function runTriEngineLiteracySpectrum(params: {
     .map((g) => g.term)
     .join(', ');
 
+  const normPrimaryUrl = (params.signal.url || '')
+    .trim()
+    .toLowerCase()
+    .replace(/#.*$/, '')
+    .replace(/\/+$/, '')
+    .replace(/^https?:\/\/(www\.)?/, '');
+  const supportingContext = (params.signal.supportingSources || [])
+    .filter((s) => {
+      const u = (s.url || '')
+        .trim()
+        .toLowerCase()
+        .replace(/#.*$/, '')
+        .replace(/\/+$/, '')
+        .replace(/^https?:\/\/(www\.)?/, '');
+      return u && u !== normPrimaryUrl;
+    })
+    .slice(0, 4)
+    .map((s) => `[${s.isPrimary ? 'Primary' : 'Commentary'} · ${s.source}] "${s.title}"`)
+    .join('\n- ');
+
   const fullPostContext = stripTrailingIncompleteClause(
     (params.signal.rawAbstract || params.signal.title).slice(0, 2800)
   );
 
-  const schemaPrompt = `You are a Principal AI Technical Writer & Architecture Strategist translating this verified signal into a rich, insightful 5-level literacy JSON object for a ${clientInd} audience.
+  const schemaPrompt = `You are a Principal AI Technical Writer & Architecture Strategist translating this source-linked signal into a rich, insightful 5-level literacy JSON object for a ${clientInd} audience.
 
-Origin Source: ${params.signal.originFeedName || params.signal.source} (${params.signal.url})
-Headline: "${params.signal.title}"
-Post Body / Technical Content (up to 2,800 chars):
+Primary Origin Source: ${params.signal.originFeedName || params.signal.source} (${params.signal.url})
+Primary Headline: "${params.signal.title}"
+Primary Post Body / Excerpt (up to 2,800 chars):
 """
 ${fullPostContext}
 """
 ${
+  supportingContext
+    ? `Supporting Coverage in This Event Group (secondary context only — anchor primary facts strictly to Primary Headline & Primary Post Body above):\n- ${supportingContext}\n`
+    : ''
+}${
   topQuotesContext
     ? `Real Community Engineer Replies (cite these objections/praise in Level 5 streetConsensus):\n- ${topQuotesContext}\n`
     : ''
@@ -1912,7 +1936,8 @@ ${
 STRICT ANTI-VAGUENESS & DEPTH RULES:
 1. NO TELEGRAPHIC FRAGMENTS OR FORTUNE-COOKIE TRUISMS: Never output vague 6-word filler like "AI agents help solve mysteries", "Tasks vary from small to complex", or "Positive early results, awaiting validation".
 2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Explicitly start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (a kitchen prep line, library desk, post office sorting room, hospital chart clipboard, thermostat, or highway lane). NEVER explain "AI agents" by saying "AI agents do X". STRICTLY BAN technical acronyms in Level 1 (no LLM, RAG, KV, MCP, VRAM, API, GPU, parameters, tokens, weights). Write levels["1"].everydayWhy as 1-2 full, natural human sentences.
-3. LEVEL 5 MUST BE CONCRETE & DENSE (2-3 substantive technical sentences per block): Extract specific architectural mechanisms, sandboxing/auth boundaries, named tools/models, numbers/benchmarks, observed failure modes, and real community engineer objections or praise directly from the Post Body and Replies above. Never repeat the same sentence across sections.
+3. PRIMARY FACT ALIGNMENT & NON-TOOL NEWS: Anchor plainTitle, plainFullTitle, Level 1, and Level 2 whatHappened strictly to the Primary Headline and Primary Post Body above so AI Synthesis never contradicts the verbatim source headline or excerpt. For non-tool corporate/market/policy news (IPOs, funding, legal rulings), use whoBuiltIt for key organizations involved and problemSolved for why the development matters.
+4. LEVEL 5 MUST BE CONCRETE & DENSE (2-3 substantive technical sentences per block): Extract specific architectural mechanisms, sandboxing/auth boundaries, named tools/models, numbers/benchmarks, observed failure modes, and real community engineer objections or praise directly from the Post Body and Replies above. Never repeat the same sentence across sections.
 
 Return ONLY valid JSON matching this exact structure:
 {
