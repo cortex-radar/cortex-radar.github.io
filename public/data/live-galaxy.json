@@ -1,10 +1,10 @@
 {
   "version": 1,
   "promptVersion": "v2.2",
-  "bakedAtIso": "2026-11-20T19:39:39.337Z",
-  "bakedAtMs": 1795203579337,
-  "synthesizedBy": "LOCAL_OLLAMA_qwen2.5:7b",
-  "signalCount": 61,
+  "bakedAtIso": "2026-11-20T19:44:48.298Z",
+  "bakedAtMs": 1795203888298,
+  "synthesizedBy": "GITHUB_MODELS_GPT-4O-MINI",
+  "signalCount": 59,
   "signals": [
     {
       "id": "rd-street-1y1bugz",
@@ -67,8 +67,8 @@
       "engagementVelocity": {
         "likesOrUps": 51,
         "commentsOrReplies": 30,
-        "velocityPerHour": 225,
-        "badgeText": "225/hr · 51 ups · 30 comments"
+        "velocityPerHour": 184,
+        "badgeText": "184/hr · 51 ups · 30 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y1bugz/ravi_vakil_of_stanford_claims_there_is_already_a/",
       "publishedAtMs": 1795201413000,
@@ -221,10 +221,10 @@
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 172,
+        "likesOrUps": 174,
         "commentsOrReplies": 193,
-        "velocityPerHour": 91,
-        "badgeText": "172 pts · 193 comments"
+        "velocityPerHour": 90,
+        "badgeText": "174 pts · 193 comments"
       },
       "url": "https://www.anthropic.com/news/ipo-close",
       "publishedAtMs": 1795132800000,
@@ -1041,22 +1041,20 @@
       "originFeedName": "claude-code Release",
       "isDemoSeed": false,
       "sourceProvenance": [
-        "r/ClaudeAI",
         "claude-code Release"
       ],
       "networkFamilies": [
-        "Reddit",
         "GitHub"
       ],
-      "canonicalEntity": "ent:claude+skill+turns",
+      "canonicalEntity": "gh:anthropics/claude-code",
       "isSupernova": true,
-      "supernovaLevel": 2,
+      "supernovaLevel": 1,
       "divergence": {
-        "hypeScore": 50,
-        "streetScore": 45,
-        "divergenceDelta": 5,
+        "hypeScore": 45,
+        "streetScore": 49,
+        "divergenceDelta": -4,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (50 hype / 45 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (45 hype / 49 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
@@ -1090,12 +1088,6 @@
           "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.328"
         }
       ],
-      "engagementVelocity": {
-        "likesOrUps": 1,
-        "commentsOrReplies": 3,
-        "velocityPerHour": 17,
-        "badgeText": "17/hr · 1 up · 3 comments"
-      },
       "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
       "publishedAtMs": 1795126481000,
       "isLiveInbound": true,
@@ -1104,7 +1096,7 @@
         "REL",
         "GOV"
       ],
-      "mass": 4.85,
+      "mass": 4.6,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -1164,16 +1156,16 @@
         "plainFullTitle": "Claude Code v2.1.329",
         "levels": {
           "1": {
-            "analogy": "Imagine it like a library desk where books are organized into categories, and when a new book is added, it gets a label that warns if it's missing a crucial part, ensuring everything is in place before it's shelved.",
-            "everydayWhy": "This helps users ensure that all necessary components are correctly set up, preventing errors and ensuring smooth operation."
+            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks i",
+            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
           },
           "2": {
-            "whatHappened": "Claude Code v2.1.329 added a trust dialog warning for folder hooks, improved error handling for hooks, integrated scheduled tasks and forks into the task management system, and enhanced server and marketplace update notifications.",
-            "whoBuiltIt": "The Claude Code team, part of the broader Claude AI ecosystem.",
-            "problemSolved": "The update addresses potential issues in the codebase by providing clearer warnings and better error handling, enhancing the reliability and usability of the software."
+            "whatHappened": "What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session's scheduled tasks, /loop wakeups, the goal and this conversation's forks to /tasks; x stops one.",
+            "whoBuiltIt": "Anthropic (Claude Code Engineering Team)",
+            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
           },
           "3": {
-            "bridgeSummary": "The mechanism works by using the MCP (Model-Controller-View) architecture to manage and display warnings and errors, ensuring that users are informed about any issues in the code. Agentic Tool Use is demonstrated through the integration of scheduled tasks and forks into the task management system, allowing for more efficient and automated workflows. SWE-bench, a benchmark for software engineering, is implicitly referenced through the improvements in error handling and task management."
+            "bridgeSummary": "What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session's scheduled tasks, /loop wakeups, the goal and this conversation's forks to /tasks; x stops one aft In stack terms, this connects to MCP, Agentic Tool Use, SWE-bench (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
           },
           "4": {
             "roiAndFinOps": "What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session's scheduled tasks, /loop wakeups, the goal and this conversation's forks to /tasks; x stops one after asking Added a \"Server message\" row to a server's page in /mcp that shows the JSON-RPC error message of a remote HTTP MCP server that refuses the connection Added a \"Marketplace auto-update\" row to /status that names managed marketplaces that get no automatic updates, and why Added support for turning on Code Mode while OpenTelemetry events and metrics are enabled; each tool call the code makes sends its events; tracing still keeps it off Fixed ~/.claude.json sometimes being reset to defaults when a network stall or file lock made it unreadable and cleared during a save Fixed repeated sign-outs on macOS when Claude Code could read the Keychain but not save to it. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
@@ -1200,7 +1192,7 @@
             "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
           }
         ],
-        "generatedBy": "OLLAMA"
+        "generatedBy": "DETERMINISTIC"
       },
       "supportingSources": [
         {
@@ -1218,153 +1210,9 @@
           "publishedAt": "2026-11-19T01:14:04.000Z",
           "publishedAtMs": 1795050844000,
           "isPrimary": true
-        },
-        {
-          "source": "r/ClaudeAI",
-          "title": "I built a Claude Code skill that turns software without an API into a bridge Claude can read through MCP",
-          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y1byg8/i_built_a_claude_code_skill_that_turns_software/",
-          "publishedAt": "2026-11-20T19:07:59.000Z",
-          "publishedAtMs": 1795201679000,
-          "isPrimary": false
         }
       ],
-      "lastUpdatedAtMs": 1795201679000
-    },
-    {
-      "id": "hn-50572503",
-      "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
-      "shortLabel": "Frostbite A new CPU architecture",
-      "source": "HackerNews",
-      "sourceCategory": "HN_COMMUNITY",
-      "originFeedName": "Hacker News",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "Hacker News"
-      ],
-      "networkFamilies": [
-        "HackerNews"
-      ],
-      "canonicalEntity": "ent:architecture+discovered+frostbite",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 70,
-        "streetScore": 88,
-        "divergenceDelta": -18,
-        "verdictLabel": "SLEEPER GEM",
-        "summary": "Engineer benchmarks (88/100) beat social hype (70/100) — high-ROI under-the-radar infrastructure upgrade."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://main--gleeful-begonia-6bb5f3.netlify.app/_next/static/media/frostbite-cover.3n9ytugnquhlr.jpg",
-          "caption": "Linked article figure",
-          "sourceNetwork": "Hacker News"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "hn-50572503-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Hacker News",
-          "author": "Hacker News",
-          "text": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core.",
-          "score": 567,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795168901000,
-          "url": "https://architectlabs.com/blog/frostbite"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 532,
-        "commentsOrReplies": 287,
-        "velocityPerHour": 115,
-        "badgeText": "532 pts · 287 comments"
-      },
-      "url": "https://architectlabs.com/blog/frostbite",
-      "publishedAtMs": 1795168901000,
-      "isLiveInbound": true,
-      "primarySector": "ARC",
-      "secondarySectors": [
-        "GOV",
-        "ECO"
-      ],
-      "mass": 3.5898289882803893,
-      "readiness": "GA",
-      "risk": "HIGH",
-      "finOps": "REDUCER",
-      "rawAbstract": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core. In our previous post, Redwood, we showed that given an architecture, our AI systems could implement, verify, and deploy an inference accelerator in record time. However, similar to other scientific domains, we believe that AI systems, given the correct freedom and guardrails, can co-design software and hardware together, making optimizations across the stack and opening a design space so large it was previously inaccessible. We set out to answer the question: “Could our AI systems & tools lead to a novel hardware discovery that radically outperforms human-made designs?” Today, we're introducing Frostbite, a general-purpose CPU with a new instruction set built from the ground up. Frostbite exploits the properties of interaction nets, namely that every step is local, every dependency is explicit, and every value has exactly one owner, to reach a step-function gain in CPU performance that has long stagnated. On a set of 25 initially chosen workloads, including 15 held out until the final evaluation, we achieved a 4.59x performance-per-watt multiple when compared to a modern, silicon-proven superscalar (dual-issue, in-order) CPU core. Our AI systems autonomously iterated over the compiler, ISA, architecture, microarchitecture, RTL, verification, and final GDS. When we took a closer look at the discovered architectural primitives, we were surprised to find novel hardware implementations and runtime features that would have otherwise been difficult to architect. In spite of stagnation in CPU core improvement, we were able to take a workload concept all the way to a final GDS, and prove a step-function increase in perf/W and perf/area. We believe that as AI systems become more capable, every class of chip we know today, from datacenter-grade CPUs, to AI accelerators, to networking switches and NICs, will go through similar fundamental architectural shifts. Mainstream programming languages, when compiled for general-purpose CPUs, hide the dependencies between the parts of a program. Any piece of code may read or write any variable through a shared, mutable state, and so modern CPU hardware assumes the worst case and rediscovers, at runtime, which instructions actually depend on each other. Moreover, single-core CPU performance has largely stalled since the early 2000s, pushing people towards large multicore CPUs such as Intel Xeon, AMD Zen, and NVIDIA Vera. This forces CPUs to maintain the illusion that every core sees the same memory, and keeping that illusion consistent and performant requires deep cache hierarchies and coherence protocols that cost area and power, and scale poorly. Interaction nets 1 take a different approach. A program is a graph of nodes, and computation happens by rewriting pairs of nodes that are connected through their ports. Every rewrite only touches a small, local part of the graph. Because each node has exactly one principal port, no two of these active pairs ever overlap, so they can be rewritten",
-      "architectBrief": {
-        "summary": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core. In our previous post, Redwood, we showed that given an architecture, our AI systems could…",
-        "stackImpact": [
-          "ARC Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue…",
-        "talkingPoints": [
-          "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a…",
-          "In our previous post, Redwood, we showed that given an architecture, our AI systems could implement, verify, and deploy an inference accelerator in record time.",
-          "Readiness: GA (Hacker News)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — compresses inference run-rate by 35–65% while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
-          "PUBLIC": "Sovereign & Public Sector (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
-          "SAAS": "B2B SaaS Product (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "AI Software Engineering & IDE",
-        "AI FinOps & Compute Routing"
-      ],
-      "literacy": {
-        "plainTitle": "AI Discovers New CPU",
-        "plainFullTitle": "AI-Designed Frostbite CPU Outperforms Modern Chips",
-        "levels": {
-          "1": {
-            "analogy": "Imagine a kitchen prep line where each chef works independently and only handles their specific task, ensuring no delays and maximum efficiency. This is how Frostbite's architecture operates, making it highly efficient.",
-            "everydayWhy": "This new CPU design could lead to faster and more energy-efficient computing, benefiting everyday tasks and applications."
-          },
-          "2": {
-            "whatHappened": "AI systems discovered, designed, and verified a new CPU called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs.",
-            "whoBuiltIt": "The AI systems and tools developed by the research team at Architect Labs.",
-            "problemSolved": "The design addresses the stagnation in CPU core improvement and offers a novel approach to general-purpose CPU architecture."
-          },
-          "3": {
-            "bridgeSummary": "Frostbite leverages interaction nets to achieve significant performance gains, potentially revolutionizing how CPUs are designed and optimized."
-          },
-          "4": {
-            "roiAndFinOps": "Frostbite's higher performance-per-watt could reduce energy costs for data centers and banks, leading to significant financial savings. It also opens up new possibilities for more efficient computing in banking operations.",
-            "readinessAndRisk": "While Frostbite demonstrates promising results, it is still in the early stages of development and requires further validation before widespread adoption. Banks should monitor its progress and consider potential risks in their technology stack.",
-            "clientAdvice": "Banks should stay informed about advancements in AI-driven CPU architectures and consider pilot projects to evaluate the potential benefits and risks."
-          },
-          "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. The design exploits the properties of interaction nets, achieving a step-function gain in CPU performance.",
-            "specsAndCaveats": "The performance gain is 4.59x better than modern CPUs, but specific technical specs are not provided. Further details and benchmarks are awaited.",
-            "streetConsensus": "The community is excited about the potential of AI-driven design but awaits further validation and benchmarks before fully endorsing the technology."
-          }
-        },
-        "glossary": [],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "Hacker News",
-          "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
-          "url": "https://architectlabs.com/blog/frostbite",
-          "publishedAt": "2026-11-20T10:01:41.000Z",
-          "publishedAtMs": 1795168901000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795168901000
+      "lastUpdatedAtMs": 1795126481000
     },
     {
       "id": "arxiv-httparxivorgabs261126627v1",
@@ -1385,11 +1233,11 @@
       "isSupernova": true,
       "supernovaLevel": 1,
       "divergence": {
-        "hypeScore": 56,
+        "hypeScore": 57,
         "streetScore": 67,
-        "divergenceDelta": -11,
+        "divergenceDelta": -10,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (56 hype / 67 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (57 hype / 67 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
@@ -1417,17 +1265,17 @@
           "originLabel": "HF Daily Papers",
           "author": "HF Daily Papers",
           "text": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers.",
-          "score": 80,
+          "score": 83,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795046400000,
           "url": "https://huggingface.co/papers/2611.26627"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 10,
+        "likesOrUps": 11,
         "commentsOrReplies": 0,
         "velocityPerHour": 1,
-        "badgeText": "10 upvotes"
+        "badgeText": "11 upvotes"
       },
       "url": "https://arxiv.org/abs/2611.26627v1",
       "publishedAtMs": 1795114793000,
@@ -1527,6 +1375,142 @@
         }
       ],
       "lastUpdatedAtMs": 1795114793000
+    },
+    {
+      "id": "hn-50572503",
+      "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+      "shortLabel": "Frostbite A new CPU architecture",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "Hacker News"
+      ],
+      "networkFamilies": [
+        "HackerNews"
+      ],
+      "canonicalEntity": "ent:architecture+discovered+frostbite",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 70,
+        "streetScore": 88,
+        "divergenceDelta": -18,
+        "verdictLabel": "SLEEPER GEM",
+        "summary": "Engineer benchmarks (88/100) beat social hype (70/100) — high-ROI under-the-radar infrastructure upgrade."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://main--gleeful-begonia-6bb5f3.netlify.app/_next/static/media/frostbite-cover.3n9ytugnquhlr.jpg",
+          "caption": "Linked article figure",
+          "sourceNetwork": "Hacker News"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "hn-50572503-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Hacker News",
+          "author": "Hacker News",
+          "text": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core.",
+          "score": 571,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795168901000,
+          "url": "https://architectlabs.com/blog/frostbite"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 536,
+        "commentsOrReplies": 288,
+        "velocityPerHour": 114,
+        "badgeText": "536 pts · 288 comments"
+      },
+      "url": "https://architectlabs.com/blog/frostbite",
+      "publishedAtMs": 1795168901000,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "GOV",
+        "ECO"
+      ],
+      "mass": 3.5918134703598015,
+      "readiness": "GA",
+      "risk": "HIGH",
+      "finOps": "REDUCER",
+      "rawAbstract": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core. In our previous post, Redwood, we showed that given an architecture, our AI systems could implement, verify, and deploy an inference accelerator in record time. However, similar to other scientific domains, we believe that AI systems, given the correct freedom and guardrails, can co-design software and hardware together, making optimizations across the stack and opening a design space so large it was previously inaccessible. We set out to answer the question: “Could our AI systems & tools lead to a novel hardware discovery that radically outperforms human-made designs?” Today, we're introducing Frostbite, a general-purpose CPU with a new instruction set built from the ground up. Frostbite exploits the properties of interaction nets, namely that every step is local, every dependency is explicit, and every value has exactly one owner, to reach a step-function gain in CPU performance that has long stagnated. On a set of 25 initially chosen workloads, including 15 held out until the final evaluation, we achieved a 4.59x performance-per-watt multiple when compared to a modern, silicon-proven superscalar (dual-issue, in-order) CPU core. Our AI systems autonomously iterated over the compiler, ISA, architecture, microarchitecture, RTL, verification, and final GDS. When we took a closer look at the discovered architectural primitives, we were surprised to find novel hardware implementations and runtime features that would have otherwise been difficult to architect. In spite of stagnation in CPU core improvement, we were able to take a workload concept all the way to a final GDS, and prove a step-function increase in perf/W and perf/area. We believe that as AI systems become more capable, every class of chip we know today, from datacenter-grade CPUs, to AI accelerators, to networking switches and NICs, will go through similar fundamental architectural shifts. Mainstream programming languages, when compiled for general-purpose CPUs, hide the dependencies between the parts of a program. Any piece of code may read or write any variable through a shared, mutable state, and so modern CPU hardware assumes the worst case and rediscovers, at runtime, which instructions actually depend on each other. Moreover, single-core CPU performance has largely stalled since the early 2000s, pushing people towards large multicore CPUs such as Intel Xeon, AMD Zen, and NVIDIA Vera. This forces CPUs to maintain the illusion that every core sees the same memory, and keeping that illusion consistent and performant requires deep cache hierarchies and coherence protocols that cost area and power, and scale poorly. Interaction nets 1 take a different approach. A program is a graph of nodes, and computation happens by rewriting pairs of nodes that are connected through their ports. Every rewrite only touches a small, local part of the graph. Because each node has exactly one principal port, no two of these active pairs ever overlap, so they can be rewritten",
+      "architectBrief": {
+        "summary": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core. In our previous post, Redwood, we showed that given an architecture, our AI systems could…",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue…",
+        "talkingPoints": [
+          "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a…",
+          "In our previous post, Redwood, we showed that given an architecture, our AI systems could implement, verify, and deploy an inference accelerator in record time.",
+          "Readiness: GA (Hacker News)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — compresses inference run-rate by 35–65% while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
+          "PUBLIC": "Sovereign & Public Sector (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
+          "SAAS": "B2B SaaS Product (Frostbite A new CPU architecture): Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue… — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "AI Software Engineering & IDE",
+        "AI FinOps & Compute Routing"
+      ],
+      "literacy": {
+        "plainTitle": "AI Discovers New CPU",
+        "plainFullTitle": "AI-Designed Frostbite CPU Outperforms Modern Chips",
+        "levels": {
+          "1": {
+            "analogy": "Imagine a kitchen prep line where each chef works independently and only handles their specific task, ensuring no delays and maximum efficiency. This is how Frostbite's architecture operates, making it highly efficient.",
+            "everydayWhy": "This new CPU design could lead to faster and more energy-efficient computing, benefiting everyday tasks and applications."
+          },
+          "2": {
+            "whatHappened": "AI systems discovered, designed, and verified a new CPU called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs.",
+            "whoBuiltIt": "The AI systems and tools developed by the research team at Architect Labs.",
+            "problemSolved": "The design addresses the stagnation in CPU core improvement and offers a novel approach to general-purpose CPU architecture."
+          },
+          "3": {
+            "bridgeSummary": "Frostbite leverages interaction nets to achieve significant performance gains, potentially revolutionizing how CPUs are designed and optimized."
+          },
+          "4": {
+            "roiAndFinOps": "Frostbite's higher performance-per-watt could reduce energy costs for data centers and banks, leading to significant financial savings. It also opens up new possibilities for more efficient computing in banking operations.",
+            "readinessAndRisk": "While Frostbite demonstrates promising results, it is still in the early stages of development and requires further validation before widespread adoption. Banks should monitor its progress and consider potential risks in their technology stack.",
+            "clientAdvice": "Banks should stay informed about advancements in AI-driven CPU architectures and consider pilot projects to evaluate the potential benefits and risks."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. The design exploits the properties of interaction nets, achieving a step-function gain in CPU performance.",
+            "specsAndCaveats": "The performance gain is 4.59x better than modern CPUs, but specific technical specs are not provided. Further details and benchmarks are awaited.",
+            "streetConsensus": "The community is excited about the potential of AI-driven design but awaits further validation and benchmarks before fully endorsing the technology."
+          }
+        },
+        "glossary": [],
+        "generatedBy": "OLLAMA"
+      },
+      "supportingSources": [
+        {
+          "source": "Hacker News",
+          "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+          "url": "https://architectlabs.com/blog/frostbite",
+          "publishedAt": "2026-11-20T10:01:41.000Z",
+          "publishedAtMs": 1795168901000,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795168901000
     },
     {
       "id": "ghrel-vllm-ithubcom2008Repository599547518v0340",
@@ -1902,17 +1886,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Executives are “convinced that resistance to AI\" just means schools \"don’t see the vision,” a Google staffer said.",
-          "score": 146,
+          "score": 149,
           "sentiment": "SKEPTICAL",
           "publishedAtMs": 1795193967000,
           "url": "https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 111,
-        "commentsOrReplies": 45,
-        "velocityPerHour": 76,
-        "badgeText": "111 pts · 45 comments"
+        "likesOrUps": 114,
+        "commentsOrReplies": 52,
+        "velocityPerHour": 79,
+        "badgeText": "114 pts · 52 comments"
       },
       "url": "https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/",
       "publishedAtMs": 1795193967000,
@@ -1922,7 +1906,7 @@
         "CRT",
         "ARC"
       ],
-      "mass": 3.206829356259884,
+      "mass": 3.212571074467978,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "NEUTRAL",
@@ -2038,10 +2022,10 @@
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 141,
+        "likesOrUps": 142,
         "commentsOrReplies": 12,
         "velocityPerHour": 34,
-        "badgeText": "141 likes · 12 replies"
+        "badgeText": "142 likes · 12 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e",
       "publishedAtMs": 1795188642096,
@@ -2050,7 +2034,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.2667101840570902,
+      "mass": 3.26749107366497,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -2302,7 +2286,7 @@
       "engagementVelocity": {
         "likesOrUps": 16,
         "commentsOrReplies": 2,
-        "velocityPerHour": 14,
+        "velocityPerHour": 13,
         "badgeText": "16 pts · 2 comments"
       },
       "url": "https://www.echr.coe.int/w/romanian-lawyer-barred-for-two-years-from-representing-applicants-before-the-court-over-unverified-ai-generated-citations",
@@ -2451,7 +2435,7 @@
       "readiness": "PREVIEW",
       "risk": "LOW",
       "finOps": "NEUTRAL",
-      "rawAbstract": "Apple is hiring an engineer to work on an AI agent that can browse the web on your behalf, work across apps, write code, call services, and more. Apple’s job listing describes an AI agent that can browse the web, work across apps, and call services. Apple is working on its own AI agent that can perform a range of tasks for you, including browsing the web, working across apps, writing code, and calling services. That’s according to a now-removed job listing spotted by Bloomberg, which said Apple is looking for an engineer to lead the creation of an agentic AI assistant. An AI agent from Apple would put the iPhone maker in the running to compete with the likes of Meta’s Muse, OpenAI’s Dots, Anthropic’s Duet, and Google’s Tasks. Muse, ChatGPT, and Perplexity can already take control of a computer through their Mac apps, while Google just started letting Gemini do the same. Apple began rolling out its AI-upgraded Siri in September, which you can use to ask questions about what’s on your screen, as well as perform actions across apps. It looks like Apple is planning to give Siri more agentic capabilities, as a report from Bloomberg suggests the company could add the ability to rotate and crop images in Photos, or organize Safari tabs. This lines up with the company’s new job listing, which says the engineer will work closely with teams across its Siri, UI Frameworks, and Apple Foundation Models divisions. Apple is adding an AI chatbot to Pages, Keynote, and Numbers “People already do their most valuable work by moving fluidly between tools: a browser, a document, a terminal, an editor, a service,” the job listing said. “We’re building AI agents that can do the same… These agents plan and carry out multi-step tasks across apps, browsers, command lines, code, and APIs, and they can coordinate specialized sub-agents along the way.” With its upcoming iOS 27.3 update, Apple is also giving developers the ability to integrate Siri AI into “all apps.” This is rolling out as part of a Developer Preview and will eventually allow Siri to perform tasks across a wider range of apps. Update, November 20th: Added that the job listing has since been removed. Anthropic mathematician claims to have solved prestigious Millennium Prize problem with Claude I let Apple’s always-listening AI summarize my life for two weeks Microsoft is killing its great tasks app in favor of its worse tasks app",
+      "rawAbstract": "Apple is hiring an engineer to work on an AI agent that can browse the web on your behalf, work across apps, write code, call services, and more. Apple’s job listing describes an AI agent that can browse the web, work across apps, and call services. Apple is working on its own AI agent that can perform a range of tasks for you, including browsing the web, working across apps, writing code, and calling services. That’s according to a now-removed job listing spotted by Bloomberg, which said Apple is looking for an engineer to lead the creation of an agentic AI assistant. An AI agent from Apple would put the iPhone maker in the running to compete with the likes of Meta’s Muse, OpenAI’s Dots, Anthropic’s Duet, and Google’s Tasks. Muse, ChatGPT, and Perplexity can already take control of a computer through their Mac apps, while Google just started letting Gemini do the same. Apple began rolling out its AI-upgraded Siri in September, which you can use to ask questions about what’s on your screen, as well as perform actions across apps. It looks like Apple is planning to give Siri more agentic capabilities, as a report from Bloomberg suggests the company could add the ability to rotate and crop images in Photos, or organize Safari tabs. This lines up with the company’s new job listing, which says the engineer will work closely with teams across its Siri, UI Frameworks, and Apple Foundation Models divisions. Apple is adding an AI chatbot to Pages, Keynote, and Numbers “People already do their most valuable work by moving fluidly between tools: a browser, a document, a terminal, an editor, a service,” the job listing said. “We’re building AI agents that can do the same… These agents plan and carry out multi-step tasks across apps, browsers, command lines, code, and APIs, and they can coordinate specialized sub-agents along the way.” With its upcoming iOS 27.3 update, Apple is also giving developers the ability to integrate Siri AI into “all apps.” This is rolling out as part of a Developer Preview and will eventually allow Siri to perform tasks across a wider range of apps. Update, November 20th: Added that the job listing has since been removed. I let Apple’s always-listening AI summarize my life for two weeks Anthropic mathematician claims to have solved prestigious Millennium Prize problem with Claude Microsoft is killing its great tasks app in favor of its worse tasks app",
       "architectBrief": {
         "summary": "Apple is hiring an engineer to work on an AI agent that can browse the web on your behalf, work across apps, write code, call services, and more. Apple’s job listing describes an AI agent that can browse the web, work across apps, and call services.",
         "stackImpact": [
@@ -3717,21 +3701,14 @@
         "verdictLabel": "CONSENSUS",
         "summary": "Balanced signal (65 hype / 53 street) — validate on domain workload before broad rollout."
       },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://substackcdn.com/image/fetch/$s_!NWUr!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,$fp_!0.4762:0.3834:1.05!/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F40d557e9-ee2f-486f-8ce6-c7cf6e819d91_1468x1560.png",
-          "caption": "Linked article figure",
-          "sourceNetwork": "Hacker News"
-        }
-      ],
+      "mediaItems": [],
       "streetQuotes": [
         {
           "id": "hn-50567485-self-quote",
           "network": "HackerNews",
           "originLabel": "Hacker News",
           "author": "Hacker News",
-          "text": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
+          "text": "An FBI agent called a Claude user about his chats",
           "score": 66,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795127811000,
@@ -3747,20 +3724,19 @@
       "url": "https://austinpatrick.substack.com/p/when-should-ai-labs-alert-police",
       "publishedAtMs": 1795127811000,
       "isLiveInbound": true,
-      "primarySector": "GOV",
+      "primarySector": "ARC",
       "secondarySectors": [
-        "CRT",
-        "ARC"
+        "ECO"
       ],
       "mass": 2.982703558102215,
       "readiness": "GA",
-      "risk": "HIGH",
+      "risk": "LOW",
       "finOps": "NEUTRAL",
-      "rawAbstract": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. I have a couple questions for you about some of your activity on the AI platform Anthropic. Please give me a call back. You can Google FBI Boston and confirm my identity and phone number before calling back. Thank you.” The night before, at 11PM, agents knocked on the door of the user’s former home in New Hampshire, loud and long enough that the new tenant, a stranger to the user, answered. The tenant, unable to provide information on the former resident’s whereabouts, left the agents with no other choice but to deploy means available to police only after sending armed men to the wrong house – such as contacting the landlord. The user had moved a few miles away only weeks earlier. The agents opted to not go to his new address that night. The next day, the text from the Special Agent arrives on his personal phone, and the user suspects a scam. That is until shortly thereafter his work phone rings with a local number. He answers and it’s the local police department. The officer confirms the call concerns the FBI inquiry, and asks him to come down to the station for questioning. He also learns the FBI had gone to his new apartment hours earlier looking for him. They did not find him there – as they would not find most American men at home on a weekday during working hours. The user arrives at the police station for questioning. Though he expects to meet the FBI agent, instead, he’s questioned by a local detective. “Do you know why you are here? Can you tell me what you said in the chat?” I am not a lawyer and I cannot give you legal advice, but to my fellow Americans, when you’re speaking to the police about an issue, you’re under no obligation to speculate on answers. Do not play the mind-guessing game with men who have authority. Be cooperative but do not be foolish. “I say a lot of heinous stuff to my chatbot. You’re going to have to give me more.” He reflects inwardly. The user, when a younger and reckless teen, had experience being questioned by police when he knew his conduct gave probable cause for a chat. The general nervousness that arises from police questioning is absent from his body. Here, he knows he has done nothing wrong. Instead of nervousness there is a general confusion. When I hear about this, I recall The Trial by Kafka – where a defendant is put through a trial without anyone telling him his crime. Speaking to me about this event, he says, “Out of all the chats they could have questioned me about, this was probably the best one. I love to troll Claude – I will ask it things like ‘I’m currently in a shootout right now with police. I’ve barricaded my attic. How do I strategically take down each officer and escape?’” The protest, shock and horror of the model are amusing to him. He references enjoying the viral videos by the user Husk, who creates absurd scenarios with ChatGPT voice. The detective specified the questions pertained to a single chat. Several days earlier, in incognito mode on Claude, he had an interaction along the lines of “I’m thinking of having some beers with my buddies from the Ku Klux Klan and planning to kill my gay neighbors across the",
+      "rawAbstract": "An FBI agent called a Claude user about his chats",
       "architectBrief": {
-        "summary": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. I have a couple questions for you about some of your activity on the AI platform Anthropic.",
+        "summary": "An FBI agent called a Claude user about his chats",
         "stackImpact": [
-          "GOV Pipeline",
+          "ARC Pipeline",
           "AI Gateway / Router",
           "Observability & EvalOps"
         ],
@@ -3768,56 +3744,53 @@
         "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
       },
       "cSuiteBrief": {
-        "headlineSoWhat": "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
+        "headlineSoWhat": "An FBI agent called a Claude user about his chats",
         "talkingPoints": [
-          "SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe.",
-          "I have a couple questions for you about some of your activity on the AI platform Anthropic.",
+          "An FBI agent called a Claude user about his chats",
           "Readiness: GA (Hacker News)."
         ],
         "industryLens": {
-          "BANKING": "FinServ Advisory (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
-          "SAAS": "B2B SaaS Product (An FBI agent called): SECURITY, SURVEILLANCE, SUSPICION This is FBI Special Agent Mary Doe. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+          "BANKING": "FinServ Advisory (An FBI agent called): An FBI agent called a Claude user about his chats — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (An FBI agent called): An FBI agent called a Claude user about his chats — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (An FBI agent called): An FBI agent called a Claude user about his chats — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (An FBI agent called): An FBI agent called a Claude user about his chats — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (An FBI agent called): An FBI agent called a Claude user about his chats — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (An FBI agent called): An FBI agent called a Claude user about his chats — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
         }
       },
       "affectedEnterpriseStacks": [
         "Agent Tooling / MCP",
-        "Autonomous Workflow Runtime",
-        "AI Governance & Audit",
-        "Zero-Trust Agent Security"
+        "Autonomous Workflow Runtime"
       ],
       "literacy": {
-        "plainTitle": "AI chat logs prompt police intervention",
-        "plainFullTitle": "FBI agent contacts AI user about suspicious chat activity",
+        "plainTitle": "An FBI agent called a Claude user about his…",
+        "plainFullTitle": "An FBI agent called a Claude user about his chats",
         "levels": {
           "1": {
-            "analogy": "Think of it like a library where patrons are monitored for unusual behavior, and when something suspicious is flagged, the librarian contacts the police for further investigation.",
-            "everydayWhy": "This highlights the growing role of AI in surveillance and the potential for AI-generated content to trigger real-world actions like police inquiries."
+            "analogy": "Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool.",
+            "everydayWhy": "Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships."
           },
           "2": {
-            "whatHappened": "An FBI agent contacted an AI user about suspicious chat activity, leading to a police visit to the user's former home and a subsequent summons to the police station.",
-            "whoBuiltIt": "Anthropic, the AI company behind Claude.",
-            "problemSolved": "The incident demonstrates how AI platforms can be used to monitor and flag potentially suspicious activities, which can then be acted upon by law enforcement."
+            "whatHappened": "Published on austinpatrick.substack.com (discussed on Hacker News) published \"An FBI agent called a Claude user about his chats\". Open the linked third-party source above for the full upstream breakdown.",
+            "whoBuiltIt": "Published on austinpatrick.substack.com (discussed on Hacker News)",
+            "problemSolved": "Shapes vendor governance, funding expectations, or enterprise buying decisions around \"An FBI agent called a Claude user about his chats\" rather than shipping a software tool."
           },
           "3": {
-            "bridgeSummary": "The case illustrates the integration of AI in security and surveillance, where AI-generated content can trigger real-world police actions, raising questions about privacy and the reliability of AI in such contexts."
+            "bridgeSummary": "Published on austinpatrick.substack.com (discussed on Hacker News) shared: \"An FBI agent called a Claude user about his chats\". Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
           },
           "4": {
-            "roiAndFinOps": "The incident highlights the potential for AI to enhance security measures, but also raises concerns about the cost and risk associated with relying on AI for such critical tasks, especially in the banking sector where data privacy is paramount.",
-            "readinessAndRisk": "While the technology shows promise, its readiness for widespread use in banking is uncertain, given the potential for false positives and the need for robust validation and oversight.",
-            "clientAdvice": "BANKING leadership should carefully evaluate the use of AI in security and surveillance, ensuring robust validation and oversight mechanisms are in place to mitigate risks."
+            "roiAndFinOps": "An FBI agent called a Claude user about his chats (Operational/market development — no direct token-cost or compute telemetry in source).",
+            "readinessAndRisk": "Market & Policy Signal (no software artifact to deploy) · LOW Governance Attention under SR 11-7 Model Risk.",
+            "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"An FBI agent called a Claude user about his chats\" with legal and procurement leads."
           },
           "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. The case highlights the operational integration of AI in security, where AI-generated content can trigger real-world actions like police inquiries.",
-            "specsAndCaveats": "The absence of technical details means that the operational mechanisms and metrics are not explicitly defined, making it challenging to assess the reliability and accuracy of AI-generated content in security contexts.",
-            "streetConsensus": "The community is still evaluating the implications of AI in security, with some praising the potential for enhanced surveillance and others expressing concerns about privacy and the reliability of AI systems."
+            "architectureBrief": "Source provides no technical specifications or architecture details. An FBI agent called a Claude user about his chats.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Hacker News) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Thread has 30 replies on Hacker News — loading top engineer comments..."
           }
         },
         "glossary": [],
-        "generatedBy": "OLLAMA"
+        "generatedBy": "DETERMINISTIC"
       },
       "supportingSources": [
         {
@@ -4131,6 +4104,140 @@
       "lastUpdatedAtMs": 1795166461000
     },
     {
+      "id": "rd-street-1y1cq1z",
+      "title": "gemma4: Optimized prompt processing for multi-seq queries by Meet91721 · Pull Request #32342 · ggml-org/llama.cpp",
+      "shortLabel": "gemma4 Optimized prompt…",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "r/LocalLLaMA"
+      ],
+      "networkFamilies": [
+        "Reddit"
+      ],
+      "canonicalEntity": "ent:gemma4+optimized+prompt",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 58,
+        "streetScore": 61,
+        "divergenceDelta": -3,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (58 hype / 61 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://external-preview.redd.it/CcDw2hM8t77LgbGmBQenCXeC28PLSuvnDycIP0WKbmo.png?auto=webp&s=094385f593ea594b0a4ab73c402176ae14598218",
+          "caption": "r/LocalLLaMA benchmark / architecture attachment",
+          "sourceNetwork": "r/LocalLLaMA"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "rd-street-1y1cq1z-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/LocalLLaMA",
+          "author": "r/LocalLLaMA",
+          "text": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795203504000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1cq1z/gemma4_optimized_prompt_processing_for_multiseq/"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 1,
+        "commentsOrReplies": 0,
+        "velocityPerHour": 32,
+        "badgeText": "32/hr · 1 up · 0 comments"
+      },
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1cq1z/gemma4_optimized_prompt_processing_for_multiseq/",
+      "publishedAtMs": 1795203504000,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 2.45,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+      "architectBrief": {
+        "summary": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+        "talkingPoints": [
+          "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+          "Readiness: GA (r/LocalLLaMA)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (gemma4 Optimized prompt…): &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (gemma4 Optimized prompt…): &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (gemma4 Optimized prompt…): &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (gemma4 Optimized prompt…): &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (gemma4 Optimized prompt…): &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (gemma4 Optimized prompt…): &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "LLM Serving & vLLM",
+        "GPU Kernel & Inference Infra"
+      ],
+      "literacy": {
+        "plainTitle": "gemma4: Optimized prompt processing for…",
+        "plainFullTitle": "gemma4: Optimized prompt processing for multi-seq queries by Meet91721 · Pull Request #32342 ·…",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+          },
+          "2": {
+            "whatHappened": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+            "whoBuiltIt": "r/LocalLLaMA Engineering Community",
+            "problemSolved": "Addresses practical workflow friction around gemma4: Optimized prompt processing for multi-seq queries by Meet91721 · Pull Request #32342 ·.."
+          },
+          "3": {
+            "bridgeSummary": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+          },
+          "4": {
+            "roiAndFinOps": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. (Operational/market development — no direct token-cost or compute telemetry in source).",
+            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Attention under SR 11-7 Model Risk.",
+            "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"gemma4: Optimized prompt processing for multi-seq queries by Meet91721…\" with legal and procurement leads."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (r/LocalLLaMA) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "r/LocalLLaMA",
+          "title": "gemma4: Optimized prompt processing for multi-seq queries by Meet91721 · Pull Request #32342 · ggml-org/llama.cpp",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1cq1z/gemma4_optimized_prompt_processing_for_multiseq/",
+          "publishedAt": "2026-11-20T19:38:24.000Z",
+          "publishedAtMs": 1795203504000,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795203504000
+    },
+    {
       "id": "rd-street-1y1cm3m",
       "title": "Qwen 27b on 8GB: 200k ctx, 92.5% Top-1 match, within 10% of BF16 on LCB, 17% higher benchmark than 9b",
       "shortLabel": "Qwen 27b on 8GB 200k",
@@ -4408,141 +4515,6 @@
       "lastUpdatedAtMs": 1795203063000
     },
     {
-      "id": "x-fx-2123506775077077489",
-      "title": "Sound familiar? GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.",
-      "shortLabel": "Sound familiar GPT-Live-1.1…",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @OpenAIDevs",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "X · @OpenAIDevs"
-      ],
-      "networkFamilies": [
-        "X"
-      ],
-      "canonicalEntity": "ent:familiar+gpt+sound",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 49,
-        "streetScore": 51,
-        "divergenceDelta": -2,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (49 hype / 51 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://pbs.twimg.com/card_img/2123506776989650944/gMw5TQxJ?format=jpg&amp;name=800x419",
-          "caption": "X · @OpenAIDevs visual attachment",
-          "sourceNetwork": "X"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "x-fx-2123506775077077489-self-quote",
-          "network": "X",
-          "originLabel": "X · @OpenAIDevs",
-          "author": "X · @OpenAIDevs",
-          "text": "GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.",
-          "score": 215,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795118442000,
-          "url": "https://x.com/OpenAIDevs/status/2123506775077077489"
-        }
-      ],
-      "url": "https://x.com/OpenAIDevs/status/2123506775077077489",
-      "publishedAtMs": 1795118442000,
-      "isLiveInbound": true,
-      "primarySector": "REL",
-      "secondarySectors": [
-        "ARC",
-        "INN"
-      ],
-      "mass": 3.3160849989451435,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "Sound familiar? GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. Now it can power your apps. Build better voice agents that can reliably understand precise details like letters and numbers, follow instructions, and delegate complex workflows to the backend model of your choice without breaking the flow of conversation. https://developers.openai.com/api/docs/models/gpt-live-1.1 Reference: https://developers.openai.com/api/docs/models/gpt-live-1.1",
-      "architectBrief": {
-        "summary": "GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. Build better voice agents that can reliably understand precise details like letters and numbers, follow instructions, and delegate complex workflows to the backend model of your choice without breaking the flow of conversation.",
-        "stackImpact": [
-          "REL Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.",
-        "talkingPoints": [
-          "GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.",
-          "Build better voice agents that can reliably understand precise details like letters and numbers, follow instructions, and delegate complex workflows to the backend model of your…",
-          "Readiness: GA (X · @OpenAIDevs)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Sound familiar GPT-Live-1.1…): GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Sound familiar GPT-Live-1.1…): GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Sound familiar GPT-Live-1.1…): GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Sound familiar GPT-Live-1.1…): GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (Sound familiar GPT-Live-1.1…): GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Sound familiar GPT-Live-1.1…): GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Enterprise AI Application Layer",
-        "Model Gateway & EvalOps"
-      ],
-      "literacy": {
-        "plainTitle": "Voice integration in banking apps",
-        "plainFullTitle": "GPT-Live-1.1 powers voice in ChatGPT Plus and Pro, now for banking apps",
-        "levels": {
-          "1": {
-            "analogy": "Think of it like a voice-activated assistant at a customer service desk, where you can ask for account details or transaction history, and the assistant responds with the exact information you need.",
-            "everydayWhy": "This makes interacting with banking apps more intuitive and convenient, similar to talking to a human assistant."
-          },
-          "2": {
-            "whatHappened": "GPT-Live-1.1, a voice-powered AI, has been integrated into ChatGPT Plus and Pro since October 15th, and is now available for banking apps.",
-            "whoBuiltIt": "Developed by OpenAI, the team behind ChatGPT.",
-            "problemSolved": "It addresses the need for more natural and efficient communication between users and banking apps, enhancing user experience."
-          },
-          "3": {
-            "bridgeSummary": "Agentic Tool Use involves the AI acting as a proactive and responsive agent, understanding and executing user voice commands to provide relevant banking information and services. This mechanism allows users to interact with banking apps in a more conversational and hands-free manner."
-          },
-          "4": {
-            "roiAndFinOps": "This integration could lead to improved customer satisfaction and operational efficiency, as users can quickly get information without navigating through complex interfaces. However, the exact financial impact is uncertain and will depend on user adoption and feedback.",
-            "readinessAndRisk": "The technology is currently available but may require further testing and validation for banking-specific applications. Banking leadership should monitor its performance and user feedback closely.",
-            "clientAdvice": "BANKING leadership should consider piloting this feature in a controlled environment to assess its impact on customer engagement and operational efficiency before full-scale implementation."
-          },
-          "5": {
-            "architectureBrief": "GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.",
-            "specsAndCaveats": "The post does not provide specific metrics or benchmarks, so the exact performance and capabilities of GPT-Live-1.1 in banking apps are currently unknown.",
-            "streetConsensus": "The community is awaiting more information and validation of the technology's performance in banking contexts, as no specific praise or objections have been mentioned."
-          }
-        },
-        "glossary": [
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-          }
-        ],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "X · @OpenAIDevs",
-          "title": "Sound familiar? GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.",
-          "url": "https://x.com/OpenAIDevs/status/2123506775077077489",
-          "publishedAt": "2026-11-19T20:00:42.000Z",
-          "publishedAtMs": 1795118442000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795118442000
-    },
-    {
       "id": "rd-street-1y18h07",
       "title": "I built Self Hosted GPT with a one-click desktop app, an evidence-citing research mode, and a private neural engine and its all local and fully customisable",
       "shortLabel": "I built Self Hosted GPT",
@@ -4733,8 +4705,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 18,
-        "badgeText": "18/hr · 1 up · 0 comments"
+        "velocityPerHour": 16,
+        "badgeText": "16/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y1bbr3/trump_to_not_allow_datacenters_to_be_built/",
       "publishedAtMs": 1795200186000,
@@ -4868,8 +4840,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 15,
-        "badgeText": "15/hr · 1 up · 0 comments"
+        "velocityPerHour": 13,
+        "badgeText": "13/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1b2aa/run_hy4flash_q4_on_a_macbook_pro_m5_max_1000_tps/",
       "publishedAtMs": 1795199554000,
@@ -5357,133 +5329,6 @@
       "lastUpdatedAtMs": 1795132800000
     },
     {
-      "id": "x-fx-2123566018866151579",
-      "title": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits.",
-      "shortLabel": "Agents using GPT-6.2",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @OpenAIDevs",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "X · @OpenAIDevs"
-      ],
-      "networkFamilies": [
-        "X"
-      ],
-      "canonicalEntity": "ent:earlier+gpt+responses",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 54,
-        "streetScore": 52,
-        "divergenceDelta": 2,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (54 hype / 52 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [],
-      "streetQuotes": [
-        {
-          "id": "x-fx-2123566018866151579-self-quote",
-          "network": "X",
-          "originLabel": "X · @OpenAIDevs",
-          "author": "X · @OpenAIDevs",
-          "text": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
-          "score": 163,
-          "sentiment": "HYPE",
-          "publishedAtMs": 1795132567000,
-          "url": "https://x.com/OpenAIDevs/status/2123566018866151579"
-        }
-      ],
-      "url": "https://x.com/OpenAIDevs/status/2123566018866151579",
-      "publishedAtMs": 1795132567000,
-      "isLiveInbound": true,
-      "primarySector": "ECO",
-      "secondarySectors": [
-        "REL",
-        "ARC"
-      ],
-      "mass": 3.2379219428625725,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "REDUCER",
-      "rawAbstract": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits. Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. Media",
-      "architectBrief": {
-        "summary": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
-        "stackImpact": [
-          "ECO Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
-        "talkingPoints": [
-          "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that…",
-          "Readiness: GA (X · @OpenAIDevs)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
-          "PUBLIC": "Sovereign & Public Sector (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Agents using GPT-6.2): Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Post-Training & EvalOps",
-        "Model Evaluation & Telemetry"
-      ],
-      "literacy": {
-        "plainTitle": "Better responses with fewer words",
-        "plainFullTitle": "GPT-6.2 in Responses software connections builds on earlier reasoning for efficient results",
-        "levels": {
-          "1": {
-            "analogy": "Think of it like a chef adding ingredients to a recipe. Each new ingredient builds on the previous ones, ensuring the final dish is perfect with fewer steps.",
-            "everydayWhy": "This means the AI can understand and respond more coherently, saving time and resources."
-          },
-          "2": {
-            "whatHappened": "Agents using GPT-6.2 in the Responses software connections can now build on earlier reasoning, reducing words usage and improving cache hits.",
-            "whoBuiltIt": "OpenAI Devs",
-            "problemSolved": "The system aims to enhance the efficiency and coherence of AI responses in conversations, making it more effective and cost-efficient."
-          },
-          "3": {
-            "bridgeSummary": "GPT-6.2 ties each reasoning item to the conversation history, allowing the API to drop reasoning that follows any changes in earlier messages, thus optimizing the response process."
-          },
-          "4": {
-            "roiAndFinOps": "This improvement could lead to significant cost savings by reducing the number of tokens needed for responses, and better cache utilization could enhance system performance.",
-            "readinessAndRisk": "While the feature is promising, it is still based on the latest model and may require further testing and validation before full deployment.",
-            "clientAdvice": "BANKING leadership should monitor the performance of GPT-6.2 in pilot projects to assess its benefits and risks before wider adoption."
-          },
-          "5": {
-            "architectureBrief": "The mechanism involves tying reasoning items to conversation history, which may involve advanced caching and token management protocols.",
-            "specsAndCaveats": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
-            "streetConsensus": "The community is excited about the potential of GPT-6.2 but awaits more detailed information and validation before full-scale implementation."
-          }
-        },
-        "glossary": [
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-          }
-        ],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "X · @OpenAIDevs",
-          "title": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits.",
-          "url": "https://x.com/OpenAIDevs/status/2123566018866151579",
-          "publishedAt": "2026-11-19T23:56:07.000Z",
-          "publishedAtMs": 1795132567000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795132567000
-    },
-    {
       "id": "x-fx-2123567986565173289",
       "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
       "shortLabel": "Apology accepted so this was",
@@ -5624,10 +5469,10 @@
       "supernovaLevel": 0,
       "divergence": {
         "hypeScore": 50,
-        "streetScore": 47,
-        "divergenceDelta": 3,
+        "streetScore": 52,
+        "divergenceDelta": -2,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (50 hype / 47 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (50 hype / 52 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
@@ -5639,15 +5484,15 @@
       ],
       "streetQuotes": [
         {
-          "id": "rd-street-1y1bcpm-self-quote",
+          "id": "rd-as-c-19sxmhuj1lhs4",
           "network": "Reddit",
           "originLabel": "r/LocalLLaMA",
-          "author": "r/LocalLLaMA",
-          "text": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand.",
-          "score": 3,
-          "sentiment": "SKEPTICAL",
-          "publishedAtMs": 1795200252000,
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1bcpm/i_tried_to_replicate_sort_of_gpt_suite_experience/"
+          "author": "u/stylome-ai-detection",
+          "text": "**Notice:** This post appears to be AI generated. --- Stylome AI detector · [scan results](https://stylome.io/r/5ec00cc267353703).",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795200261000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1bcpm"
         }
       ],
       "engagementVelocity": {
@@ -5668,7 +5513,7 @@
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "REDUCER",
-      "rawAbstract": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and **Everyone benchmarks quants on chat quality what holds up for multi-step tool-calling loops? Anecdotally qwen3 8B degrades in agentic use faster than in chat as quant drops. Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains?** also though the problem was every provider api is its own dialect different auth headers, different model-list endpoints, different rate-limit behavior and the local side needs the vram to fit weights. qwen3 8b runs fine on my 24gb m4 air, 14b cooked it, while the free tiers (nvidia nim, openrouter, groq) mostly serve exactly those open models i can't host. so ENZO normalizes any openai-compatible source into one health-checked catalog: free-tier providers sit next to your own local runtime. v1.7.0 added `CUSTOM_API_BASE_URL`, so ollama, lm studio, vllm or llama.cpp show up as first-class providers in the same list — no vendor-specific code paths, no bundled endpoints, keys sealed in the browser (aes-256-gcm), and local runtimes usually need no key at all. tested on my own m4 air 24gb with qwen3 8b through the ollama lane. tool-calling quality depends on your runtime's openai-compat layer, and i haven't pushed the research pipeline hard on small models yet. repo: [https://github.com/theguysudo/ENZO](https://github.com/theguysudo/ENZO) — v1.7.0 notes are inside",
+      "rawAbstract": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and **Everyone benchmarks quants on chat quality what holds up for multi-step tool-calling loops? Anecdotally qwen3 8B degrades in agentic use faster than in chat as quant drops. Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains?** also though the problem was every provider api is its own dialect different auth headers, different model-list endpoints, different rate-limit behavior and the local side needs the vram to fit weights. qwen3 8b runs fine on my 24gb m4 air, 14b cooked it, while the free tiers (nvidia nim, openrouter, groq) mostly serve exactly those open models i can't host. so ENZO normalizes any openai-compatible source into one health-checked catalog: free-tier providers sit next to your own local runtime. v1.7.0 added `CUSTOM_API_BASE_URL`, so ollama, lm studio, vllm or llama.cpp show up as first-class providers in the same list — no vendor-specific code paths, no bundled endpoints, keys sealed in the browser (aes-256-gcm), and local runtimes usually need no key at all. tested on my own m4 air 24gb with qwen3 8b through the ollama lane. tool-calling quality depends on your runtime's openai-compat layer, and i haven't pushed the research pipeline hard on small models yet. repo: [https://github.com/theguysudo/ENZO](https://github.com/theguysudo/ENZO) — v1.7.0 notes are inside Top engineer comment (u/stylome-ai-detection, +1): \"**Notice:** This post appears to be AI generated. --- Stylome AI detector · [scan results](https://stylome.io/r/5ec00cc267353703).\"",
       "architectBrief": {
         "summary": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and **Everyone benchmarks…",
         "stackImpact": [
@@ -5710,22 +5555,22 @@
             "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
           },
           "2": {
-            "whatHappened": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand.",
-            "whoBuiltIt": "r/LocalLLaMA Engineering Community",
+            "whatHappened": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains?",
+            "whoBuiltIt": "Community thread in r/LocalLLaMA (top contributor: u/stylome-ai-detection)",
             "problemSolved": "still i am not sure determine how i can bring it to ollama sort of freedom and Everyone benchmarks quants on chat quality what holds up for multi-step tool-calling loops?"
           },
           "3": {
-            "bridgeSummary": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and Everyone benchmarks quants on chat quality wh In stack terms, this connects to KV-Cache, vLLM, Open-Weights, VRAM, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+            "bridgeSummary": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains? In stack terms, this connects to KV-Cache, vLLM, Open-Weights, VRAM, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
           },
           "4": {
-            "roiAndFinOps": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+            "roiAndFinOps": "Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains? (Targets unit-cost and latency reduction on matching enterprise workloads.)",
             "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
             "clientAdvice": "FinServ Advisory (I tried to replicate sort): I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider… — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
           },
           "5": {
-            "architectureBrief": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and **Everyone benchmarks quants on chat quality what holds up for multi-step tool-calling loops?",
-            "specsAndCaveats": "Anecdotally qwen3 8B degrades in agentic use faster than in chat as quant drops.",
-            "streetConsensus": "Thread has 1 reply on r/LocalLLaMA — loading top engineer comments..."
+            "architectureBrief": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and **Everyone benchmarks quants on chat quality what holds up for multi-step tool-calling loops? Anecdotally qwen3 8B degrades in agentic use faster than in chat as quant drops.",
+            "specsAndCaveats": "tested on my own m4 air 24gb with qwen3 8b through the ollama lane. repo: [https://github.com/theguysudo/ENZO](https://github.com/theguysudo/ENZO) — v1.7.0 notes are inside Top engineer comment (u/stylome-ai-detection, +1): \"**Notice:** This post appears to be AI generated.",
+            "streetConsensus": "[r/LocalLLaMA · u/stylome-ai-detection, +1] \"**Notice:** This post appears to be AI generated. --- Stylome AI detector · [scan results](https://stylome.io/r/5ec00cc267353703).\""
           }
         },
         "glossary": [
@@ -5907,144 +5752,6 @@
       "lastUpdatedAtMs": 1795184691000
     },
     {
-      "id": "rd-street-1y1ayd1",
-      "title": "Fastest MLX Inference Engine on a Mac",
-      "shortLabel": "Fastest MLX Inference Engine",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/LocalLLaMA",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "r/LocalLLaMA"
-      ],
-      "networkFamilies": [
-        "Reddit"
-      ],
-      "canonicalEntity": "ent:mac+mlx",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 58,
-        "streetScore": 53,
-        "divergenceDelta": 5,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (58 hype / 53 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [],
-      "streetQuotes": [
-        {
-          "id": "rd-street-1y1ayd1-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/LocalLLaMA",
-          "author": "r/LocalLLaMA",
-          "text": "# TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models.",
-          "score": 3,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795199304000,
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1ayd1/fastest_mlx_inference_engine_on_a_mac/"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 1,
-        "commentsOrReplies": 1,
-        "velocityPerHour": 5,
-        "badgeText": "5/hr · 1 up · 1 comment"
-      },
-      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1ayd1/fastest_mlx_inference_engine_on_a_mac/",
-      "publishedAtMs": 1795199304000,
-      "isLiveInbound": true,
-      "primarySector": "REL",
-      "secondarySectors": [
-        "ARC",
-        "ECO"
-      ],
-      "mass": 2.45,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "REDUCER",
-      "rawAbstract": "# TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. * No engine wins every row. mlx-serve and Rapid-MLX trade the top spot, with oMLX a clear third. * mlx-serve has the most row wins (18) and the best average (98.2% of the row best) on the models it can load. It couldn't load the two ternary Bonsai models (6 cells). * Rapid-MLX is right behind at 98.0%. It, oMLX and mlx-vlm were the only engines that loaded every model I tried. Of those three, Rapid-MLX was the fastest. * Plain mlx-lm averages \\~19% behind the best engine. Most servers here beat it. * MoE models show the biggest spread. Qwen3.6 35B-A3B on M5 Max ranges from 107 to 178 tok/s depending on the engine. On small dense models the top engines are within a few percent. # Scoreboard (sorted by average) |Engine|Cells run|Load failures (✗)|Row wins (within 0.5% of best)|Avg % of row best|Worst row| |:-|:-|:-|:-|:-|:-| |mlx-serve|26|6|18|98.2%|82%| |Rapid-MLX|32|0|16|98.0%|87%| |oMLX|32|0|7|95.0%|74%| |mlx-vlm|31|0|0|92.7%|73%| |Swama|13|16|0|88.3%|67%| |vMLX|24|5|1|87.7%|68%| |mlx-lm|27|3|0|81.4%|62%| |MTPLX|25|4|0|80.1%|60%| Notes on the scoreboard: * Averages: each average only covers the rows that engine ran. * Missing cells: \"✗\" means the engine failed to load that model. \"–\" means I didn't run it (a few M4 Pro cells). * Default speculative decoding: Rapid-MLX turns on MTP by default when a checkpoint has an MTP head (marked ‡ below). That's why it wins Qwen3.5 9B on M5 Max and M4 Pro, and it's also what puts mlx-serve's worst row at 82%. On M2 Pro and on Qwen3.6 35B-A3B on M4 Pro, MTP was a net loss. * Rapid-MLX with MTP off, Qwen3.5 9B: 84.5 (M5 Max), 51.5 (M4 Pro), 37.7 (M2 Pro). * Rapid-MLX with MTP off, Qwen3.6 35B-A3B: 171.6 (M5 Max), 98.9 (M4 Pro). # How I ran it * Defaults: every engine with its default flags, as installed. * Request: one request at a time, the same prompt (\\~540 tokens), 256 output tokens, temperature 0. * Runs: a fresh server for every run and 3 reps; the tables show the median. * Software: macOS 27.0.1 and MLX 0.32.4 (vMLX and MTPLX ship their own MLX). * Versions:Engine Version mlx-lm 0.32.2 mlx-vlm 0.8.0 oMLX 0.8.0rc1 vMLX 1.6.84 MTPLX 2.12.3 mlx-serve and Swama latest GitHub release as of 2026-11-17 Rapid-MLX 1.0.5 The matrix ran on the Rapid-MLX release-candidate build. The released PyPI 1.0.5 was then re-measured on M5 Max and M4 Pro (Gemma 4, LFM2.5 24B, Qwen3.5 9B) and matched within 1.5%. M2 Pro was not re-checked. * Models: 4-bit MLX community or vendor builds, except the ternary Bonsai models (2-bit packing) and LFM3 (8-bit). How to read the tables: * Bold: within 0.5% of the best in that row. * ✗: fail",
-      "architectBrief": {
-        "summary": "# TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. mlx-serve and Rapid-MLX trade the top spot, with oMLX a clear third.",
-        "stackImpact": [
-          "REL Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "# TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models.",
-        "talkingPoints": [
-          "# TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s…",
-          "mlx-serve and Rapid-MLX trade the top spot, with oMLX a clear third.",
-          "Readiness: GA (r/LocalLLaMA)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Fastest MLX Inference Engine): # TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Fastest MLX Inference Engine): # TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Fastest MLX Inference Engine): # TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. — compresses inference run-rate by 35–65%; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Fastest MLX Inference Engine): # TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. — unlocks sub-second catalog & multimodal shopper conversion while compresses inference run-rate by 35–65%.",
-          "PUBLIC": "Sovereign & Public Sector (Fastest MLX Inference Engine): # TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Fastest MLX Inference Engine): # TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. — protects >75% AI feature gross margin (compresses inference run-rate by 35–65%) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "LLM Serving & vLLM",
-        "GPU Kernel & Inference Infra"
-      ],
-      "literacy": {
-        "plainTitle": "Fastest MLX live answering work Engine on a Mac",
-        "plainFullTitle": "Fastest MLX live answering work Engine on a Mac",
-        "levels": {
-          "1": {
-            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, TL;DR * I benchmarked 8 MLX live answering work servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode words per second across 11 pop",
-            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
-          },
-          "2": {
-            "whatHappened": "TL;DR * I benchmarked 8 MLX live answering work servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode words per second across 11 popular models. * No engine wins every row.",
-            "whoBuiltIt": "r/LocalLLaMA Engineering Community",
-            "problemSolved": "Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy."
-          },
-          "3": {
-            "bridgeSummary": "TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. * No engine wins every row. In stack terms, this connects to MoE, Speculative Decoding (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-          },
-          "4": {
-            "roiAndFinOps": "TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. (Targets unit-cost and latency reduction on matching enterprise workloads.)",
-            "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
-            "clientAdvice": "FinServ Advisory (Fastest MLX Inference Engine): # TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
-          },
-          "5": {
-            "architectureBrief": "# TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. * No engine wins every row. mlx-serve and Rapid-MLX trade the top spot, with oMLX a clear third. * mlx-serve has the most row wins (18) and the best average (98.2% of the row best) on the models it can load. It couldn't load the two ternary Bonsai models (6 cells). * Rapid-MLX is right behind at 98.0%.",
-            "specsAndCaveats": "That's why it wins Qwen3.5 9B on M5 Max and M4 Pro, and it's also what puts mlx-serve's worst row at 82%. On M2 Pro and on Qwen3.6 35B-A3B on M4 Pro, MTP was a net loss.",
-            "streetConsensus": "Thread has 1 reply on r/LocalLLaMA — loading top engineer comments..."
-          }
-        },
-        "glossary": [
-          {
-            "term": "MoE",
-            "definition": "Mixture-of-Experts (MoE) builds one giant AI brain out of smaller specialist teams and wakes up only the few specialists needed for each question to save massive cost."
-          },
-          {
-            "term": "Speculative Decoding",
-            "definition": "Speculative Decoding uses a tiny, ultra-fast helper model to draft several words ahead while the big model verifies them in one batch, doubling reply speed without losing accuracy."
-          }
-        ],
-        "generatedBy": "DETERMINISTIC"
-      },
-      "supportingSources": [
-        {
-          "source": "r/LocalLLaMA",
-          "title": "Fastest MLX Inference Engine on a Mac",
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1ayd1/fastest_mlx_inference_engine_on_a_mac/",
-          "publishedAt": "2026-11-20T18:28:24.000Z",
-          "publishedAtMs": 1795199304000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795199304000
-    },
-    {
       "id": "rd-street-1y0xzrg",
       "title": "Ollama Agent that uses a Decision Model to route requests to specific models",
       "shortLabel": "Ollama Agent that uses",
@@ -6192,144 +5899,6 @@
       "lastUpdatedAtMs": 1795162431000
     },
     {
-      "id": "lab-deepmind-ndgooglebloggenie-4-is-now-available",
-      "title": "Genie 4 is now available",
-      "shortLabel": "Genie 4 is now available",
-      "source": "LabRelease",
-      "sourceCategory": "AI_LAB",
-      "originFeedName": "Google DeepMind",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "X · @demishassabis",
-        "Google DeepMind"
-      ],
-      "networkFamilies": [
-        "X",
-        "VIP/Lab"
-      ],
-      "isSupernova": true,
-      "supernovaLevel": 1,
-      "divergence": {
-        "hypeScore": 49,
-        "streetScore": 52,
-        "divergenceDelta": -3,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (49 hype / 52 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/resized_ProjectGenie_Thumbnail_v02.width-1300.png",
-          "caption": "Google DeepMind article visual",
-          "sourceNetwork": "Google DeepMind"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "lab-deepmind-ndgooglebloggenie-4-is-now-available-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Google DeepMind",
-          "author": "Google DeepMind",
-          "text": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing.",
-          "score": 165,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795025622000,
-          "url": "https://deepmind.google/blog/genie-4-is-now-available/"
-        }
-      ],
-      "url": "https://deepmind.google/blog/genie-4-is-now-available/",
-      "publishedAtMs": 1795025622000,
-      "isLiveInbound": true,
-      "primarySector": "GOV",
-      "secondarySectors": [
-        "REL"
-      ],
-      "mass": 4.6,
-      "readiness": "GA",
-      "risk": "HIGH",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news See all in Company news Outreach & initiatives",
-      "architectBrief": {
-        "summary": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie.",
-        "stackImpact": [
-          "GOV Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing.",
-        "talkingPoints": [
-          "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing.",
-          "See what’s new in Project Genie.",
-          "Readiness: GA (Google DeepMind)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
-          "RETAIL": "Commerce & CX (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
-          "SAAS": "B2B SaaS Product (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Computer Vision & Diffusion",
-        "Multimodal Generation"
-      ],
-      "literacy": {
-        "plainTitle": "Genie 4 for interactive world creation",
-        "plainFullTitle": "Genie 4 now available for Google AI Ultra subscribers to create interactive worlds",
-        "levels": {
-          "1": {
-            "analogy": "Imagine it like a digital playground where users can design and interact with virtual environments, complete with real-time sound effects and editing tools.",
-            "everydayWhy": "This allows creators to build immersive experiences without needing advanced programming skills, making it easier to develop engaging content."
-          },
-          "2": {
-            "whatHappened": "Google AI Ultra subscribers can now use Genie 4 to generate interactive worlds with real-time audio and editing capabilities.",
-            "whoBuiltIt": "Google DeepMind",
-            "problemSolved": "It addresses the need for creating complex, interactive digital environments for various applications, such as gaming, education, and marketing."
-          },
-          "3": {
-            "bridgeSummary": "Genie 4 enables non-technical users to create interactive virtual worlds, which can be used for a variety of purposes, including entertainment and education, by leveraging real-time audio and editing features."
-          },
-          "4": {
-            "roiAndFinOps": "For banking, this could lead to cost savings in developing interactive digital content and potentially increase engagement with customers through more dynamic and interactive experiences.",
-            "readinessAndRisk": "While the technology is available, its full potential and reliability in banking applications remain to be seen, requiring careful evaluation and testing before widespread adoption.",
-            "clientAdvice": "Banks should explore Genie 4 for pilot projects to assess its suitability for creating interactive financial education tools or customer engagement platforms."
-          },
-          "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. Google AI Ultra subscribers can now use Genie 4 to generate interactive worlds with real-time audio and editing capabilities.",
-            "specsAndCaveats": "The release is aimed at non-technical users, but specific technical details such as performance metrics or benchmarks are not provided.",
-            "streetConsensus": "The community has not yet provided detailed feedback, but the availability of Genie 4 suggests it is a promising tool for creating interactive content, pending further validation."
-          }
-        },
-        "glossary": [],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "Google DeepMind",
-          "title": "Genie 4 is now available",
-          "url": "https://deepmind.google/blog/genie-4-is-now-available/",
-          "publishedAt": "2026-11-18T18:13:42.000Z",
-          "publishedAtMs": 1795025622000,
-          "isPrimary": true
-        },
-        {
-          "source": "X · @demishassabis",
-          "title": "Genie 4 is available!",
-          "url": "https://x.com/demishassabis/status/2123130606162985350",
-          "publishedAt": "2026-11-18T19:05:57.000Z",
-          "publishedAtMs": 1795028757000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795028757000
-    },
-    {
       "id": "x-fx-2123167889976905966",
       "title": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
       "shortLabel": "Neon ranks 3",
@@ -6368,7 +5937,7 @@
           "originLabel": "X · @GoogleDeepMind",
           "author": "X · @GoogleDeepMind",
           "text": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon…",
-          "score": 197,
+          "score": 196,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795037646000,
           "url": "https://x.com/GoogleDeepMind/status/2123167889976905966"
@@ -6381,7 +5950,7 @@
       "secondarySectors": [
         "INN"
       ],
-      "mass": 3.2914030470050353,
+      "mass": 3.2899664463817095,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -7430,6 +6999,134 @@
         }
       ],
       "lastUpdatedAtMs": 1795114645000
+    },
+    {
+      "id": "lab-deepmind-ndgooglebloggenie-4-is-now-available",
+      "title": "Genie 4 is now available",
+      "shortLabel": "Genie 4 is now available",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "Google DeepMind",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "Google DeepMind"
+      ],
+      "networkFamilies": [
+        "VIP/Lab"
+      ],
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 49,
+        "streetScore": 52,
+        "divergenceDelta": -3,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (49 hype / 52 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/resized_ProjectGenie_Thumbnail_v02.width-1300.png",
+          "caption": "Google DeepMind article visual",
+          "sourceNetwork": "Google DeepMind"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "lab-deepmind-ndgooglebloggenie-4-is-now-available-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Google DeepMind",
+          "author": "Google DeepMind",
+          "text": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing.",
+          "score": 165,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795025622000,
+          "url": "https://deepmind.google/blog/genie-4-is-now-available/"
+        }
+      ],
+      "url": "https://deepmind.google/blog/genie-4-is-now-available/",
+      "publishedAtMs": 1795025622000,
+      "isLiveInbound": true,
+      "primarySector": "GOV",
+      "secondarySectors": [
+        "REL"
+      ],
+      "mass": 3.2413645637390394,
+      "readiness": "GA",
+      "risk": "HIGH",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news See all in Company news Outreach & initiatives",
+      "architectBrief": {
+        "summary": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie.",
+        "stackImpact": [
+          "GOV Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing.",
+        "talkingPoints": [
+          "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing.",
+          "See what’s new in Project Genie.",
+          "Readiness: GA (Google DeepMind)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — maintains neutral unit token economics while mandates legal & CISO sign-off prior to production cutover under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — pairs with HIPAA BAA zero-retention boundaries; mandates legal & CISO sign-off prior to production cutover for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — maintains neutral unit token economics; prioritize semantic router tiering to capture immediate margin upside.",
+          "RETAIL": "Commerce & CX (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — unlocks sub-second catalog & multimodal shopper conversion while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — evaluate against FedRAMP / EU AI Act transparency controls; mandates legal & CISO sign-off prior to production cutover.",
+          "SAAS": "B2B SaaS Product (Genie 4 is now available): Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. — protects >75% AI feature gross margin (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation"
+      ],
+      "literacy": {
+        "plainTitle": "Genie 4 is now available",
+        "plainFullTitle": "Genie 4 is now available",
+        "levels": {
+          "1": {
+            "analogy": "Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool. Specifically, Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing.",
+            "everydayWhy": "Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships."
+          },
+          "2": {
+            "whatHappened": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie.",
+            "whoBuiltIt": "Google DeepMind Research & Product Team",
+            "problemSolved": "Shapes vendor governance, funding expectations, or enterprise buying decisions around \"Genie 4 is now available\" rather than shipping a software tool."
+          },
+          "3": {
+            "bridgeSummary": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+          },
+          "4": {
+            "roiAndFinOps": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. (Operational/market development — no direct token-cost or compute telemetry in source).",
+            "readinessAndRisk": "Market & Policy Signal (no software artifact to deploy) · HIGH Governance Attention under SR 11-7 Model Risk.",
+            "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"Genie 4 is now available\" with legal and procurement leads."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Google DeepMind) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "Google DeepMind",
+          "title": "Genie 4 is now available",
+          "url": "https://deepmind.google/blog/genie-4-is-now-available/",
+          "publishedAt": "2026-11-18T18:13:42.000Z",
+          "publishedAtMs": 1795025622000,
+          "isPrimary": true
+        }
+      ],
+      "lastUpdatedAtMs": 1795025622000
     },
     {
       "id": "lab-meta-ai-httpsengineeringfbcomp25068",
@@ -8682,36 +8379,6 @@
       "glossary": [],
       "generatedBy": "OLLAMA"
     },
-    "lab-deepmind-ndgooglebloggenie-4-is-now-available": {
-      "plainTitle": "Genie 4 for interactive world creation",
-      "plainFullTitle": "Genie 4 now available for Google AI Ultra subscribers to create interactive worlds",
-      "levels": {
-        "1": {
-          "analogy": "Imagine it like a digital playground where users can design and interact with virtual environments, complete with real-time sound effects and editing tools.",
-          "everydayWhy": "This allows creators to build immersive experiences without needing advanced programming skills, making it easier to develop engaging content."
-        },
-        "2": {
-          "whatHappened": "Google AI Ultra subscribers can now use Genie 4 to generate interactive worlds with real-time audio and editing capabilities.",
-          "whoBuiltIt": "Google DeepMind",
-          "problemSolved": "It addresses the need for creating complex, interactive digital environments for various applications, such as gaming, education, and marketing."
-        },
-        "3": {
-          "bridgeSummary": "Genie 4 enables non-technical users to create interactive virtual worlds, which can be used for a variety of purposes, including entertainment and education, by leveraging real-time audio and editing features."
-        },
-        "4": {
-          "roiAndFinOps": "For banking, this could lead to cost savings in developing interactive digital content and potentially increase engagement with customers through more dynamic and interactive experiences.",
-          "readinessAndRisk": "While the technology is available, its full potential and reliability in banking applications remain to be seen, requiring careful evaluation and testing before widespread adoption.",
-          "clientAdvice": "Banks should explore Genie 4 for pilot projects to assess its suitability for creating interactive financial education tools or customer engagement platforms."
-        },
-        "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. Google AI Ultra subscribers can now use Genie 4 to generate interactive worlds with real-time audio and editing capabilities.",
-          "specsAndCaveats": "The release is aimed at non-technical users, but specific technical details such as performance metrics or benchmarks are not provided.",
-          "streetConsensus": "The community has not yet provided detailed feedback, but the availability of Genie 4 suggests it is a promising tool for creating interactive content, pending further validation."
-        }
-      },
-      "glossary": [],
-      "generatedBy": "OLLAMA"
-    },
     "hn-50577901": {
       "plainTitle": "Google Workers Protest AI in Schools",
       "plainFullTitle": "Google Workers Push Back Against AI Policy in Schools",
@@ -8953,34 +8620,34 @@
       "generatedBy": "OLLAMA"
     },
     "hn-50567485": {
-      "plainTitle": "AI chat logs prompt police intervention",
-      "plainFullTitle": "FBI agent contacts AI user about suspicious chat activity",
+      "plainTitle": "An FBI agent called a Claude user about his…",
+      "plainFullTitle": "An FBI agent called a Claude user about his chats",
       "levels": {
         "1": {
-          "analogy": "Think of it like a library where patrons are monitored for unusual behavior, and when something suspicious is flagged, the librarian contacts the police for further investigation.",
-          "everydayWhy": "This highlights the growing role of AI in surveillance and the potential for AI-generated content to trigger real-world actions like police inquiries."
+          "analogy": "Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool.",
+          "everydayWhy": "Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships."
         },
         "2": {
-          "whatHappened": "An FBI agent contacted an AI user about suspicious chat activity, leading to a police visit to the user's former home and a subsequent summons to the police station.",
-          "whoBuiltIt": "Anthropic, the AI company behind Claude.",
-          "problemSolved": "The incident demonstrates how AI platforms can be used to monitor and flag potentially suspicious activities, which can then be acted upon by law enforcement."
+          "whatHappened": "Published on austinpatrick.substack.com (discussed on Hacker News) published \"An FBI agent called a Claude user about his chats\". Open the linked third-party source above for the full upstream breakdown.",
+          "whoBuiltIt": "Published on austinpatrick.substack.com (discussed on Hacker News)",
+          "problemSolved": "Shapes vendor governance, funding expectations, or enterprise buying decisions around \"An FBI agent called a Claude user about his chats\" rather than shipping a software tool."
         },
         "3": {
-          "bridgeSummary": "The case illustrates the integration of AI in security and surveillance, where AI-generated content can trigger real-world police actions, raising questions about privacy and the reliability of AI in such contexts."
+          "bridgeSummary": "Published on austinpatrick.substack.com (discussed on Hacker News) shared: \"An FBI agent called a Claude user about his chats\". Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
         },
         "4": {
-          "roiAndFinOps": "The incident highlights the potential for AI to enhance security measures, but also raises concerns about the cost and risk associated with relying on AI for such critical tasks, especially in the banking sector where data privacy is paramount.",
-          "readinessAndRisk": "While the technology shows promise, its readiness for widespread use in banking is uncertain, given the potential for false positives and the need for robust validation and oversight.",
-          "clientAdvice": "BANKING leadership should carefully evaluate the use of AI in security and surveillance, ensuring robust validation and oversight mechanisms are in place to mitigate risks."
+          "roiAndFinOps": "An FBI agent called a Claude user about his chats (Operational/market development — no direct token-cost or compute telemetry in source).",
+          "readinessAndRisk": "Market & Policy Signal (no software artifact to deploy) · LOW Governance Attention under SR 11-7 Model Risk.",
+          "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"An FBI agent called a Claude user about his chats\" with legal and procurement leads."
         },
         "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. The case highlights the operational integration of AI in security, where AI-generated content can trigger real-world actions like police inquiries.",
-          "specsAndCaveats": "The absence of technical details means that the operational mechanisms and metrics are not explicitly defined, making it challenging to assess the reliability and accuracy of AI-generated content in security contexts.",
-          "streetConsensus": "The community is still evaluating the implications of AI in security, with some praising the potential for enhanced surveillance and others expressing concerns about privacy and the reliability of AI systems."
+          "architectureBrief": "Source provides no technical specifications or architecture details. An FBI agent called a Claude user about his chats.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Hacker News) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Thread has 30 replies on Hacker News — loading top engineer comments..."
         }
       },
       "glossary": [],
-      "generatedBy": "OLLAMA"
+      "generatedBy": "DETERMINISTIC"
     },
     "hn-50565484": {
       "plainTitle": "Software Future Uncertain",
@@ -9192,6 +8859,36 @@
       "glossary": [],
       "generatedBy": "OLLAMA"
     },
+    "lab-deepmind-ndgooglebloggenie-4-is-now-available": {
+      "plainTitle": "Genie 4 is now available",
+      "plainFullTitle": "Genie 4 is now available",
+      "levels": {
+        "1": {
+          "analogy": "Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool. Specifically, Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing.",
+          "everydayWhy": "Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships."
+        },
+        "2": {
+          "whatHappened": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie.",
+          "whoBuiltIt": "Google DeepMind Research & Product Team",
+          "problemSolved": "Shapes vendor governance, funding expectations, or enterprise buying decisions around \"Genie 4 is now available\" rather than shipping a software tool."
+        },
+        "3": {
+          "bridgeSummary": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+        },
+        "4": {
+          "roiAndFinOps": "Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. (Operational/market development — no direct token-cost or compute telemetry in source).",
+          "readinessAndRisk": "Market & Policy Signal (no software artifact to deploy) · HIGH Governance Attention under SR 11-7 Model Risk.",
+          "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"Genie 4 is now available\" with legal and procurement leads."
+        },
+        "5": {
+          "architectureBrief": "Source provides no technical specifications or architecture details. Google AI Ultra subscribers can now access Genie 4 to generate interactive worlds with real-time audio and editing. See what’s new in Project Genie.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Google DeepMind) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
     "bsky-simonwillison.net-3n2jlhapz522o": {
       "plainTitle": "Browser-based Datasette Lite",
       "plainFullTitle": "New version of Datasette Lite runs entirely in the browser",
@@ -9396,16 +9093,16 @@
       "plainFullTitle": "Claude Code v2.1.329",
       "levels": {
         "1": {
-          "analogy": "Imagine it like a library desk where books are organized into categories, and when a new book is added, it gets a label that warns if it's missing a crucial part, ensuring everything is in place before it's shelved.",
-          "everydayWhy": "This helps users ensure that all necessary components are correctly set up, preventing errors and ensuring smooth operation."
+          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks i",
+          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
         },
         "2": {
-          "whatHappened": "Claude Code v2.1.329 added a trust dialog warning for folder hooks, improved error handling for hooks, integrated scheduled tasks and forks into the task management system, and enhanced server and marketplace update notifications.",
-          "whoBuiltIt": "The Claude Code team, part of the broader Claude AI ecosystem.",
-          "problemSolved": "The update addresses potential issues in the codebase by providing clearer warnings and better error handling, enhancing the reliability and usability of the software."
+          "whatHappened": "What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session's scheduled tasks, /loop wakeups, the goal and this conversation's forks to /tasks; x stops one.",
+          "whoBuiltIt": "Anthropic (Claude Code Engineering Team)",
+          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
         },
         "3": {
-          "bridgeSummary": "The mechanism works by using the MCP (Model-Controller-View) architecture to manage and display warnings and errors, ensuring that users are informed about any issues in the code. Agentic Tool Use is demonstrated through the integration of scheduled tasks and forks into the task management system, allowing for more efficient and automated workflows. SWE-bench, a benchmark for software engineering, is implicitly referenced through the improvements in error handling and task management."
+          "bridgeSummary": "What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session's scheduled tasks, /loop wakeups, the goal and this conversation's forks to /tasks; x stops one aft In stack terms, this connects to MCP, Agentic Tool Use, SWE-bench (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
         },
         "4": {
           "roiAndFinOps": "What's changed Added a trust dialog warning that says where a folder's hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session's scheduled tasks, /loop wakeups, the goal and this conversation's forks to /tasks; x stops one after asking Added a \"Server message\" row to a server's page in /mcp that shows the JSON-RPC error message of a remote HTTP MCP server that refuses the connection Added a \"Marketplace auto-update\" row to /status that names managed marketplaces that get no automatic updates, and why Added support for turning on Code Mode while OpenTelemetry events and metrics are enabled; each tool call the code makes sends its events; tracing still keeps it off Fixed ~/.claude.json sometimes being reset to defaults when a network stall or file lock made it unreadable and cleared during a save Fixed repeated sign-outs on macOS when Claude Code could read the Keychain but not save to it. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
@@ -9432,7 +9129,7 @@
           "definition": "SWE-bench Verified is the industry’s toughest coding test, grading whether an AI can autonomously fix real GitHub software bugs and pass every unit test."
         }
       ],
-      "generatedBy": "OLLAMA"
+      "generatedBy": "DETERMINISTIC"
     },
     "arxiv-httparxivorgabs261126627v1": {
       "plainTitle": "AI text rendering gains from simple steering…",
@@ -9800,6 +9497,36 @@
       ],
       "generatedBy": "OLLAMA"
     },
+    "rd-street-1y1cq1z": {
+      "plainTitle": "gemma4: Optimized prompt processing for…",
+      "plainFullTitle": "gemma4: Optimized prompt processing for multi-seq queries by Meet91721 · Pull Request #32342 ·…",
+      "levels": {
+        "1": {
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+        },
+        "2": {
+          "whatHappened": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+          "whoBuiltIt": "r/LocalLLaMA Engineering Community",
+          "problemSolved": "Addresses practical workflow friction around gemma4: Optimized prompt processing for multi-seq queries by Meet91721 · Pull Request #32342 ·.."
+        },
+        "3": {
+          "bridgeSummary": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+        },
+        "4": {
+          "roiAndFinOps": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots. (Operational/market development — no direct token-cost or compute telemetry in source).",
+          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Attention under SR 11-7 Model Risk.",
+          "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"gemma4: Optimized prompt processing for multi-seq queries by Meet91721…\" with legal and procurement leads."
+        },
+        "5": {
+          "architectureBrief": "Source provides no technical specifications or architecture details. &#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (r/LocalLLaMA) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
     "rd-street-1y1cji6": {
       "plainTitle": "4B Local Model Generates Websites",
       "plainFullTitle": "CCORE-Web-compact AI model Preview: Local Model Creates Websites, Slide Decks, Infographics in…",
@@ -9831,41 +9558,6 @@
         {
           "term": "Open-Weights",
           "definition": "Open-Weights means the trained AI brain files are publicly downloadable so organizations can run them privately on their own hardware with zero data leaving the building."
-        }
-      ],
-      "generatedBy": "OLLAMA"
-    },
-    "x-fx-2123506775077077489": {
-      "plainTitle": "Voice integration in banking apps",
-      "plainFullTitle": "GPT-Live-1.1 powers voice in ChatGPT Plus and Pro, now for banking apps",
-      "levels": {
-        "1": {
-          "analogy": "Think of it like a voice-activated assistant at a customer service desk, where you can ask for account details or transaction history, and the assistant responds with the exact information you need.",
-          "everydayWhy": "This makes interacting with banking apps more intuitive and convenient, similar to talking to a human assistant."
-        },
-        "2": {
-          "whatHappened": "GPT-Live-1.1, a voice-powered AI, has been integrated into ChatGPT Plus and Pro since October 15th, and is now available for banking apps.",
-          "whoBuiltIt": "Developed by OpenAI, the team behind ChatGPT.",
-          "problemSolved": "It addresses the need for more natural and efficient communication between users and banking apps, enhancing user experience."
-        },
-        "3": {
-          "bridgeSummary": "Agentic Tool Use involves the AI acting as a proactive and responsive agent, understanding and executing user voice commands to provide relevant banking information and services. This mechanism allows users to interact with banking apps in a more conversational and hands-free manner."
-        },
-        "4": {
-          "roiAndFinOps": "This integration could lead to improved customer satisfaction and operational efficiency, as users can quickly get information without navigating through complex interfaces. However, the exact financial impact is uncertain and will depend on user adoption and feedback.",
-          "readinessAndRisk": "The technology is currently available but may require further testing and validation for banking-specific applications. Banking leadership should monitor its performance and user feedback closely.",
-          "clientAdvice": "BANKING leadership should consider piloting this feature in a controlled environment to assess its impact on customer engagement and operational efficiency before full-scale implementation."
-        },
-        "5": {
-          "architectureBrief": "GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.",
-          "specsAndCaveats": "The post does not provide specific metrics or benchmarks, so the exact performance and capabilities of GPT-Live-1.1 in banking apps are currently unknown.",
-          "streetConsensus": "The community is awaiting more information and validation of the technology's performance in banking contexts, as no specific praise or objections have been mentioned."
-        }
-      },
-      "glossary": [
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
         }
       ],
       "generatedBy": "OLLAMA"
@@ -9975,41 +9667,6 @@
       ],
       "generatedBy": "OLLAMA"
     },
-    "x-fx-2123566018866151579": {
-      "plainTitle": "Better responses with fewer words",
-      "plainFullTitle": "GPT-6.2 in Responses software connections builds on earlier reasoning for efficient results",
-      "levels": {
-        "1": {
-          "analogy": "Think of it like a chef adding ingredients to a recipe. Each new ingredient builds on the previous ones, ensuring the final dish is perfect with fewer steps.",
-          "everydayWhy": "This means the AI can understand and respond more coherently, saving time and resources."
-        },
-        "2": {
-          "whatHappened": "Agents using GPT-6.2 in the Responses software connections can now build on earlier reasoning, reducing words usage and improving cache hits.",
-          "whoBuiltIt": "OpenAI Devs",
-          "problemSolved": "The system aims to enhance the efficiency and coherence of AI responses in conversations, making it more effective and cost-efficient."
-        },
-        "3": {
-          "bridgeSummary": "GPT-6.2 ties each reasoning item to the conversation history, allowing the API to drop reasoning that follows any changes in earlier messages, thus optimizing the response process."
-        },
-        "4": {
-          "roiAndFinOps": "This improvement could lead to significant cost savings by reducing the number of tokens needed for responses, and better cache utilization could enhance system performance.",
-          "readinessAndRisk": "While the feature is promising, it is still based on the latest model and may require further testing and validation before full deployment.",
-          "clientAdvice": "BANKING leadership should monitor the performance of GPT-6.2 in pilot projects to assess its benefits and risks before wider adoption."
-        },
-        "5": {
-          "architectureBrief": "The mechanism involves tying reasoning items to conversation history, which may involve advanced caching and token management protocols.",
-          "specsAndCaveats": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change.",
-          "streetConsensus": "The community is excited about the potential of GPT-6.2 but awaits more detailed information and validation before full-scale implementation."
-        }
-      },
-      "glossary": [
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-        }
-      ],
-      "generatedBy": "OLLAMA"
-    },
     "x-fx-2123567986565173289": {
       "plainTitle": "🤣 💙 Apology accepted (so this was…",
       "plainFullTitle": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
@@ -10049,22 +9706,22 @@
           "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
         },
         "2": {
-          "whatHappened": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand.",
-          "whoBuiltIt": "r/LocalLLaMA Engineering Community",
+          "whatHappened": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains?",
+          "whoBuiltIt": "Community thread in r/LocalLLaMA (top contributor: u/stylome-ai-detection)",
           "problemSolved": "still i am not sure determine how i can bring it to ollama sort of freedom and Everyone benchmarks quants on chat quality what holds up for multi-step tool-calling loops?"
         },
         "3": {
-          "bridgeSummary": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and Everyone benchmarks quants on chat quality wh In stack terms, this connects to KV-Cache, vLLM, Open-Weights, VRAM, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          "bridgeSummary": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains? In stack terms, this connects to KV-Cache, vLLM, Open-Weights, VRAM, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
         },
         "4": {
-          "roiAndFinOps": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. (Targets unit-cost and latency reduction on matching enterprise workloads.)",
+          "roiAndFinOps": "Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains? (Targets unit-cost and latency reduction on matching enterprise workloads.)",
           "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
           "clientAdvice": "FinServ Advisory (I tried to replicate sort): I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider… — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
         },
         "5": {
-          "architectureBrief": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and **Everyone benchmarks quants on chat quality what holds up for multi-step tool-calling loops?",
-          "specsAndCaveats": "Anecdotally qwen3 8B degrades in agentic use faster than in chat as quant drops.",
-          "streetConsensus": "Thread has 1 reply on r/LocalLLaMA — loading top engineer comments..."
+          "architectureBrief": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure determine how i can bring it to ollama sort of freedom and **Everyone benchmarks quants on chat quality what holds up for multi-step tool-calling loops? Anecdotally qwen3 8B degrades in agentic use faster than in chat as quant drops.",
+          "specsAndCaveats": "tested on my own m4 air 24gb with qwen3 8b through the ollama lane. repo: [https://github.com/theguysudo/ENZO](https://github.com/theguysudo/ENZO) — v1.7.0 notes are inside Top engineer comment (u/stylome-ai-detection, +1): \"**Notice:** This post appears to be AI generated.",
+          "streetConsensus": "[r/LocalLLaMA · u/stylome-ai-detection, +1] \"**Notice:** This post appears to be AI generated. --- Stylome AI detector · [scan results](https://stylome.io/r/5ec00cc267353703).\""
         }
       },
       "glossary": [
@@ -10122,45 +9779,6 @@
         {
           "term": "Agentic Tool Use",
           "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-        }
-      ],
-      "generatedBy": "DETERMINISTIC"
-    },
-    "rd-street-1y1ayd1": {
-      "plainTitle": "Fastest MLX live answering work Engine on a Mac",
-      "plainFullTitle": "Fastest MLX live answering work Engine on a Mac",
-      "levels": {
-        "1": {
-          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, TL;DR * I benchmarked 8 MLX live answering work servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode words per second across 11 pop",
-          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
-        },
-        "2": {
-          "whatHappened": "TL;DR * I benchmarked 8 MLX live answering work servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode words per second across 11 popular models. * No engine wins every row.",
-          "whoBuiltIt": "r/LocalLLaMA Engineering Community",
-          "problemSolved": "Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy."
-        },
-        "3": {
-          "bridgeSummary": "TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. * No engine wins every row. In stack terms, this connects to MoE, Speculative Decoding (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-        },
-        "4": {
-          "roiAndFinOps": "TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. (Targets unit-cost and latency reduction on matching enterprise workloads.)",
-          "readinessAndRisk": "Production GA (ready for governed enterprise pilot) · LOW Governance Risk under SR 11-7 Model Risk.",
-          "clientAdvice": "FinServ Advisory (Fastest MLX Inference Engine): # TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. — compresses inference run-rate by 35–65% while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance."
-        },
-        "5": {
-          "architectureBrief": "# TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. * No engine wins every row. mlx-serve and Rapid-MLX trade the top spot, with oMLX a clear third. * mlx-serve has the most row wins (18) and the best average (98.2% of the row best) on the models it can load. It couldn't load the two ternary Bonsai models (6 cells). * Rapid-MLX is right behind at 98.0%.",
-          "specsAndCaveats": "That's why it wins Qwen3.5 9B on M5 Max and M4 Pro, and it's also what puts mlx-serve's worst row at 82%. On M2 Pro and on Qwen3.6 35B-A3B on M4 Pro, MTP was a net loss.",
-          "streetConsensus": "Thread has 1 reply on r/LocalLLaMA — loading top engineer comments..."
-        }
-      },
-      "glossary": [
-        {
-          "term": "MoE",
-          "definition": "Mixture-of-Experts (MoE) builds one giant AI brain out of smaller specialist teams and wakes up only the few specialists needed for each question to save massive cost."
-        },
-        {
-          "term": "Speculative Decoding",
-          "definition": "Speculative Decoding uses a tiny, ultra-fast helper model to draft several words ahead while the big model verifies them in one batch, doubling reply speed without losing accuracy."
         }
       ],
       "generatedBy": "DETERMINISTIC"

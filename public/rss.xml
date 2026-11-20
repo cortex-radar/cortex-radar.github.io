@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2026 19:39:39 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 19:44:48 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>Ravi Vakil claims proof of Riemann Hypothesis by Alessandro Masullo may be human-readable soon</title>
@@ -62,15 +62,7 @@
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21329&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 22:14:41 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Claude Code v2.1.329 added a trust dialog warning for folder hooks, improved error handling for hooks, integrated scheduled tasks and forks into the task management system, and enhanced server and marketplace update notifications. The update addresses potential issues in the codebase by providing clearer warnings and better error handling, enhancing the reliability and usability of the software. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.329</description>
-    </item>
-    <item>
-      <title>AI-Designed Frostbite CPU Outperforms Modern Chips</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50572503&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50572503&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 10:01:41 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>AI systems discovered, designed, and verified a new CPU called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs. The design addresses the stagnation in CPU core improvement and offers a novel approach to general-purpose CPU architecture. — Upstream (Hacker News): https://architectlabs.com/blog/frostbite</description>
+      <description>What&apos;s changed Added a trust dialog warning that says where a folder&apos;s hooks are declared Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load Added this session&apos;s scheduled tasks, /loop wakeups, the goal and this conversation&apos;s forks to /tasks; x stops one. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.329</description>
     </item>
     <item>
       <title>RL post-training in diffusion transformers is activation steering, achieving 90% of gains with…</title>
@@ -79,6 +71,14 @@
       <pubDate>Thu, 19 Nov 2026 18:59:53 GMT</pubDate>
       <category>Science &amp; Research</category>
       <description>Reinforcement learning (RL) post-training significantly improves diffusion transformers&apos; visual and text rendering quality, with minimal internal settings changes. The study addresses the challenge of improving complex AI model outputs with minimal computational overhead. — Upstream (arXiv): https://arxiv.org/abs/2611.26627v1</description>
+    </item>
+    <item>
+      <title>AI-Designed Frostbite CPU Outperforms Modern Chips</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50572503&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50572503&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 10:01:41 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>AI systems discovered, designed, and verified a new CPU called Frostbite, achieving 4.59x better performance-per-watt than modern CPUs. The design addresses the stagnation in CPU core improvement and offers a novel approach to general-purpose CPU architecture. — Upstream (Hacker News): https://architectlabs.com/blog/frostbite</description>
     </item>
     <item>
       <title>GPT-6.2 Sol and Astra Models Released for Banking Applications</title>
@@ -119,14 +119,6 @@
       <pubDate>Fri, 20 Nov 2026 15:30:42 GMT</pubDate>
       <category>Certifications &amp; Labs</category>
       <description>A user claims that Claude, an AI, may have assisted in potentially solving the Riemann Hypothesis, a long-standing mathematical problem. The user states, &apos;what I saw during the course of progress so amazed me that I believe it is one dawn across science of something far greater.&apos; The Riemann Hypothesis, a conjecture about the distribution of prime numbers, has been a central problem in mathematics for over a century. potentially solving it could have profound implications for number theory and related fields. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e</description>
-    </item>
-    <item>
-      <title>Genie 4 now available for Google AI Ultra subscribers to create interactive worlds</title>
-      <link>https://cortex-radar.github.io/?orb=lab-deepmind-ndgooglebloggenie-4-is-now-available&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-deepmind-ndgooglebloggenie-4-is-now-available&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 18:13:42 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Google AI Ultra subscribers can now use Genie 4 to generate interactive worlds with real-time audio and editing capabilities. It addresses the need for creating complex, interactive digital environments for various applications, such as gaming, education, and marketing. — Upstream (Google DeepMind): https://deepmind.google/blog/genie-4-is-now-available/</description>
     </item>
     <item>
       <title>Epic Games Uses AI for Unreal Engine Development</title>
@@ -207,6 +199,14 @@
       <pubDate>Thu, 19 Nov 2026 18:47:16 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Experts Jacob Coxon and Robin Hanson are debating whether governments should slow down the development and deployment of frontier AI technologies. The debate addresses the potential risks and benefits of rapid AI advancement, focusing on ethical and societal impacts. — Upstream (Hacker News): https://www.youtube.com/watch?v=lwfewYL7X0o</description>
+    </item>
+    <item>
+      <title>Illustrating Differences Between Models in the Same Family</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</guid>
+      <pubDate>Thu, 19 Nov 2026 06:40:15 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>The post compares Gemini 4 Carbon and Gemini 4 Neon, highlighting how models in the same family can perform differently at varying effort levels. It addresses the need to understand performance differences within the same AI model family to better tailor their use cases. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
     </item>
   </channel>
 </rss>
