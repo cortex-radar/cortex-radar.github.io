@@ -12,6 +12,7 @@ import type { RawUpstreamSignal } from '../shared/seed72h';
 import type {
   AdapterId,
   ClientIndustry,
+  EvidenceScope,
   SourceCategory,
   SpatialSignal,
   SynthesisEngineId,
@@ -199,7 +200,12 @@ function extractMetaContent(html: string, attrPattern: string): string {
  */
 async function fetchStructuredGitHubReleaseBody(
   releaseUrl: string
-): Promise<{ body: string; ogImage?: string } | null> {
+): Promise<{
+  body: string;
+  ogImage?: string;
+  publishedAtMs?: number;
+  updatedAtMs?: number;
+} | null> {
   const m = (releaseUrl || '').match(
     /github\.com\/([^/\s]+)\/([^/\s]+)\/releases\/tag\/([^/?#\s]+)/i
   );
@@ -211,7 +217,7 @@ async function fetchStructuredGitHubReleaseBody(
   try {
     const headers: Record<string, string> = {
       Accept: 'application/vnd.github+json',
-      'User-Agent': 'CORTEX-Radar/2.2',
+      'User-Agent': 'CORTEX-Radar/2.3',
       'X-GitHub-Api-Version': '2022-11-28',
     };
     const token = (process.env.GITHUB_TOKEN || '').trim();
@@ -231,12 +237,28 @@ async function fetchStructuredGitHubReleaseBody(
     if (!res.ok) {
       return { body: '', ogImage: ghOg };
     }
-    const data = (await res.json()) as { body?: string | null };
+    const data = (await res.json()) as {
+      body?: string | null;
+      published_at?: string | null;
+      created_at?: string | null;
+      updated_at?: string | null;
+    };
     const decoded = stripHtmlAndEntities(data.body || '');
     const cleaned = sanitizeReleaseNotesText(decoded, tag);
+    const pubRaw = data.published_at || data.created_at || '';
+    const updRaw = data.updated_at || '';
+    const pubParsed = pubRaw ? Date.parse(pubRaw) : NaN;
+    const updParsed = updRaw ? Date.parse(updRaw) : NaN;
+    const publishedAtMs = Number.isFinite(pubParsed) && pubParsed > 0 ? pubParsed : undefined;
+    const updatedAtMs =
+      publishedAtMs && Number.isFinite(updParsed) && updParsed > publishedAtMs + 5 * 60_000
+        ? updParsed
+        : undefined;
     return {
       body: cleaned.cleanText.slice(0, 3200),
       ogImage: ghOg,
+      publishedAtMs,
+      updatedAtMs,
     };
   } catch {
     return { body: '', ogImage: ghOg };
@@ -425,12 +447,32 @@ function parseUniversalFeedXml(
           ]
         : undefined;
 
-      const dateMatch =
+      const pubDateMatch =
         chunk.match(/<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i) ||
         chunk.match(/<published[^>]*>([\s\S]*?)<\/published>/i) ||
-        chunk.match(/<updated[^>]*>([\s\S]*?)<\/updated>/i) ||
         chunk.match(/<dc:date[^>]*>([\s\S]*?)<\/dc:date>/i);
-      const parsedDate = dateMatch?.[1] ? Date.parse(stripHtmlAndEntities(dateMatch[1])) : NaN;
+      const updDateMatch = chunk.match(/<updated[^>]*>([\s\S]*?)<\/updated>/i);
+      const parsedPubDate = pubDateMatch?.[1]
+        ? Date.parse(stripHtmlAndEntities(pubDateMatch[1]))
+        : NaN;
+      const parsedUpdDate = updDateMatch?.[1]
+        ? Date.parse(stripHtmlAndEntities(updDateMatch[1]))
+        : NaN;
+      // For GitHub Releases, keep <updated> strictly in updatedAtMs (never overwrite original publish date)
+      const resolvedPublishedAtMs =
+        Number.isFinite(parsedPubDate) && parsedPubDate > 0
+          ? parsedPubDate
+          : sourceType !== 'GHRelease' && Number.isFinite(parsedUpdDate) && parsedUpdDate > 0
+          ? parsedUpdDate
+          : 0;
+      const resolvedUpdatedAtMs =
+        resolvedPublishedAtMs > 0 &&
+        Number.isFinite(parsedUpdDate) &&
+        parsedUpdDate > resolvedPublishedAtMs + 5 * 60_000
+          ? parsedUpdDate
+          : sourceType === 'GHRelease' && Number.isFinite(parsedUpdDate) && parsedUpdDate > 0 && resolvedPublishedAtMs === 0
+          ? parsedUpdDate
+          : undefined;
 
       const guidMatch = chunk.match(/<(?:guid|id)[^>]*>([\s\S]*?)<\/(?:guid|id)>/i);
       const stableKey = stripHtmlAndEntities(guidMatch?.[1] || link || `${cleanTitle}-${idx}`)
@@ -453,7 +495,8 @@ function parseUniversalFeedXml(
         source: sourceType,
         sourceCategory: category,
         originFeedName: originName,
-        publishedAtMs: Number.isFinite(parsedDate) && parsedDate > 0 ? parsedDate : 0,
+        publishedAtMs: resolvedPublishedAtMs,
+        updatedAtMs: resolvedUpdatedAtMs,
         score: category === 'AI_LAB' || category === 'VIP_VOICE' ? 165 : 120,
         mediaItems,
       };
@@ -485,7 +528,7 @@ function makeRssDescriptor(
           isHighSignalRedditPost({ title: item.title, selftext: item.summary, ups: 25, num_comments: 8 })
       );
 
-      // For GitHub Releases, prefer structured GitHub Releases API body + cleaned Atom <content>; never scrape HTML shells
+      // For GitHub Releases, prefer structured GitHub Releases API body + published_at/updated_at timestamps; never scrape HTML shells
       if (category === 'GH_RELEASE') {
         await Promise.allSettled(
           parsed.map(async (item) => {
@@ -494,6 +537,19 @@ function makeRssDescriptor(
             const structured = await fetchStructuredGitHubReleaseBody(item.url);
             if (structured?.body && structured.body.length > item.summary.length) {
               item.summary = structured.body;
+            }
+            if (structured?.publishedAtMs) {
+              const atomFallbackUpd = item.updatedAtMs;
+              item.publishedAtMs = structured.publishedAtMs;
+              item.updatedAtMs =
+                structured.updatedAtMs ||
+                (atomFallbackUpd && atomFallbackUpd > structured.publishedAtMs + 5 * 60_000
+                  ? atomFallbackUpd
+                  : undefined);
+            } else if (!item.publishedAtMs && item.updatedAtMs) {
+              // Offline/rate-limited fallback only when API published_at unavailable
+              item.publishedAtMs = item.updatedAtMs;
+              item.updatedAtMs = undefined;
             }
             const ogUrl = structured?.ogImage || resolveGitHubOpenGraphImage(item.url);
             if (ogUrl && (!item.mediaItems || item.mediaItems.length === 0)) {
@@ -1403,17 +1459,23 @@ app.post('/api/synthesize/literacy', async (req, res) => {
 });
 
 app.post('/api/blast-radius', async (req, res) => {
-  const { engine, ollamaModel, apiKey, clientIndustry, signalTitle, signalSummary } = req.body as {
+  const { engine, ollamaModel, apiKey, clientIndustry, signalTitle, signalSummary, signalScope } = req.body as {
     engine?: SynthesisEngineId;
     ollamaModel?: string;
     apiKey?: string;
     clientIndustry?: string;
     signalTitle?: string;
     signalSummary?: string;
+    signalScope?: EvidenceScope;
   };
 
   if (!signalTitle) {
     res.status(400).json({ error: 'Missing signalTitle' });
+    return;
+  }
+
+  if (signalScope && signalScope !== 'enterprise_launch') {
+    res.json({ horizons: null, engineUsed: 'DETERMINISTIC', latencyMs: 1, tokensPerSec: 999 });
     return;
   }
 
@@ -1425,7 +1487,7 @@ app.post('/api/blast-radius', async (req, res) => {
 
   const jsonPrompt = `Analyze "${signalTitle}" (${signalSummary || ''}) for a ${
     clientIndustry || 'Enterprise'
-  } organization. Return ONLY a valid JSON array of 3 objects for 30D (Architecture), 60D (Governance/Security), and 90D (FinOps/Skills), each with keys: horizon ("30D"|"60D"|"90D"), title (<=35 chars), consequence (<=140 chars), consultantAction (<=110 chars), kpiMetric (<=45 chars).`;
+  } organization. Ground every claim strictly in the provided text; never invent unrelated domains or unbacked cost multipliers (like "3x token spend" or "40-65% compression"). Return ONLY a valid JSON array of 3 objects for 30D (Pilot Scoping), 60D (Governance/Security), and 90D (Operationalization), each with keys: horizon ("30D"|"60D"|"90D"), title (<=35 chars), consequence (<=140 chars), consultantAction (<=110 chars), kpiMetric (<=45 chars).`;
 
   try {
     if (chosenEngine === 'OLLAMA') {

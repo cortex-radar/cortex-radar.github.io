@@ -207,7 +207,7 @@ export interface UpstreamFeedHealth {
 }
 
 export interface BlastOrderConsequence {
-  horizon: '30D' | '60D' | '90D';
+  horizon: '30D' | '60D' | '90D' | 'NEXT';
   orderLabel: string;
   title: string;
   targetSector: SectorId;
@@ -215,6 +215,20 @@ export interface BlastOrderConsequence {
   consultantAction: string;
   kpiMetric: string;
 }
+
+export interface VerifiedSourceMetric {
+  value: string;
+  label: string;
+  quote: string;
+  context?: string;
+}
+
+export type EvidenceScope =
+  | 'single_user_experiment'
+  | 'software_release'
+  | 'research_paper'
+  | 'market_or_policy'
+  | 'enterprise_launch';
 
 export interface SectorMeta {
   id: SectorId;
@@ -438,6 +452,8 @@ export interface SpatialSignal {
   networkFamilies?: string[];
   supportingSources?: SupportingSourceLink[];
   lastUpdatedAtMs?: number;
+  updatedAtMs?: number;
+  firstSeenAtMs?: number;
   canonicalEntity?: string;
   isSupernova?: boolean;
   supernovaLevel?: number; // 0 = normal, 1 = 2-network Supernova, 2 = 3+ network DEFCON Supernova
@@ -445,6 +461,8 @@ export interface SpatialSignal {
   mediaItems?: MediaAttachment[];
   streetQuotes?: StreetQuote[];
   codeSnippet?: string;
+  verifiedMetrics?: VerifiedSourceMetric[];
+  evidenceScope?: EvidenceScope;
   engagementVelocity?: {
     likesOrUps: number;
     commentsOrReplies: number;

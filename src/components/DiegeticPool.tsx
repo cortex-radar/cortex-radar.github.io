@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Activity,
-  ArrowLeft,
   BookOpen,
   Check,
   ChevronLeft,
@@ -35,7 +34,10 @@ import {
 } from '../../shared/literacyEngine';
 import {
   analyzeClusterCoverage,
+  classifyEvidenceScope,
+  extractSourceVerifiedMetrics,
   getSignalReleaseMetadata,
+  isEvaluationQualityStudy,
   isNonToolNewsOrMarketSignal,
   isReleaseWithoutNotes,
 } from '../../shared/provenance';
@@ -53,6 +55,7 @@ import {
   SpatialSignal,
   StreetQuote,
   SynthesisEngineId,
+  VerifiedSourceMetric,
 } from '../../shared/types';
 import { cockpitAudio } from '../utils/cockpitAudio';
 import { buildCortexDeepLinkUrl } from '../utils/deepLink';
@@ -134,7 +137,7 @@ interface DiegeticPoolProps {
   signals: SpatialSignal[];
   standupFusion: StandupFusionState | null;
   blastSatellites: BlastSatellite[];
-  blastHorizons: [BlastOrderConsequence, BlastOrderConsequence, BlastOrderConsequence] | null;
+  blastHorizons: BlastOrderConsequence[] | null;
   geminiApiKey: string;
   activeSynthesisEngine: SynthesisEngineId;
   userLockedRules?: boolean;
@@ -403,62 +406,6 @@ function formatCleanSignalTitle(sig: SpatialSignal, maxChars = 62): string {
   return `${cleaned.slice(0, maxChars - 1).replace(/\s+\S*$/, '')}…`;
 }
 
-interface VerifiedPostMetric {
-  label: string;
-  valueText: string;
-  barPct: number;
-}
-
-/**
- * Extracts ONLY real quantitative figures explicitly stated in the signal text (zero synthetic fallback numbers).
- */
-function extractVerifiedPostMetrics(sig: SpatialSignal): VerifiedPostMetric[] {
-  const text = `${sig.title} ${sig.rawAbstract}`;
-  const found: VerifiedPostMetric[] = [];
-
-  const tokMatch = text.match(/\b(\d{2,4}(?:\.\d+)?)\s*(?:tok\/s|t\/s|tokens\/s)\b/i);
-  if (tokMatch) {
-    const val = Number(tokMatch[1]);
-    found.push({
-      label: 'Measured Throughput',
-      valueText: `${tokMatch[1]} tok/s`,
-      barPct: Math.max(18, Math.min(100, Math.round((val / 350) * 100))),
-    });
-  }
-
-  const ttftMatch = text.match(/\b(\d{1,4}(?:\.\d+)?)\s*ms\b/i);
-  if (ttftMatch) {
-    const ms = Number(ttftMatch[1]);
-    found.push({
-      label: 'Reported Latency',
-      valueText: `${ttftMatch[1]} ms`,
-      barPct: Math.max(18, Math.min(100, Math.round(Math.max(15, 100 - ms / 8)))),
-    });
-  }
-
-  const pctMatch = text.match(/\b(\d{1,3}(?:\.\d+)?)%\s*(verified|reduction|faster|cheaper|claims|cut|drop|accuracy|beat)/i);
-  if (pctMatch) {
-    const pct = Number(pctMatch[1]);
-    found.push({
-      label: `Reported Delta (${pctMatch[2].toLowerCase()})`,
-      valueText: `${pctMatch[1]}%`,
-      barPct: Math.max(15, Math.min(100, Math.round(pct))),
-    });
-  }
-
-  const vramMatch = text.match(/\b(\d{1,3})\s*GB\s*VRAM\b/i);
-  if (vramMatch) {
-    const gb = Number(vramMatch[1]);
-    found.push({
-      label: 'VRAM Footprint',
-      valueText: `${vramMatch[1]} GB VRAM`,
-      barPct: Math.max(18, Math.min(100, Math.round((gb / 80) * 100))),
-    });
-  }
-
-  return found.slice(0, 3);
-}
-
 const THIRD_PARTY_SOURCE_DISCLAIMER =
   'Headlines and summaries reflect linked third-party sources; open upstream links directly to inspect primary claims.';
 
@@ -573,6 +520,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
   const [battlecardBriefLevel, setBattlecardBriefLevel] =
     useState<LiteracyLevel>(globalLiteracyLevel);
   const [activeGlossaryTerm, setActiveGlossaryTerm] = useState<GlossaryTerm | null>(null);
+  const [activeVerifiedMetric, setActiveVerifiedMetric] = useState<VerifiedSourceMetric | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [linkCopiedId, setLinkCopiedId] = useState<string | null>(null);
   const [shareMenuOpen, setShareMenuOpen] = useState(false);
@@ -657,9 +605,10 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
     setBattlecardBriefLevel(globalLiteracyLevel);
   }, [battlecardPair?.nodeAIndex, battlecardPair?.nodeBIndex, globalLiteracyLevel]);
 
-  // Reset active glossary tooltip & share menu when switching focused signal
+  // Reset active glossary tooltip, verified metric & share menu when switching focused signal
   useEffect(() => {
     setActiveGlossaryTerm(null);
+    setActiveVerifiedMetric(null);
     setShowCrossfire(false);
     setShareMenuOpen(false);
     setLightboxMedia(null);
@@ -696,9 +645,11 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
     setTimeout(() => setCopiedId((prev) => (prev === key ? null : prev)), 1800);
   };
 
-  // Auto-upgrade 30/60/90d Blast-Radius via active Tri-Engine (Ollama or Gemini 2.5 Flash)
+  // Auto-upgrade 30/60/90d Blast-Radius via active Tri-Engine (only for enterprise launches)
   useEffect(() => {
-    if (isStaticPublicMode || !blastHorizons || !focusedSignal) return;
+    if (isStaticPublicMode || !blastHorizons || blastHorizons.length < 3 || !focusedSignal) return;
+    const signalScope = focusedSignal.evidenceScope || classifyEvidenceScope(focusedSignal);
+    if (signalScope !== 'enterprise_launch') return;
     const canRunOllama = activeSynthesisEngine === 'OLLAMA' && ollamaOnline;
     const canRunGemini = activeSynthesisEngine === 'GEMINI' && Boolean(geminiApiKey);
     if (!canRunOllama && !canRunGemini) return;
@@ -719,6 +670,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
             clientIndustry: clientMeta.label,
             signalTitle: focusedSignal.title,
             signalSummary: focusedSignal.rawAbstract,
+            signalScope,
           }),
         });
         if (!res.ok || cancelled) return;
@@ -737,7 +689,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
             modelUsed: json.modelUsed,
           });
         }
-        if (Array.isArray(json.horizons) && json.horizons.length >= 3 && !cancelled) {
+        if (Array.isArray(json.horizons) && json.horizons.length >= 1 && !cancelled) {
           setGeminiBlastCache((prev) => ({ ...prev, [cacheKey]: json.horizons! }));
         }
       } catch {
@@ -1167,6 +1119,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
             effectiveSignal.rawAbstract,
             effectiveSignal.engagementVelocity
           );
+          const isEvalStudy = isEvaluationQualityStudy(effectiveSignal);
           const isModelOrLabRelease =
             isAuthenticModelEntity(effectiveSignal) || effectiveSignal.source === 'LabRelease';
           const isCommunityExperiment =
@@ -1176,14 +1129,18 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
             effectiveSignal.source === 'Discord';
           const isResearchPaper =
             effectiveSignal.source === 'arXiv' || effectiveSignal.source === 'HuggingFace';
-          const l5HeaderPrimary = isModelOrLabRelease
+          const l5HeaderPrimary = isEvalStudy
+            ? 'Evaluation Methodology'
+            : isModelOrLabRelease
             ? 'Architecture & Weights'
             : isCommunityExperiment
             ? 'Experiment & Method'
             : isResearchPaper
             ? 'Methodology & Formulation'
             : 'System Design & Implementation';
-          const l5HeaderSecondary = isModelOrLabRelease
+          const l5HeaderSecondary = isEvalStudy
+            ? 'Grading Criteria & Limits'
+            : isModelOrLabRelease
             ? 'Specs, Latency & Caveats'
             : isCommunityExperiment
             ? 'Observed Failure Mode & Limits'
@@ -1212,7 +1169,12 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
           const validMedia = candidateMedia.filter((m) => !brokenMediaUrls[m.url]);
           const primaryHeaderMedia = validMedia[0] || null;
 
-          const verifiedMetrics = extractVerifiedPostMetrics(focusedSignal);
+          const verifiedMetrics: VerifiedSourceMetric[] =
+            effectiveSignal.verifiedMetrics && effectiveSignal.verifiedMetrics.length > 0
+              ? effectiveSignal.verifiedMetrics
+              : extractSourceVerifiedMetrics(effectiveSignal);
+          const blastScope = effectiveSignal.evidenceScope || classifyEvidenceScope(effectiveSignal);
+          const isFullEnterpriseBlast = blastScope === 'enterprise_launch';
           const distinctQuoteNets = Array.from(new Set(quotes.map((q) => q.network)));
           const hasRealCrossPlatformQuotes =
             !focusedSignal.isDemoSeed && distinctQuoteNets.length >= 2;
@@ -1354,46 +1316,31 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 </div>
 
                 <div className="flex items-center gap-1 shrink-0">
-                  {isMobileViewport && viewMode === 'FEED' ? (
+                  {viewMode === 'FEED' && onSwitchToRadar && (
                     <button
                       type="button"
-                      onPointerDown={(e) => e.stopPropagation()}
-                      onTouchStart={(e) => e.stopPropagation()}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        onCloseFocused();
-                      }}
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md bg-teal-500/18 hover:bg-teal-500/28 border border-teal-400/45 font-mono text-[10.5px] font-semibold text-teal-100 cursor-pointer transition-colors min-h-[36px]"
+                      onClick={onSwitchToRadar}
+                      aria-label="Locate this signal on 3D Radar"
+                      title="Locate this orb on 3D Radar"
+                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-teal-500/14 hover:bg-teal-500/24 border border-teal-400/35 font-mono text-[10px] text-teal-200 cursor-pointer transition-colors ${
+                        isMobileViewport ? 'min-h-[38px]' : ''
+                      }`}
                     >
-                      <ArrowLeft className="w-3 h-3 shrink-0" />
-                      <span>Back to results</span>
+                      <Orbit className="w-3 h-3" />
+                      <span>Radar</span>
                     </button>
-                  ) : (
-                    <>
-                      {viewMode === 'FEED' && onSwitchToRadar && (
-                        <button
-                          type="button"
-                          onClick={onSwitchToRadar}
-                          title="Locate this orb on 3D Radar"
-                          className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-teal-500/14 hover:bg-teal-500/24 border border-teal-400/35 font-mono text-[10px] text-teal-200 cursor-pointer transition-colors"
-                        >
-                          <Orbit className="w-3 h-3" />
-                          <span>Radar</span>
-                        </button>
-                      )}
-                      <button
-                        type="button"
-                        onClick={onCloseFocused}
-                        className={`rounded-md hover:bg-zinc-800/80 text-zinc-400 hover:text-zinc-100 cursor-pointer shrink-0 flex items-center justify-center ${
-                          isMobileViewport ? 'min-h-[44px] min-w-[44px] -mr-2' : 'p-1'
-                        }`}
-                        title="Close Reader (Esc)"
-                      >
-                        <X className={isMobileViewport ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
-                      </button>
-                    </>
                   )}
+                  <button
+                    type="button"
+                    onClick={onCloseFocused}
+                    aria-label="Close signal reader"
+                    className={`rounded-md hover:bg-zinc-800/80 text-zinc-400 hover:text-zinc-100 cursor-pointer shrink-0 flex items-center justify-center ${
+                      isMobileViewport ? 'min-h-[44px] min-w-[44px] -mr-2' : 'p-1'
+                    }`}
+                    title="Close Reader (Esc)"
+                  >
+                    <X className={isMobileViewport ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
+                  </button>
                 </div>
               </div>
 
@@ -1878,36 +1825,94 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
               </div>
 
               {/* =============================================================== */}
-              {/* 2. REPORTED POST METRICS & DIVERGENCE (Tucked into L4-L5 Only!) */}
+              {/* 2. SOURCE-BACKED VERIFIED METRICS (Interactive Tap-to-Verify)   */}
               {/* =============================================================== */}
-              {!showCrossfire && activeLevel >= 4 && verifiedMetrics.length > 0 && (
+              {!showCrossfire && !noReleaseNotes && verifiedMetrics.length > 0 && (
                 <div className="cockpit-well rounded-lg p-2.5 space-y-2 font-mono text-[10px] tabular-nums">
                   <div className="flex items-center justify-between gap-2 text-[9.5px] uppercase tracking-wider text-zinc-400">
-                    <span title={THIRD_PARTY_SOURCE_DISCLAIMER}>Extracted Post Telemetry</span>
+                    <span title={THIRD_PARTY_SOURCE_DISCLAIMER}>
+                      Source-Backed Metrics · Tap to Verify
+                    </span>
                     {hasRealCrossPlatformQuotes && (
                       <span title={THIRD_PARTY_SOURCE_DISCLAIMER} className="text-teal-300 shrink-0">
                         Multi-Source · {distinctQuoteNets.join(' + ')}
                       </span>
                     )}
                   </div>
-                  <div className="space-y-1.5">
-                    {verifiedMetrics.map((vm) => (
-                      <div key={vm.label} className="space-y-1">
-                        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-                          <span className="text-zinc-300 truncate">{vm.label}</span>
-                          <span className="text-teal-300 font-semibold shrink-0 whitespace-nowrap">
-                            {vm.valueText}
+                  <div className="flex flex-wrap gap-1.5">
+                    {verifiedMetrics.map((vm, idx) => {
+                      const isSelectedPill =
+                        activeVerifiedMetric?.value === vm.value &&
+                        activeVerifiedMetric?.label === vm.label;
+                      return (
+                        <button
+                          key={`${vm.value}-${vm.label}-${idx}`}
+                          type="button"
+                          onClick={() =>
+                            setActiveVerifiedMetric((prev) =>
+                              prev?.value === vm.value && prev?.label === vm.label ? null : vm
+                            )
+                          }
+                          aria-expanded={isSelectedPill}
+                          aria-label={`Verify metric ${vm.value} ${vm.label} in source passage`}
+                          title="Tap to inspect the exact verbatim source passage"
+                          className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md border text-left transition-colors cursor-pointer ${
+                            isMobileViewport ? 'min-h-[36px]' : 'min-h-[28px]'
+                          } ${
+                            isSelectedPill
+                              ? 'bg-teal-500/20 border-teal-400/70 text-teal-100'
+                              : 'bg-zinc-900/90 border-white/12 text-zinc-200 hover:border-teal-400/45 hover:text-teal-100'
+                          }`}
+                        >
+                          <span className="text-teal-300 font-semibold whitespace-nowrap">
+                            {vm.value}
                           </span>
-                        </div>
-                        <div className="h-1.5 w-full rounded-full bg-zinc-900 overflow-hidden">
-                          <div
-                            style={{ width: `${vm.barPct}%` }}
-                            className="h-full rounded-full bg-teal-400"
-                          />
-                        </div>
-                      </div>
-                    ))}
+                          <span className="text-zinc-400 text-[9.5px] truncate max-w-[175px]">
+                            {vm.label}
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
+                  {activeVerifiedMetric && (
+                    <div
+                      role="region"
+                      aria-label="Verified Source Passage"
+                      className="rounded-md bg-zinc-950/85 border border-teal-400/35 p-2 space-y-1.5"
+                    >
+                      <div className="flex items-center justify-between gap-2 text-[9.5px] text-teal-300">
+                        <span className="font-semibold truncate">
+                          Verbatim Passage · {activeVerifiedMetric.label}
+                        </span>
+                        {activeVerifiedMetric.context && (
+                          <span className="text-zinc-400 truncate max-w-[160px]">
+                            {activeVerifiedMetric.context}
+                          </span>
+                        )}
+                      </div>
+                      <blockquote className="font-sans text-[11.5px] text-zinc-200 leading-[1.45] border-l-2 border-teal-400/50 pl-2">
+                        &ldquo;{activeVerifiedMetric.quote}&rdquo;
+                      </blockquote>
+                      <div className="flex items-center justify-between gap-2 pt-0.5">
+                        <a
+                          href={focusedSignal.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1 text-[10px] text-teal-300 hover:text-teal-200 underline underline-offset-2"
+                        >
+                          <span>Verify in Original Source</span>
+                          <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => setActiveVerifiedMetric(null)}
+                          className="text-[9.5px] text-zinc-400 hover:text-zinc-200 cursor-pointer"
+                        >
+                          Dismiss
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -1970,12 +1975,21 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 </div>
               )}
 
-              {/* Action Footer: 30/60/90d Blast-Radius + Copy Memo + Single-Call 5-Level Brain */}
+              {/* Action Footer: Proportionate Next-Step / Blast-Radius + Copy Memo + Share */}
               <div className="pt-2 border-t border-white/8 flex flex-wrap items-center justify-between gap-1.5">
                 <InstrumentButton
                   size="xs"
                   variant={blastHorizons ? 'danger' : 'accent'}
                   className={isMobileViewport ? 'min-h-[44px] px-3' : ''}
+                  aria-label={
+                    blastHorizons
+                      ? isFullEnterpriseBlast
+                        ? 'Clear 30/60/90d Blast'
+                        : 'Hide Practical Next Step'
+                      : isFullEnterpriseBlast
+                      ? 'Show 30/60/90d Blast'
+                      : 'Show Practical Next Step'
+                  }
                   onClick={() => {
                     if (blastHorizons) {
                       onClearBlastRadiusWave();
@@ -1985,7 +1999,15 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                   }}
                 >
                   <Orbit className="w-3 h-3" />
-                  <span>{blastHorizons ? 'Clear 30/60/90d' : '30/60/90d Blast'}</span>
+                  <span>
+                    {blastHorizons
+                      ? isFullEnterpriseBlast
+                        ? 'Clear 30/60/90d'
+                        : 'Hide Next Step'
+                      : isFullEnterpriseBlast
+                      ? '30/60/90d Blast'
+                      : 'Practical Next Step'}
+                  </span>
                 </InstrumentButton>
 
                 <div className="flex flex-wrap items-center gap-1.5">
@@ -2141,6 +2163,45 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                   )}
                 </div>
               </div>
+
+              {(viewMode === 'FEED' || isMobileViewport) && blastHorizons && blastHorizons.length > 0 && (
+                <div className="pt-2 border-t border-white/8 space-y-2">
+                  {blastHorizons.map((horizon, idx) => {
+                    const sec = SECTOR_BY_ID[horizon.targetSector];
+                    return (
+                      <div
+                        key={`${horizon.horizon}-${idx}`}
+                        className="cockpit-well rounded-lg p-2.5 space-y-1.5 border border-teal-400/25"
+                      >
+                        <div className="flex items-center justify-between gap-2 font-mono text-[9.5px] tabular-nums">
+                          <span className="inline-flex items-center gap-1.5 font-semibold text-zinc-200">
+                            <span
+                              style={{ backgroundColor: sec.colorHex }}
+                              className="h-1.5 w-1.5 rounded-full"
+                            />
+                            <span>{horizon.orderLabel}</span>
+                          </span>
+                          <span className="px-1.5 py-0.2 rounded bg-zinc-900 border border-white/10 text-zinc-300">
+                            {sec.code}
+                          </span>
+                        </div>
+                        <div className="cockpit-heading text-xs font-semibold text-zinc-100">
+                          {horizon.title}
+                        </div>
+                        <p className="text-[11px] text-zinc-300 leading-[1.45]">
+                          {horizon.consequence}
+                        </p>
+                        <div className="pt-1.5 border-t border-white/8 text-[10px] font-mono text-teal-300 leading-snug">
+                          {horizon.consultantAction}
+                        </div>
+                        <div className="text-[9.5px] font-mono text-zinc-400 tabular-nums">
+                          {horizon.kpiMetric}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           );
         })()}
@@ -2830,10 +2891,11 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
         const geminiKey = focusedSignal
           ? `${focusedSignal.id}-${activeClient}-${activeSynthesisEngine}`
           : '';
-        const geminiOverride = geminiKey ? geminiBlastCache[geminiKey]?.[satSlot] : undefined;
+        const geminiOverride =
+          horizon && geminiKey ? geminiBlastCache[geminiKey]?.[satSlot] : undefined;
 
-        const sat = !horizon ? blastSatellites[satSlot] : null;
-        const visible = viewMode === 'RADAR' && Boolean(horizon || sat);
+        const sat = !blastHorizons ? blastSatellites[satSlot] : null;
+        const visible = viewMode === 'RADAR' && (!horizon || !isMobileViewport) && Boolean(horizon || sat);
 
         return (
           <div

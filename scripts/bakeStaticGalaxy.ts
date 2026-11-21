@@ -23,13 +23,18 @@ import {
 } from '../shared/seed72h';
 import {
   buildSupportingSourceEntry,
+  classifyEvidenceScope,
   extractBenchmarkClaimSpec,
+  extractFrozenEntities,
+  extractSourceVerifiedMetrics,
   getSignalReleaseMetadata,
   hasTechnicalEngineeringContent,
+  isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
   isNonToolNewsOrMarketSignal,
   isPrimarySourceSignal,
   isReleaseWithoutNotes,
+  isUpstreamUpdatedSignal,
   normalizeProvenanceUrl,
   parseGitHubReleaseMetadata,
   sanitizeReleaseNotesText,
@@ -64,6 +69,8 @@ const TOP_PRIMARY_AGE_MS = 48 * 3_600_000;
 const TOP_FALLBACK_AGE_MS = 72 * 3_600_000;
 const MAX_FUTURE_SKEW_MS = 3_600_000;
 
+const MAX_UPDATED_PUBLISH_WINDOW_MS = 30 * 24 * 3_600_000;
+
 function isWithinFreshnessWindow(
   publishedAtMs: number | undefined,
   nowMs: number,
@@ -76,6 +83,25 @@ function isWithinFreshnessWindow(
   return ageMs >= -MAX_FUTURE_SKEW_MS && ageMs <= maxAgeMs;
 }
 
+function isSignalFreshOrRecentlyUpdated(
+  item: { publishedAtMs?: number; updatedAtMs?: number },
+  nowMs: number
+): boolean {
+  if (isWithinFreshnessWindow(item.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)) {
+    return true;
+  }
+  if (
+    typeof item.publishedAtMs === 'number' &&
+    typeof item.updatedAtMs === 'number' &&
+    isUpstreamUpdatedSignal({ publishedAtMs: item.publishedAtMs, updatedAtMs: item.updatedAtMs }) &&
+    isWithinFreshnessWindow(item.updatedAtMs, nowMs, TOP_PRIMARY_AGE_MS) &&
+    isWithinFreshnessWindow(item.publishedAtMs, nowMs, MAX_UPDATED_PUBLISH_WINDOW_MS)
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function escapeXml(input: string): string {
   return (input || '')
     .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, '')
@@ -86,17 +112,17 @@ function escapeXml(input: string): string {
     .replace(/'/g, '&apos;');
 }
 
-function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): string {
+export function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): string {
   const nonSeed = signals.filter(
     (s) =>
       !s.isDemoSeed &&
       s.sourceCategory !== 'DEMO_SEED' &&
-      isWithinFreshnessWindow(s.publishedAtMs, bakedAtMs, MAX_GALAXY_AGE_MS)
+      isSignalFreshOrRecentlyUpdated(s, bakedAtMs)
   );
   const pool =
     nonSeed.length > 0
       ? nonSeed
-      : signals.filter((s) => isWithinFreshnessWindow(s.publishedAtMs, bakedAtMs, MAX_GALAXY_AGE_MS));
+      : signals.filter((s) => isSignalFreshOrRecentlyUpdated(s, bakedAtMs));
   const fresh72 = pool.filter((s) => isWithinFreshnessWindow(s.publishedAtMs, bakedAtMs, TOP_FALLBACK_AGE_MS));
   const orderedPool = fresh72.length >= 10 ? fresh72 : pool;
   const top25 = [...orderedPool]
@@ -105,10 +131,23 @@ function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): string {
 
   const itemsXml = top25
     .map((sig) => {
-      const headline = stripHtmlMarkupAndEntities(getCleanDisplayHeadline(sig, 2));
+      const relMeta = getSignalReleaseMetadata(sig);
+      const rawHeadline = relMeta
+        ? `${relMeta.displayTitle}${relMeta.isPreRelease ? ` · ${relMeta.stabilityLabel}` : ''}`
+        : stripHtmlMarkupAndEntities(getCleanDisplayHeadline(sig, 2));
+      const frozen = extractFrozenEntities(sig);
+      // Ensure model identifiers in sig.title are never dropped from RSS <title>
+      const headline =
+        frozen.some((ent) => sig.title.includes(ent) && !rawHeadline.toLowerCase().includes(ent.toLowerCase()))
+          ? stripHtmlMarkupAndEntities(sig.title)
+          : rawHeadline;
       const deepLink = `${SITE_BASE_URL}?orb=${encodeURIComponent(sig.id)}&lens=2`;
-      const lit = sanitizeLiteracyPayloadPlainLevels(
-        sig.literacy || buildDeterministicLiteracyPayload(sig, 'BANKING')
+      const lit = enforceEpistemicAndDomainFidelity(
+        sig,
+        sanitizeLiteracyPayloadPlainLevels(
+          sig.literacy || buildDeterministicLiteracyPayload(sig, 'BANKING')
+        ),
+        'BANKING'
       );
       const l2Text = stripHtmlMarkupAndEntities(
         [lit.levels[2]?.whatHappened, lit.levels[2]?.problemSolved]
@@ -118,7 +157,7 @@ function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): string {
       );
       const sourceLabel = sig.originFeedName || sig.source || 'CORTEX Radar';
       const sectorName = SECTOR_BY_ID[sig.primarySector]?.name || sig.primarySector;
-      const desc = `${l2Text || headline}${sig.url ? ` — Upstream (${sourceLabel}): ${sig.url}` : ''}`;
+      const desc = `${l2Text || headline} — Upstream (${sourceLabel})${sig.url ? `: ${sig.url}` : ''}`;
       const pubDate = new Date(sig.publishedAtMs || bakedAtMs).toUTCString();
 
       return [
@@ -155,7 +194,7 @@ function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): string {
 
 const GITHUB_MODELS_ENDPOINT = 'https://models.inference.ai.azure.com/chat/completions';
 const GITHUB_MODELS_MODEL = process.env.GITHUB_MODELS_MODEL || 'gpt-4o-mini';
-const LITERACY_SCHEMA_VERSION = 'v2.2.1';
+const LITERACY_SCHEMA_VERSION = 'v2.3';
 
 function normalizeBakeUrl(url: string): string {
   return (url || '').trim().toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
@@ -319,6 +358,21 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
   const benchmarkConstraintLine = benchClaim
     ? `BENCHMARK LOCK REQUIRED ACROSS ALL 5 LENSES: Any reference to "${benchClaim.multiplier}" MUST retain ALL three: metric "${benchClaim.metric}", exact comparison baseline "${benchClaim.baseline}", and source attribution "${benchClaim.attribution}". Never broaden to "modern CPUs" or write unqualified "${benchClaim.multiplier} better".`
     : '';
+  const frozenEntities = extractFrozenEntities(sig);
+  const scope = classifyEvidenceScope(sig);
+  const isEvalStudy = isEvaluationQualityStudy(sig);
+  const entityUnitQuoteLine = [
+    'UNIT, ENTITY & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve technical units verbatim ("tokens per second", NEVER "words per second"), and ONLY put double quotes around exact substrings present in Primary Headline or Body above.',
+    frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
+    isEvalStudy
+      ? 'EVALUATION METHODOLOGY FRAMING: Source evaluates citation/retrieval/grading quality rather than inference speed; frame Level 5 around evaluation methodology and reported scores instead of latency/throughput.'
+      : '',
+    scope === 'single_user_experiment'
+      ? 'PROPORTIONATE SCOPE: Individual/local experiment — do NOT extrapolate into enterprise banking routing, audited gateways, or 3x token spend in Level 4.'
+      : '',
+  ]
+    .filter(Boolean)
+    .join('\n');
 
   return `You are a Principal AI Technical Writer & Architecture Strategist translating this source-linked signal into a rich, insightful 5-level literacy JSON object for an enterprise engineering & executive audience.
 
@@ -336,7 +390,7 @@ ${
     domainConstraintLine ? `${domainConstraintLine}\n` : ''
   }${epistemicConstraintLine ? `${epistemicConstraintLine}\n` : ''}${
     releaseConstraintLine ? `${releaseConstraintLine}\n` : ''
-  }${benchmarkConstraintLine ? `${benchmarkConstraintLine}\n` : ''}
+  }${benchmarkConstraintLine ? `${benchmarkConstraintLine}\n` : ''}${entityUnitQuoteLine}\n
 STRICT RULES:
 1. PRIMARY & EPISTEMIC ALIGNMENT: Anchor plainTitle, plainFullTitle, and levels["2"].whatHappened strictly on the Primary Headline & Primary Post Body above. Preserve uncertainty markers (may, claims, reportedly, unverified) across ALL 5 lenses and never invent technical specs on non-engineering business/IPO/policy/social posts.
 2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (kitchen prep line, library desk, post office sorting room, hospital chart clipboard, or highway lane). Zero technical acronyms in Level 1.
@@ -614,9 +668,15 @@ function mergeSignalClusterTarget(
     clusterTarget.architectBrief = synthesized.architectBrief;
     clusterTarget.cSuiteBrief = synthesized.cSuiteBrief;
     clusterTarget.affectedEnterpriseStacks = synthesized.affectedEnterpriseStacks;
-    if (synthesized.modelSpecs) {
-      clusterTarget.modelSpecs = synthesized.modelSpecs;
+    clusterTarget.modelSpecs = undefined;
+    if (synthesized.updatedAtMs) {
+      clusterTarget.updatedAtMs = synthesized.updatedAtMs;
     }
+  } else if (
+    synthesized.updatedAtMs &&
+    (!clusterTarget.updatedAtMs || synthesized.updatedAtMs > clusterTarget.updatedAtMs)
+  ) {
+    clusterTarget.updatedAtMs = synthesized.updatedAtMs;
   }
 
   // Track latest update timestamp separately from primary/original publish time
@@ -714,11 +774,11 @@ function clusterAndBuildSpatialSignals(
 
   for (const raw of rawItems) {
     if (!raw?.title || !raw?.url) continue;
-    if (!isWithinFreshnessWindow(raw.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)) continue;
+    if (!isSignalFreshOrRecentlyUpdated(raw, nowMs)) continue;
     const normUrl = normalizeBakeUrl(raw.url);
     const synthesized = synthesizeRawItemToSpatialSignal(raw, true);
     synthesized.supportingSources = [buildSupportingSourceEntry(synthesized)];
-    synthesized.lastUpdatedAtMs = synthesized.publishedAtMs;
+    synthesized.lastUpdatedAtMs = synthesized.updatedAtMs || synthesized.publishedAtMs;
 
     const exactUrlHit = urlMap.get(normUrl);
     if (exactUrlHit) {
@@ -755,9 +815,7 @@ function selectBalancedSnapshotSignals(
   maxTotal: number = 64,
   maxXCount: number = 12
 ): SpatialSignal[] {
-  const freshOnly = sortedSignals.filter((s) =>
-    isWithinFreshnessWindow(s.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)
-  );
+  const freshOnly = sortedSignals.filter((s) => isSignalFreshOrRecentlyUpdated(s, nowMs));
   const rankScore = (s: SpatialSignal): number => {
     const fresh48Boost = isWithinFreshnessWindow(s.publishedAtMs, nowMs, TOP_PRIMARY_AGE_MS) ? 20 : 0;
     return computeSignalMomentumScore(s, nowMs) + fresh48Boost;
@@ -836,9 +894,19 @@ async function main(): Promise<void> {
   }
 
   const bakeNowMs = Date.now();
+  const prevFirstSeenById = new Map<string, number>();
+  const prevFirstSeenByUrl = new Map<string, number>();
+  for (const prev of previousSignals) {
+    const seenTs = prev.firstSeenAtMs || prev.publishedAtMs;
+    if (seenTs > 0) {
+      if (prev.id) prevFirstSeenById.set(prev.id, seenTs);
+      if (prev.url) prevFirstSeenByUrl.set(normalizeBakeUrl(prev.url), seenTs);
+    }
+  }
+
   const totalRawCollected = rawCollected.length;
   const freshRawCollected = rawCollected.filter((item) =>
-    isWithinFreshnessWindow(item.publishedAtMs, bakeNowMs, MAX_GALAXY_AGE_MS)
+    isSignalFreshOrRecentlyUpdated(item, bakeNowMs)
   );
   const droppedStaleRaw = totalRawCollected - freshRawCollected.length;
   if (droppedStaleRaw > 0) {
@@ -1012,13 +1080,21 @@ async function main(): Promise<void> {
     literacyBySignalId[sig.id] = baseDet;
   }
 
-  // Final post-synthesis deduplication (preserving supportingSources), 7d ceiling guard & unique plainFullTitle enforcement
+  // Final post-synthesis deduplication (preserving supportingSources), freshness/updated guard & v2.3 evidence metadata
   const nowMs = Date.now();
   const dedupedFinal: SpatialSignal[] = [];
   const seenByTitleKey = new Map<string, SpatialSignal>();
   const seenPlainKeys = new Set<string>();
   for (const sig of signals) {
-    if (!isWithinFreshnessWindow(sig.publishedAtMs, nowMs, MAX_GALAXY_AGE_MS)) continue;
+    if (!isSignalFreshOrRecentlyUpdated(sig, nowMs)) continue;
+    sig.modelSpecs = undefined;
+    sig.firstSeenAtMs =
+      prevFirstSeenById.get(sig.id) ||
+      prevFirstSeenByUrl.get(normalizeBakeUrl(sig.url)) ||
+      sig.firstSeenAtMs ||
+      bakeNowMs;
+    sig.evidenceScope = classifyEvidenceScope(sig);
+    sig.verifiedMetrics = extractSourceVerifiedMetrics(sig);
     const relMeta = getSignalReleaseMetadata(sig);
     if (relMeta) {
       sig.title = relMeta.displayTitle;
@@ -1081,12 +1157,15 @@ async function main(): Promise<void> {
   }
   signals = dedupedFinal;
 
-  // Enforce clean word-boundary titles and preserve GitHub Release product+prerelease tags on all links
+  // Enforce clean word-boundary titles, remove synthetic modelSpecs, and lock v2.3 metadata after cluster merges
   for (const sig of signals) {
     const relMeta = getSignalReleaseMetadata(sig);
     sig.title = relMeta
       ? relMeta.displayTitle
       : truncateAtWordBoundary(stripHtmlMarkupAndEntities(sig.title || ''), 220);
+    sig.modelSpecs = undefined;
+    sig.evidenceScope = classifyEvidenceScope(sig);
+    sig.verifiedMetrics = extractSourceVerifiedMetrics(sig);
     if (sig.supportingSources) {
       sig.supportingSources = sig.supportingSources.map((s) => {
         const sRel = parseGitHubReleaseMetadata(s.title || '', s.url || '');
@@ -1130,7 +1209,15 @@ async function main(): Promise<void> {
   process.exit(0);
 }
 
-main().catch((err) => {
-  console.error('[CORTEX // BAKE FAILED]', err);
-  process.exit(1);
-});
+const isMainModule =
+  typeof process !== 'undefined' &&
+  Array.isArray(process.argv) &&
+  Boolean(process.argv[1]) &&
+  path.resolve(process.argv[1]).toLowerCase() === path.resolve(__filename).toLowerCase();
+
+if (isMainModule) {
+  main().catch((err) => {
+    console.error('[CORTEX // BAKE FAILED]', err);
+    process.exit(1);
+  });
+}

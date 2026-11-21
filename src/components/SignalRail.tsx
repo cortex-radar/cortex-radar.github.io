@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { Activity, PanelRightClose, PanelRightOpen, Sparkles } from 'lucide-react';
-import { analyzeClusterCoverage } from '../../shared/provenance';
+import {
+  analyzeClusterCoverage,
+  formatUtcTimestamp,
+  isUpstreamUpdatedSignal,
+} from '../../shared/provenance';
 import {
   LiteracyLevel,
   SECTOR_BY_ID,
@@ -110,6 +114,11 @@ export const SignalRail: React.FC<SignalRailProps> = ({
           ) : (
             topSignals.map((item, rankIdx) => {
               const { nodeIndex, signal, isNew } = item;
+              const isUpdated = isUpstreamUpdatedSignal(signal);
+              const publishedUtc = formatUtcTimestamp(signal.publishedAtMs);
+              const updatedUtc = signal.updatedAtMs
+                ? formatUtcTimestamp(signal.updatedAtMs)
+                : publishedUtc;
               const sec = SECTOR_BY_ID[signal.primarySector];
               const isSelected = nodeIndex === selectedNodeIdx;
               const isHovered = nodeIndex === hoveredNodeIdx;
@@ -168,6 +177,14 @@ export const SignalRail: React.FC<SignalRailProps> = ({
                           NEW
                         </span>
                       )}
+                      {!isNew && isUpdated && (
+                        <span
+                          title={`Published ${publishedUtc} · Updated ${updatedUtc}`}
+                          className="px-1 py-0.2 rounded bg-amber-500/15 border border-amber-400/35 text-amber-200 text-[8.5px]"
+                        >
+                          Updated
+                        </span>
+                      )}
                     </div>
 
                     <div className="flex items-center gap-1.5 shrink-0 text-zinc-400">
@@ -177,7 +194,15 @@ export const SignalRail: React.FC<SignalRailProps> = ({
                           className="inline-block h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse"
                         />
                       )}
-                      <span>{ageStr}</span>
+                      <span
+                        title={
+                          isUpdated
+                            ? `Published ${publishedUtc} · Updated ${updatedUtc}`
+                            : `Published ${publishedUtc}`
+                        }
+                      >
+                        {ageStr}
+                      </span>
                     </div>
                   </div>
 

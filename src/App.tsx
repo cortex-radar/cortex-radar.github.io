@@ -7,7 +7,11 @@ import {
   NODE_OFFSET,
 } from '../shared/frameLayout';
 import { buildDeterministicLiteracyPayload } from '../shared/literacyEngine';
-import { matchesSignalSearchQuery } from '../shared/provenance';
+import {
+  isEligibleForNewBadge,
+  isUpstreamUpdatedSignal,
+  matchesSignalSearchQuery,
+} from '../shared/provenance';
 import {
   BlastOrderConsequence,
   ClientIndustry,
@@ -839,7 +843,7 @@ export const App: React.FC = () => {
       if (s.isDemoSeed || s.sourceCategory === 'DEMO_SEED') continue;
       if (mutedSectors.has(s.primarySector)) continue;
       if (s.sourceCategory && !enabledCategories[s.sourceCategory]) continue;
-      if (s.publishedAtMs > baselineTs && !seenNodeIds.has(s.id)) {
+      if (isEligibleForNewBadge(s, baselineTs)) {
         freshSet.add(s.id);
       }
     }
@@ -884,7 +888,14 @@ export const App: React.FC = () => {
       if (!validTs) continue;
 
       const ageMs = nowMs - s.publishedAtMs;
-      if (ageMs < -FUTURE_SKEW_MS || ageMs > GALAXY_MAX_AGE_MS) continue;
+      const RECENT_UPDATE_FEED_WINDOW_MS = 48 * 3_600_000;
+      const MAX_UPDATED_PUBLISH_AGE_MS = 30 * 24 * 3_600_000;
+      const updatedRecently =
+        isUpstreamUpdatedSignal(s) &&
+        typeof s.updatedAtMs === 'number' &&
+        nowMs - s.updatedAtMs <= RECENT_UPDATE_FEED_WINDOW_MS &&
+        ageMs <= MAX_UPDATED_PUBLISH_AGE_MS;
+      if (ageMs < -FUTURE_SKEW_MS || (ageMs > GALAXY_MAX_AGE_MS && !updatedRecently)) continue;
 
       unfilteredCount++;
       const momentumScore = computeSignalMomentumScore(s, nowMs);
@@ -1113,19 +1124,15 @@ export const App: React.FC = () => {
     }
   }, [dismissCoachmarkPermanently, selectedNodeIdx]);
 
-  // Compute 30/60/90-day Blast-Radius Consequence Horizons when Blast Wave is active
-  const blastHorizons:
-    | [BlastOrderConsequence, BlastOrderConsequence, BlastOrderConsequence]
-    | null = useMemo(() => {
+  // Compute proportionate Blast-Radius (1 Practical Next Step or 30/60/90d Horizons)
+  const blastHorizons: BlastOrderConsequence[] | null = useMemo(() => {
     if (blastWaveActiveForNodeIdx < 0 || blastWaveActiveForNodeIdx !== activeFocusIdx || !focusedSignal) {
       return null;
     }
     return computeDeterministicBlastRadius(focusedSignal, activeClient);
   }, [blastWaveActiveForNodeIdx, activeFocusIdx, focusedSignal, activeClient]);
 
-  const blastHorizonsRef = useRef<
-    [BlastOrderConsequence, BlastOrderConsequence, BlastOrderConsequence] | null
-  >(null);
+  const blastHorizonsRef = useRef<BlastOrderConsequence[] | null>(null);
   blastHorizonsRef.current = blastHorizons;
 
   // Compute Blast-Radius Causal Satellites when a node is selected (and 30/60/90d wave is not overriding Slots 3-5)
@@ -1271,6 +1278,10 @@ export const App: React.FC = () => {
           const slotEl = poolSlotRefs.current[3 + s];
           if (!slotEl) continue;
           const hItem = horizons[s];
+          if (!hItem) {
+            slotEl.style.transform = 'translate3d(-9999px, -9999px, 0)';
+            continue;
+          }
           const secIdx = SECTOR_BY_ID[hItem.targetSector].index;
           const attrOff = HEADER_FLOATS + secIdx * ATTRACTOR_STRIDE;
           const ax = toSx(packet[attrOff]);

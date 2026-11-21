@@ -17,6 +17,7 @@ import {
   getEventLastUpdatedMs,
   inferSupportingLinkRole,
   isPrimarySourceSignal,
+  isUpstreamUpdatedSignal,
   parseGitHubReleaseMetadata,
   SupportingLinkRole,
 } from '../../shared/provenance';
@@ -70,6 +71,19 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
 
   const publishedAgo = formatRelativeAgeShort(signal.publishedAtMs, nowMs);
   const publishedUtc = formatUtcTimestamp(signal.publishedAtMs);
+  const showUpstreamUpdated = isUpstreamUpdatedSignal(signal);
+  const upstreamUpdatedAgo =
+    showUpstreamUpdated && signal.updatedAtMs
+      ? formatRelativeAgeShort(signal.updatedAtMs, nowMs)
+      : null;
+  const upstreamUpdatedUtc =
+    showUpstreamUpdated && signal.updatedAtMs
+      ? formatUtcTimestamp(signal.updatedAtMs)
+      : null;
+  const firstSeenTooltip =
+    signal.firstSeenAtMs && Number.isFinite(signal.firstSeenAtMs)
+      ? ` · First seen by CORTEX: ${formatUtcTimestamp(signal.firstSeenAtMs)}`
+      : '';
   const snapshotAgo =
     snapshotBakedAtMs && Number.isFinite(snapshotBakedAtMs)
       ? formatRelativeAgeShort(snapshotBakedAtMs, nowMs)
@@ -123,10 +137,22 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
       <div className="flex flex-col gap-1 text-[9.5px] font-mono tabular-nums text-zinc-400">
         <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-zinc-950/70 border border-white/6 min-w-0">
           <Clock className="w-2.5 h-2.5 text-teal-400 shrink-0" />
-          <span title={`Original publish timestamp: ${publishedUtc}`}>
+          <span title={`Original publish timestamp: ${publishedUtc}${firstSeenTooltip}`}>
             Published <span className="text-zinc-200">{publishedAgo} ago</span> · {publishedUtc}
           </span>
         </div>
+        {upstreamUpdatedAgo && upstreamUpdatedUtc && (
+          <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-amber-500/[0.08] border border-amber-400/25 min-w-0">
+            <Clock className="w-2.5 h-2.5 text-amber-400 shrink-0" />
+            <span
+              className="text-amber-200/90"
+              title={`Upstream release notes/feed updated ${upstreamUpdatedUtc}; original release published ${publishedUtc}${firstSeenTooltip}`}
+            >
+              Updated <span className="text-amber-100 font-semibold">{upstreamUpdatedAgo} ago</span> ·{' '}
+              {upstreamUpdatedUtc}
+            </span>
+          </div>
+        )}
         <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-zinc-950/70 border border-white/6 min-w-0">
           <Clock className="w-2.5 h-2.5 text-zinc-500 shrink-0" />
           <span

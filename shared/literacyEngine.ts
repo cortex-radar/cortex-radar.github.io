@@ -7,30 +7,32 @@ import {
 } from './types';
 import {
   BenchmarkClaimSpec,
+  classifyEvidenceScope,
   extractBenchmarkClaimSpec,
+  extractFrozenEntities,
+  extractSourceVerifiedMetrics,
   getSignalReleaseMetadata,
   hasTechnicalEngineeringContent,
+  isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
   isNonToolNewsOrMarketSignal,
   isReleaseWithoutNotes,
   stripUiChromeBoilerplate,
+  truncateAtWordBoundary,
 } from './provenance';
 
 export const NO_RELEASE_NOTES_NOTICE = 'No release notes extracted — see linked release';
 
 /**
  * Strictly banned technical acronyms & jargon words in Level 1 (Zero-Jargon Everyday Analogy).
+ * Note: Named models (Actuator-7B, Qwen2.5-7B), units (tokens per second), and parameter counts are preserved verbatim.
  */
 export const BANNED_L1_TERMS_REGEX =
-  /\b(llms?|rag|graphrag|kv(?:-cache)?|mcp|vram|apis?|gpus?|tpus?|asics?|fp8|int4|q4_k_m|q8_0|moe|cuda|triton|q?lora|peft|dora|rlhf|grpo|dpo|sft|pkce|rbac|soc2|ttft|tpot|flops?|cfg|ptus?|jwts?|rdma|nixl|bm25|swe-bench|parameters?|tokens?|weights?|quantiz\w*|inference|latenc\w*|subprocessors?|autoregressive|perplexity|ablation)\b/gi;
+  /\b(llms?|rag|graphrag|kv(?:-cache)?|mcp|vram|apis?|gpus?|tpus?|asics?|fp8|int4|q4_k_m|q8_0|moe|cuda|triton|q?lora|peft|dora|rlhf|grpo|dpo|sft|pkce|rbac|soc2|ttft|tpot|flops?|cfg|ptus?|jwts?|rdma|nixl|bm25|swe-bench|quantiz\w*|inference|latenc\w*|subprocessors?|autoregressive|perplexity|ablation)\b/gi;
 
 const JARGON_REPLACEMENTS: Array<[RegExp, string]> = [
-  // Strip raw model checkpoint strings like Qwen3.5-0.8B, LFM2.5-350M, Llama-3.3-70B-Instruct
-  [/\b[A-Za-z]{2,14}\d*(?:\.\d+)?-\d+(?:\.\d+)?[BM](?:-[A-Za-z0-9.]+)*\b/g, 'compact AI model'],
   [/\barxiv:\s*\d{4}\.\d{4,5}(?:v\d+)?\b/gi, 'research study'],
-  [/\btokens?\s+per\s+order\b/gi, 'words processed per step'],
-  [/\b(?:tok\/s|t\/s|tokens\/s)\b/gi, 'words per second'],
-  [/\b\d+(?:\.\d+)?[BM]\s*(?:parameters?|params?)\b/gi, 'compact scale'],
+  [/\b(?:tok\/s|t\/s|tokens\/s)\b/gi, 'tokens per second'],
   [/\bllms?\b/gi, 'AI assistants'],
   [/\bgraphrag\b/gi, 'organized memory lookup'],
   [/\brag\b/gi, 'reference lookup'],
@@ -48,16 +50,14 @@ const JARGON_REPLACEMENTS: Array<[RegExp, string]> = [
   [/\b(?:rlhf|grpo|dpo|ppo|sft)\b/gi, 'guided training'],
   [/\b(?:pkce|rbac|jwts?)\b/gi, 'visitor pass rules'],
   [/\bsoc2\b/gi, 'safety audit'],
-  [/\b(?:ttft|tpot|latenc\w*)\b/gi, 'response wait time'],
+  [/\b(?:ttft|tpot)\b/gi, 'first-response wait time'],
+  [/\blatenc\w*\b/gi, 'response wait time'],
   [/\bflops?\b/gi, 'computing effort'],
   [/\bcfg\b/gi, 'strict checklist'],
   [/\bptus?\b/gi, 'reserved fast lanes'],
   [/\b(?:rdma|nixl)\b/gi, 'express data lanes'],
   [/\bbm25\b/gi, 'keyword search'],
   [/\bswe-bench\b/gi, 'real-world software repair test'],
-  [/\bparameters?\b/gi, 'internal settings'],
-  [/\btokens?\b/gi, 'words'],
-  [/\bweights?\b/gi, 'trained model files'],
   [/\binference\b/gi, 'live answering work'],
   [/\bsubprocessors?\b/gi, 'outside vendors'],
   [/\bautoregressive\b/gi, 'step-by-step'],
@@ -337,8 +337,7 @@ export function enforceZeroJargonL1(input: string): string {
     .replace(/\bai\s+agents?\b/gi, 'digital helpers')
     .replace(/\bagentic\b/gi, 'self-directed')
     .replace(BANNED_L1_TERMS_REGEX, 'digital tools');
-  clean = fixIndefiniteArticles(clean);
-  return clean.replace(/\s{2,}/g, ' ').trim();
+  return fixIndefiniteArticles(clean).replace(/\s{2,}/g, ' ').trim();
 }
 
 /**
@@ -1138,7 +1137,7 @@ function buildDynamicAnalogy(
 }
 
 export function selectRelevantGlossary(sig: SpatialSignal): GlossaryTerm[] {
-  if (!hasTechnicalEngineeringContent(sig)) {
+  if (!hasTechnicalEngineeringContent(sig) && !isEvaluationQualityStudy(sig)) {
     return [];
   }
 
@@ -1288,7 +1287,7 @@ function buildDisjointL5Sections(
     .map((s) => s.trim())
     .filter((s) => s.length >= 24 && /[.!?]["')\]]*$/.test(s));
 
-  if (!hasTechnicalEngineeringContent(sig)) {
+  if (!hasTechnicalEngineeringContent(sig) && !isEvaluationQualityStudy(sig)) {
     const isHedged = isHedgedOrUnverifiedClaim(sig);
     const factualSummary =
       completeSentences.length > 0
@@ -1349,7 +1348,17 @@ function buildDisjointL5Sections(
       : stripTrailingIncompleteClause(cleanHeadline);
 
   let specsAndCaveats = '';
-  if (specSentences.length > 0) {
+  if (isEvaluationQualityStudy(sig)) {
+    const evalMetrics = extractSourceVerifiedMetrics(sig);
+    const evalSummary =
+      evalMetrics.length > 0
+        ? evalMetrics.map((m) => `${m.label}: ${m.value}`).join(' · ')
+        : 'Quality, citation relevance, and grading-criteria evaluation without latency telemetry';
+    specsAndCaveats =
+      specSentences.length > 0
+        ? `${truncateOnSentenceBoundary(specSentences.join(' '), 300)} (${evalSummary}).`
+        : `Evaluation methodology (${sig.originFeedName || sig.source}): ${evalSummary}. Open linked study for full task grading rubric.`;
+  } else if (specSentences.length > 0) {
     specsAndCaveats = truncateOnSentenceBoundary(specSentences.join(' '), 340);
   } else {
     const relMeta = getSignalReleaseMetadata(sig);
@@ -1565,6 +1574,7 @@ export function buildDeterministicLiteracyPayload(
         ? `In stack terms, this connects to ${glossaryMentionList} (${sig.architectBrief.integrationPattern})`
         : `Stack integration: ${sig.architectBrief.integrationPattern}`);
 
+  const scope = classifyEvidenceScope(sig);
   const clientMeta = CLIENT_INDUSTRIES.find((c) => c.id === activeClient) || CLIENT_INDUSTRIES[0];
   const readinessLabel = relMeta
     ? relMeta.isPreRelease
@@ -1574,31 +1584,41 @@ export function buildDeterministicLiteracyPayload(
     ? 'Unverified External Report (wait for independent expert verification)'
     : isNonTool
     ? 'Market & Policy Signal (no software artifact to deploy)'
+    : scope === 'single_user_experiment'
+    ? 'Single-User / Local Hardware Experiment (reproduce locally before team reliance)'
     : sig.readiness === 'GA'
     ? 'Production GA (ready for governed enterprise pilot)'
     : sig.readiness === 'PREVIEW'
     ? 'Public Preview (sandbox & non-critical canary workloads only)'
     : 'R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs)';
 
-  const l4 = !isTechnical
-    ? {
-        roiAndFinOps: isHedged
-          ? `Unverified claim — do not base roadmap, procurement, or budget decisions on unconfirmed reports. ${facts.leadSentence || facts.cleanHeadline}`
-          : `${facts.leadSentence || facts.cleanHeadline} (Operational/market development — no direct token-cost or compute telemetry in source).`,
-        readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Attention under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
-        clientAdvice: isHedged
-          ? `For ${clientMeta.label}: monitor for independent verification before citing or acting on "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}".`
-          : `For ${clientMeta.label}: track vendor, regulatory, and counterparty implications of "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}" with legal and procurement leads.`,
-      }
-    : {
-        roiAndFinOps: facts.quantSentence
-          ? `${facts.quantSentence} (${sig.architectBrief.latencyAndCostNote})`
-          : `${facts.leadSentence || sig.cSuiteBrief.headlineSoWhat} (${sig.architectBrief.latencyAndCostNote})`,
-        readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Risk under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
-        clientAdvice:
-          sig.cSuiteBrief.industryLens[activeClient] ||
-          `For ${clientMeta.label}: validate "${facts.cleanHeadline.slice(0, 68)}" behind an audited gateway with domain evals before broad rollout.`,
-      };
+  const l4 =
+    scope === 'single_user_experiment'
+      ? {
+          roiAndFinOps: `${facts.leadSentence || facts.cleanHeadline} (Individual benchmark/project — no enterprise unit-cost projection).`,
+          readinessAndRisk: `${readinessLabel} · Independent multi-hardware verification not yet established.`,
+          clientAdvice:
+            'If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly.',
+        }
+      : !isTechnical
+      ? {
+          roiAndFinOps: isHedged
+            ? `Unverified claim — do not base roadmap, procurement, or budget decisions on unconfirmed reports. ${facts.leadSentence || facts.cleanHeadline}`
+            : `${facts.leadSentence || facts.cleanHeadline} (Operational/market development — no direct token-cost or compute telemetry in source).`,
+          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Attention under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
+          clientAdvice: isHedged
+            ? `For ${clientMeta.label}: monitor for independent verification before citing or acting on "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}".`
+            : `For ${clientMeta.label}: track vendor, regulatory, and counterparty implications of "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}" with legal and procurement leads.`,
+        }
+      : {
+          roiAndFinOps: facts.quantSentence
+            ? `${facts.quantSentence} (${sig.architectBrief.latencyAndCostNote})`
+            : `${facts.leadSentence || sig.cSuiteBrief.headlineSoWhat} (${sig.architectBrief.latencyAndCostNote})`,
+          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Risk under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
+          clientAdvice:
+            sig.cSuiteBrief.industryLens[activeClient] ||
+            `For ${clientMeta.label}: validate "${facts.cleanHeadline.slice(0, 68)}" behind an audited gateway with domain evals before broad rollout.`,
+        };
 
   const disjointL5 = buildDisjointL5Sections(sig, facts.cleanHeadline);
 
@@ -1807,8 +1827,59 @@ function lockBenchmarkFidelityInText(
   return out;
 }
 
+function normalizeQuoteMatchCorpus(text: string): string {
+  return stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(text || ''))
+    .replace(/[“”„‟]/g, '"')
+    .replace(/[‘’‚‛]/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
 /**
- * Post-synthesis epistemic, non-engineering, UI-chrome, and benchmark-lock fidelity gate
+ * Strips quotation marks around any phrase attributed in prose (`"..."` / `“...”`) that does not
+ * appear verbatim in the upstream signal title, body, or ingested comments.
+ */
+export function enforceVerbatimQuotes(text: string, sourceCorpus: string): string {
+  if (!text) return text;
+  const normCorpus = normalizeQuoteMatchCorpus(sourceCorpus);
+  if (!normCorpus) return text.replace(/[“”"]/g, '');
+
+  const normalizedQuotes = text.replace(/[“”]/g, '"');
+  return normalizedQuotes.replace(/"([^"\n]{6,220})"/g, (full, inner: string) => {
+    const cleanInner = inner.trim();
+    const normInner = normalizeQuoteMatchCorpus(cleanInner);
+    if (!normInner || normInner.length < 6) return full;
+    if (normCorpus.includes(normInner)) {
+      return full;
+    }
+    return cleanInner;
+  });
+}
+
+function preserveEntitiesAndUnits(
+  text: string,
+  frozenEntities: string[],
+  sigTitle: string
+): string {
+  if (!text) return text;
+  let out = text.replace(/\bwords\s+per\s+second\b/gi, 'tokens per second');
+  out = out.replace(/\b(?:tok\/s|t\/s|tokens\/s)\b/gi, 'tokens per second');
+  const primaryName = frozenEntities[0] || stripOriginPrefixFromHeadline(sigTitle);
+  const secondaryName = frozenEntities[1] || primaryName;
+  if (/\bcompact ai model\b/i.test(out)) {
+    out = out.replace(/\b([Aa])\s+compact ai model\b/g, () => primaryName);
+    out = out.replace(/\bcompact ai model\b/gi, primaryName);
+  }
+  if (/\bcompact scale\b/i.test(out)) {
+    out = out.replace(/\b(?:built\s+)?at\s+a\s+compact scale\b/gi, `built on ${secondaryName}`);
+    out = out.replace(/\bcompact scale\b/gi, secondaryName);
+  }
+  return out;
+}
+
+/**
+ * Post-synthesis epistemic, non-engineering, UI-chrome, entity/unit, quote, and benchmark-lock fidelity gate
  * applied to BOTH baked LLM payloads and runtime deterministic payloads.
  */
 export function enforceEpistemicAndDomainFidelity(
@@ -1827,7 +1898,16 @@ export function enforceEpistemicAndDomainFidelity(
   const isNonTool = isNonToolNewsOrMarketSignal(sig);
   const relMeta = getSignalReleaseMetadata(sig);
   const bench = extractBenchmarkClaimSpec(sig);
+  const scope = classifyEvidenceScope(sig);
+  const frozenEntities = extractFrozenEntities(sig);
+  const evalMetrics = extractSourceVerifiedMetrics(sig);
+  const isEvalStudy = isEvaluationQualityStudy(sig);
   const sourceHayLower = `${sig.title || ''} ${sig.rawAbstract || ''}`.toLowerCase();
+  const quoteCorpus = [
+    sig.title || '',
+    sig.rawAbstract || '',
+    ...(sig.streetQuotes || []).map((q) => q.text || ''),
+  ].join(' ');
 
   let plainTitle = scrubBoilerplateArtifacts(payload.plainTitle);
   let plainFullTitle = scrubBoilerplateArtifacts(payload.plainFullTitle);
@@ -1854,6 +1934,43 @@ export function enforceEpistemicAndDomainFidelity(
     streetConsensus: scrubBoilerplateArtifacts(payload.levels[5].streetConsensus),
   };
   let glossary = [...(payload.glossary || [])];
+
+  // Gate 0.6: Never flatten frozen model names (Actuator-7B, Qwen2.5-7B) or technical units (tokens per second)
+  plainTitle = preserveEntitiesAndUnits(plainTitle, frozenEntities, sig.title);
+  plainFullTitle = preserveEntitiesAndUnits(plainFullTitle, frozenEntities, sig.title);
+  const titleEntities = extractFrozenEntities({ title: sig.title, rawAbstract: '' });
+  for (const ent of titleEntities) {
+    if (!plainTitle.toLowerCase().includes(ent.toLowerCase())) {
+      const candidate = humanizeDynamicPlainTitle(sig).plainTitle;
+      plainTitle = candidate.toLowerCase().includes(ent.toLowerCase())
+        ? candidate
+        : truncateAtWordBoundary(stripOriginPrefixFromHeadline(sig.title), 72);
+    }
+    if (!plainFullTitle.toLowerCase().includes(ent.toLowerCase())) {
+      const candidateFull = humanizeDynamicPlainTitle(sig).plainFullTitle;
+      plainFullTitle = candidateFull.toLowerCase().includes(ent.toLowerCase())
+        ? candidateFull
+        : truncateAtWordBoundary(stripOriginPrefixFromHeadline(sig.title), 220);
+    }
+  }
+  l1.analogy = preserveEntitiesAndUnits(l1.analogy, frozenEntities, sig.title);
+  l1.everydayWhy = preserveEntitiesAndUnits(l1.everydayWhy, frozenEntities, sig.title);
+  l2.whatHappened = preserveEntitiesAndUnits(l2.whatHappened, frozenEntities, sig.title);
+  l2.whoBuiltIt = preserveEntitiesAndUnits(l2.whoBuiltIt, frozenEntities, sig.title);
+  l2.problemSolved = preserveEntitiesAndUnits(l2.problemSolved, frozenEntities, sig.title);
+  l3.bridgeSummary = preserveEntitiesAndUnits(l3.bridgeSummary, frozenEntities, sig.title);
+  l4.roiAndFinOps = preserveEntitiesAndUnits(l4.roiAndFinOps, frozenEntities, sig.title);
+  l4.readinessAndRisk = preserveEntitiesAndUnits(l4.readinessAndRisk, frozenEntities, sig.title);
+  l4.clientAdvice = preserveEntitiesAndUnits(l4.clientAdvice, frozenEntities, sig.title);
+  l5.architectureBrief = preserveEntitiesAndUnits(l5.architectureBrief, frozenEntities, sig.title);
+  l5.specsAndCaveats = preserveEntitiesAndUnits(l5.specsAndCaveats, frozenEntities, sig.title);
+
+  // Define "token" inside L1 prose if present without altering the unit phrase
+  if (/\btokens?\b/i.test(l1.analogy) && !/token\s*=/i.test(l1.analogy)) {
+    l1.analogy = `${l1.analogy} (token = a unit of text)`;
+  } else if (/\btokens?\b/i.test(l1.everydayWhy) && !/token\s*=/i.test(`${l1.analogy} ${l1.everydayWhy}`)) {
+    l1.everydayWhy = `${l1.everydayWhy} (token = a unit of text)`;
+  }
 
   // 1. Preserve GitHub product + full version tag + prerelease markers (never drop -rc2 / -alpha.1 or show GA)
   if (relMeta) {
@@ -1926,14 +2043,14 @@ export function enforceEpistemicAndDomainFidelity(
   }
 
   // 4. Block fabricated technical specs / fake glossary pills on non-engineering stories
+  const det = skipDeterministicRecursion
+    ? null
+    : buildDeterministicLiteracyPayload(sig, activeClient);
+
   if (!isTechnical) {
     glossary = isNonTool
       ? []
       : glossary.filter((g) => sourceHayLower.includes(g.term.toLowerCase()));
-
-    const det = skipDeterministicRecursion
-      ? null
-      : buildDeterministicLiteracyPayload(sig, activeClient);
 
     if (det && hasUnbackedTechSpecs(l3.bridgeSummary, sourceHayLower)) {
       l3 = { bridgeSummary: det.levels[3].bridgeSummary };
@@ -1956,6 +2073,34 @@ export function enforceEpistemicAndDomainFidelity(
       l5.architectureBrief = l5.architectureBrief
         ? `${noSpecNote} ${l5.architectureBrief}`
         : noSpecNote;
+    }
+  }
+
+  // Gate 4.5: Evaluation-methodology framing (no synthetic latency/TTFT claims on citation/grading studies)
+  if (isEvalStudy && evalMetrics.length > 0 && det) {
+    const hasMetricRef = evalMetrics.some((m) =>
+      l5.specsAndCaveats.toLowerCase().includes(m.value.replace(/^\+/, '').toLowerCase())
+    );
+    if (!hasMetricRef) {
+      l5.specsAndCaveats = det.levels[5].specsAndCaveats;
+    }
+  }
+  if ((sig.streetQuotes || []).length === 0 && /real community engineer replies/i.test(l5.streetConsensus) && det) {
+    l5.streetConsensus = det.levels[5].streetConsensus;
+  }
+
+  // Gate 4.6: Proportionate L4 framing for single-user/local experiments (strip unrelated banking/3x claims)
+  if (scope === 'single_user_experiment' && det) {
+    const inventedEnterprise =
+      /\b(?:financial[- ]services|banking|finserv|threefold|3x|40[–-]65%|audited\s+gateway|soc\s*2|hipaa|finra|basel)\b/i;
+    if (inventedEnterprise.test(l4.roiAndFinOps) && !inventedEnterprise.test(sourceHayLower)) {
+      l4.roiAndFinOps = det.levels[4].roiAndFinOps;
+    }
+    if (inventedEnterprise.test(l4.readinessAndRisk) && !inventedEnterprise.test(sourceHayLower)) {
+      l4.readinessAndRisk = det.levels[4].readinessAndRisk;
+    }
+    if (inventedEnterprise.test(l4.clientAdvice) && !inventedEnterprise.test(sourceHayLower)) {
+      l4.clientAdvice = det.levels[4].clientAdvice;
     }
   }
 
@@ -1986,6 +2131,32 @@ export function enforceEpistemicAndDomainFidelity(
       streetConsensus: scrubBoilerplateArtifacts(l5.streetConsensus),
     };
   }
+
+  // Gate 6: Strict Verbatim Quote Gate across headlines & all 5 lenses
+  plainTitle = enforceVerbatimQuotes(plainTitle, quoteCorpus);
+  plainFullTitle = enforceVerbatimQuotes(plainFullTitle, quoteCorpus);
+  l1 = {
+    analogy: enforceVerbatimQuotes(l1.analogy, quoteCorpus),
+    everydayWhy: enforceVerbatimQuotes(l1.everydayWhy, quoteCorpus),
+  };
+  l2 = {
+    whatHappened: enforceVerbatimQuotes(l2.whatHappened, quoteCorpus),
+    whoBuiltIt: enforceVerbatimQuotes(l2.whoBuiltIt, quoteCorpus),
+    problemSolved: enforceVerbatimQuotes(l2.problemSolved, quoteCorpus),
+  };
+  l3 = {
+    bridgeSummary: enforceVerbatimQuotes(l3.bridgeSummary, quoteCorpus),
+  };
+  l4 = {
+    roiAndFinOps: enforceVerbatimQuotes(l4.roiAndFinOps, quoteCorpus),
+    readinessAndRisk: enforceVerbatimQuotes(l4.readinessAndRisk, quoteCorpus),
+    clientAdvice: enforceVerbatimQuotes(l4.clientAdvice, quoteCorpus),
+  };
+  l5 = {
+    architectureBrief: enforceVerbatimQuotes(l5.architectureBrief, quoteCorpus),
+    specsAndCaveats: enforceVerbatimQuotes(l5.specsAndCaveats, quoteCorpus),
+    streetConsensus: enforceVerbatimQuotes(l5.streetConsensus, quoteCorpus),
+  };
 
   return {
     ...payload,

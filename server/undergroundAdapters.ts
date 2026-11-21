@@ -10,9 +10,12 @@ import {
   stripTrailingIncompleteClause,
 } from '../shared/literacyEngine';
 import {
+  classifyEvidenceScope,
   extractBenchmarkClaimSpec,
+  extractFrozenEntities,
   getSignalReleaseMetadata,
   hasTechnicalEngineeringContent,
+  isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
   isReleaseWithoutNotes,
   stripUiChromeBoilerplate,
@@ -1916,6 +1919,9 @@ export async function runTriEngineLiteracySpectrum(params: {
   const isHedgedClaim = isHedgedOrUnverifiedClaim(params.signal);
   const relMeta = getSignalReleaseMetadata(params.signal);
   const benchClaim = extractBenchmarkClaimSpec(params.signal);
+  const frozenEntities = extractFrozenEntities(params.signal);
+  const scope = classifyEvidenceScope(params.signal);
+  const isEvalStudy = isEvaluationQualityStudy(params.signal);
 
   const normPrimaryUrl = (params.signal.url || '')
     .trim()
@@ -1958,6 +1964,18 @@ export async function runTriEngineLiteracySpectrum(params: {
   const benchmarkConstraintBlock = benchClaim
     ? `BENCHMARK LOCK REQUIRED ACROSS ALL 5 LENSES: Any mention of "${benchClaim.multiplier}" MUST preserve ALL three elements together: (1) exact metric "${benchClaim.metric}", (2) exact comparison baseline "${benchClaim.baseline}", and (3) attribution "${benchClaim.attribution}". NEVER broaden the baseline to "modern CPUs" or "leading chips", and NEVER write unqualified "${benchClaim.multiplier} better" without metric + baseline.`
     : '';
+  const entityUnitQuoteConstraintBlock = [
+    'UNIT, ENTITY & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve technical units verbatim ("tokens per second", NEVER "words per second"), and ONLY place quotation marks ("...") around exact verbatim phrases from the Primary Headline or Body above.',
+    frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
+    isEvalStudy
+      ? 'EVALUATION STUDY FRAMING: This source evaluates research/citation/retrieval quality rather than inference speed; frame L5 around evaluation methodology and exact reported scores instead of latency/throughput.'
+      : '',
+    scope === 'single_user_experiment'
+      ? 'PROPORTIONATE SCOPE: This is an individual/local experiment — do NOT extrapolate into enterprise banking transformation, audited gateways, or 3x token spend in Level 4.'
+      : '',
+  ]
+    .filter(Boolean)
+    .join('\n');
 
   const schemaPrompt = `You are a Principal AI Technical Writer & Architecture Strategist translating this source-linked signal into a rich, insightful 5-level literacy JSON object for a ${clientInd} audience.
 
@@ -1979,7 +1997,7 @@ ${
     epistemicConstraintBlock ? `${epistemicConstraintBlock}\n` : ''
   }${releaseConstraintBlock ? `${releaseConstraintBlock}\n` : ''}${
     benchmarkConstraintBlock ? `${benchmarkConstraintBlock}\n` : ''
-  }
+  }${entityUnitQuoteConstraintBlock}\n
 STRICT ANTI-VAGUENESS & DEPTH RULES:
 1. NO TELEGRAPHIC FRAGMENTS OR FORTUNE-COOKIE TRUISMS: Never output vague 6-word filler like "AI agents help solve mysteries", "Tasks vary from small to complex", or "Positive early results, awaiting validation".
 2. LEVEL 1 MUST BE A TRUE VIVID PHYSICAL METAPHOR (2-3 full sentences, 35-65 words): Explicitly start levels["1"].analogy with "Think of it like..." or "Imagine..." comparing the mechanism to an everyday physical system (a kitchen prep line, library desk, post office sorting room, hospital chart clipboard, thermostat, or highway lane). Strictly ban technical acronyms in Level 1. Write levels["1"].everydayWhy as 1-2 full, natural human sentences.

@@ -1,8 +1,10 @@
 import { stripHtmlMarkupAndEntities } from './literacyEngine';
 import {
+  EvidenceScope,
   SECTOR_BY_ID,
   SpatialSignal,
   SupportingSourceLink,
+  VerifiedSourceMetric,
 } from './types';
 
 export function normalizeProvenanceUrl(url: string): string {
@@ -164,7 +166,8 @@ const EXPLICIT_TOOL_RELEASE_REGEX =
   /\b(introducing|announcing|releasing|are out|v\d+\.\d+|api|sdk|cli|weights|models?|qwen[-\s]?\d|gpt[-\s]?\d|claude[-\s]?\d|gemini[-\s]?\d|open[- ]source|github|framework|runtime|server)\b/i;
 
 export function isNonToolNewsOrMarketSignal(
-  sig: Pick<SpatialSignal, 'title' | 'primarySector' | 'source' | 'sourceCategory' | 'url'>
+  sig: Pick<SpatialSignal, 'title' | 'primarySector' | 'source' | 'sourceCategory' | 'url'> &
+    Partial<Pick<SpatialSignal, 'rawAbstract'>>
 ): boolean {
   if (
     sig.source === 'GHRelease' ||
@@ -177,6 +180,9 @@ export function isNonToolNewsOrMarketSignal(
   const title = sig.title || '';
   if (NON_TOOL_NEWS_MARKET_REGEX.test(title)) {
     return true;
+  }
+  if (isEvaluationQualityStudy({ title, rawAbstract: sig.rawAbstract || '' })) {
+    return false;
   }
   if (
     (sig.primarySector === 'ECO' ||
@@ -245,7 +251,7 @@ const TITLE_HEDGE_CLAIM_REGEX =
   /\b(may have been|might have been|could have been|may solve|might solve|could solve|may mark|claims? (?:to|it|they)|claimed to|purports?|reportedly|allegedly|rumou?r(?:ed|s)?|unverified|unconfirmed|if true|not yet verified|awaiting verification|speculated?)\b/i;
 
 const ABSTRACT_HEDGE_CLAIM_REGEX =
-  /\b(may have been|might have been|could have been|claims? to have|purports?|reportedly|allegedly|unverified|unconfirmed|rumou?r(?:ed)?|if true|not independently verified|awaiting peer review)\b/i;
+  /\b(may have been|might have been|could have been|claims? to have|purports?|reportedly|allegedly|unverified\s+(?:claim|manuscript|proof|report|result|solution|breakthrough)|unconfirmed|rumou?r(?:ed)?|if true|not yet verified|not independently verified|awaiting peer review)\b/i;
 
 /**
  * Returns true when the source headline or abstract frames the claim with hedged, speculative,
@@ -283,7 +289,8 @@ export function hasTechnicalEngineeringContent(
     sig.source === 'GitHub' ||
     sig.source === 'arXiv' ||
     sig.source === 'HuggingFace' ||
-    Boolean(sig.modelSpecs)
+    Boolean(sig.modelSpecs) ||
+    isEvaluationQualityStudy(sig)
   ) {
     return true;
   }
@@ -950,4 +957,261 @@ export function extractBenchmarkClaimSpec(
     attribution,
     canonicalSentence,
   };
+}
+
+function splitExactSourceSentences(rawText: string): string[] {
+  const cleaned = stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(rawText || ''));
+  if (!cleaned) return [];
+  return cleaned
+    .split(/(?<=[.!?]["')\]]*)\s+|\n+/)
+    .map((s) => s.trim())
+    .filter((s) => s.length >= 16);
+}
+
+function inferPercentageLabel(sentence: string, matchIndex: number): { label: string; context?: string } {
+  const lower = sentence.toLowerCase();
+  const nearbyStart = Math.max(0, matchIndex - 50);
+  const nearbyEnd = Math.min(sentence.length, matchIndex + 75);
+  const windowStr = sentence.slice(nearbyStart, nearbyEnd).toLowerCase();
+
+  if (/\b(?:excerpt|citation|cited)\b/.test(windowStr) && /\brelevan\w*\b/.test(windowStr)) {
+    return { label: 'Cited excerpt relevance', context: 'Relevant cited excerpts in evaluation' };
+  }
+  if (/\bpresentation\s+requirements?\b/.test(windowStr)) {
+    return { label: 'Presentation requirements met' };
+  }
+  if (/\brequired\s+(?:types?\s+of\s+)?sources?\b|\bsource\s+coverage\b/.test(lower)) {
+    return { label: 'Source coverage score' };
+  }
+  if (/\bswe-bench\b/.test(windowStr)) return { label: 'SWE-bench score' };
+  if (/\baccuracy\b/.test(windowStr)) return { label: 'Reported accuracy' };
+  if (/\breduction\b|\bfaster\b|\bcheaper\b|\blower\b|\bcut\b|\bdrop\b|\bsaving\b/.test(windowStr)) {
+    const word = windowStr.match(/\b(reduction|faster|cheaper|lower|cut|drop|saving\w*)\b/)?.[1];
+    return { label: word ? `Reported ${word}` : 'Reported delta' };
+  }
+  if (/\bverified\b|\bpass(?:ed|@\d+)?\b/.test(windowStr)) return { label: 'Evaluation pass rate' };
+  return { label: 'Source-reported percentage' };
+}
+
+function inferPercentagePointLabel(sentence: string, matchIndex: number): { label: string; context?: string } {
+  const nearby = sentence.slice(Math.max(0, matchIndex - 30), Math.min(sentence.length, matchIndex + 90)).toLowerCase();
+  if (/\bciting\b.*\bsources?\b|\brequired\s+(?:types?\s+of\s+)?sources?\b|\bsource\s+coverage\b/.test(nearby)) {
+    return { label: 'Required source coverage', context: 'Lead vs. best alternative tested' };
+  }
+  if (/\bpresentation\s+requirements?\b/.test(nearby)) {
+    return { label: 'Presentation requirements lead', context: 'Lead vs. best alternative tested' };
+  }
+  return { label: 'Percentage-point lead', context: 'Comparative evaluation' };
+}
+
+/**
+ * Extracts quantitative metrics verbatim from ingested source text along with the exact
+ * supporting sentence (`quote`) so UI pills can cite primary passages on click.
+ */
+export function extractSourceVerifiedMetrics(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
+): VerifiedSourceMetric[] {
+  const sentences = [
+    ...splitExactSourceSentences(sig.rawAbstract || ''),
+    ...splitExactSourceSentences(sig.title || ''),
+  ];
+  const out: VerifiedSourceMetric[] = [];
+  const seenValues = new Set<string>();
+
+  const pushMetric = (metric: VerifiedSourceMetric) => {
+    const key = metric.value.toLowerCase().replace(/\s+/g, ' ').trim();
+    if (seenValues.has(key) || out.length >= 5) return;
+    seenValues.add(key);
+    out.push(metric);
+  };
+
+  for (const sentence of sentences) {
+    // 1. Percentage-point leads (e.g., "+13.6 percentage points" / "scored 13.6 percentage points above")
+    const ppRegex = /([+-]?\d+(?:\.\d+)?)\s*percentage[- ]points?\b/gi;
+    let m: RegExpExecArray | null;
+    while ((m = ppRegex.exec(sentence)) !== null) {
+      const numRaw = m[1];
+      const valStr = numRaw.startsWith('+') || numRaw.startsWith('-') ? `${numRaw} percentage points` : `+${numRaw} percentage points`;
+      const meta = inferPercentagePointLabel(sentence, m.index);
+      pushMetric({
+        value: valStr,
+        label: meta.label,
+        quote: sentence,
+        context: meta.context,
+      });
+    }
+
+    // 2. Percentages with meaningful technical/eval context (e.g., "99.5% of the excerpts it cited were relevant")
+    const pctRegex = /\b(\d{1,3}(?:\.\d+)?)%/g;
+    while ((m = pctRegex.exec(sentence)) !== null) {
+      const windowLower = sentence
+        .slice(Math.max(0, m.index - 45), Math.min(sentence.length, m.index + 70))
+        .toLowerCase();
+      const hasEvalContext =
+        /\b(excerpts?|cited|relevan\w*|presentation|requirements?|sources?|coverage|verified|reduction|faster|cheaper|lower|cut|drop|accuracy|score|swe-bench|mmlu|gpqa|pass|recall|precision|benchmark|utilization|overhead|gain|improv\w*)\b/.test(
+          windowLower
+        );
+      if (!hasEvalContext) continue;
+      const meta = inferPercentageLabel(sentence, m.index);
+      pushMetric({
+        value: `${m[1]}%`,
+        label: meta.label,
+        quote: sentence,
+        context: meta.context,
+      });
+    }
+
+    // 3. Token throughput (preserving ranges & exact unit "tokens per second", e.g., "51.8–58.3 tokens per second")
+    const tokRegex =
+      /\b(\d+(?:\.\d+)?(?:\s*[–—-]\s*\d+(?:\.\d+)?)?)\s*(?:tokens\s+per\s+second|tok\/s|t\/s|tokens\/s)\b/gi;
+    while ((m = tokRegex.exec(sentence)) !== null) {
+      const rangeClean = m[1].replace(/\s*([–—-])\s*/g, '$1');
+      pushMetric({
+        value: `${rangeClean} tokens/s`,
+        label: 'Measured throughput',
+        quote: sentence,
+        context: 'Source-reported token generation rate',
+      });
+    }
+
+    // 4. Efficiency / performance multipliers (e.g., "4.59x performance per watt")
+    const multRegex =
+      /\b(\d+(?:\.\d+)?)\s*([x×])\s+(?:the\s+)?(performance[- ]per[- ]watt|perf[- ]per[- ]watt|energy\s+efficiency|throughput|speedup)\b/gi;
+    while ((m = multRegex.exec(sentence)) !== null) {
+      const unitClean = m[3].replace(/-/g, ' ').toLowerCase();
+      pushMetric({
+        value: `${m[1]}${m[2]} ${unitClean}`,
+        label: 'Benchmark multiplier',
+        quote: sentence,
+      });
+    }
+
+    // 5. Explicit hardware latency / VRAM / memory numbers
+    const msRegex = /\b(\d+(?:\.\d+)?(?:\s*[–—-]\s*\d+(?:\.\d+)?)?)\s*ms\b/gi;
+    while ((m = msRegex.exec(sentence)) !== null) {
+      const windowLower = sentence
+        .slice(Math.max(0, m.index - 40), Math.min(sentence.length, m.index + 45))
+        .toLowerCase();
+      if (!/\b(latency|ttft|tpot|response|delay|time|inference|turnaround)\b/.test(windowLower)) {
+        continue;
+      }
+      pushMetric({
+        value: `${m[1].replace(/\s+/g, '')} ms`,
+        label: 'Reported latency',
+        quote: sentence,
+      });
+    }
+
+    const memRegex = /\b(\d+(?:\.\d+)?)\s*(GB|TB)\s*(VRAM|RAM|unified memory|memory)\b/gi;
+    while ((m = memRegex.exec(sentence)) !== null) {
+      pushMetric({
+        value: `${m[1]} ${m[2].toUpperCase()} ${m[3]}`,
+        label: 'Memory footprint',
+        quote: sentence,
+      });
+    }
+  }
+
+  return out;
+}
+
+/**
+ * True when a source primarily evaluates retrieval, citation relevance, or grading quality
+ * rather than measuring inference latency or token throughput.
+ */
+export function isEvaluationQualityStudy(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
+): boolean {
+  const hay = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '')}`;
+  const hasEvalTerms =
+    /\b(citations?|cited excerpts?|relevan\w*|source coverage|grading criteria|presentation requirements?|percentage[- ]point|rubric|eval(?:uation)?s?|accuracy)\b/i.test(
+      hay
+    );
+  const hasSpeedTerms = /\b(?:\d+\s*(?:tok\/s|t\/s|tokens\/s|tokens per second)|ttft|tpot)\b/i.test(hay);
+  return hasEvalTerms && !hasSpeedTerms;
+}
+
+const SINGLE_USER_EXPERIMENT_REGEX =
+  /\b(i built|i fine[- ]?tuned|i ran|i tested|i trained|my home|my laptop|my mac|on cpu|on my machine|offline\b|raspberry\s*pi|rockchip|rk35\d+|orange\s*pi|jetson|home server|household|side project|weekend project|pet project|for fun|3d modeling partner)\b/i;
+
+const ENTERPRISE_LAUNCH_REGEX =
+  /\b(introducing|announcing|general availability|\bga\b|enterprise|platform|api|pricing|customer stor(?:y|ies)|eu ai act|executive order|compliance mandate|frontier model|gpt-\d|claude[-\s]\d|gemini[-\s]\d|llama[-\s]\d|qwen\s*\d|mistral\s+large)\b/i;
+
+export function classifyEvidenceScope(
+  sig: Pick<
+    SpatialSignal,
+    'title' | 'rawAbstract' | 'url' | 'source' | 'originFeedName' | 'readiness' | 'sourceCategory' | 'primarySector'
+  >
+): EvidenceScope {
+  if (isNonToolNewsOrMarketSignal(sig)) {
+    return 'market_or_policy';
+  }
+  if (sig.source === 'GHRelease') {
+    return 'software_release';
+  }
+  if (sig.source === 'arXiv' || sig.source === 'HuggingFace' || sig.readiness === 'RESEARCH') {
+    return 'research_paper';
+  }
+  const hay = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '')}`;
+  if (SINGLE_USER_EXPERIMENT_REGEX.test(hay)) {
+    return 'single_user_experiment';
+  }
+  if (sig.source === 'LabRelease') {
+    return 'enterprise_launch';
+  }
+  if (sig.source === 'Reddit' || sig.source === 'Bluesky' || sig.source === 'HackerNews' || sig.source === 'Discord') {
+    if (sig.primarySector === 'GOV' && ENTERPRISE_LAUNCH_REGEX.test(hay)) {
+      return 'enterprise_launch';
+    }
+    return 'single_user_experiment';
+  }
+  if (ENTERPRISE_LAUNCH_REGEX.test(hay)) {
+    return 'enterprise_launch';
+  }
+  return 'software_release';
+}
+
+const FROZEN_ENTITY_REGEX =
+  /\b(?:Actuator|Qwen|Llama|Mistral|DeepSeek|Claude|Gemini|GPT|Gemma|Ollama|Rockchip|Hebbia|Frostbite|Whisper|Inkling|Granite|Phi|SmolLM)(?:[-.](?:[A-Za-z0-9]+))*(?:\s+(?:v?\d+(?:\.\d+)*(?:-[A-Za-z0-9.]+)?|Astra|Ultra|Pro|Flash|Mini|Nano|Turbo|Opus|Sonnet|Haiku|Large|Small|Coder|Instruct|Omni|Max|Air|R\d+|V\d+|RK\d+[A-Za-z0-9]*))*\b|\b[A-Z][A-Za-z0-9]*(?:[.-][A-Za-z0-9]+)*-\d+(?:\.\d+)?[BM]\b/g;
+
+export function extractFrozenEntities(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
+): string[] {
+  const hay = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '')}`;
+  const matches = hay.match(FROZEN_ENTITY_REGEX) || [];
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const raw of matches) {
+    const clean = raw.trim();
+    const key = clean.toLowerCase();
+    if (clean.length < 3 || seen.has(key)) continue;
+    seen.add(key);
+    out.push(clean);
+  }
+  return out;
+}
+
+const SIX_HOURS_MS = 6 * 3_600_000;
+const NEW_BADGE_WINDOW_MS = 48 * 3_600_000;
+
+export function isUpstreamUpdatedSignal(
+  sig: Pick<SpatialSignal, 'publishedAtMs' | 'updatedAtMs'>
+): boolean {
+  return (
+    typeof sig.updatedAtMs === 'number' &&
+    Number.isFinite(sig.updatedAtMs) &&
+    sig.updatedAtMs > 0 &&
+    typeof sig.publishedAtMs === 'number' &&
+    sig.updatedAtMs > sig.publishedAtMs + SIX_HOURS_MS
+  );
+}
+
+export function isEligibleForNewBadge(
+  sig: Pick<SpatialSignal, 'publishedAtMs' | 'updatedAtMs'>,
+  baselineTs: number,
+  nowMs: number = Date.now()
+): boolean {
+  if (isUpstreamUpdatedSignal(sig)) return false;
+  if (typeof sig.publishedAtMs !== 'number' || !Number.isFinite(sig.publishedAtMs)) return false;
+  return sig.publishedAtMs > baselineTs && nowMs - sig.publishedAtMs <= NEW_BADGE_WINDOW_MS;
 }

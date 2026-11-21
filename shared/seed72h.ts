@@ -4,6 +4,8 @@ import {
   stripHtmlMarkupAndEntities,
 } from './literacyEngine';
 import {
+  classifyEvidenceScope,
+  extractSourceVerifiedMetrics,
   parseGitHubReleaseMetadata,
   sanitizeReleaseNotesText,
   stripUiChromeBoilerplate,
@@ -927,9 +929,11 @@ export function buildInitial72hSeed(nowMs: number = Date.now()): SpatialSignal[]
     },
     affectedEnterpriseStacks: bp.affectedEnterpriseStacks,
     causalTargetIds: bp.causalTargetIds,
-    modelSpecs: bp.modelSpecs,
+    modelSpecs: undefined,
   })).map((sig) => ({
     ...sig,
+    evidenceScope: classifyEvidenceScope(sig),
+    verifiedMetrics: extractSourceVerifiedMetrics(sig),
     literacy: buildDeterministicLiteracyPayload(sig),
   }));
 }
@@ -943,6 +947,8 @@ export interface RawUpstreamSignal {
   sourceCategory?: Exclude<SpatialSignal['sourceCategory'], undefined | 'DEMO_SEED'>;
   originFeedName?: string;
   publishedAtMs: number;
+  updatedAtMs?: number;
+  firstSeenAtMs?: number;
   score?: number;
   mediaItems?: MediaAttachment[];
   streetQuotes?: StreetQuote[];
@@ -1095,36 +1101,6 @@ export function synthesizeRawItemToSpatialSignal(
       cleanTitle
     ) || raw.source === 'Reddit' || raw.source === 'HackerNews' || raw.source === 'Bluesky' || raw.source === 'VIPBlog';
 
-  const isExplicitModelRelease =
-    !isDiscussionPost &&
-    raw.source === 'LabRelease' &&
-    /\b(gemini|claude|gpt-\d|o3|o4|deepseek|qwen|llama|mistral|codestral|vllm|ollama|sglang)\b/i.test(
-      cleanTitle
-    );
-
-  const defaultSpecs: NonNullable<SpatialSignal['modelSpecs']> = {
-    modelFamily: cleanTitle.slice(0, 42),
-    provider: `${originLabel}`,
-    inputCostPer1M: finOps === 'REDUCER' ? 0.22 : finOps === 'INTENSIVE' ? 2.4 : 0.65,
-    outputCostPer1M: finOps === 'REDUCER' ? 0.85 : finOps === 'INTENSIVE' ? 9.5 : 2.2,
-    cachedCostPer1M: finOps === 'REDUCER' ? 0.06 : 0.18,
-    contextWindowK: primarySector === 'SCI' ? 256 : 128,
-    ttftMs: finOps === 'REDUCER' ? 190 : 320,
-    tokensPerSec: finOps === 'REDUCER' ? 185 : 115,
-    license:
-      raw.source === 'GitHub' || raw.source === 'GHRelease' || raw.source === 'HuggingFace'
-        ? 'Apache-2.0'
-        : 'Open-Weights',
-    sweBenchVerified: 0,
-    capabilities: {
-      reasoning: primarySector === 'SCI' || primarySector === 'REL' ? 90 : 78,
-      coding: primarySector === 'ARC' || raw.source === 'GitHub' || raw.source === 'GHRelease' ? 91 : 80,
-      agenticToolUse: primarySector === 'ARC' ? 93 : 82,
-      governanceSafety: primarySector === 'GOV' ? 95 : risk === 'LOW' ? 88 : 74,
-      costEfficiency: finOps === 'REDUCER' ? 95 : finOps === 'INTENSIVE' ? 68 : 83,
-    },
-  };
-
   const inferredCategory: NonNullable<SpatialSignal['sourceCategory']> =
     raw.sourceCategory ||
     (raw.source === 'arXiv' || raw.source === 'HuggingFace'
@@ -1213,6 +1189,8 @@ export function synthesizeRawItemToSpatialSignal(
     engagementVelocity,
     url: raw.url,
     publishedAtMs: raw.publishedAtMs,
+    updatedAtMs: raw.updatedAtMs,
+    firstSeenAtMs: raw.firstSeenAtMs,
     isLiveInbound,
     primarySector,
     secondarySectors,
@@ -1250,8 +1228,10 @@ export function synthesizeRawItemToSpatialSignal(
       url: raw.url,
       primarySector,
     }),
-    modelSpecs: isExplicitModelRelease ? defaultSpecs : undefined,
+    modelSpecs: undefined,
   };
+  built.evidenceScope = classifyEvidenceScope(built);
+  built.verifiedMetrics = extractSourceVerifiedMetrics(built);
   built.literacy = buildDeterministicLiteracyPayload(built);
   return built;
 }

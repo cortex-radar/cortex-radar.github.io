@@ -22,12 +22,14 @@ import {
 import {
   analyzeClusterCoverage,
   extractPublisherDisplayName,
+  formatUtcTimestamp,
   getEventLastUpdatedMs,
   getGroupedSourcesForSignal,
   getSignalReleaseMetadata,
   inferSupportingLinkRole,
   isPrimarySourceSignal,
   isReleaseWithoutNotes,
+  isUpstreamUpdatedSignal,
   parseGitHubReleaseMetadata,
 } from '../../shared/provenance';
 import {
@@ -188,6 +190,7 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                   type="button"
                   onClick={() => onSearchQueryChange('')}
                   aria-label="Clear search filter"
+                  title="Clear search filter"
                   className="p-1 rounded hover:bg-zinc-800 text-zinc-400 hover:text-zinc-100 cursor-pointer shrink-0"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -348,6 +351,11 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
               const coverage = analyzeClusterCoverage(signal);
               const groupedSources = coverage.groupedLinks;
               const relMeta = getSignalReleaseMetadata(signal);
+              const isUpdated = isUpstreamUpdatedSignal(signal);
+              const publishedUtc = formatUtcTimestamp(signal.publishedAtMs);
+              const updatedUtc = signal.updatedAtMs
+                ? formatUtcTimestamp(signal.updatedAtMs)
+                : publishedUtc;
               const lastUpdatedMs = getEventLastUpdatedMs(signal);
               const isEventExpanded = Boolean(expandedEventIds[signal.id]);
               const heroMedia = (signal.mediaItems || []).find(
@@ -423,6 +431,11 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                         )}
 
                         <span
+                          title={
+                            isUpdated
+                              ? `Published ${publishedUtc} · Updated ${updatedUtc}`
+                              : `Published ${publishedUtc}`
+                          }
                           className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded border ${
                             recent12h
                               ? 'bg-teal-500/14 border-teal-400/35 text-teal-200'
@@ -435,9 +448,18 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                           <span>{formatRelativeAgeShort(signal.publishedAtMs, nowMs)} ago</span>
                         </span>
 
-                        {isNew && (
+                        {isNew && !isUpdated && (
                           <span className="px-1.5 py-0.5 rounded bg-teal-500/20 border border-teal-400/45 text-teal-200">
                             NEW
+                          </span>
+                        )}
+
+                        {!isNew && isUpdated && (
+                          <span
+                            title={`Published ${publishedUtc} · Updated ${updatedUtc}`}
+                            className="px-1.5 py-0.5 rounded bg-amber-500/15 border border-amber-400/35 text-amber-200"
+                          >
+                            Updated
                           </span>
                         )}
 
@@ -517,6 +539,8 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                             }))
                           }
                           aria-expanded={isEventExpanded}
+                          aria-label={isEventExpanded ? `Hide linked sources for ${cleanTitle}` : `Inspect linked sources for ${cleanTitle}`}
+                          title={coverage.provenanceHeadlineLabel}
                           className="w-full px-2.5 py-1.5 flex items-center justify-between gap-2 text-left font-mono text-[10px] tabular-nums text-teal-200 hover:bg-teal-500/[0.09] cursor-pointer"
                         >
                           <span className="inline-flex items-center gap-1.5 min-w-0 truncate">
@@ -600,6 +624,8 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                             <button
                               key={lvl.level}
                               type="button"
+                              aria-label={`Switch reading lens to L${lvl.level} ${lvl.shortName}`}
+                              title={`L${lvl.level} ${lvl.shortName} lens`}
                               onClick={() => onSelectLiteracyLevel(lvl.level)}
                               className={`px-2 py-1 rounded-[4px] font-mono text-[9.5px] tabular-nums cursor-pointer transition-colors ${
                                 active
@@ -618,6 +644,8 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
                         <InstrumentButton
                           size="xs"
                           variant={isSelected ? 'accent' : 'default'}
+                          aria-label={`Inspect evidence and summary for ${cleanTitle}`}
+                          title="Inspect Evidence & AI Synthesis"
                           onClick={() => openSignalCard(nodeIndex)}
                           className="min-h-[34px] px-2.5"
                         >
@@ -626,6 +654,8 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
 
                         <InstrumentButton
                           size="xs"
+                          aria-label={`Inspect ${cleanTitle} on 3D Radar`}
+                          title="Locate this signal on 3D Radar"
                           onClick={() => onInspectOnRadar(nodeIndex)}
                           className="min-h-[34px] px-2.5"
                         >
@@ -635,6 +665,8 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
 
                         <InstrumentButton
                           size="xs"
+                          aria-label={`Copy shareable deep link for ${cleanTitle}`}
+                          title={copiedId === signal.id ? 'Deep link copied' : 'Copy deep link'}
                           onClick={() => {
                             const url = buildCortexDeepLinkUrl(signal.id, activeLiteracyLevel);
                             void navigator.clipboard?.writeText(url);
@@ -655,6 +687,12 @@ export const SignalFeedView: React.FC<SignalFeedViewProps> = ({
 
                         <InstrumentButton
                           size="xs"
+                          aria-label={`Download PNG summary card for ${cleanTitle}`}
+                          title={
+                            pngSavedId === signal.id
+                              ? 'Summary card PNG saved'
+                              : 'Download 1200x630 PNG Summary Card'
+                          }
                           onClick={() => {
                             void renderShareCardPngBlob({
                               signal,

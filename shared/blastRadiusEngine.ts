@@ -1,7 +1,9 @@
+import { classifyEvidenceScope, isNonToolNewsOrMarketSignal } from './provenance';
 import {
   BlastOrderConsequence,
   CLIENT_INDUSTRIES,
   ClientIndustry,
+  EvidenceScope,
   SectorId,
   SpatialSignal,
 } from './types';
@@ -39,10 +41,105 @@ const FINOPS_TARGETS: Record<SectorId, SectorId> = {
   MKT: 'ECO',
 };
 
-export function computeDeterministicBlastRadius(
+export interface ProportionateBlastResult {
+  mode: 'FULL_30_60_90' | 'PRACTICAL_NEXT_STEP';
+  scope: EvidenceScope;
+  horizons: BlastOrderConsequence[];
+}
+
+function buildPracticalNextStepCard(
+  signal: SpatialSignal,
+  scope: EvidenceScope
+): BlastOrderConsequence {
+  const hay = `${signal.title || ''} ${signal.rawAbstract || ''}`.toLowerCase();
+  const targetSector: SectorId = signal.primarySector || 'ARC';
+
+  if (scope === 'single_user_experiment') {
+    const isOfflineOrSpeechOrHardware =
+      /\b(offline|speech|whisper|audio|voice|rockchip|rk35\d+|orange\s*pi|raspberry\s*pi|cpu|local inference|llamacpp|llama\.cpp|quant|q4)\b/i.test(
+        hay
+      );
+    return {
+      horizon: 'NEXT',
+      orderLabel: 'PRACTICAL NEXT STEP',
+      title: 'Validate on Target Hardware',
+      targetSector,
+      consequence:
+        'Single-user or local hardware test — treat reported numbers as hardware-specific until reproduced on your own environment.',
+      consultantAction: isOfflineOrSpeechOrHardware
+        ? 'If offline speech or local inference matters to your team, reproduce the test on your target hardware and measure latency and accuracy directly.'
+        : 'If this workflow fits an active bottleneck, reproduce the setup on a test machine and measure task accuracy and runtime behavior.',
+      kpiMetric: 'Scope: Single-User Experiment · Verify Locally',
+    };
+  }
+
+  if (scope === 'software_release') {
+    return {
+      horizon: 'NEXT',
+      orderLabel: 'PRACTICAL NEXT STEP',
+      title: 'Review Release Diff & Pin Version',
+      targetSector,
+      consequence:
+        'Targeted software release — check breaking-change flags and release notes in non-production testing before bumping pinned dependencies.',
+      consultantAction:
+        'Inspect upstream changelog entries relevant to your runtime stack and pin the exact version tag in staging first.',
+      kpiMetric: `Scope: Software Release · ${signal.readiness}`,
+    };
+  }
+
+  if (scope === 'research_paper') {
+    return {
+      horizon: 'NEXT',
+      orderLabel: 'PRACTICAL NEXT STEP',
+      title: 'Monitor Code & Replication',
+      targetSector,
+      consequence:
+        'Research paper or evaluation preprint — verify whether open weights, evaluation scripts, or independent reproductions are linked before scheduling trials.',
+      consultantAction:
+        'Check reproducibility artifacts upstream and test the proposed method on an internal baseline dataset if directly relevant.',
+      kpiMetric: 'Scope: Research Study · Track Replication',
+    };
+  }
+
+  return {
+    horizon: 'NEXT',
+    orderLabel: 'PRACTICAL NEXT STEP',
+    title: 'Track Market & Policy Impact',
+    targetSector,
+    consequence:
+      'Market, corporate, or commentary update — no immediate technical integration or platform cutover is required from this item.',
+    consultantAction:
+      'Note vendor stability or procurement context alongside your existing legal and supplier review cadence.',
+    kpiMetric: 'Scope: Market & Policy · Monitor Only',
+  };
+}
+
+/**
+ * Proportionately sizes rollout guidance to evidence scope:
+ * - Single-user experiments, point releases, research papers, and routine market updates return ONE concise Practical Next Step.
+ * - Only enterprise platform launches or major regulatory shifts render 30/60/90-day enterprise horizons, grounded strictly in source facts.
+ */
+export function computeProportionateBlast(
   signal: SpatialSignal,
   clientIndustry: ClientIndustry
-): [BlastOrderConsequence, BlastOrderConsequence, BlastOrderConsequence] {
+): ProportionateBlastResult {
+  const scope: EvidenceScope = signal.evidenceScope || classifyEvidenceScope(signal);
+  const hay = `${signal.title || ''} ${signal.rawAbstract || ''}`;
+  const isMajorRegulatoryShift =
+    scope === 'market_or_policy' &&
+    /\b(eu ai act|compliance deadline|federal rule|enforcement|regulation mandate|executive order)\b/i.test(
+      hay
+    ) &&
+    !isNonToolNewsOrMarketSignal(signal);
+
+  if (scope !== 'enterprise_launch' && !isMajorRegulatoryShift) {
+    return {
+      mode: 'PRACTICAL_NEXT_STEP',
+      scope,
+      horizons: [buildPracticalNextStepCard(signal, scope)],
+    };
+  }
+
   const client =
     CLIENT_INDUSTRIES.find((c) => c.id === clientIndustry) || CLIENT_INDUSTRIES[0];
   const regAnchor = client.regulatoryFocus.split(',')[0];
@@ -51,57 +148,61 @@ export function computeDeterministicBlastRadius(
   const sec60 = GOV_TARGETS[signal.primarySector] || 'GOV';
   const sec90 = FINOPS_TARGETS[signal.primarySector] || 'ECO';
 
-  const stackTarget = signal.affectedEnterpriseStacks[0] || 'AI Gateway & Agent Mesh';
+  const stackTarget = signal.affectedEnterpriseStacks[0] || 'AI Gateway & Eval Pipeline';
+  const isEvalStudy =
+    /\b(citation|excerpt|relevance|source coverage|grading criteria)\b/i.test(hay);
 
   const order1: BlastOrderConsequence = {
     horizon: '30D',
-    orderLabel: '1ST ORDER · 30d ARCHITECTURE',
-    title: `Re-wire ${stackTarget}`,
+    orderLabel: '1ST ORDER · 30d PILOT SCOPING',
+    title: `Benchmark ${stackTarget}`,
     targetSector: sec30,
     consequence:
       signal.readiness === 'GA'
-        ? `${signal.shortLabel} invalidates static ${client.shortLabel} single-model routing; shadow-test behind LiteLLM/MCP ingress within 30 days.`
-        : `Prototype ${signal.shortLabel} in isolated R&D harness; decouple ${stackTarget} interfaces now so Q2 cutover requires zero rewrite.`,
+        ? `Shadow-test ${signal.shortLabel} behind existing ${client.shortLabel} gateway controls on representative internal tasks within 30 days.`
+        : `Evaluate ${signal.shortLabel} in an isolated sandbox harness against your current domain baseline before committing interfaces.`,
     consultantAction: signal.architectBrief.integrationPattern,
-    kpiMetric:
-      signal.finOps === 'REDUCER'
-        ? 'Target: -35% P95 TTFT & simplified RAG topology'
-        : 'Target: Zero regression on domain eval harness',
+    kpiMetric: isEvalStudy
+      ? 'Target: Verify citation precision & task pass criteria'
+      : 'Target: Measure accuracy vs. current baseline',
   };
 
   const order2: BlastOrderConsequence = {
     horizon: '60D',
-    orderLabel: '2ND ORDER · 60d GOVERNANCE & RISK',
-    title: `${regAnchor} Gate`,
+    orderLabel: '2ND ORDER · 60d GOVERNANCE',
+    title: `${regAnchor} Review`,
     targetSector: sec60,
     consequence:
       signal.risk === 'HIGH'
-        ? `High secondary exposure for ${client.label}: ${signal.shortLabel} triggers mandatory CISO threat-modeling, egress DLP rules, and human-oversight logs.`
-        : `Update ${client.shortLabel} model-inventory lineage & red-team regression suites to certify ${signal.shortLabel} under ${regAnchor}.`,
-    consultantAction: `Deliver 1-page ${regAnchor} Architecture Control Matrix to CISO & Legal before scaling traffic >10%.`,
-    kpiMetric: `Risk Posture: ${signal.risk} → Certified Audit-Ready`,
+        ? `Complete data-egress, access-control, and ${regAnchor} threat review with InfoSec before any regulated pilot traffic.`
+        : `Document model lineage, fallback routing, and ${regAnchor} audit logging prior to expanding team access.`,
+    consultantAction: `Complete ${regAnchor} sign-off checklist with engineering and compliance stakeholders.`,
+    kpiMetric: `Risk Posture: ${signal.risk} · Pre-Prod Check`,
   };
 
   const order3: BlastOrderConsequence = {
     horizon: '90D',
-    orderLabel: '3RD ORDER · 90d FINOPS & SKILLS',
-    title:
-      signal.finOps === 'REDUCER'
-        ? 'Unit Economics Step-Down & Cert Shift'
-        : 'FinOps Quota Guardrails & Upskilling',
+    orderLabel: '3RD ORDER · 90d OPERATIONALIZATION',
+    title: 'Measured Rollout & Team Enablement',
     targetSector: sec90,
     consequence:
-      signal.finOps === 'REDUCER'
-        ? `Compounds into 40–65% ${client.shortLabel} token opex compression over 90 days, shifting build-vs-buy crossover and freeing budget for agentic workflows.`
-        : `Unchecked multi-turn adoption across ${client.shortLabel} pods risks 3x token spend drift; pair rollout with semantic tiering and architect upskilling.`,
-    consultantAction: `Run 90-day FinOps unit-cost review + upskill client platform pod on ${
-      signal.affectedEnterpriseStacks.slice(0, 2).join(' & ') || 'Agentic EvalOps'
-    }.`,
-    kpiMetric:
-      signal.finOps === 'REDUCER'
-        ? 'FinOps Delta: -48% blended $/1K tasks'
-        : 'FinOps Guardrail: Cap reasoning budget/turn',
+      'Compare measured pilot unit economics, error rates, and maintenance overhead against incumbent tooling before full cutover.',
+    consultantAction: `Review 90-day pilot telemetry across ${
+      signal.affectedEnterpriseStacks.slice(0, 2).join(' & ') || 'core stack'
+    } before broader rollout.`,
+    kpiMetric: 'Gate: Advance only if pilot metrics beat baseline',
   };
 
-  return [order1, order2, order3];
+  return {
+    mode: 'FULL_30_60_90',
+    scope,
+    horizons: [order1, order2, order3],
+  };
+}
+
+export function computeDeterministicBlastRadius(
+  signal: SpatialSignal,
+  clientIndustry: ClientIndustry
+): BlastOrderConsequence[] {
+  return computeProportionateBlast(signal, clientIndustry).horizons;
 }
