@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2026 21:45:06 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 21:49:32 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>Anthropic Announces Closing of IPO and Concurrent Private Placement</title>
@@ -89,20 +89,20 @@
       <description>The Gemini 4 Hydrogen model shows a significant difference in performance between &apos;high&apos; and &apos;xhigh&apos; settings, with the &apos;xhigh&apos; setting using more tokens and costing more. This highlights the trade-off between cost and output quality in AI model usage. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27</description>
     </item>
     <item>
-      <title>New slide deck on post-training challenges and the field&apos;s progress</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2tdrggx2o27&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2tdrggx2o27&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 14:46:58 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>A new slide deck was created to address the biggest open problems in post-training and the field&apos;s current state. The deck aims to highlight the current gaps and progress in AI post-training, guiding future projects and research. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2tdrggx2o27</description>
-    </item>
-    <item>
       <title>Upload2Shell · CVE-2026-125396</title>
       <link>https://cortex-radar.github.io/?orb=hn-50592097&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50592097&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 18:29:29 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>A security flaw, known as Upload2Shell, has been identified, potentially allowing attackers to upload and execute arbitrary code on a server. The issue addresses a critical security gap that could be exploited by cybercriminals to gain unauthorized access to banking systems. — Upstream (Hacker News): https://pwn.ai/upload2shell</description>
+    </item>
+    <item>
+      <title>New slide deck on post-training challenges and the field&apos;s progress</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2tdrggx2o27&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2tdrggx2o27&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 14:46:58 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>A new slide deck was created to address the biggest open problems in post-training and the field&apos;s current state. The deck aims to highlight the current gaps and progress in AI post-training, guiding future projects and research. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2tdrggx2o27</description>
     </item>
     <item>
       <title>AI Coding Agent for DOS Runs on Original IBM PC 5160</title>

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "promptVersion": "v2.4",
-  "bakedAtIso": "2026-11-21T21:45:06.877Z",
-  "bakedAtMs": 1795297506877,
-  "synthesizedBy": "LOCAL_OLLAMA_qwen2.5:7b",
+  "bakedAtIso": "2026-11-21T21:49:32.032Z",
+  "bakedAtMs": 1795297772032,
+  "synthesizedBy": "GITHUB_MODELS_GPT-4O-MINI",
   "signalCount": 59,
   "signals": [
     {
@@ -690,17 +690,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "I'm Senior software engineer in the US (DMV area), with 15y of experience.",
-          "score": 582,
+          "score": 585,
           "sentiment": "HYPE",
           "publishedAtMs": 1795216712000,
           "url": "https://news.ycombinator.com/item?id=50583761"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 547,
+        "likesOrUps": 550,
         "commentsOrReplies": 613,
         "velocityPerHour": 79,
-        "badgeText": "547 pts · 613 comments"
+        "badgeText": "550 pts · 613 comments"
       },
       "url": "https://news.ycombinator.com/item?id=50583761",
       "publishedAtMs": 1795216712000,
@@ -710,7 +710,7 @@
       "secondarySectors": [
         "ARC"
       ],
-      "mass": 3.5971999400224277,
+      "mass": 3.5986513129534172,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -827,17 +827,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Inkling 2 Mini is an open-weights model small enough to run on your laptop.",
-          "score": 1359,
+          "score": 1361,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795205539000,
           "url": "https://thinkingmachines.ai/news/inkling-2-mini/"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 1324,
+        "likesOrUps": 1326,
         "commentsOrReplies": 273,
         "velocityPerHour": 73,
-        "badgeText": "1324 pts · 273 comments"
+        "badgeText": "1326 pts · 273 comments"
       },
       "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
       "publishedAtMs": 1795205539000,
@@ -848,7 +848,7 @@
         "ECO",
         "GOV"
       ],
-      "mass": 3.836592646876121,
+      "mass": 3.8370077813821677,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "REDUCER",
@@ -985,10 +985,10 @@
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 149,
+        "likesOrUps": 150,
         "commentsOrReplies": 10,
         "velocityPerHour": 28,
-        "badgeText": "149 likes · 10 replies"
+        "badgeText": "150 likes · 10 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2tj5d6rwc2m",
       "publishedAtMs": 1795278186373,
@@ -998,7 +998,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.2728976408218013,
+      "mass": 3.273661623461959,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -1239,17 +1239,17 @@
           "originLabel": "Bluesky · @simonwillison",
           "author": "Bluesky · @simonwillison",
           "text": "Gemini 4 tip: the difference between Gemini 4 Hydrogen on \"high\" thinking effort and that same model on \"xhigh\" is VERY significant Here's the high v.s.",
-          "score": 136,
+          "score": 137,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795287979565,
           "url": "https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 52,
+        "likesOrUps": 54,
         "commentsOrReplies": 10,
         "velocityPerHour": 20,
-        "badgeText": "52 likes · 10 replies"
+        "badgeText": "54 likes · 10 replies"
       },
       "url": "https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27",
       "publishedAtMs": 1795287979565,
@@ -1259,7 +1259,7 @@
       "secondarySectors": [
         "REL"
       ],
-      "mass": 3.186800290440641,
+      "mass": 3.188868368651664,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "REDUCER",
@@ -1337,6 +1337,143 @@
         }
       ],
       "lastUpdatedAtMs": 1795287979565
+    },
+    {
+      "id": "hn-50592097",
+      "title": "Upload2Shell · CVE-2026-125396",
+      "shortLabel": "Upload2Shell CVE-2026-125396",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "Hacker News"
+      ],
+      "networkFamilies": [
+        "HackerNews"
+      ],
+      "canonicalEntity": "ent:cve+upload2shell",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 70,
+        "streetScore": 71,
+        "divergenceDelta": -1,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (70 hype / 71 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://pwn.ai/upload2shell-share.png?v=2",
+          "caption": "Linked article figure",
+          "sourceNetwork": "Hacker News"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "hn-50592097-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Hacker News",
+          "author": "Hacker News",
+          "text": "Upload2Shell · CVE-2026-125396",
+          "score": 83,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795285769000,
+          "url": "https://pwn.ai/upload2shell"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 48,
+        "commentsOrReplies": 11,
+        "velocityPerHour": 21,
+        "badgeText": "48 pts · 11 comments"
+      },
+      "url": "https://pwn.ai/upload2shell",
+      "publishedAtMs": 1795285769000,
+      "firstSeenAtMs": 1795295304316,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 3.0474007600444484,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Upload2Shell · CVE-2026-125396",
+      "architectBrief": {
+        "summary": "Upload2Shell · CVE-2026-125396",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Upload2Shell · CVE-2026-125396",
+        "talkingPoints": [
+          "Upload2Shell · CVE-2026-125396",
+          "Readiness: GA (Hacker News)."
+        ],
+        "industryLens": {
+          "BANKING": "FinServ Advisory (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
+          "HEALTHCARE": "Clinical & Life-Sci (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
+          "FINOPS": "Platform FinOps (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — maintains neutral unit token economics; prioritize semantic router tiering to evaluate workload economics.",
+          "RETAIL": "Commerce & CX (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — pairs responsive catalog & multimodal shopper workflows while maintains neutral unit token economics.",
+          "PUBLIC": "Sovereign & Public Sector (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
+          "SAAS": "B2B SaaS Product (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — evaluate per-tenant unit margins (maintains neutral unit token economics) across multi-tenant workspaces."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
+      ],
+      "evidenceScope": "single_user_experiment",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "Upload2Shell vulnerability",
+        "plainFullTitle": "Upload2Shell · CVE-2026-125396",
+        "levels": {
+          "1": {
+            "analogy": "Think of it like a backdoor left open in a secure building, allowing unauthorized access. Imagine a library desk where patrons should only check out books, but someone left a hidden compartment for illegal materials.",
+            "everydayWhy": "This vulnerability could allow hackers to upload malicious software, compromising bank systems and data."
+          },
+          "2": {
+            "whatHappened": "A security flaw, known as Upload2Shell, has been identified, potentially allowing attackers to upload and execute arbitrary code on a server.",
+            "whoBuiltIt": "The source does not specify who built it, as it is a security vulnerability.",
+            "problemSolved": "The issue addresses a critical security gap that could be exploited by cybercriminals to gain unauthorized access to banking systems."
+          },
+          "3": {
+            "bridgeSummary": "This vulnerability poses a significant risk to banking systems, potentially enabling unauthorized code execution and data breaches. Banks must remain vigilant and update their security measures promptly."
+          },
+          "4": {
+            "roiAndFinOps": "The vulnerability could lead to substantial financial losses due to data breaches and system downtime, necessitating immediate action. Banks need to prioritize security updates to mitigate risks.",
+            "readinessAndRisk": "The vulnerability is unverified and may not be fully understood, requiring careful evaluation and testing before any patches are deployed. Banks should closely monitor and prepare for potential threats.",
+            "clientAdvice": "Banks should immediately review their security protocols, apply any available patches, and conduct thorough testing to ensure systems are protected against this potential threat."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. The vulnerability involves a security flaw that could allow attackers to upload and execute arbitrary code, posing a significant risk to banking systems.",
+            "specsAndCaveats": "The source does not provide any specific technical details or benchmarks. Banks should rely on verified security patches and updates from trusted sources.",
+            "streetConsensus": "The community is awaiting further details and validation of the vulnerability before making definitive statements. The newly indexed paper or release is expected to provide more insights."
+          }
+        },
+        "glossary": [],
+        "generatedBy": "OLLAMA"
+      },
+      "supportingSources": [
+        {
+          "source": "Hacker News",
+          "title": "Upload2Shell · CVE-2026-125396",
+          "url": "https://pwn.ai/upload2shell",
+          "publishedAt": "2026-11-21T18:29:29.000Z",
+          "publishedAtMs": 1795285769000,
+          "isPrimary": false
+        }
+      ],
+      "lastUpdatedAtMs": 1795285769000
     },
     {
       "id": "bsky-natolambert.bsky.social-3n2tdrggx2o27",
@@ -1470,143 +1607,6 @@
       "lastUpdatedAtMs": 1795272418415
     },
     {
-      "id": "hn-50592097",
-      "title": "Upload2Shell · CVE-2026-125396",
-      "shortLabel": "Upload2Shell CVE-2026-125396",
-      "source": "HackerNews",
-      "sourceCategory": "HN_COMMUNITY",
-      "originFeedName": "Hacker News",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "Hacker News"
-      ],
-      "networkFamilies": [
-        "HackerNews"
-      ],
-      "canonicalEntity": "ent:cve+upload2shell",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 69,
-        "streetScore": 71,
-        "divergenceDelta": -2,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (69 hype / 71 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://pwn.ai/upload2shell-share.png?v=2",
-          "caption": "Linked article figure",
-          "sourceNetwork": "Hacker News"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "hn-50592097-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Hacker News",
-          "author": "Hacker News",
-          "text": "Upload2Shell · CVE-2026-125396",
-          "score": 80,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795285769000,
-          "url": "https://pwn.ai/upload2shell"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 45,
-        "commentsOrReplies": 10,
-        "velocityPerHour": 20,
-        "badgeText": "45 pts · 10 comments"
-      },
-      "url": "https://pwn.ai/upload2shell",
-      "publishedAtMs": 1795285769000,
-      "firstSeenAtMs": 1795295304316,
-      "isLiveInbound": true,
-      "primarySector": "ARC",
-      "secondarySectors": [
-        "ECO"
-      ],
-      "mass": 3.0370084915447633,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "Upload2Shell · CVE-2026-125396",
-      "architectBrief": {
-        "summary": "Upload2Shell · CVE-2026-125396",
-        "stackImpact": [
-          "ARC Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Upload2Shell · CVE-2026-125396",
-        "talkingPoints": [
-          "Upload2Shell · CVE-2026-125396",
-          "Readiness: GA (Hacker News)."
-        ],
-        "industryLens": {
-          "BANKING": "FinServ Advisory (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — maintains neutral unit token economics while clears standard SOC2 / zero-retention enterprise posture under SR 11-7 model-risk governance.",
-          "HEALTHCARE": "Clinical & Life-Sci (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — pairs with HIPAA BAA zero-retention boundaries; clears standard SOC2 / zero-retention enterprise posture for clinical decision workflows.",
-          "FINOPS": "Platform FinOps (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — maintains neutral unit token economics; prioritize semantic router tiering to evaluate workload economics.",
-          "RETAIL": "Commerce & CX (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — pairs responsive catalog & multimodal shopper workflows while maintains neutral unit token economics.",
-          "PUBLIC": "Sovereign & Public Sector (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — evaluate against FedRAMP / EU AI Act transparency controls; clears standard SOC2 / zero-retention enterprise posture.",
-          "SAAS": "B2B SaaS Product (Upload2Shell CVE-2026-125396): Upload2Shell · CVE-2026-125396 — evaluate per-tenant unit margins (maintains neutral unit token economics) across multi-tenant workspaces."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Enterprise AI Application Layer",
-        "Model Gateway & EvalOps"
-      ],
-      "evidenceScope": "single_user_experiment",
-      "verifiedMetrics": [],
-      "literacy": {
-        "plainTitle": "Upload2Shell vulnerability",
-        "plainFullTitle": "Upload2Shell · CVE-2026-125396",
-        "levels": {
-          "1": {
-            "analogy": "Think of it like a backdoor left open in a secure building, allowing unauthorized access. Imagine a library desk where patrons should only check out books, but someone left a hidden compartment for illegal materials.",
-            "everydayWhy": "This vulnerability could allow hackers to upload malicious software, compromising bank systems and data."
-          },
-          "2": {
-            "whatHappened": "A security flaw, known as Upload2Shell, has been identified, potentially allowing attackers to upload and execute arbitrary code on a server.",
-            "whoBuiltIt": "The source does not specify who built it, as it is a security vulnerability.",
-            "problemSolved": "The issue addresses a critical security gap that could be exploited by cybercriminals to gain unauthorized access to banking systems."
-          },
-          "3": {
-            "bridgeSummary": "This vulnerability poses a significant risk to banking systems, potentially enabling unauthorized code execution and data breaches. Banks must remain vigilant and update their security measures promptly."
-          },
-          "4": {
-            "roiAndFinOps": "The vulnerability could lead to substantial financial losses due to data breaches and system downtime, necessitating immediate action. Banks need to prioritize security updates to mitigate risks.",
-            "readinessAndRisk": "The vulnerability is unverified and may not be fully understood, requiring careful evaluation and testing before any patches are deployed. Banks should closely monitor and prepare for potential threats.",
-            "clientAdvice": "Banks should immediately review their security protocols, apply any available patches, and conduct thorough testing to ensure systems are protected against this potential threat."
-          },
-          "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. The vulnerability involves a security flaw that could allow attackers to upload and execute arbitrary code, posing a significant risk to banking systems.",
-            "specsAndCaveats": "The source does not provide any specific technical details or benchmarks. Banks should rely on verified security patches and updates from trusted sources.",
-            "streetConsensus": "The community is awaiting further details and validation of the vulnerability before making definitive statements. The newly indexed paper or release is expected to provide more insights."
-          }
-        },
-        "glossary": [],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "Hacker News",
-          "title": "Upload2Shell · CVE-2026-125396",
-          "url": "https://pwn.ai/upload2shell",
-          "publishedAt": "2026-11-21T18:29:29.000Z",
-          "publishedAtMs": 1795285769000,
-          "isPrimary": false
-        }
-      ],
-      "lastUpdatedAtMs": 1795285769000
-    },
-    {
       "id": "hn-50586292",
       "title": "ClawDOS – An AI coding agent for DOS",
       "shortLabel": "ClawDOS An AI coding agent",
@@ -1638,17 +1638,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "An AI chat and coding harness for DOS, on a real IBM PC 5160 (8088 at 4.77 MHz) Ricapar/ ClawDOS ClawDOS ClawDOS An AI coding agent for DOS.",
-          "score": 185,
+          "score": 186,
           "sentiment": "HYPE",
           "publishedAtMs": 1795239481000,
           "url": "http://ricapar.net/ClawDOS/"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 150,
-        "commentsOrReplies": 46,
+        "likesOrUps": 151,
+        "commentsOrReplies": 47,
         "velocityPerHour": 15,
-        "badgeText": "150 pts · 46 comments"
+        "badgeText": "151 pts · 47 comments"
       },
       "url": "http://ricapar.net/ClawDOS/",
       "publishedAtMs": 1795239481000,
@@ -1659,7 +1659,7 @@
         "REL",
         "ARC"
       ],
-      "mass": 3.273661623461959,
+      "mass": 3.2751834137416456,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -1967,8 +1967,8 @@
       "engagementVelocity": {
         "likesOrUps": 15,
         "commentsOrReplies": 4,
-        "velocityPerHour": 8,
-        "badgeText": "8/hr · 15 ups · 4 comments"
+        "velocityPerHour": 7,
+        "badgeText": "7/hr · 15 ups · 4 comments"
       },
       "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y22uo1/i_had_an_agent_build_an_entire_storefront_with_no/",
       "publishedAtMs": 1795283123000,
@@ -2098,17 +2098,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Test using prompts with unique, trackable secrets proves that data doesn't stay private.",
-          "score": 79,
+          "score": 80,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795211619000,
           "url": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 44,
+        "likesOrUps": 45,
         "commentsOrReplies": 6,
         "velocityPerHour": 2,
-        "badgeText": "44 pts · 6 comments"
+        "badgeText": "45 pts · 6 comments"
       },
       "url": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
       "publishedAtMs": 1795211619000,
@@ -2119,7 +2119,7 @@
         "GOV",
         "ECO"
       ],
-      "mass": 3.033457609338787,
+      "mass": 3.0370084915447633,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "NEUTRAL",
@@ -2376,9 +2376,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 116,
-        "commentsOrReplies": 47,
+        "commentsOrReplies": 48,
         "velocityPerHour": 7,
-        "badgeText": "116 pts · 47 comments"
+        "badgeText": "116 pts · 48 comments"
       },
       "url": "https://a90.com/experiments/same-advice/",
       "publishedAtMs": 1795193885000,
@@ -2790,8 +2790,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 32,
-        "badgeText": "32/hr · 1 up · 0 comments"
+        "velocityPerHour": 31,
+        "badgeText": "31/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y27spf/this_could_be_one_of_the_best_models_for_lower/",
       "publishedAtMs": 1795295877000,
@@ -2929,11 +2929,11 @@
       "isSupernova": false,
       "supernovaLevel": 0,
       "divergence": {
-        "hypeScore": 52,
+        "hypeScore": 51,
         "streetScore": 59,
-        "divergenceDelta": -7,
+        "divergenceDelta": -8,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (52 hype / 59 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (51 hype / 59 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [],
       "streetQuotes": [
@@ -2952,8 +2952,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 32,
-        "badgeText": "32/hr · 1 up · 0 comments"
+        "velocityPerHour": 27,
+        "badgeText": "27/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/AI_Agents/comments/1y27plv/i_built_an_opensource_mcp_to_catch_mistakes_in/",
       "publishedAtMs": 1795295645000,
@@ -3023,7 +3023,7 @@
           },
           "5": {
             "architectureBrief": "I Built an Open-Source MCP to Catch Mistakes in Healthcare AI Agents.",
-            "specsAndCaveats": "Community field report on r/AI_Agents (32/hr · 1 up · 0 comments) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
+            "specsAndCaveats": "Community field report on r/AI_Agents (27/hr · 1 up · 0 comments) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
             "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
           }
         },
@@ -3092,8 +3092,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 25,
-        "badgeText": "25/hr · 1 up · 0 comments"
+        "velocityPerHour": 21,
+        "badgeText": "21/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y27i16/inkling_2_mini_iq4_nl_on_rtx_5060_ti_16gb_44_toks/",
       "publishedAtMs": 1795295073000,
@@ -3275,8 +3275,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 18,
-        "badgeText": "18/hr · 1 up · 0 comments"
+        "velocityPerHour": 17,
+        "badgeText": "17/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2775c/inkling2mini_quants_by_shinmegamiboson_54gb_and/",
       "publishedAtMs": 1795294274000,
@@ -3546,8 +3546,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 11,
-        "badgeText": "11/hr · 1 up · 0 comments"
+        "velocityPerHour": 10,
+        "badgeText": "10/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y26d3k/former_nsa_hacker_reveals_hes_actively_responding/",
       "publishedAtMs": 1795292038000,
@@ -3683,8 +3683,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 10,
-        "badgeText": "10/hr · 1 up · 0 comments"
+        "velocityPerHour": 9,
+        "badgeText": "9/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y2661o/from_more_than_3_years_ago/",
       "publishedAtMs": 1795291520000,
@@ -9150,36 +9150,6 @@
       "glossary": [],
       "generatedBy": "OLLAMA"
     },
-    "bsky-natolambert.bsky.social-3n2tdrggx2o27": {
-      "plainTitle": "New insights on post-training challenges",
-      "plainFullTitle": "New slide deck on post-training challenges and the field's progress",
-      "levels": {
-        "1": {
-          "analogy": "Imagine it like a library where books are constantly being added and rearranged, but the librarians are still figuring out the best way to keep everything organized and accessible.",
-          "everydayWhy": "Understanding these challenges helps ensure that AI systems can be more reliable and effective in real-world applications."
-        },
-        "2": {
-          "whatHappened": "A new slide deck was created to address the biggest open problems in post-training and the field's current state.",
-          "whoBuiltIt": "The author of the slide deck is @natolambert from Trillium Labs.",
-          "problemSolved": "The deck aims to highlight the current gaps and progress in AI post-training, guiding future projects and research."
-        },
-        "3": {
-          "bridgeSummary": "The slide deck provides insights into the ongoing challenges and advancements in AI post-training, which is crucial for ensuring the reliability and effectiveness of AI systems in various applications."
-        },
-        "4": {
-          "roiAndFinOps": "Personal or community discussion (Bluesky · @natolambert) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
-          "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification.",
-          "clientAdvice": "Read the original discussion directly on Bluesky · @natolambert for first-hand human context."
-        },
-        "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. The slide deck focuses on identifying the biggest open problems in post-training and the field's current state.",
-          "specsAndCaveats": "The deck does not provide specific technical specifications or benchmarks, but it highlights the current gaps and progress in AI post-training.",
-          "streetConsensus": "The community is awaiting further peer review and replication of the insights presented in the slide deck."
-        }
-      },
-      "glossary": [],
-      "generatedBy": "OLLAMA"
-    },
     "hn-50592097": {
       "plainTitle": "Upload2Shell vulnerability",
       "plainFullTitle": "Upload2Shell · CVE-2026-125396",
@@ -9205,6 +9175,36 @@
           "architectureBrief": "Source provides no technical specifications or architecture details. The vulnerability involves a security flaw that could allow attackers to upload and execute arbitrary code, posing a significant risk to banking systems.",
           "specsAndCaveats": "The source does not provide any specific technical details or benchmarks. Banks should rely on verified security patches and updates from trusted sources.",
           "streetConsensus": "The community is awaiting further details and validation of the vulnerability before making definitive statements. The newly indexed paper or release is expected to provide more insights."
+        }
+      },
+      "glossary": [],
+      "generatedBy": "OLLAMA"
+    },
+    "bsky-natolambert.bsky.social-3n2tdrggx2o27": {
+      "plainTitle": "New insights on post-training challenges",
+      "plainFullTitle": "New slide deck on post-training challenges and the field's progress",
+      "levels": {
+        "1": {
+          "analogy": "Imagine it like a library where books are constantly being added and rearranged, but the librarians are still figuring out the best way to keep everything organized and accessible.",
+          "everydayWhy": "Understanding these challenges helps ensure that AI systems can be more reliable and effective in real-world applications."
+        },
+        "2": {
+          "whatHappened": "A new slide deck was created to address the biggest open problems in post-training and the field's current state.",
+          "whoBuiltIt": "The author of the slide deck is @natolambert from Trillium Labs.",
+          "problemSolved": "The deck aims to highlight the current gaps and progress in AI post-training, guiding future projects and research."
+        },
+        "3": {
+          "bridgeSummary": "The slide deck provides insights into the ongoing challenges and advancements in AI post-training, which is crucial for ensuring the reliability and effectiveness of AI systems in various applications."
+        },
+        "4": {
+          "roiAndFinOps": "Personal or community discussion (Bluesky · @natolambert) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
+          "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification.",
+          "clientAdvice": "Read the original discussion directly on Bluesky · @natolambert for first-hand human context."
+        },
+        "5": {
+          "architectureBrief": "Source provides no technical specifications or architecture details. The slide deck focuses on identifying the biggest open problems in post-training and the field's current state.",
+          "specsAndCaveats": "The deck does not provide specific technical specifications or benchmarks, but it highlights the current gaps and progress in AI post-training.",
+          "streetConsensus": "The community is awaiting further peer review and replication of the insights presented in the slide deck."
         }
       },
       "glossary": [],
@@ -9448,7 +9448,7 @@
         },
         "5": {
           "architectureBrief": "I Built an Open-Source MCP to Catch Mistakes in Healthcare AI Agents.",
-          "specsAndCaveats": "Community field report on r/AI_Agents (32/hr · 1 up · 0 comments) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
+          "specsAndCaveats": "Community field report on r/AI_Agents (27/hr · 1 up · 0 comments) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
           "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
         }
       },
