@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2026 21:14:26 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 21:18:53 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>Anthropic Announces Completion of Initial Public Offering and Concurrent Private Placement</title>
@@ -63,6 +63,14 @@
       <pubDate>Fri, 20 Nov 2026 20:12:19 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
       <description>Inkling 2 Mini, a looped transformer model, processes middle layers three times per token, improving reasoning and reducing token usage. It has 26.4B parameters and runs on local devices like laptops. The model addresses the need for faster, more reasoning-capable AI models that can run on local devices without relying on cloud infrastructure. — Upstream (Hacker News): https://thinkingmachines.ai/news/inkling-2-mini/</description>
+    </item>
+    <item>
+      <title>Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh…</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123167889976905966&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123167889976905966&amp;lens=2</guid>
+      <pubDate>Wed, 18 Nov 2026 21:34:06 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>X · @GoogleDeepMind · Cross-surfaced on X · @demishassabis published &quot;Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh. — Upstream (X · @GoogleDeepMind): https://x.com/GoogleDeepMind/status/2123167889976905966</description>
     </item>
     <item>
       <title>langchain-openrouter==0.3.0</title>
@@ -129,6 +137,14 @@
       <description>Hundreds of Google workers are protesting against a policy that would block schools from using Gemini AI tools if they choose not to use them. Google aims to address concerns from teachers and parents about AI in the classroom, but the policy has sparked backlash. — Upstream (Hacker News): https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/</description>
     </item>
     <item>
+      <title>That&apos;s the essence of my Deep Learning course at NYU for the past 20 years or so.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2124155600946769955&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2124155600946769955&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 14:58:54 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.). Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course. — Upstream (X · @ylecun): https://x.com/ylecun/status/2124155600946769955</description>
+    </item>
+    <item>
       <title>digital helpers Creates Storefront with No Manual Edits, Every Prompt and Stage in Repo</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y22uo1&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y22uo1&amp;lens=2</guid>
@@ -169,44 +185,28 @@
       <description>The effective end of easy distillation from OpenAI and Anthropic models may be behind the relative slowdown in open weights model progress. We don’t know the extent to which distillation has been key to the rapid improvement in open weights, I guess we will find out soon. Addresses practical workflow friction around The effective end of easy distillation from OpenAI and Anthropic models may be behind the. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225</description>
     </item>
     <item>
+      <title>I built a small gateway to use my home AI assistants from my other computers, without port…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y234ug&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y234ug&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 17:57:20 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Active engineering thread in r/ollama (3 upvotes, 0 comments): I built a small gateway to use my home AI assistants from my other computers. Addresses practical workflow friction around I built a small gateway to use my home AI assistants from my other computers, without port forwarding or. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y234ug/i_built_a_small_gateway_to_use_my_home_llm_from/</description>
+    </item>
+    <item>
+      <title>This could be one of the best models for lower vram systems: Over 1300 tokens per second aggregated for SenseNova-Loop-9B looped transformer on a laptop RTX 5090</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y27spf&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y27spf&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 21:17:57 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>I was a bit surprised when I started the MMLU benchmark on this model and my performance counter showed these numbers. I genuinely thought it was a bug and checked the display and counter code. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y27spf/this_could_be_one_of_the_best_models_for_lower/</description>
+    </item>
+    <item>
       <title>Inkling 2 Mini IQ4_NL on RTX 5060 Ti 16GB, 44 tokens per second</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y27i16&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y27i16&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 21:04:33 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>https://i.redd.it/y2iosj20513i1.png Finally got a chance to sit down and test Inkling 2 Mini on my PC (5060 Ti 16GB + 32 GB RAM). At 128k context window, without vision. This is for the IQ4\_NL gguf version from ggml-org on HF. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y27i16/inkling_2_mini_iq4_nl_on_rtx_5060_ti_16gb_44_toks/</description>
-    </item>
-    <item>
-      <title>Inkling-2-Mini quants by shinmegamiboson - 5.4GB and 8.9GB at higher scores than Unsloth</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2775c&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2775c&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 20:51:14 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>shinmegamiboson has released two new Inkling-2-Mini quants, with sizes of 5.4GB and 8.9GB, that outperform Unsloth in certain metrics. The new models aim to address the need for more efficient and high-scoring AI solutions in specific applications. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2775c/inkling2mini_quants_by_shinmegamiboson_54gb_and/</description>
-    </item>
-    <item>
-      <title>Local AI community thread on current developments</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y271rv&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y271rv&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 20:44:23 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>A thread was posted in r/LocalLLaMA discussing the current state of local AI developments. The discussion aims to highlight and explore the current trends and advancements in local AI applications. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y271rv/the_current_local_frontier_writes_an_essay/</description>
-    </item>
-    <item>
-      <title>2 local models, no Web access, discover and program a vintage Motorola 68000 device</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y26hhs&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y26hhs&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 20:19:09 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Thought this group may like this experiment. The device in question is Motorola 68K Educational Computer Board which the models apparently don’t have any info of in their trained weights. Two agents, using only local models, were asked to co-operate in discovering what’s attached to a Raspberry Pi’s serial port (via serial hat). — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y26hhs/2_local_models_no_web_access_discover_and_program/</description>
-    </item>
-    <item>
-      <title>Former NSA hacker reveals he’s actively responding to a live breach where an AI &quot;agent swarm&quot;…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y26d3k&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y26d3k&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 20:13:58 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Active engineering thread in r/singularity (1 upvotes, 0 comments): Former NSA hacker reveals he’s actively responding to a live breach where an AI &quot;agent swarm&quot; bypassed 2FA, stole data, and encrypted a company&apos;s entire system: This all took 14 minutes. Never seen anything that fast before. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y26d3k/former_nsa_hacker_reveals_hes_actively_responding/</description>
     </item>
   </channel>
 </rss>
