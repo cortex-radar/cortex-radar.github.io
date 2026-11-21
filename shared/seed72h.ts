@@ -6,6 +6,7 @@ import {
 import {
   classifyEvidenceScope,
   extractSourceVerifiedMetrics,
+  hasLatencyOrThroughputWithoutCost,
   parseGitHubReleaseMetadata,
   sanitizeReleaseNotesText,
   stripUiChromeBoilerplate,
@@ -63,7 +64,7 @@ function buildIndustryLens(
 ): Record<ClientIndustry, string> {
   const costClause =
     finOps === 'REDUCER'
-      ? 'compresses inference run-rate by 35–65%'
+      ? 'targets lower compute overhead on matching workloads (verify per-request cost empirically)'
       : finOps === 'INTENSIVE'
       ? 'requires strict FinOps quota guardrails on multi-turn loops'
       : 'maintains neutral unit token economics';
@@ -72,15 +73,15 @@ function buildIndustryLens(
       ? 'clears standard SOC2 / zero-retention enterprise posture'
       : risk === 'HIGH'
       ? 'mandates legal & CISO sign-off prior to production cutover'
-      : 'requires human-in-the-loop confidence routing (<0.92)';
+      : 'requires human-in-the-loop confidence routing before autonomous actions';
 
   return {
     BANKING: `FinServ Advisory (${shortLabel}): ${headline} — ${costClause} while ${riskClause} under SR 11-7 model-risk governance.`,
     HEALTHCARE: `Clinical & Life-Sci (${shortLabel}): ${headline} — pairs with HIPAA BAA zero-retention boundaries; ${riskClause} for clinical decision workflows.`,
-    FINOPS: `Platform FinOps (${shortLabel}): ${headline} — ${costClause}; prioritize semantic router tiering to capture immediate margin upside.`,
-    RETAIL: `Commerce & CX (${shortLabel}): ${headline} — unlocks sub-second catalog & multimodal shopper conversion while ${costClause}.`,
+    FINOPS: `Platform FinOps (${shortLabel}): ${headline} — ${costClause}; prioritize semantic router tiering to evaluate workload economics.`,
+    RETAIL: `Commerce & CX (${shortLabel}): ${headline} — pairs responsive catalog & multimodal shopper workflows while ${costClause}.`,
     PUBLIC: `Sovereign & Public Sector (${shortLabel}): ${headline} — evaluate against FedRAMP / EU AI Act transparency controls; ${riskClause}.`,
-    SAAS: `B2B SaaS Product (${shortLabel}): ${headline} — protects >75% AI feature gross margin (${costClause}) across multi-tenant workspaces.`,
+    SAAS: `B2B SaaS Product (${shortLabel}): ${headline} — evaluate per-tenant unit margins (${costClause}) across multi-tenant workspaces.`,
   };
 }
 
@@ -1208,10 +1209,14 @@ export function synthesizeRawItemToSpatialSignal(
         readiness === 'RESEARCH'
           ? 'Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.'
           : 'Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.',
-      latencyAndCostNote:
-        finOps === 'REDUCER'
-          ? 'Targets unit-cost and latency reduction on matching enterprise workloads.'
-          : 'Validate task completion accuracy and per-workflow unit economics against current baseline.',
+      latencyAndCostNote: hasLatencyOrThroughputWithoutCost({
+        title: displayTitle || raw.title,
+        rawAbstract: cleanSummary,
+      })
+        ? 'Latency and throughput gains do not automatically establish end-to-end savings — ask: What happens to cost per completed request on your workload?'
+        : finOps === 'REDUCER'
+        ? 'Targets unit-cost and latency reduction on matching enterprise workloads.'
+        : 'Validate task completion accuracy and per-workflow unit economics against current baseline.',
     },
     cSuiteBrief: {
       headlineSoWhat,

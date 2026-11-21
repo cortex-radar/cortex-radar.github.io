@@ -214,6 +214,8 @@ export interface BlastOrderConsequence {
   consequence: string;
   consultantAction: string;
   kpiMetric: string;
+  actionUrl?: string;
+  actionLabel?: string;
 }
 
 export interface VerifiedSourceMetric {
@@ -224,6 +226,7 @@ export interface VerifiedSourceMetric {
 }
 
 export type EvidenceScope =
+  | 'discussion_or_personal'
   | 'single_user_experiment'
   | 'software_release'
   | 'research_paper'

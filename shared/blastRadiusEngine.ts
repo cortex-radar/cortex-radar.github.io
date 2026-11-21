@@ -1,4 +1,9 @@
-import { classifyEvidenceScope, isNonToolNewsOrMarketSignal } from './provenance';
+import {
+  classifyEvidenceScope,
+  hasLatencyOrThroughputWithoutCost,
+  isNonToolNewsOrMarketSignal,
+  stripUnbackedNumericClaims,
+} from './provenance';
 import {
   BlastOrderConsequence,
   CLIENT_INDUSTRIES,
@@ -42,9 +47,29 @@ const FINOPS_TARGETS: Record<SectorId, SectorId> = {
 };
 
 export interface ProportionateBlastResult {
-  mode: 'FULL_30_60_90' | 'PRACTICAL_NEXT_STEP';
+  mode: 'FULL_30_60_90' | 'PRACTICAL_NEXT_STEP' | 'READ_DISCUSSION';
   scope: EvidenceScope;
   horizons: BlastOrderConsequence[];
+}
+
+function sanitizeHorizonNumbers(
+  horizon: BlastOrderConsequence,
+  signal: SpatialSignal
+): BlastOrderConsequence {
+  const corpus = [
+    signal.title || '',
+    signal.rawAbstract || '',
+    ...(signal.streetQuotes || []).map((q) => q.text || ''),
+    ...(signal.supportingSources || []).map((s) => s.title || ''),
+  ].join(' ');
+  return {
+    ...horizon,
+    title: stripUnbackedNumericClaims(horizon.title, corpus).cleaned || horizon.title,
+    consequence: stripUnbackedNumericClaims(horizon.consequence, corpus).cleaned || horizon.consequence,
+    consultantAction:
+      stripUnbackedNumericClaims(horizon.consultantAction, corpus).cleaned || horizon.consultantAction,
+    kpiMetric: stripUnbackedNumericClaims(horizon.kpiMetric, corpus).cleaned || horizon.kpiMetric,
+  };
 }
 
 function buildPracticalNextStepCard(
@@ -53,6 +78,22 @@ function buildPracticalNextStepCard(
 ): BlastOrderConsequence {
   const hay = `${signal.title || ''} ${signal.rawAbstract || ''}`.toLowerCase();
   const targetSector: SectorId = signal.primarySector || 'ARC';
+
+  if (scope === 'discussion_or_personal') {
+    return {
+      horizon: 'NEXT',
+      orderLabel: 'ORIGINAL DISCUSSION',
+      title: 'Read the original discussion',
+      targetSector,
+      consequence:
+        'Personal, career, or community discussion thread — no hardware reproduction, benchmarking, or enterprise rollout steps apply.',
+      consultantAction:
+        'Read the original discussion directly on the source thread for first-hand replies and context.',
+      kpiMetric: 'Scope: Discussion / Personal · Source Thread Only',
+      actionUrl: signal.url,
+      actionLabel: 'Read the original discussion',
+    };
+  }
 
   if (scope === 'single_user_experiment') {
     const isOfflineOrSpeechOrHardware =
@@ -132,11 +173,19 @@ export function computeProportionateBlast(
     ) &&
     !isNonToolNewsOrMarketSignal(signal);
 
+  if (scope === 'discussion_or_personal') {
+    return {
+      mode: 'READ_DISCUSSION',
+      scope,
+      horizons: [sanitizeHorizonNumbers(buildPracticalNextStepCard(signal, scope), signal)],
+    };
+  }
+
   if (scope !== 'enterprise_launch' && !isMajorRegulatoryShift) {
     return {
       mode: 'PRACTICAL_NEXT_STEP',
       scope,
-      horizons: [buildPracticalNextStepCard(signal, scope)],
+      horizons: [sanitizeHorizonNumbers(buildPracticalNextStepCard(signal, scope), signal)],
     };
   }
 
@@ -185,18 +234,21 @@ export function computeProportionateBlast(
     orderLabel: '3RD ORDER · 90d OPERATIONALIZATION',
     title: 'Measured Rollout & Team Enablement',
     targetSector: sec90,
-    consequence:
-      'Compare measured pilot unit economics, error rates, and maintenance overhead against incumbent tooling before full cutover.',
+    consequence: hasLatencyOrThroughputWithoutCost(signal)
+      ? 'Compare end-to-end cost per completed request, error rates, and maintenance overhead before broader rollout.'
+      : 'Compare measured pilot unit economics, error rates, and maintenance overhead against incumbent tooling before full cutover.',
     consultantAction: `Review 90-day pilot telemetry across ${
       signal.affectedEnterpriseStacks.slice(0, 2).join(' & ') || 'core stack'
     } before broader rollout.`,
-    kpiMetric: 'Gate: Advance only if pilot metrics beat baseline',
+    kpiMetric: hasLatencyOrThroughputWithoutCost(signal)
+      ? 'Ask: What happens to cost per completed request?'
+      : 'Gate: Advance only if pilot metrics beat baseline',
   };
 
   return {
     mode: 'FULL_30_60_90',
     scope,
-    horizons: [order1, order2, order3],
+    horizons: [order1, order2, order3].map((h) => sanitizeHorizonNumbers(h, signal)),
   };
 }
 

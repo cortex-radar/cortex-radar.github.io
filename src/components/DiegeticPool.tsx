@@ -1169,12 +1169,14 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
           const validMedia = candidateMedia.filter((m) => !brokenMediaUrls[m.url]);
           const primaryHeaderMedia = validMedia[0] || null;
 
+          const liveExtractedMetrics = extractSourceVerifiedMetrics(effectiveSignal);
           const verifiedMetrics: VerifiedSourceMetric[] =
-            effectiveSignal.verifiedMetrics && effectiveSignal.verifiedMetrics.length > 0
-              ? effectiveSignal.verifiedMetrics
-              : extractSourceVerifiedMetrics(effectiveSignal);
+            liveExtractedMetrics.length > 0
+              ? liveExtractedMetrics
+              : effectiveSignal.verifiedMetrics || [];
           const blastScope = effectiveSignal.evidenceScope || classifyEvidenceScope(effectiveSignal);
           const isFullEnterpriseBlast = blastScope === 'enterprise_launch';
+          const isDiscussionOrPersonal = blastScope === 'discussion_or_personal';
           const distinctQuoteNets = Array.from(new Set(quotes.map((q) => q.network)));
           const hasRealCrossPlatformQuotes =
             !focusedSignal.isDemoSeed && distinctQuoteNets.length >= 2;
@@ -1880,14 +1882,14 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                       aria-label="Verified Source Passage"
                       className="rounded-md bg-zinc-950/85 border border-teal-400/35 p-2 space-y-1.5"
                     >
-                      <div className="flex items-center justify-between gap-2 text-[9.5px] text-teal-300">
-                        <span className="font-semibold truncate">
+                      <div className="text-[9.5px] text-teal-300 space-y-0.5">
+                        <div className="font-semibold">
                           Verbatim Passage · {activeVerifiedMetric.label}
-                        </span>
+                        </div>
                         {activeVerifiedMetric.context && (
-                          <span className="text-zinc-400 truncate max-w-[160px]">
+                          <div className="text-zinc-400 leading-snug">
                             {activeVerifiedMetric.context}
-                          </span>
+                          </div>
                         )}
                       </div>
                       <blockquote className="font-sans text-[11.5px] text-zinc-200 leading-[1.45] border-l-2 border-teal-400/50 pl-2">
@@ -1956,7 +1958,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
               )}
 
               {/* Affected Enterprise Stacks (L3-L5, Domain-Inferred — Zero Enum Leaks) */}
-              {activeLevel >= 3 && !showCrossfire && !noReleaseNotes && (
+              {activeLevel >= 3 && !showCrossfire && !noReleaseNotes && !isDiscussionOrPersonal && (
                 <div className="pt-2 border-t border-white/8">
                   <div className="flex items-center gap-1.5 text-[9.5px] font-mono uppercase tracking-wider text-zinc-500 mb-1.5">
                     <Layers className="w-3 h-3 text-zinc-400" />
@@ -1975,40 +1977,70 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                 </div>
               )}
 
+              {/* Honest ending card for personal, career, and community discussion threads */}
+              {isDiscussionOrPersonal && !showCrossfire && (
+                <div className="cockpit-well rounded-lg p-2.5 space-y-1.5 border border-white/12">
+                  <div className="flex items-center justify-between gap-2 font-mono text-[9.5px] uppercase tracking-wider text-zinc-400">
+                    <span>Original Discussion</span>
+                    <span className="text-zinc-500 truncate max-w-[160px]">{originBadge}</span>
+                  </div>
+                  <p className="text-[11.5px] text-zinc-300 leading-[1.45]">
+                    Personal or community discussion thread — open the source thread directly for first-hand replies and context.
+                  </p>
+                  <a
+                    href={focusedSignal.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`inline-flex items-center gap-1.5 font-mono text-[10.5px] font-semibold text-teal-300 hover:text-teal-200 underline underline-offset-2 ${
+                      isMobileViewport ? 'min-h-[36px]' : ''
+                    }`}
+                  >
+                    <span>Read the original discussion</span>
+                    <ExternalLink className="w-3 h-3 shrink-0" />
+                  </a>
+                </div>
+              )}
+
               {/* Action Footer: Proportionate Next-Step / Blast-Radius + Copy Memo + Share */}
               <div className="pt-2 border-t border-white/8 flex flex-wrap items-center justify-between gap-1.5">
-                <InstrumentButton
-                  size="xs"
-                  variant={blastHorizons ? 'danger' : 'accent'}
-                  className={isMobileViewport ? 'min-h-[44px] px-3' : ''}
-                  aria-label={
-                    blastHorizons
-                      ? isFullEnterpriseBlast
-                        ? 'Clear 30/60/90d Blast'
-                        : 'Hide Practical Next Step'
-                      : isFullEnterpriseBlast
-                      ? 'Show 30/60/90d Blast'
-                      : 'Show Practical Next Step'
-                  }
-                  onClick={() => {
-                    if (blastHorizons) {
-                      onClearBlastRadiusWave();
-                    } else {
-                      onTriggerBlastRadiusWave();
+                {!isDiscussionOrPersonal ? (
+                  <InstrumentButton
+                    size="xs"
+                    variant={blastHorizons ? 'danger' : 'accent'}
+                    className={isMobileViewport ? 'min-h-[44px] px-3' : ''}
+                    aria-label={
+                      blastHorizons
+                        ? isFullEnterpriseBlast
+                          ? 'Clear 30/60/90d Blast'
+                          : 'Hide Practical Next Step'
+                        : isFullEnterpriseBlast
+                        ? 'Show 30/60/90d Blast'
+                        : 'Show Practical Next Step'
                     }
-                  }}
-                >
-                  <Orbit className="w-3 h-3" />
-                  <span>
-                    {blastHorizons
-                      ? isFullEnterpriseBlast
-                        ? 'Clear 30/60/90d'
-                        : 'Hide Next Step'
-                      : isFullEnterpriseBlast
-                      ? '30/60/90d Blast'
-                      : 'Practical Next Step'}
+                    onClick={() => {
+                      if (blastHorizons) {
+                        onClearBlastRadiusWave();
+                      } else {
+                        onTriggerBlastRadiusWave();
+                      }
+                    }}
+                  >
+                    <Orbit className="w-3 h-3" />
+                    <span>
+                      {blastHorizons
+                        ? isFullEnterpriseBlast
+                          ? 'Clear 30/60/90d'
+                          : 'Hide Next Step'
+                        : isFullEnterpriseBlast
+                        ? '30/60/90d Blast'
+                        : 'Practical Next Step'}
+                    </span>
+                  </InstrumentButton>
+                ) : (
+                  <span className="font-mono text-[9.5px] text-zinc-500">
+                    Discussion · Thread Only
                   </span>
-                </InstrumentButton>
+                )}
 
                 <div className="flex flex-wrap items-center gap-1.5">
                   <InstrumentButton
@@ -2197,6 +2229,17 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                         <div className="text-[9.5px] font-mono text-zinc-400 tabular-nums">
                           {horizon.kpiMetric}
                         </div>
+                        {horizon.actionUrl && (
+                          <a
+                            href={horizon.actionUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1 text-[10px] font-mono text-teal-300 hover:text-teal-200 underline underline-offset-2"
+                          >
+                            <span>{horizon.actionLabel || 'Read the original discussion'}</span>
+                            <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                          </a>
+                        )}
                       </div>
                     );
                   })}
@@ -2951,6 +2994,17 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                   <div className="text-[9.5px] font-mono text-zinc-400 tabular-nums">
                     {geminiOverride?.kpiMetric || horizon.kpiMetric}
                   </div>
+                  {horizon.actionUrl && (
+                    <a
+                      href={horizon.actionUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-[10px] font-mono text-teal-300 hover:text-teal-200 underline underline-offset-2"
+                    >
+                      <span>{horizon.actionLabel || 'Read the original discussion'}</span>
+                      <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                    </a>
+                  )}
                 </div>
               );
             })()}

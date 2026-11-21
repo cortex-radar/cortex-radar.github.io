@@ -968,29 +968,66 @@ function splitExactSourceSentences(rawText: string): string[] {
     .filter((s) => s.length >= 16);
 }
 
+function extractComparisonBaseline(sentence: string): string | undefined {
+  const clean = (sentence || '').replace(/\s+/g, ' ').trim();
+  if (!clean) return undefined;
+  const vsMatch = clean.match(
+    /(?:compared\s+(?:with|to)|versus|\bvs\.?|(?:above|over)\s+the\s+(?:best|baseline|prior|previous))\s+([^.,;]{4,80})/i
+  );
+  const configMatch = clean.match(/\bacross\s+([^.,;]{4,65}\bconfigurations?)\b/i);
+  const parts: string[] = [];
+  if (vsMatch) {
+    let target = vsMatch[1].trim();
+    if (/^(?:best|baseline|prior|previous)/i.test(target) && /above|over/i.test(vsMatch[0])) {
+      target = `vs. ${target}`;
+    } else if (!/^vs\.?/i.test(target)) {
+      target = `vs. ${target}`;
+    }
+    parts.push(target);
+  }
+  if (configMatch) {
+    parts.push(`across ${configMatch[1].trim()}`);
+  }
+  return parts.length > 0 ? parts.join(' · ') : undefined;
+}
+
+function normalizeRangeSeparator(raw: string): string {
+  return (raw || '')
+    .replace(/%/g, '')
+    .replace(/\s*(?:--|–|—|-|\bto\b)\s*/gi, '–')
+    .trim();
+}
+
 function inferPercentageLabel(sentence: string, matchIndex: number): { label: string; context?: string } {
   const lower = sentence.toLowerCase();
-  const nearbyStart = Math.max(0, matchIndex - 50);
+  const nearbyStart = Math.max(0, matchIndex - 65);
   const nearbyEnd = Math.min(sentence.length, matchIndex + 75);
   const windowStr = sentence.slice(nearbyStart, nearbyEnd).toLowerCase();
+  const baseline = extractComparisonBaseline(sentence);
 
   if (/\b(?:excerpt|citation|cited)\b/.test(windowStr) && /\brelevan\w*\b/.test(windowStr)) {
     return { label: 'Cited excerpt relevance', context: 'Relevant cited excerpts in evaluation' };
   }
   if (/\bpresentation\s+requirements?\b/.test(windowStr)) {
-    return { label: 'Presentation requirements met' };
+    return { label: 'Presentation requirements met', context: baseline };
   }
   if (/\brequired\s+(?:types?\s+of\s+)?sources?\b|\bsource\s+coverage\b/.test(lower)) {
-    return { label: 'Source coverage score' };
+    return { label: 'Source coverage score', context: baseline };
   }
-  if (/\bswe-bench\b/.test(windowStr)) return { label: 'SWE-bench score' };
-  if (/\baccuracy\b/.test(windowStr)) return { label: 'Reported accuracy' };
-  if (/\breduction\b|\bfaster\b|\bcheaper\b|\blower\b|\bcut\b|\bdrop\b|\bsaving\b/.test(windowStr)) {
+  if (/\bswe-bench\b/.test(windowStr)) return { label: 'SWE-bench score', context: baseline };
+  if (/\baccuracy\b/.test(windowStr)) return { label: 'Reported accuracy', context: baseline };
+  if (/\b(?:latency|ttft|tpot|per-token)\b/.test(windowStr) && /\breduc\w*|\blower|\bcut|\bdrop/.test(windowStr)) {
+    return { label: 'Latency reduction', context: baseline };
+  }
+  if (/\b(?:memory|hbm|vram)\b/.test(windowStr) && /\breduc\w*|\blower|\bsaving/.test(windowStr)) {
+    return { label: 'Memory reduction', context: baseline };
+  }
+  if (/\breduction\b|\bfaster\b|\bcheaper\b|\blower\b|\bcut\b|\bdrop\b|\bsaving\w*\b/.test(windowStr)) {
     const word = windowStr.match(/\b(reduction|faster|cheaper|lower|cut|drop|saving\w*)\b/)?.[1];
-    return { label: word ? `Reported ${word}` : 'Reported delta' };
+    return { label: word ? `Reported ${word}` : 'Reported delta', context: baseline };
   }
-  if (/\bverified\b|\bpass(?:ed|@\d+)?\b/.test(windowStr)) return { label: 'Evaluation pass rate' };
-  return { label: 'Source-reported percentage' };
+  if (/\bverified\b|\bpass(?:ed|@\d+)?\b/.test(windowStr)) return { label: 'Evaluation pass rate', context: baseline };
+  return { label: 'Source-reported percentage', context: baseline };
 }
 
 function inferPercentagePointLabel(sentence: string, matchIndex: number): { label: string; context?: string } {
@@ -1006,7 +1043,7 @@ function inferPercentagePointLabel(sentence: string, matchIndex: number): { labe
 
 /**
  * Extracts quantitative metrics verbatim from ingested source text along with the exact
- * supporting sentence (`quote`) so UI pills can cite primary passages on click.
+ * supporting sentence (`quote`) and comparison baseline so UI pills preserve full ranges.
  */
 export function extractSourceVerifiedMetrics(
   sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
@@ -1026,6 +1063,8 @@ export function extractSourceVerifiedMetrics(
   };
 
   for (const sentence of sentences) {
+    const baseline = extractComparisonBaseline(sentence);
+
     // 1. Percentage-point leads (e.g., "+13.6 percentage points" / "scored 13.6 percentage points above")
     const ppRegex = /([+-]?\d+(?:\.\d+)?)\s*percentage[- ]points?\b/gi;
     let m: RegExpExecArray | null;
@@ -1041,20 +1080,21 @@ export function extractSourceVerifiedMetrics(
       });
     }
 
-    // 2. Percentages with meaningful technical/eval context (e.g., "99.5% of the excerpts it cited were relevant")
-    const pctRegex = /\b(\d{1,3}(?:\.\d+)?)%/g;
+    // 2. Percentages & full numeric ranges (e.g., "20--59%", "20–59%", "99.5%")
+    const pctRegex = /\b(\d{1,3}(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*\d{1,3}(?:\.\d+)?)?)%/gi;
     while ((m = pctRegex.exec(sentence)) !== null) {
       const windowLower = sentence
-        .slice(Math.max(0, m.index - 45), Math.min(sentence.length, m.index + 70))
+        .slice(Math.max(0, m.index - 65), Math.min(sentence.length, m.index + m[0].length + 75))
         .toLowerCase();
       const hasEvalContext =
-        /\b(excerpts?|cited|relevan\w*|presentation|requirements?|sources?|coverage|verified|reduction|faster|cheaper|lower|cut|drop|accuracy|score|swe-bench|mmlu|gpqa|pass|recall|precision|benchmark|utilization|overhead|gain|improv\w*)\b/.test(
+        /\b(excerpts?|cited|relevan\w*|presentation|requirements?|sources?|coverage|verified|reduc\w*|faster|cheaper|lower|cut|drop|accuracy|score|swe-bench|mmlu|gpqa|pass|recall|precision|benchmark|utilization|overhead|gain|improv\w*|latency|ttft|tpot|throughput|memory|vram|hbm)\b/.test(
           windowLower
         );
       if (!hasEvalContext) continue;
       const meta = inferPercentageLabel(sentence, m.index);
+      const normNum = normalizeRangeSeparator(m[1]);
       pushMetric({
-        value: `${m[1]}%`,
+        value: `${normNum}%`,
         label: meta.label,
         quote: sentence,
         context: meta.context,
@@ -1063,31 +1103,53 @@ export function extractSourceVerifiedMetrics(
 
     // 3. Token throughput (preserving ranges & exact unit "tokens per second", e.g., "51.8–58.3 tokens per second")
     const tokRegex =
-      /\b(\d+(?:\.\d+)?(?:\s*[–—-]\s*\d+(?:\.\d+)?)?)\s*(?:tokens\s+per\s+second|tok\/s|t\/s|tokens\/s)\b/gi;
+      /\b(\d+(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(?:tokens\s+per\s+second|tok\/s|t\/s|tokens\/s)\b/gi;
     while ((m = tokRegex.exec(sentence)) !== null) {
-      const rangeClean = m[1].replace(/\s*([–—-])\s*/g, '$1');
+      const rangeClean = normalizeRangeSeparator(m[1]);
       pushMetric({
         value: `${rangeClean} tokens/s`,
         label: 'Measured throughput',
         quote: sentence,
-        context: 'Source-reported token generation rate',
+        context: baseline || 'Source-reported token generation rate',
       });
     }
 
-    // 4. Efficiency / performance multipliers (e.g., "4.59x performance per watt")
+    // 4. Efficiency, turn & speedup multipliers including full ranges (e.g., "1.40--3.05x", "2x–4x", "4.59x")
     const multRegex =
-      /\b(\d+(?:\.\d+)?)\s*([x×])\s+(?:the\s+)?(performance[- ]per[- ]watt|perf[- ]per[- ]watt|energy\s+efficiency|throughput|speedup)\b/gi;
+      /\b(\d+(?:\.\d+)?(?:\s*[x×]?\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?)\s*([x×])(?:\s+(?:the\s+)?(performance[- ]per[- ]watt|perf[- ]per[- ]watt|energy\s+efficiency|throughput|speedup))?(?=\b|[\s,.;:!?])/gi;
     while ((m = multRegex.exec(sentence)) !== null) {
-      const unitClean = m[3].replace(/-/g, ' ').toLowerCase();
+      const prefixChar = m.index > 0 ? sentence[m.index - 1] : '';
+      if (/[A-Za-z0-9]/.test(prefixChar)) continue;
+      const windowLower = sentence
+        .slice(Math.max(0, m.index - 55), Math.min(sentence.length, m.index + m[0].length + 55))
+        .toLowerCase();
+      const explicitUnit = m[3];
+      const hasTechContext =
+        Boolean(explicitUnit) ||
+        /\b(ttft|latency|throughput|speedup|faster|agent turns?|performance|efficiency|improv\w*|hicache|sglang|reduction|training compute|productivity)\b/.test(
+          windowLower
+        );
+      if (!hasTechContext) continue;
+      const normNum = normalizeRangeSeparator(m[1].replace(/[x×]/gi, ''));
+      const sym = m[2] === '×' && !normNum.includes('–') ? '×' : 'x';
+      const unitClean = explicitUnit ? explicitUnit.replace(/-/g, ' ').toLowerCase() : '';
+      const label = unitClean
+        ? 'Benchmark multiplier'
+        : /\bttft\b/i.test(windowLower)
+        ? 'TTFT speedup'
+        : /\bturns?\b/i.test(windowLower)
+        ? 'Task completion speedup'
+        : 'Measured speedup';
       pushMetric({
-        value: `${m[1]}${m[2]} ${unitClean}`,
-        label: 'Benchmark multiplier',
+        value: unitClean ? `${normNum}${sym} ${unitClean}` : `${normNum}${sym}`,
+        label,
         quote: sentence,
+        context: baseline,
       });
     }
 
     // 5. Explicit hardware latency / VRAM / memory numbers
-    const msRegex = /\b(\d+(?:\.\d+)?(?:\s*[–—-]\s*\d+(?:\.\d+)?)?)\s*ms\b/gi;
+    const msRegex = /\b(\d+(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?)\s*ms\b/gi;
     while ((m = msRegex.exec(sentence)) !== null) {
       const windowLower = sentence
         .slice(Math.max(0, m.index - 40), Math.min(sentence.length, m.index + 45))
@@ -1096,9 +1158,10 @@ export function extractSourceVerifiedMetrics(
         continue;
       }
       pushMetric({
-        value: `${m[1].replace(/\s+/g, '')} ms`,
+        value: `${normalizeRangeSeparator(m[1])} ms`,
         label: 'Reported latency',
         quote: sentence,
+        context: baseline,
       });
     }
 
@@ -1132,7 +1195,193 @@ export function isEvaluationQualityStudy(
 }
 
 const SINGLE_USER_EXPERIMENT_REGEX =
-  /\b(i built|i fine[- ]?tuned|i ran|i tested|i trained|my home|my laptop|my mac|on cpu|on my machine|offline\b|raspberry\s*pi|rockchip|rk35\d+|orange\s*pi|jetson|home server|household|side project|weekend project|pet project|for fun|3d modeling partner)\b/i;
+  /\b(i built|i fine[- ]?tuned|i ran|i tested|i trained|my home|my laptop|my mac|on cpu|on my machine|offline\b|raspberry\s*pi|rockchip|rk35\d+|orange\s*pi|jetson|home server|side project|weekend project|pet project|for fun|3d modeling partner)\b/i;
+
+const HARDWARE_OR_BUILD_EXPERIMENT_REGEX =
+  /\b(i built|i fine[- ]?tuned|i ran|i tested|i trained|rockchip|rk35\d+|raspberry\s*pi|orange\s*pi|jetson|tok\/s|tokens\s+per\s+second|llama\.cpp|llamacpp|quantiz\w*|q4_k_m|gguf|vram|cpu\s+cores?|gpu|cve-\d{4}-\d+|exploit|vulnerability|github\.com\/|model\s+release)\b/i;
+
+const DISCUSSION_PERSONAL_REGEX =
+  /\b(ask\s+hn|tell\s+hn|unemployed|job search|find employment|what should i do|what to do\??|career advice|resume gap|laid off|layoffs|burnout|writes an essay|giving everyone the same advice|personal essay|my thoughts on|unpopular opinion)\b/i;
+
+const LEGAL_COURT_RULING_REGEX =
+  /\b(court|tribunal|echr|supreme court|federal court|district court|judge|ruling|sanction(?:s|ed)?|disbar\w*|bars?\s+(?:a\s+)?(?:[\w-]+\s+){1,4}for\s+\d+\s+(?:years?|months?)|barred\s+for\s+(?:\d+|two|three|four|five)\s+(?:years?|months?)|representing\s+(?:applicants|litigants)\s+before)\b/i;
+
+const CONDITIONAL_POLICY_REGEX =
+  /\b(?:if\s+[\w\s]{2,40}\s+(?:disable|turn\s+off|opt\s+out|refuse|don['’]t)|unless\s+[\w\s]{2,40}|(?:disable[ds]?|turn(?:s|ed|ing)?\s+off|opt(?:s|ed|ing)?\s+out|don['’]t\s+want|punish(?:es|ing|ed)?)\b[^.]{0,90}\b(?:lose\s+access|cut(?:ting)?\s+off\s+access|block\w*\s+[^.]{0,60}from\s+access|search\s+engine|google\s+search|require\b))/i;
+
+export function isLegalOrCourtRulingSignal(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
+): boolean {
+  const hay = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '').slice(0, 480)}`;
+  return LEGAL_COURT_RULING_REGEX.test(hay);
+}
+
+export function isConditionalPolicyHeadline(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
+): boolean {
+  const hay = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '').slice(0, 520)}`;
+  return CONDITIONAL_POLICY_REGEX.test(hay);
+}
+
+export function requiresVerbatimPublisherHeadline(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
+): boolean {
+  return isLegalOrCourtRulingSignal(sig) || isConditionalPolicyHeadline(sig);
+}
+
+function normalizeHeadlineForCompare(text: string): string {
+  return stripHtmlMarkupAndEntities(text || '')
+    .replace(/[“”„‟]/g, '"')
+    .replace(/[‘’‚‛]/g, "'")
+    .replace(/\u2026|\.\.\.$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+export function validateHeadlineMeaningPreserved(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract' | 'originFeedName'>,
+  candidateHeadline: string
+): { valid: boolean; reason?: string; forceVerbatimPublisherFallback: boolean } {
+  const candClean = (candidateHeadline || '').trim();
+  if (!candClean) {
+    return { valid: false, reason: 'Empty candidate headline', forceVerbatimPublisherFallback: true };
+  }
+
+  const normCand = normalizeHeadlineForCompare(candClean);
+  const normSource = normalizeHeadlineForCompare(sig.title || '');
+  const matchesVerbatimPublisher =
+    normSource.length > 0 &&
+    (normCand === normSource ||
+      (normCand.length >= 24 && normSource.startsWith(normCand)));
+
+  const sourceHay = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '').slice(0, 650)}`;
+
+  // 1. Legal / Jurisdictional Scope Integrity
+  if (isLegalOrCourtRulingSignal(sig)) {
+    const sourceHasGeneralPracticeBan =
+      /\b(?:practicing\s+law|practice\s+of\s+law|disbarred)\b/i.test(sourceHay);
+    if (
+      !sourceHasGeneralPracticeBan &&
+      /\b(?:barred|banned|suspended)\s+from\s+practicing(?:\s+law)?\b|\bdisbarred\b/i.test(candClean)
+    ) {
+      return {
+        valid: false,
+        reason: 'Broadened court-specific bar into general practice ban',
+        forceVerbatimPublisherFallback: true,
+      };
+    }
+
+    const sourceNamesCourt = /\b(?:court|tribunal|echr|judge)\b/i.test(sourceHay);
+    if (
+      sourceNamesCourt &&
+      /\b(?:bar(?:s|red)?|ban(?:s|ned)?|suspend(?:s|ed)?|exclud(?:e|es|ed))\b/i.test(candClean) &&
+      !/\b(?:court|tribunal|echr|federal|appeals?|rights)\b/i.test(candClean)
+    ) {
+      return {
+        valid: false,
+        reason: 'Dropped court jurisdictional scope qualifier',
+        forceVerbatimPublisherFallback: true,
+      };
+    }
+
+    if (!matchesVerbatimPublisher) {
+      return {
+        valid: false,
+        reason: 'Legal/court ruling requires verbatim publisher headline',
+        forceVerbatimPublisherFallback: true,
+      };
+    }
+  }
+
+  // 2. Conditional & Cause/Effect Integrity (e.g., disabled tool vs. blocked target product)
+  if (isConditionalPolicyHeadline(sig)) {
+    const sourceTargetsSearchLoss =
+      /\b(?:google\s+search|search\s+engine)\b/i.test(sourceHay) &&
+      /\b(?:disable|turn\s+off|opt\s+out|don['’]t\s+want)\b[^.]{0,80}\b(?:gemini|ai)\b|\b(?:gemini|ai)\b[^.]{0,80}\b(?:lose\s+access|block|cut(?:ting)?\s+off)\b[^.]{0,80}\bsearch\b/i.test(
+        sourceHay
+      );
+
+    if (sourceTargetsSearchLoss) {
+      const invertedToolBlock =
+        /\bblock(?:s|ing)?\s+schools\s+from\s+(?:using\s+)?(?:gemini|ai)\b|\bban(?:s|ning)?\s+schools\s+from\s+(?:using\s+)?(?:gemini|ai)\b/i.test(
+          candClean
+        );
+      if (invertedToolBlock) {
+        return {
+          valid: false,
+          reason: 'Inverted conditional clause (disabled Gemini/AI vs. lost Google Search access)',
+          forceVerbatimPublisherFallback: true,
+        };
+      }
+      if (/\bgemini\b/i.test(candClean) && !/\bsearch\b/i.test(candClean)) {
+        return {
+          valid: false,
+          reason: 'Dropped affected Google Search target in conditional headline',
+          forceVerbatimPublisherFallback: true,
+        };
+      }
+    }
+
+    if (!matchesVerbatimPublisher) {
+      return {
+        valid: false,
+        reason: 'Conditional policy headline requires verbatim publisher headline',
+        forceVerbatimPublisherFallback: true,
+      };
+    }
+  }
+
+  return { valid: true, forceVerbatimPublisherFallback: false };
+}
+
+export function isDiscussionOrPersonalSignal(
+  sig: Pick<
+    SpatialSignal,
+    'title' | 'rawAbstract' | 'url' | 'source' | 'originFeedName' | 'sourceCategory' | 'primarySector'
+  >
+): boolean {
+  if (
+    sig.source === 'GHRelease' ||
+    sig.source === 'GitHub' ||
+    sig.source === 'arXiv' ||
+    sig.source === 'HuggingFace' ||
+    sig.source === 'LabRelease'
+  ) {
+    return false;
+  }
+  const title = (sig.title || '').trim();
+  if (/^(?:ask\s+hn|tell\s+hn)\s*:/i.test(title)) {
+    return true;
+  }
+  if (
+    NON_TOOL_NEWS_MARKET_REGEX.test(title) ||
+    isLegalOrCourtRulingSignal(sig) ||
+    isConditionalPolicyHeadline(sig)
+  ) {
+    return false;
+  }
+  const hay = `${title} ${stripUiChromeBoilerplate(sig.rawAbstract || '')}`;
+  if (DISCUSSION_PERSONAL_REGEX.test(hay)) {
+    return true;
+  }
+  if (
+    sig.source === 'HackerNews' ||
+    sig.source === 'Reddit' ||
+    sig.source === 'Bluesky' ||
+    sig.source === 'Discord' ||
+    sig.source === 'XBridge'
+  ) {
+    if (
+      !hasTechnicalEngineeringContent(sig) &&
+      !HARDWARE_OR_BUILD_EXPERIMENT_REGEX.test(hay) &&
+      !/\b(?:model|agent|cve-\d|tip:|release|weights|github\.com)\b/i.test(title)
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
 
 const ENTERPRISE_LAUNCH_REGEX =
   /\b(introducing|announcing|general availability|\bga\b|enterprise|platform|api|pricing|customer stor(?:y|ies)|eu ai act|executive order|compliance mandate|frontier model|gpt-\d|claude[-\s]\d|gemini[-\s]\d|llama[-\s]\d|qwen\s*\d|mistral\s+large)\b/i;
@@ -1143,6 +1392,9 @@ export function classifyEvidenceScope(
     'title' | 'rawAbstract' | 'url' | 'source' | 'originFeedName' | 'readiness' | 'sourceCategory' | 'primarySector'
   >
 ): EvidenceScope {
+  if (isDiscussionOrPersonalSignal(sig)) {
+    return 'discussion_or_personal';
+  }
   if (isNonToolNewsOrMarketSignal(sig)) {
     return 'market_or_policy';
   }
@@ -1169,6 +1421,165 @@ export function classifyEvidenceScope(
     return 'enterprise_launch';
   }
   return 'software_release';
+}
+
+const COST_EVIDENCE_REGEX =
+  /(?:\$\s*\d|cost\s+savings?|lower\s+(?:inference\s+)?costs?|per[- ]million|\/\s*1m\s*tok|token\s+(?:price|pricing|cost)|run[- ]rate|cheaper|spend|margin|roi\b|pricing|compute\s+savings?|dollars?)/i;
+
+const LATENCY_OR_THROUGHPUT_REGEX =
+  /\b(?:latency|ttft|tpot|per-token|tokens\s+per\s+second|tok\/s|throughput|speedup|faster|cache\s+management|serving\s+system|agent\s+turns?)\b/i;
+
+export function hasLatencyOrThroughputWithoutCost(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
+): boolean {
+  const hay = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '')}`;
+  return LATENCY_OR_THROUGHPUT_REGEX.test(hay) && !COST_EVIDENCE_REGEX.test(hay);
+}
+
+const WORD_MULTIPLIER_REGEX = /\b(twofold|threefold|fourfold|fivefold|tenfold)\b/i;
+
+export function normalizeNumericCorpus(text: string): string {
+  return stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(text || ''))
+    .replace(/(\d+(?:\.\d+)?)\s*(?:--|–|—|\bto\b)\s*(\d+(?:\.\d+)?)/gi, '$1-$2')
+    .replace(/(\d+(?:\.\d+)?)%\s*-\s*(\d+(?:\.\d+)?)%/g, '$1-$2%')
+    .replace(/\b(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)\b/gi, 'tokens/s')
+    .replace(/×/g, 'x')
+    .replace(/(\d+(?:\.\d+)?)\s*percent(?:age)?\s+points?\b/gi, '$1 percentage points')
+    .replace(/(\d+(?:\.\d+)?)\s*percent\b/gi, '$1%')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+function escapeNumericRegex(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function isTokenBackedInCorpus(rawTok: string, normCorpus: string): boolean {
+  if (!normCorpus) return false;
+  const tokLower = rawTok.trim().toLowerCase();
+  if (WORD_MULTIPLIER_REGEX.test(tokLower)) {
+    const foldNum = tokLower.startsWith('two')
+      ? '2x'
+      : tokLower.startsWith('three')
+      ? '3x'
+      : tokLower.startsWith('four')
+      ? '4x'
+      : tokLower.startsWith('five')
+      ? '5x'
+      : '10x';
+    return new RegExp(`\\b${tokLower}\\b`, 'i').test(normCorpus) || normCorpus.includes(foldNum);
+  }
+
+  let normTok = tokLower
+    .replace(/^[<>≤≥]\s*/, '')
+    .replace(/(\d+(?:\.\d+)?)\s*(?:--|–|—|\bto\b)\s*(\d+(?:\.\d+)?)/gi, '$1-$2')
+    .replace(/(\d+(?:\.\d+)?)%\s*-\s*(\d+(?:\.\d+)?)%/g, '$1-$2%')
+    .replace(/\b(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)\b/gi, 'tokens/s')
+    .replace(/×/g, 'x')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (normTok.startsWith('$')) {
+    normTok = normTok.replace(/^\$\s*/, '$');
+  }
+
+  // Exact match with numeric left/right boundaries so "59%" does NOT match "20-59%"
+  const esc = escapeNumericRegex(normTok);
+  const rx = new RegExp(`(?<![\\d.%\\-–—])${esc}(?![\\d.%])`, 'i');
+  if (rx.test(normCorpus)) return true;
+
+  // Allow "+13.6 percentage points" to match "13.6 percentage points" in source
+  if (normTok.startsWith('+') && normTok.includes('percentage points')) {
+    const unsigned = escapeNumericRegex(normTok.slice(1));
+    if (new RegExp(`(?<![\\d.%\\-–—])${unsigned}`, 'i').test(normCorpus)) return true;
+  }
+
+  // Allow formatted multiplier range (e.g. "1.40-3.05x") when source says "1.40-3.05x" or "2x-4x"
+  const xRangeClean = normTok.replace(/(\d)x-(\d)/g, '$1-$2');
+  if (xRangeClean !== normTok) {
+    if (new RegExp(`(?<![\\d.%\\-–—])${escapeNumericRegex(xRangeClean)}`, 'i').test(normCorpus)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+const QUANT_CLAIM_TOKEN_REGEX =
+  /\b\d+(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?\s*%|\b\d+(?:\.\d+)?\s*percentage[- ]points?\b|\$\s*\d+(?:\.\d+)?(?:\s*[kmbt]\+?)?(?:\s*(?:--|–|—|-|\bto\b)\s*\$?\d+(?:\.\d+)?(?:\s*[kmbt]\+?)?)?|\b\d+(?:\.\d+)?(?:\s*[x×]?\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?\s*[x×](?=\b|[\s,.;:!?])|\b(?:two|three|four|five|ten)fold\b|[<>≤≥]\s*0?\.\d+\b|\b\d+(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:ms\s*(?:ttft|tpot|latency)|tok\/s|tokens\/s|tokens\s+per\s+second)\b/gi;
+
+export function findUnbackedNumericTokens(text: string, sourceCorpus: string): string[] {
+  if (!text) return [];
+  const normCorpus = normalizeNumericCorpus(sourceCorpus);
+  const unbacked: string[] = [];
+  const seen = new Set<string>();
+
+  let m: RegExpExecArray | null;
+  const rx = new RegExp(QUANT_CLAIM_TOKEN_REGEX.source, 'gi');
+  while ((m = rx.exec(text)) !== null) {
+    const raw = m[0].trim();
+    const prefixChar = m.index > 0 ? text[m.index - 1] : '';
+    // Ignore resolutions (1280x800), hex literals (0x1f), and prose like "GPT-4x"
+    if (/[A-Za-z0-9]/.test(prefixChar)) continue;
+    const afterStr = text.slice(m.index + raw.length, m.index + raw.length + 12).toLowerCase();
+    if (/^\s*\d/.test(afterStr) && /[x×]$/i.test(raw)) continue;
+
+    // Ignore harmless UI labels or formatting hints if ever passed directly (none expected in prose)
+    const key = raw.toLowerCase();
+    if (!isTokenBackedInCorpus(raw, normCorpus) && !seen.has(key)) {
+      seen.add(key);
+      unbacked.push(raw);
+    }
+  }
+  return unbacked;
+}
+
+export function stripUnbackedNumericClaims(
+  text: string,
+  sourceCorpus: string
+): { cleaned: string; removedTokens: string[] } {
+  const removedTokens = findUnbackedNumericTokens(text, sourceCorpus);
+  if (removedTokens.length === 0) {
+    return { cleaned: text, removedTokens: [] };
+  }
+
+  // Split by sentence/clause boundaries and remove only segments/parentheticals with unbacked numbers
+  const normCorpus = normalizeNumericCorpus(sourceCorpus);
+  let out = text.replace(/\([^()]{3,160}\)/g, (paren) => {
+    return findUnbackedNumericTokens(paren, normCorpus).length > 0 ? '' : paren;
+  });
+
+  if (findUnbackedNumericTokens(out, normCorpus).length > 0) {
+    const sentences = out.split(/(?<=[.!?])\s+/);
+    const keptSentences = sentences.filter(
+      (s) => findUnbackedNumericTokens(s, normCorpus).length === 0
+    );
+    if (keptSentences.length > 0) {
+      out = keptSentences.join(' ');
+    } else {
+      // Strip clause-level fragments containing unbacked numbers
+      const clauses = out.split(/\s*[;—]\s*/);
+      const keptClauses = clauses.filter(
+        (c) => findUnbackedNumericTokens(c, normCorpus).length === 0
+      );
+      if (keptClauses.length > 0) {
+        out = keptClauses.join('; ');
+      } else {
+        for (const tok of removedTokens) {
+          out = out.replace(new RegExp(escapeNumericRegex(tok), 'gi'), '');
+        }
+      }
+    }
+  }
+
+  out = out
+    .replace(/\s+([.,;!?])/g, '$1')
+    .replace(/([.,;])\s*[.,;]+/g, '$1')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  return { cleaned: out, removedTokens };
 }
 
 const FROZEN_ENTITY_REGEX =

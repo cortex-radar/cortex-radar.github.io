@@ -28,6 +28,7 @@ import {
   extractFrozenEntities,
   extractSourceVerifiedMetrics,
   getSignalReleaseMetadata,
+  hasLatencyOrThroughputWithoutCost,
   hasTechnicalEngineeringContent,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
@@ -37,9 +38,11 @@ import {
   isUpstreamUpdatedSignal,
   normalizeProvenanceUrl,
   parseGitHubReleaseMetadata,
+  requiresVerbatimPublisherHeadline,
   sanitizeReleaseNotesText,
   stripUiChromeBoilerplate,
   truncateAtWordBoundary,
+  validateHeadlineMeaningPreserved,
 } from '../shared/provenance';
 import {
   computeDivergenceMetrics,
@@ -136,11 +139,15 @@ export function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): str
         ? `${relMeta.displayTitle}${relMeta.isPreRelease ? ` · ${relMeta.stabilityLabel}` : ''}`
         : stripHtmlMarkupAndEntities(getCleanDisplayHeadline(sig, 2));
       const frozen = extractFrozenEntities(sig);
-      // Ensure model identifiers in sig.title are never dropped from RSS <title>
-      const headline =
+      // Ensure model identifiers in sig.title and semantic invariants (legal/conditional headlines) are preserved in RSS <title>
+      let headline =
         frozen.some((ent) => sig.title.includes(ent) && !rawHeadline.toLowerCase().includes(ent.toLowerCase()))
           ? stripHtmlMarkupAndEntities(sig.title)
           : rawHeadline;
+      const rssValidation = validateHeadlineMeaningPreserved(sig, headline);
+      if (!rssValidation.valid || rssValidation.forceVerbatimPublisherFallback) {
+        headline = stripHtmlMarkupAndEntities(sig.title);
+      }
       const deepLink = `${SITE_BASE_URL}?orb=${encodeURIComponent(sig.id)}&lens=2`;
       const lit = enforceEpistemicAndDomainFidelity(
         sig,
@@ -194,7 +201,7 @@ export function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): str
 
 const GITHUB_MODELS_ENDPOINT = 'https://models.inference.ai.azure.com/chat/completions';
 const GITHUB_MODELS_MODEL = process.env.GITHUB_MODELS_MODEL || 'gpt-4o-mini';
-const LITERACY_SCHEMA_VERSION = 'v2.3';
+const LITERACY_SCHEMA_VERSION = 'v2.4';
 
 function normalizeBakeUrl(url: string): string {
   return (url || '').trim().toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
@@ -361,14 +368,25 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
   const frozenEntities = extractFrozenEntities(sig);
   const scope = classifyEvidenceScope(sig);
   const isEvalStudy = isEvaluationQualityStudy(sig);
+  const needsVerbatimHeadline = requiresVerbatimPublisherHeadline(sig);
+  const latencyWithoutCost = hasLatencyOrThroughputWithoutCost(sig);
   const entityUnitQuoteLine = [
-    'UNIT, ENTITY & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve technical units verbatim ("tokens per second", NEVER "words per second"), and ONLY put double quotes around exact substrings present in Primary Headline or Body above.',
+    'UNIT, ENTITY, NUMERIC & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve full ranges verbatim ("20–59%", NEVER truncate to "59%"), preserve technical units verbatim ("tokens per second", NEVER "words per second"), NEVER invent unbacked percentages/dollars/cost-savings ranges not in Primary Post Body, and ONLY put double quotes around exact substrings present in Primary Headline or Body above.',
     frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
+    needsVerbatimHeadline
+      ? 'HEADLINE MEANING & SCOPE LOCK: Preserve conditional cause/effect triggers (disabled tool vs. lost product) and legal/court scope qualifiers verbatim — keep plainTitle/plainFullTitle faithful to the exact publisher headline without broadening court bans or inverting conditions.'
+      : '',
     isEvalStudy
       ? 'EVALUATION METHODOLOGY FRAMING: Source evaluates citation/retrieval/grading quality rather than inference speed; frame Level 5 around evaluation methodology and reported scores instead of latency/throughput.'
       : '',
+    latencyWithoutCost
+      ? 'NO UNBACKED COST SAVINGS: Source reports latency/throughput without cost data; NEVER invent savings % in Level 4 — ask: "What happens to cost per completed request on your workload?".'
+      : '',
     scope === 'single_user_experiment'
       ? 'PROPORTIONATE SCOPE: Individual/local experiment — do NOT extrapolate into enterprise banking routing, audited gateways, or 3x token spend in Level 4.'
+      : '',
+    scope === 'discussion_or_personal'
+      ? 'DISCUSSION / PERSONAL THREAD: Human/career/community discussion — do NOT generate hardware reproduction, benchmarking, or enterprise rollout templates.'
       : '',
   ]
     .filter(Boolean)

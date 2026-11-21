@@ -6,6 +6,7 @@ import {
   parseGitHubReleaseMetadata,
   sanitizeReleaseNotesText,
   stripUiChromeBoilerplate,
+  stripUnbackedNumericClaims,
   truncateAtWordBoundary,
 } from '../shared/provenance';
 import type { RawUpstreamSignal } from '../shared/seed72h';
@@ -1487,7 +1488,25 @@ app.post('/api/blast-radius', async (req, res) => {
 
   const jsonPrompt = `Analyze "${signalTitle}" (${signalSummary || ''}) for a ${
     clientIndustry || 'Enterprise'
-  } organization. Ground every claim strictly in the provided text; never invent unrelated domains or unbacked cost multipliers (like "3x token spend" or "40-65% compression"). Return ONLY a valid JSON array of 3 objects for 30D (Pilot Scoping), 60D (Governance/Security), and 90D (Operationalization), each with keys: horizon ("30D"|"60D"|"90D"), title (<=35 chars), consequence (<=140 chars), consultantAction (<=110 chars), kpiMetric (<=45 chars).`;
+  } organization. Ground every claim and number strictly in the provided text; never invent unrelated domains, percentages, dollar figures, or unbacked cost multipliers (like "3x token spend" or "35-65% compression"). If only latency/throughput gains are reported without cost data, frame ROI checks around "What happens to cost per completed request on your workload?". Return ONLY a valid JSON array of 3 objects for 30D (Pilot Scoping), 60D (Governance/Security), and 90D (Operationalization), each with keys: horizon ("30D"|"60D"|"90D"), title (<=35 chars), consequence (<=140 chars), consultantAction (<=110 chars), kpiMetric (<=45 chars).`;
+
+  const sanitizeServerHorizons = (raw: unknown) => {
+    if (!Array.isArray(raw)) return null;
+    const corpus = `${signalTitle || ''} ${signalSummary || ''}`;
+    return raw.map((h) => {
+      if (!h || typeof h !== 'object') return h;
+      const obj = h as Record<string, unknown>;
+      const cleanStr = (v: unknown) =>
+        typeof v === 'string' ? stripUnbackedNumericClaims(v, corpus).cleaned : v;
+      return {
+        ...obj,
+        title: cleanStr(obj.title),
+        consequence: cleanStr(obj.consequence),
+        consultantAction: cleanStr(obj.consultantAction),
+        kpiMetric: cleanStr(obj.kpiMetric),
+      };
+    });
+  };
 
   try {
     if (chosenEngine === 'OLLAMA') {
@@ -1498,7 +1517,7 @@ app.post('/api/blast-radius', async (req, res) => {
         prompt: jsonPrompt,
       });
       const arrMatch = out.text.match(/\[[\s\S]*\]/);
-      const horizons = arrMatch ? JSON.parse(arrMatch[0]) : null;
+      const horizons = arrMatch ? sanitizeServerHorizons(JSON.parse(arrMatch[0])) : null;
       res.json({
         horizons,
         engineUsed: out.engineUsed,
@@ -1545,7 +1564,7 @@ app.post('/api/blast-radius', async (req, res) => {
     const latencyMs = Date.now() - t0;
     const estTokens = Math.max(20, Math.round(rawText.length / 4));
     res.json({
-      horizons: JSON.parse(rawText),
+      horizons: sanitizeServerHorizons(JSON.parse(rawText)),
       engineUsed: 'GEMINI',
       modelUsed: 'gemini-2.5-flash',
       tokensPerSec: Number((estTokens / Math.max(0.1, latencyMs / 1000)).toFixed(1)),

@@ -14,10 +14,12 @@ import {
   extractBenchmarkClaimSpec,
   extractFrozenEntities,
   getSignalReleaseMetadata,
+  hasLatencyOrThroughputWithoutCost,
   hasTechnicalEngineeringContent,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
   isReleaseWithoutNotes,
+  requiresVerbatimPublisherHeadline,
   stripUiChromeBoilerplate,
   truncateAtWordBoundary,
 } from '../shared/provenance';
@@ -1922,6 +1924,8 @@ export async function runTriEngineLiteracySpectrum(params: {
   const frozenEntities = extractFrozenEntities(params.signal);
   const scope = classifyEvidenceScope(params.signal);
   const isEvalStudy = isEvaluationQualityStudy(params.signal);
+  const needsVerbatimHeadline = requiresVerbatimPublisherHeadline(params.signal);
+  const latencyWithoutCost = hasLatencyOrThroughputWithoutCost(params.signal);
 
   const normPrimaryUrl = (params.signal.url || '')
     .trim()
@@ -1965,13 +1969,22 @@ export async function runTriEngineLiteracySpectrum(params: {
     ? `BENCHMARK LOCK REQUIRED ACROSS ALL 5 LENSES: Any mention of "${benchClaim.multiplier}" MUST preserve ALL three elements together: (1) exact metric "${benchClaim.metric}", (2) exact comparison baseline "${benchClaim.baseline}", and (3) attribution "${benchClaim.attribution}". NEVER broaden the baseline to "modern CPUs" or "leading chips", and NEVER write unqualified "${benchClaim.multiplier} better" without metric + baseline.`
     : '';
   const entityUnitQuoteConstraintBlock = [
-    'UNIT, ENTITY & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve technical units verbatim ("tokens per second", NEVER "words per second"), and ONLY place quotation marks ("...") around exact verbatim phrases from the Primary Headline or Body above.',
+    'UNIT, ENTITY, NUMERIC & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve full metric ranges verbatim (e.g., "20–59%", NEVER truncate to "59%"), preserve technical units verbatim ("tokens per second", NEVER "words per second"), NEVER invent unbacked percentages/dollars/cost-savings ranges not in the source, and ONLY place quotation marks ("...") around exact verbatim phrases from the Primary Headline or Body above.',
     frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
+    needsVerbatimHeadline
+      ? 'HEADLINE MEANING & SCOPE LOCK: Preserve conditional cause/effect clauses (disabled tool vs. lost product) and legal/court scope qualifiers verbatim — keep plainTitle/plainFullTitle aligned to the exact publisher headline without broadening bans or swapping blocked products.'
+      : '',
     isEvalStudy
       ? 'EVALUATION STUDY FRAMING: This source evaluates research/citation/retrieval quality rather than inference speed; frame L5 around evaluation methodology and exact reported scores instead of latency/throughput.'
       : '',
+    latencyWithoutCost
+      ? 'NO UNBACKED COST SAVINGS: Source reports latency/throughput without cost data; do NOT invent cost-savings % in Level 4 — ask: "What happens to cost per completed request on your workload?".'
+      : '',
     scope === 'single_user_experiment'
       ? 'PROPORTIONATE SCOPE: This is an individual/local experiment — do NOT extrapolate into enterprise banking transformation, audited gateways, or 3x token spend in Level 4.'
+      : '',
+    scope === 'discussion_or_personal'
+      ? 'DISCUSSION / PERSONAL THREAD: Human/career/community discussion — do NOT generate hardware reproduction, benchmarking, or enterprise rollout templates.'
       : '',
   ]
     .filter(Boolean)

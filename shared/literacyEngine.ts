@@ -11,14 +11,21 @@ import {
   extractBenchmarkClaimSpec,
   extractFrozenEntities,
   extractSourceVerifiedMetrics,
+  findUnbackedNumericTokens,
   getSignalReleaseMetadata,
+  hasLatencyOrThroughputWithoutCost,
   hasTechnicalEngineeringContent,
+  isConditionalPolicyHeadline,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
+  isLegalOrCourtRulingSignal,
   isNonToolNewsOrMarketSignal,
   isReleaseWithoutNotes,
+  requiresVerbatimPublisherHeadline,
   stripUiChromeBoilerplate,
+  stripUnbackedNumericClaims,
   truncateAtWordBoundary,
+  validateHeadlineMeaningPreserved,
 } from './provenance';
 
 export const NO_RELEASE_NOTES_NOTICE = 'No release notes extracted — see linked release';
@@ -1025,6 +1032,12 @@ function humanizeDynamicPlainTitle(sig: SpatialSignal): { plainTitle: string; pl
   }
 
   const cleanTitle = stripOriginPrefixFromHeadline(sig.title, sig.originFeedName);
+  if (requiresVerbatimPublisherHeadline(sig)) {
+    return {
+      plainTitle: truncateWordBoundaryPlain(cleanTitle, 112) || cleanTitle,
+      plainFullTitle: truncateWordBoundaryPlain(cleanTitle, 220) || cleanTitle,
+    };
+  }
   const stripped = enforceZeroJargonL1(cleanTitle);
 
   if (isHedgedOrUnverifiedClaim(sig)) {
@@ -1095,13 +1108,14 @@ function buildDynamicAnalogy(
     };
   }
   if (sig.primarySector === 'ECO' || sig.finOps === 'REDUCER') {
+    const costSafeWhy = hasLatencyOrThroughputWithoutCost(sig)
+      ? 'Digital tools can respond faster when tasks queue less often, though real savings depend on workload patterns.'
+      : 'Digital tools respond faster and cost noticeably less to run for everyday users and organizations.';
     return {
       analogy: enforceZeroJargonL1(
         `Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity.${groundedClause}`
       ),
-      everydayWhy: enforceZeroJargonL1(
-        'Digital tools respond faster and cost noticeably less to run for everyday users and organizations.'
-      ),
+      everydayWhy: enforceZeroJargonL1(costSafeWhy),
     };
   }
   if (sig.primarySector === 'GOV' || sig.risk === 'HIGH') {
@@ -1582,6 +1596,8 @@ export function buildDeterministicLiteracyPayload(
       : 'Stable Release (pin explicit version tags and review upstream changelog)'
     : isHedged
     ? 'Unverified External Report (wait for independent expert verification)'
+    : scope === 'discussion_or_personal'
+    ? 'Community / Personal Discussion Thread (no software artifact or enterprise rollout implied)'
     : isNonTool
     ? 'Market & Policy Signal (no software artifact to deploy)'
     : scope === 'single_user_experiment'
@@ -1592,8 +1608,15 @@ export function buildDeterministicLiteracyPayload(
     ? 'Public Preview (sandbox & non-critical canary workloads only)'
     : 'R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs)';
 
+  const noCostEvidence = hasLatencyOrThroughputWithoutCost(sig);
   const l4 =
-    scope === 'single_user_experiment'
+    scope === 'discussion_or_personal' && !isHedged
+      ? {
+          roiAndFinOps: `Personal or community discussion (${sig.originFeedName || sig.source}) — no software ROI, infrastructure cost projection, or technical benchmark applies.`,
+          readinessAndRisk: `${readinessLabel} — read the linked thread directly rather than treating it as an engineering or financial specification.`,
+          clientAdvice: `Read the original discussion directly on ${sig.originFeedName || sig.source} for first-hand human context.`,
+        }
+      : scope === 'single_user_experiment'
       ? {
           roiAndFinOps: `${facts.leadSentence || facts.cleanHeadline} (Individual benchmark/project — no enterprise unit-cost projection).`,
           readinessAndRisk: `${readinessLabel} · Independent multi-hardware verification not yet established.`,
@@ -1609,6 +1632,13 @@ export function buildDeterministicLiteracyPayload(
           clientAdvice: isHedged
             ? `For ${clientMeta.label}: monitor for independent verification before citing or acting on "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}".`
             : `For ${clientMeta.label}: track vendor, regulatory, and counterparty implications of "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}" with legal and procurement leads.`,
+        }
+      : noCostEvidence
+      ? {
+          roiAndFinOps: `${facts.quantSentence || facts.leadSentence || sig.cSuiteBrief.headlineSoWhat} Latency and throughput gains do not establish end-to-end cost savings — ask: What happens to cost per completed request on your workload?`,
+          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Risk under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
+          clientAdvice:
+            'Before assuming infrastructure savings, test on representative traffic and ask: What happens to cost per completed request on your workload?',
         }
       : {
           roiAndFinOps: facts.quantSentence
@@ -2047,6 +2077,66 @@ export function enforceEpistemicAndDomainFidelity(
     ? null
     : buildDeterministicLiteracyPayload(sig, activeClient);
 
+  // Gate 0.7: Semantic-Invariant Headline & Legal/Conditional Prose Gate
+  const cleanPublisherHeadline =
+    stripOriginPrefixFromHeadline(sig.title, sig.originFeedName) || sig.title || '';
+  const ptValidation = validateHeadlineMeaningPreserved(sig, plainTitle);
+  if (!ptValidation.valid || ptValidation.forceVerbatimPublisherFallback) {
+    plainTitle =
+      truncateAtWordBoundary(cleanPublisherHeadline, 112) || cleanPublisherHeadline;
+  }
+  const pftValidation = validateHeadlineMeaningPreserved(sig, plainFullTitle);
+  if (!pftValidation.valid || pftValidation.forceVerbatimPublisherFallback) {
+    plainFullTitle =
+      truncateAtWordBoundary(cleanPublisherHeadline, 220) || cleanPublisherHeadline;
+  }
+
+  const legalScopeIssue =
+    isLegalOrCourtRulingSignal(sig) &&
+    !/\b(?:practicing\s+law|practice\s+of\s+law|disbarred)\b/i.test(sourceHayLower);
+  if (legalScopeIssue) {
+    const fixCourtScope = (t: string) =>
+      t
+        .replace(
+          /\b(?:barred|banned|suspended)\s+from\s+practicing(?:\s+law)?\b/gi,
+          'barred from representing litigants before that court'
+        )
+        .replace(/\bdisbarred\b/gi, 'barred before that court');
+    plainTitle = fixCourtScope(plainTitle);
+    plainFullTitle = fixCourtScope(plainFullTitle);
+    l1 = { analogy: fixCourtScope(l1.analogy), everydayWhy: fixCourtScope(l1.everydayWhy) };
+    l2 = {
+      whatHappened: fixCourtScope(l2.whatHappened),
+      whoBuiltIt: l2.whoBuiltIt,
+      problemSolved: fixCourtScope(l2.problemSolved),
+    };
+    l3 = { bridgeSummary: fixCourtScope(l3.bridgeSummary) };
+    l4 = {
+      roiAndFinOps: fixCourtScope(l4.roiAndFinOps),
+      readinessAndRisk: fixCourtScope(l4.readinessAndRisk),
+      clientAdvice: fixCourtScope(l4.clientAdvice),
+    };
+    l5 = {
+      architectureBrief: fixCourtScope(l5.architectureBrief),
+      specsAndCaveats: fixCourtScope(l5.specsAndCaveats),
+      streetConsensus: fixCourtScope(l5.streetConsensus),
+    };
+  }
+
+  if (isConditionalPolicyHeadline(sig) && det) {
+    const invertedPolicyRegex =
+      /\b(?:block|ban)(?:s|ing)?\s+schools\s+from\s+(?:using\s+)?(?:gemini|ai)\b/i;
+    if (invertedPolicyRegex.test(`${l1.analogy} ${l1.everydayWhy}`)) {
+      l1 = det.levels[1];
+    }
+    if (invertedPolicyRegex.test(`${l2.whatHappened} ${l2.problemSolved}`)) {
+      l2 = det.levels[2];
+    }
+    if (invertedPolicyRegex.test(l3.bridgeSummary)) {
+      l3 = det.levels[3];
+    }
+  }
+
   if (!isTechnical) {
     glossary = isNonTool
       ? []
@@ -2089,10 +2179,17 @@ export function enforceEpistemicAndDomainFidelity(
     l5.streetConsensus = det.levels[5].streetConsensus;
   }
 
-  // Gate 4.6: Proportionate L4 framing for single-user/local experiments (strip unrelated banking/3x claims)
+  // Gate 4.6: Proportionate L4 framing (discussion/personal, single-user experiments, and uncosted latency claims)
+  if (scope === 'discussion_or_personal' && det) {
+    const technicalOrEnterpriseLeak =
+      /\b(?:financial[- ]services|banking|finserv|threefold|3x|40[–-]65%|35[–-]65%|audited\s+gateway|soc\s*2|hipaa|finra|basel|target hardware|benchmark\s+harness|reproduce\s+(?:the\s+)?(?:run|test|setup)|production\s+ga|canary\s+behind|unit[- ]cost)\b/i;
+    if (technicalOrEnterpriseLeak.test(l4.roiAndFinOps) || technicalOrEnterpriseLeak.test(l4.readinessAndRisk) || technicalOrEnterpriseLeak.test(l4.clientAdvice)) {
+      l4 = { ...det.levels[4] };
+    }
+  }
   if (scope === 'single_user_experiment' && det) {
     const inventedEnterprise =
-      /\b(?:financial[- ]services|banking|finserv|threefold|3x|40[–-]65%|audited\s+gateway|soc\s*2|hipaa|finra|basel)\b/i;
+      /\b(?:financial[- ]services|banking|finserv|threefold|3x|40[–-]65%|35[–-]65%|audited\s+gateway|soc\s*2|hipaa|finra|basel)\b/i;
     if (inventedEnterprise.test(l4.roiAndFinOps) && !inventedEnterprise.test(sourceHayLower)) {
       l4.roiAndFinOps = det.levels[4].roiAndFinOps;
     }
@@ -2100,6 +2197,16 @@ export function enforceEpistemicAndDomainFidelity(
       l4.readinessAndRisk = det.levels[4].readinessAndRisk;
     }
     if (inventedEnterprise.test(l4.clientAdvice) && !inventedEnterprise.test(sourceHayLower)) {
+      l4.clientAdvice = det.levels[4].clientAdvice;
+    }
+  }
+  if (hasLatencyOrThroughputWithoutCost(sig) && det && scope !== 'discussion_or_personal' && scope !== 'single_user_experiment') {
+    const unbackedSavingsRegex =
+      /\b(?:cost\s+savings?|lower\s+(?:inference\s+)?costs?|compresses\s+inference\s+run-rate|margin\s+upside|cuts?\s+(?:blended\s+)?(?:token\s+)?spend|cheaper\s+to\s+run|35[–-]65%|40[–-]65%|>75%|<0\.92|sub-second)\b/i;
+    if (unbackedSavingsRegex.test(l4.roiAndFinOps) || !l4.roiAndFinOps.toLowerCase().includes('cost per completed request')) {
+      l4.roiAndFinOps = det.levels[4].roiAndFinOps;
+    }
+    if (unbackedSavingsRegex.test(l4.clientAdvice) || !l4.clientAdvice.toLowerCase().includes('cost per completed request')) {
       l4.clientAdvice = det.levels[4].clientAdvice;
     }
   }
@@ -2156,6 +2263,55 @@ export function enforceEpistemicAndDomainFidelity(
     architectureBrief: enforceVerbatimQuotes(l5.architectureBrief, quoteCorpus),
     specsAndCaveats: enforceVerbatimQuotes(l5.specsAndCaveats, quoteCorpus),
     streetConsensus: enforceVerbatimQuotes(l5.streetConsensus, quoteCorpus),
+  };
+
+  // Gate 7: Card-Wide Numeric Grounding Audit across ALL lenses (strip any unbacked %, $, x, ms, or <0.92 claims)
+  const numericCorpus = [
+    sig.title || '',
+    sig.rawAbstract || '',
+    ...(sig.streetQuotes || []).map((q) => q.text || ''),
+    ...(sig.supportingSources || []).map((s) => s.title || ''),
+    ...(sig.isDemoSeed && sig.architectBrief?.latencyAndCostNote
+      ? [sig.architectBrief.latencyAndCostNote]
+      : []),
+  ].join(' ');
+
+  const auditFieldNumbers = (txt: string, fallbackText?: string): string => {
+    if (!txt) return txt;
+    if (findUnbackedNumericTokens(txt, numericCorpus).length === 0) return txt;
+    const { cleaned } = stripUnbackedNumericClaims(txt, numericCorpus);
+    if (cleaned.length >= 20 && findUnbackedNumericTokens(cleaned, numericCorpus).length === 0) {
+      return cleaned;
+    }
+    if (fallbackText && findUnbackedNumericTokens(fallbackText, numericCorpus).length === 0) {
+      return fallbackText;
+    }
+    return cleaned || fallbackText || '';
+  };
+
+  plainTitle = auditFieldNumbers(plainTitle, cleanPublisherHeadline);
+  plainFullTitle = auditFieldNumbers(plainFullTitle, cleanPublisherHeadline);
+  l1 = {
+    analogy: auditFieldNumbers(l1.analogy, det?.levels[1].analogy),
+    everydayWhy: auditFieldNumbers(l1.everydayWhy, det?.levels[1].everydayWhy),
+  };
+  l2 = {
+    whatHappened: auditFieldNumbers(l2.whatHappened, det?.levels[2].whatHappened),
+    whoBuiltIt: l2.whoBuiltIt,
+    problemSolved: auditFieldNumbers(l2.problemSolved, det?.levels[2].problemSolved),
+  };
+  l3 = {
+    bridgeSummary: auditFieldNumbers(l3.bridgeSummary, det?.levels[3].bridgeSummary),
+  };
+  l4 = {
+    roiAndFinOps: auditFieldNumbers(l4.roiAndFinOps, det?.levels[4].roiAndFinOps),
+    readinessAndRisk: auditFieldNumbers(l4.readinessAndRisk, det?.levels[4].readinessAndRisk),
+    clientAdvice: auditFieldNumbers(l4.clientAdvice, det?.levels[4].clientAdvice),
+  };
+  l5 = {
+    architectureBrief: auditFieldNumbers(l5.architectureBrief, det?.levels[5].architectureBrief),
+    specsAndCaveats: auditFieldNumbers(l5.specsAndCaveats, det?.levels[5].specsAndCaveats),
+    streetConsensus: auditFieldNumbers(l5.streetConsensus, det?.levels[5].streetConsensus),
   };
 
   return {

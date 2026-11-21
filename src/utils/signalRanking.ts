@@ -1,4 +1,7 @@
-import { getSignalReleaseMetadata } from '../../shared/provenance';
+import {
+  getSignalReleaseMetadata,
+  validateHeadlineMeaningPreserved,
+} from '../../shared/provenance';
 import { extractSpecificEntityTokens } from '../../shared/supernovaEngine';
 import type {
   LiteracyLevel,
@@ -187,10 +190,14 @@ export function getCleanDisplayHeadline(
   if (relMeta) {
     return relMeta.displayTitle;
   }
+  const publisherFallback = stripOriginPrefixClean(sig);
   if (level <= 2 && sig.literacy?.plainFullTitle) {
-    return sig.literacy.plainFullTitle;
+    const check = validateHeadlineMeaningPreserved(sig, sig.literacy.plainFullTitle);
+    if (check.valid && !check.forceVerbatimPublisherFallback) {
+      return sig.literacy.plainFullTitle;
+    }
   }
-  return stripOriginPrefixClean(sig);
+  return publisherFallback;
 }
 
 export function getActiveLensTakeaway(
