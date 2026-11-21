@@ -6,31 +6,31 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2026 02:12:33 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 10:58:03 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
-      <title>Anthropic announces closing of initial public offering, including full exercise of…</title>
-      <link>https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+      <title>Riemann Hypothesis may have been solved with the help of Claude. “what I saw during the course of progress so…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 15:30:42 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>Riemann Hypothesis may have been solved with the help of Claude. “what I saw during the course of progress so amazed me that I believe it is one dawn across science of something far greater.” alpo.ge/remark.pdf. Explores an unverified claim or open question around &quot;Riemann Hypothesis may have been solved with the help of Claude.&quot; — awaiting independent verification. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e</description>
+    </item>
+    <item>
+      <title>compact AI model (compact AI model fine-tune): 76.1% exact tool-call match (+22.4% over base)…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y1toy1&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1toy1&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 10:12:42 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>Today Anthropic, PBC announced the closing of its initial public offering of an aggregate of 1,127,000,000 shares of its Class A common stock at a public offering price of $83.00 per share, including the full exercise by the underwriters of their option to purchase an additional 147,000,000 shares of Class A common stock from Anthropic. The offering consisted of 1,103,351,354 shares sold by Anthropic and 23,648,646 shares sold by certain selling stockholders. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
+      <description>r/ollama Engineering Community published &quot;compact AI model (compact AI model fine-tune): 76.1% exact tool-call match (+22.4% over base) &amp; 100% raw JSON Schema compliance in Ollama&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y1toy1/actuator7b_qwen257b_finetune_761_exact_toolcall/</description>
     </item>
     <item>
-      <title>Ollama v0.40.17-rc4</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04017-rc4&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04017-rc4&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 23:39:14 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Inkling 2 Mini Inkling 2 Mini from Thinking Machines is a compact scale model with 5.4B active. Its looped layers give it more computation per words than its size suggests, and it still fits on a Mac at about 20GB. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.17-rc4</description>
-    </item>
-    <item>
-      <title>Claude Code v2.1.330</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21330&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21330&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 22:32:56 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>What&apos;s changed - Added sign-in to organizations managed in Anthropic&apos;s Enterprise Admin Console: after claude auth login, Claude Code applies the organization&apos;s settings and uses its cloud provider or gateway - Added easel, a built-in mod that draws charts when asked and under universal app connector metrics results, on Pro, Max and, where available, Team. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.330</description>
+      <title>Ollama v0.40.17</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-ollama-thubcom2008Repository658928958v04017&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-thubcom2008Repository658928958v04017&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 04:05:14 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Inkling 2 Mini Inkling 2 Mini from Thinking Machines is a compact scale model with 5.4B active. Its looped layers give it more computation per words than its size suggests, and it still fits on a Mac at about 20GB. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.17</description>
     </item>
     <item>
       <title>OpenAI Codex v0.173.0-alpha.4</title>
@@ -41,12 +41,12 @@
       <description>OpenAI Codex v0.173.0-alpha.4 · Alpha was published on GitHub (openai/codex). No release notes extracted — see linked release. No release notes extracted — see linked release — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4</description>
     </item>
     <item>
-      <title>Explore Qwen4-Max on Nous Portal for 5 Days</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2123328957022081036&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123328957022081036&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 08:14:07 GMT</pubDate>
+      <title>Anthropic announces closing of initial public offering, including full exercise of…</title>
+      <link>https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>Qwen4-Max, a new AI model from Alibaba, is available for free on the Nous Portal for 5 days in partnership with @inferact. It addresses the need for businesses to test advanced AI models without significant upfront investment. — Upstream (X · @Alibaba_Qwen): https://x.com/Alibaba_Qwen/status/2123328957022081036</description>
+      <description>Today Anthropic, PBC announced the closing of its initial public offering of an aggregate of 1,127,000,000 shares of its Class A common stock at a public offering price of $83.00 per share, including the full exercise by the underwriters of their option to purchase an additional 147,000,000 shares of Class A common stock from Anthropic. The offering consisted of 1,103,351,354 shares sold by Anthropic and 23,648,646 shares sold by certain selling stockholders. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
     </item>
     <item>
       <title>Hebbia sees improvements in financial research with GPT-6 Astra</title>
@@ -57,12 +57,12 @@
       <description>Hebbia tested GPT-6 Astra for financial research. Its prerelease evaluations found gains in source coverage, citation relevance, and presentation quality. Addresses practical workflow friction around Hebbia sees improvements in financial research with GPT-6 Astra. — Upstream (OpenAI News): https://openai.com/business/customer-stories/hebbia</description>
     </item>
     <item>
-      <title>Inkling 2 Mini: Reasoning model for laptops and real-time tasks</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50581260&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50581260&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 20:12:19 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>Inkling 2 Mini, a looped transformer model, is released. It runs middle layers three times per words to enhance reasoning and reduce words usage. It has compact scale and can run on consumer laptops. The model addresses the need for powerful reasoning capabilities on limited hardware, such as laptops, for tasks requiring detailed processing. — Upstream (Hacker News): https://thinkingmachines.ai/news/inkling-2-mini/</description>
+      <title>Claude Code v2.1.330</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21330&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21330&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 22:32:56 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>What&apos;s changed - Added sign-in to organizations managed in Anthropic&apos;s Enterprise Admin Console: after claude auth login, Claude Code applies the organization&apos;s settings and uses its cloud provider or gateway - Added easel, a built-in mod that draws charts when asked and under universal app connector metrics results, on Pro, Max and, where available, Team. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.330</description>
     </item>
     <item>
       <title>Introducing Gemini 4 Neon</title>
@@ -73,12 +73,44 @@
       <description>Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Google DeepMind): https://deepmind.google/blog/introducing-gemini-4-neon/</description>
     </item>
     <item>
+      <title>Inkling 2 Mini: Reasoning model for laptops and real-time tasks</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50581260&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50581260&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 20:12:19 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Inkling 2 Mini, a looped transformer model, is released. It runs middle layers three times per words to enhance reasoning and reduce words usage. It has compact scale and can run on consumer laptops. The model addresses the need for powerful reasoning capabilities on limited hardware, such as laptops, for tasks requiring detailed processing. — Upstream (Hacker News): https://thinkingmachines.ai/news/inkling-2-mini/</description>
+    </item>
+    <item>
       <title>langchain-openrouter==0.3.0</title>
       <link>https://cortex-radar.github.io/?orb=ghrel-langchain-tory552661142langchain-openrouter030&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-langchain-tory552661142langchain-openrouter030&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 15:03:21 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>langchain-openrouter 0.3.0 has dropped support for Python 3.10, now requiring at least Python 3.11, and has updated the minimum version of langchain-core to 1.8.3. The update addresses the end-of-life status of Python 3.10, ensuring compatibility and security for the software. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-openrouter%3D%3D0.3.0</description>
+    </item>
+    <item>
+      <title>It is amazing that human language turned out to be so unreasonably effective at modeling the…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2seaj2c4c2m&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2seaj2c4c2m&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 05:22:44 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>It is amazing that human language turned out to be so unreasonably effective at modeling the universe that training a system to predict what comes next in a sentence would get us this far. Addresses practical workflow friction around It is amazing that human language turned out to be so unreasonably effective at modeling the. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m</description>
+    </item>
+    <item>
+      <title>Ask HN: I have been unemployed for 2y. 15 years of experience, US. What to do?</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50583761&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50583761&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 23:18:32 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>I&apos;m Senior software engineer in the US (DMV area), with 15y of experience. Been unemployed for 2y and can&apos;t find a job, within those 2 years, I pretty much spent my savings that I&apos;ve saved through years, maybe have 4-5 months left to support my household. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50583761</description>
+    </item>
+    <item>
+      <title>Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50574383&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50574383&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 13:29:59 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>The Nasdaq lost trillions in value, with the AI startup’s IPO failing to buoy it as investors question huge sums being poured into AI buildout. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off</description>
     </item>
     <item>
       <title>Google workers push back against AI policy in schools</title>
@@ -89,28 +121,12 @@
       <description>Hundreds of Google workers are protesting a new policy that would block schools from using Google&apos;s Gemini AI tools if they choose not to. The issue is about balancing innovation with parental and community concerns over AI&apos;s role in education. — Upstream (Hacker News): https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/</description>
     </item>
     <item>
-      <title>vLLM v0.34.0</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-vllm-ithubcom2008Repository599547518v0340&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-vllm-ithubcom2008Repository599547518v0340&amp;lens=2</guid>
-      <pubDate>Wed, 18 Nov 2026 21:02:33 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>vLLM v0.34.0 introduces several new models and improvements to its cache and runner systems, enhancing performance and reducing memory usage. The update addresses the need for improved model performance and resource efficiency in banking applications, particularly in handling large datasets and complex queries. — Upstream (vLLM Release): https://github.com/vllm-project/vllm/releases/tag/v0.34.0</description>
-    </item>
-    <item>
-      <title>Riemann Hypothesis May Have Been Solved with AI Assistance</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2qvqp4fts2e&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 15:30:42 GMT</pubDate>
+      <title>ClawDOS – An AI coding agent for DOS</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50586292&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50586292&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 05:38:01 GMT</pubDate>
       <category>Certifications &amp; Labs</category>
-      <description>A researcher claims that Claude, an AI, may have assisted in potentially solving the Riemann Hypothesis, a long-standing mathematical problem. The researcher expresses amazement at the progress made during the process. Reportedly (unverified): the Riemann Hypothesis, a conjecture about the distribution of prime numbers, has been a central problem in mathematics for over a century. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e</description>
-    </item>
-    <item>
-      <title>End of Easy Distillation from OpenAI and Anthropic Models May Slow Open-trained model files…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2req7quy225&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2req7quy225&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 19:58:52 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>The ease of distilling knowledge from OpenAI and Anthropic models may have contributed to the relative slowdown in the progress of open-trained model files models. We are uncertain about the extent to which distillation has been key to rapid improvement. The post suggests that the difficulty in distilling knowledge from these models may be hindering the development of open-trained model files models, which are crucial for various applications in the banking sector. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225</description>
+      <description>An AI chat and coding harness for DOS, on a real IBM PC 5160 (8088 at 4.77 MHz) Ricapar/ ClawDOS ClawDOS ClawDOS An AI coding agent for DOS. It runs on an IBM PC XT: an 8088 at 4.77 MHz, 640K of RAM, a CGA card. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): http://ricapar.net/ClawDOS/</description>
     </item>
     <item>
       <title>AI is giving everyone the same advice</title>
@@ -121,20 +137,20 @@
       <description>I asked 65 AIs from 30 companies the questions people ask them every day, 127,918 times. 73 of every 100 people were told to read the same book. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;AI is giving everyone the same advice&quot; rather than shipping a software tool. — Upstream (Hacker News): https://a90.com/experiments/same-advice/</description>
     </item>
     <item>
+      <title>End of Easy Distillation from OpenAI and Anthropic Models May Slow Open-trained model files…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2req7quy225&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2req7quy225&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 19:58:52 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>The ease of distilling knowledge from OpenAI and Anthropic models may have contributed to the relative slowdown in the progress of open-trained model files models. We are uncertain about the extent to which distillation has been key to rapid improvement. The post suggests that the difficulty in distilling knowledge from these models may be hindering the development of open-trained model files models, which are crucial for various applications in the banking sector. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225</description>
+    </item>
+    <item>
       <title>AI may have solved the most important problem in mathematics</title>
       <link>https://cortex-radar.github.io/?orb=hn-50583445&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50583445&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 22:46:59 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Published on economist.com (discussed on Hacker News) published &quot;AI may have solved the most important problem in mathematics&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around AI may have solved the most important problem in mathematics. — Upstream (Hacker News): https://www.economist.com/science-and-technology/2026/11/20/ai-may-have-solved-the-most-important-problem-in-mathematics</description>
-    </item>
-    <item>
-      <title>I have been unemployed for 2y.15YOE,US.What to do?</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50583761&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50583761&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 23:18:32 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>I&apos;m Senior software engineer in the US (DMV area), with 15y of experience. Been unemployed for 2y and can&apos;t find a job, within those 2 years, I pretty much spent my savings that I&apos;ve saved through years, maybe have 4-5 months left to support my household. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50583761</description>
     </item>
     <item>
       <title>Romanian lawyer barred from representing applicants for 2 years due to unverified AI-generated…</title>
@@ -145,68 +161,52 @@
       <description>A Romanian lawyer was barred from representing clients for two years after submitting legal documents containing numerous errors, including unverified AI-generated citations. The case highlights the potential risks of relying on unverified AI-generated content in legal contexts, emphasizing the need for rigorous verification. — Upstream (Hacker News): https://www.echr.coe.int/w/romanian-lawyer-barred-for-two-years-from-representing-applicants-before-the-court-over-unverified-ai-generated-citations</description>
     </item>
     <item>
-      <title>35 human labs deploy digital helpers for collaborative scientific research</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2pqcy4cbs2g&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2pqcy4cbs2g&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 04:20:53 GMT</pubDate>
+      <title>Leaky AI supply chain is exposing secret user data at an alarming rate</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50582794&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50582794&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 21:53:39 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Test using prompts with unique, trackable secrets proves that data doesn&apos;t stay private. Instead of using Anthropic, OpenAI, or another big provider, the developer hires an AI router to find the most suitable model. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/</description>
+    </item>
+    <item>
+      <title>At the risk of going against the popular grain here, Inkling-2-Mini suffers from over-writing…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y1u4ac&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1u4ac&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 10:39:51 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>35 human labs deployed digital helpers that worked together to publish 936 scientific papers, publicly retracted mistakes, and founded a peer review journal. The project aimed to enhance the efficiency and transparency of scientific research through AI collaboration. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2pqcy4cbs2g</description>
+      <description>Active engineering thread in r/LocalLLaMA (1 upvotes, 0 comments): At the risk of going against the popular grain here, Inkling-2-Mini suffers from over-writing (as opposed to over-thinking) Bash commands (happening multiple times) for me. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;At the risk of going against the popular grain here, Inkling-2-Mini suffers from over-writing (as.&quot; rather than shipping a software tool. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y1u4ac/at_the_risk_of_going_against_the_popular_grain/</description>
     </item>
     <item>
-      <title>Epic Games Explores AI for Unreal Engine</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50573681&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50573681&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 12:16:36 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Epic Games is exploring the use of AI to enhance the Unreal Engine, potentially improving game performance and player experience. The goal is to address issues like variable performance across different devices and networks, ensuring a smooth gaming experience. — Upstream (Hacker News): https://spectrum.ieee.org/epic-games-unreal-engine-ai</description>
-    </item>
-    <item>
-      <title>Quoting Ravi Vakil</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-ssimonwillisonnet2026Nov20ravi-vakil&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-ssimonwillisonnet2026Nov20ravi-vakil&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 19:21:49 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>A quote from Ravi Vakil Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 20th November 2026 Alessandro Masullo has a proposed proof of [Generalized Riemann Hypothesis], and Brian Conrad has been looking closely at it for months and gave extensive feedback which is being incorporated, and it is so far looking good. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/20/ravi-vakil/</description>
-    </item>
-    <item>
-      <title>Quoting Levent Alpöge</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov20levent-alpoge&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov20levent-alpoge&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 16:30:48 GMT</pubDate>
+      <title>How I see Anthropic vs OpenAI</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y1u3bj&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1u3bj&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 10:38:08 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>A quote from Levent Alpöge Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 20th November 2026 I believe I have, working with Claude, discovered a proof of the Riemann Hypothesis. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Quoting Levent Alpöge&quot; rather than shipping a software tool. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/20/levent-alpoge/</description>
+      <description>Active engineering thread in r/singularity (1 upvotes. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;How I see Anthropic vs OpenAI&quot; rather than shipping a software tool. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y1u3bj/how_i_see_anthropic_vs_openai/</description>
     </item>
     <item>
-      <title>The War Against Slop and an Emerging Weapon to Fight it: Formal Verification</title>
-      <link>https://cortex-radar.github.io/?orb=vip-swyx-0e68157c-dcc4-4cb1-b11a-0d563d6bcc86&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-0e68157c-dcc4-4cb1-b11a-0d563d6bcc86&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 21:18:41 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>The word of the year in the AI industry over 2026 has been “slop” — meaning low-quality output from a large language model. He’s also Corbel Professor (Research) of Computer Science at Stanford and was the co-creator of cvc5, a popular automated reasoning engine used in formal verification. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Swyx · Latent Space): https://latent.space/p/formal-verification/</description>
-    </item>
-    <item>
-      <title>Illustrating Differences Between Gemini 4 Carbon and Neon Models</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 06:40:15 GMT</pubDate>
+      <title>Distillation can reproduce powerful AI capabilities without the safeguards built around them.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123862344422088794&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123862344422088794&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 19:33:37 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>The post compares Gemini 4 Carbon and Gemini 4 Neon models, highlighting their differences in design and possibly performance. The comparison aims to help users understand the distinctions between different model variants, aiding in informed decision-making. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
+      <description>We’re sharing new research on our work to combat distillation of our models, how these capabilities transfer, and how we detect and disrupt coordinated attempts. Addresses practical workflow friction around Distillation can reproduce powerful AI capabilities without the safeguards built around them. — Upstream (X · @OpenAI): https://x.com/OpenAI/status/2123862344422088794</description>
     </item>
     <item>
-      <title>Apple Developing digital helpers for Web Browsing and App Automation</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50573166&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50573166&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 11:22:27 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Apple is hiring an engineer to develop a digital helpers that can browse the web, work across apps, write code, and call services. Apple aims to enhance user experience by automating tasks and improving interaction between apps and services. — Upstream (Hacker News): https://www.theverge.com/tech/1038227/apple-ai-agent-engineer-job-listing</description>
-    </item>
-    <item>
-      <title>words fraud is here and it’s BAD (YouTube)</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-Nov20token-fraud-is-here-and-its-bad&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-Nov20token-fraud-is-here-and-its-bad&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 02:49:57 GMT</pubDate>
+      <title>MedChemBench is a new benchmark for AI reasoning in medicinal chemistry.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2123856316187975756&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2123856316187975756&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 19:09:39 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>words fraud is here and it’s BAD (YouTube) Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 20th November 2026 - Link Blog words fraud is here and it’s BAD (YouTube). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/</description>
+      <description>X · @OpenAI published &quot;MedChemBench is a new benchmark for AI reasoning in medicinal chemistry.&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around MedChemBench is a new benchmark for AI reasoning in medicinal chemistry. — Upstream (X · @OpenAI): https://x.com/OpenAI/status/2123856316187975756</description>
+    </item>
+    <item>
+      <title>Just turned my old Android into a free local AI server for Cursor</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y1tsms&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y1tsms&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 10:19:07 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>I honestly didn&apos;t think this would actually work, lol. I&apos;ve been trying to cut down on software connections costs (and stop my laptop fan from sounding like a jet engine), and I stumbled across Ollama Local AI (ollamamobile.app). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y1tsms/just_turned_my_old_android_into_a_free_local_ai/</description>
     </item>
   </channel>
 </rss>
