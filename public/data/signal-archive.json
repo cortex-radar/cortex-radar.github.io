@@ -1,9 +1,142 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-22T02:07:19.862Z",
-  "updatedAtMs": 1795313239862,
-  "count": 101,
+  "updatedAtIso": "2026-11-22T03:27:48.704Z",
+  "updatedAtMs": 1795318068704,
+  "count": 108,
   "entries": [
+    {
+      "id": "rd-street-1y2d3ts",
+      "title": "I was driving and wondered how many signals pass through me at any given moment. Here’s what Claude Duet created in 15 mins.",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ClaudeAI",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1y2d3ts/i_was_driving_and_wondered_how_many_signals_pass/",
+      "publishedAtMs": 1795311219000,
+      "archivedAtMs": 1795318068704,
+      "verbatimExcerpt": "Prompt used: Generate a video that clearly shows all the types of frequencies, waves, bands etc. I was driving on the road and was thinking how many types of these are passing through me at once. Satellites, phones, radio, Bluetooth…"
+    },
+    {
+      "id": "rd-street-1y2cvzu",
+      "title": "The Most Important Charts in AI are Wrong",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2cvzu/the_most_important_charts_in_ai_are_wrong/",
+      "publishedAtMs": 1795310539000,
+      "archivedAtMs": 1795318068704,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): The Most Important Charts in AI are Wrong"
+    },
+    {
+      "id": "rd-street-1y2cr57",
+      "title": "Inkling-2-Mini at 524k context on a single RX 7900 XTX: 767 tok/s prompt, 33.7 tok/s generation, 10/10 needle retrieval. Benchmarks vs llama.cpp inside (my own Rust engine, LexiSuite)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2cr57/inkling2mini_at_524k_context_on_a_single_rx_7900/",
+      "publishedAtMs": 1795310135000,
+      "archivedAtMs": 1795318068704,
+      "verbatimExcerpt": "**I posted earlier about getting Inkling-2-Mini running on my own inference engine the day after it came out. This is the follow up with a new image and a lot more numbers. Short version: it now runs at a 524,288 token context on one 24…",
+      "verifiedMetrics": [
+        {
+          "value": "2,245 prompt tokens/s",
+          "label": "Prompt throughput",
+          "quote": "4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation**",
+          "context": "vs. llama.cpp b12600",
+          "subject": "LexiEngine",
+          "isFeatured": true,
+          "condition": "4,096-token prompt"
+        },
+        {
+          "value": "52.4 generation tokens/s",
+          "label": "Generation throughput",
+          "quote": "4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation**",
+          "context": "vs. llama.cpp b12600",
+          "subject": "LexiEngine",
+          "isFeatured": true,
+          "condition": "4,096-token prompt"
+        },
+        {
+          "value": "2,148 prompt tokens/s",
+          "label": "Prompt throughput",
+          "quote": "4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation** **16,384 token prompt** **LexiEngine: 2,148 tok/s prompt, 50.9 tok/s generation** **llama.cpp: 397 tok/s prompt, 25.0 tok/s generation**",
+          "context": "vs. llama.cpp b12600",
+          "subject": "LexiEngine",
+          "isFeatured": true,
+          "condition": "16,384-token prompt"
+        },
+        {
+          "value": "425 prompt tokens/s",
+          "label": "Prompt throughput",
+          "quote": "4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation**",
+          "context": "vs. llama.cpp b12600",
+          "subject": "llama.cpp",
+          "isFeatured": false,
+          "condition": "4,096-token prompt"
+        },
+        {
+          "value": "25.4 generation tokens/s",
+          "label": "Generation throughput",
+          "quote": "4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation**",
+          "context": "vs. llama.cpp b12600",
+          "subject": "llama.cpp",
+          "isFeatured": false,
+          "condition": "4,096-token prompt"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y2cflm",
+      "title": "Hy4 Flash added to int8-vllm: 4x MI100 C8 tg128 222.4 tok/s, pp512 1,655 tok/s",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2cflm/hy4_flash_added_to_int8vllm_4x_mi100_c8_tg128/",
+      "publishedAtMs": 1795309193000,
+      "archivedAtMs": 1795318068704,
+      "verbatimExcerpt": "Hi all, I'm happy to announce that Hy4 Flash has been added with optimized support to int8-vllm. This is a milestone because this is the first INT4 model added to the project. At INT4, Hy4 Flash fits completely on 128 GB of VRAM with room…",
+      "verifiedMetrics": [
+        {
+          "value": "222.4 tokens/s",
+          "label": "Measured throughput",
+          "quote": "||tg128 (llama-bench style)|pp512 (llama-bench style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 sup",
+          "context": "Source-reported token generation rate",
+          "subject": "vllm",
+          "isFeatured": true
+        },
+        {
+          "value": "1655 tokens/s",
+          "label": "Measured throughput",
+          "quote": "(llama-bench style)|pp512 (llama-bench style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with",
+          "context": "Source-reported token generation rate",
+          "subject": "vllm",
+          "isFeatured": true
+        },
+        {
+          "value": "96.7 tokens/s",
+          "label": "Measured throughput",
+          "quote": "h style)|pp512 (llama-bench style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with docker comp",
+          "context": "Source-reported token generation rate",
+          "subject": "vllm",
+          "isFeatured": true
+        },
+        {
+          "value": "86.3 tokens/s",
+          "label": "Measured throughput",
+          "quote": "style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with docker compose files for all optimized",
+          "context": "Source-reported token generation rate",
+          "subject": "vllm",
+          "isFeatured": true
+        },
+        {
+          "value": "1602 tokens/s",
+          "label": "Measured throughput",
+          "quote": "56 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with docker compose files for all optimized models, an",
+          "context": "Source-reported token generation rate",
+          "subject": "vllm",
+          "isFeatured": true
+        }
+      ]
+    },
     {
       "id": "rd-street-1y2aa8b",
       "title": "Redditors in their final moments",
@@ -484,6 +617,17 @@
       "archivedAtMs": 1795312954607
     },
     {
+      "id": "vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539",
+      "title": "[AINews] Riemann Hypothesis proved...twice independently",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Swyx · Latent Space",
+      "url": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/",
+      "publishedAtMs": 1795237333000,
+      "archivedAtMs": 1795318068704,
+      "verbatimExcerpt": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his…"
+    },
+    {
       "id": "ghrel-ollama-com2008Repository658928958v04017-rc4",
       "title": "Ollama v0.40.17-rc4",
       "source": "GHRelease",
@@ -534,6 +678,17 @@
       "publishedAtMs": 1795205800000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): The parrot strikes back"
+    },
+    {
+      "id": "hn-50581260",
+      "title": "Inkling 2 Mini",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
+      "publishedAtMs": 1795205539000,
+      "archivedAtMs": 1795318068704,
+      "verbatimExcerpt": "Inkling 2 Mini is an open-weights model small enough to run on your laptop. It loops its middle layers to reason more per token and reach answers in fewer tokens. Introducing Inkling 2 Mini - Thinking Machines Lab Introducing Inkling 2…"
     },
     {
       "id": "rd-street-1y1diuk",
@@ -1021,6 +1176,17 @@
       "verbatimExcerpt": "What's Changed Improve ChatGPT CLI restore and graceful restart by @hoyyeva in #19583 cmd/launch: use thinking metadata for OpenCode settings by @hoyyeva in #19409 llm: use mmap for Vulkan integrated GPUs by @dhiltgen in #19640…"
     },
     {
+      "id": "x-fx-2123567986565173289",
+      "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @demishassabis",
+      "url": "https://x.com/demishassabis/status/2123567986565173289",
+      "publishedAtMs": 1795133036000,
+      "archivedAtMs": 1795318068704,
+      "verbatimExcerpt": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪"
+    },
+    {
       "id": "vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945",
       "title": "Scaling Linear’s GTM to $100M ARR — Cristina Cordova, COO",
       "source": "VIPBlog",
@@ -1072,6 +1238,17 @@
       "publishedAtMs": 1795126481000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "## What's changed - Added a trust dialog warning that says where a folder's hooks are declared - Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load - Added…"
+    },
+    {
+      "id": "x-fx-2123519772390215780",
+      "title": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "url": "https://x.com/GoogleDeepMind/status/2123519772390215780",
+      "publishedAtMs": 1795121541000,
+      "archivedAtMs": 1795318068704,
+      "verbatimExcerpt": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives. Listen in as he and @fryrsquared discuss the road ahead ↓ Timecodes: 00:00 Introduction 01:26 Evolution of Google DeepMind 04:41 Products as…"
     },
     {
       "id": "vip-willison-monwillisonnet2026Nov19postgresql-19",
@@ -1270,17 +1447,6 @@
       "publishedAtMs": 1794960000000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Optical neural networks promise fast, energy-efficient computing, but every device departs from its design and must be trained with the hardware. In situ training relies on an expert-built calibrated digital model of each device or on…"
-    },
-    {
-      "id": "bsky-simonwillison.net-3n2k4j57tg22m",
-      "title": "Here's GPT-6.2 Astra and GPT-6.2 Sol for \"Make a three js animation where yonkers stands up as a big mech (cool stand up motion) and…",
-      "source": "Bluesky",
-      "sourceCategory": "SOCIAL_BLUESKY",
-      "originFeedName": "Bluesky · @simonwillison",
-      "url": "https://bsky.app/profile/simonwillison.net/post/3n2k4j57tg22m",
-      "publishedAtMs": 1794955386480,
-      "archivedAtMs": 1795312954607,
-      "verbatimExcerpt": "stomps around manhattan and queens and Brooklyn, use openstreetmap mapping data\" simonwillison.net/2026/Nov/17/..."
     },
     {
       "id": "x-fx-2122798039899263456",

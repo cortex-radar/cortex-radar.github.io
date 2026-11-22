@@ -4,6 +4,7 @@ import {
   GlossaryTerm,
   LiteracySpectrumPayload,
   SpatialSignal,
+  VerifiedSourceMetric,
 } from './types';
 import {
   BenchmarkClaimSpec,
@@ -27,6 +28,7 @@ import {
   isNonToolNewsOrMarketSignal,
   isReleaseWithoutNotes,
   repairSummaryProseScope,
+  repairTruncatedCommaNumbers,
   requiresVerbatimPublisherHeadline,
   stripUiChromeBoilerplate,
   stripUnbackedComplianceClaims,
@@ -47,7 +49,11 @@ export const BANNED_L1_TERMS_REGEX =
 
 const JARGON_REPLACEMENTS: Array<[RegExp, string]> = [
   [/\barxiv:\s*\d{4}\.\d{4,5}(?:v\d+)?\b/gi, 'research study'],
-  [/\b(?:tok\/s|t\/s|tokens\/s)\b/gi, 'tokens per second'],
+  [
+    /((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*(?:tok\/s|t\/s)\s+(prompt|prefill|input|generation|decode|output)\b/gi,
+    '$1 $2 tokens/s',
+  ],
+  [/\b(?:tok\/s|t\/s)\b/gi, 'tokens per second'],
   [/\bllms?\b/gi, 'AI assistants'],
   [/\bgraphrag\b/gi, 'organized memory lookup'],
   [/\brag\b/gi, 'reference lookup'],
@@ -130,7 +136,9 @@ function stripCollapsedAlignmentResidue(input: string): string {
       while (fwd < tokens.length && removedAfter < runLen * 5) {
         const nextTok = tokens[fwd];
         if (
-          /^(?:\d+(?:\.\d+)?%?|N\/A|-+|✓|✗|\+|\*)$/i.test(nextTok.replace(/[,;]+$/, '')) &&
+          /^(?:(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?|N\/A|-+|✓|✗|\+|\*)$/i.test(
+            nextTok.replace(/[,;]+$/, '')
+          ) &&
           !/[.!?]$/.test(nextTok)
         ) {
           keep[fwd] = false;
@@ -860,12 +868,13 @@ export function stripTrailingIncompleteClause(rawText: string): string {
   if (!normalized) return '';
 
   const endsWithTerminal = /[.!?]["')\]]*$/.test(normalized);
+  const endsWithEllipsis = /(?:\u2026|\.\.\.)\s*$/.test(normalized);
   const endsWithDanglingWord =
     /\b(?:the|a|an|to|of|in|on|for|with|and|or|but|so|that|which|who|it|its|this|these|those|by|from|as|at|into|while|when|if|because|than|part\s+it)[.!?]?$/i.test(
       normalized
     );
 
-  if (endsWithTerminal && !endsWithDanglingWord) {
+  if (endsWithTerminal && !endsWithDanglingWord && !endsWithEllipsis) {
     return normalized;
   }
 
@@ -880,9 +889,16 @@ export function stripTrailingIncompleteClause(rawText: string): string {
     }
   }
 
-  // Single-clause short post fallback: strip trailing conjunction/preposition/dangling fragment cleanly
-  const trimmedClause = normalized
-    .replace(/[,;:—-]\s*[^.!?]{1,55}$/, '')
+  // Complete social/feed statements lacking trailing period (and not ending on a dangling word or ellipsis)
+  // are preserved verbatim so comma numbers like "used 31,477 output tokens" are never chopped.
+  if (!endsWithDanglingWord && !endsWithEllipsis) {
+    return `${normalized}.`;
+  }
+
+  // Truncated/ellipsis fragment: strip only trailing non-numeric clause after comma/semicolon/dash
+  const cleanedEllipsis = normalized.replace(/(?:\u2026|\.\.\.)\s*$/, '').trim();
+  const trimmedClause = cleanedEllipsis
+    .replace(/(?:(?<!\d)[,;:]\s+|[—–]\s+)[^.!?]{1,55}$/, '')
     .replace(
       /\s+\b(?:the|a|an|to|of|in|on|for|with|and|or|but|so|that|which|it|by|from|as|at|into|while|when|if|because)\s*$/i,
       ''
@@ -914,9 +930,13 @@ function extractSignalFacts(sig: SpatialSignal): ExtractedSignalFacts {
     });
 
   const leadSentence = rawSentences[0] || '';
+  const quantRx1 =
+    /(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*%|\s*x|\s*ms|\s*gb|\s*k|\s*m|\s*hours|\s*clinicians|\s*hospitals|\s*users|\s*(?:prompt\s+|output\s+|input\s+|generation\s+)?(?:tokens?\/s|tok\/s|tokens\s+per\s+second|tokens)|[-\s]+token\s+(?:prompt|context)|\s*cents)\b/i;
+  const quantRx2 =
+    /(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*%|\s*x|\s*ms|\s*gb|\s*hours|\s*(?:prompt\s+|output\s+|input\s+|generation\s+)?(?:tokens?\/s|tok\/s|tokens\s+per\s+second|tokens)|\s*cents)\b/i;
   const quantSentence =
-    rawSentences.find((s, idx) => idx > 0 && /\b\d+(?:\.\d+)?(?:\s*%|\s*x|\s*ms|\s*gb|\s*k|\s*m|\s*hours|\s* clinicians|\s*hospitals|\s*users)\b/i.test(s)) ||
-    rawSentences.find((s) => /\b\d+(?:\.\d+)?(?:\s*%|\s*x|\s*ms|\s*gb|\s*hours)\b/i.test(s)) ||
+    rawSentences.find((s, idx) => idx > 0 && quantRx1.test(s)) ||
+    rawSentences.find((s) => quantRx2.test(s)) ||
     '';
 
   const workflowSentence =
@@ -1070,7 +1090,7 @@ function buildDynamicAnalogy(
 ): { analogy: string; everydayWhy: string } {
   const hay = `${sig.title} ${sig.rawAbstract}`.toLowerCase();
   const groundedClause = facts.leadSentence
-    ? ` Specifically, ${enforceZeroJargonL1(facts.leadSentence.slice(0, 190))}`
+    ? ` Specifically, ${enforceZeroJargonL1(truncateAtWordBoundary(facts.leadSentence, 300))}`
     : '';
 
   if (isHedgedOrUnverifiedClaim(sig)) {
@@ -1152,7 +1172,7 @@ function buildDynamicAnalogy(
     ),
     everydayWhy: enforceZeroJargonL1(
       facts.detailSentence
-        ? facts.detailSentence.slice(0, 165)
+        ? truncateAtWordBoundary(facts.detailSentence, 220)
         : 'Routine reading, coordination, and problem-solving work finishes faster with higher consistency.'
     ),
   };
@@ -1353,7 +1373,7 @@ function buildDisjointL5Sections(
 
     const remaining = completeSentences.filter((s) => !usedNorm.has(s.toLowerCase()));
     const metricOrLimitHits = remaining.filter((s) =>
-      /\b(\d+(?:\.\d+)?(?:\s*%|\s*x|\s*ms|\s*gb|\s*b\b|\s*m\b|\s*k\b)|fid|psnr|ssim|mmlu|gpqa|swe-bench|dataset|benchmark|fail\w*|limit\w*|skip\w*|caveat|hallucin\w*|error|latency|vram|lora|fp8|int4|release|v\d+\.\d+)\b/i.test(
+      /(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*%|\s*x|\s*ms|\s*gb|\s*b\b|\s*m\b|\s*k\b|\s*(?:prompt\s+|output\s+|input\s+|generation\s+)?(?:tokens?\/s|tok\/s|tokens\s+per\s+second|tokens))|\b(?:fid|psnr|ssim|mmlu|gpqa|swe-bench|dataset|benchmark|fail\w*|limit\w*|skip\w*|caveat|hallucin\w*|error|latency|vram|lora|fp8|int4|release|v\d+\.\d+)\b/i.test(
         s
       )
     );
@@ -1374,11 +1394,11 @@ function buildDisjointL5Sections(
       : stripTrailingIncompleteClause(cleanHeadline);
 
   let specsAndCaveats = '';
+  const allMetrics = extractSourceVerifiedMetrics(sig);
   if (isEvaluationQualityStudy(sig)) {
-    const evalMetrics = extractSourceVerifiedMetrics(sig);
     const evalSummary =
-      evalMetrics.length > 0
-        ? evalMetrics
+      allMetrics.length > 0
+        ? allMetrics
             .map((m) =>
               m.subject ? `${m.subject} ${m.value} (${m.label})` : `${m.label}: ${m.value}`
             )
@@ -1389,7 +1409,16 @@ function buildDisjointL5Sections(
         ? `${truncateOnSentenceBoundary(specSentences.join(' '), 300)} (${evalSummary}).`
         : `Evaluation methodology (${sig.originFeedName || sig.source}): ${evalSummary}. Open linked study for full task grading rubric.`;
   } else if (specSentences.length > 0) {
-    specsAndCaveats = truncateOnSentenceBoundary(specSentences.join(' '), 340);
+    specsAndCaveats = truncateOnSentenceBoundary(specSentences.join(' '), 360);
+    const hasPairedCondOrComma = allMetrics.some(
+      (m) => Boolean(m.condition) || /\d{1,3},\d{3}/.test(m.value)
+    );
+    if (hasPairedCondOrComma) {
+      const clause = formatMetricsComparisonClause(allMetrics);
+      if (clause && allMetrics[0] && !specsAndCaveats.toLowerCase().includes(allMetrics[0].value.toLowerCase())) {
+        specsAndCaveats = `${specsAndCaveats.replace(/[.]+$/, '')} (${clause}).`;
+      }
+    }
   } else {
     const relMeta = getSignalReleaseMetadata(sig);
     if (relMeta) {
@@ -1422,6 +1451,33 @@ function buildDisjointL5Sections(
   }
 
   return { architectureBrief, specsAndCaveats };
+}
+
+function formatMetricsComparisonClause(metrics: VerifiedSourceMetric[]): string {
+  if (!metrics || metrics.length === 0) return '';
+  const condMetrics = metrics.filter((m) => Boolean(m.condition));
+  if (condMetrics.length > 0) {
+    const primaryCondition =
+      condMetrics.find((m) => m.isFeatured === true)?.condition || condMetrics[0].condition!;
+    const matchingCond = condMetrics.filter((m) => m.condition === primaryCondition);
+    const feat = matchingCond.find((m) => m.isFeatured === true) || matchingCond[0];
+    const base = matchingCond.find((m) => m.isFeatured === false && m !== feat);
+    const featPart = feat.subject ? `${feat.subject} ${feat.value}` : feat.value;
+    if (base) {
+      const basePart = base.subject ? `${base.subject} ${base.value}` : base.value;
+      return `At ${primaryCondition}: ${featPart} vs. ${basePart}`;
+    }
+    return `At ${primaryCondition}: ${featPart}`;
+  }
+
+  const topTwo = metrics.slice(0, 2);
+  if (topTwo.length === 2) {
+    const p1 = topTwo[0].subject ? `${topTwo[0].subject}: ${topTwo[0].value}` : topTwo[0].value;
+    const p2 = topTwo[1].subject ? `${topTwo[1].subject}: ${topTwo[1].value}` : topTwo[1].value;
+    return `${p1} vs. ${p2}`;
+  }
+  const single = topTwo[0];
+  return single.subject ? `${single.subject}: ${single.value}` : `${single.label}: ${single.value}`;
 }
 
 export function buildNoReleaseNotesPayload(
@@ -1585,7 +1641,7 @@ export function buildDeterministicLiteracyPayload(
   const glossaryMentionList = glossary.map((g) => g.term).join(', ');
 
   const coreMechanismSummary = facts.hasRichBody
-    ? `${facts.leadSentence}${facts.detailSentence ? ` ${facts.detailSentence}` : ''}`.slice(0, 340)
+    ? truncateAtWordBoundary(`${facts.leadSentence}${facts.detailSentence ? ` ${facts.detailSentence}` : ''}`, 380)
     : isTechnical
     ? sig.architectBrief.summary
     : `${resolvedBuilder} shared: "${facts.cleanHeadline}".`;
@@ -1672,7 +1728,7 @@ export function buildDeterministicLiteracyPayload(
           readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Attention. ${complianceClause}`,
           clientAdvice:
             sig.cSuiteBrief.industryLens[activeClient] ||
-            `For ${clientMeta.label}: evaluate "${facts.cleanHeadline.slice(0, 68)}" with domain benchmarks before broad adoption.`,
+            `For ${clientMeta.label}: evaluate "${truncateAtWordBoundary(facts.cleanHeadline, 68)}" with domain benchmarks before broad adoption.`,
         };
 
   const disjointL5 = buildDisjointL5Sections(sig, facts.cleanHeadline);
@@ -1784,7 +1840,9 @@ function hasUnbackedHeadlineNumbersOrSuperlatives(
   if (/\blargest\s+(?:ipo\s+)?in\s+history\b/i.test(headline) && !sourceHaystackLower.includes('largest')) {
     return true;
   }
-  const currencyMatches = headline.match(/\$\d+(?:\.\d+)?\s*(?:t|trillion|b|billion|m|million)?/gi);
+  const currencyMatches = headline.match(
+    /\$\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:t|trillion|b|billion|m|million)?/gi
+  );
   if (!currencyMatches) return false;
   return currencyMatches.some((amt) => !sourceHaystackLower.includes(amt.toLowerCase()));
 }
@@ -1919,7 +1977,11 @@ function preserveEntitiesAndUnits(
 ): string {
   if (!text) return text;
   let out = text.replace(/\bwords\s+per\s+second\b/gi, 'tokens per second');
-  out = out.replace(/\b(?:tok\/s|t\/s|tokens\/s)\b/gi, 'tokens per second');
+  out = out.replace(
+    /((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*(?:tok\/s|t\/s)\s+(prompt|prefill|input|generation|decode|output)\b/gi,
+    '$1 $2 tokens/s'
+  );
+  out = out.replace(/\b(?:tok\/s|t\/s)\b/gi, 'tokens per second');
   const primaryName = frozenEntities[0] || stripOriginPrefixFromHeadline(sigTitle);
   const secondaryName = frozenEntities[1] || primaryName;
   if (/\bcompact ai model\b/i.test(out)) {
@@ -2343,15 +2405,25 @@ export function enforceEpistemicAndDomainFidelity(
 
   const auditFieldNumbers = (txt: string, fallbackText?: string): string => {
     if (!txt) return txt;
-    if (findUnbackedNumericTokens(txt, numericCorpus).length === 0) return txt;
-    const { cleaned } = stripUnbackedNumericClaims(txt, numericCorpus);
-    if (cleaned.length >= 20 && findUnbackedNumericTokens(cleaned, numericCorpus).length === 0) {
-      return cleaned;
+    // Step 7a: Auto-repair truncated fragments of comma-formatted source numbers (e.g., "245" -> "2,245", "31" -> "31,477")
+    const repairedStep = repairTruncatedCommaNumbers(txt, numericCorpus).repaired;
+    if (findUnbackedNumericTokens(repairedStep, numericCorpus).length === 0) return repairedStep;
+
+    const { cleaned } = stripUnbackedNumericClaims(repairedStep, numericCorpus);
+    const cleanedRepaired = repairTruncatedCommaNumbers(cleaned, numericCorpus).repaired;
+    if (
+      cleanedRepaired.length >= 20 &&
+      findUnbackedNumericTokens(cleanedRepaired, numericCorpus).length === 0
+    ) {
+      return cleanedRepaired;
     }
-    if (fallbackText && findUnbackedNumericTokens(fallbackText, numericCorpus).length === 0) {
-      return fallbackText;
+    if (fallbackText) {
+      const fbRepaired = repairTruncatedCommaNumbers(fallbackText, numericCorpus).repaired;
+      if (findUnbackedNumericTokens(fbRepaired, numericCorpus).length === 0) {
+        return fbRepaired;
+      }
     }
-    return cleaned || fallbackText || '';
+    return cleanedRepaired || fallbackText || '';
   };
 
   plainTitle = auditFieldNumbers(plainTitle, cleanPublisherHeadline);
@@ -2378,6 +2450,65 @@ export function enforceEpistemicAndDomainFidelity(
     specsAndCaveats: auditFieldNumbers(l5.specsAndCaveats, det?.levels[5].specsAndCaveats),
     streetConsensus: auditFieldNumbers(l5.streetConsensus, det?.levels[5].streetConsensus),
   };
+
+  // Gate 7c: Preserve paired comma-formatted metrics, exact units, and test conditions across L1-L5
+  const hasCommaOrConditionMetrics = evalMetrics.some(
+    (m) => Boolean(m.condition) || /\d{1,3},\d{3}/.test(m.value)
+  );
+  if (hasCommaOrConditionMetrics) {
+    const metricsClause = formatMetricsComparisonClause(evalMetrics);
+    if (metricsClause) {
+      const condMetrics = evalMetrics.filter((m) => Boolean(m.condition));
+      const keyMetrics =
+        condMetrics.length > 0
+          ? (() => {
+              const pCond =
+                condMetrics.find((m) => m.isFeatured === true)?.condition ||
+                condMetrics[0].condition!;
+              const subset = condMetrics.filter((m) => m.condition === pCond);
+              const f = subset.find((m) => m.isFeatured === true) || subset[0];
+              const b = subset.find((m) => m.isFeatured === false && m !== f);
+              return [f, ...(b ? [b] : [])];
+            })()
+          : evalMetrics.slice(0, 2);
+
+      const requiredTokens: string[] = [];
+      for (const km of keyMetrics) {
+        const numMatch = km.value.match(/\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?/);
+        if (numMatch?.[0]) requiredTokens.push(numMatch[0]);
+        if (km.condition) requiredTokens.push(km.condition);
+        if (/\bprompt tokens\/s\b/i.test(km.value)) requiredTokens.push('prompt tokens/s');
+      }
+
+      const lensHasAllRequired = (combinedLens: string) => {
+        const low = combinedLens.toLowerCase();
+        return requiredTokens.every((req) => low.includes(req.toLowerCase()));
+      };
+      const appendClauseIfMissing = (primaryField: string, fullLensText: string): string => {
+        if (!primaryField || lensHasAllRequired(fullLensText)) return primaryField;
+        const trimmed = primaryField.replace(/[.]+$/, '').trim();
+        return `${trimmed} (${metricsClause}).`;
+      };
+
+      l1.everydayWhy = appendClauseIfMissing(
+        l1.everydayWhy,
+        `${l1.analogy} ${l1.everydayWhy}`
+      );
+      l2.whatHappened = appendClauseIfMissing(
+        l2.whatHappened,
+        `${l2.whatHappened} ${l2.problemSolved}`
+      );
+      l3.bridgeSummary = appendClauseIfMissing(l3.bridgeSummary, l3.bridgeSummary);
+      l4.roiAndFinOps = appendClauseIfMissing(
+        l4.roiAndFinOps,
+        `${l4.roiAndFinOps} ${l4.clientAdvice}`
+      );
+      l5.specsAndCaveats = appendClauseIfMissing(
+        l5.specsAndCaveats,
+        `${l5.architectureBrief} ${l5.specsAndCaveats}`
+      );
+    }
+  }
 
   // Gate 8: Zero Unbacked Compliance Claims Audit across ALL lenses (SOC 2, zero-retention, HIPAA, GDPR, enterprise pilot)
   const rawComplianceCorpus = [

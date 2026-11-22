@@ -125,40 +125,103 @@ function extractDistinctHyphenatedSlug(rawTitle: string): string | null {
 }
 
 const MODEL_VERSION_REGEX =
-  /\b(gemini|claude|gpt|qwen|llama|mistral|deepseek|grok|genie|veo|sora|gemma|olmo|phi)[-\s]?(\d+(?:\.\d+)?)(?:[-\s]+(ultra|pro|flash|mini|nano|max|plus|lite|neon|hydrogen|sonnet|opus|haiku|codex|vibe|coder|omni|live))?\b/gi;
+  /\b(gemini|claude|gpt|qwen|llama|mistral|deepseek|grok|genie|veo|sora|gemma|olmo|phi)[-\s]?(\d+(?:\.\d+)?)(?:[-\s]+(ultra|pro|flash|mini|nano|max|plus|lite|neon|hydrogen|sonnet|opus|haiku|codex|vibe|coder|omni|live|astra|sol|spark|thinking|reasoning))?\b/gi;
 
 interface ModelVersionKey {
+  base: string;
+  version: string;
   family: string;
   variant: string;
 }
 
-function extractModelVersionKeys(rawTitle: string): ModelVersionKey[] {
+function extractModelVersionKeys(
+  rawTitle: string,
+  includeComparisons = false
+): ModelVersionKey[] {
   const cleaned = stripFeedPrefixForClustering(rawTitle);
-  if (/\b(?:vs\.?|versus)\b/i.test(cleaned)) return [];
+  if (!includeComparisons && /\b(?:vs\.?|versus)\b/i.test(cleaned)) return [];
   const results = new Map<string, ModelVersionKey>();
 
   const matches = cleaned.matchAll(MODEL_VERSION_REGEX);
   for (const m of matches) {
     const base = (m[1] || '').toLowerCase();
-    const ver = (m[2] || '').toLowerCase();
+    const version = (m[2] || '').toLowerCase();
     const variant = (m[3] || '').toLowerCase();
-    if (!base || !ver) continue;
-    const family = `${base}${ver}`;
-    const prev = results.get(family);
-    if (!prev || (!prev.variant && variant)) {
-      results.set(family, { family, variant });
+    if (!base || !version) continue;
+    const family = `${base}${version}`;
+    const mapKey = `${family}:${variant}`;
+    if (!results.has(mapKey)) {
+      results.set(mapKey, { base, version, family, variant });
     }
   }
 
   const namedSlug = cleaned.match(/\b(mistral[-\s]+vibe|claude[-\s]+code|openai[-\s]+codex)\b/i);
   if (namedSlug?.[1]) {
-    const family = namedSlug[1].toLowerCase().replace(/\s+/g, '-');
-    if (!results.has(family)) {
-      results.set(family, { family, variant: '' });
+    const slugFamily = namedSlug[1].toLowerCase().replace(/\s+/g, '-');
+    if (!results.has(slugFamily)) {
+      results.set(slugFamily, { base: slugFamily, version: '', family: slugFamily, variant: '' });
     }
   }
 
   return Array.from(results.values());
+}
+
+const MODEL_BRAND_AND_VARIANT_STOPWORDS = new Set([
+  'gpt', 'astra', 'sol', 'gemini', 'claude', 'llama', 'qwen', 'mistral', 'deepseek', 'grok',
+  'genie', 'veo', 'sora', 'gemma', 'olmo', 'phi', 'openai', 'anthropic', 'deepmind', 'google',
+  'meta', 'nvidia', 'microsoft', 'neon', 'hydrogen', 'sonnet', 'opus', 'haiku', 'codex', 'ultra',
+  'pro', 'flash', 'mini', 'nano', 'max', 'plus', 'lite', 'omni', 'live', 'spark', 'vibe', 'coder',
+  'inkling', 'thinking', 'reasoning',
+]);
+
+const SUBJECT_FILLER_STOPWORDS = new Set([
+  'sees', 'here', 'heres', 'make', 'tried', 'improvements', 'improvement', 'tip', 'difference',
+  'very', 'significant', 'built', 'own', 'inside', 'coded', 'based', 'real', 'cool', 'big',
+  'stands', 'stand', 'where', 'way', 'felt', 'good', 'excited', 'know', 'running', 'runs',
+]);
+
+function isCustomerOrEvaluationStory(item: { title: string; url?: string }): boolean {
+  const url = item.url || '';
+  if (/\/(?:customer-stories|case-stud(?:y|ies)|customers)\//i.test(url)) {
+    return true;
+  }
+  const title = stripFeedPrefixForClustering(item.title || '');
+  return /\b(?:sees\s+improvements?\s+in|case\s+study|customer\s+story|evaluating\s+.+\s+on|evaluates\s+.+\s+on|financial\s+research|clinical\s+care|how\s+[A-Z][\w-]+\s+uses)\b/i.test(
+    title
+  );
+}
+
+function isOfficialModelLaunchHeadline(title: string): boolean {
+  const cleaned = stripFeedPrefixForClustering(title);
+  if (isCustomerOrEvaluationStory({ title: cleaned })) return false;
+  return /\b(?:introducing|announcing|releasing|launch(?:ing|ed)?|unveiling|meet)\b/i.test(cleaned);
+}
+
+function isIndependentThirdPartyBuild(title: string): boolean {
+  const cleaned = stripFeedPrefixForClustering(title);
+  return /\b(?:i built|my own|show hn:|open[- ]sourced my)\b/i.test(cleaned);
+}
+
+function extractReleaseTagFromUrl(url = ''): string | null {
+  const m = (url || '').match(/github\.com\/[^/]+\/[^/]+\/releases\/tag\/([^/?#]+)/i);
+  if (!m?.[1]) return null;
+  return decodeURIComponent(m[1]).toLowerCase();
+}
+
+function extractSubjectTaskTokens(rawTitle: string, mvKeys: ModelVersionKey[]): string[] {
+  const mvTokens = new Set<string>();
+  for (const mv of mvKeys) {
+    for (const part of mv.base.split('-')) {
+      if (part) mvTokens.add(part);
+    }
+    if (mv.variant) mvTokens.add(mv.variant);
+  }
+  return extractSpecificEntityTokens(rawTitle).filter(
+    (tok) =>
+      !MODEL_BRAND_AND_VARIANT_STOPWORDS.has(tok) &&
+      !SUBJECT_FILLER_STOPWORDS.has(tok) &&
+      !mvTokens.has(tok)
+  );
 }
 
 function extractLabCorporateEventKey(rawTitle: string): string | null {
@@ -178,9 +241,9 @@ function extractLabCorporateEventKey(rawTitle: string): string | null {
 
 /**
  * Strict Supernova clustering predicate:
- * Requires an exact canonical URL / repo / arXiv match, an unambiguous matching model+version
- * (with zero conflicting variant names), a named lab corporate milestone, OR >= 2 shared rare
- * proper-noun entity tokens in the headline with zero conflicting model-checkpoint slugs.
+ * Requires exact URL/artifact match, named corporate milestone match, or compatible model versions
+ * paired with genuine subject/task overlap so customer evaluations (e.g., Hebbia financial research
+ * with GPT-6 Astra) never merge with unrelated model-version posts (e.g., Bluesky Three.js GPT-6.2).
  */
 export function shouldClusterIntoSupernova(
   a: { title: string; url?: string; originFeedName?: string },
@@ -198,18 +261,19 @@ export function shouldClusterIntoSupernova(
     return artA === artB;
   }
 
-  const mvA = extractModelVersionKeys(a.title);
-  const mvB = extractModelVersionKeys(b.title);
-  if (mvA.length === 1 && mvB.length === 1) {
-    const ma = mvA[0];
-    const mb = mvB[0];
-    if (ma.family === mb.family) {
-      if (ma.variant && mb.variant && ma.variant !== mb.variant) {
-        return false;
-      }
-      if (ma.variant === mb.variant || !ma.variant || !mb.variant) {
-        return true;
-      }
+  // Prevent GitHub software releases (e.g., Claude Code v2.1.330) from merging with unrelated
+  // third-party tools that mention the product name unless the exact release version is cited.
+  const relTagA = extractReleaseTagFromUrl(a.url || '');
+  const relTagB = extractReleaseTagFromUrl(b.url || '');
+  if (relTagA || relTagB) {
+    const tagToCheck = relTagA || relTagB || '';
+    const otherTitle = relTagA ? b.title : a.title;
+    if (isIndependentThirdPartyBuild(otherTitle)) {
+      return false;
+    }
+    const verCore = tagToCheck.match(/\d+\.\d+(?:\.\d+)?(?:-[a-z0-9.]+)?/i)?.[0];
+    if (!verCore || !otherTitle.toLowerCase().includes(verCore.toLowerCase())) {
+      return false;
     }
   }
 
@@ -219,8 +283,73 @@ export function shouldClusterIntoSupernova(
     return true;
   }
 
+  // Hard cross-version and variant conflict guard (e.g., GPT-6 Astra vs GPT-6.2 Astra/Sol)
+  const conflictKeysA = extractModelVersionKeys(a.title, true);
+  const conflictKeysB = extractModelVersionKeys(b.title, true);
+  const byBaseA = new Map<string, ModelVersionKey[]>();
+  const byBaseB = new Map<string, ModelVersionKey[]>();
+  for (const k of conflictKeysA) {
+    const list = byBaseA.get(k.base) || [];
+    list.push(k);
+    byBaseA.set(k.base, list);
+  }
+  for (const k of conflictKeysB) {
+    const list = byBaseB.get(k.base) || [];
+    list.push(k);
+    byBaseB.set(k.base, list);
+  }
+  for (const [base, listA] of byBaseA.entries()) {
+    const listB = byBaseB.get(base);
+    if (!listB || listB.length === 0) continue;
+    const versionsA = new Set(listA.map((x) => x.version).filter(Boolean));
+    const versionsB = new Set(listB.map((x) => x.version).filter(Boolean));
+    if (versionsA.size > 0 && versionsB.size > 0) {
+      const sharedVer = Array.from(versionsA).some((v) => versionsB.has(v));
+      if (!sharedVer) {
+        return false;
+      }
+    }
+    const variantsA = new Set(listA.map((x) => x.variant).filter(Boolean));
+    const variantsB = new Set(listB.map((x) => x.variant).filter(Boolean));
+    if (variantsA.size > 0 && variantsB.size > 0) {
+      const sharedVar = Array.from(variantsA).some((v) => variantsB.has(v));
+      if (!sharedVar) {
+        return false;
+      }
+    }
+  }
+
+  const mvA = extractModelVersionKeys(a.title, false);
+  const mvB = extractModelVersionKeys(b.title, false);
+  const subjA = extractSubjectTaskTokens(a.title, conflictKeysA);
+  const subjB = extractSubjectTaskTokens(b.title, conflictKeysB);
+  const subjSetB = new Set(subjB);
+  const sharedSubj = subjA.filter((t) => subjSetB.has(t));
+  const eitherEvalOrBuild =
+    isCustomerOrEvaluationStory(a) ||
+    isCustomerOrEvaluationStory(b) ||
+    isIndependentThirdPartyBuild(a.title) ||
+    isIndependentThirdPartyBuild(b.title);
+
+  if (mvA.length === 1 && mvB.length === 1 && mvA[0].family === mvB[0].family) {
+    const ma = mvA[0];
+    const mb = mvB[0];
+    if (ma.variant && mb.variant && ma.variant !== mb.variant) {
+      return false;
+    }
+    if (ma.variant === mb.variant || !ma.variant || !mb.variant) {
+      if (eitherEvalOrBuild) {
+        return sharedSubj.length >= 1;
+      }
+      if (isOfficialModelLaunchHeadline(a.title) || isOfficialModelLaunchHeadline(b.title)) {
+        return true;
+      }
+      return sharedSubj.length >= 1;
+    }
+  }
+
   // Block merging if either headline names a specific multi-hyphen model/repo slug (e.g. "voi-slop-detect-300M")
-  // whose rare tokens are absent from the other headline (e.g. "Gemini 4 Hydrogen")
+  // whose rare tokens are absent from the other headline, or when overlap lacks genuine subject/task tokens.
   const slugA = extractDistinctHyphenatedSlug(a.title);
   const slugB = extractDistinctHyphenatedSlug(b.title);
   const tokensA = extractSpecificEntityTokens(a.title);
@@ -232,6 +361,16 @@ export function shouldClusterIntoSupernova(
   const setB = new Set(tokensB);
   const shared = tokensA.filter((t) => setB.has(t));
   if (shared.length < 2) {
+    return false;
+  }
+
+  // Allow official model launch coverage without version digit in reaction post (e.g., "Introducing Gemini 4 Neon" + "Tried Gemini Neon")
+  const hasLaunchModelOverlap =
+    (isOfficialModelLaunchHeadline(a.title) || isOfficialModelLaunchHeadline(b.title)) &&
+    !eitherEvalOrBuild &&
+    (conflictKeysA.length > 0 || conflictKeysB.length > 0) &&
+    shared.length >= 2;
+  if (sharedSubj.length < 1 && !hasLaunchModelOverlap) {
     return false;
   }
 
@@ -400,7 +539,7 @@ export function computeDivergenceMetrics(
   if (/\b(skip\w*|fail\w*|hallucin\w*|broken|bug|oom|bottleneck|caveat|limit\w*)\b/.test(hay)) {
     streetBase -= 5;
   }
-  if (/\b(\d+(?:\.\d+)?\s*(?:%|x|tok\/s|ms|gb))\b/.test(hay)) {
+  if (/(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:%|x|tok\/s|tokens\/s|ms|gb)\b/.test(hay)) {
     streetBase += 6;
   }
 

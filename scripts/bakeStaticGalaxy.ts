@@ -25,6 +25,7 @@ import {
 import {
   buildSupportingSourceEntry,
   classifyEvidenceScope,
+  classifySupportingLinkRelation,
   extractBenchmarkClaimSpec,
   extractFrozenEntities,
   extractNamedLegalInstitution,
@@ -209,7 +210,7 @@ export function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): str
 
 const GITHUB_MODELS_ENDPOINT = 'https://models.inference.ai.azure.com/chat/completions';
 const GITHUB_MODELS_MODEL = process.env.GITHUB_MODELS_MODEL || 'gpt-4o-mini';
-const LITERACY_SCHEMA_VERSION = 'v2.5';
+const LITERACY_SCHEMA_VERSION = 'v2.5.1';
 
 function normalizeBakeUrl(url: string): string {
   return (url || '').trim().toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
@@ -381,7 +382,7 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
   const legalInstitution = extractNamedLegalInstitution(sig);
   const sourceHasCompliance = hasSourceComplianceAssessment(sig);
   const entityUnitQuoteLine = [
-    'UNIT, ENTITY, NUMERIC & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve full ranges verbatim ("20–59%", NEVER truncate to "59%"), preserve technical units verbatim ("tokens per second", NEVER "words per second"), NEVER invent unbacked percentages/dollars/cost-savings ranges not in Primary Post Body, and ONLY put double quotes around exact substrings present in Primary Headline or Body above.',
+    'UNIT, ENTITY, COMMA-NUMBER, CONDITION & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve FULL comma-formatted numbers verbatim (e.g. "2,245", "4,096", "5,311", "31,477" — NEVER truncate at commas to "245" or "31"), preserve test conditions ("4,096-token prompt") paired with subject and exact units ("prompt tokens/s", "output tokens", "tokens per second" — NEVER "words per second"), preserve full ranges verbatim ("20–59%", NEVER truncate to "59%"), NEVER invent unbacked percentages/dollars/cost-savings ranges not in Primary Post Body, and ONLY put double quotes around exact substrings present in Primary Headline or Body above.',
     frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
     needsVerbatimHeadline
       ? 'HEADLINE MEANING & SCOPE LOCK: Preserve conditional cause/effect triggers (disabled tool vs. lost product) and legal/court scope qualifiers verbatim — keep plainTitle/plainFullTitle faithful to the exact publisher headline without broadening court bans or inverting conditions.'
@@ -787,6 +788,13 @@ function mergeSignalClusterTarget(
       mergedQuotes.push(q);
     }
   }
+  // Annotate relation on each supporting link cleanly against the canonical primary item
+  clusterTarget.supportingSources = clusterTarget.supportingSources.map((s) => ({
+    ...s,
+    relation: classifySupportingLinkRelation(clusterTarget, s),
+  }));
+  clusterTarget.verifiedMetrics = extractSourceVerifiedMetrics(clusterTarget);
+
   clusterTarget.streetQuotes = mergedQuotes.slice(0, 6);
   clusterTarget.divergence = computeDivergenceMetrics(
     clusterTarget.streetQuotes,
@@ -1201,15 +1209,18 @@ async function main(): Promise<void> {
     sig.evidenceScope = classifyEvidenceScope(sig);
     sig.verifiedMetrics = extractSourceVerifiedMetrics(sig);
     if (sig.supportingSources) {
-      sig.supportingSources = sig.supportingSources.map((s) => {
-        const sRel = parseGitHubReleaseMetadata(s.title || '', s.url || '');
-        return {
-          ...s,
-          title: sRel
+      sig.supportingSources = sig.supportingSources
+        .map((s) => {
+          const sRel = parseGitHubReleaseMetadata(s.title || '', s.url || '');
+          const cleanTitle = sRel
             ? sRel.displayTitle
-            : truncateAtWordBoundary(stripHtmlMarkupAndEntities(s.title || ''), 220),
-        };
-      });
+            : truncateAtWordBoundary(stripHtmlMarkupAndEntities(s.title || ''), 220);
+          return {
+            ...s,
+            title: cleanTitle,
+            relation: classifySupportingLinkRelation(sig, { ...s, title: cleanTitle }),
+          };
+        });
     }
   }
 

@@ -65,7 +65,8 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
   const nowMs = Date.now();
   const isPrimary = isPrimarySourceSignal(signal);
   const coverage = analyzeClusterCoverage(signal);
-  const groupedSources = coverage.groupedLinks;
+  const groupedSources = coverage.sameEventLinks;
+  const relatedReadingSources = coverage.relatedReadingLinks;
   const lastUpdatedMs = getEventLastUpdatedMs(signal);
   const verbatimExcerpt = extractVerbatimSourceExcerpt(signal);
 
@@ -239,6 +240,32 @@ export const EvidenceProvenancePanel: React.FC<EvidenceProvenancePanelProps> = (
               })}
             </div>
           )}
+        </div>
+      )}
+
+      {relatedReadingSources.length > 0 && (
+        <div className="rounded-md bg-zinc-950/75 border border-white/10 overflow-hidden">
+          <div className="px-2.5 py-1.5 font-mono text-[9.5px] uppercase tracking-wider text-zinc-400 border-b border-white/6">
+            Related reading
+          </div>
+          <div className="divide-y divide-white/6">
+            {relatedReadingSources.map((srcItem) => {
+              const publisher = extractPublisherDisplayName(srcItem);
+              return (
+                <a
+                  key={srcItem.url}
+                  href={srcItem.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={srcItem.title}
+                  className="flex items-center justify-between gap-2 px-2.5 py-1.5 hover:bg-white/[0.03] transition-colors font-mono text-[10px] tabular-nums"
+                >
+                  <span className="text-zinc-300 truncate min-w-0">{publisher}: {srcItem.title}</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-zinc-500 shrink-0" />
+                </a>
+              );
+            })}
+          </div>
         </div>
       )}
 

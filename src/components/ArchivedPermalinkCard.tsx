@@ -102,14 +102,25 @@ export const ArchivedPermalinkCard: React.FC<ArchivedPermalinkCardProps> = ({
                 <div className="flex flex-wrap gap-1.5">
                   {state.entry.verifiedMetrics.map((vm, idx) => {
                     const active =
-                      selectedMetric?.value === vm.value && selectedMetric?.label === vm.label;
+                      selectedMetric?.value === vm.value &&
+                      selectedMetric?.label === vm.label &&
+                      (selectedMetric?.subject || '') === (vm.subject || '') &&
+                      (selectedMetric?.condition || '') === (vm.condition || '');
+                    const displayValue = [vm.subject, vm.value, vm.condition]
+                      .filter(Boolean)
+                      .join(' · ');
                     return (
                       <button
-                        key={`${vm.value}-${vm.label}-${idx}`}
+                        key={`${vm.subject || ''}-${vm.value}-${vm.condition || ''}-${vm.label}-${idx}`}
                         type="button"
                         onClick={() =>
                           setSelectedMetric((prev) =>
-                            prev?.value === vm.value && prev?.label === vm.label ? null : vm
+                            prev?.value === vm.value &&
+                            prev?.label === vm.label &&
+                            (prev?.subject || '') === (vm.subject || '') &&
+                            (prev?.condition || '') === (vm.condition || '')
+                              ? null
+                              : vm
                           )
                         }
                         className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md border text-left transition-colors cursor-pointer ${
@@ -119,7 +130,7 @@ export const ArchivedPermalinkCard: React.FC<ArchivedPermalinkCardProps> = ({
                         }`}
                       >
                         <span className="text-teal-300 font-semibold whitespace-nowrap">
-                          {vm.subject ? `${vm.subject} · ${vm.value}` : vm.value}
+                          {displayValue}
                         </span>
                         <span className="text-zinc-400 text-[9.5px] truncate max-w-[165px]">
                           {vm.label}

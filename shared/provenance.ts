@@ -1,4 +1,5 @@
 import { stripHtmlMarkupAndEntities } from './literacyEngine';
+import { shouldClusterIntoSupernova } from './supernovaEngine';
 import {
   EvidenceScope,
   SECTOR_BY_ID,
@@ -83,6 +84,7 @@ export function getGroupedSourcesForSignal(sig: SpatialSignal): SupportingSource
         entry.publishedAt || (parsedMs > 0 ? new Date(parsedMs).toISOString() : ''),
       publishedAtMs: parsedMs > 0 ? parsedMs : undefined,
       isPrimary: Boolean(entry.isPrimary),
+      ...(entry.relation ? { relation: entry.relation } : {}),
     };
     if (!prev || (!prev.isPrimary && normalized.isPrimary)) {
       seen.set(key, normalized);
@@ -659,6 +661,8 @@ export function inferSupportingLinkRole(
 
 export interface ClusterCoverageSummary {
   groupedLinks: SupportingSourceLink[];
+  sameEventLinks: SupportingSourceLink[];
+  relatedReadingLinks: SupportingSourceLink[];
   relatedLinkCount: number;
   independentPublisherCount: number;
   hasIndependentCorroboration: boolean;
@@ -669,13 +673,33 @@ export interface ClusterCoverageSummary {
   verificationNote: string;
 }
 
+export function classifySupportingLinkRelation(
+  sig: Pick<SpatialSignal, 'title' | 'url' | 'originFeedName'>,
+  entry: Pick<SupportingSourceLink, 'title' | 'url' | 'source' | 'relation'>
+): 'same_event' | 'related_reading' {
+  if (entry.relation === 'related_reading') {
+    return 'related_reading';
+  }
+  if (normalizeProvenanceUrl(entry.url) === normalizeProvenanceUrl(sig.url)) {
+    return 'same_event';
+  }
+  return shouldClusterIntoSupernova(sig, entry) ? 'same_event' : 'related_reading';
+}
+
 /**
  * Distinguishes true independent cross-publisher corroboration from single-entity coverage
- * (e.g. primary PR + secondary commentary, multiple company updates, or same-repo release history).
+ * (e.g. primary PR + secondary commentary, multiple company updates, or same-repo release history),
+ * while separating loosely related cross-version/off-topic reading from same-event evidence.
  */
 export function analyzeClusterCoverage(sig: SpatialSignal): ClusterCoverageSummary {
-  const groupedLinks = getGroupedSourcesForSignal(sig);
-  const relatedLinkCount = Math.max(1, groupedLinks.length);
+  const groupedLinks = getGroupedSourcesForSignal(sig).map((link) => ({
+    ...link,
+    relation: classifySupportingLinkRelation(sig, link),
+  }));
+  const sameEventLinks = groupedLinks.filter((l) => l.relation !== 'related_reading');
+  const relatedReadingLinks = groupedLinks.filter((l) => l.relation === 'related_reading');
+  const evidenceLinks = sameEventLinks.length > 0 ? sameEventLinks : groupedLinks.slice(0, 1);
+  const relatedLinkCount = Math.max(1, evidenceLinks.length);
 
   const uniquePublishers = new Set<string>();
   const directReportingPublishers = new Set<string>();
@@ -683,7 +707,7 @@ export function analyzeClusterCoverage(sig: SpatialSignal): ClusterCoverageSumma
   let releaseLinkCount = 0;
   let secondaryReactionOrCommentaryCount = 0;
 
-  for (const link of groupedLinks) {
+  for (const link of evidenceLinks) {
     const pubKey = extractCanonicalPublisherKey(link.url, link.source);
     uniquePublishers.add(pubKey);
     const role = inferSupportingLinkRole(link, false);
@@ -762,6 +786,8 @@ export function analyzeClusterCoverage(sig: SpatialSignal): ClusterCoverageSumma
 
   return {
     groupedLinks,
+    sameEventLinks: evidenceLinks,
+    relatedReadingLinks,
     relatedLinkCount,
     independentPublisherCount,
     hasIndependentCorroboration,
@@ -897,8 +923,12 @@ export interface BenchmarkClaimSpec {
   canonicalSentence: string;
 }
 
+export const COMMA_NUMBER_PATTERN = '(?:\\d{1,3}(?:,\\d{3})+(?:\\.\\d+)?|\\d+(?:\\.\\d+)?)';
+export const STANDALONE_NUMBER_REGEX =
+  /(?<![\d.,])(?:\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)(?!\d)(?![.,]\d)/g;
+
 const BENCHMARK_CLAIM_REGEX =
-  /(\b\d+(?:\.\d+)?\s*[x×]|\b\d+(?:\.\d+)?%)(?:\s+(?:the|better|higher|lower|faster|more|improved))?\s+(performance[- ]per[- ]watt|perf[- ]per[- ]watt|energy[- ]efficiency|power[- ]efficiency|memory[- ]efficiency|throughput|tokens?[- ]per[- ]second|tok\/s|latency|speedup)\s+(?:of|than|vs\.?|versus|compared\s+to|compared\s+with|over)\s+([^.;!\n]{5,110})/i;
+  /((?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*[x×]|(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%)(?:\s+(?:the|better|higher|lower|faster|more|improved))?\s+(performance[- ]per[- ]watt|perf[- ]per[- ]watt|energy[- ]efficiency|power[- ]efficiency|memory[- ]efficiency|throughput|tokens?[- ]per[- ]second|tok\/s|latency|speedup)\s+(?:of|than|vs\.?|versus|compared\s+to|compared\s+with|over)\s+([^.;!\n]{5,110})/i;
 
 function normalizeBenchmarkMetric(rawMetric: string): string {
   const lower = (rawMetric || '').trim().toLowerCase();
@@ -962,28 +992,47 @@ export function extractBenchmarkClaimSpec(
 function splitExactSourceSentences(rawText: string): string[] {
   const cleaned = stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(rawText || ''));
   if (!cleaned) return [];
-  return cleaned
-    .split(/(?<=[.!?]["')\]]*)\s+|\n+/)
-    .map((s) => s.trim())
-    .filter((s) => s.length >= 16);
+  const rawLines = cleaned.split(/\n+/);
+  const sentences: string[] = [];
+  for (const line of rawLines) {
+    const trimmedLine = line.trim();
+    if (!trimmedLine) continue;
+    let start = 0;
+    const sepRegex = /[.!?]["')\]]*\s+/g;
+    let sep: RegExpExecArray | null;
+    while ((sep = sepRegex.exec(trimmedLine)) !== null) {
+      const endOfPunct = sep.index + 1;
+      const beforePunct = trimmedLine.slice(Math.max(0, endOfPunct - 10), endOfPunct);
+      // Do not split on abbreviations like "vs. llama.cpp", "v.s.", "e.g.", "i.e.", "U.S."
+      if (/\b(?:vs|v\.s|e\.g|i\.e|u\.s|dr|mr|ms|prof|approx)\.$/i.test(beforePunct)) {
+        continue;
+      }
+      const seg = trimmedLine.slice(start, sep.index + sep[0].length).trim();
+      if (seg.length >= 16) sentences.push(seg);
+      start = sep.index + sep[0].length;
+    }
+    const tail = trimmedLine.slice(start).trim();
+    if (tail.length >= 16) sentences.push(tail);
+  }
+  return sentences;
 }
 
 function extractComparisonBaseline(sentence: string): string | undefined {
   const clean = (sentence || '').replace(/\s+/g, ' ').trim();
   if (!clean) return undefined;
   const vsMatch = clean.match(
-    /(?:compared\s+(?:with|to)|versus|\bvs\.?|(?:above|over)\s+the\s+(?:best|baseline|prior|previous))\s+([^.,;]{4,80})/i
+    /(?:compared\s+(?:with|to)|versus|\bvs\.?|(?:above|over)\s+the\s+(?:best|baseline|prior|previous))\s+((?:[^,;!\n*]|(?<=[A-Za-z0-9])\.(?=[A-Za-z0-9])){3,80})/i
   );
-  const configMatch = clean.match(/\bacross\s+([^.,;]{4,65}\bconfigurations?)\b/i);
+  const configMatch = clean.match(/\bacross\s+([^,;!\n*]{4,65}\bconfigurations?)\b/i);
   const parts: string[] = [];
   if (vsMatch) {
-    let target = vsMatch[1].trim();
+    let target = vsMatch[1].replace(/\*{2,}.*$/, '').replace(/[.]+$/, '').trim();
     if (/^(?:best|baseline|prior|previous)/i.test(target) && /above|over/i.test(vsMatch[0])) {
       target = `vs. ${target}`;
     } else if (!/^vs\.?/i.test(target)) {
       target = `vs. ${target}`;
     }
-    parts.push(target);
+    if (target.length >= 4) parts.push(target);
   }
   if (configMatch) {
     parts.push(`across ${configMatch[1].trim()}`);
@@ -998,6 +1047,39 @@ function normalizeRangeSeparator(raw: string): string {
     .trim();
 }
 
+export function extractMetricCondition(
+  sentence: string,
+  matchIndex: number
+): string | undefined {
+  const before = (sentence || '').slice(0, matchIndex);
+  const condRx =
+    /(?<![\d.,])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?[kKmM]?)[-\s]+token\s+(prompt|context|input)\b/gi;
+  let m: RegExpExecArray | null;
+  let lastBefore: { num: string; kind: string; endIdx: number } | null = null;
+  while ((m = condRx.exec(before)) !== null) {
+    lastBefore = {
+      num: m[1],
+      kind: m[2].toLowerCase(),
+      endIdx: m.index + m[0].length,
+    };
+  }
+  if (lastBefore && matchIndex - lastBefore.endIdx <= 260) {
+    return `${lastBefore.num}-token ${lastBefore.kind}`;
+  }
+
+  const after = (sentence || '').slice(matchIndex, matchIndex + 90);
+  const afterMatch = after.match(
+    /(?<![\d.,])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?[kKmM]?)[-\s]+token\s+(prompt|context|input)\b/i
+  );
+  if (afterMatch) {
+    return `${afterMatch[1]}-token ${afterMatch[2].toLowerCase()}`;
+  }
+  return undefined;
+}
+
+const GENERIC_METRIC_HEADING_REGEX =
+  /^(?:short\s+version|hardware|memory(?:\s+at\s+[^\s]+)?|total\s+in\s+use|benchmarks?|results?|note|update|tip|summary|load\s+time|concurrency)$/i;
+
 function extractMetricSubject(
   sentence: string,
   sigTitle: string,
@@ -1006,14 +1088,70 @@ function extractMetricSubject(
   const cleanTitle = stripHtmlMarkupAndEntities(sigTitle || '');
   const titleLower = cleanTitle.toLowerCase();
   const sentenceBefore = sentence.slice(0, matchIndex);
+
+  // Detect overall "X vs Y" headline/header comparison within this sentence
+  const vsHeaderMatch = sentenceBefore.match(
+    /\b([A-Za-z][A-Za-z0-9._-]{1,28})\s+(?:vs\.?|versus|v\.s\.)\s+([A-Za-z][A-Za-z0-9._-]{1,28}(?:\s+[a-z0-9._-]+)?)/i
+  );
+  const vsLeft = vsHeaderMatch?.[1]?.trim().toLowerCase() || '';
+  const vsRight = vsHeaderMatch?.[2]?.trim().toLowerCase() || '';
+
+  // 1. Immediate colon-labeled engine/system in markdown or prose (e.g. "**LexiEngine: 2,245 tok/s prompt" or "**llama.cpp: 425 tok/s prompt")
+  const recentWindow = sentenceBefore.slice(Math.max(0, sentenceBefore.length - 120));
+  const colonRx =
+    /(?:\*\*|^|[.;\n])\s*([A-Za-z][A-Za-z0-9._-]*(?:\s+[A-Za-z0-9._-]+){0,2})\s*:\s*[^:\n*]{0,75}$/g;
+  let colonMatch: RegExpExecArray | null;
+  let lastColonSubj = '';
+  while ((colonMatch = colonRx.exec(recentWindow)) !== null) {
+    lastColonSubj = colonMatch[1].replace(/^\*+|\*+$/g, '').trim();
+  }
+  if (lastColonSubj && !GENERIC_METRIC_HEADING_REGEX.test(lastColonSubj)) {
+    const lowSubj = lastColonSubj.toLowerCase();
+    const matchesVsRight = Boolean(vsRight && (lowSubj === vsRight || vsRight.startsWith(lowSubj)));
+    const matchesVsLeft = Boolean(vsLeft && (lowSubj === vsLeft || vsLeft.startsWith(lowSubj)));
+    const isBaseline = matchesVsRight || (/llama\.cpp/i.test(lowSubj) && !/^llama\.cpp/i.test(titleLower));
+    return {
+      subject: lastColonSubj,
+      isFeatured: isBaseline ? false : matchesVsLeft || titleLower.includes(lowSubj) ? true : true,
+    };
+  }
+
+  // 2. Inline comparison clause ("LexiEngine hits 2,245 prompt tokens/s vs. llama.cpp at 425 tokens/s")
+  const clauseBoundaryParts = sentenceBefore.split(
+    /\b(?:vs\.?|versus|compared\s+(?:with|to)|while|whereas)\b|;/i
+  );
+  const localRawClause = clauseBoundaryParts[clauseBoundaryParts.length - 1] || '';
+  const afterComparisonSplitter = clauseBoundaryParts.length >= 2 && !/\*{2}/.test(localRawClause);
+  const inlineSysMatch = localRawClause.match(
+    /\b([A-Za-z][A-Za-z0-9._-]*(?:\.[A-Za-z0-9._-]+)?)\s+(?:hits?|achieves?|reaches?|scored|used|at|was)\b[^,.;\n]{0,45}$/i
+  );
+  if (
+    inlineSysMatch?.[1] &&
+    !/^(?:that|which|it|we|they|this|these|same|prompt|model|models|system|systems|variant|variants)$/i.test(
+      inlineSysMatch[1]
+    )
+  ) {
+    const subj = inlineSysMatch[1].trim();
+    const lowSubj = subj.toLowerCase();
+    const isBaseline =
+      afterComparisonSplitter ||
+      /\bbaseline\b|\balternative\b|\bincumbent\b/i.test(localRawClause) ||
+      (/llama\.cpp/i.test(lowSubj) && !/^llama\.cpp/i.test(titleLower));
+    return {
+      subject: subj,
+      isFeatured: isBaseline ? false : true,
+    };
+  }
+
   const clauseStart = Math.max(0, sentenceBefore.lastIndexOf(';'));
   const localClause = sentenceBefore.slice(clauseStart).trim();
   const isBaselineSentence =
-    /\b(strongest\s+general-purpose|baseline|best\s+alternative|compared\s+with|compared\s+to|\bvs\.?\b|incumbent|previous\s+sota|alternative\s+tested)\b/i.test(
+    afterComparisonSplitter ||
+    /\b(strongest\s+general-purpose|baseline|best\s+alternative|alternative\s+tested|incumbent|previous\s+sota)\b/i.test(
       sentence
     );
 
-  // 1. Explicit named model / system at start of sentence or clause (e.g., "Squoosh UX-1, a model...", "Qwen3 Next 80B, the strongest...")
+  // 3. Explicit named model / system at start of sentence or clause (e.g., "Squoosh UX-1, a model...", "Qwen3 Next 80B, the strongest...")
   const leadModelMatch = localClause.match(
     /^(?:In\s+[^,]+,\s+)?((?:Squoosh\s+)?[A-Z][A-Za-z0-9]*(?:[-.][A-Za-z0-9]+)*(?:\s+(?:Next|Astra|Pro|Ultra|Flash|Mini|Nano|Turbo|Max|Plus|Omni|\d+(?:\.\d+)?[BM]))*)\b/
   );
@@ -1023,12 +1161,12 @@ function extractMetricSubject(
       subj = subj.replace(/^Squoosh\s+/i, '');
     }
     if (
-      !/^(?:In|It|We|The|This|Our|Each|Page|Across|Implemented|Evaluated|Experimentation|While|However|These|Those)$/i.test(
+      !/^(?:In|It|We|The|This|Our|Each|Page|Across|Implemented|Evaluated|Experimentation|While|However|These|Those|At|Both)$/i.test(
         subj
       ) &&
       (/[A-Z].*[-.\d]/.test(subj) ||
         titleLower.includes(subj.toLowerCase()) ||
-        /^(?:Qwen|UX-\d+|GPT|Claude|Gemini|Llama|DeepSeek|Mistral|TideCache|Actuator|Frostbite|Hebbia)/i.test(
+        /^(?:Qwen|UX-\d+|GPT|Claude|Gemini|Llama|DeepSeek|Mistral|TideCache|Actuator|Frostbite|Hebbia|LexiEngine|LexiSuite)/i.test(
           subj
         ))
     ) {
@@ -1040,9 +1178,9 @@ function extractMetricSubject(
     }
   }
 
-  // 2. Fallback: look for well-known model/product tokens in the sentence itself or title
-  const knownModelInSentence = sentence.match(
-    /\b(UX-\d+|Qwen\d*(?:\.\d+)?(?:\s+Next)?(?:\s+\d+[BM])?|GPT-\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Claude\s+\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Gemini\s+\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Actuator-\d+[BM]|TideCache|Frostbite|DeepSeek[- ]?[A-Z]?\d*|Llama[- ]?\d+(?:\.\d+)?)\b/
+  // 4. Fallback: look for well-known model/product tokens in the sentence or title
+  const knownModelInSentence = sentenceBefore.match(
+    /\b(UX-\d+|LexiEngine|LexiSuite|llama\.cpp|Inkling[-\s]?2[-\s]?Mini|Qwen\d*(?:\.\d+)?(?:\s+Next)?(?:\s+\d+[BM])?|GPT-\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Claude\s+\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Gemini\s+\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Actuator-\d+[BM]|TideCache|Frostbite|DeepSeek[- ]?[A-Z]?\d*|Llama[- ]?\d+(?:\.\d+)?)\b/i
   );
   if (knownModelInSentence) {
     const subj = knownModelInSentence[1].trim();
@@ -1053,9 +1191,9 @@ function extractMetricSubject(
     };
   }
 
-  // 3. When sentence refers to the title's primary model implicitly ("In the live tests, 118 of those variants won (93.7%)")
+  // 5. When sentence refers to the title's primary model implicitly ("In the live tests, 118 of those variants won (93.7%)")
   const titleEntity = cleanTitle.match(
-    /\b(UX-\d+|Qwen[\w.-]*|GPT-\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|TideCache|Actuator-\d+[BM]|Frostbite|Ollama|vLLM|AgentRoboCritic)\b/
+    /\b(UX-\d+|LexiEngine|LexiSuite|Inkling[-\s]?2[-\s]?Mini|Qwen[\w.-]*|GPT-\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|TideCache|Actuator-\d+[BM]|Frostbite|Ollama|vLLM|AgentRoboCritic)\b/i
   );
   if (titleEntity && !isBaselineSentence) {
     return {
@@ -1065,6 +1203,25 @@ function extractMetricSubject(
   }
 
   return isBaselineSentence ? { isFeatured: false } : {};
+}
+
+function buildConciseMetricQuote(sentence: string, matchIndex: number, matchLen: number): string {
+  if (!sentence || sentence.length <= 280) return sentence;
+  const lookbackStart = Math.max(0, matchIndex - 220);
+  const prefixSlice = sentence.slice(lookbackStart, matchIndex);
+  const condMatch = prefixSlice.match(/(?:\*\*)?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?[kKmM]?)[-\s]+token\s+(?:prompt|context|input)/i);
+  const startIdx =
+    condMatch && typeof condMatch.index === 'number'
+      ? lookbackStart + condMatch.index
+      : Math.max(0, matchIndex - 110);
+
+  let endIdx = Math.min(sentence.length, matchIndex + matchLen + 110);
+  const tailSlice = sentence.slice(matchIndex + matchLen, endIdx + 80);
+  const nextSection = tailSlice.search(/\*\*\s*(?:\d{1,3}(?:,\d{3})+|\d+[kKmM]?)[-\s]+token\s+(?:prompt|context)|\*\*\s*MEMORY\b/i);
+  if (nextSection >= 0) {
+    endIdx = matchIndex + matchLen + nextSection;
+  }
+  return sentence.slice(startIdx, endIdx).replace(/^\*{2}\s*|\s*\*{2}$/g, '').trim() || sentence;
 }
 
 function extractConfidenceIntervalNote(sentence: string): string | undefined {
@@ -1156,8 +1313,9 @@ export function extractSourceVerifiedMetrics(
   const pushMetric = (metric: VerifiedSourceMetric) => {
     const subjKey = (metric.subject || '').toLowerCase().trim();
     const valKey = metric.value.toLowerCase().replace(/\s+/g, ' ').trim();
-    const dedupKey = `${subjKey}|${valKey}`;
-    if (seenKeys.has(dedupKey) || out.length >= 6) return;
+    const condKey = (metric.condition || '').toLowerCase().trim();
+    const dedupKey = `${subjKey}|${valKey}|${condKey}`;
+    if (seenKeys.has(dedupKey) || out.length >= 16) return;
     seenKeys.add(dedupKey);
     out.push(metric);
   };
@@ -1166,25 +1324,27 @@ export function extractSourceVerifiedMetrics(
     const baseline = extractComparisonBaseline(sentence);
 
     // 1. Percentage-point leads (e.g., "+13.6 percentage points" / "scored 13.6 percentage points above")
-    const ppRegex = /([+-]?\d+(?:\.\d+)?)\s*percentage[- ]points?\b/gi;
+    const ppRegex = /(?<![\d.,])([+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*percentage[- ]points?\b/gi;
     let m: RegExpExecArray | null;
     while ((m = ppRegex.exec(sentence)) !== null) {
       const numRaw = m[1];
       const valStr = numRaw.startsWith('+') || numRaw.startsWith('-') ? `${numRaw} percentage points` : `+${numRaw} percentage points`;
       const meta = inferPercentagePointLabel(sentence, m.index);
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
+      const condition = extractMetricCondition(sentence, m.index);
       pushMetric({
         value: valStr,
         label: meta.label,
-        quote: sentence,
+        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
         context: meta.context,
         subject: subjMeta.subject,
         isFeatured: subjMeta.isFeatured,
+        ...(condition ? { condition } : {}),
       });
     }
 
     // 2. Percentages & full numeric ranges (e.g., "20--59%", "84.0%", "61.6%", skipping CI bounds)
-    const pctRegex = /\b(\d{1,3}(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*\d{1,3}(?:\.\d+)?)?)%/gi;
+    const pctRegex = /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d{1,3})(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d{1,3})(?:\.\d+)?)?)%/gi;
     while ((m = pctRegex.exec(sentence)) !== null) {
       const afterSlice = sentence.slice(m.index + m[0].length, m.index + m[0].length + 28).toLowerCase();
       const beforeSlice = sentence.slice(Math.max(0, m.index - 28), m.index).toLowerCase();
@@ -1206,35 +1366,48 @@ export function extractSourceVerifiedMetrics(
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       const meta = inferPercentageLabel(sentence, m.index, subjMeta.isFeatured);
       const normNum = normalizeRangeSeparator(m[1]);
+      const condition = extractMetricCondition(sentence, m.index);
       pushMetric({
         value: `${normNum}%`,
         label: meta.label,
-        quote: sentence,
+        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
         context: meta.context,
         subject: subjMeta.subject,
         isFeatured: subjMeta.isFeatured,
+        ...(condition ? { condition } : {}),
       });
     }
 
-    // 3. Token throughput (preserving ranges & exact unit "tokens per second", e.g., "51.8–58.3 tokens per second")
+    // 3. Token throughput preserving comma-formatted thousands, phase ("prompt tokens/s", "generation tokens/s"), & condition
     const tokRegex =
-      /\b(\d+(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(?:tokens\s+per\s+second|tok\/s|t\/s|tokens\/s)\b/gi;
+      /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)?)\s*(?:(prompt|prefill|input|generation|decode|output)\s+)?(?:tokens\s+per\s+second|tok\/s|t\/s|tokens\/s)(?:\s+(prompt|prefill|input|generation|decode|output)\b)?/gi;
     while ((m = tokRegex.exec(sentence)) !== null) {
       const rangeClean = normalizeRangeSeparator(m[1]);
+      const rawPhase = (m[2] || m[3] || '').toLowerCase();
+      const isPromptPhase = /^(?:prompt|prefill|input)$/.test(rawPhase);
+      const isGenPhase = /^(?:generation|decode|output)$/.test(rawPhase);
+      const valStr = rawPhase ? `${rangeClean} ${rawPhase} tokens/s` : `${rangeClean} tokens/s`;
+      const label = isPromptPhase
+        ? 'Prompt throughput'
+        : isGenPhase
+        ? 'Generation throughput'
+        : 'Measured throughput';
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
+      const condition = extractMetricCondition(sentence, m.index);
       pushMetric({
-        value: `${rangeClean} tokens/s`,
-        label: 'Measured throughput',
-        quote: sentence,
+        value: valStr,
+        label,
+        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
         context: baseline || 'Source-reported token generation rate',
         subject: subjMeta.subject,
         isFeatured: subjMeta.isFeatured,
+        ...(condition ? { condition } : {}),
       });
     }
 
     // 4. Efficiency, turn & speedup multipliers including full ranges (e.g., "1.40--3.05x", "2x–4x", "4.59x")
     const multRegex =
-      /\b(\d+(?:\.\d+)?(?:\s*[x×]?\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?)\s*([x×])(?:\s+(?:the\s+)?(performance[- ]per[- ]watt|perf[- ]per[- ]watt|energy\s+efficiency|throughput|speedup))?(?=\b|[\s,.;:!?])/gi;
+      /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*[x×]?\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)?)\s*([x×])(?:\s+(?:the\s+)?(performance[- ]per[- ]watt|perf[- ]per[- ]watt|energy\s+efficiency|throughput|speedup))?(?=\b|[\s,.;:!?])/gi;
     while ((m = multRegex.exec(sentence)) !== null) {
       const prefixChar = m.index > 0 ? sentence[m.index - 1] : '';
       if (/[A-Za-z0-9]/.test(prefixChar)) continue;
@@ -1259,18 +1432,20 @@ export function extractSourceVerifiedMetrics(
         ? 'Task completion speedup'
         : 'Measured speedup';
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
+      const condition = extractMetricCondition(sentence, m.index);
       pushMetric({
         value: unitClean ? `${normNum}${sym} ${unitClean}` : `${normNum}${sym}`,
         label,
-        quote: sentence,
+        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
         context: baseline,
         subject: subjMeta.subject,
         isFeatured: subjMeta.isFeatured,
+        ...(condition ? { condition } : {}),
       });
     }
 
     // 5. Explicit hardware latency / VRAM / memory numbers
-    const msRegex = /\b(\d+(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?)\s*ms\b/gi;
+    const msRegex = /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)?)\s*ms\b/gi;
     while ((m = msRegex.exec(sentence)) !== null) {
       const windowLower = sentence
         .slice(Math.max(0, m.index - 40), Math.min(sentence.length, m.index + 45))
@@ -1279,36 +1454,68 @@ export function extractSourceVerifiedMetrics(
         continue;
       }
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
+      const condition = extractMetricCondition(sentence, m.index);
       pushMetric({
         value: `${normalizeRangeSeparator(m[1])} ms`,
         label: 'Reported latency',
-        quote: sentence,
+        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
         context: baseline,
         subject: subjMeta.subject,
         isFeatured: subjMeta.isFeatured,
+        ...(condition ? { condition } : {}),
       });
     }
 
-    const memRegex = /\b(\d+(?:\.\d+)?)\s*(GB|TB)\s*(VRAM|RAM|unified memory|memory)\b/gi;
+    const memRegex = /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*(GB|TB)\s*(VRAM|RAM|unified memory|memory)\b/gi;
     while ((m = memRegex.exec(sentence)) !== null) {
       pushMetric({
         value: `${m[1]} ${m[2].toUpperCase()} ${m[3]}`,
         label: 'Memory footprint',
-        quote: sentence,
+        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+      });
+    }
+
+    // 6. Explicit output/input token count comparisons (e.g., "high cost 3.99 cents and used 5,311 output tokens, xhigh cost 23.61 cents and used 31,477 output tokens")
+    const tokCountRegex =
+      /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s+(output|input)\s+tokens\b/gi;
+    while ((m = tokCountRegex.exec(sentence)) !== null) {
+      const hasUsageContext = /\b(used|cost|effort|high|xhigh|vs\.?|v\.s\.|versus|compared|cents|\$)\b/i.test(
+        sentence
+      );
+      if (!hasUsageContext) continue;
+      const beforeClause = sentence.slice(0, m.index).split(/[,.;]/).pop() || sentence.slice(0, m.index);
+      const effortMatch = beforeClause.match(/\b(xhigh|high|medium|low)\b/i);
+      const subj = effortMatch ? effortMatch[1].toLowerCase() : extractMetricSubject(sentence, sig.title || '', m.index).subject;
+      const isFeat = effortMatch ? effortMatch[1].toLowerCase() === 'high' : undefined;
+      const kind = m[2].toLowerCase();
+      pushMetric({
+        value: `${m[1]} ${kind} tokens`,
+        label: `${kind.charAt(0).toUpperCase() + kind.slice(1)} token usage`,
+        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+        ...(subj ? { subject: subj } : {}),
+        ...(isFeat !== undefined ? { isFeatured: isFeat } : {}),
       });
     }
   }
 
-  // Order featured systems FIRST, then neutral metrics, then comparison baselines
-  return out
-    .map((m, idx) => ({ m, idx }))
-    .sort((a, b) => {
-      const rank = (x: VerifiedSourceMetric) =>
-        x.isFeatured === true ? 0 : x.isFeatured === false ? 2 : 1;
-      return rank(a.m) - rank(b.m) || a.idx - b.idx;
-    })
-    .map((x) => x.m)
-    .slice(0, 5);
+  // Order featured systems FIRST, preserve paired comparison baselines alongside them (avoiding neutral hardware rows crowding out baselines)
+  const featured = out.filter((m) => m.isFeatured === true);
+  const baselines = out.filter((m) => m.isFeatured === false);
+  const neutral = out.filter((m) => m.isFeatured === undefined);
+
+  if (featured.length > 0 && baselines.length > 0) {
+    const pickedFeatured = featured.slice(0, Math.min(3, 5 - Math.min(2, baselines.length)));
+    const pickedBaselines = baselines.slice(0, Math.min(2, 5 - pickedFeatured.length));
+    const combined = [...pickedFeatured, ...pickedBaselines];
+    const remaining = [
+      ...featured.slice(pickedFeatured.length),
+      ...baselines.slice(pickedBaselines.length),
+      ...neutral,
+    ];
+    return [...combined, ...remaining].slice(0, 5);
+  }
+
+  return [...featured, ...neutral, ...baselines].slice(0, 5);
 }
 
 /**
@@ -1323,7 +1530,10 @@ export function isEvaluationQualityStudy(
     /\b(citations?|cited excerpts?|relevan\w*|source coverage|grading criteria|presentation requirements?|percentage[- ]point|rubric|eval(?:uation)?s?|accuracy)\b/i.test(
       hay
     );
-  const hasSpeedTerms = /\b(?:\d+\s*(?:tok\/s|t\/s|tokens\/s|tokens per second)|ttft|tpot)\b/i.test(hay);
+  const hasSpeedTerms =
+    /(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:(?:prompt|prefill|input|generation|decode|output)\s+)?(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)(?:\s+(?:prompt|prefill|input|generation|decode|output))?\b|\b(?:ttft|tpot)\b/i.test(
+      hay
+    );
   return hasEvalTerms && !hasSpeedTerms;
 }
 
@@ -1571,14 +1781,191 @@ export function hasLatencyOrThroughputWithoutCost(
 
 const WORD_MULTIPLIER_REGEX = /\b(twofold|threefold|fourfold|fivefold|tenfold)\b/i;
 
+export function extractAllStandaloneNumbers(text: string): string[] {
+  if (!text) return [];
+  const clean = stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(text));
+  const out: string[] = [];
+  const rx = new RegExp(STANDALONE_NUMBER_REGEX.source, 'g');
+  let m: RegExpExecArray | null;
+  while ((m = rx.exec(clean)) !== null) {
+    out.push(m[0]);
+  }
+  return out;
+}
+
+export interface TruncatedCommaNumberMatch {
+  truncated: string;
+  sourceNumber: string;
+}
+
+function disambiguateSourceNumberForFragment(
+  textLower: string,
+  fragIdx: number,
+  fragLen: number,
+  candidates: string[],
+  corpusLower: string
+): string {
+  if (candidates.length === 1) return candidates[0];
+  const nearUnits = textLower
+    .slice(Math.max(0, fragIdx - 24), Math.min(textLower.length, fragIdx + fragLen + 32))
+    .match(/\b(prompt|output|input|context|tokens?|tok\/s|tokens\/s|cents|ms|gb|mb|tb|shares?|users?)\b/g);
+  if (nearUnits && nearUnits.length > 0) {
+    for (const cand of candidates) {
+      const cIdx = corpusLower.indexOf(cand.toLowerCase());
+      if (cIdx >= 0) {
+        const cWin = corpusLower.slice(Math.max(0, cIdx - 24), Math.min(corpusLower.length, cIdx + cand.length + 32));
+        if (nearUnits.some((u) => cWin.includes(u))) {
+          return cand;
+        }
+      }
+    }
+  }
+  return candidates[0];
+}
+
+export function findTruncatedCommaNumbers(
+  text: string,
+  sourceCorpus: string
+): TruncatedCommaNumberMatch[] {
+  if (!text || !sourceCorpus) return [];
+  const cleanSource = stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(sourceCorpus));
+  const corpusLower = cleanSource.toLowerCase();
+  const sourceNums = extractAllStandaloneNumbers(cleanSource);
+  const commaNums = sourceNums.filter((n) => n.includes(','));
+  if (commaNums.length === 0) return [];
+
+  const allSourceSet = new Set(sourceNums);
+  const uncommaSourceSet = new Set(sourceNums.map((n) => n.replace(/,/g, '')));
+  const fragmentToSources = new Map<string, string[]>();
+
+  const registerFragment = (frag: string, srcNum: string) => {
+    if (!frag || frag.length < 2 || /^0+$/.test(frag)) return;
+    const uncommaFrag = frag.replace(/,/g, '');
+    if (allSourceSet.has(frag) || uncommaSourceSet.has(uncommaFrag)) return;
+    const list = fragmentToSources.get(frag) || [];
+    if (!list.includes(srcNum)) {
+      list.push(srcNum);
+      fragmentToSources.set(frag, list);
+    }
+  };
+
+  for (const srcNum of commaNums) {
+    const intPart = srcNum.split('.')[0];
+    const groups = intPart.split(',');
+    for (const g of groups) {
+      registerFragment(g, srcNum);
+    }
+    for (let k = 2; k < groups.length; k++) {
+      registerFragment(groups.slice(0, k).join(','), srcNum);
+    }
+  }
+
+  if (fragmentToSources.size === 0) return [];
+
+  const cleanText = stripHtmlMarkupAndEntities(text);
+  const textLower = cleanText.toLowerCase();
+  const rx = new RegExp(STANDALONE_NUMBER_REGEX.source, 'g');
+  const results: TruncatedCommaNumberMatch[] = [];
+  const seen = new Set<string>();
+  let m: RegExpExecArray | null;
+
+  while ((m = rx.exec(cleanText)) !== null) {
+    const tok = m[0];
+    if (!fragmentToSources.has(tok)) continue;
+
+    const beforeCtx = cleanText.slice(Math.max(0, m.index - 22), m.index);
+    const afterCtx = cleanText.slice(m.index + tok.length, m.index + tok.length + 28);
+    const numVal = Number(tok.replace(/,/g, ''));
+
+    // Skip calendar dates (e.g. "Nov 21", "Dec 31")
+    if (
+      numVal <= 31 &&
+      /(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+$/i.test(beforeCtx)
+    ) {
+      continue;
+    }
+
+    // Skip compact shorthand like "524k context" or "16k"
+    if (/^[kmb]\b/i.test(afterCtx)) {
+      continue;
+    }
+
+    // Skip explicit model/version tokens unless directly followed by throughput/token/currency unit
+    const hasPerfUnit =
+      /^\s*(?:prompt|output|input|context)?\s*(?:tokens?|tok\/s|tokens\/s|tokens\s+per\s+second|%|percent|cents|ms|gb|mb|tb)\b/i.test(
+        afterCtx
+      );
+    if (
+      !hasPerfUnit &&
+      /(?:^|[\s(/])(?:v|r|b|gpt-|gpt\s+|qwen|qwen-|claude-|claude\s+|gemini-|gemini\s+|llama-|llama\s+|rk|step|glm-|arxiv:|#)\s*$/i.test(
+        beforeCtx
+      )
+    ) {
+      continue;
+    }
+
+    if (!seen.has(tok)) {
+      seen.add(tok);
+      const cands = fragmentToSources.get(tok)!;
+      const sourceNumber = disambiguateSourceNumberForFragment(
+        textLower,
+        m.index,
+        tok.length,
+        cands,
+        corpusLower
+      );
+      results.push({ truncated: tok, sourceNumber });
+    }
+  }
+
+  return results;
+}
+
+export function repairTruncatedCommaNumbers(
+  text: string,
+  sourceCorpus: string
+): { repaired: string; fixes: TruncatedCommaNumberMatch[] } {
+  const fixes = findTruncatedCommaNumbers(text, sourceCorpus);
+  if (fixes.length === 0) {
+    return { repaired: text, fixes: [] };
+  }
+  let out = text;
+  for (const fix of fixes) {
+    const rx = new RegExp(
+      `(?<![\\d.,])${escapeNumericRegex(fix.truncated)}(?!\\d)(?![.,]\\d)`,
+      'g'
+    );
+    out = out.replace(rx, fix.sourceNumber);
+  }
+  return { repaired: out, fixes };
+}
+
 export function normalizeNumericCorpus(text: string): string {
   return stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(text || ''))
-    .replace(/(\d+(?:\.\d+)?)\s*(?:--|–|—|\bto\b)\s*(\d+(?:\.\d+)?)/gi, '$1-$2')
-    .replace(/(\d+(?:\.\d+)?)%\s*-\s*(\d+(?:\.\d+)?)%/g, '$1-$2%')
+    .replace(
+      /((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*(?:--|–|—|\bto\b)\s*((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)/gi,
+      '$1-$2'
+    )
+    .replace(
+      /((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)%\s*-\s*((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)%/g,
+      '$1-$2%'
+    )
+    .replace(
+      /((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)\s+(prompt|prefill|input|generation|decode|output)\b/gi,
+      '$1 $2 tokens/s'
+    )
+    .replace(
+      /\b(prompt|prefill|input|generation|decode|output)\s+(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)\b/gi,
+      '$1 tokens/s'
+    )
     .replace(/\b(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)\b/gi, 'tokens/s')
+    .replace(
+      /(?<![\d.,])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?[kKmM]?)[-\s]+token\s+(prompt|context|input)\b/gi,
+      '$1-token $2'
+    )
     .replace(/×/g, 'x')
-    .replace(/(\d+(?:\.\d+)?)\s*percent(?:age)?\s+points?\b/gi, '$1 percentage points')
-    .replace(/(\d+(?:\.\d+)?)\s*percent\b/gi, '$1%')
+    .replace(/((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*percent(?:age)?\s+points?\b/gi, '$1 percentage points')
+    .replace(/((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*percent\b/gi, '$1%')
     .replace(/\s+/g, ' ')
     .trim()
     .toLowerCase();
@@ -1606,9 +1993,27 @@ function isTokenBackedInCorpus(rawTok: string, normCorpus: string): boolean {
 
   let normTok = tokLower
     .replace(/^[<>≤≥]\s*/, '')
-    .replace(/(\d+(?:\.\d+)?)\s*(?:--|–|—|\bto\b)\s*(\d+(?:\.\d+)?)/gi, '$1-$2')
-    .replace(/(\d+(?:\.\d+)?)%\s*-\s*(\d+(?:\.\d+)?)%/g, '$1-$2%')
+    .replace(
+      /((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*(?:--|–|—|\bto\b)\s*((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)/gi,
+      '$1-$2'
+    )
+    .replace(
+      /((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)%\s*-\s*((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)%/g,
+      '$1-$2%'
+    )
+    .replace(
+      /((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)\s+(prompt|prefill|input|generation|decode|output)\b/gi,
+      '$1 $2 tokens/s'
+    )
+    .replace(
+      /\b(prompt|prefill|input|generation|decode|output)\s+(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)\b/gi,
+      '$1 tokens/s'
+    )
     .replace(/\b(?:tok\/s|t\/s|tokens\/s|tokens\s+per\s+second)\b/gi, 'tokens/s')
+    .replace(
+      /(?<![\d.,])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?[kKmM]?)[-\s]+token\s+(prompt|context|input)\b/gi,
+      '$1-token $2'
+    )
     .replace(/×/g, 'x')
     .replace(/\s+/g, ' ')
     .trim();
@@ -1617,21 +2022,53 @@ function isTokenBackedInCorpus(rawTok: string, normCorpus: string): boolean {
     normTok = normTok.replace(/^\$\s*/, '$');
   }
 
-  // Exact match with numeric left/right boundaries so "59%" does NOT match "20-59%"
-  const esc = escapeNumericRegex(normTok);
-  const rx = new RegExp(`(?<![\\d.%\\-–—])${esc}(?![\\d.%])`, 'i');
-  if (rx.test(normCorpus)) return true;
+  const testExact = (candidate: string) => {
+    const esc = escapeNumericRegex(candidate);
+    return new RegExp(`(?<![\\d.,%\\-–—])${esc}(?![\\d%]|[.,]\\d)`, 'i').test(normCorpus);
+  };
+
+  // Exact match with strict comma+decimal numeric left/right boundaries so "245" NEVER matches "2,245" and "31" NEVER matches "31,477"
+  if (testExact(normTok)) return true;
+
+  // Match "2,245 prompt tokens/s" against "2,245 tokens/s" only if ALL digits match (no partial digits!)
+  const strippedPhaseTok = normTok.replace(
+    /\b(?:prompt|prefill|input|generation|decode|output)\s+tokens\/s$/i,
+    'tokens/s'
+  );
+  if (strippedPhaseTok !== normTok && testExact(strippedPhaseTok)) {
+    return true;
+  }
+
+  // Allow "31,477 tokens" to match "31,477 output tokens" ONLY when ALL digits match cleanly
+  const bareTokensMatch = normTok.match(/^((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s+tokens$/i);
+  if (bareTokensMatch) {
+    const escNum = escapeNumericRegex(bareTokensMatch[1]);
+    if (
+      new RegExp(
+        `(?<![\\d.,%\\-–—])${escNum}\\s+(?:(?:output|input|prompt|context)\\s+)?tokens(?![\\d.,%\\w])`,
+        'i'
+      ).test(normCorpus)
+    ) {
+      return true;
+    }
+  }
+
+  // Allow full uncomma-formatted vs comma-formatted match ONLY when every digit matches (e.g., "1,655" <-> "1655")
+  const uncommaTok = normTok.replace(/(\d),(?=\d{3}(?!\d))/g, '$1');
+  if (uncommaTok !== normTok && testExact(uncommaTok)) {
+    return true;
+  }
 
   // Allow "+13.6 percentage points" to match "13.6 percentage points" in source
   if (normTok.startsWith('+') && normTok.includes('percentage points')) {
     const unsigned = escapeNumericRegex(normTok.slice(1));
-    if (new RegExp(`(?<![\\d.%\\-–—])${unsigned}`, 'i').test(normCorpus)) return true;
+    if (new RegExp(`(?<![\\d.,%\\-–—])${unsigned}(?![\\d%]|[.,]\\d)`, 'i').test(normCorpus)) return true;
   }
 
   // Allow formatted multiplier range (e.g. "1.40-3.05x") when source says "1.40-3.05x" or "2x-4x"
   const xRangeClean = normTok.replace(/(\d)x-(\d)/g, '$1-$2');
   if (xRangeClean !== normTok) {
-    if (new RegExp(`(?<![\\d.%\\-–—])${escapeNumericRegex(xRangeClean)}`, 'i').test(normCorpus)) {
+    if (new RegExp(`(?<![\\d.,%\\-–—])${escapeNumericRegex(xRangeClean)}(?![\\d%]|[.,]\\d)`, 'i').test(normCorpus)) {
       return true;
     }
   }
@@ -1640,7 +2077,7 @@ function isTokenBackedInCorpus(rawTok: string, normCorpus: string): boolean {
 }
 
 const QUANT_CLAIM_TOKEN_REGEX =
-  /\b\d+(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?\s*%|\b\d+(?:\.\d+)?\s*percentage[- ]points?\b|\$\s*\d+(?:\.\d+)?(?:\s*[kmbt]\+?)?(?:\s*(?:--|–|—|-|\bto\b)\s*\$?\d+(?:\.\d+)?(?:\s*[kmbt]\+?)?)?|\b\d+(?:\.\d+)?(?:\s*[x×]?\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?\s*[x×](?=\b|[\s,.;:!?])|\b(?:two|three|four|five|ten)fold\b|[<>≤≥]\s*0?\.\d+\b|\b\d+(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:ms\s*(?:ttft|tpot|latency)|tok\/s|tokens\/s|tokens\s+per\s+second)\b/gi;
+  /(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)?\s*%|(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*percentage[- ]points?\b|\$\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*[kmbt]\+?)?(?:\s*(?:--|–|—|-|\bto\b)\s*\$?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*[kmbt]\+?)?)?|(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*cents\b|(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*[x×]?\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)?\s*[x×](?=\b|[\s,.;:!?])|\b(?:two|three|four|five|ten)fold\b|[<>≤≥]\s*0?\.\d+\b|(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)?\s*(?:ms\s*(?:ttft|tpot|latency)|(?:(?:prompt|prefill|input|generation|decode|output)\s+)?(?:tok\/s|tokens\/s|tokens\s+per\s+second)(?:\s+(?:prompt|prefill|input|generation|decode|output))?)\b|(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?\s*(?:(?:output|input|prompt|context)\s+)?tokens\b|(?<![\d.,])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?[-\s]+token\s+(?:prompt|context|input)\b/gi;
 
 export function findUnbackedNumericTokens(text: string, sourceCorpus: string): string[] {
   if (!text) return [];
@@ -1658,13 +2095,25 @@ export function findUnbackedNumericTokens(text: string, sourceCorpus: string): s
     const afterStr = text.slice(m.index + raw.length, m.index + raw.length + 12).toLowerCase();
     if (/^\s*\d/.test(afterStr) && /[x×]$/i.test(raw)) continue;
 
-    // Ignore harmless UI labels or formatting hints if ever passed directly (none expected in prose)
     const key = raw.toLowerCase();
     if (!isTokenBackedInCorpus(raw, normCorpus) && !seen.has(key)) {
       seen.add(key);
       unbacked.push(raw);
     }
   }
+
+  // Flag any standalone truncated fragment of a comma-formatted source number (e.g., "245" from "2,245", "31" from "31,477")
+  const truncatedHits = findTruncatedCommaNumbers(text, sourceCorpus);
+  for (const hit of truncatedHits) {
+    const alreadyCovered = unbacked.some((u) =>
+      new RegExp(`(?<![\\d.,])${escapeNumericRegex(hit.truncated)}(?!\\d)(?![.,]\\d)`).test(u)
+    );
+    if (!alreadyCovered && !seen.has(hit.truncated)) {
+      seen.add(hit.truncated);
+      unbacked.push(hit.truncated);
+    }
+  }
+
   return unbacked;
 }
 
@@ -1678,15 +2127,14 @@ export function stripUnbackedNumericClaims(
   }
 
   // Split by sentence/clause boundaries and remove only segments/parentheticals with unbacked numbers
-  const normCorpus = normalizeNumericCorpus(sourceCorpus);
   let out = text.replace(/\([^()]{3,160}\)/g, (paren) => {
-    return findUnbackedNumericTokens(paren, normCorpus).length > 0 ? '' : paren;
+    return findUnbackedNumericTokens(paren, sourceCorpus).length > 0 ? '' : paren;
   });
 
-  if (findUnbackedNumericTokens(out, normCorpus).length > 0) {
+  if (findUnbackedNumericTokens(out, sourceCorpus).length > 0) {
     const sentences = out.split(/(?<=[.!?])\s+/);
     const keptSentences = sentences.filter(
-      (s) => findUnbackedNumericTokens(s, normCorpus).length === 0
+      (s) => findUnbackedNumericTokens(s, sourceCorpus).length === 0
     );
     if (keptSentences.length > 0) {
       out = keptSentences.join(' ');
@@ -1694,13 +2142,13 @@ export function stripUnbackedNumericClaims(
       // Strip clause-level fragments containing unbacked numbers
       const clauses = out.split(/\s*[;—]\s*/);
       const keptClauses = clauses.filter(
-        (c) => findUnbackedNumericTokens(c, normCorpus).length === 0
+        (c) => findUnbackedNumericTokens(c, sourceCorpus).length === 0
       );
       if (keptClauses.length > 0) {
         out = keptClauses.join('; ');
       } else {
         for (const tok of removedTokens) {
-          out = out.replace(new RegExp(escapeNumericRegex(tok), 'gi'), '');
+          out = out.replace(new RegExp(`(?<![\\d.,])${escapeNumericRegex(tok)}(?!\\d)(?![.,]\\d)`, 'gi'), '');
         }
       }
     }
@@ -1716,7 +2164,7 @@ export function stripUnbackedNumericClaims(
 }
 
 const FROZEN_ENTITY_REGEX =
-  /\b(?:Actuator|Qwen|Llama|Mistral|DeepSeek|Claude|Gemini|GPT|Gemma|Ollama|Rockchip|Hebbia|Frostbite|Whisper|Inkling|Granite|Phi|SmolLM)(?:[-.](?:[A-Za-z0-9]+))*(?:\s+(?:v?\d+(?:\.\d+)*(?:-[A-Za-z0-9.]+)?|Astra|Ultra|Pro|Flash|Mini|Nano|Turbo|Opus|Sonnet|Haiku|Large|Small|Coder|Instruct|Omni|Max|Air|R\d+|V\d+|RK\d+[A-Za-z0-9]*))*\b|\b[A-Z][A-Za-z0-9]*(?:[.-][A-Za-z0-9]+)*-\d+(?:\.\d+)?[BM]\b/g;
+  /\b(?:Actuator|Qwen|Llama|Mistral|DeepSeek|Claude|Gemini|GPT|Gemma|Ollama|Rockchip|Hebbia|Frostbite|Whisper|Inkling|Granite|Phi|SmolLM|LexiEngine|LexiSuite)(?:[-.](?:[A-Za-z0-9]+))*(?:\s+(?:v?\d+(?:\.\d+)*(?:-[A-Za-z0-9.]+)?|Astra|Sol|Hydrogen|Neon|Ultra|Pro|Flash|Mini|Nano|Turbo|Opus|Sonnet|Haiku|Large|Small|Coder|Instruct|Omni|Max|Air|R\d+|V\d+|RK\d+[A-Za-z0-9]*))*\b|\b[A-Z][A-Za-z0-9]*(?:[.-][A-Za-z0-9]+)*-\d+(?:\.\d+)?[BM]\b/g;
 
 export function extractFrozenEntities(
   sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>

@@ -10,6 +10,7 @@ import {
 import {
   analyzeClusterCoverage,
   classifyEvidenceScope,
+  classifySupportingLinkRelation,
   COMPLIANCE_NOT_ASSESSED_SOURCE,
   COMPLIANCE_NOT_ASSESSED_STUDY,
   extractBenchmarkClaimSpec,
@@ -17,6 +18,7 @@ import {
   extractNamedLegalInstitution,
   extractPublisherDisplayName,
   extractSourceVerifiedMetrics,
+  findTruncatedCommaNumbers,
   findUnbackedComplianceClaims,
   findUnbackedNumericTokens,
   getSignalReleaseMetadata,
@@ -34,6 +36,7 @@ import {
   validateHeadlineMeaningPreserved,
   validateSummaryProseScope,
 } from '../shared/provenance';
+import { shouldClusterIntoSupernova } from '../shared/supernovaEngine';
 import { synthesizeRawItemToSpatialSignal } from '../shared/seed72h';
 import { generateRssXml } from './bakeStaticGalaxy';
 import type {
@@ -1310,12 +1313,303 @@ function runFixtureAssertions(): void {
       `Repaired L2 summary must pass validateSummaryProseScope: ${p.levels[2].whatHappened}`
     );
   }
+
+  // 16. Inkling Comma-Number Benchmark Fixture (prose + live Reddit markdown table, condition, subject & unit)
+  const inklingProseSig = makeSyntheticSignal({
+    id: 'rd-inkling-comma-prose-v251',
+    title: 'Inkling-2-Mini LexiEngine vs llama.cpp benchmark',
+    source: 'Reddit',
+    sourceCategory: 'REDDIT',
+    originFeedName: 'r/LocalLLaMA',
+    url: 'https://old.reddit.com/r/LocalLLaMA/comments/test1/inkling_lexiengine/',
+    rawAbstract:
+      'At a 4,096-token prompt, LexiEngine hits 2,245 prompt tokens/s vs. llama.cpp at 425 tokens/s.',
+  });
+  const proseNumCorpus = buildNumericAuditCorpus(inklingProseSig);
+  assert.ok(
+    findUnbackedNumericTokens('LexiEngine hits 245 prompt tokens/s', proseNumCorpus).length > 0,
+    'Partial digit 245 must be rejected as UNBACKED when source only contains 2,245'
+  );
+  assert.deepEqual(
+    findTruncatedCommaNumbers('LexiEngine hits 245 prompt tokens/s', proseNumCorpus),
+    [{ truncated: '245', sourceNumber: '2,245' }],
+    'findTruncatedCommaNumbers must catch 245 -> 2,245'
+  );
+  const proseMetrics = extractSourceVerifiedMetrics(inklingProseSig);
+  assert.ok(
+    proseMetrics.some(
+      (m) =>
+        m.subject === 'LexiEngine' &&
+        m.value === '2,245 prompt tokens/s' &&
+        m.condition === '4,096-token prompt' &&
+        m.isFeatured === true
+    ),
+    `Expected featured LexiEngine 2,245 prompt tokens/s · 4,096-token prompt, got: ${JSON.stringify(proseMetrics)}`
+  );
+  assert.ok(
+    proseMetrics.some(
+      (m) =>
+        m.subject === 'llama.cpp' &&
+        m.value === '425 tokens/s' &&
+        m.condition === '4,096-token prompt' &&
+        m.isFeatured === false
+    ),
+    `Expected paired llama.cpp 425 tokens/s baseline, got: ${JSON.stringify(proseMetrics)}`
+  );
+  assert.ok(!proseMetrics.some((m) => /(?<![\d.,])245(?!\d)(?![.,]\d)/.test(m.value)), 'Metrics must never emit truncated 245');
+
+  const corruptedInklingLlm: LiteracySpectrumPayload = {
+    plainTitle: 'LexiEngine hits 245 tok/s',
+    plainFullTitle: 'LexiEngine hits 245 prompt tokens/s vs llama.cpp',
+    levels: {
+      1: {
+        analogy: 'Imagine a fast warehouse crew where LexiEngine moves 245 tokens per second.',
+        everydayWhy: 'Faster local answering improves responsiveness.',
+      },
+      2: {
+        whatHappened: 'LexiEngine hits 245 prompt tokens/s on local hardware.',
+        whoBuiltIt: 'r/LocalLLaMA author',
+        problemSolved: 'Speeds up prompt processing.',
+      },
+      3: {
+        bridgeSummary: 'LexiEngine reaches 245 prompt tokens/s compared to llama.cpp.',
+      },
+      4: {
+        roiAndFinOps: 'LexiEngine processes 245 prompt tokens/s locally.',
+        readinessAndRisk: 'Single-user local hardware experiment.',
+        clientAdvice: 'Reproduce on target hardware before deployment.',
+      },
+      5: {
+        architectureBrief: 'Tested LexiEngine reaching 245 prompt tokens/s.',
+        specsAndCaveats: 'Peak 245 prompt tokens/s reported.',
+        streetConsensus: 'r/LocalLLaMA thread.',
+      },
+    },
+    glossary: [],
+    generatedBy: 'OLLAMA',
+  };
+  const fixedInkling = enforceEpistemicAndDomainFidelity(inklingProseSig, corruptedInklingLlm, 'BANKING');
+  const detInklingBench = buildDeterministicLiteracyPayload(inklingProseSig, 'BANKING');
+  for (const payload of [fixedInkling, detInklingBench]) {
+    const lensBlocks = [
+      `${payload.levels[1].analogy} ${payload.levels[1].everydayWhy}`,
+      `${payload.levels[2].whatHappened} ${payload.levels[2].problemSolved}`,
+      payload.levels[3].bridgeSummary,
+      `${payload.levels[4].roiAndFinOps} ${payload.levels[4].clientAdvice}`,
+      `${payload.levels[5].architectureBrief} ${payload.levels[5].specsAndCaveats}`,
+    ];
+    lensBlocks.forEach((txt, idx) => {
+      assert.ok(txt.includes('2,245'), `Inkling L${idx + 1} must preserve 2,245: ${txt}`);
+      assert.ok(txt.includes('425'), `Inkling L${idx + 1} must preserve baseline 425: ${txt}`);
+      assert.ok(/prompt tokens\/s/i.test(txt), `Inkling L${idx + 1} must preserve prompt tokens/s: ${txt}`);
+      assert.ok(txt.includes('4,096-token prompt'), `Inkling L${idx + 1} must preserve 4,096-token prompt: ${txt}`);
+      assert.ok(!/(?<![\d.,])245(?!\d)(?![.,]\d)/.test(txt), `Inkling L${idx + 1} leaked truncated 245: ${txt}`);
+    });
+  }
+
+  const inklingMarkdownSig = makeSyntheticSignal({
+    id: 'rd-street-1y2cr57-sim',
+    title: 'Inkling-2-Mini at 524k context on a single RX 7900 XTX vs llama.cpp',
+    source: 'Reddit',
+    sourceCategory: 'REDDIT',
+    originFeedName: 'r/LocalLLaMA',
+    url: 'https://old.reddit.com/r/LocalLLaMA/comments/1y2cr57/inkling/',
+    rawAbstract:
+      'Both engines ran that same file.** **BENCHMARKS, LexiEngine vs llama.cpp b12600, same card, same file** **4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation** **16,384 token prompt** **LexiEngine: 2,148 tok/s prompt, 50.9 tok/s generation** **llama.cpp: 397 tok/s prompt, 25.0 tok/s generation**',
+  });
+  const mdMetrics = extractSourceVerifiedMetrics(inklingMarkdownSig);
+  assert.ok(
+    mdMetrics.length >= 2 &&
+      mdMetrics[0].subject === 'LexiEngine' &&
+      mdMetrics[0].value === '2,245 prompt tokens/s' &&
+      mdMetrics[0].condition === '4,096-token prompt' &&
+      mdMetrics[0].isFeatured === true,
+    `Markdown Inkling must lead with LexiEngine · 2,245 prompt tokens/s · 4,096-token prompt, got: ${JSON.stringify(mdMetrics)}`
+  );
+  assert.ok(
+    mdMetrics.some((m) => m.subject === 'llama.cpp' && m.value === '425 prompt tokens/s' && m.condition === '4,096-token prompt'),
+    `Markdown Inkling must pair llama.cpp 425 prompt tokens/s baseline, got: ${JSON.stringify(mdMetrics)}`
+  );
+  assert.ok(!mdMetrics.some((m) => /(?<![\d.,])245(?!\d)(?![.,]\d)/.test(m.value)), 'Markdown Inkling must never emit 245');
+
+  // 17. Gemini Effort Comparison Fixture (5,311 vs 31,477 output tokens)
+  const geminiEffortSig = makeSyntheticSignal({
+    id: 'bsky-gemini-effort-v251',
+    title:
+      'Gemini 4 tip: the difference between Gemini 4 Hydrogen on "high" thinking effort and that same model on "xhigh" is VERY significant Here\'s…',
+    source: 'Bluesky',
+    sourceCategory: 'SOCIAL_BLUESKY',
+    originFeedName: 'Bluesky · @simonwillison',
+    url: 'https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27',
+    rawAbstract:
+      'Gemini 4 tip: the difference between Gemini 4 Hydrogen on "high" thinking effort and that same model on "xhigh" is VERY significant Here\'s the high v.s. the xhigh pelican - high cost 3.99 cents and used 5,311 output tokens, xhigh cost 23.61 cents and used 31,477 output tokens',
+  });
+  const geminiCorpus = buildNumericAuditCorpus(geminiEffortSig);
+  assert.ok(
+    findUnbackedNumericTokens("on 'xhigh' effort level it used 31 tokens", geminiCorpus).length > 0,
+    'Partial digit 31 must be flagged as UNBACKED when source only contains 31,477'
+  );
+  assert.deepEqual(
+    findTruncatedCommaNumbers("used 31 tokens and 5,311 output tokens", geminiCorpus),
+    [{ truncated: '31', sourceNumber: '31,477' }],
+    'findTruncatedCommaNumbers must map truncated 31 -> 31,477'
+  );
+  const corruptedGeminiLlm: LiteracySpectrumPayload = {
+    plainTitle: 'Gemini 4 Hydrogen high vs xhigh effort',
+    plainFullTitle: 'Gemini 4 Hydrogen thinking effort comparison',
+    levels: {
+      1: {
+        analogy:
+          'Imagine asking a researcher for a quick note at 5,311 output tokens versus a deeper review at 31 output tokens.',
+        everydayWhy: 'Higher thinking effort changes response length and cost.',
+      },
+      2: {
+        whatHappened:
+          "Gemini 4 Hydrogen on 'high' effort used 5,311 output tokens and cost 3.99 cents, while on 'xhigh' effort it used 31 tokens and cost 23.61 cents.",
+        whoBuiltIt: 'Simon Willison on Bluesky',
+        problemSolved: 'Compares token usage across reasoning settings.',
+      },
+      3: {
+        bridgeSummary: 'High effort used 5,311 output tokens whereas xhigh used 31 tokens.',
+      },
+      4: {
+        roiAndFinOps: 'High used 5,311 output tokens vs xhigh at 31 tokens (23.61 cents).',
+        readinessAndRisk: 'Observed social benchmark.',
+        clientAdvice: 'Monitor output token spend across thinking modes.',
+      },
+      5: {
+        architectureBrief: 'Evaluates Gemini 4 Hydrogen across high (5,311 tokens) and xhigh (31 tokens).',
+        specsAndCaveats: 'high: 5,311 tokens; xhigh: 31 tokens.',
+        streetConsensus: 'Bluesky thread.',
+      },
+    },
+    glossary: [],
+    generatedBy: 'OLLAMA',
+  };
+  const fixedGemini = enforceEpistemicAndDomainFidelity(geminiEffortSig, corruptedGeminiLlm, 'BANKING');
+  const detGemini = buildDeterministicLiteracyPayload(geminiEffortSig, 'BANKING');
+  for (const payload of [fixedGemini, detGemini]) {
+    const lensBlocks = [
+      `${payload.levels[1].analogy} ${payload.levels[1].everydayWhy}`,
+      `${payload.levels[2].whatHappened} ${payload.levels[2].problemSolved}`,
+      payload.levels[3].bridgeSummary,
+      `${payload.levels[4].roiAndFinOps} ${payload.levels[4].clientAdvice}`,
+      `${payload.levels[5].architectureBrief} ${payload.levels[5].specsAndCaveats}`,
+    ];
+    lensBlocks.forEach((txt, idx) => {
+      assert.ok(txt.includes('5,311'), `Gemini effort L${idx + 1} must preserve 5,311: ${txt}`);
+      assert.ok(txt.includes('31,477'), `Gemini effort L${idx + 1} must preserve 31,477: ${txt}`);
+      assert.ok(!/(?<![\d.,])31(?!\d)(?![.,]\d)/.test(txt), `Gemini effort L${idx + 1} leaked truncated 31: ${txt}`);
+    });
+  }
+
+  // 18. Hebbia Cross-Domain / Cross-Version Clustering Isolation Fixture
+  const hebbiaBase = {
+    title: 'Hebbia sees improvements in financial research with GPT-6 Astra',
+    url: 'https://openai.com/business/customer-stories/hebbia',
+    originFeedName: 'OpenAI News',
+  };
+  const bskyThreeJs = {
+    title:
+      'Here\'s GPT-6.2 Astra and GPT-6.2 Sol for "Make a three js animation where yonkers stands up as a big mech (cool stand up motion) and…',
+    url: 'https://bsky.app/profile/simonwillison.net/post/3n2k4j57tg22m',
+    originFeedName: 'Bluesky · @simonwillison',
+  };
+  const bskySameVersionThreeJs = {
+    title: 'Testing GPT-6 Astra on a three.js mech animation scene',
+    url: 'https://bsky.app/profile/someone/post/123',
+    originFeedName: 'Bluesky',
+  };
+  const hebbiaHnFollowup = {
+    title: 'Hebbia financial research evaluation using GPT-6 Astra',
+    url: 'https://news.ycombinator.com/item?id=999999',
+    originFeedName: 'Hacker News',
+  };
+  assert.equal(
+    shouldClusterIntoSupernova(hebbiaBase, bskyThreeJs),
+    false,
+    'Hebbia GPT-6 Astra evaluation must NEVER cluster with Bluesky GPT-6.2 Three.js animation'
+  );
+  assert.equal(
+    shouldClusterIntoSupernova(hebbiaBase, bskySameVersionThreeJs),
+    false,
+    'Hebbia financial research must NEVER cluster with unrelated Three.js animation even on GPT-6 Astra'
+  );
+  assert.equal(
+    shouldClusterIntoSupernova(hebbiaBase, hebbiaHnFollowup),
+    true,
+    'Hebbia story sharing both GPT-6 Astra and financial research subject should still cluster'
+  );
+  assert.equal(
+    shouldClusterIntoSupernova(
+      {
+        title: 'Claude Code v2.1.330',
+        url: 'https://github.com/anthropics/claude-code/releases/tag/v2.1.330',
+      },
+      {
+        title: 'I built kvdiff (MIT): a local proxy across Codex, Claude Code, and local LLMs',
+        url: 'https://old.reddit.com/r/ChatGPTCoding/comments/abc/kvdiff/',
+      }
+    ),
+    false,
+    'Claude Code GitHub release must not cluster unrelated third-party proxy builds'
+  );
+  assert.equal(
+    shouldClusterIntoSupernova(
+      {
+        title: 'Introducing Gemini 4 Neon',
+        url: 'https://deepmind.google/blog/introducing-gemini-4-neon/',
+      },
+      {
+        title: 'Gemini 4 Neon coded a ski simulator based on real Mont Blanc terrain.',
+        url: 'https://x.com/GoogleDeepMind/status/123',
+      }
+    ),
+    true,
+    'Official Gemini 4 Neon launch must still cluster official launch showcase'
+  );
+
+  const hebbiaWithContaminatedLink = makeSyntheticSignal({
+    id: 'lab-hebbia-isolation-test',
+    ...hebbiaBase,
+    source: 'LabRelease',
+    sourceCategory: 'AI_LAB',
+    rawAbstract:
+      'Hebbia tested GPT-6 Astra in financial research workflows. It scored 13.6 percentage points above the best alternative tested on citing the required types of sources, while 99.5% of the excerpts it cited were relevant to the question.',
+    supportingSources: [
+      {
+        source: 'OpenAI News',
+        title: hebbiaBase.title,
+        url: hebbiaBase.url,
+        publishedAt: new Date(nowMs - 2 * 3600_000).toISOString(),
+        publishedAtMs: nowMs - 2 * 3600_000,
+        isPrimary: true,
+      },
+      {
+        source: 'Bluesky · @simonwillison',
+        title: bskyThreeJs.title,
+        url: bskyThreeJs.url,
+        publishedAt: new Date(nowMs - 48 * 3600_000).toISOString(),
+        publishedAtMs: nowMs - 48 * 3600_000,
+        isPrimary: false,
+      },
+    ],
+  });
+  assert.equal(
+    classifySupportingLinkRelation(hebbiaWithContaminatedLink, hebbiaWithContaminatedLink.supportingSources![1]),
+    'related_reading',
+    'Unrelated Bluesky Three.js post must be quarantined as related_reading'
+  );
+  const hebbiaCov = analyzeClusterCoverage(hebbiaWithContaminatedLink);
+  assert.equal(hebbiaCov.sameEventLinks.length, 1, 'Hebbia same-event evidence must stay single-source');
+  assert.equal(hebbiaCov.relatedReadingLinks.length, 1, 'Hebbia unrelated link separates into relatedReadingLinks');
+  assert.equal(hebbiaCov.hasIndependentCorroboration, false);
 }
 
 function runLiveSnapshotAndArchiveAssertions(): void {
   assert.ok(fs.existsSync(SNAPSHOT_PATH), `Missing baked snapshot at ${SNAPSHOT_PATH}`);
   const snapshot = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf8')) as StaticGalaxySnapshot;
-  assert.equal(snapshot.promptVersion, 'v2.5', 'Snapshot must carry promptVersion v2.5');
+  assert.equal(snapshot.promptVersion, 'v2.5.1', 'Snapshot must carry promptVersion v2.5.1');
   assert.ok(Array.isArray(snapshot.signals) && snapshot.signals.length > 0, 'Snapshot must contain signals');
   assert.ok(fs.existsSync(RSS_PATH), `Missing RSS output at ${RSS_PATH}`);
   const rssXml = fs.readFileSync(RSS_PATH, 'utf8');
@@ -1383,10 +1677,26 @@ function runLiveSnapshotAndArchiveAssertions(): void {
       `Live signal ${sig.id} L2 summary failed scope guard (${sumScopeCheck.reason}): ${lit.levels[2].whatHappened}`
     );
 
-    // Card-wide numeric grounding AND zero unbacked compliance audit across ALL L1-L5 fields & Blast
+    // Card-wide numeric grounding, comma-truncation guard AND zero unbacked compliance audit across ALL L1-L5 fields & Blast
     const numCorpus = buildNumericAuditCorpus(sig);
+    const rawPrimaryCorpus = `${sig.title || ''} ${sig.rawAbstract || ''}`;
     const compCorpus = buildRawComplianceCorpus(sig);
+    for (const vm of sig.verifiedMetrics || []) {
+      const pillTxt = [vm.subject, vm.value, vm.condition].filter(Boolean).join(' ');
+      const pillTruncs = findTruncatedCommaNumbers(pillTxt, rawPrimaryCorpus);
+      assert.deepEqual(
+        pillTruncs,
+        [],
+        `Live signal ${sig.id} verifiedMetrics pill contains truncated comma number: ${JSON.stringify(pillTruncs)} in ${pillTxt}`
+      );
+    }
     for (const field of collectLiteracyFields(lit)) {
+      const truncHits = findTruncatedCommaNumbers(field, numCorpus);
+      assert.deepEqual(
+        truncHits,
+        [],
+        `Live signal ${sig.id} contains truncated comma number(s) ${JSON.stringify(truncHits)} in field: ${field}`
+      );
       const unbackedNums = findUnbackedNumericTokens(field, numCorpus);
       assert.deepEqual(
         unbackedNums,
@@ -1552,9 +1862,51 @@ function runLiveSnapshotAndArchiveAssertions(): void {
         `Non-corroborated cluster ${sig.id} claimed corroboration: ${cov.provenanceHeadlineLabel}`
       );
     }
+    for (const sameLink of cov.sameEventLinks) {
+      if (sameLink.url !== sig.url) {
+        assert.ok(
+          shouldClusterIntoSupernova(sig, sameLink),
+          `Live signal ${sig.id} same-event link failed strict cluster guard: ${sameLink.title}`
+        );
+      }
+    }
   }
 
-  // Specific assertions on live Squoosh Bench / ECtHR / TideCache / Ask HN targets when in snapshot window
+  // Specific assertions on live Inkling / Gemini effort / Hebbia / Squoosh Bench / ECtHR / TideCache / Ask HN targets when in snapshot window
+  const liveInklingBench = snapshot.signals.find((s) => s.id === 'rd-street-1y2cr57');
+  if (liveInklingBench) {
+    const iMetrics = liveInklingBench.verifiedMetrics || [];
+    assert.ok(
+      iMetrics.some((m) => m.value.includes('2,245') && m.condition === '4,096-token prompt'),
+      `Live Inkling benchmark must extract 2,245 with 4,096-token prompt, got: ${JSON.stringify(iMetrics)}`
+    );
+    assert.ok(
+      !iMetrics.some((m) => /(?<![\d.,])245(?!\d)(?![.,]\d)/.test(m.value)),
+      `Live Inkling metrics must never emit truncated 245`
+    );
+    const iLit = snapshot.literacyBySignalId[liveInklingBench.id];
+    const iDump = JSON.stringify(iLit.levels);
+    assert.ok(iDump.includes('2,245'), 'Live Inkling literacy must preserve 2,245');
+    assert.ok(iDump.includes('4,096-token prompt'), 'Live Inkling literacy must preserve 4,096-token prompt');
+    assert.ok(!/(?<![\d.,])245(?!\d)(?![.,]\d)/.test(iDump), 'Live Inkling literacy must never contain truncated 245');
+  }
+
+  const liveGeminiEffort = snapshot.signals.find((s) => s.id === 'bsky-simonwillison.net-3n2tsb6pguk27');
+  if (liveGeminiEffort) {
+    const gLit = snapshot.literacyBySignalId[liveGeminiEffort.id];
+    const gDump = JSON.stringify(gLit.levels);
+    assert.ok(gDump.includes('5,311') && gDump.includes('31,477'), 'Live Gemini effort must preserve 5,311 and 31,477');
+    assert.ok(!/(?<![\d.,])31(?!\d)(?![.,]\d)/.test(gDump), 'Live Gemini effort must never contain truncated 31');
+  }
+
+  const liveHebbia = snapshot.signals.find((s) => s.id === 'lab-openai-naicombusinesscustomer-storieshebbia');
+  if (liveHebbia) {
+    const hCov = analyzeClusterCoverage(liveHebbia);
+    assert.ok(
+      !hCov.sameEventLinks.some((s) => /three\.?js|bsky\.app|yonkers/i.test(`${s.title} ${s.url}`)),
+      `Live Hebbia same-event links must not include unrelated Bluesky Three.js post: ${JSON.stringify(hCov.sameEventLinks)}`
+    );
+  }
   const liveSquoosh = snapshot.signals.find((s) => s.id === 'hf-2611.25200');
   if (liveSquoosh) {
     const metrics = liveSquoosh.verifiedMetrics || [];
@@ -1629,7 +1981,7 @@ function runLiveSnapshotAndArchiveAssertions(): void {
   }
 
   console.log(
-    `[VERIFY v2.5] PASSED: All 15 fixture suites + ${snapshot.signals.length} live signals, ${archive.count} archived entries & RSS (Top 10 maxWindow=${maxTopAgeMs / 3600_000}h, count48h=${countUnder48h}).`
+    `[VERIFY v2.5.1] PASSED: All 18 fixture suites + ${snapshot.signals.length} live signals, ${archive.count} archived entries & RSS (Top 10 maxWindow=${maxTopAgeMs / 3600_000}h, count48h=${countUnder48h}).`
   );
 }
 

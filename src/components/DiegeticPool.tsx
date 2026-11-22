@@ -1846,17 +1846,21 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                       const isSelectedPill =
                         activeVerifiedMetric?.value === vm.value &&
                         activeVerifiedMetric?.label === vm.label &&
-                        (activeVerifiedMetric?.subject || '') === (vm.subject || '');
-                      const displayValue = vm.subject ? `${vm.subject} · ${vm.value}` : vm.value;
+                        (activeVerifiedMetric?.subject || '') === (vm.subject || '') &&
+                        (activeVerifiedMetric?.condition || '') === (vm.condition || '');
+                      const displayValue = [vm.subject, vm.value, vm.condition]
+                        .filter(Boolean)
+                        .join(' · ');
                       return (
                         <button
-                          key={`${vm.subject || ''}-${vm.value}-${vm.label}-${idx}`}
+                          key={`${vm.subject || ''}-${vm.value}-${vm.condition || ''}-${vm.label}-${idx}`}
                           type="button"
                           onClick={() =>
                             setActiveVerifiedMetric((prev) =>
                               prev?.value === vm.value &&
                               prev?.label === vm.label &&
-                              (prev?.subject || '') === (vm.subject || '')
+                              (prev?.subject || '') === (vm.subject || '') &&
+                              (prev?.condition || '') === (vm.condition || '')
                                 ? null
                                 : vm
                             )
@@ -1897,6 +1901,9 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                       <div className="text-[9.5px] text-teal-300 space-y-0.5">
                         <div className="font-semibold">
                           Verbatim Passage · {activeVerifiedMetric.label}
+                          {activeVerifiedMetric.condition
+                            ? ` · ${activeVerifiedMetric.condition}`
+                            : ''}
                         </div>
                         {activeVerifiedMetric.context && (
                           <div className="text-zinc-400 leading-snug">

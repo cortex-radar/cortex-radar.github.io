@@ -225,6 +225,7 @@ export interface VerifiedSourceMetric {
   context?: string;
   subject?: string;
   isFeatured?: boolean;
+  condition?: string;
 }
 
 export type EvidenceScope =
@@ -431,6 +432,7 @@ export interface SupportingSourceLink {
   publishedAt: string;
   publishedAtMs?: number;
   isPrimary: boolean;
+  relation?: 'same_event' | 'related_reading';
 }
 
 export interface SpatialSignal {
