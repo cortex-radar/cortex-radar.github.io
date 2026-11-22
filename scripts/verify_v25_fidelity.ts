@@ -23,9 +23,11 @@ import {
   findUnbackedComplianceClaims,
   findUnbackedNumericTokens,
   getSignalReleaseMetadata,
+  hasDirectionalPercentageTransition,
   hasLatencyOrThroughputWithoutCost,
   hasTechnicalEngineeringContent,
   inferSupportingLinkRole,
+  isDirectionalTransitionValue,
   isEligibleForNewBadge,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
@@ -1765,12 +1767,119 @@ function runFixtureAssertions(): void {
     0,
     `Warning-only sentence must emit 0 positive/Reported faster badges, got: ${JSON.stringify(warnOnlyMetrics)}`
   );
+
+  // 20. v2.5.3 Fixture: Directional before-and-after transitions vs. undirected multi-config ranges
+  // Case 20A: AgentRoboCritic exact abstract regression (Muse-Glimmer-30B failure-mode accuracy rises from 32.58% to 74.24%)
+  const agentRoboAbstract =
+    "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail. In this paper, we present a systematic action-level analysis of frontier agents on direct robot control across 12 manipulation benchmarks. We introduce AgentRoboCritic, an intent-grounded critique framework in which the policy agent states a local intent alongside each action, and a critic evaluates the action's outcome and failure mode against this intent. Our action-level analysis demonstrates the promising capabilities of frontier agents on direct robot control, including closed-loop recovery from local execution failures, reliable semantic grounding across diverse scenes, and strong zero-shot manipulation without task-specific adaptation. It also identifies their current limitations, including task-relevant physical execution bottlenecks such as grasping and alignment, and uneven recovery across failure modes. Finally, we validate our critic on a 400-action human-annotated benchmark and release a dataset of 12,844 annotated actions alongside a fine-tuned open-source critic, Muse-Glimmer-30B, whose failure-mode accuracy rises from 32.58% to 74.24%, enabling low-cost action-level analysis.";
+  const agentRoboSig = makeSyntheticSignal({
+    id: 'arxiv-httparxivorgabs261126613v1-test',
+    title: 'AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control',
+    source: 'arXiv',
+    sourceCategory: 'RESEARCH',
+    originFeedName: 'arXiv cs.AI',
+    primarySector: 'ARC',
+    url: 'https://arxiv.org/abs/2611.26613v1',
+    rawAbstract: agentRoboAbstract,
+  });
+
+  const arcMetrics = extractSourceVerifiedMetrics(agentRoboSig);
+  const arcTarget = arcMetrics.filter((m) => m.value.includes('32.58') || m.value.includes('74.24'));
+  assert.equal(arcTarget.length, 1, `Expected 1 directional metric for AgentRoboCritic, got: ${JSON.stringify(arcMetrics)}`);
+  const arcBadge = arcTarget[0];
+  assert.equal(arcBadge.subject, 'Muse-Glimmer-30B', `Expected subject Muse-Glimmer-30B, got: ${arcBadge.subject}`);
+  assert.ok(!/32\.58\s*[–-]\s*74\.24%/.test(arcBadge.value), `Must NEVER flatten into range: ${arcBadge.value}`);
+  assert.ok(/\brose\s+from\s+32\.58%\s+to\s+74\.24%/i.test(arcBadge.value), `Expected directional "rose from 32.58% to 74.24%", got: ${arcBadge.value}`);
+  assert.equal(isDirectionalTransitionValue(arcBadge.value), true);
+  assert.ok(/failure-mode accuracy/i.test(arcBadge.label), `Expected specific label "Failure-mode accuracy", got: ${arcBadge.label}`);
+  assert.ok(!/^Reported accuracy$/i.test(arcBadge.label), `Must not fall back to vague "Reported accuracy"`);
+  assert.ok(
+    /fine[- ]?tun/i.test(`${arcBadge.condition || ''} ${arcBadge.context || ''}`),
+    `Expected fine-tuning context/condition, got: ${JSON.stringify(arcBadge)}`
+  );
+  assert.ok(!/^d actions\b/i.test(arcBadge.quote), `Quote must never start mid-word: ${arcBadge.quote}`);
+  assert.ok(
+    arcBadge.quote.includes('Muse-Glimmer-30B, whose failure-mode accuracy rises from 32.58% to 74.24%'),
+    `Quote must preserve full clause: ${arcBadge.quote}`
+  );
+  const arcDetLit = buildDeterministicLiteracyPayload(agentRoboSig, 'BANKING');
+  assert.ok(
+    arcDetLit.levels[5].specsAndCaveats.includes('Muse-Glimmer-30B') &&
+      arcDetLit.levels[5].specsAndCaveats.includes('from 32.58% to 74.24%') &&
+      !/32\.58\s*[–-]\s*74\.24%/.test(arcDetLit.levels[5].specsAndCaveats),
+    `Deterministic L5 must preserve Muse-Glimmer-30B directional transition: ${arcDetLit.levels[5].specsAndCaveats}`
+  );
+
+  // Case 20B: Directional verbs, arrow syntax & undirected multi-config span preservation
+  const dirCases = [
+    {
+      title: 'Qwen3-8B Code Reasoning Eval',
+      rawAbstract: 'On LiveCodeBench, SWE-bench pass@1 on Qwen3-8B improved from 41.2% to 78.5% after post-training.',
+      expectedValRx: /improved\s+from\s+41\.2%\s+to\s+78\.5%/i,
+      expectedLabelRx: /pass@1/i,
+    },
+    {
+      title: 'DeepSeek-R1 Tool Reliability',
+      rawAbstract: 'Tool-call precision on DeepSeek-R1 increased from 55% to 82%.',
+      expectedValRx: /increased\s+from\s+55%\s+to\s+82%/i,
+      expectedLabelRx: /precision/i,
+    },
+    {
+      title: 'Qwen3-8B Grounded Retrieval',
+      rawAbstract: 'Qwen3-8B hallucination rate dropped from 18.2% to 6.4% with retrieval.',
+      expectedValRx: /dropped\s+from\s+18\.2%\s+to\s+6\.4%/i,
+      expectedLabelRx: /hallucination rate/i,
+    },
+    {
+      title: 'Muse-Glimmer-30B Release',
+      rawAbstract: 'Muse-Glimmer-30B: failure-mode accuracy 32.58% -> 74.24% after fine-tuning.',
+      expectedValRx: /32\.58%\s*→\s*74\.24%/,
+      expectedLabelRx: /failure-mode accuracy/i,
+    },
+  ];
+  for (const dc of dirCases) {
+    const dSig = makeSyntheticSignal({
+      id: `dir-case-${dc.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+      title: dc.title,
+      source: 'arXiv',
+      sourceCategory: 'RESEARCH',
+      rawAbstract: dc.rawAbstract,
+    });
+    const dMetrics = extractSourceVerifiedMetrics(dSig);
+    assert.ok(dMetrics.length === 1, `Expected 1 directional metric for "${dc.rawAbstract}", got: ${JSON.stringify(dMetrics)}`);
+    assert.equal(isDirectionalTransitionValue(dMetrics[0].value), true, `Expected directional value for ${dMetrics[0].value}`);
+    assert.ok(dc.expectedValRx.test(dMetrics[0].value), `Unexpected directional value: ${dMetrics[0].value}`);
+    assert.ok(dc.expectedLabelRx.test(dMetrics[0].label), `Unexpected directional label: ${dMetrics[0].label}`);
+  }
+
+  const tideSpan1 = makeSyntheticSignal({
+    id: 'tide-span-1',
+    title: 'TideCache: Multi-Config Latency Span',
+    source: 'arXiv',
+    sourceCategory: 'RESEARCH',
+    rawAbstract:
+      'Implemented in SGLang and evaluated across seven model/platform configurations, TideCache reduces overall P50 per-token latency by 20--59%.',
+  });
+  const tideSpan2 = makeSyntheticSignal({
+    id: 'tide-span-2',
+    title: 'TideCache: Multi-Config Range Phrasing',
+    source: 'arXiv',
+    sourceCategory: 'RESEARCH',
+    rawAbstract:
+      'TideCache latency reduction ranges from 20% to 59% across seven model/platform configurations.',
+  });
+  for (const tsSig of [tideSpan1, tideSpan2]) {
+    const tsMetrics = extractSourceVerifiedMetrics(tsSig);
+    const spanPill = tsMetrics.find((m) => m.value === '20–59%');
+    assert.ok(spanPill, `Expected undirected range 20–59% preserved on ${tsSig.id}, got: ${JSON.stringify(tsMetrics)}`);
+    assert.equal(isDirectionalTransitionValue(spanPill.value), false, `True multi-config span must remain undirected: ${spanPill.value}`);
+  }
 }
 
 function runLiveSnapshotAndArchiveAssertions(): void {
   assert.ok(fs.existsSync(SNAPSHOT_PATH), `Missing baked snapshot at ${SNAPSHOT_PATH}`);
   const snapshot = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf8')) as StaticGalaxySnapshot;
-  assert.equal(snapshot.promptVersion, 'v2.5.2', 'Snapshot must carry promptVersion v2.5.2');
+  assert.equal(snapshot.promptVersion, 'v2.5.3', 'Snapshot must carry promptVersion v2.5.3');
   assert.ok(Array.isArray(snapshot.signals) && snapshot.signals.length > 0, 'Snapshot must contain signals');
   assert.ok(fs.existsSync(RSS_PATH), `Missing RSS output at ${RSS_PATH}`);
   const rssXml = fs.readFileSync(RSS_PATH, 'utf8');
@@ -1785,6 +1894,25 @@ function runLiveSnapshotAndArchiveAssertions(): void {
   const positiveMetricRx = /(?:faster|speedup|improvement|reduction|higher|gain|percentage)/i;
   const badSubjectRx =
     /^(?:and|or|but|the|a|an|for|with|from|to|in|on|at|by|of|as|is|are|was|were|it|they|its|improvement|improvements|speedup|speedups|gain|gains|reduction|reductions|accuracy|latency|throughput|performance|result|results)$/i;
+  const assertNoCollapsedDirectionalRange = (
+    scopeLabel: string,
+    vm: { value: string; quote: string }
+  ) => {
+    if (!hasDirectionalPercentageTransition(vm.quote || '')) return;
+    const dashMatch = (vm.value || '').match(
+      /(?<![\d.,])(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)\s*[–-]\s*(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?)%/
+    );
+    if (!dashMatch) return;
+    const esc = (n: string) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const pairedRx = new RegExp(
+      `(?:\\bfrom\\s+${esc(dashMatch[1])}%?\\s+to\\s+${esc(dashMatch[2])}%|${esc(dashMatch[1])}%?\\s*(?:->|→)\\s*${esc(dashMatch[2])}%)`,
+      'i'
+    );
+    assert.ok(
+      !pairedRx.test(vm.quote || ''),
+      `${scopeLabel} flattened directional transition into undirected range "${vm.value}" from quote: ${vm.quote}`
+    );
+  };
   for (const entry of archive.entries) {
     assert.ok(entry.id && entry.title && entry.url, `Invalid archive entry: ${JSON.stringify(entry)}`);
     assert.ok(!seenArchiveIds.has(entry.id), `Duplicate archive ID: ${entry.id}`);
@@ -1801,6 +1929,7 @@ function runLiveSnapshotAndArchiveAssertions(): void {
           `Archived signal ${entry.id} positive metric pill bound to author warning/negation quote: ${vm.quote}`
         );
       }
+      assertNoCollapsedDirectionalRange(`Archived signal ${entry.id}`, vm);
     }
   }
 
@@ -1870,6 +1999,7 @@ function runLiveSnapshotAndArchiveAssertions(): void {
           `Live signal ${sig.id} positive metric pill bound to author warning/negation quote: ${vm.quote}`
         );
       }
+      assertNoCollapsedDirectionalRange(`Live signal ${sig.id}`, vm);
       const pillTxt = [vm.subject, vm.value, vm.condition].filter(Boolean).join(' ');
       const pillTruncs = findTruncatedCommaNumbers(pillTxt, rawPrimaryCorpus);
       assert.deepEqual(
@@ -2156,13 +2286,53 @@ function runLiveSnapshotAndArchiveAssertions(): void {
 
   const liveTide = snapshot.signals.find((s) => s.id === 'arxiv-httparxivorgabs261126619v1');
   if (liveTide) {
+    const tideSpanPill = (liveTide.verifiedMetrics || []).find((m) => m.value === '20–59%');
     assert.ok(
-      (liveTide.verifiedMetrics || []).some((m) => m.value === '20–59%'),
+      tideSpanPill,
       `Live TideCache must capture full range 20–59%, got: ${JSON.stringify(liveTide.verifiedMetrics)}`
+    );
+    assert.equal(
+      isDirectionalTransitionValue(tideSpanPill.value),
+      false,
+      `Live TideCache range 20–59% must stay undirected`
     );
     assert.ok(
       !(liveTide.verifiedMetrics || []).some((m) => m.value === '59%'),
       'Live TideCache must not emit truncated 59%'
+    );
+  }
+
+  const arcEntry =
+    snapshot.signals.find((s) => s.id === 'arxiv-httparxivorgabs261126613v1') ||
+    archive.entries.find((e) => e.id === 'arxiv-httparxivorgabs261126613v1');
+  if (arcEntry) {
+    const arcMetrics = arcEntry.verifiedMetrics || [];
+    const arcPill = arcMetrics.find((m) => m.value.includes('32.58') || m.value.includes('74.24'));
+    assert.ok(
+      arcPill,
+      `AgentRoboCritic (${arcEntry.id}) missing 32.58% -> 74.24% metric pill: ${JSON.stringify(arcMetrics)}`
+    );
+    assert.equal(
+      arcPill.subject,
+      'Muse-Glimmer-30B',
+      `AgentRoboCritic pill must attribute Muse-Glimmer-30B, got: ${JSON.stringify(arcPill)}`
+    );
+    assert.ok(
+      !/32\.58\s*[–-]\s*74\.24%/.test(arcPill.value),
+      `AgentRoboCritic pill must never collapse into 32.58–74.24%: ${JSON.stringify(arcPill)}`
+    );
+    assert.equal(
+      isDirectionalTransitionValue(arcPill.value),
+      true,
+      `AgentRoboCritic pill must preserve directional phrasing: ${JSON.stringify(arcPill)}`
+    );
+    assert.ok(
+      /failure-mode accuracy/i.test(arcPill.label) && !/^Reported accuracy$/i.test(arcPill.label),
+      `AgentRoboCritic pill must preserve Failure-mode accuracy label: ${JSON.stringify(arcPill)}`
+    );
+    assert.ok(
+      /fine[- ]?tun/i.test(`${arcPill.condition || ''} ${arcPill.context || ''}`),
+      `AgentRoboCritic pill must retain fine-tuning context: ${JSON.stringify(arcPill)}`
     );
   }
 
@@ -2197,7 +2367,7 @@ function runLiveSnapshotAndArchiveAssertions(): void {
   }
 
   console.log(
-    `[VERIFY v2.5.2] PASSED: All 19 fixture suites + ${snapshot.signals.length} live signals, ${archive.count} archived entries & RSS (Top 10 maxWindow=${maxTopAgeMs / 3600_000}h, count48h=${countUnder48h}).`
+    `[VERIFY v2.5.3] PASSED: All 20 fixture suites + ${snapshot.signals.length} live signals, ${archive.count} archived entries & RSS (Top 10 maxWindow=${maxTopAgeMs / 3600_000}h, count48h=${countUnder48h}).`
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Archive, ArrowLeft, Clock, ExternalLink } from 'lucide-react';
-import { formatUtcTimestamp } from '../../shared/provenance';
+import { formatUtcTimestamp, isDirectionalTransitionValue } from '../../shared/provenance';
 import type { ArchivedSignalEntry, VerifiedSourceMetric } from '../../shared/types';
 import { formatRelativeAgeShort } from '../utils/signalRanking';
 import { InstrumentButton, ObsidianPanel } from './ui/cockpit-primitives';
@@ -106,9 +106,18 @@ export const ArchivedPermalinkCard: React.FC<ArchivedPermalinkCardProps> = ({
                       selectedMetric?.label === vm.label &&
                       (selectedMetric?.subject || '') === (vm.subject || '') &&
                       (selectedMetric?.condition || '') === (vm.condition || '');
-                    const displayValue = [vm.subject, vm.value, vm.condition]
-                      .filter(Boolean)
-                      .join(' · ');
+                    const isDirectional = isDirectionalTransitionValue(vm.value);
+                    const dirCondSuffix =
+                      isDirectional && vm.condition
+                        ? /^(?:after|before|with|via|through|upon|following|under|on|for|during|in)\b/i.test(
+                            vm.condition
+                          )
+                          ? ` ${vm.condition}`
+                          : ` (${vm.condition})`
+                        : '';
+                    const displayValue = isDirectional
+                      ? [vm.subject, `${vm.label} ${vm.value}${dirCondSuffix}`].filter(Boolean).join(' · ')
+                      : [vm.subject, vm.value, vm.condition].filter(Boolean).join(' · ');
                     return (
                       <button
                         key={`${vm.subject || ''}-${vm.value}-${vm.condition || ''}-${vm.label}-${idx}`}
@@ -123,24 +132,32 @@ export const ArchivedPermalinkCard: React.FC<ArchivedPermalinkCardProps> = ({
                               : vm
                           )
                         }
-                        className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md border text-left transition-colors cursor-pointer ${
+                        className={`inline-flex flex-wrap items-center gap-1.5 px-2 py-1 rounded-md border text-left transition-colors cursor-pointer max-w-full ${
                           active
                             ? 'bg-teal-500/20 border-teal-400/70 text-teal-100'
                             : 'bg-zinc-900/90 border-white/12 text-zinc-200 hover:border-teal-400/45'
                         }`}
                       >
-                        <span className="text-teal-300 font-semibold whitespace-nowrap">
-                          {displayValue}
-                        </span>
                         <span
-                          className={`text-zinc-400 text-[9.5px] ${
-                            vm.caveat
-                              ? 'max-w-[290px] whitespace-normal leading-snug'
-                              : 'truncate max-w-[165px]'
+                          className={`text-teal-300 font-semibold ${
+                            isDirectional || displayValue.length > 36
+                              ? 'whitespace-normal leading-snug'
+                              : 'whitespace-nowrap'
                           }`}
                         >
-                          {vm.label}
+                          {displayValue}
                         </span>
+                        {!isDirectional && (
+                          <span
+                            className={`text-zinc-400 text-[9.5px] ${
+                              vm.caveat
+                                ? 'max-w-[290px] whitespace-normal leading-snug'
+                                : 'truncate max-w-[165px]'
+                            }`}
+                          >
+                            {vm.label}
+                          </span>
+                        )}
                       </button>
                     );
                   })}

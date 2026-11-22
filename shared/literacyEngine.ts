@@ -22,6 +22,7 @@ import {
   hasSourceComplianceAssessment,
   hasTechnicalEngineeringContent,
   isConditionalPolicyHeadline,
+  isDirectionalTransitionValue,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
   isLegalOrCourtRulingSignal,
@@ -1399,9 +1400,22 @@ function buildDisjointL5Sections(
     const evalSummary =
       allMetrics.length > 0
         ? allMetrics
-            .map((m) =>
-              m.subject ? `${m.subject} ${m.value} (${m.label})` : `${m.label}: ${m.value}`
-            )
+            .map((m) => {
+              const condSuffix = m.condition
+                ? /^(?:after|before|with|via|through|upon|following|under|on|for|during|in)\b/i.test(m.condition)
+                  ? ` ${m.condition}`
+                  : ` · ${m.condition}`
+                : '';
+              if (isDirectionalTransitionValue(m.value)) {
+                const lowerLabel = /^[A-Z][a-z]/.test(m.label)
+                  ? m.label[0].toLowerCase() + m.label.slice(1)
+                  : m.label;
+                return m.subject
+                  ? `${m.subject} ${lowerLabel} ${m.value}${condSuffix}`
+                  : `${m.label} ${m.value}${condSuffix}`;
+              }
+              return m.subject ? `${m.subject} ${m.value} (${m.label})` : `${m.label}: ${m.value}`;
+            })
             .join(' · ')
         : 'Quality, citation relevance, and grading-criteria evaluation without latency telemetry';
     specsAndCaveats =

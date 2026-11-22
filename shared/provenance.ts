@@ -1047,6 +1047,34 @@ function normalizeRangeSeparator(raw: string): string {
     .trim();
 }
 
+const DIRECTIONAL_FROM_TO_VALUE_REGEX =
+  /\bfrom\s+(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%\s+to\s+(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%/i;
+const DIRECTIONAL_ARROW_VALUE_REGEX =
+  /(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%\s*→\s*(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%/i;
+const UNDIRECTED_RANGE_BEFORE_FROM_REGEX =
+  /\b(?:rang(?:e|es|ed|ing)|var(?:y|ies|ied|ying)|span(?:s|ned|ning)?|extend(?:s|ed|ing)?|spread(?:s|ing)?|fluctuat(?:e|es|ed|ing)|stretch(?:es|ed|ing)?|between)\s*$/i;
+
+export function isDirectionalTransitionValue(value: string): boolean {
+  const v = value || '';
+  return DIRECTIONAL_FROM_TO_VALUE_REGEX.test(v) || DIRECTIONAL_ARROW_VALUE_REGEX.test(v);
+}
+
+export function hasDirectionalPercentageTransition(text: string): boolean {
+  const src = text || '';
+  const fromToRx =
+    /\bfrom\s+((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*%?\s+to\s+((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)%/gi;
+  let m: RegExpExecArray | null;
+  while ((m = fromToRx.exec(src)) !== null) {
+    const before = src.slice(Math.max(0, m.index - 40), m.index).toLowerCase();
+    if (UNDIRECTED_RANGE_BEFORE_FROM_REGEX.test(before)) continue;
+    if (/(?:wilson|confidence)\s+interval\s*$|\bci\s*$/i.test(before)) continue;
+    return true;
+  }
+  const arrowRx =
+    /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*%?\s*(?:->|→)\s*((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)%/gi;
+  return arrowRx.test(src);
+}
+
 export function extractMetricCondition(
   sentence: string,
   matchIndex: number
@@ -1103,9 +1131,21 @@ function extractMetricSubject(
   let colonMatch: RegExpExecArray | null;
   let lastColonSubj = '';
   while ((colonMatch = colonRx.exec(recentWindow)) !== null) {
-    lastColonSubj = colonMatch[1].replace(/^\*+|\*+$/g, '').trim();
+    lastColonSubj = colonMatch[1]
+      .replace(/^\*+|\*+$/g, '')
+      .replace(
+        /(?:\s+[a-z0-9-]+){0,2}\s+(?:accuracy|precision|recall|f1(?:\s+score)?|rate|score|latency|throughput)$/i,
+        ''
+      )
+      .trim();
   }
-  if (lastColonSubj && !GENERIC_METRIC_HEADING_REGEX.test(lastColonSubj)) {
+  if (
+    lastColonSubj &&
+    !GENERIC_METRIC_HEADING_REGEX.test(lastColonSubj) &&
+    !/^(?:model|critic|agent|system|failure[- ]?mode|zero[- ]?shot|overall|average|mean|reported)$/i.test(
+      lastColonSubj
+    )
+  ) {
     const lowSubj = lastColonSubj.toLowerCase();
     const matchesVsRight = Boolean(vsRight && (lowSubj === vsRight || vsRight.startsWith(lowSubj)));
     const matchesVsLeft = Boolean(vsLeft && (lowSubj === vsLeft || vsLeft.startsWith(lowSubj)));
@@ -1151,6 +1191,35 @@ function extractMetricSubject(
     /\b(strongest\s+general-purpose|baseline|best\s+alternative|alternative\s+tested|incumbent|previous\s+sota)\b/i.test(
       sentence
     );
+
+  // 2.5 Explicit hyphenated/dotted model or system identifier near the metric (e.g., "Muse-Glimmer-30B, whose failure-mode accuracy rises...")
+  const localTail = localRawClause.slice(Math.max(0, localRawClause.length - 130));
+  const candMatches: string[] = [];
+  const apposVerbRx =
+    /(?:^|[\s,;(])([A-Z][A-Za-z0-9]*(?:[-.][A-Za-z0-9]+)+(?:\s+(?:Next|Astra|Pro|Ultra|Flash|Mini|Nano|Turbo|Max|Plus|Omni|\d+(?:\.\d+)?[BM]))?)(?:,?\s*whose\b|['’]s\b|\s+(?:improves?|improved|rises?|rose|increases?|increased|drops?|dropped|reduces?|reduced|jumps?|jumped|climbs?|climbed|achieves?|hits?|reaches?|scores?|scored)\b)/g;
+  let cm: RegExpExecArray | null;
+  while ((cm = apposVerbRx.exec(localTail)) !== null) {
+    if (cm[1]) candMatches.push(cm[1].trim());
+  }
+  const prepRx =
+    /\b(?:on|for|with|using)\s+([A-Z][A-Za-z0-9]*(?:[-.][A-Za-z0-9]+)+(?:\s+(?:Next|Astra|Pro|Ultra|Flash|Mini|Nano|Turbo|Max|Plus|Omni|\d+(?:\.\d+)?[BM]))?)\b[^.;\n]{0,65}$/g;
+  while ((cm = prepRx.exec(localTail)) !== null) {
+    if (cm[1]) candMatches.push(cm[1].trim());
+  }
+  const validCands = candMatches.filter(
+    (cand) =>
+      (/\d/.test(cand) || /-[A-Z]/.test(cand)) &&
+      !/^v?\d+(?:\.\d+)+(?:-[a-z0-9.]+)?$/i.test(cand) &&
+      !/^(?:SWE-bench|MMLU-Pro|GPQA-Diamond|HumanEval|P50|P95|P99|GB\d+|GH\d+|H\d+|A\d+|B\d+|MI\d+[A-Z]?|RTX-?\d+|M\d+-(?:Pro|Max|Ultra))$/i.test(
+        cand
+      )
+  );
+  if (validCands.length > 0) {
+    return {
+      subject: validCands[validCands.length - 1],
+      isFeatured: isBaselineSentence ? false : true,
+    };
+  }
 
   // 3. Explicit named model / system at start of sentence or clause (e.g., "Squoosh UX-1, a model...", "Qwen3 Next 80B, the strongest...")
   const leadModelMatch = localClause.match(
@@ -1207,20 +1276,32 @@ function extractMetricSubject(
 }
 
 function buildConciseMetricQuote(sentence: string, matchIndex: number, matchLen: number): string {
-  if (!sentence || sentence.length <= 280) return sentence;
+  if (!sentence || sentence.length <= 320) return sentence;
   const lookbackStart = Math.max(0, matchIndex - 220);
   const prefixSlice = sentence.slice(lookbackStart, matchIndex);
   const condMatch = prefixSlice.match(/(?:\*\*)?(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?[kKmM]?)[-\s]+token\s+(?:prompt|context|input)/i);
-  const startIdx =
+  let startIdx =
     condMatch && typeof condMatch.index === 'number'
       ? lookbackStart + condMatch.index
       : Math.max(0, matchIndex - 110);
+
+  if (startIdx > 0 && !/\s/.test(sentence[startIdx - 1])) {
+    const nextSpace = sentence.indexOf(' ', startIdx);
+    if (nextSpace > 0 && nextSpace < matchIndex) {
+      startIdx = nextSpace + 1;
+    }
+  }
 
   let endIdx = Math.min(sentence.length, matchIndex + matchLen + 110);
   const tailSlice = sentence.slice(matchIndex + matchLen, endIdx + 80);
   const nextSection = tailSlice.search(/\*\*\s*(?:\d{1,3}(?:,\d{3})+|\d+[kKmM]?)[-\s]+token\s+(?:prompt|context)|\*\*\s*MEMORY\b/i);
   if (nextSection >= 0) {
     endIdx = matchIndex + matchLen + nextSection;
+  } else if (endIdx < sentence.length && !/\s/.test(sentence[endIdx])) {
+    const prevSpace = sentence.lastIndexOf(' ', endIdx);
+    if (prevSpace > matchIndex + matchLen) {
+      endIdx = prevSpace;
+    }
   }
   return sentence.slice(startIdx, endIdx).replace(/^\*{2}\s*|\s*\*{2}$/g, '').trim() || sentence;
 }
@@ -1346,6 +1427,98 @@ function inferPercentageLabel(
   return { label: 'Source-reported percentage', context: combinedContext };
 }
 
+function normalizeDirectionalVerb(rawVerb: string): string {
+  const v = (rawVerb || '').toLowerCase().trim();
+  if (/^(?:ris|ros|jump|climb|grew|grow)/.test(v)) return 'rose';
+  if (/^(?:improv|boost|lift)/.test(v)) return 'improved';
+  if (/^(?:increas|rais)/.test(v)) return 'increased';
+  if (/^(?:drop|fall|fell|declin)/.test(v)) return 'dropped';
+  if (/^(?:reduc|decreas|lower|cut)/.test(v)) return 'reduced';
+  return '';
+}
+
+function extractDirectionalMetricLabel(
+  sentence: string,
+  phraseEndIdx: number,
+  transitionEndIdx: number,
+  isFeatured: boolean | undefined,
+  surroundingContext: string,
+  subject?: string
+): { label: string; context?: string } {
+  const rawPre = sentence.slice(Math.max(0, phraseEndIdx - 85), phraseEndIdx);
+  const clausePre = (rawPre.split(/[,;:\n]/).pop() || rawPre).trim();
+  const metricNounPattern =
+    '(?:accuracy|precision|recall|f1(?:\\s+score)?|pass@\\d+|success\\s+rate|win\\s+rate|hit\\s+rate|error\\s+rate|failure\\s+rate|hallucination\\s+rate|completion\\s+rate|detection\\s+rate|match\\s+rate|recovery\\s+rate|compliance\\s+rate|coverage|relevance|score|utilization|overhead|latency|throughput|rate)';
+  const endNounRx = new RegExp(
+    `\\b((?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\\s+){0,2}${metricNounPattern})\\s*$`,
+    'i'
+  );
+  const trailingPrepNounRx = new RegExp(
+    `\\b((?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\\s+){0,2}${metricNounPattern})\\s+(?:on|in|for|of)\\s+[A-Za-z0-9._-]{2,32}\\s*$`,
+    'i'
+  );
+  const postNounRx = new RegExp(
+    `^\\s*(?:in|on|for|of)\\s+((?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\\s+){0,2}${metricNounPattern})\\b`,
+    'i'
+  );
+
+  const rawCandidate =
+    clausePre.match(endNounRx)?.[1] ||
+    clausePre.match(trailingPrepNounRx)?.[1] ||
+    sentence.slice(transitionEndIdx, Math.min(sentence.length, transitionEndIdx + 65)).match(postNounRx)?.[1] ||
+    '';
+
+  if (rawCandidate) {
+    let cleaned = rawCandidate.replace(/\s+/g, ' ').trim();
+    if (subject) {
+      const escapedSubj = subject.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      cleaned = cleaned.replace(new RegExp(`^${escapedSubj}(?:['’]s)?\\s+`, 'i'), '').trim();
+    }
+    const stripLeadRx =
+      /^(?:whose|its|their|our|the|a|an|this|that|these|those|of|in|on|for|with|and|or|to|by|overall|average|mean|total|model|critic|agent|system|open-source|fine-tuned|finetuned|boosts?|boosted|improves?|improved|increases?|increased|raises?|raised|reduces?|reduced|lowers?|lowered|cuts?|drops?|dropped|rises?|rose)\s+/i;
+    while (stripLeadRx.test(cleaned)) {
+      cleaned = cleaned.replace(stripLeadRx, '').trim();
+    }
+    if (cleaned && !/^(?:rate|score)$/i.test(cleaned)) {
+      const normalized = /^[a-z]/.test(cleaned) ? cleaned[0].toUpperCase() + cleaned.slice(1) : cleaned;
+      return { label: normalized, context: extractComparisonBaseline(sentence) };
+    }
+  }
+
+  const fallback = inferPercentageLabel(sentence, phraseEndIdx, isFeatured, surroundingContext);
+  if (/^Reported accuracy$/i.test(fallback.label)) {
+    return { ...fallback, label: 'Accuracy' };
+  }
+  return fallback;
+}
+
+function extractDirectionalCondition(
+  sentence: string,
+  transitionStartIdx: number,
+  transitionEndIdx: number
+): string | undefined {
+  const winStart = Math.max(0, transitionStartIdx - 140);
+  const winEnd = Math.min(sentence.length, transitionEndIdx + 95);
+  const win = sentence.slice(winStart, winEnd);
+
+  if (
+    /(?:\b(?:after|with|via|through|upon|following|by)\s+(?:supervised\s+)?fine[- ]?tuning\b|\bfine[- ]?tuned\b|\bfinetuned\b|\bsupervised\s+fine[- ]?tuning\b)/i.test(
+      win
+    )
+  ) {
+    return 'after fine-tuning';
+  }
+  const stageMatch = win.match(
+    /\b(after|with|via|following)\s+(post[- ]training|reinforcement\s+learning|rlhf|rlvr|grpo|dpo|rl|quantization|pruning|distillation|tool\s+use|retrieval|rag)\b/i
+  );
+  if (stageMatch) {
+    const prep = stageMatch[1].toLowerCase() === 'with' || stageMatch[1].toLowerCase() === 'via' ? 'with' : 'after';
+    return `${prep} ${stageMatch[2].replace(/\s+/g, ' ').trim()}`;
+  }
+
+  return extractMetricCondition(sentence, transitionStartIdx);
+}
+
 function inferPercentagePointLabel(sentence: string, matchIndex: number): { label: string; context?: string } {
   const nearby = sentence.slice(Math.max(0, matchIndex - 30), Math.min(sentence.length, matchIndex + 90)).toLowerCase();
   if (/\bciting\b.*\bsources?\b|\brequired\s+(?:types?\s+of\s+)?sources?\b|\bsource\s+coverage\b/.test(nearby)) {
@@ -1468,9 +1641,142 @@ export function extractSourceVerifiedMetrics(
       );
     }
 
+    // 1.5 Directional before-and-after percentage transitions (never flatten into undirected ranges like "32.58–74.24%")
+    const claimedDirectionalSpans: Array<[number, number]> = [];
+    const directionalEvalCtxRx =
+      /\b(excerpts?|cited|relevan\w*|presentation|requirements?|sources?|coverage|verified|reduc\w*|faster|cheaper|lower|cut|drop(?:s|ped)?|accuracy|score|swe-bench|mmlu|gpqa|pass(?:@\d+)?|recall|precision|f1|benchmark|utilization|overhead|gain|improv\w*|latency|ttft|tpot|throughput|memory|vram|hbm|outcomes?|win\s+rate|success\s+rate|error\s+rate|failure[- ]mode|hallucination|ris(?:e|es|ing)|rose|increas\w*|decreas\w*|fell|jump\w*|climb\w*|fine[- ]?tun\w*)\b/i;
+
+    const dirFromToRegex =
+      /\bfrom\s+((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*%?\s+to\s+((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)%/gi;
+    while ((m = dirFromToRegex.exec(sentence)) !== null) {
+      const afterSlice = sentence.slice(m.index + m[0].length, m.index + m[0].length + 28).toLowerCase();
+      const beforeSlice = sentence.slice(Math.max(0, m.index - 40), m.index).toLowerCase();
+      if (
+        UNDIRECTED_RANGE_BEFORE_FROM_REGEX.test(beforeSlice) ||
+        /^\s*(?:wilson|confidence)\s+interval\b|^\s*ci\b/.test(afterSlice) ||
+        /(?:wilson|confidence)\s+interval\s*$|\bci\s*$/.test(beforeSlice)
+      ) {
+        continue;
+      }
+
+      const windowLower = sentence
+        .slice(Math.max(0, m.index - 85), Math.min(sentence.length, m.index + m[0].length + 85))
+        .toLowerCase();
+      if (!directionalEvalCtxRx.test(windowLower)) continue;
+
+      const beforeTail = sentence.slice(Math.max(0, m.index - 75), m.index);
+      const immediateVerbMatch = beforeTail.match(
+        /\b(ris(?:e|es|ing)|rose|improv(?:e|es|ed|ing)|boost(?:s|ed|ing)?|lift(?:s|ed|ing)?|increas(?:e|es|ed|ing)|rais(?:e|es|ed|ing)|drop(?:s|ped|ping)?|fall(?:s|ing)?|fell|declin(?:e|es|ed|ing)|reduc(?:e|es|ed|ing)|decreas(?:e|es|ed|ing)|lower(?:s|ed|ing)?|cuts?|jumped|jumps?|climbed|climbs?|grew|grow(?:s|ing)?)\s*$/i
+      );
+      const transitiveVerbMatch = !immediateVerbMatch
+        ? beforeTail.match(
+            /\b(improv(?:e|es|ed|ing)|boost(?:s|ed|ing)?|lift(?:s|ed|ing)?|increas(?:e|es|ed|ing)|rais(?:e|es|ed|ing)|reduc(?:e|es|ed|ing)|decreas(?:e|es|ed|ing)|lower(?:s|ed|ing)?|cuts?)\s+(?:[A-Za-z0-9-]+(?:\s+[A-Za-z0-9-]+){0,4})\s*$/i
+          )
+        : null;
+      const rawVerb = immediateVerbMatch?.[1] || transitiveVerbMatch?.[1] || '';
+      const dirVerb = normalizeDirectionalVerb(rawVerb);
+      const value = dirVerb ? `${dirVerb} from ${m[1]}% to ${m[2]}%` : `from ${m[1]}% to ${m[2]}%`;
+
+      const phraseEndIdx =
+        immediateVerbMatch && typeof immediateVerbMatch.index === 'number'
+          ? m.index - beforeTail.length + immediateVerbMatch.index
+          : m.index;
+      const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
+      const labelMeta = extractDirectionalMetricLabel(
+        sentence,
+        phraseEndIdx,
+        m.index + m[0].length,
+        subjMeta.isFeatured,
+        surrounding,
+        subjMeta.subject
+      );
+      const condition = extractDirectionalCondition(sentence, m.index, m.index + m[0].length);
+      const dirContext =
+        [baseline, condition ? `Before-and-after transition (${condition})` : 'Before-and-after transition']
+          .filter(Boolean)
+          .join(' · ') || undefined;
+
+      claimedDirectionalSpans.push([m.index, m.index + m[0].length]);
+      pushMetric(
+        {
+          value,
+          label: labelMeta.label,
+          quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+          context: dirContext,
+          subject: subjMeta.subject,
+          isFeatured: subjMeta.isFeatured,
+          ...(condition ? { condition } : {}),
+        },
+        claimIdx
+      );
+    }
+
+    const dirArrowRegex =
+      /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*%?\s*(?:->|→)\s*((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)%/gi;
+    while ((m = dirArrowRegex.exec(sentence)) !== null) {
+      const mStart = m.index;
+      const mEnd = m.index + m[0].length;
+      if (claimedDirectionalSpans.some(([s, e]) => mStart < e && mEnd > s)) continue;
+      const afterSlice = sentence.slice(mEnd, mEnd + 28).toLowerCase();
+      const beforeSlice = sentence.slice(Math.max(0, mStart - 40), mStart).toLowerCase();
+      if (
+        /^\s*(?:wilson|confidence)\s+interval\b|^\s*ci\b/.test(afterSlice) ||
+        /(?:wilson|confidence)\s+interval\s*$|\bci\s*$/.test(beforeSlice)
+      ) {
+        continue;
+      }
+      const windowLower = sentence
+        .slice(Math.max(0, mStart - 85), Math.min(sentence.length, mEnd + 85))
+        .toLowerCase();
+      if (!directionalEvalCtxRx.test(windowLower)) continue;
+
+      const beforeTail = sentence.slice(Math.max(0, mStart - 75), mStart);
+      const immediateVerbMatch = beforeTail.match(
+        /\b(ris(?:e|es|ing)|rose|improv(?:e|es|ed|ing)|boost(?:s|ed|ing)?|lift(?:s|ed|ing)?|increas(?:e|es|ed|ing)|rais(?:e|es|ed|ing)|drop(?:s|ped|ping)?|fall(?:s|ing)?|fell|declin(?:e|es|ed|ing)|reduc(?:e|es|ed|ing)|decreas(?:e|es|ed|ing)|lower(?:s|ed|ing)?|cuts?|jumped|jumps?|climbed|climbs?|grew|grow(?:s|ing)?)\s*$/i
+      );
+      const dirVerb = immediateVerbMatch ? normalizeDirectionalVerb(immediateVerbMatch[1]) : '';
+      const value = dirVerb ? `${dirVerb} from ${m[1]}% to ${m[2]}%` : `${m[1]}% → ${m[2]}%`;
+
+      const phraseEndIdx =
+        immediateVerbMatch && typeof immediateVerbMatch.index === 'number'
+          ? mStart - beforeTail.length + immediateVerbMatch.index
+          : mStart;
+      const subjMeta = extractMetricSubject(sentence, sig.title || '', mStart);
+      const labelMeta = extractDirectionalMetricLabel(
+        sentence,
+        phraseEndIdx,
+        mEnd,
+        subjMeta.isFeatured,
+        surrounding,
+        subjMeta.subject
+      );
+      const condition = extractDirectionalCondition(sentence, mStart, mEnd);
+      const dirContext =
+        [baseline, condition ? `Before-and-after transition (${condition})` : 'Before-and-after transition']
+          .filter(Boolean)
+          .join(' · ') || undefined;
+
+      claimedDirectionalSpans.push([mStart, mEnd]);
+      pushMetric(
+        {
+          value,
+          label: labelMeta.label,
+          quote: buildConciseMetricQuote(sentence, mStart, m[0].length),
+          context: dirContext,
+          subject: subjMeta.subject,
+          isFeatured: subjMeta.isFeatured,
+          ...(condition ? { condition } : {}),
+        },
+        claimIdx
+      );
+    }
+
     // 2. Percentages & full numeric ranges (e.g., "20--59%", "84.0%", "Up to 27% faster", skipping CI bounds)
     const pctRegex = /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d{1,3})(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d{1,3})(?:\.\d+)?)?)%/gi;
     while ((m = pctRegex.exec(sentence)) !== null) {
+      if (claimedDirectionalSpans.some(([s, e]) => m!.index < e && m!.index + m![0].length > s)) {
+        continue;
+      }
       const afterSlice = sentence.slice(m.index + m[0].length, m.index + m[0].length + 28).toLowerCase();
       const beforeSlice = sentence.slice(Math.max(0, m.index - 28), m.index).toLowerCase();
       if (

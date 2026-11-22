@@ -37,6 +37,7 @@ import {
   classifyEvidenceScope,
   extractSourceVerifiedMetrics,
   getSignalReleaseMetadata,
+  isDirectionalTransitionValue,
   isEvaluationQualityStudy,
   isNonToolNewsOrMarketSignal,
   isReleaseWithoutNotes,
@@ -1848,9 +1849,18 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                         activeVerifiedMetric?.label === vm.label &&
                         (activeVerifiedMetric?.subject || '') === (vm.subject || '') &&
                         (activeVerifiedMetric?.condition || '') === (vm.condition || '');
-                      const displayValue = [vm.subject, vm.value, vm.condition]
-                        .filter(Boolean)
-                        .join(' · ');
+                      const isDirectional = isDirectionalTransitionValue(vm.value);
+                      const dirCondSuffix =
+                        isDirectional && vm.condition
+                          ? /^(?:after|before|with|via|through|upon|following|under|on|for|during|in)\b/i.test(
+                              vm.condition
+                            )
+                            ? ` ${vm.condition}`
+                            : ` (${vm.condition})`
+                          : '';
+                      const displayValue = isDirectional
+                        ? [vm.subject, `${vm.label} ${vm.value}${dirCondSuffix}`].filter(Boolean).join(' · ')
+                        : [vm.subject, vm.value, vm.condition].filter(Boolean).join(' · ');
                       return (
                         <button
                           key={`${vm.subject || ''}-${vm.value}-${vm.condition || ''}-${vm.label}-${idx}`}
@@ -1866,9 +1876,13 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                             )
                           }
                           aria-expanded={isSelectedPill}
-                          aria-label={`Verify metric ${displayValue} ${vm.label} in source passage`}
+                          aria-label={
+                            isDirectional
+                              ? `Verify metric ${displayValue} in source passage`
+                              : `Verify metric ${displayValue} ${vm.label} in source passage`
+                          }
                           title="Tap to inspect the exact verbatim source passage"
-                          className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md border text-left transition-colors cursor-pointer ${
+                          className={`inline-flex flex-wrap items-center gap-1.5 px-2 py-1 rounded-md border text-left transition-colors cursor-pointer max-w-full ${
                             isMobileViewport ? 'min-h-[36px]' : 'min-h-[28px]'
                           } ${
                             isSelectedPill
@@ -1879,21 +1893,25 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                           }`}
                         >
                           <span
-                            className={`font-semibold whitespace-nowrap ${
-                              vm.isFeatured === false ? 'text-zinc-200' : 'text-teal-300'
-                            }`}
+                            className={`font-semibold ${
+                              isDirectional || displayValue.length > 36
+                                ? 'whitespace-normal leading-snug'
+                                : 'whitespace-nowrap'
+                            } ${vm.isFeatured === false ? 'text-zinc-200' : 'text-teal-300'}`}
                           >
                             {displayValue}
                           </span>
-                          <span
-                            className={`text-zinc-400 text-[9.5px] ${
-                              vm.caveat
-                                ? 'max-w-[290px] whitespace-normal leading-snug'
-                                : 'truncate max-w-[175px]'
-                            }`}
-                          >
-                            {vm.label}
-                          </span>
+                          {!isDirectional && (
+                            <span
+                              className={`text-zinc-400 text-[9.5px] ${
+                                vm.caveat
+                                  ? 'max-w-[290px] whitespace-normal leading-snug'
+                                  : 'truncate max-w-[175px]'
+                              }`}
+                            >
+                              {vm.label}
+                            </span>
+                          )}
                         </button>
                       );
                     })}

@@ -32,9 +32,11 @@ import {
   extractSourceVerifiedMetrics,
   extractVerbatimSourceExcerpt,
   getSignalReleaseMetadata,
+  hasDirectionalPercentageTransition,
   hasLatencyOrThroughputWithoutCost,
   hasSourceComplianceAssessment,
   hasTechnicalEngineeringContent,
+  isDirectionalTransitionValue,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
   isNonToolNewsOrMarketSignal,
@@ -210,7 +212,7 @@ export function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): str
 
 const GITHUB_MODELS_ENDPOINT = 'https://models.inference.ai.azure.com/chat/completions';
 const GITHUB_MODELS_MODEL = process.env.GITHUB_MODELS_MODEL || 'gpt-4o-mini';
-const LITERACY_SCHEMA_VERSION = 'v2.5.2';
+const LITERACY_SCHEMA_VERSION = 'v2.5.3';
 
 function normalizeBakeUrl(url: string): string {
   return (url || '').trim().toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
@@ -1275,7 +1277,25 @@ async function main(): Promise<void> {
       ) as Partial<StaticSignalArchive>;
       for (const entry of existingArchive.entries || []) {
         if (entry?.id && entry.url && entry.sourceCategory !== 'DEMO_SEED' && !liveIdSet.has(entry.id)) {
-          archiveMap.set(entry.id, entry);
+          const needsDirectionalRepair = (entry.verifiedMetrics || []).some(
+            (vm) => hasDirectionalPercentageTransition(vm.quote) && !isDirectionalTransitionValue(vm.value)
+          );
+          if (needsDirectionalRepair) {
+            const baseText = entry.verbatimExcerpt || '';
+            const extraQuotes = (entry.verifiedMetrics || [])
+              .map((m) => m.quote || '')
+              .filter((q) => q && !baseText.includes(q));
+            const repairedMetrics = extractSourceVerifiedMetrics({
+              title: entry.title,
+              rawAbstract: [baseText, ...extraQuotes].filter(Boolean).join(' '),
+            });
+            archiveMap.set(entry.id, {
+              ...entry,
+              ...(repairedMetrics.length > 0 ? { verifiedMetrics: repairedMetrics } : {}),
+            });
+          } else {
+            archiveMap.set(entry.id, entry);
+          }
         }
       }
     }
