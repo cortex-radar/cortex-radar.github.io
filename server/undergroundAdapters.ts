@@ -14,6 +14,7 @@ import {
   extractBenchmarkClaimSpec,
   extractFrozenEntities,
   extractNamedLegalInstitution,
+  extractSourceVerifiedMetrics,
   getSignalReleaseMetadata,
   hasLatencyOrThroughputWithoutCost,
   hasSourceComplianceAssessment,
@@ -1930,6 +1931,7 @@ export async function runTriEngineLiteracySpectrum(params: {
   const latencyWithoutCost = hasLatencyOrThroughputWithoutCost(params.signal);
   const legalInstitution = extractNamedLegalInstitution(params.signal);
   const sourceHasCompliance = hasSourceComplianceAssessment(params.signal);
+  const caveatedMetrics = extractSourceVerifiedMetrics(params.signal).filter((m) => Boolean(m.caveat));
 
   const normPrimaryUrl = (params.signal.url || '')
     .trim()
@@ -1974,6 +1976,11 @@ export async function runTriEngineLiteracySpectrum(params: {
     : '';
   const entityUnitQuoteConstraintBlock = [
     'UNIT, ENTITY, COMMA-NUMBER, CONDITION & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve FULL comma-formatted numbers verbatim (e.g., "2,245", "4,096", "5,311", "31,477" — NEVER truncate at commas to "245" or "31"), preserve benchmark test conditions ("4,096-token prompt") paired with subject and exact technical units ("prompt tokens/s", "output tokens", "tokens per second" — NEVER "words per second"), preserve full metric ranges verbatim (e.g., "20–59%", NEVER truncate to "59%"), NEVER invent unbacked percentages/dollars/cost-savings ranges not in the source, and ONLY place quotation marks ("...") around exact verbatim phrases from the Primary Headline or Body above.',
+    caveatedMetrics.length > 0
+      ? `AUTHOR CAVEAT & WORKLOAD SCOPE LOCK: Preserve exact workload scope and author caveat verbatim (${caveatedMetrics
+          .map((m) => `"${m.value} ${m.label}" — Caveat: ${m.caveat}`)
+          .join('; ')}). NEVER state or imply that this speedup applies to an entire training run.`
+      : '',
     frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
     needsVerbatimHeadline
       ? 'HEADLINE MEANING & SCOPE LOCK: Preserve conditional cause/effect clauses (disabled tool vs. lost product) and legal/court scope qualifiers verbatim — keep plainTitle/plainFullTitle aligned to the exact publisher headline without broadening bans or swapping blocked products.'

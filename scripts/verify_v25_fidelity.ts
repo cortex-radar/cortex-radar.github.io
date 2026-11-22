@@ -5,6 +5,7 @@ import { computeProportionateBlast } from '../shared/blastRadiusEngine';
 import {
   buildDeterministicLiteracyPayload,
   enforceEpistemicAndDomainFidelity,
+  hasBannedL1Jargon,
   NO_RELEASE_NOTES_NOTICE,
 } from '../shared/literacyEngine';
 import {
@@ -28,6 +29,7 @@ import {
   isEligibleForNewBadge,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
+  isMetricWarningOrNegationSentence,
   isReleaseWithoutNotes,
   isUpstreamUpdatedSignal,
   parseGitHubReleaseMetadata,
@@ -1613,12 +1615,162 @@ function runFixtureAssertions(): void {
   assert.equal(hebbiaCov.sameEventLinks.length, 1, 'Hebbia same-event evidence must stay single-source');
   assert.equal(hebbiaCov.relatedReadingLinks.length, 1, 'Hebbia unrelated link separates into relatedReadingLinks');
   assert.equal(hebbiaCov.hasIndependentCorroboration, false);
+
+  // 19. Hierarchos-Native Scoped Metric & Author Caveat Fixture
+  const hierarchosReleaseSig = makeSyntheticSignal({
+    id: 'rd-hierarchos-19a-v252',
+    title: 'Hierarchos-Native v0.2.5 achieves up to 27% faster GPU matrix multiplication',
+    source: 'Reddit',
+    sourceCategory: 'REDDIT',
+    originFeedName: 'r/singularity',
+    url: 'https://www.reddit.com/r/singularity/comments/19a/hierarchos/',
+    rawAbstract:
+      'Hierarchos-Native v0.2.5 updates the FP16 WMMA kernel (P3) and achieves up to 27% faster GPU matrix multiplication in the tested workloads. Do not interpret 27% as a speedup for an entire training run; this benchmark only applies to isolated per-dispatch GPU matrix multiplication.',
+  });
+
+  const hierarchosLiveStyleSig = makeSyntheticSignal({
+    id: 'rd-hierarchos-19b-v252',
+    title: 'Hierarchos-Native v0.2.5 is finally out! P3 WMMA update',
+    source: 'Reddit',
+    sourceCategory: 'REDDIT',
+    originFeedName: 'r/singularity',
+    url: 'https://www.reddit.com/r/singularity/comments/1y2epi4/hierarchosnative/',
+    rawAbstract:
+      "the P3 update improves the Full FP16 WMMA kernel cooperative multiplication. the measured improvements against the preserved Main kernel baseline passed across all four protected workloads independently, including the lower bounds of their confidence intervals. the largest measured improvement was around 27%. just to clarify, these are per-dispatch GPU GEMM measurements, not end-to-end training speedups. i don't want to imply that an entire training run is suddenly 27% faster when that isn't what was measured.",
+  });
+
+  for (const hSig of [hierarchosReleaseSig, hierarchosLiveStyleSig]) {
+    const hMetrics = extractSourceVerifiedMetrics(hSig);
+    const pctBadges = hMetrics.filter((m) => m.value.includes('27%'));
+    assert.equal(
+      pctBadges.length,
+      1,
+      `Hierarchos ${hSig.id} must emit strictly ONE deduplicated 27% metric pill, got: ${JSON.stringify(hMetrics)}`
+    );
+    const badge = pctBadges[0];
+    assert.ok(
+      badge.value.includes('Up to 27%') && /GPU matrix multiplication/i.test(badge.label),
+      `Badge must preserve "Up to 27%" and "GPU matrix multiplication", got: ${badge.value} · ${badge.label}`
+    );
+    assert.ok(
+      !(badge.value === '27%' && badge.label === 'Reported faster'),
+      'Badge must never regress to vague "27% · Reported faster"'
+    );
+    assert.ok(
+      !/^improvement$/i.test(badge.subject || ''),
+      `Metric subject must not be generic noun "improvement": ${badge.subject}`
+    );
+    assert.equal(
+      isMetricWarningOrNegationSentence(badge.quote),
+      false,
+      `Positive badge quote must bind to claim passage, NOT warning sentence: ${badge.quote}`
+    );
+    assert.ok(
+      badge.caveat && badge.caveat.length > 15 && isMetricWarningOrNegationSentence(badge.caveat),
+      `Badge must attach author warning as verbatim caveat: ${JSON.stringify(badge)}`
+    );
+
+    const adversarialHierarchosLlm: LiteracySpectrumPayload = {
+      plainTitle: 'Hierarchos-Native speeds up training',
+      plainFullTitle: 'Hierarchos-Native v0.2.5 makes entire training runs 27% faster',
+      levels: {
+        1: {
+          analogy:
+            'Imagine upgrading a highway engine so an entire training run is 27% faster from start to finish.',
+          everydayWhy: 'Speeds up an entire training run by 27%.',
+        },
+        2: {
+          whatHappened: 'Hierarchos-Native v0.2.5 achieves a 27% speedup for an entire training run.',
+          whoBuiltIt: 'Hierarchos author',
+          problemSolved: 'Makes entire training runs 27% faster.',
+        },
+        3: {
+          bridgeSummary: 'P3 WMMA makes end-to-end training runs 27% faster.',
+        },
+        4: {
+          roiAndFinOps: 'Delivers 27% faster end-to-end training across workloads.',
+          readinessAndRisk: 'Single-User / Local Hardware Experiment.',
+          clientAdvice: 'Deploy for full training speedups.',
+        },
+        5: {
+          architectureBrief: 'P3 kernel makes an entire training run 27% faster.',
+          specsAndCaveats: '27% · Reported faster.',
+          streetConsensus: 'r/singularity thread.',
+        },
+      },
+      glossary: [],
+      generatedBy: 'OLLAMA',
+    };
+
+    const fixedH = enforceEpistemicAndDomainFidelity(hSig, adversarialHierarchosLlm, 'BANKING');
+    const detH = buildDeterministicLiteracyPayload(hSig, 'BANKING');
+
+    for (const payload of [fixedH, detH]) {
+      assert.equal(
+        hasBannedL1Jargon(`${payload.levels[1].analogy} ${payload.levels[1].everydayWhy}`),
+        false,
+        `Hierarchos L1 must remain free of banned technical acronyms: ${JSON.stringify(payload.levels[1])}`
+      );
+
+      const overbroadRx =
+        /(?:(?:makes?|speeds?\s+up)\s+(?:an?\s+)?(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?s?(?:\s+by)?\s+(?:up\s+to\s+)?27%|(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?s?\s+(?:is|are|runs?)\s+(?:suddenly\s+)?(?:up\s+to\s+)?27%\s+faster|27%\s+(?:faster|speedup)\s+(?:for|on|across)\s+(?:an?\s+)?(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?)/i;
+      const explicitNegationRx =
+        /\b(?:don['’]t\s+want\s+to\s+imply|do\s+not\s+want\s+to\s+imply|do\s+not\s+interpret|don['’]t\s+interpret|isn['’]t\s+what\s+was\s+measured|not\s+(?:a|an)\s+(?:overall\s+)?(?:speedup|end[- ]to[- ]end)|not\s+end[- ]to[- ]end|never\s+(?:a\s+)?speedup|rather\s+than)\b/i;
+
+      for (const f of collectLiteracyFields(payload)) {
+        for (const sent of f.split(/(?<=[.!?])\s+/)) {
+          if (overbroadRx.test(sent)) {
+            assert.ok(
+              explicitNegationRx.test(sent),
+              `Hierarchos summary must NEVER claim an unhedged 27% speedup for an entire training run: ${sent}`
+            );
+          }
+        }
+      }
+
+      const lensTexts = [
+        `${payload.levels[1].analogy} ${payload.levels[1].everydayWhy}`,
+        `${payload.levels[2].whatHappened} ${payload.levels[2].problemSolved}`,
+        payload.levels[3].bridgeSummary,
+        `${payload.levels[4].roiAndFinOps} ${payload.levels[4].clientAdvice}`,
+        `${payload.levels[5].architectureBrief} ${payload.levels[5].specsAndCaveats}`,
+      ];
+      lensTexts.forEach((txt, idx) => {
+        assert.ok(
+          /\b(?:matrix\s+multiplication|tested\s+workloads?|per[- ]dispatch|gpu\s+gemm|\bgemm\b)\b/i.test(txt),
+          `Hierarchos L${idx + 1} must retain narrow workload scope: ${txt}`
+        );
+        assert.ok(
+          /\b(?:caveat|not\s+(?:measured\s+as\s+)?an?\s+(?:end[- ]to[- ]end|overall)|not\s+end[- ]to[- ]end|rather\s+than\s+an?\s+overall|only\s+applies\s+to|per[- ]dispatch)\b/i.test(
+            txt
+          ),
+          `Hierarchos L${idx + 1} must preserve author caveat: ${txt}`
+        );
+      });
+    }
+  }
+
+  // Warning-only sentence without positive benchmark claim must emit zero "Reported faster" badges
+  const warningOnlySig = makeSyntheticSignal({
+    id: 'rd-hierarchos-warning-only-v252',
+    title: 'Author clarification on training benchmark',
+    source: 'Reddit',
+    sourceCategory: 'REDDIT',
+    rawAbstract:
+      'Do not interpret 27% as a speedup for an entire training run when that is not what was measured.',
+  });
+  const warnOnlyMetrics = extractSourceVerifiedMetrics(warningOnlySig);
+  assert.equal(
+    warnOnlyMetrics.filter((m) => m.value.includes('27%') || /reported faster/i.test(m.label)).length,
+    0,
+    `Warning-only sentence must emit 0 positive/Reported faster badges, got: ${JSON.stringify(warnOnlyMetrics)}`
+  );
 }
 
 function runLiveSnapshotAndArchiveAssertions(): void {
   assert.ok(fs.existsSync(SNAPSHOT_PATH), `Missing baked snapshot at ${SNAPSHOT_PATH}`);
   const snapshot = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf8')) as StaticGalaxySnapshot;
-  assert.equal(snapshot.promptVersion, 'v2.5.1', 'Snapshot must carry promptVersion v2.5.1');
+  assert.equal(snapshot.promptVersion, 'v2.5.2', 'Snapshot must carry promptVersion v2.5.2');
   assert.ok(Array.isArray(snapshot.signals) && snapshot.signals.length > 0, 'Snapshot must contain signals');
   assert.ok(fs.existsSync(RSS_PATH), `Missing RSS output at ${RSS_PATH}`);
   const rssXml = fs.readFileSync(RSS_PATH, 'utf8');
@@ -1630,10 +1782,26 @@ function runLiveSnapshotAndArchiveAssertions(): void {
   assert.equal(archive.count, archive.entries.length);
   assert.ok(archive.entries.length <= 2000, 'Archive must stay capped at <= 2000 entries');
   const seenArchiveIds = new Set<string>();
+  const positiveMetricRx = /(?:faster|speedup|improvement|reduction|higher|gain|percentage)/i;
+  const badSubjectRx =
+    /^(?:and|or|but|the|a|an|for|with|from|to|in|on|at|by|of|as|is|are|was|were|it|they|its|improvement|improvements|speedup|speedups|gain|gains|reduction|reductions|accuracy|latency|throughput|performance|result|results)$/i;
   for (const entry of archive.entries) {
     assert.ok(entry.id && entry.title && entry.url, `Invalid archive entry: ${JSON.stringify(entry)}`);
     assert.ok(!seenArchiveIds.has(entry.id), `Duplicate archive ID: ${entry.id}`);
     seenArchiveIds.add(entry.id);
+    for (const vm of entry.verifiedMetrics || []) {
+      assert.ok(
+        !vm.subject || !badSubjectRx.test(vm.subject.trim()),
+        `Archived signal ${entry.id} verifiedMetrics leaked bad subject "${vm.subject}"`
+      );
+      if (positiveMetricRx.test(`${vm.value} ${vm.label}`)) {
+        assert.equal(
+          isMetricWarningOrNegationSentence(vm.quote),
+          false,
+          `Archived signal ${entry.id} positive metric pill bound to author warning/negation quote: ${vm.quote}`
+        );
+      }
+    }
   }
 
   const refNowMs = snapshot.bakedAtMs || Date.now();
@@ -1692,12 +1860,16 @@ function runLiveSnapshotAndArchiveAssertions(): void {
     const compCorpus = buildRawComplianceCorpus(sig);
     for (const vm of sig.verifiedMetrics || []) {
       assert.ok(
-        !vm.subject ||
-          !/^(?:and|or|but|the|a|an|for|with|from|to|in|on|at|by|of|as|is|are|was|were|it|they|its)$/i.test(
-            vm.subject.trim()
-          ),
-        `Live signal ${sig.id} verifiedMetrics leaked stopword subject "${vm.subject}" on ${vm.value}`
+        !vm.subject || !badSubjectRx.test(vm.subject.trim()),
+        `Live signal ${sig.id} verifiedMetrics leaked bad subject "${vm.subject}" on ${vm.value}`
       );
+      if (positiveMetricRx.test(`${vm.value} ${vm.label}`)) {
+        assert.equal(
+          isMetricWarningOrNegationSentence(vm.quote),
+          false,
+          `Live signal ${sig.id} positive metric pill bound to author warning/negation quote: ${vm.quote}`
+        );
+      }
       const pillTxt = [vm.subject, vm.value, vm.condition].filter(Boolean).join(' ');
       const pillTruncs = findTruncatedCommaNumbers(pillTxt, rawPrimaryCorpus);
       assert.deepEqual(
@@ -1889,6 +2061,34 @@ function runLiveSnapshotAndArchiveAssertions(): void {
   }
 
   // Specific assertions on live Inkling / Gemini effort / Hebbia / Squoosh Bench / ECtHR / TideCache / Ask HN targets when in snapshot window
+  const liveHierarchos = snapshot.signals.find((s) => s.id === 'rd-street-1y2epi4');
+  if (liveHierarchos) {
+    const hMetrics = liveHierarchos.verifiedMetrics || [];
+    const h27 = hMetrics.filter((m) => m.value.includes('27%'));
+    assert.equal(h27.length, 1, `Live Hierarchos must deduplicate into one 27% pill, got: ${JSON.stringify(hMetrics)}`);
+    assert.ok(
+      h27[0].value.includes('Up to 27%') && /GPU matrix multiplication/i.test(h27[0].label),
+      `Live Hierarchos pill must preserve Up to 27% + GPU matrix multiplication: ${JSON.stringify(h27[0])}`
+    );
+    assert.equal(isMetricWarningOrNegationSentence(h27[0].quote), false);
+    assert.ok(Boolean(h27[0].caveat), 'Live Hierarchos pill must include verbatim author caveat');
+    const hLit = snapshot.literacyBySignalId[liveHierarchos.id];
+    const hOverbroadRx =
+      /(?:(?:makes?|speeds?\s+up)\s+(?:an?\s+)?(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?s?(?:\s+by)?\s+(?:up\s+to\s+)?27%|(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?s?\s+(?:is|are|runs?)\s+(?:suddenly\s+)?(?:up\s+to\s+)?27%\s+faster|27%\s+(?:faster|speedup)\s+(?:for|on|across)\s+(?:an?\s+)?(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?)/i;
+    const hNegRx =
+      /\b(?:don['’]t\s+want\s+to\s+imply|do\s+not\s+want\s+to\s+imply|do\s+not\s+interpret|don['’]t\s+interpret|isn['’]t\s+what\s+was\s+measured|not\s+(?:a|an)\s+(?:overall\s+)?(?:speedup|end[- ]to[- ]end)|not\s+end[- ]to[- ]end|never\s+(?:a\s+)?speedup|rather\s+than)\b/i;
+    for (const f of collectLiteracyFields(hLit)) {
+      for (const sent of f.split(/(?<=[.!?])\s+/)) {
+        if (hOverbroadRx.test(sent)) {
+          assert.ok(
+            hNegRx.test(sent),
+            `Live Hierarchos L1-L5 claimed end-to-end training 27% speedup without negation: ${sent}`
+          );
+        }
+      }
+    }
+  }
+
   const liveInklingBench = snapshot.signals.find((s) => s.id === 'rd-street-1y2cr57');
   if (liveInklingBench) {
     const iMetrics = liveInklingBench.verifiedMetrics || [];
@@ -1997,7 +2197,7 @@ function runLiveSnapshotAndArchiveAssertions(): void {
   }
 
   console.log(
-    `[VERIFY v2.5.1] PASSED: All 18 fixture suites + ${snapshot.signals.length} live signals, ${archive.count} archived entries & RSS (Top 10 maxWindow=${maxTopAgeMs / 3600_000}h, count48h=${countUnder48h}).`
+    `[VERIFY v2.5.2] PASSED: All 19 fixture suites + ${snapshot.signals.length} live signals, ${archive.count} archived entries & RSS (Top 10 maxWindow=${maxTopAgeMs / 3600_000}h, count48h=${countUnder48h}).`
   );
 }
 

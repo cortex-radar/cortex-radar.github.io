@@ -1885,7 +1885,13 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                           >
                             {displayValue}
                           </span>
-                          <span className="text-zinc-400 text-[9.5px] truncate max-w-[175px]">
+                          <span
+                            className={`text-zinc-400 text-[9.5px] ${
+                              vm.caveat
+                                ? 'max-w-[290px] whitespace-normal leading-snug'
+                                : 'truncate max-w-[175px]'
+                            }`}
+                          >
                             {vm.label}
                           </span>
                         </button>
@@ -1914,6 +1920,20 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                       <blockquote className="font-sans text-[11.5px] text-zinc-200 leading-[1.45] border-l-2 border-teal-400/50 pl-2">
                         &ldquo;{activeVerifiedMetric.quote}&rdquo;
                       </blockquote>
+                      {activeVerifiedMetric.caveat && (
+                        <div
+                          role="note"
+                          aria-label="Author warning / caveat"
+                          className="rounded border border-amber-400/35 bg-amber-500/[0.08] px-2 py-1.5 space-y-0.5"
+                        >
+                          <div className="font-mono text-[9px] uppercase tracking-wider font-semibold text-amber-300">
+                            Author warning / caveat
+                          </div>
+                          <p className="font-sans text-[11px] text-amber-100/95 leading-[1.45]">
+                            &ldquo;{activeVerifiedMetric.caveat}&rdquo;
+                          </p>
+                        </div>
+                      )}
                       <div className="flex items-center justify-between gap-2 pt-0.5">
                         <a
                           href={focusedSignal.url}

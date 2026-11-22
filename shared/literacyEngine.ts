@@ -1419,6 +1419,14 @@ function buildDisjointL5Sections(
         specsAndCaveats = `${specsAndCaveats.replace(/[.]+$/, '')} (${clause}).`;
       }
     }
+    const caveated = allMetrics.filter((m) => Boolean(m.caveat));
+    if (caveated.length > 0 && !/not\s+(?:an?\s+)?end[- ]to[- ]end|caveat/i.test(specsAndCaveats)) {
+      const topCov = caveated[0];
+      const covNote = /(?:training\s+run|end[- ]to[- ]end)/i.test(topCov.caveat || '')
+        ? 'author caveat: not an end-to-end speedup for an entire training run'
+        : `author caveat: ${truncateAtWordBoundary(topCov.caveat || '', 130)}`;
+      specsAndCaveats = `${specsAndCaveats.replace(/[.]+$/, '')} (${topCov.value} ${topCov.label} — ${covNote}).`;
+    }
   } else {
     const relMeta = getSignalReleaseMetadata(sig);
     if (relMeta) {
@@ -2508,6 +2516,110 @@ export function enforceEpistemicAndDomainFidelity(
         `${l5.architectureBrief} ${l5.specsAndCaveats}`
       );
     }
+  }
+
+  // Gate 7d: Caveat-Aware Workload Scope Lock across headlines & L1-L5
+  // Prevents turning a narrow kernel/GPU-GEMM speedup (e.g. "Up to 27% faster GPU matrix multiplication")
+  // into an overbroad end-to-end training-run claim and ensures the author's warning travels across every lens.
+  const caveatedMetrics = evalMetrics.filter((m) => Boolean(m.caveat));
+  if (caveatedMetrics.length > 0) {
+    const primaryCaveated = caveatedMetrics[0];
+    const caveatIsTrainingScope = /(?:training\s+run|end[- ]to[- ]end\s+training)/i.test(
+      primaryCaveated.caveat || ''
+    );
+    const caveatPhrase = caveatIsTrainingScope
+      ? 'author caveat: not measured as an end-to-end speedup for an entire training run'
+      : `author caveat: ${truncateAtWordBoundary(primaryCaveated.caveat || '', 140)}`;
+    const scopedCaveatFull = `${primaryCaveated.value} ${primaryCaveated.label} (${caveatPhrase})`;
+    const scopedCaveatL1 = enforceZeroJargonL1(scopedCaveatFull);
+
+    const overbroadTrainingClaimRx =
+      /(?:(?:makes?|speeds?\s+up|accelerates?)\s+(?:an?\s+)?(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?s?(?:\s+by)?\s+(?:up\s+to\s+)?\d+(?:\.\d+)?%\s*(?:faster)?|(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?s?\s+(?:is|are|runs?|gets?|becomes?)?\s*(?:suddenly\s+)?(?:up\s+to\s+)?\d+(?:\.\d+)?%\s*(?:faster|speedup|improvement)|\d+(?:\.\d+)?%\s+(?:faster|speedup|improvement)\s+(?:for|across|on)\s+(?:an?\s+)?(?:entire|whole|full|end[- ]to[- ]end)\s+training(?:\s+run)?s?)/gi;
+
+    const neutralizeOverbroadClaim = (txt: string, useL1: boolean): string => {
+      if (!txt) return txt;
+      const replacement = useL1 ? scopedCaveatL1 : scopedCaveatFull;
+      return txt.replace(overbroadTrainingClaimRx, (match, offset: number, fullStr: string) => {
+        const beforeCtx = fullStr.slice(Math.max(0, offset - 48), offset);
+        if (
+          /\b(?:not|n['’]t|never|rather\s+than|instead\s+of|without|do\s+not|don['’]t|imply(?:\s+that)?|interpret\b[^.]{0,24}\bas)\s*(?:that\s+|a\s+|an\s+)?$/i.test(
+            beforeCtx
+          )
+        ) {
+          return match;
+        }
+        return replacement;
+      });
+    };
+
+    plainTitle = neutralizeOverbroadClaim(plainTitle, true);
+    plainFullTitle = neutralizeOverbroadClaim(plainFullTitle, true);
+    l1 = {
+      analogy: neutralizeOverbroadClaim(l1.analogy, true),
+      everydayWhy: neutralizeOverbroadClaim(l1.everydayWhy, true),
+    };
+    l2 = {
+      whatHappened: neutralizeOverbroadClaim(l2.whatHappened, false),
+      whoBuiltIt: l2.whoBuiltIt,
+      problemSolved: neutralizeOverbroadClaim(l2.problemSolved, false),
+    };
+    l3 = {
+      bridgeSummary: neutralizeOverbroadClaim(l3.bridgeSummary, false),
+    };
+    l4 = {
+      roiAndFinOps: neutralizeOverbroadClaim(l4.roiAndFinOps, false),
+      readinessAndRisk: neutralizeOverbroadClaim(l4.readinessAndRisk, false),
+      clientAdvice: neutralizeOverbroadClaim(l4.clientAdvice, false),
+    };
+    l5 = {
+      architectureBrief: neutralizeOverbroadClaim(l5.architectureBrief, false),
+      specsAndCaveats: neutralizeOverbroadClaim(l5.specsAndCaveats, false),
+      streetConsensus: l5.streetConsensus,
+    };
+
+    const hasNarrowWorkloadAndCaveat = (combinedLens: string): boolean => {
+      const hasScope =
+        /\b(?:matrix\s+multiplication|tested\s+workloads?|per[- ]dispatch|gpu\s+gemm|\bgemm\b)\b/i.test(
+          combinedLens
+        ) || combinedLens.toLowerCase().includes(primaryCaveated.label.toLowerCase());
+      const hasCaveat =
+        /\b(?:caveat|not\s+(?:measured\s+as\s+)?an?\s+(?:end[- ]to[- ]end|overall)|not\s+end[- ]to[- ]end|entire\s+training\s+run[^.]{0,30}(?:not|isn['’]t|wasn['’]t)|not\s+for\s+(?:an?\s+)?entire\s+training|only\s+applies\s+to)\b/i.test(
+          combinedLens
+        );
+      return hasScope && hasCaveat;
+    };
+
+    const ensureScopedCaveatInLens = (
+      primaryField: string,
+      combinedLens: string,
+      useL1: boolean
+    ): string => {
+      if (!primaryField || hasNarrowWorkloadAndCaveat(combinedLens)) return primaryField;
+      const clause = useL1 ? scopedCaveatL1 : scopedCaveatFull;
+      return `${primaryField.replace(/[.]+$/, '').trim()} (${clause}).`;
+    };
+
+    l1.everydayWhy = ensureScopedCaveatInLens(
+      l1.everydayWhy,
+      `${l1.analogy} ${l1.everydayWhy}`,
+      true
+    );
+    l2.whatHappened = ensureScopedCaveatInLens(
+      l2.whatHappened,
+      `${l2.whatHappened} ${l2.problemSolved}`,
+      false
+    );
+    l3.bridgeSummary = ensureScopedCaveatInLens(l3.bridgeSummary, l3.bridgeSummary, false);
+    l4.roiAndFinOps = ensureScopedCaveatInLens(
+      l4.roiAndFinOps,
+      `${l4.roiAndFinOps} ${l4.clientAdvice}`,
+      false
+    );
+    l5.specsAndCaveats = ensureScopedCaveatInLens(
+      l5.specsAndCaveats,
+      `${l5.architectureBrief} ${l5.specsAndCaveats}`,
+      false
+    );
   }
 
   // Gate 8: Zero Unbacked Compliance Claims Audit across ALL lenses (SOC 2, zero-retention, HIPAA, GDPR, enterprise pilot)

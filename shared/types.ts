@@ -226,6 +226,7 @@ export interface VerifiedSourceMetric {
   subject?: string;
   isFeatured?: boolean;
   condition?: string;
+  caveat?: string;
 }
 
 export type EvidenceScope =

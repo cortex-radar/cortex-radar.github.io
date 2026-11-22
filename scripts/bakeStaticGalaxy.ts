@@ -210,7 +210,7 @@ export function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): str
 
 const GITHUB_MODELS_ENDPOINT = 'https://models.inference.ai.azure.com/chat/completions';
 const GITHUB_MODELS_MODEL = process.env.GITHUB_MODELS_MODEL || 'gpt-4o-mini';
-const LITERACY_SCHEMA_VERSION = 'v2.5.1';
+const LITERACY_SCHEMA_VERSION = 'v2.5.2';
 
 function normalizeBakeUrl(url: string): string {
   return (url || '').trim().toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
@@ -381,8 +381,14 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
   const latencyWithoutCost = hasLatencyOrThroughputWithoutCost(sig);
   const legalInstitution = extractNamedLegalInstitution(sig);
   const sourceHasCompliance = hasSourceComplianceAssessment(sig);
+  const caveatedMetrics = extractSourceVerifiedMetrics(sig).filter((m) => Boolean(m.caveat));
   const entityUnitQuoteLine = [
     'UNIT, ENTITY, COMMA-NUMBER, CONDITION & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve FULL comma-formatted numbers verbatim (e.g. "2,245", "4,096", "5,311", "31,477" — NEVER truncate at commas to "245" or "31"), preserve test conditions ("4,096-token prompt") paired with subject and exact units ("prompt tokens/s", "output tokens", "tokens per second" — NEVER "words per second"), preserve full ranges verbatim ("20–59%", NEVER truncate to "59%"), NEVER invent unbacked percentages/dollars/cost-savings ranges not in Primary Post Body, and ONLY put double quotes around exact substrings present in Primary Headline or Body above.',
+    caveatedMetrics.length > 0
+      ? `AUTHOR CAVEAT & WORKLOAD SCOPE LOCK: Preserve exact workload scope and warning verbatim (${caveatedMetrics
+          .map((m) => `"${m.value} ${m.label}" — Author caveat: ${m.caveat}`)
+          .join('; ')}). NEVER imply or state that this benchmark speeds up an entire training run.`
+      : '',
     frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
     needsVerbatimHeadline
       ? 'HEADLINE MEANING & SCOPE LOCK: Preserve conditional cause/effect triggers (disabled tool vs. lost product) and legal/court scope qualifiers verbatim — keep plainTitle/plainFullTitle faithful to the exact publisher headline without broadening court bans or inverting conditions.'

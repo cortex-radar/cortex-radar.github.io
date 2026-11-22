@@ -1123,11 +1123,12 @@ function extractMetricSubject(
   const localRawClause = clauseBoundaryParts[clauseBoundaryParts.length - 1] || '';
   const afterComparisonSplitter = clauseBoundaryParts.length >= 2 && !/\*{2}/.test(localRawClause);
   const inlineSysMatch = localRawClause.match(
-    /\b([A-Za-z][A-Za-z0-9._-]*(?:\.[A-Za-z0-9._-]+)?)\s+(?:hits?|achieves?|reaches?|scored|used|at|was)\b[^,.;\n]{0,45}$/i
+    /\b([A-Za-z][A-Za-z0-9._-]*(?:\.[A-Za-z0-9._-]+)?)(?:\s+v\d+(?:\.\d+)*(?:-[A-Za-z0-9.]+)?)?\s+(?:hits?|achieves?|reaches?|scored|used|at|was)\b[^,.;\n]{0,45}$/i
   );
   if (
     inlineSysMatch?.[1] &&
-    !/^(?:that|which|it|we|they|them|this|these|those|same|prompt|model|models|system|systems|variant|variants|and|or|but|for|with|from|to|in|on|at|by|of|as|is|are|was|were|be|been|have|has|had|can|could|will|would|may|might|only|just|also|more|less|then|than|here|there|where|when|while)$/i.test(
+    !/^v?\d+(?:\.\d+)+(?:-[a-z0-9.]+)?$/i.test(inlineSysMatch[1]) &&
+    !/^(?:that|which|it|we|they|them|this|these|those|same|prompt|model|models|system|systems|variant|variants|and|or|but|for|with|from|to|in|on|at|by|of|as|is|are|was|were|be|been|have|has|had|can|could|will|would|may|might|only|just|also|more|less|then|than|here|there|where|when|while|improvement|improvements|speedup|speedups|gain|gains|reduction|reductions|accuracy|latency|throughput|performance|result|results|measurement|measurements|error|distance|overhead|cost|rate|ratio|score|scores|delta|change|changes|difference|margin|run|training|workload|workloads|case|cases|kernel|kernels|batch|batches|memory|vram|ram|number|numbers|figure|figures|value|values|output|outputs|input|inputs)$/i.test(
       inlineSysMatch[1]
     )
   ) {
@@ -1234,12 +1235,28 @@ function extractConfidenceIntervalNote(sentence: string): string | undefined {
   return undefined;
 }
 
+const METRIC_WARNING_OR_NEGATION_REGEX =
+  /\b(?:do\s+not\s+interpret|don['’]t\s+interpret|should\s+not\s+be\s+read\s+as|shouldn['’]t\s+be\s+read\s+as|do\s+not\s+read\s+(?:this|that|it)\s+as|don['’]t\s+want\s+to\s+imply|do\s+not\s+want\s+to\s+imply|not\s+(?:a|an)\s+(?:overall\s+|general\s+|end[- ]to[- ]end\s+)?(?:speedup|improvement|gain)\s+for|not\s+end[- ]to[- ]end\s+(?:training\s+)?speedups?|does\s+not\s+translate\s+(?:to|into)|doesn['’]t\s+translate\s+(?:to|into)|rather\s+than\s+an?\s+(?:overall|end[- ]to[- ]end)|isn['’]t\s+what\s+was\s+measured|wasn['’]t\s+what\s+was\s+measured|not\s+what\s+was\s+measured|only\s+applies\s+to|warning\s*[:—-]|warning\s+against|(?:author\s+)?caveat\s*[:—-]|as\s+a\s+caveat)\b/i;
+
+export function isMetricWarningOrNegationSentence(sentence: string): boolean {
+  return METRIC_WARNING_OR_NEGATION_REGEX.test(sentence || '');
+}
+
+function hasUpperBoundPercentageQualifier(sentence: string, matchIndex: number): boolean {
+  const before = (sentence || '').slice(Math.max(0, matchIndex - 68), matchIndex).toLowerCase();
+  return /\b(?:up\s+to|as\s+much\s+as|peak(?:s|ed|ing)?\s+(?:at|of)|largest\s+(?:measured\s+)?(?:improvement|speedup|gain)\s+(?:was|is|of)\s+(?:around\s+|about\s+)?|maximum\s+(?:measured\s+)?(?:improvement|speedup|gain)\s+(?:was|is|of)\s+(?:around\s+|about\s+)?)\s*$/.test(
+    before
+  );
+}
+
 function inferPercentageLabel(
   sentence: string,
   matchIndex: number,
-  isFeatured?: boolean
-): { label: string; context?: string } {
+  isFeatured?: boolean,
+  surroundingContext = ''
+): { label: string; context?: string; isFasterQualifier?: boolean } {
   const lower = sentence.toLowerCase();
+  const combinedScope = `${sentence} ${surroundingContext}`.toLowerCase();
   const nearbyStart = Math.max(0, matchIndex - 75);
   const nearbyEnd = Math.min(sentence.length, matchIndex + 75);
   const windowStr = sentence.slice(nearbyStart, nearbyEnd).toLowerCase();
@@ -1276,8 +1293,53 @@ function inferPercentageLabel(
   if (/\b(?:memory|hbm|vram)\b/.test(windowStr) && /\breduc\w*|\blower|\bsaving/.test(windowStr)) {
     return { label: 'Memory reduction', context: combinedContext };
   }
+
+  // Scoped GPU matrix multiplication / GEMM / WMMA workload check
+  const hasGemmScope =
+    /\b(?:gpu\s+matrix\s+multiplication|matrix\s+multiplication|gpu\s+gemm|per[- ]dispatch\s+gpu\s+gemm|wmma\s+kernel|\bgemm\b)\b/.test(
+      combinedScope
+    );
+  const hasSpeedCue =
+    /\b(?:faster|speedup|improvement|gain|largest\s+measured)\b/.test(lower) ||
+    hasUpperBoundPercentageQualifier(sentence, matchIndex);
+  if (hasGemmScope && hasSpeedCue) {
+    const hasWorkloadScope =
+      /\b(?:tested\s+workloads?|protected\s+workloads?|per[- ]dispatch|benchmark(?:ed)?\s+workloads?)\b/.test(
+        combinedScope
+      );
+    return {
+      label: hasWorkloadScope
+        ? 'GPU matrix multiplication in the tested workloads'
+        : 'GPU matrix multiplication',
+      isFasterQualifier: true,
+      context: combinedContext || 'Per-dispatch GPU matrix multiplication benchmark (not end-to-end training)',
+    };
+  }
+
+  // Extract explicit operation scope right after "faster ..." before falling back
+  const explicitFasterOp = sentence
+    .slice(matchIndex, Math.min(sentence.length, matchIndex + 95))
+    .match(/^\d+(?:\.\d+)?%\s+faster\s+([a-z0-9][a-z0-9\s-]{2,48}?)(?=[.,;!?\n]|$|\s+(?:when|than|vs\.?|versus|compared))/i);
+  if (explicitFasterOp?.[1]) {
+    const cleanOp = explicitFasterOp[1].replace(/\s+/g, ' ').trim();
+    if (cleanOp.length >= 4 && !/^(?:than|overall|total|for)$/i.test(cleanOp)) {
+      return {
+        label: cleanOp,
+        isFasterQualifier: true,
+        context: combinedContext,
+      };
+    }
+  }
+
   if (/\breduction\b|\bfaster\b|\bcheaper\b|\blower\b|\bcut\b|\bdrop\b|\bsaving\w*\b/.test(windowStr)) {
     const word = windowStr.match(/\b(reduction|faster|cheaper|lower|cut|drop|saving\w*)\b/)?.[1];
+    if (word === 'faster') {
+      return {
+        label: 'Scoped workload',
+        isFasterQualifier: true,
+        context: combinedContext,
+      };
+    }
     return { label: word ? `Reported ${word}` : 'Reported delta', context: combinedContext };
   }
   if (/\bverified\b|\bpass(?:ed|@\d+)?\b/.test(windowStr)) return { label: 'Evaluation pass rate', context: combinedContext };
@@ -1297,8 +1359,8 @@ function inferPercentagePointLabel(sentence: string, matchIndex: number): { labe
 
 /**
  * Extracts quantitative metrics verbatim from ingested source text along with the exact
- * supporting sentence (`quote`), comparison baseline, and subject attribution, ordering
- * featured systems before comparison baselines.
+ * supporting sentence (`quote`), comparison baseline, subject attribution, test condition,
+ * and author caveats/warnings (never binding a positive badge to a warning/negation sentence).
  */
 export function extractSourceVerifiedMetrics(
   sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
@@ -1307,21 +1369,81 @@ export function extractSourceVerifiedMetrics(
     ...splitExactSourceSentences(sig.rawAbstract || ''),
     ...splitExactSourceSentences(sig.title || ''),
   ];
+  const indexedSentences = sentences.map((text, idx) => ({
+    idx,
+    text,
+    isWarning: isMetricWarningOrNegationSentence(text),
+  }));
+  const warningSentences = indexedSentences.filter((s) => s.isWarning);
+  const claimSentences = indexedSentences.filter((s) => !s.isWarning);
+
   const out: VerifiedSourceMetric[] = [];
   const seenKeys = new Set<string>();
 
-  const pushMetric = (metric: VerifiedSourceMetric) => {
-    const subjKey = (metric.subject || '').toLowerCase().trim();
-    const valKey = metric.value.toLowerCase().replace(/\s+/g, ' ').trim();
-    const condKey = (metric.condition || '').toLowerCase().trim();
-    const dedupKey = `${subjKey}|${valKey}|${condKey}`;
-    if (seenKeys.has(dedupKey) || out.length >= 16) return;
-    seenKeys.add(dedupKey);
-    out.push(metric);
+  const attachCaveatForMetric = (
+    metricValue: string,
+    claimIdx: number
+  ): string | undefined => {
+    if (warningSentences.length === 0) return undefined;
+    const coreNum = metricValue.match(/(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*%?/)?.[1];
+    const hasPct = metricValue.includes('%');
+    const matchedWarnings = warningSentences.filter((w) => {
+      if (w.idx > claimIdx && w.idx <= claimIdx + 2) return true;
+      if (coreNum) {
+        const coreRx = new RegExp(
+          `(?<![\\d.,])${escapeNumericRegex(coreNum)}${hasPct ? '%' : ''}(?![\\d%])`,
+          'i'
+        );
+        if (coreRx.test(w.text)) return true;
+      }
+      return false;
+    });
+    if (matchedWarnings.length === 0) return undefined;
+    const joined = matchedWarnings.map((w) => w.text.trim()).join(' ').trim();
+    return joined || undefined;
   };
 
-  for (const sentence of sentences) {
+  const pushMetric = (metric: VerifiedSourceMetric, claimIdx: number) => {
+    const caveat = attachCaveatForMetric(metric.value, claimIdx);
+    const enriched: VerifiedSourceMetric = caveat ? { ...metric, caveat } : metric;
+    const subjKey = (enriched.subject || '').toLowerCase().trim();
+    const valCanon = enriched.value
+      .toLowerCase()
+      .replace(/^up\s+to\s+/i, '')
+      .replace(/\s+faster$/i, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    const condKey = (enriched.condition || '').toLowerCase().trim();
+    const valCondKey = `${valCanon}|${condKey}`;
+    const dedupKey = `${subjKey}|${valCondKey}`;
+    if (seenKeys.has(dedupKey) || out.length >= 16) return;
+    if (!subjKey && out.some((prev) => {
+      const pVal = prev.value
+        .toLowerCase()
+        .replace(/^up\s+to\s+/i, '')
+        .replace(/\s+faster$/i, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+      return `${pVal}|${(prev.condition || '').toLowerCase().trim()}` === valCondKey;
+    })) {
+      return;
+    }
+    seenKeys.add(dedupKey);
+    out.push(enriched);
+  };
+
+  const fullDocContext = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '').slice(0, 1800)}`;
+
+  for (const { idx: claimIdx, text: sentence } of claimSentences) {
     const baseline = extractComparisonBaseline(sentence);
+    const surrounding = [
+      sentences[claimIdx - 1] || '',
+      sentences[claimIdx + 1] || '',
+      sentences[claimIdx + 2] || '',
+      /\b(?:wmma|gemm|matrix\s+multiplication)\b/i.test(fullDocContext) ? fullDocContext : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     // 1. Percentage-point leads (e.g., "+13.6 percentage points" / "scored 13.6 percentage points above")
     const ppRegex = /(?<![\d.,])([+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*percentage[- ]points?\b/gi;
@@ -1332,18 +1454,21 @@ export function extractSourceVerifiedMetrics(
       const meta = inferPercentagePointLabel(sentence, m.index);
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       const condition = extractMetricCondition(sentence, m.index);
-      pushMetric({
-        value: valStr,
-        label: meta.label,
-        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
-        context: meta.context,
-        subject: subjMeta.subject,
-        isFeatured: subjMeta.isFeatured,
-        ...(condition ? { condition } : {}),
-      });
+      pushMetric(
+        {
+          value: valStr,
+          label: meta.label,
+          quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+          context: meta.context,
+          subject: subjMeta.subject,
+          isFeatured: subjMeta.isFeatured,
+          ...(condition ? { condition } : {}),
+        },
+        claimIdx
+      );
     }
 
-    // 2. Percentages & full numeric ranges (e.g., "20--59%", "84.0%", "61.6%", skipping CI bounds)
+    // 2. Percentages & full numeric ranges (e.g., "20--59%", "84.0%", "Up to 27% faster", skipping CI bounds)
     const pctRegex = /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d{1,3})(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*(?:\d{1,3}(?:,\d{3})+|\d{1,3})(?:\.\d+)?)?)%/gi;
     while ((m = pctRegex.exec(sentence)) !== null) {
       const afterSlice = sentence.slice(m.index + m[0].length, m.index + m[0].length + 28).toLowerCase();
@@ -1364,18 +1489,29 @@ export function extractSourceVerifiedMetrics(
         );
       if (!hasEvalContext) continue;
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
-      const meta = inferPercentageLabel(sentence, m.index, subjMeta.isFeatured);
+      const meta = inferPercentageLabel(sentence, m.index, subjMeta.isFeatured, surrounding);
       const normNum = normalizeRangeSeparator(m[1]);
+      const isUpperBound = hasUpperBoundPercentageQualifier(sentence, m.index);
+      const value = meta.isFasterQualifier
+        ? isUpperBound
+          ? `Up to ${normNum}% faster`
+          : `${normNum}% faster`
+        : isUpperBound
+        ? `Up to ${normNum}%`
+        : `${normNum}%`;
       const condition = extractMetricCondition(sentence, m.index);
-      pushMetric({
-        value: `${normNum}%`,
-        label: meta.label,
-        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
-        context: meta.context,
-        subject: subjMeta.subject,
-        isFeatured: subjMeta.isFeatured,
-        ...(condition ? { condition } : {}),
-      });
+      pushMetric(
+        {
+          value,
+          label: meta.label,
+          quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+          context: meta.context,
+          subject: subjMeta.subject,
+          isFeatured: isUpperBound && meta.isFasterQualifier ? true : subjMeta.isFeatured,
+          ...(condition ? { condition } : {}),
+        },
+        claimIdx
+      );
     }
 
     // 3. Token throughput preserving comma-formatted thousands, phase ("prompt tokens/s", "generation tokens/s"), & condition
@@ -1394,15 +1530,18 @@ export function extractSourceVerifiedMetrics(
         : 'Measured throughput';
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       const condition = extractMetricCondition(sentence, m.index);
-      pushMetric({
-        value: valStr,
-        label,
-        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
-        context: baseline || 'Source-reported token generation rate',
-        subject: subjMeta.subject,
-        isFeatured: subjMeta.isFeatured,
-        ...(condition ? { condition } : {}),
-      });
+      pushMetric(
+        {
+          value: valStr,
+          label,
+          quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+          context: baseline || 'Source-reported token generation rate',
+          subject: subjMeta.subject,
+          isFeatured: subjMeta.isFeatured,
+          ...(condition ? { condition } : {}),
+        },
+        claimIdx
+      );
     }
 
     // 4. Efficiency, turn & speedup multipliers including full ranges (e.g., "1.40--3.05x", "2x–4x", "4.59x")
@@ -1433,15 +1572,18 @@ export function extractSourceVerifiedMetrics(
         : 'Measured speedup';
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       const condition = extractMetricCondition(sentence, m.index);
-      pushMetric({
-        value: unitClean ? `${normNum}${sym} ${unitClean}` : `${normNum}${sym}`,
-        label,
-        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
-        context: baseline,
-        subject: subjMeta.subject,
-        isFeatured: subjMeta.isFeatured,
-        ...(condition ? { condition } : {}),
-      });
+      pushMetric(
+        {
+          value: unitClean ? `${normNum}${sym} ${unitClean}` : `${normNum}${sym}`,
+          label,
+          quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+          context: baseline,
+          subject: subjMeta.subject,
+          isFeatured: subjMeta.isFeatured,
+          ...(condition ? { condition } : {}),
+        },
+        claimIdx
+      );
     }
 
     // 5. Explicit hardware latency / VRAM / memory numbers
@@ -1455,24 +1597,30 @@ export function extractSourceVerifiedMetrics(
       }
       const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       const condition = extractMetricCondition(sentence, m.index);
-      pushMetric({
-        value: `${normalizeRangeSeparator(m[1])} ms`,
-        label: 'Reported latency',
-        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
-        context: baseline,
-        subject: subjMeta.subject,
-        isFeatured: subjMeta.isFeatured,
-        ...(condition ? { condition } : {}),
-      });
+      pushMetric(
+        {
+          value: `${normalizeRangeSeparator(m[1])} ms`,
+          label: 'Reported latency',
+          quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+          context: baseline,
+          subject: subjMeta.subject,
+          isFeatured: subjMeta.isFeatured,
+          ...(condition ? { condition } : {}),
+        },
+        claimIdx
+      );
     }
 
     const memRegex = /(?<![\d.,])((?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?)\s*(GB|TB)\s*(VRAM|RAM|unified memory|memory)\b/gi;
     while ((m = memRegex.exec(sentence)) !== null) {
-      pushMetric({
-        value: `${m[1]} ${m[2].toUpperCase()} ${m[3]}`,
-        label: 'Memory footprint',
-        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
-      });
+      pushMetric(
+        {
+          value: `${m[1]} ${m[2].toUpperCase()} ${m[3]}`,
+          label: 'Memory footprint',
+          quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+        },
+        claimIdx
+      );
     }
 
     // 6. Explicit output/input token count comparisons (e.g., "high cost 3.99 cents and used 5,311 output tokens, xhigh cost 23.61 cents and used 31,477 output tokens")
@@ -1493,13 +1641,16 @@ export function extractSourceVerifiedMetrics(
       const subj = lastEffort || extractMetricSubject(sentence, sig.title || '', m.index).subject;
       const isFeat = lastEffort ? lastEffort === 'high' : undefined;
       const kind = m[2].toLowerCase();
-      pushMetric({
-        value: `${m[1]} ${kind} tokens`,
-        label: `${kind.charAt(0).toUpperCase() + kind.slice(1)} token usage`,
-        quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
-        ...(subj ? { subject: subj } : {}),
-        ...(isFeat !== undefined ? { isFeatured: isFeat } : {}),
-      });
+      pushMetric(
+        {
+          value: `${m[1]} ${kind} tokens`,
+          label: `${kind.charAt(0).toUpperCase() + kind.slice(1)} token usage`,
+          quote: buildConciseMetricQuote(sentence, m.index, m[0].length),
+          ...(subj ? { subject: subj } : {}),
+          ...(isFeat !== undefined ? { isFeatured: isFeat } : {}),
+        },
+        claimIdx
+      );
     }
   }
 

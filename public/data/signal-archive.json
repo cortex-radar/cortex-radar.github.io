@@ -1,9 +1,74 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-22T03:34:28.158Z",
-  "updatedAtMs": 1795318468158,
-  "count": 107,
+  "updatedAtIso": "2026-11-22T05:47:08.097Z",
+  "updatedAtMs": 1795326428097,
+  "count": 121,
   "entries": [
+    {
+      "id": "rd-street-1y2f2kz",
+      "title": "AI-Assisted Proof Claims To Solve Riemann Hypothesis",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2f2kz/aiassisted_proof_claims_to_solve_riemann/",
+      "publishedAtMs": 1795317351000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis"
+    },
+    {
+      "id": "rd-street-1y2evnh",
+      "title": "Chinese scientists uncover brain's '3D GPS' in breakthrough for brain-computer interfaces",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2evnh/chinese_scientists_uncover_brains_3d_gps_in/",
+      "publishedAtMs": 1795316748000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Chinese scientists uncover brain's '3D GPS' in breakthrough for brain-computer interfaces"
+    },
+    {
+      "id": "rd-street-1y2etau",
+      "title": "How to cope with the singularity through college admissions?",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2etau/how_to_cope_with_the_singularity_through_college/",
+      "publishedAtMs": 1795316536000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): How to cope with the singularity through college admissions?"
+    },
+    {
+      "id": "rd-street-1y2epi4",
+      "title": "Hierarchos-Native v0.2.5 is finally out! P3 WMMA update",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2epi4/hierarchosnative_v025_is_finally_out_p3_wmma/",
+      "publishedAtMs": 1795316237000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "so, after quite a bit of work since the v0.2.0 release, i've finally managed to get v0.2.5 published! for anyone who followed the previous release, v0.2.0 was where i first introduced the opt-in RDNA3 WMMA implementation. since then i've…",
+      "verifiedMetrics": [
+        {
+          "value": "Up to 27% faster",
+          "label": "GPU matrix multiplication in the tested workloads",
+          "quote": "the largest measured improvement was around 27%.",
+          "context": "Per-dispatch GPU matrix multiplication benchmark (not end-to-end training)",
+          "isFeatured": true,
+          "caveat": "just to clarify, these are per-dispatch GPU GEMM measurements, not end-to-end training speedups. i don't want to imply that an entire training run is suddenly 27% faster when that isn't what was measured."
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y2eibi",
+      "title": "Local model madness with my robot Sparky and now Godot game development",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2eibi/local_model_madness_with_my_robot_sparky_and_now/",
+      "publishedAtMs": 1795315608000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Regardless of what model I am using at the moment, they are always incredible and have completely changed how I operate creatively. Reinvigorating old hobbies and creating new ones at the same time. The video is a story I posted. No one…"
+    },
     {
       "id": "rd-street-1y2d3ts",
       "title": "I was driving and wondered how many signals pass through me at any given moment. Here’s what Claude Duet created in 15 mins.",
@@ -322,6 +387,17 @@
       "publishedAtMs": 1795291429000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): GRH proved through the last one..."
+    },
+    {
+      "id": "rd-street-1y25sfe",
+      "title": "Evokai: turn an Ollama model into a real in-app assistant, with backend, chat UI, admin console, permissions and budgets in one service",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y25sfe/evokai_turn_an_ollama_model_into_a_real_inapp/",
+      "publishedAtMs": 1795290572000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Active engineering thread in r/ollama (1 upvotes, 0 comments): Evokai: turn an Ollama model into a real in-app assistant, with backend, chat UI, admin console, permissions and budgets in one service"
     },
     {
       "id": "rd-street-1y24vqg",
@@ -659,6 +735,17 @@
       ]
     },
     {
+      "id": "hn-50582794",
+      "title": "Leaky AI supply chain is exposing secret user data at an alarming rate",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
+      "publishedAtMs": 1795211619000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Test using prompts with unique, trackable secrets proves that data doesn't stay private. Researchers planted 2 million digital tripwires in requests sent through a sprawling network of AI services to find out what happened to sensitive…"
+    },
+    {
       "id": "rd-street-1y1fe6b",
       "title": "Culler - a local, open source software factory",
       "source": "Reddit",
@@ -667,6 +754,17 @@
       "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y1fe6b/culler_a_local_open_source_software_factory/",
       "publishedAtMs": 1795210145000,
       "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "x-fx-2123889582303281557",
+      "title": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ollama",
+      "url": "https://x.com/ollama/status/2123889582303281557",
+      "publishedAtMs": 1795209711000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "32GB+ memory. Each token loops through its middle layers three times so it reasons deeper at just 5.4B active parameters. Built for coding, agentic workflows such as, computer use, design with strong visual reasoning, and finance tasks.…"
     },
     {
       "id": "rd-street-1y1drpd",
@@ -1187,6 +1285,17 @@
       "verbatimExcerpt": "What's Changed Improve ChatGPT CLI restore and graceful restart by @hoyyeva in #19583 cmd/launch: use thinking metadata for OpenCode settings by @hoyyeva in #19409 llm: use mmap for Vulkan integrated GPUs by @dhiltgen in #19640…"
     },
     {
+      "id": "x-fx-2123567986565173289",
+      "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @demishassabis",
+      "url": "https://x.com/demishassabis/status/2123567986565173289",
+      "publishedAtMs": 1795133036000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪"
+    },
+    {
       "id": "vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945",
       "title": "Scaling Linear’s GTM to $100M ARR — Cristina Cordova, COO",
       "source": "VIPBlog",
@@ -1271,6 +1380,96 @@
       "publishedAtMs": 1795118442000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Now it can power your apps. Build better voice agents that can reliably understand precise details like letters and numbers, follow instructions, and delegate complex workflows to the backend model of your choice without breaking the flow…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126627v1",
+      "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26627v1",
+      "publishedAtMs": 1795114793000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126624v1",
+      "title": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26624v1",
+      "publishedAtMs": 1795114774000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Recent AI agents can generate playable games, but these games are not necessarily engaging. Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning. We propose PlayCraft, an automated framework…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126619v1",
+      "title": "TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26619v1",
+      "publishedAtMs": 1795114711000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency. We present TideCache, a…",
+      "verifiedMetrics": [
+        {
+          "value": "20–59%",
+          "label": "Latency reduction",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        },
+        {
+          "value": "2.04x",
+          "label": "Task completion speedup",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        },
+        {
+          "value": "1.40–3.05x",
+          "label": "TTFT speedup",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126617v1",
+      "title": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent Action Learning",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26617v1",
+      "publishedAtMs": 1795114694000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch. We ask whether…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126613v1",
+      "title": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26613v1",
+      "publishedAtMs": 1795114645000,
+      "archivedAtMs": 1795326428097,
+      "verbatimExcerpt": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only…",
+      "verifiedMetrics": [
+        {
+          "value": "32.58–74.24%",
+          "label": "Reported accuracy",
+          "quote": "d actions alongside a fine-tuned open-source critic, Muse-Glimmer-30B, whose failure-mode accuracy rises from 32.58% to 74.24%, enabling low-cost action-level analysis.",
+          "subject": "AgentRoboCritic",
+          "isFeatured": true
+        }
+      ]
     },
     {
       "id": "hn-50564366",
