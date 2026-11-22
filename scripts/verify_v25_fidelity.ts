@@ -1454,6 +1454,15 @@ function runFixtureAssertions(): void {
     [{ truncated: '31', sourceNumber: '31,477' }],
     'findTruncatedCommaNumbers must map truncated 31 -> 31,477'
   );
+  const geminiMetrics = extractSourceVerifiedMetrics(geminiEffortSig);
+  assert.ok(
+    geminiMetrics.some((m) => m.subject === 'high' && m.value === '5,311 output tokens'),
+    `Gemini effort metrics must attribute 5,311 output tokens to high, got: ${JSON.stringify(geminiMetrics)}`
+  );
+  assert.ok(
+    geminiMetrics.some((m) => m.subject === 'xhigh' && m.value === '31,477 output tokens'),
+    `Gemini effort metrics must attribute 31,477 output tokens to xhigh, got: ${JSON.stringify(geminiMetrics)}`
+  );
   const corruptedGeminiLlm: LiteracySpectrumPayload = {
     plainTitle: 'Gemini 4 Hydrogen high vs xhigh effort',
     plainFullTitle: 'Gemini 4 Hydrogen thinking effort comparison',
@@ -1682,6 +1691,13 @@ function runLiveSnapshotAndArchiveAssertions(): void {
     const rawPrimaryCorpus = `${sig.title || ''} ${sig.rawAbstract || ''}`;
     const compCorpus = buildRawComplianceCorpus(sig);
     for (const vm of sig.verifiedMetrics || []) {
+      assert.ok(
+        !vm.subject ||
+          !/^(?:and|or|but|the|a|an|for|with|from|to|in|on|at|by|of|as|is|are|was|were|it|they|its)$/i.test(
+            vm.subject.trim()
+          ),
+        `Live signal ${sig.id} verifiedMetrics leaked stopword subject "${vm.subject}" on ${vm.value}`
+      );
       const pillTxt = [vm.subject, vm.value, vm.condition].filter(Boolean).join(' ');
       const pillTruncs = findTruncatedCommaNumbers(pillTxt, rawPrimaryCorpus);
       assert.deepEqual(

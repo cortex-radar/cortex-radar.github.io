@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2026 03:28:59 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 03:33:22 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>AI-assisted proof claims to solve Riemann Hypothesis</title>
@@ -14,31 +14,31 @@
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2f2kz&amp;lens=2</guid>
       <pubDate>Sun, 22 Nov 2026 03:15:51 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>An AI-assisted proof claims to solve the Riemann Hypothesis, a long-standing problem in mathematics. The claim has been made in an active engineering thread on r/singularity. The Riemann Hypothesis, if purportedly solved, could provide deep insights into the distribution of prime numbers, which has implications for cryptography and financial systems. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2f2kz/aiassisted_proof_claims_to_solve_riemann/</description>
+      <description>An AI system has been claimed to solve the Riemann Hypothesis, a long-standing problem in mathematics. The claim is based on an active thread on r/singularity with 15 upvotes. The Riemann Hypothesis, if proven, could provide insights into the distribution of prime numbers, which has implications for number theory and potentially cryptography. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2f2kz/aiassisted_proof_claims_to_solve_riemann/</description>
     </item>
     <item>
-      <title>Hierarchos-Native v0.2.5 introduces P3 WMMA update for improved numerical accuracy</title>
+      <title>Hierarchos-Native v0.2.5 introduces P3 WMMA update for improved FP16 performance</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y2epi4&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2epi4&amp;lens=2</guid>
       <pubDate>Sun, 22 Nov 2026 02:57:17 GMT</pubDate>
       <category>Innovation &amp; ROI</category>
-      <description>The Hierarchos-Native v0.2.5 release introduces improvements to the Full FP16 WMMA kernel, focusing on numerical accuracy without compromising performance. A significant change is the P3 update, which reduces intermediate FP16 rounding. The update addresses the issue of multiple intermediate FP16 additions leading to rounding errors, ensuring more precise data processing. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2epi4/hierarchosnative_v025_is_finally_out_p3_wmma/</description>
+      <description>The Hierarchos-Native v0.2.5 update introduces P3, which optimizes the Full FP16 WMMA kernel to improve numerical accuracy and performance without compromising the existing execution structure. The update addresses the need for more efficient and accurate processing of FP16 data, which is crucial for tasks like financial modeling and risk analysis. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2epi4/hierarchosnative_v025_is_finally_out_p3_wmma/</description>
     </item>
     <item>
-      <title>Local model madness with my robot Sparky and now Godot game development</title>
+      <title>Local AI model powers creative hobbies and game development</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y2eibi&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2eibi&amp;lens=2</guid>
       <pubDate>Sun, 22 Nov 2026 02:46:48 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>The author created a robot named Sparky using local AI models, which now helps in making a video game. The AI enables the author to reinvigorate old hobbies and explore new creative ventures, such as game development. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2eibi/local_model_madness_with_my_robot_sparky_and_now/</description>
+      <description>The author created a robot buddy named Sparky using an AI model, which now assists in making a video game. This has reinvigorated old hobbies and sparked new ones. The AI model has enabled the author to overcome creative blocks and bring their ideas to life more efficiently. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2eibi/local_model_madness_with_my_robot_sparky_and_now/</description>
     </item>
     <item>
-      <title>Anthropic Announces Closing of IPO and Concurrent Private Placement</title>
+      <title>Anthropic announces closing of IPO and concurrent private placement</title>
       <link>https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>Anthropic completed its initial public offering, selling 1,127,000,000 shares at $83.00 each, raising approximately $93.5 billion. Additionally, it sold 313,253,007 shares in a private placement for $26.0 billion. The company aimed to raise capital to fund its operations and growth, providing liquidity to early investors and allowing new ones to participate. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
+      <description>Anthropic completed its initial public offering (IPO) and a concurrent private placement, raising a total of approximately $119.5 billion. The IPO and private placement aim to provide liquidity to investors and raise capital for the company&apos;s growth and operations. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
     </item>
     <item>
       <title>Claude Code v2.1.330</title>
@@ -46,7 +46,7 @@
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21330&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 22:32:56 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Claude Code v2.1.330 introduces several enhancements, including improved sign-in processes, new charting capabilities, and fixes for various bugs and performance issues. These updates address user feedback and improve the usability and reliability of the AI tool for banking professionals. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.330</description>
+      <description>Claude Code v2.1.330 introduced several new features and fixes, including enhanced sign-in processes, improved charting capabilities, and bug fixes for various issues like freezing and session management. The updates aim to address user experience issues and enhance functionality, making the tool more reliable and user-friendly. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.330</description>
     </item>
     <item>
       <title>OpenAI Codex v0.173.0-alpha.4 · Alpha</title>
@@ -62,23 +62,23 @@
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-langchain-tory552661142langchain-openrouter030&amp;lens=2</guid>
       <pubDate>Thu, 19 Nov 2026 15:03:19 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>langchain-openrouter 0.3.0 dropped support for Python 3.10, now requiring at least Python 3.11, and the minimum langchain-core version is now 1.8.3. The update addresses the end-of-life status of Python 3.10, ensuring the software remains secure and compatible with the latest programming standards. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-openrouter%3D%3D0.3.0</description>
+      <description>langchain-openrouter 0.3.0 dropped support for Python 3.10, now requiring at least Python 3.11, and the minimum langchain-core version is now 1.8.3. The update addresses the end-of-life status of Python 3.10, ensuring compatibility and security for users. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-openrouter%3D%3D0.3.0</description>
     </item>
     <item>
-      <title>Combining Expertise and AI Allows People to Achieve Incredible Results</title>
+      <title>Combining expertise and AI leads to incredible achievements in solving complex problems</title>
       <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2tj5d6rwc2m&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2tj5d6rwc2m&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 16:23:06 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>A combination of human expertise and AI capabilities allows individuals to achieve remarkable results, particularly in solving complex mathematical problems. The post highlights the importance of human expertise in conjunction with AI to tackle challenging mathematical problems that current AI models cannot solve independently. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2tj5d6rwc2m</description>
+      <description>People with expertise in mathematics are using AI to solve Millennium Problems, which models cannot do on their own. The post suggests that combining human expertise with AI can lead to solving complex mathematical problems that AI alone cannot handle. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2tj5d6rwc2m</description>
     </item>
     <item>
-      <title>Senior software engineer facing long-term unemployment after 15 years of experience</title>
+      <title>Senior software engineer in US seeks job advice after 2 years of unemployment</title>
       <link>https://cortex-radar.github.io/?orb=hn-50583761&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50583761&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 23:18:32 GMT</pubDate>
       <category>Certifications &amp; Labs</category>
-      <description>A senior software engineer with 15 years of experience has been unemployed for two years, despite having worked for large and mid-size companies. The engineer is now tutoring and working as a pizza manager, with a significant financial gap in their resume. The engineer is seeking advice on how to bridge the gap in their resume and find a new job, or considering alternative career paths that could pay well. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50583761</description>
+      <description>A senior software engineer with 15 years of experience has been unemployed for 2 years and is struggling to find new employment in software engineering. The individual is seeking advice on how to find new employment in software engineering after a long gap, possibly due to layoffs. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50583761</description>
     </item>
     <item>
       <title>Upload2Shell (CVE-2026-125396) security vulnerability</title>
@@ -86,23 +86,31 @@
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50592097&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 18:29:29 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>A security flaw (Upload2Shell, CVE-2026-125396) has been identified that may allow unauthorized upload of shell scripts. The vulnerability addresses a potential backdoor for attackers to exploit, impacting system security. — Upstream (Hacker News): https://pwn.ai/upload2shell</description>
+      <description>A security flaw, known as Upload2Shell (CVE-2026-125396), has been identified that could allow unauthorized access to systems. The issue addresses a potential security risk that could be exploited by malicious actors, impacting system integrity and confidentiality. — Upstream (Hacker News): https://pwn.ai/upload2shell</description>
     </item>
     <item>
-      <title>Human language surprisingly effective in modeling the universe for sentence prediction</title>
+      <title>Human language&apos;s surprising effectiveness in modeling the universe and predicting sentences</title>
       <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2seaj2c4c2m&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2seaj2c4c2m&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 05:22:44 GMT</pubDate>
       <category>Certifications &amp; Labs</category>
-      <description>The effectiveness of human language in modeling the universe was surprising, as training a system to predict the next word in a sentence has led to significant advancements. The challenge of accurately predicting the next word in a sentence has been addressed, leading to more natural language processing applications. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m</description>
+      <description>The author marvels at how human language, when modeled, can predict the next word in a sentence with remarkable accuracy, suggesting its effectiveness in understanding the universe. The post addresses the surprising effectiveness of human language in modeling complex systems, potentially leading to advancements in natural language processing and AI. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m</description>
     </item>
     <item>
-      <title>Gemini 4 Hydrogen performance varies significantly with &apos;high&apos; vs &apos;xhigh&apos; thinking effort</title>
+      <title>Gemini 4 Hydrogen &apos;high&apos; vs &apos;xhigh&apos; thinking effort cost comparison</title>
       <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2tsb6pguk27&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2tsb6pguk27&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 19:06:19 GMT</pubDate>
       <category>Economics &amp; FinOps</category>
-      <description>The Gemini 4 Hydrogen model produces significantly different outputs when set to &apos;high&apos; and &apos;xhigh&apos; thinking effort levels, with the &apos;xhigh&apos; setting using more tokens and costing more (and: 5,311 output tokens vs. and: 31,477 output tokens). This demonstrates the flexibility and potential of the Gemini 4 Hydrogen model in generating different levels of output based on the effort input. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27</description>
+      <description>The Gemini 4 Hydrogen model shows a significant cost difference between &apos;high&apos; and &apos;xhigh&apos; thinking effort, with &apos;high&apos; costing 3.99 cents and using 5,311 output tokens, while &apos;xhigh&apos; costs 23.61 cents and uses 31,477 output tokens. The comparison helps users understand the trade-offs between cost and computational effort for different tasks. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27</description>
+    </item>
+    <item>
+      <title>Data Processing Incidents on live answering work Providers</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50595554&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50595554&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 02:14:14 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Security researchers reported data compromise issues with certain live answering work providers. OpenRouter off-boarded three providers, removed 125 endpoints from Zero Data Retention eligibility, and notified potentially affected customers. The issue addresses potential data misuse by live answering work providers, ensuring customer data is handled securely. — Upstream (Hacker News): https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/</description>
     </item>
     <item>
       <title>Pandex – Official European Law for AI Agents, over MCP</title>
@@ -110,39 +118,31 @@
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50593481&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 20:47:41 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Pandex offers a software connections and universal app connector server for searching and accessing official EU and seven European countries&apos; legislation, including court decisions and national laws. It addresses the need for banks to stay compliant with constantly changing laws and court decisions across multiple jurisdictions. — Upstream (Hacker News): https://www.pandex.io</description>
+      <description>Pandex provides a software connections and universal app connector server for accessing official legal documents from seven European countries, ensuring real law is cited with precise citations. It addresses the need for banks and legal professionals to have easy access to accurate and up-to-date legal information, which is crucial for compliance and decision-making. — Upstream (Hacker News): https://www.pandex.io</description>
     </item>
     <item>
-      <title>Week-long UN talks on controlling autonomous weapons collapse due to Russian obstruction</title>
+      <title>International UN talks on controlling autonomous weapons collapse</title>
       <link>https://cortex-radar.github.io/?orb=hn-50594564&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50594564&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 23:10:21 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Week-long UN talks aimed at establishing guidelines for autonomous weapons failed due to Russian obstruction. The talks sought to address the growing concerns over the use of autonomous weapons in warfare, but the talks collapsed without any agreement. — Upstream (Hacker News): https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse</description>
+      <description>Week-long UN talks aimed at establishing a negotiating mandate for controlling AI in weapons collapsed due to Russian obstruction. The talks were meant to address the risks of autonomous weapons and establish international guidelines for their use. — Upstream (Hacker News): https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse</description>
     </item>
     <item>
-      <title>OpenRouter Removes live answering work Providers for Data Policy Violations</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50595554&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50595554&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 02:14:14 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>OpenRouter removed three providers and 125 endpoints from its service due to data policy violations. They notified potentially affected customers after conducting research. Ensuring data privacy and security by removing non-compliant providers to maintain customer trust. — Upstream (Hacker News): https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/</description>
-    </item>
-    <item>
-      <title>AI Coding Agent for DOS Runs on Vintage IBM PC XT</title>
+      <title>AI coding agent for DOS on original IBM PC 5160</title>
       <link>https://cortex-radar.github.io/?orb=hn-50586292&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50586292&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 05:38:01 GMT</pubDate>
       <category>Certifications &amp; Labs</category>
-      <description>Claude, an AI coding agent, was built to run on DOS on an IBM PC XT, an 8088 processor at 4.77 MHz with 640K of RAM. The AI can read, edit, compile, and run programs on the vintage machine. The project aims to push the boundaries of what an AI can achieve on severely constrained hardware, demonstrating the potential for self-directed tool use in historical computing environments. — Upstream (Hacker News): http://ricapar.net/ClawDOS/</description>
+      <description>Claude, an AI coding agent, was built to run on DOS on an IBM PC 5160 (8088 at 4.77 MHz) to demonstrate the capabilities of AI in constrained environments. The project aims to showcase how an AI can operate within the limitations of older hardware, potentially inspiring new approaches to software development and historical computing. — Upstream (Hacker News): http://ricapar.net/ClawDOS/</description>
     </item>
     <item>
-      <title>New slide deck on post-training challenges and field evolution</title>
+      <title>New slide deck on post-training challenges and the field&apos;s progress</title>
       <link>https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2tdrggx2o27&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n2tdrggx2o27&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 14:46:58 GMT</pubDate>
       <category>Certifications &amp; Labs</category>
-      <description>A new slide deck was created to address the biggest open problems in post-training AI, detailing the current state of the field. The deck aims to outline the current challenges and the progress made so far in the post-training phase of AI development. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2tdrggx2o27</description>
+      <description>A new slide deck was created to address the most significant open problems in post-training AI, detailing the current state of the field. The deck aims to highlight the ongoing issues in maintaining AI models after initial training, guiding future projects and research. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2tdrggx2o27</description>
     </item>
     <item>
       <title>Muru</title>
@@ -182,7 +182,7 @@
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2evnh&amp;lens=2</guid>
       <pubDate>Sun, 22 Nov 2026 03:05:48 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>Chinese scientists have discovered a brain mechanism that functions like a 3D GPS, potentially enhancing brain-computer interfaces. This breakthrough addresses the challenge of creating more accurate and user-friendly brain-computer interfaces, which could improve various applications such as prosthetics and communication devices for people with disabilities. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2evnh/chinese_scientists_uncover_brains_3d_gps_in/</description>
+      <description>Chinese scientists have identified a neural mechanism that functions similarly to a 3D GPS in the brain, potentially enhancing brain-computer interfaces. This breakthrough addresses the challenge of accurately mapping and understanding brain activity for better brain-computer interface applications. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2evnh/chinese_scientists_uncover_brains_3d_gps_in/</description>
     </item>
     <item>
       <title>Strategies for coping with the singularity during college admissions</title>
@@ -190,7 +190,15 @@
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2etau&amp;lens=2</guid>
       <pubDate>Sun, 22 Nov 2026 03:02:16 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>The post discusses strategies for students to cope with the concept of the singularity during their college admissions process. It addresses the challenge of preparing students for a future where rapid technological advancements may disrupt traditional educational pathways. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2etau/how_to_cope_with_the_singularity_through_college/</description>
+      <description>The post discusses strategies for students to cope with the concept of the singularity during their college admissions process. The post aims to provide guidance to students on how to prepare for and understand the implications of the singularity in their academic and professional lives. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2etau/how_to_cope_with_the_singularity_through_college/</description>
+    </item>
+    <item>
+      <title>That&apos;s the essence of my Deep Learning course at NYU for the past 20 years or so.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2124155600946769955&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2124155600946769955&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 14:58:54 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.). Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course. — Upstream (X · @ylecun): https://x.com/ylecun/status/2124155600946769955</description>
     </item>
     <item>
       <title>I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)</title>
@@ -199,14 +207,6 @@
       <pubDate>Sun, 22 Nov 2026 00:55:22 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Active engineering thread in r/ollama (2 upvotes, 0 comments): I built a quick pass/fail test suite to see which small local models actually survive inside a digital helpers (Gemma 4 on an 8GB high-speed computer chips surprised me). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y2ccfq/i_built_a_quick_passfail_test_suite_to_see_which/</description>
-    </item>
-    <item>
-      <title>AI may have solved the most important problem in mathematics</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50583445&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50583445&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 22:46:59 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Published on economist.com (discussed on Hacker News) published &quot;AI may have solved the most important problem in mathematics&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around AI may have solved the most important problem in mathematics. — Upstream (Hacker News): https://www.economist.com/science-and-technology/2026/11/20/ai-may-have-solved-the-most-important-problem-in-mathematics</description>
     </item>
   </channel>
 </rss>

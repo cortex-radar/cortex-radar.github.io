@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-22T03:28:59.665Z",
-  "updatedAtMs": 1795318139665,
-  "count": 108,
+  "updatedAtIso": "2026-11-22T03:33:22.494Z",
+  "updatedAtMs": 1795318402494,
+  "count": 106,
   "entries": [
     {
       "id": "rd-street-1y2d3ts",
@@ -456,17 +456,6 @@
       "publishedAtMs": 1795275011000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Active engineering thread in r/ollama (2 upvotes, 0 comments): Do local LLM users even want this?"
-    },
-    {
-      "id": "x-fx-2124155600946769955",
-      "title": "That's the essence of my Deep Learning course at NYU for the past 20 years or so.",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @ylecun",
-      "url": "https://x.com/ylecun/status/2124155600946769955",
-      "publishedAtMs": 1795273134000,
-      "archivedAtMs": 1795312954607,
-      "verbatimExcerpt": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational…"
     },
     {
       "id": "rd-street-1y1udwh",
@@ -1185,17 +1174,6 @@
       "publishedAtMs": 1795134330000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "What's Changed Improve ChatGPT CLI restore and graceful restart by @hoyyeva in #19583 cmd/launch: use thinking metadata for OpenCode settings by @hoyyeva in #19409 llm: use mmap for Vulkan integrated GPUs by @dhiltgen in #19640…"
-    },
-    {
-      "id": "x-fx-2123567986565173289",
-      "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @demishassabis",
-      "url": "https://x.com/demishassabis/status/2123567986565173289",
-      "publishedAtMs": 1795133036000,
-      "archivedAtMs": 1795318068704,
-      "verbatimExcerpt": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪"
     },
     {
       "id": "vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945",

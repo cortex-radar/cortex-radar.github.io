@@ -1127,7 +1127,7 @@ function extractMetricSubject(
   );
   if (
     inlineSysMatch?.[1] &&
-    !/^(?:that|which|it|we|they|this|these|same|prompt|model|models|system|systems|variant|variants)$/i.test(
+    !/^(?:that|which|it|we|they|them|this|these|those|same|prompt|model|models|system|systems|variant|variants|and|or|but|for|with|from|to|in|on|at|by|of|as|is|are|was|were|be|been|have|has|had|can|could|will|would|may|might|only|just|also|more|less|then|than|here|there|where|when|while)$/i.test(
       inlineSysMatch[1]
     )
   ) {
@@ -1483,10 +1483,15 @@ export function extractSourceVerifiedMetrics(
         sentence
       );
       if (!hasUsageContext) continue;
-      const beforeClause = sentence.slice(0, m.index).split(/[,.;]/).pop() || sentence.slice(0, m.index);
-      const effortMatch = beforeClause.match(/\b(xhigh|high|medium|low)\b/i);
-      const subj = effortMatch ? effortMatch[1].toLowerCase() : extractMetricSubject(sentence, sig.title || '', m.index).subject;
-      const isFeat = effortMatch ? effortMatch[1].toLowerCase() === 'high' : undefined;
+      const beforeClause =
+        sentence
+          .slice(0, m.index)
+          .split(/(?<!\d),(?!\d)|;|(?<!\d)\.(?!\d)/)
+          .pop() || sentence.slice(0, m.index);
+      const effortMatches = Array.from(beforeClause.matchAll(/\b(xhigh|high|medium|low)\b/gi));
+      const lastEffort = effortMatches[effortMatches.length - 1]?.[1]?.toLowerCase();
+      const subj = lastEffort || extractMetricSubject(sentence, sig.title || '', m.index).subject;
+      const isFeat = lastEffort ? lastEffort === 'high' : undefined;
       const kind = m[2].toLowerCase();
       pushMetric({
         value: `${m[1]} ${kind} tokens`,
