@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2026 03:27:48 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 03:28:59 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>AI-assisted proof claims to solve Riemann Hypothesis</title>
@@ -105,20 +105,20 @@
       <description>The Gemini 4 Hydrogen model produces significantly different outputs when set to &apos;high&apos; and &apos;xhigh&apos; thinking effort levels, with the &apos;xhigh&apos; setting using more tokens and costing more (and: 5,311 output tokens vs. and: 31,477 output tokens). This demonstrates the flexibility and potential of the Gemini 4 Hydrogen model in generating different levels of output based on the effort input. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27</description>
     </item>
     <item>
-      <title>Week-long UN talks on controlling autonomous weapons collapse due to Russian obstruction</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50594564&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50594564&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 23:10:21 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Week-long UN talks aimed at establishing guidelines for autonomous weapons failed due to Russian obstruction. The talks sought to address the growing concerns over the use of autonomous weapons in warfare, but the talks collapsed without any agreement. — Upstream (Hacker News): https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse</description>
-    </item>
-    <item>
       <title>Pandex – Official European Law for AI Agents, over MCP</title>
       <link>https://cortex-radar.github.io/?orb=hn-50593481&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50593481&amp;lens=2</guid>
       <pubDate>Sat, 21 Nov 2026 20:47:41 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Pandex offers a software connections and universal app connector server for searching and accessing official EU and seven European countries&apos; legislation, including court decisions and national laws. It addresses the need for banks to stay compliant with constantly changing laws and court decisions across multiple jurisdictions. — Upstream (Hacker News): https://www.pandex.io</description>
+    </item>
+    <item>
+      <title>Week-long UN talks on controlling autonomous weapons collapse due to Russian obstruction</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50594564&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50594564&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 23:10:21 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Week-long UN talks aimed at establishing guidelines for autonomous weapons failed due to Russian obstruction. The talks sought to address the growing concerns over the use of autonomous weapons in warfare, but the talks collapsed without any agreement. — Upstream (Hacker News): https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse</description>
     </item>
     <item>
       <title>OpenRouter Removes live answering work Providers for Data Policy Violations</title>
@@ -193,20 +193,20 @@
       <description>The post discusses strategies for students to cope with the concept of the singularity during their college admissions process. It addresses the challenge of preparing students for a future where rapid technological advancements may disrupt traditional educational pathways. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2etau/how_to_cope_with_the_singularity_through_college/</description>
     </item>
     <item>
+      <title>I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y2ccfq&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2ccfq&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 00:55:22 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Active engineering thread in r/ollama (2 upvotes, 0 comments): I built a quick pass/fail test suite to see which small local models actually survive inside a digital helpers (Gemma 4 on an 8GB high-speed computer chips surprised me). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y2ccfq/i_built_a_quick_passfail_test_suite_to_see_which/</description>
+    </item>
+    <item>
       <title>AI may have solved the most important problem in mathematics</title>
       <link>https://cortex-radar.github.io/?orb=hn-50583445&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50583445&amp;lens=2</guid>
       <pubDate>Fri, 20 Nov 2026 22:46:59 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Published on economist.com (discussed on Hacker News) published &quot;AI may have solved the most important problem in mathematics&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around AI may have solved the most important problem in mathematics. — Upstream (Hacker News): https://www.economist.com/science-and-technology/2026/11/20/ai-may-have-solved-the-most-important-problem-in-mathematics</description>
-    </item>
-    <item>
-      <title>The most useful thing about the pelican riding a bicycle test continues to be illustrating the…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-simonwillison.net-3n2nhnbueh22q&amp;lens=2</guid>
-      <pubDate>Thu, 19 Nov 2026 06:40:15 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>The most useful thing about the pelican riding a bicycle test continues to be illustrating the differences between models in the same family running at different effort levels - here&apos;s Gemini 4 Carbon, the new Gemini 4 Neon, and Gemini 4 Hydrogen at low, medium, and high. Addresses practical workflow friction around The most useful thing about the pelican riding a bicycle test continues to be illustrating the. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
     </item>
   </channel>
 </rss>
