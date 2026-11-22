@@ -1,10 +1,10 @@
 {
   "version": 1,
   "promptVersion": "v2.5.1",
-  "bakedAtIso": "2026-11-22T03:33:22.494Z",
-  "bakedAtMs": 1795318402494,
-  "synthesizedBy": "LOCAL_OLLAMA_qwen2.5:7b",
-  "signalCount": 58,
+  "bakedAtIso": "2026-11-22T03:34:28.158Z",
+  "bakedAtMs": 1795318468158,
+  "synthesizedBy": "GITHUB_MODELS_GPT-4O-MINI",
+  "signalCount": 57,
   "signals": [
     {
       "id": "rd-street-1y2f2kz",
@@ -16,6 +16,7 @@
       "isDemoSeed": false,
       "sourceProvenance": [
         "r/singularity",
+        "r/ClaudeAI",
         "Swyx · Latent Space"
       ],
       "networkFamilies": [
@@ -24,7 +25,7 @@
       ],
       "canonicalEntity": "ent:assisted+claims+proof",
       "isSupernova": true,
-      "supernovaLevel": 1,
+      "supernovaLevel": 2,
       "divergence": {
         "hypeScore": 67,
         "streetScore": 67,
@@ -53,6 +54,17 @@
           "url": "https://www.reddit.com/r/singularity/comments/1y2f2kz/aiassisted_proof_claims_to_solve_riemann/"
         },
         {
+          "id": "rd-street-1y2fcwi-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/ClaudeAI",
+          "author": "r/ClaudeAI",
+          "text": "Most of you have seen the headline by now, so here is just what is confirmed and what is not, as of Nov 21.",
+          "score": 3,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795318274000,
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y2fcwi/the_claudeassisted_riemann_hypothesis_proof_is/"
+        },
+        {
           "id": "vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539-self-quote",
           "network": "HackerNews",
           "originLabel": "Swyx · Latent Space",
@@ -79,7 +91,7 @@
         "ARC",
         "SCI"
       ],
-      "mass": 4.6,
+      "mass": 4.85,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "NEUTRAL",
@@ -116,20 +128,20 @@
       "evidenceScope": "discussion_or_personal",
       "verifiedMetrics": [],
       "literacy": {
-        "plainTitle": "AI claims to solve Riemann Hypothesis",
-        "plainFullTitle": "AI-assisted proof claims to solve Riemann Hypothesis",
+        "plainTitle": "AI-Assisted Proof Claims To Solve Riemann Hypothesis",
+        "plainFullTitle": "AI-Assisted Proof Claims To Solve Riemann Hypothesis",
         "levels": {
           "1": {
-            "analogy": "Imagine a library where books are constantly being checked out and returned, and a librarian has to keep track of every book's status. This process is like the AI system that is claimed to be working on potentially solving the Riemann Hypothesis, where the system is constantly verifying and updating its understanding.",
-            "everydayWhy": "Everyday people might be interested in this because it could lead to breakthroughs in mathematics that have wide-ranging implications for fields like cryptography and finance."
+            "analogy": "Think of an unverified early announcement at a scientific conference — before anyone treats a dramatic claim as settled fact, independent researchers still need to check every step on paper. Specifically, Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis.",
+            "everydayWhy": "Unverified claims remain tentative until independent domain experts reproduce or confirm the evidence."
           },
           "2": {
-            "whatHappened": "An AI system has been claimed to solve the Riemann Hypothesis, a long-standing problem in mathematics. The claim is based on an active thread on r/singularity with 15 upvotes.",
-            "whoBuiltIt": "The claim is from an active engineering thread on r/singularity, but no specific lab team or organization is mentioned.",
-            "problemSolved": "The Riemann Hypothesis, if proven, could provide insights into the distribution of prime numbers, which has implications for number theory and potentially cryptography."
+            "whatHappened": "Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis.",
+            "whoBuiltIt": "r/singularity Engineering Community · Cross-surfaced on r/ClaudeAI + Swyx · Latent Space",
+            "problemSolved": "Explores an unverified claim or open question around \"AI-Assisted Proof Claims To Solve Riemann Hypothesis\" — awaiting independent verification."
           },
           "3": {
-            "bridgeSummary": "The claim suggests that AI can be used to tackle complex mathematical problems, which could lead to advancements in various fields, including finance and cybersecurity. However, the actual proof has not been verified, and the community is awaiting further validation."
+            "bridgeSummary": "Unverified claim reported by r/singularity: Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis. No technical specifications, APIs, or reproducible proofs have been independently confirmed."
           },
           "4": {
             "roiAndFinOps": "Unverified claim — do not base roadmap, procurement, or budget decisions on unconfirmed reports. Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis.",
@@ -137,15 +149,24 @@
             "clientAdvice": "For Banking & FinServ: monitor for independent verification before citing or acting on \"AI-Assisted Proof Claims To Solve Riemann Hypothesis\"."
           },
           "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. The claim is based on an active engineering thread on r/singularity, but no specific technical details or benchmarks are provided.",
-            "specsAndCaveats": "The claim is based on an active thread with 15 upvotes, but no technical specifications or benchmarks are provided. The community is awaiting further validation and peer review.",
-            "streetConsensus": "The community is actively discussing the claim, with some expressing interest and others awaiting further validation. The consensus is that the claim is unverified and requires further peer review."
+            "architectureBrief": "Source provides no technical specifications or architecture details. Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis.",
+            "specsAndCaveats": "Unverified claim from r/singularity — no reproducible benchmarks, proof artifacts, or technical specifications accompany this post.",
+            "streetConsensus": "Awaiting independent expert verification (unconfirmed upstream post)"
           }
         },
         "glossary": [],
-        "generatedBy": "OLLAMA"
+        "generatedBy": "DETERMINISTIC"
       },
       "supportingSources": [
+        {
+          "source": "r/ClaudeAI",
+          "title": "The Claude-assisted Riemann hypothesis proof is machine-checked but has no human-readable version yet. Is that enough for you?",
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y2fcwi/the_claudeassisted_riemann_hypothesis_proof_is/",
+          "publishedAt": "2026-11-22T03:31:14.000Z",
+          "publishedAtMs": 1795318274000,
+          "isPrimary": false,
+          "relation": "same_event"
+        },
         {
           "source": "r/singularity",
           "title": "AI-Assisted Proof Claims To Solve Riemann Hypothesis",
@@ -165,7 +186,7 @@
           "relation": "same_event"
         }
       ],
-      "lastUpdatedAtMs": 1795317351000
+      "lastUpdatedAtMs": 1795318274000
     },
     {
       "id": "rd-street-1y2epi4",
@@ -227,8 +248,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 28,
-        "badgeText": "28/hr · 1 up · 0 comments"
+        "velocityPerHour": 26,
+        "badgeText": "26/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y2epi4/hierarchosnative_v025_is_finally_out_p3_wmma/",
       "publishedAtMs": 1795316237000,
@@ -396,8 +417,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 22,
-        "badgeText": "22/hr · 1 up · 0 comments"
+        "velocityPerHour": 20,
+        "badgeText": "20/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2eibi/local_model_madness_with_my_robot_sparky_and_now/",
       "publishedAtMs": 1795315608000,
@@ -964,17 +985,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "I'm Senior software engineer in the US (DMV area), with 15y of experience.",
-          "score": 667,
+          "score": 669,
           "sentiment": "HYPE",
           "publishedAtMs": 1795216712000,
           "url": "https://news.ycombinator.com/item?id=50583761"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 632,
+        "likesOrUps": 634,
         "commentsOrReplies": 716,
         "velocityPerHour": 73,
-        "badgeText": "632 pts · 716 comments"
+        "badgeText": "634 pts · 716 comments"
       },
       "url": "https://news.ycombinator.com/item?id=50583761",
       "publishedAtMs": 1795216712000,
@@ -984,7 +1005,7 @@
       "secondarySectors": [
         "ARC"
       ],
-      "mass": 3.635681792045757,
+      "mass": 3.636526976549085,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -1111,9 +1132,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 88,
-        "commentsOrReplies": 36,
+        "commentsOrReplies": 37,
         "velocityPerHour": 18,
-        "badgeText": "88 pts · 36 comments"
+        "badgeText": "88 pts · 37 comments"
       },
       "url": "https://pwn.ai/upload2shell",
       "publishedAtMs": 1795285769000,
@@ -1241,10 +1262,10 @@
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 543,
+        "likesOrUps": 549,
         "commentsOrReplies": 32,
         "velocityPerHour": 25,
-        "badgeText": "543 likes · 32 replies"
+        "badgeText": "549 likes · 32 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m",
       "publishedAtMs": 1795238564733,
@@ -1528,7 +1549,7 @@
       "engagementVelocity": {
         "likesOrUps": 34,
         "commentsOrReplies": 8,
-        "velocityPerHour": 39,
+        "velocityPerHour": 38,
         "badgeText": "34 pts · 8 comments"
       },
       "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/",
@@ -1638,11 +1659,11 @@
       "isSupernova": false,
       "supernovaLevel": 0,
       "divergence": {
-        "hypeScore": 67,
+        "hypeScore": 68,
         "streetScore": 63,
-        "divergenceDelta": 4,
+        "divergenceDelta": 5,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (67 hype / 63 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (68 hype / 63 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
@@ -1659,17 +1680,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Legislation and highest-court decisions of the EU and seven European countries, straight from the institutions that publish them, ready for search and AI agents.",
-          "score": 81,
+          "score": 82,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795294061000,
           "url": "https://www.pandex.io"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 46,
+        "likesOrUps": 47,
         "commentsOrReplies": 9,
         "velocityPerHour": 10,
-        "badgeText": "46 pts · 9 comments"
+        "badgeText": "47 pts · 9 comments"
       },
       "url": "https://www.pandex.io",
       "publishedAtMs": 1795294061000,
@@ -1680,7 +1701,7 @@
         "GOV",
         "CRT"
       ],
-      "mass": 3.0405152622711222,
+      "mass": 3.043979004049416,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -1787,11 +1808,11 @@
       "isSupernova": false,
       "supernovaLevel": 0,
       "divergence": {
-        "hypeScore": 68,
+        "hypeScore": 69,
         "streetScore": 63,
-        "divergenceDelta": 5,
+        "divergenceDelta": 6,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (68 hype / 63 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (69 hype / 63 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
@@ -1808,17 +1829,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Week-long efforts fail to establish negotiating mandate on AI warfare after Russian ‘filibustering’",
-          "score": 74,
+          "score": 75,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795302621000,
           "url": "https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 39,
+        "likesOrUps": 40,
         "commentsOrReplies": 21,
         "velocityPerHour": 19,
-        "badgeText": "39 pts · 21 comments"
+        "badgeText": "40 pts · 21 comments"
       },
       "url": "https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse",
       "publishedAtMs": 1795302621000,
@@ -1828,7 +1849,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.0150006178251347,
+      "mass": 3.018789821204605,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -2658,7 +2679,7 @@
       "mediaItems": [
         {
           "type": "image",
-          "url": "https://scontent-sea5-1.xx.fbcdn.net/v/t39.2365-6/741888780_1335161144859187_4416712401061192452_n.png?_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa6a2f&_nc_ohc=aXn_6axTxg8Q7kNvwE7ifbj&_nc_oc=AdrYH0SdoOGQKr-076BOgZ-QhcSxfQDE7UIfGcBV515QCjhjJE2rRxEWH3TckCoZNnQ&_nc_zt=14&_nc_ht=scontent-sea5-1.xx&edm=ADsB9xMEAAAA&_nc_gid=hVbOybDtF9rYdWVG6BJhmw&oh=00_AQQIZjYXR8RJ_HPr79ElSo9yz3O9H0tFp1CeLHI1jcTtdw&oe=6B084711",
+          "url": "https://scontent-sea5-1.xx.fbcdn.net/v/t39.2365-6/741888780_1335161144859187_4416712401061192452_n.png?_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa6a2f&_nc_ohc=aXn_6axTxg8Q7kNvwE7ifbj&_nc_oc=AdrYH0SdoOGQKr-076BOgZ-QhcSxfQDE7UIfGcBV515QCjhjJE2rRxEWH3TckCoZNnQ&_nc_zt=14&_nc_ht=scontent-sea5-1.xx&edm=ADsB9xMEAAAA&_nc_gid=risSdqMfYacV8CNNtaeX5w&oh=00_AQQxVkty8Ge6ZPM2K2SJaEN8ORHsT1Tepfent0yBXhXDXw&oe=6B084711",
           "caption": "Linked article figure",
           "sourceNetwork": "Hacker News"
         }
@@ -3067,10 +3088,10 @@
       "supernovaLevel": 0,
       "divergence": {
         "hypeScore": 55,
-        "streetScore": 57,
-        "divergenceDelta": -2,
+        "streetScore": 56,
+        "divergenceDelta": -1,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (55 hype / 57 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (55 hype / 56 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
@@ -3096,8 +3117,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 32,
-        "badgeText": "32/hr · 1 up · 0 comments"
+        "velocityPerHour": 30,
+        "badgeText": "30/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y2etau/how_to_cope_with_the_singularity_through_college/",
       "publishedAtMs": 1795316536000,
@@ -3187,134 +3208,6 @@
       "lastUpdatedAtMs": 1795316536000
     },
     {
-      "id": "x-fx-2124155600946769955",
-      "title": "That's the essence of my Deep Learning course at NYU for the past 20 years or so.",
-      "shortLabel": "That s the essence",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @ylecun",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "X · @ylecun"
-      ],
-      "networkFamilies": [
-        "X"
-      ],
-      "canonicalEntity": "ent:deep+essence+learning",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 49,
-        "streetScore": 44,
-        "divergenceDelta": 5,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (49 hype / 44 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [],
-      "streetQuotes": [
-        {
-          "id": "x-fx-2124155600946769955-self-quote",
-          "network": "X",
-          "originLabel": "X · @ylecun",
-          "author": "X · @ylecun",
-          "text": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational…",
-          "score": 223,
-          "sentiment": "SKEPTICAL",
-          "publishedAtMs": 1795273134000,
-          "url": "https://x.com/ylecun/status/2124155600946769955"
-        }
-      ],
-      "url": "https://x.com/ylecun/status/2124155600946769955",
-      "publishedAtMs": 1795273134000,
-      "firstSeenAtMs": 1795318285221,
-      "isLiveInbound": true,
-      "primarySector": "CRT",
-      "secondarySectors": [
-        "ARC",
-        "REL"
-      ],
-      "mass": 3.3263981609813045,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "INTENSIVE",
-      "rawAbstract": "That's the essence of my Deep Learning course at NYU for the past 20 years or so. Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,...). Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course. Here is a lecture I gave at IAS in 2019 about understanding SSL with EBM https://youtu.be/m17B-cXcZFI?is=z7jMkbW_JqZZziSF There is also my 2006 EBM tutorial paper: http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf Reference: https://atcold.github.io/NYU-DLSP21/ https://youtu.be/m17B-cXcZFI?is=z7jMkbW_JqZZziSF",
-      "architectBrief": {
-        "summary": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,...). Look at themes…",
-        "stackImpact": [
-          "CRT Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering…",
-        "talkingPoints": [
-          "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised…",
-          "Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course.",
-          "Readiness: GA (X · @ylecun)."
-        ],
-        "industryLens": {
-          "BANKING": "Financial Services (That s the essence): Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering… — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
-          "HEALTHCARE": "Clinical & Life-Sci (That s the essence): Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering… — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
-          "FINOPS": "Platform FinOps (That s the essence): Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering… — requires strict FinOps quota guardrails on multi-turn loops; prioritize workload benchmarking (compliance posture: not assessed in source).",
-          "RETAIL": "Commerce & CX (That s the essence): Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering… — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
-          "PUBLIC": "Public Sector (That s the essence): Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering… — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
-          "SAAS": "B2B SaaS Product (That s the essence): Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering… — evaluate per-tenant unit margins (requires strict FinOps quota guardrails on multi-turn loops; compliance posture: not assessed in source)."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Computer Vision & Diffusion",
-        "Multimodal Generation",
-        "RAG & Vector Storage"
-      ],
-      "evidenceScope": "discussion_or_personal",
-      "verifiedMetrics": [],
-      "literacy": {
-        "plainTitle": "That's the essence of my Deep Learning course…",
-        "plainFullTitle": "That's the essence of my Deep Learning course at NYU for the past 20 years or so.",
-        "levels": {
-          "1": {
-            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion…",
-            "everydayWhy": "Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course."
-          },
-          "2": {
-            "whatHappened": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.).",
-            "whoBuiltIt": "X · @ylecun",
-            "problemSolved": "Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course."
-          },
-          "3": {
-            "bridgeSummary": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.). Look at themes 3 and 4 from our 2021 course… Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
-          },
-          "4": {
-            "roiAndFinOps": "Personal or community discussion (X · @ylecun) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
-            "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
-            "clientAdvice": "Read the original discussion directly on X · @ylecun for first-hand human context."
-          },
-          "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. That's the essence of my Deep Learning course at NYU for the past 20 years or so. Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.).",
-            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @ylecun) — no model weights, API specs, latency figures, or code parameters were published.",
-            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
-          }
-        },
-        "glossary": [],
-        "generatedBy": "DETERMINISTIC"
-      },
-      "supportingSources": [
-        {
-          "source": "X · @ylecun",
-          "title": "That's the essence of my Deep Learning course at NYU for the past 20 years or so.",
-          "url": "https://x.com/ylecun/status/2124155600946769955",
-          "publishedAt": "2026-11-21T14:58:54.000Z",
-          "publishedAtMs": 1795273134000,
-          "isPrimary": false,
-          "relation": "same_event"
-        }
-      ],
-      "lastUpdatedAtMs": 1795273134000
-    },
-    {
       "id": "rd-street-1y2ccfq",
       "title": "I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)",
       "shortLabel": "I built a quick pass",
@@ -3362,8 +3255,8 @@
       "engagementVelocity": {
         "likesOrUps": 2,
         "commentsOrReplies": 0,
-        "velocityPerHour": 7,
-        "badgeText": "7/hr · 2 ups · 0 comments"
+        "velocityPerHour": 6,
+        "badgeText": "6/hr · 2 ups · 0 comments"
       },
       "url": "https://www.reddit.com/r/ollama/comments/1y2ccfq/i_built_a_quick_passfail_test_suite_to_see_which/",
       "publishedAtMs": 1795308922000,
@@ -4351,7 +4244,7 @@
           "originLabel": "X · @OpenAI",
           "author": "X · @OpenAI",
           "text": "It shows the progress our frontier models have made in their ability to help scientists use AI to identify promising drug candidates.",
-          "score": 208,
+          "score": 207,
           "sentiment": "HYPE",
           "publishedAtMs": 1795201779000,
           "url": "https://x.com/OpenAI/status/2123856316187975756"
@@ -4365,7 +4258,7 @@
       "secondarySectors": [
         "ECO"
       ],
-      "mass": 3.306741167725795,
+      "mass": 3.3053807245469966,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "INTENSIVE",
@@ -8322,20 +8215,20 @@
   ],
   "literacyBySignalId": {
     "rd-street-1y2f2kz": {
-      "plainTitle": "AI claims to solve Riemann Hypothesis",
-      "plainFullTitle": "AI-assisted proof claims to solve Riemann Hypothesis",
+      "plainTitle": "AI-Assisted Proof Claims To Solve Riemann Hypothesis",
+      "plainFullTitle": "AI-Assisted Proof Claims To Solve Riemann Hypothesis",
       "levels": {
         "1": {
-          "analogy": "Imagine a library where books are constantly being checked out and returned, and a librarian has to keep track of every book's status. This process is like the AI system that is claimed to be working on potentially solving the Riemann Hypothesis, where the system is constantly verifying and updating its understanding.",
-          "everydayWhy": "Everyday people might be interested in this because it could lead to breakthroughs in mathematics that have wide-ranging implications for fields like cryptography and finance."
+          "analogy": "Think of an unverified early announcement at a scientific conference — before anyone treats a dramatic claim as settled fact, independent researchers still need to check every step on paper. Specifically, Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis.",
+          "everydayWhy": "Unverified claims remain tentative until independent domain experts reproduce or confirm the evidence."
         },
         "2": {
-          "whatHappened": "An AI system has been claimed to solve the Riemann Hypothesis, a long-standing problem in mathematics. The claim is based on an active thread on r/singularity with 15 upvotes.",
-          "whoBuiltIt": "The claim is from an active engineering thread on r/singularity, but no specific lab team or organization is mentioned.",
-          "problemSolved": "The Riemann Hypothesis, if proven, could provide insights into the distribution of prime numbers, which has implications for number theory and potentially cryptography."
+          "whatHappened": "Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis.",
+          "whoBuiltIt": "r/singularity Engineering Community · Cross-surfaced on r/ClaudeAI + Swyx · Latent Space",
+          "problemSolved": "Explores an unverified claim or open question around \"AI-Assisted Proof Claims To Solve Riemann Hypothesis\" — awaiting independent verification."
         },
         "3": {
-          "bridgeSummary": "The claim suggests that AI can be used to tackle complex mathematical problems, which could lead to advancements in various fields, including finance and cybersecurity. However, the actual proof has not been verified, and the community is awaiting further validation."
+          "bridgeSummary": "Unverified claim reported by r/singularity: Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis. No technical specifications, APIs, or reproducible proofs have been independently confirmed."
         },
         "4": {
           "roiAndFinOps": "Unverified claim — do not base roadmap, procurement, or budget decisions on unconfirmed reports. Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis.",
@@ -8343,13 +8236,13 @@
           "clientAdvice": "For Banking & FinServ: monitor for independent verification before citing or acting on \"AI-Assisted Proof Claims To Solve Riemann Hypothesis\"."
         },
         "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. The claim is based on an active engineering thread on r/singularity, but no specific technical details or benchmarks are provided.",
-          "specsAndCaveats": "The claim is based on an active thread with 15 upvotes, but no technical specifications or benchmarks are provided. The community is awaiting further validation and peer review.",
-          "streetConsensus": "The community is actively discussing the claim, with some expressing interest and others awaiting further validation. The consensus is that the claim is unverified and requires further peer review."
+          "architectureBrief": "Source provides no technical specifications or architecture details. Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis.",
+          "specsAndCaveats": "Unverified claim from r/singularity — no reproducible benchmarks, proof artifacts, or technical specifications accompany this post.",
+          "streetConsensus": "Awaiting independent expert verification (unconfirmed upstream post)"
         }
       },
       "glossary": [],
-      "generatedBy": "OLLAMA"
+      "generatedBy": "DETERMINISTIC"
     },
     "lab-anthropic-httpswwwanthropiccomnewsipo-close": {
       "plainTitle": "Anthropic IPO closes",
@@ -9249,36 +9142,6 @@
           "architectureBrief": "Source provides no technical specifications or architecture details. Test using prompts with unique, trackable secrets proves that data doesn't stay private. Researchers planted 2 million digital tripwires in requests sent through a sprawling network of AI services to find out what happened to sensitive information entrusted to them.",
           "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Hacker News) — no model weights, API specs, latency figures, or code parameters were published.",
           "streetConsensus": "Thread has 6 replies on Hacker News — top engineer comments."
-        }
-      },
-      "glossary": [],
-      "generatedBy": "DETERMINISTIC"
-    },
-    "x-fx-2124155600946769955": {
-      "plainTitle": "That's the essence of my Deep Learning course…",
-      "plainFullTitle": "That's the essence of my Deep Learning course at NYU for the past 20 years or so.",
-      "levels": {
-        "1": {
-          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion…",
-          "everydayWhy": "Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course."
-        },
-        "2": {
-          "whatHappened": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.).",
-          "whoBuiltIt": "X · @ylecun",
-          "problemSolved": "Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course."
-        },
-        "3": {
-          "bridgeSummary": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.). Look at themes 3 and 4 from our 2021 course… Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
-        },
-        "4": {
-          "roiAndFinOps": "Personal or community discussion (X · @ylecun) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
-          "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
-          "clientAdvice": "Read the original discussion directly on X · @ylecun for first-hand human context."
-        },
-        "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. That's the essence of my Deep Learning course at NYU for the past 20 years or so. Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.).",
-          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @ylecun) — no model weights, API specs, latency figures, or code parameters were published.",
-          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
         }
       },
       "glossary": [],

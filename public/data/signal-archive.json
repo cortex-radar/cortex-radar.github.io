@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-22T03:33:22.494Z",
-  "updatedAtMs": 1795318402494,
-  "count": 106,
+  "updatedAtIso": "2026-11-22T03:34:28.158Z",
+  "updatedAtMs": 1795318468158,
+  "count": 107,
   "entries": [
     {
       "id": "rd-street-1y2d3ts",
@@ -456,6 +456,17 @@
       "publishedAtMs": 1795275011000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Active engineering thread in r/ollama (2 upvotes, 0 comments): Do local LLM users even want this?"
+    },
+    {
+      "id": "x-fx-2124155600946769955",
+      "title": "That's the essence of my Deep Learning course at NYU for the past 20 years or so.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ylecun",
+      "url": "https://x.com/ylecun/status/2124155600946769955",
+      "publishedAtMs": 1795273134000,
+      "archivedAtMs": 1795318468158,
+      "verbatimExcerpt": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational…"
     },
     {
       "id": "rd-street-1y1udwh",

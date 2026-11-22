@@ -6,15 +6,15 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2026 03:33:22 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 03:34:28 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
-      <title>AI-assisted proof claims to solve Riemann Hypothesis</title>
+      <title>AI-Assisted Proof Claims To Solve Riemann Hypothesis</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y2f2kz&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2f2kz&amp;lens=2</guid>
       <pubDate>Sun, 22 Nov 2026 03:15:51 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>An AI system has been claimed to solve the Riemann Hypothesis, a long-standing problem in mathematics. The claim is based on an active thread on r/singularity with 15 upvotes. The Riemann Hypothesis, if proven, could provide insights into the distribution of prime numbers, which has implications for number theory and potentially cryptography. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2f2kz/aiassisted_proof_claims_to_solve_riemann/</description>
+      <description>Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis. Explores an unverified claim or open question around &quot;AI-Assisted Proof Claims To Solve Riemann Hypothesis&quot; — awaiting independent verification. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2f2kz/aiassisted_proof_claims_to_solve_riemann/</description>
     </item>
     <item>
       <title>Hierarchos-Native v0.2.5 introduces P3 WMMA update for improved FP16 performance</title>
@@ -193,20 +193,20 @@
       <description>The post discusses strategies for students to cope with the concept of the singularity during their college admissions process. The post aims to provide guidance to students on how to prepare for and understand the implications of the singularity in their academic and professional lives. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2etau/how_to_cope_with_the_singularity_through_college/</description>
     </item>
     <item>
-      <title>That&apos;s the essence of my Deep Learning course at NYU for the past 20 years or so.</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2124155600946769955&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2124155600946769955&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 14:58:54 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational AE, Siamese nets, joint embedding, JEPA, diffusion models,.). Look at themes 3 and 4 from our 2021 course: https://atcold.github.io/NYU-DLSP21/ @alfcnz has been working on an EBM textbook derived from my course. — Upstream (X · @ylecun): https://x.com/ylecun/status/2124155600946769955</description>
-    </item>
-    <item>
       <title>I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y2ccfq&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2ccfq&amp;lens=2</guid>
       <pubDate>Sun, 22 Nov 2026 00:55:22 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Active engineering thread in r/ollama (2 upvotes, 0 comments): I built a quick pass/fail test suite to see which small local models actually survive inside a digital helpers (Gemma 4 on an 8GB high-speed computer chips surprised me). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y2ccfq/i_built_a_quick_passfail_test_suite_to_see_which/</description>
+    </item>
+    <item>
+      <title>AI may have solved the most important problem in mathematics</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50583445&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50583445&amp;lens=2</guid>
+      <pubDate>Fri, 20 Nov 2026 22:46:59 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Published on economist.com (discussed on Hacker News) published &quot;AI may have solved the most important problem in mathematics&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around AI may have solved the most important problem in mathematics. — Upstream (Hacker News): https://www.economist.com/science-and-technology/2026/11/20/ai-may-have-solved-the-most-important-problem-in-mathematics</description>
     </item>
   </channel>
 </rss>
