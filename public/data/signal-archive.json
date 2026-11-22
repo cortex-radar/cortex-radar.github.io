@@ -1,9 +1,135 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-22T11:19:07.807Z",
-  "updatedAtMs": 1795346347807,
-  "count": 126,
+  "updatedAtIso": "2026-11-22T19:36:08.554Z",
+  "updatedAtMs": 1795376168554,
+  "count": 140,
   "entries": [
+    {
+      "id": "rd-street-1y2mdo9",
+      "title": "“What if AI solved the Riemann Hypothesis but it was incomprehensible to humans?”",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2mdo9/what_if_ai_solved_the_riemann_hypothesis_but_it/",
+      "publishedAtMs": 1795343706000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "I think this shows that the Riemann Hypothesis isn't really solved at all. The point is to find elegant proofs, not just break it down in all possible cases and bash every possible statement. No one was doubting that RH was true, what…"
+    },
+    {
+      "id": "rd-street-1y2lwga",
+      "title": "Inkling-2-Mini on a single R9700: 196K context, ~110 tok/s, official weights (vLLM port)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2lwga/inkling2mini_on_a_single_r9700_196k_context_110/",
+      "publishedAtMs": 1795341852000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "I have an R9700 (32 GB, gfx1201) and wanted to run Inkling-2-Mini in vLLM with the official NVFP4/MXFP8 checkpoint. Upstream only supports it on NVIDIA and MI355X, so I ported it. The main obstacles: * **No FP4 hardware.** RDNA4 has none…",
+      "verifiedMetrics": [
+        {
+          "value": "100%",
+          "label": "Source-reported percentage",
+          "quote": "* **ROCm quirks.** Launch overhead, a segfaulting system ROCm, and an idle CPU core stuck at 100%.",
+          "subject": "stuck",
+          "isFeatured": true
+        },
+        {
+          "value": "80 decode tokens/s",
+          "label": "Generation throughput",
+          "quote": "Results on one R9700:** * \\~80 tok/s decode, 80-115 tok/s with the model's built-in speculative decoding (llama.cpp Q8: \\~31) * \\~4,600 tok/s prefill *",
+          "context": "Source-reported token generation rate",
+          "subject": "Inkling-2-Mini",
+          "isFeatured": true
+        },
+        {
+          "value": "80–115 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Results on one R9700:** * \\~80 tok/s decode, 80-115 tok/s with the model's built-in speculative decoding (llama.cpp Q8: \\~31) * \\~4,600 tok/s prefill * tool calling,",
+          "context": "Source-reported token generation rate",
+          "subject": "Inkling-2-Mini",
+          "isFeatured": true
+        },
+        {
+          "value": "110 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Inkling-2-Mini on a single R9700: 196K context, ~110 tok/s, official weights (vLLM port)",
+          "context": "Source-reported token generation rate",
+          "subject": "Inkling-2-Mini",
+          "isFeatured": true
+        },
+        {
+          "value": "4,600 prefill tokens/s",
+          "label": "Prompt throughput",
+          "quote": "* \\~80 tok/s decode, 80-115 tok/s with the model's built-in speculative decoding (llama.cpp Q8: \\~31) * \\~4,600 tok/s prefill * tool calling, reasoning and images work You can get the patched vLLM docker image from the repo, and only",
+          "context": "Source-reported token generation rate",
+          "subject": "llama.cpp"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y2lu7s",
+      "title": "AgentBlackBox: SARIF v2.1.0 Export: Direct GitHub Code Scanning & CI/CD integration",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y2lu7s/agentblackbox_sarif_v210_export_direct_github/",
+      "publishedAtMs": 1795341638000,
+      "archivedAtMs": 1795376168554
+    },
+    {
+      "id": "rd-street-1y2ls7r",
+      "title": "Local LLM for Ai development coding",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y2ls7r/local_llm_for_ai_development_coding/",
+      "publishedAtMs": 1795341434000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "Hey guys, im setting up a local AI coding agent in VS Code to write code and math for me since im a non-coder. Can specialized code/math models be merged into one model, and are streaming libraries like AIR-LLM practical for running…"
+    },
+    {
+      "id": "rd-street-1y2lprx",
+      "title": "I was banned from a certain highly popular movie subreddit for posting an AI image. When asked if they'll also ban movies that use AI, they dodged the question and muted me",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2lprx/i_was_banned_from_a_certain_highly_popular_movie/",
+      "publishedAtMs": 1795341167000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "I got insta banned for posting an AI image. No warning, no history of bans, just insta banned. Yes it's against their rules, but I don't know how frequently I'm expected to read a subreddits rules for any changes, I've been posting there…"
+    },
+    {
+      "id": "rd-street-1y2l92z",
+      "title": "Gemini 4 Neon ranked a SOLID 1st at livebench",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2l92z/gemini_4_neon_ranked_a_solid_1st_at_livebench/",
+      "publishedAtMs": 1795339324000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Gemini 4 Neon ranked a SOLID 1st at livebench"
+    },
+    {
+      "id": "rd-street-1y2jmbj",
+      "title": "Easy MCP — run Neon / Hydrogen / Astra / Opus on your PC through web AI (free, open source)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y2jmbj/easy_mcp_run_neon_hydrogen_astra_opus_on_your_pc/",
+      "publishedAtMs": 1795333042000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "Sharing a free open-source tool I built: Easy MCP. It lets web AI (Gemini, Claude, ChatGPT) read, edit files and run commands directly on your own PC through one single link. One-command install, no Git needed. Before anyone starts: this…"
+    },
+    {
+      "id": "rd-street-1y2j94l",
+      "title": "FSD V15 looks incredible",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2j94l/fsd_v15_looks_incredible/",
+      "publishedAtMs": 1795331680000,
+      "archivedAtMs": 1795376168554
+    },
     {
       "id": "rd-street-1y2hxv5",
       "title": "I tracked 3,236 open-source AI Agent & MCP repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived",
@@ -159,6 +285,28 @@
       "publishedAtMs": 1795315608000,
       "archivedAtMs": 1795326428097,
       "verbatimExcerpt": "Regardless of what model I am using at the moment, they are always incredible and have completely changed how I operate creatively. Reinvigorating old hobbies and creating new ones at the same time. The video is a story I posted. No one…"
+    },
+    {
+      "id": "hn-50595554",
+      "title": "Data Processing Incidents on Inference Providers",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/",
+      "publishedAtMs": 1795313654000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "OpenRouter off-boarded three providers, removed 125 endpoints from Zero Data Retention eligibility, and notified potentially affected customers after canary token research on inference providers. Earlier this week, security researchers…"
+    },
+    {
+      "id": "hn-50595537",
+      "title": "The Mythology of Conscious AI",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.noemamag.com/the-mythology-of-conscious-ai/",
+      "publishedAtMs": 1795313402000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "Why consciousness is more likely a property of life than of computation and why creating conscious, or even conscious-seeming AI, is a bad idea. Anil Seth won the 2025 annual Berggruen Prize Essay Competition for his English-language…"
     },
     {
       "id": "rd-street-1y2d3ts",
@@ -327,6 +475,17 @@
       "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Redditors in their final moments"
     },
     {
+      "id": "hn-50594564",
+      "title": "International UN talks on controlling use of autonomous weapons collapse",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse",
+      "publishedAtMs": 1795302621000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "Week-long efforts fail to establish negotiating mandate on AI warfare after Russian ‘filibustering’"
+    },
+    {
       "id": "rd-street-1y27y1y",
       "title": "Solution for Agents being blocked - Letter of Agency",
       "source": "Reddit",
@@ -424,6 +583,17 @@
       "publishedAtMs": 1795294274000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Active engineering thread in r/LocalLLaMA (1 upvotes, 0 comments): Inkling-2-Mini quants by shinmegamiboson - 5.4GB and 8.9GB at higher scores than Unsloth"
+    },
+    {
+      "id": "hn-50593481",
+      "title": "Pandex – Official European Law for AI Agents, over MCP",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.pandex.io",
+      "publishedAtMs": 1795294061000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "Legislation and highest-court decisions of the EU and seven European countries, straight from the institutions that publish them, ready for search and AI agents. One API and one MCP server for every jurisdiction we hold. Cour de…"
     },
     {
       "id": "rd-street-1y271rv",
@@ -541,6 +711,16 @@
       "archivedAtMs": 1795312954607
     },
     {
+      "id": "hn-50592097",
+      "title": "Upload2Shell (CVE-2026-125396)",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://pwn.ai/upload2shell",
+      "publishedAtMs": 1795285769000,
+      "archivedAtMs": 1795376168554
+    },
+    {
       "id": "rd-street-1y23axm",
       "title": "European AI Update: $1B for Physical AI and a new 1T model by Domyn",
       "source": "Reddit",
@@ -634,6 +814,17 @@
       "publishedAtMs": 1795275011000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Active engineering thread in r/ollama (2 upvotes, 0 comments): Do local LLM users even want this?"
+    },
+    {
+      "id": "x-fx-2124155600946769955",
+      "title": "That's the essence of my Deep Learning course at NYU for the past 20 years or so.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ylecun",
+      "url": "https://x.com/ylecun/status/2124155600946769955",
+      "publishedAtMs": 1795273134000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational…"
     },
     {
       "id": "rd-street-1y1udwh",
@@ -795,15 +986,15 @@
       "archivedAtMs": 1795312954607
     },
     {
-      "id": "vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539",
-      "title": "[AINews] Riemann Hypothesis proved...twice independently",
-      "source": "VIPBlog",
-      "sourceCategory": "VIP_VOICE",
-      "originFeedName": "Swyx · Latent Space",
-      "url": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/",
-      "publishedAtMs": 1795237333000,
-      "archivedAtMs": 1795346347807,
-      "verbatimExcerpt": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his…"
+      "id": "hn-50586292",
+      "title": "ClawDOS – An AI coding agent for DOS",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "http://ricapar.net/ClawDOS/",
+      "publishedAtMs": 1795239481000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "An AI chat and coding harness for DOS, on a real IBM PC 5160 (8088 at 4.77 MHz) Ricapar/ ClawDOS ClawDOS ClawDOS An AI coding agent for DOS. It runs on an IBM PC XT: an 8088 at 4.77 MHz, 640K of RAM, a CGA card. Backstory: The IBM PC was…"
     },
     {
       "id": "hn-50585735",
@@ -877,17 +1068,6 @@
       "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y1fe6b/culler_a_local_open_source_software_factory/",
       "publishedAtMs": 1795210145000,
       "archivedAtMs": 1795312954607
-    },
-    {
-      "id": "x-fx-2123889582303281557",
-      "title": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with…",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @ollama",
-      "url": "https://x.com/ollama/status/2123889582303281557",
-      "publishedAtMs": 1795209711000,
-      "archivedAtMs": 1795346347807,
-      "verbatimExcerpt": "32GB+ memory. Each token loops through its middle layers three times so it reasons deeper at just 5.4B active parameters. Built for coding, agentic workflows such as, computer use, design with strong visual reasoning, and finance tasks.…"
     },
     {
       "id": "rd-street-1y1drpd",
@@ -1419,6 +1599,17 @@
       "verbatimExcerpt": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪"
     },
     {
+      "id": "lab-openai-enaicomindexintroducing-medchembench",
+      "title": "Can AI help scientists identify promising drug candidates?",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "OpenAI News",
+      "url": "https://openai.com/index/introducing-medchembench",
+      "publishedAtMs": 1795132800000,
+      "archivedAtMs": 1795376168554,
+      "verbatimExcerpt": "MedChemBench evaluates how well AI models interpret molecular structures, reason from experimental evidence, and select compounds in early drug discovery. Introducing MedChemBench, a benchmark that tests how well AI models read molecular…"
+    },
+    {
       "id": "vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945",
       "title": "Scaling Linear’s GTM to $100M ARR — Cristina Cordova, COO",
       "source": "VIPBlog",
@@ -1716,14 +1907,14 @@
         {
           "value": "from 7% to 70%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "context": "Before-and-after transition",
           "isFeatured": false
         },
         {
           "value": "83%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "isFeatured": false
         }
       ]
