@@ -70,18 +70,18 @@ function buildIndustryLens(
       : 'maintains neutral unit token economics';
   const riskClause =
     risk === 'LOW'
-      ? 'clears standard SOC2 / zero-retention enterprise posture'
+      ? 'compliance posture: not assessed in source'
       : risk === 'HIGH'
-      ? 'mandates legal & CISO sign-off prior to production cutover'
-      : 'requires human-in-the-loop confidence routing before autonomous actions';
+      ? 'elevated operational risk noted; security & compliance require independent review'
+      : 'requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)';
 
   return {
-    BANKING: `FinServ Advisory (${shortLabel}): ${headline} — ${costClause} while ${riskClause} under SR 11-7 model-risk governance.`,
-    HEALTHCARE: `Clinical & Life-Sci (${shortLabel}): ${headline} — pairs with HIPAA BAA zero-retention boundaries; ${riskClause} for clinical decision workflows.`,
-    FINOPS: `Platform FinOps (${shortLabel}): ${headline} — ${costClause}; prioritize semantic router tiering to evaluate workload economics.`,
-    RETAIL: `Commerce & CX (${shortLabel}): ${headline} — pairs responsive catalog & multimodal shopper workflows while ${costClause}.`,
-    PUBLIC: `Sovereign & Public Sector (${shortLabel}): ${headline} — evaluate against FedRAMP / EU AI Act transparency controls; ${riskClause}.`,
-    SAAS: `B2B SaaS Product (${shortLabel}): ${headline} — evaluate per-tenant unit margins (${costClause}) across multi-tenant workspaces.`,
+    BANKING: `Financial Services (${shortLabel}): ${headline} — ${costClause} (${riskClause}).`,
+    HEALTHCARE: `Clinical & Life-Sci (${shortLabel}): ${headline} — ${costClause} (${riskClause}).`,
+    FINOPS: `Platform FinOps (${shortLabel}): ${headline} — ${costClause}; prioritize workload benchmarking (${riskClause}).`,
+    RETAIL: `Commerce & CX (${shortLabel}): ${headline} — ${costClause} (${riskClause}).`,
+    PUBLIC: `Public Sector (${shortLabel}): ${headline} — ${costClause} (${riskClause}).`,
+    SAAS: `B2B SaaS Product (${shortLabel}): ${headline} — evaluate per-tenant unit margins (${costClause}; ${riskClause}).`,
   };
 }
 
@@ -111,7 +111,7 @@ const BLUEPRINTS: SeedBlueprint[] = [
     talkingPoints: [
       'Consolidate brittle vector-chunking pipelines for corpora under 2M tokens.',
       'Enable dynamic thinking budgets so simple classifications skip deep reasoning cost.',
-      'Enterprise-ready via Vertex AI VPC-SC and zero training retention.',
+      'Supports Vertex AI VPC-SC configuration when provisioned inside managed cloud accounts.',
     ],
     affectedEnterpriseStacks: ['Vertex AI', 'LangGraph', 'Enterprise RAG', 'Code Migration Suites'],
     modelSpecs: {
@@ -806,7 +806,7 @@ const BLUEPRINTS: SeedBlueprint[] = [
     stackImpact: ['CI/CD Eval Gates', 'Vanta / Drata GRC', 'ISO 42001 Certification'],
     integrationPattern: 'Wire OpenTelemetry agent spans into automated Annex A evidence buckets on every release.',
     latencyAndCostNote: 'Saves ~220 hours of manual governance audit prep per enterprise engagement.',
-    headlineSoWhat: 'Accelerates enterprise vendor security clearance—ISO 42001 is rapidly becoming the "SOC2 of AI" in Fortune 500 procurement.',
+    headlineSoWhat: 'Accelerates vendor governance audits via ISO 42001 continuous compliance evidence collection.',
     talkingPoints: [
       'Advise B2B SaaS clients to start ISO 42001 readiness now to shorten enterprise sales cycles.',
       'Automating evidence collection from telemetry spans avoids developer friction.',
@@ -1024,7 +1024,9 @@ export function synthesizeRawItemToSpatialSignal(
       : null;
 
   const readiness: ReadinessState =
-    raw.source === 'arXiv'
+    raw.source === 'arXiv' ||
+    raw.source === 'HuggingFace' ||
+    /huggingface\.co\/papers\//i.test(raw.url || '')
       ? 'RESEARCH'
       : relMeta
       ? relMeta.isPreRelease

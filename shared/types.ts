@@ -223,6 +223,8 @@ export interface VerifiedSourceMetric {
   label: string;
   quote: string;
   context?: string;
+  subject?: string;
+  isFeatured?: boolean;
 }
 
 export type EvidenceScope =
@@ -533,4 +535,26 @@ export interface StaticGalaxySnapshot {
   signalCount: number;
   signals: SpatialSignal[];
   literacyBySignalId: Record<string, LiteracySpectrumPayload>;
+}
+
+export interface ArchivedSignalEntry {
+  id: string;
+  title: string;
+  source: SpatialSignal['source'];
+  sourceCategory?: SourceCategory;
+  originFeedName?: string;
+  url: string;
+  publishedAtMs: number;
+  updatedAtMs?: number;
+  archivedAtMs: number;
+  verbatimExcerpt?: string;
+  verifiedMetrics?: VerifiedSourceMetric[];
+}
+
+export interface StaticSignalArchive {
+  version: 1;
+  updatedAtIso: string;
+  updatedAtMs: number;
+  count: number;
+  entries: ArchivedSignalEntry[];
 }

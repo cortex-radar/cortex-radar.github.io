@@ -46,6 +46,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: npm run bake:galaxy
 
+      - name: Run mandatory CORTEX v2.5 fidelity & compliance gate
+        run: npx tsx scripts/verify_v25_fidelity.ts
+
       - name: Configure GitHub Pages base path
         id: pages
         uses: actions/configure-pages@v5
@@ -63,6 +66,9 @@ jobs:
         run: |
           mkdir -p baked-snapshot
           cp public/data/live-galaxy.json baked-snapshot/live-galaxy.json
+          if [ -f public/data/signal-archive.json ]; then
+            cp public/data/signal-archive.json baked-snapshot/signal-archive.json
+          fi
           if [ -f public/rss.xml ]; then
             cp public/rss.xml baked-snapshot/rss.xml
           fi
@@ -116,6 +122,9 @@ jobs:
         run: |
           mkdir -p public/data
           cp baked-snapshot/live-galaxy.json public/data/live-galaxy.json
+          if [ -f baked-snapshot/signal-archive.json ]; then
+            cp baked-snapshot/signal-archive.json public/data/signal-archive.json
+          fi
           if [ -f baked-snapshot/rss.xml ]; then
             cp baked-snapshot/rss.xml public/rss.xml
           fi
@@ -123,6 +132,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data/live-galaxy.json public/rss.xml
+          if [ -f public/data/signal-archive.json ]; then
+            git add public/data/signal-archive.json
+          fi
           if ! git diff --staged --quiet; then
             git commit -m "chore(galaxy): refresh pre-baked live-galaxy snapshot [skip ci]"
             git pull --rebase -X theirs origin main || (git rebase --abort || true)

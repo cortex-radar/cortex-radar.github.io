@@ -8,12 +8,17 @@ import {
 import {
   BenchmarkClaimSpec,
   classifyEvidenceScope,
+  COMPLIANCE_NOT_ASSESSED_SOURCE,
+  COMPLIANCE_NOT_ASSESSED_STUDY,
   extractBenchmarkClaimSpec,
   extractFrozenEntities,
+  extractNamedLegalInstitution,
   extractSourceVerifiedMetrics,
+  findUnbackedComplianceClaims,
   findUnbackedNumericTokens,
   getSignalReleaseMetadata,
   hasLatencyOrThroughputWithoutCost,
+  hasSourceComplianceAssessment,
   hasTechnicalEngineeringContent,
   isConditionalPolicyHeadline,
   isEvaluationQualityStudy,
@@ -21,11 +26,14 @@ import {
   isLegalOrCourtRulingSignal,
   isNonToolNewsOrMarketSignal,
   isReleaseWithoutNotes,
+  repairSummaryProseScope,
   requiresVerbatimPublisherHeadline,
   stripUiChromeBoilerplate,
+  stripUnbackedComplianceClaims,
   stripUnbackedNumericClaims,
   truncateAtWordBoundary,
   validateHeadlineMeaningPreserved,
+  validateSummaryProseScope,
 } from './provenance';
 
 export const NO_RELEASE_NOTES_NOTICE = 'No release notes extracted — see linked release';
@@ -1253,7 +1261,11 @@ export function inferDomainEnterpriseStacks(sig: {
   }
   if (/\b(health|clinical|hospital|patient|medical|ehr|hipaa|biotech|protein|radiology)\b/.test(hay)) {
     pushUnique('Clinical & Healthcare AI');
-    pushUnique('HIPAA Privacy & Audit');
+    if (/\bhipaa\b/.test(hay)) {
+      pushUnique('HIPAA Privacy & Audit');
+    } else {
+      pushUnique('Clinical Privacy & Audit');
+    }
   }
   if (/\b(security|vulnerab|injection|poison|oauth|rbac|pkce|iso\s*42001|eu ai act|compliance|audit|guardrail|privacy|red[-\s]?team)\b/.test(hay)) {
     pushUnique('AI Governance & Audit');
@@ -1366,7 +1378,11 @@ function buildDisjointL5Sections(
     const evalMetrics = extractSourceVerifiedMetrics(sig);
     const evalSummary =
       evalMetrics.length > 0
-        ? evalMetrics.map((m) => `${m.label}: ${m.value}`).join(' · ')
+        ? evalMetrics
+            .map((m) =>
+              m.subject ? `${m.subject} ${m.value} (${m.label})` : `${m.label}: ${m.value}`
+            )
+            .join(' · ')
         : 'Quality, citation relevance, and grading-criteria evaluation without latency telemetry';
     specsAndCaveats =
       specSentences.length > 0
@@ -1534,7 +1550,7 @@ export function buildDeterministicLiteracyPayload(
     }
     const hay = `${sig.title} ${sig.rawAbstract}`.toLowerCase();
     if (/\b(healthcare|clinical|hospital|patient|medical|care)\b/.test(hay)) {
-      return 'Reduces clinical documentation, chart synthesis, and administrative coordination overhead inside HIPAA/enterprise-governed care workflows.';
+      return 'Reduces clinical documentation, chart synthesis, and administrative coordination overhead inside governed clinical care workflows.';
     }
     if (/\b(code|coding|repo|git|cli|ide|agent|mcp)\b/.test(hay)) {
       return 'Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools.';
@@ -1590,6 +1606,15 @@ export function buildDeterministicLiteracyPayload(
 
   const scope = classifyEvidenceScope(sig);
   const clientMeta = CLIENT_INDUSTRIES.find((c) => c.id === activeClient) || CLIENT_INDUSTRIES[0];
+  const sourceHasCompliance = hasSourceComplianceAssessment(sig);
+  const defaultComplianceStatus =
+    scope === 'research_paper' || isEvaluationQualityStudy(sig)
+      ? COMPLIANCE_NOT_ASSESSED_STUDY
+      : COMPLIANCE_NOT_ASSESSED_SOURCE;
+  const complianceClause = sourceHasCompliance
+    ? 'Compliance: Verification details cited in source — confirm upstream.'
+    : `Compliance: ${defaultComplianceStatus}.`;
+
   const readinessLabel = relMeta
     ? relMeta.isPreRelease
       ? `${relMeta.stabilityLabel} (pre-release channel — test in non-production environments)`
@@ -1602,24 +1627,24 @@ export function buildDeterministicLiteracyPayload(
     ? 'Market & Policy Signal (no software artifact to deploy)'
     : scope === 'single_user_experiment'
     ? 'Single-User / Local Hardware Experiment (reproduce locally before team reliance)'
-    : sig.readiness === 'GA'
-    ? 'Production GA (ready for governed enterprise pilot)'
+    : sig.readiness === 'RESEARCH'
+    ? 'R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs)'
     : sig.readiness === 'PREVIEW'
     ? 'Public Preview (sandbox & non-critical canary workloads only)'
-    : 'R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs)';
+    : 'General release reported by source';
 
   const noCostEvidence = hasLatencyOrThroughputWithoutCost(sig);
   const l4 =
     scope === 'discussion_or_personal' && !isHedged
       ? {
           roiAndFinOps: `Personal or community discussion (${sig.originFeedName || sig.source}) — no software ROI, infrastructure cost projection, or technical benchmark applies.`,
-          readinessAndRisk: `${readinessLabel} — read the linked thread directly rather than treating it as an engineering or financial specification.`,
+          readinessAndRisk: `${readinessLabel} — read the linked thread directly rather than treating it as an engineering or financial specification. ${complianceClause}`,
           clientAdvice: `Read the original discussion directly on ${sig.originFeedName || sig.source} for first-hand human context.`,
         }
       : scope === 'single_user_experiment'
       ? {
           roiAndFinOps: `${facts.leadSentence || facts.cleanHeadline} (Individual benchmark/project — no enterprise unit-cost projection).`,
-          readinessAndRisk: `${readinessLabel} · Independent multi-hardware verification not yet established.`,
+          readinessAndRisk: `${readinessLabel} · Independent multi-hardware verification not yet established. ${complianceClause}`,
           clientAdvice:
             'If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly.',
         }
@@ -1628,7 +1653,7 @@ export function buildDeterministicLiteracyPayload(
           roiAndFinOps: isHedged
             ? `Unverified claim — do not base roadmap, procurement, or budget decisions on unconfirmed reports. ${facts.leadSentence || facts.cleanHeadline}`
             : `${facts.leadSentence || facts.cleanHeadline} (Operational/market development — no direct token-cost or compute telemetry in source).`,
-          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Attention under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
+          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Attention. ${complianceClause}`,
           clientAdvice: isHedged
             ? `For ${clientMeta.label}: monitor for independent verification before citing or acting on "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}".`
             : `For ${clientMeta.label}: track vendor, regulatory, and counterparty implications of "${truncateWordBoundaryPlain(facts.cleanHeadline, 72)}" with legal and procurement leads.`,
@@ -1636,7 +1661,7 @@ export function buildDeterministicLiteracyPayload(
       : noCostEvidence
       ? {
           roiAndFinOps: `${facts.quantSentence || facts.leadSentence || sig.cSuiteBrief.headlineSoWhat} Latency and throughput gains do not establish end-to-end cost savings — ask: What happens to cost per completed request on your workload?`,
-          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Risk under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
+          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Attention. ${complianceClause}`,
           clientAdvice:
             'Before assuming infrastructure savings, test on representative traffic and ask: What happens to cost per completed request on your workload?',
         }
@@ -1644,10 +1669,10 @@ export function buildDeterministicLiteracyPayload(
           roiAndFinOps: facts.quantSentence
             ? `${facts.quantSentence} (${sig.architectBrief.latencyAndCostNote})`
             : `${facts.leadSentence || sig.cSuiteBrief.headlineSoWhat} (${sig.architectBrief.latencyAndCostNote})`,
-          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Risk under ${clientMeta.regulatoryFocus.split(',')[0]}.`,
+          readinessAndRisk: `${readinessLabel} · ${sig.risk} Governance Attention. ${complianceClause}`,
           clientAdvice:
             sig.cSuiteBrief.industryLens[activeClient] ||
-            `For ${clientMeta.label}: validate "${facts.cleanHeadline.slice(0, 68)}" behind an audited gateway with domain evals before broad rollout.`,
+            `For ${clientMeta.label}: evaluate "${facts.cleanHeadline.slice(0, 68)}" with domain benchmarks before broad adoption.`,
         };
 
   const disjointL5 = buildDisjointL5Sections(sig, facts.cleanHeadline);
@@ -2137,6 +2162,46 @@ export function enforceEpistemicAndDomainFidelity(
     }
   }
 
+  // Gate 0.8: Summary Prose Actor, Action & Scope Guard (preserve specific court/jurisdiction across L1-L5)
+  const applySummaryScopeRepair = (txt: string, detFallback?: string): string => {
+    if (!txt) return txt;
+    const repaired = repairSummaryProseScope(sig, txt);
+    const scopeCheck = validateSummaryProseScope(sig, repaired);
+    if (!scopeCheck.valid) {
+      const legalInst = extractNamedLegalInstitution(sig);
+      if (legalInst && !repaired.toLowerCase().includes(legalInst.toLowerCase())) {
+        return repairSummaryProseScope(sig, `${repaired} (Ruling by the ${legalInst}.)`);
+      }
+      if (detFallback) {
+        return repairSummaryProseScope(sig, detFallback);
+      }
+    }
+    return repaired;
+  };
+
+  l1 = {
+    analogy: applySummaryScopeRepair(l1.analogy, det?.levels[1].analogy),
+    everydayWhy: applySummaryScopeRepair(l1.everydayWhy, det?.levels[1].everydayWhy),
+  };
+  l2 = {
+    whatHappened: applySummaryScopeRepair(l2.whatHappened, det?.levels[2].whatHappened),
+    whoBuiltIt: l2.whoBuiltIt,
+    problemSolved: applySummaryScopeRepair(l2.problemSolved, det?.levels[2].problemSolved),
+  };
+  l3 = {
+    bridgeSummary: applySummaryScopeRepair(l3.bridgeSummary, det?.levels[3].bridgeSummary),
+  };
+  l4 = {
+    roiAndFinOps: applySummaryScopeRepair(l4.roiAndFinOps, det?.levels[4].roiAndFinOps),
+    readinessAndRisk: applySummaryScopeRepair(l4.readinessAndRisk, det?.levels[4].readinessAndRisk),
+    clientAdvice: applySummaryScopeRepair(l4.clientAdvice, det?.levels[4].clientAdvice),
+  };
+  l5 = {
+    architectureBrief: applySummaryScopeRepair(l5.architectureBrief, det?.levels[5].architectureBrief),
+    specsAndCaveats: applySummaryScopeRepair(l5.specsAndCaveats, det?.levels[5].specsAndCaveats),
+    streetConsensus: applySummaryScopeRepair(l5.streetConsensus, det?.levels[5].streetConsensus),
+  };
+
   if (!isTechnical) {
     glossary = isNonTool
       ? []
@@ -2312,6 +2377,62 @@ export function enforceEpistemicAndDomainFidelity(
     architectureBrief: auditFieldNumbers(l5.architectureBrief, det?.levels[5].architectureBrief),
     specsAndCaveats: auditFieldNumbers(l5.specsAndCaveats, det?.levels[5].specsAndCaveats),
     streetConsensus: auditFieldNumbers(l5.streetConsensus, det?.levels[5].streetConsensus),
+  };
+
+  // Gate 8: Zero Unbacked Compliance Claims Audit across ALL lenses (SOC 2, zero-retention, HIPAA, GDPR, enterprise pilot)
+  const rawComplianceCorpus = [
+    sig.title || '',
+    sig.rawAbstract || '',
+    ...(sig.streetQuotes || []).map((q) => q.text || ''),
+  ].join(' ');
+  const defaultComplianceNote =
+    scope === 'research_paper' || isEvaluationQualityStudy(sig)
+      ? `Compliance: ${COMPLIANCE_NOT_ASSESSED_STUDY}.`
+      : `Compliance: ${COMPLIANCE_NOT_ASSESSED_SOURCE}.`;
+
+  const auditComplianceField = (txt: string, fallbackText: string): string => {
+    if (!txt) return txt;
+    if (findUnbackedComplianceClaims(txt, rawComplianceCorpus).length === 0) return txt;
+    return stripUnbackedComplianceClaims(txt, rawComplianceCorpus, fallbackText).cleaned;
+  };
+
+  plainTitle = auditComplianceField(plainTitle, cleanPublisherHeadline);
+  plainFullTitle = auditComplianceField(plainFullTitle, cleanPublisherHeadline);
+  l1 = {
+    analogy: auditComplianceField(l1.analogy, det?.levels[1].analogy || ''),
+    everydayWhy: auditComplianceField(l1.everydayWhy, det?.levels[1].everydayWhy || ''),
+  };
+  l2 = {
+    whatHappened: auditComplianceField(l2.whatHappened, det?.levels[2].whatHappened || cleanPublisherHeadline),
+    whoBuiltIt: l2.whoBuiltIt,
+    problemSolved: auditComplianceField(l2.problemSolved, det?.levels[2].problemSolved || ''),
+  };
+  l3 = {
+    bridgeSummary: auditComplianceField(l3.bridgeSummary, det?.levels[3].bridgeSummary || ''),
+  };
+  l4 = {
+    roiAndFinOps: auditComplianceField(l4.roiAndFinOps, det?.levels[4].roiAndFinOps || ''),
+    readinessAndRisk: auditComplianceField(
+      l4.readinessAndRisk,
+      det?.levels[4].readinessAndRisk || defaultComplianceNote
+    ),
+    clientAdvice: auditComplianceField(
+      l4.clientAdvice,
+      det?.levels[4].clientAdvice || defaultComplianceNote
+    ),
+  };
+  if (
+    !hasSourceComplianceAssessment(sig) &&
+    !/not assessed in (?:this study|source)/i.test(l4.readinessAndRisk)
+  ) {
+    l4.readinessAndRisk = l4.readinessAndRisk
+      ? `${l4.readinessAndRisk.replace(/[.]+$/, '')}. ${defaultComplianceNote}`
+      : defaultComplianceNote;
+  }
+  l5 = {
+    architectureBrief: auditComplianceField(l5.architectureBrief, det?.levels[5].architectureBrief || ''),
+    specsAndCaveats: auditComplianceField(l5.specsAndCaveats, det?.levels[5].specsAndCaveats || ''),
+    streetConsensus: auditComplianceField(l5.streetConsensus, det?.levels[5].streetConsensus || ''),
   };
 
   return {

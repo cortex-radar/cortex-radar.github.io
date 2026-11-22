@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -26,9 +27,12 @@ import {
   classifyEvidenceScope,
   extractBenchmarkClaimSpec,
   extractFrozenEntities,
+  extractNamedLegalInstitution,
   extractSourceVerifiedMetrics,
+  extractVerbatimSourceExcerpt,
   getSignalReleaseMetadata,
   hasLatencyOrThroughputWithoutCost,
+  hasSourceComplianceAssessment,
   hasTechnicalEngineeringContent,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
@@ -50,10 +54,12 @@ import {
 } from '../shared/supernovaEngine';
 import {
   SECTOR_BY_ID,
+  type ArchivedSignalEntry,
   type GlossaryTerm,
   type LiteracySpectrumPayload,
   type SpatialSignal,
   type StaticGalaxySnapshot,
+  type StaticSignalArchive,
   type SupportingSourceLink,
 } from '../shared/types';
 import {
@@ -64,8 +70,10 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const OUTPUT_PATH = path.resolve(__dirname, '../public/data/live-galaxy.json');
+const ARCHIVE_OUTPUT_PATH = path.resolve(__dirname, '../public/data/signal-archive.json');
 const RSS_OUTPUT_PATH = path.resolve(__dirname, '../public/rss.xml');
 const SITE_BASE_URL = 'https://cortex-radar.github.io/';
+const MAX_ARCHIVE_ENTRIES = 2000;
 
 const MAX_GALAXY_AGE_MS = 7 * 24 * 3_600_000;
 const TOP_PRIMARY_AGE_MS = 48 * 3_600_000;
@@ -201,7 +209,7 @@ export function generateRssXml(signals: SpatialSignal[], bakedAtMs: number): str
 
 const GITHUB_MODELS_ENDPOINT = 'https://models.inference.ai.azure.com/chat/completions';
 const GITHUB_MODELS_MODEL = process.env.GITHUB_MODELS_MODEL || 'gpt-4o-mini';
-const LITERACY_SCHEMA_VERSION = 'v2.4';
+const LITERACY_SCHEMA_VERSION = 'v2.5';
 
 function normalizeBakeUrl(url: string): string {
   return (url || '').trim().toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
@@ -370,11 +378,19 @@ function buildBakePrompt(sig: SpatialSignal, baseFallback: LiteracySpectrumPaylo
   const isEvalStudy = isEvaluationQualityStudy(sig);
   const needsVerbatimHeadline = requiresVerbatimPublisherHeadline(sig);
   const latencyWithoutCost = hasLatencyOrThroughputWithoutCost(sig);
+  const legalInstitution = extractNamedLegalInstitution(sig);
+  const sourceHasCompliance = hasSourceComplianceAssessment(sig);
   const entityUnitQuoteLine = [
     'UNIT, ENTITY, NUMERIC & VERBATIM QUOTE LOCK: Preserve exact model/product names verbatim (NEVER flatten to "compact AI model"), preserve full ranges verbatim ("20–59%", NEVER truncate to "59%"), preserve technical units verbatim ("tokens per second", NEVER "words per second"), NEVER invent unbacked percentages/dollars/cost-savings ranges not in Primary Post Body, and ONLY put double quotes around exact substrings present in Primary Headline or Body above.',
     frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
     needsVerbatimHeadline
       ? 'HEADLINE MEANING & SCOPE LOCK: Preserve conditional cause/effect triggers (disabled tool vs. lost product) and legal/court scope qualifiers verbatim — keep plainTitle/plainFullTitle faithful to the exact publisher headline without broadening court bans or inverting conditions.'
+      : '',
+    legalInstitution
+      ? `LEGAL JURISDICTION SUMMARY LOCK: Name "${legalInstitution}" explicitly in Levels 1-5 summaries whenever describing the court order or sanction — NEVER flatten to generic "in court" or "barred from practicing law".`
+      : '',
+    !sourceHasCompliance
+      ? `ZERO UNBACKED COMPLIANCE CLAIMS: Source does NOT assess compliance clearances. NEVER assert SOC 2, zero-retention, HIPAA, GDPR, enterprise-ready, or ready for an enterprise pilot; in Level 4 readinessAndRisk explicitly state "${scope === 'research_paper' || isEvalStudy ? 'Not assessed in this study' : 'Not assessed in source'}".`
       : '',
     isEvalStudy
       ? 'EVALUATION METHODOLOGY FRAMING: Source evaluates citation/retrieval/grading quality rather than inference speed; frame Level 5 around evaluation methodology and reported scores instead of latency/throughput.'
@@ -1211,6 +1227,114 @@ async function main(): Promise<void> {
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(snapshot, null, 2), 'utf8');
 
+  const liveIdSet = new Set(signals.map((s) => s.id));
+  const toArchivedEntry = (s: SpatialSignal, archivedAtMs: number): ArchivedSignalEntry => {
+    const relMeta = getSignalReleaseMetadata(s);
+    const title = relMeta
+      ? relMeta.displayTitle
+      : truncateAtWordBoundary(stripHtmlMarkupAndEntities(s.title || ''), 220);
+    const excerpt = extractVerbatimSourceExcerpt(s);
+    const metrics = extractSourceVerifiedMetrics(s);
+    return {
+      id: s.id,
+      title,
+      source: s.source,
+      sourceCategory: s.sourceCategory,
+      originFeedName: s.originFeedName,
+      url: s.url,
+      publishedAtMs: s.publishedAtMs,
+      updatedAtMs: s.updatedAtMs,
+      archivedAtMs,
+      ...(excerpt ? { verbatimExcerpt: excerpt } : {}),
+      ...(metrics.length > 0 ? { verifiedMetrics: metrics } : {}),
+    };
+  };
+
+  const archiveMap = new Map<string, ArchivedSignalEntry>();
+  try {
+    if (fs.existsSync(ARCHIVE_OUTPUT_PATH)) {
+      const existingArchive = JSON.parse(
+        fs.readFileSync(ARCHIVE_OUTPUT_PATH, 'utf8')
+      ) as Partial<StaticSignalArchive>;
+      for (const entry of existingArchive.entries || []) {
+        if (entry?.id && entry.url && entry.sourceCategory !== 'DEMO_SEED' && !liveIdSet.has(entry.id)) {
+          archiveMap.set(entry.id, entry);
+        }
+      }
+    }
+  } catch {
+    // Ignore corrupt prior archive
+  }
+
+  for (const prevSig of previousSignals) {
+    if (
+      !prevSig?.id ||
+      prevSig.isDemoSeed ||
+      prevSig.sourceCategory === 'DEMO_SEED' ||
+      liveIdSet.has(prevSig.id)
+    ) {
+      continue;
+    }
+    if (!archiveMap.has(prevSig.id)) {
+      archiveMap.set(prevSig.id, toArchivedEntry(prevSig, nowMs));
+    }
+  }
+
+  // Bootstrap archive with rotated signals from recent git snapshots on initial rollout
+  if (archiveMap.size < 50) {
+    try {
+      const repoRoot = path.resolve(__dirname, '..');
+      const rawShas = execSync('git log --format=%H -n 15 -- public/data/live-galaxy.json', {
+        cwd: repoRoot,
+        timeout: 4000,
+        stdio: ['ignore', 'pipe', 'ignore'],
+      })
+        .toString()
+        .trim();
+      const shas = rawShas ? rawShas.split(/\r?\n/).filter(Boolean) : [];
+      for (const sha of shas) {
+        try {
+          const histRaw = execSync(`git show ${sha}:public/data/live-galaxy.json`, {
+            cwd: repoRoot,
+            timeout: 4000,
+            maxBuffer: 20 * 1024 * 1024,
+            stdio: ['ignore', 'pipe', 'ignore'],
+          }).toString();
+          const histJson = JSON.parse(histRaw) as Partial<StaticGalaxySnapshot>;
+          for (const hs of histJson.signals || []) {
+            if (
+              !hs?.id ||
+              hs.isDemoSeed ||
+              hs.sourceCategory === 'DEMO_SEED' ||
+              liveIdSet.has(hs.id) ||
+              archiveMap.has(hs.id)
+            ) {
+              continue;
+            }
+            archiveMap.set(hs.id, toArchivedEntry(hs, nowMs));
+          }
+        } catch {
+          // Ignore single unreadable commit
+        }
+      }
+    } catch {
+      // Git history unavailable in shallow clone; skip bootstrap
+    }
+  }
+
+  const archivedEntries = Array.from(archiveMap.values())
+    .sort((a, b) => (b.publishedAtMs || 0) - (a.publishedAtMs || 0))
+    .slice(0, MAX_ARCHIVE_ENTRIES);
+  const archivePayload: StaticSignalArchive = {
+    version: 1,
+    updatedAtIso: new Date(nowMs).toISOString(),
+    updatedAtMs: nowMs,
+    count: archivedEntries.length,
+    entries: archivedEntries,
+  };
+  fs.mkdirSync(path.dirname(ARCHIVE_OUTPUT_PATH), { recursive: true });
+  fs.writeFileSync(ARCHIVE_OUTPUT_PATH, JSON.stringify(archivePayload, null, 2), 'utf8');
+
   const rssXml = generateRssXml(signals, nowMs);
   fs.mkdirSync(path.dirname(RSS_OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(RSS_OUTPUT_PATH, rssXml, 'utf8');
@@ -1218,7 +1342,7 @@ async function main(): Promise<void> {
   const xCount = signals.filter((s) => s.source === 'XBridge').length;
   const sizeKb = (Buffer.byteLength(JSON.stringify(snapshot), 'utf8') / 1024).toFixed(1);
   console.log(
-    `[CORTEX // BAKE] Wrote ${signals.length} signals (${xCount} from X · ${sizeKb} KB) to ${OUTPUT_PATH} + RSS (${(
+    `[CORTEX // BAKE] Wrote ${signals.length} signals (${xCount} from X · ${sizeKb} KB) to ${OUTPUT_PATH}, ${archivedEntries.length} archived entries to ${ARCHIVE_OUTPUT_PATH}, + RSS (${(
       rssXml.match(/<item>/g) || []
     ).length} items) in ${((Date.now() - t0) / 1000).toFixed(
       1

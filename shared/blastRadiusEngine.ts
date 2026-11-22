@@ -1,7 +1,12 @@
 import {
   classifyEvidenceScope,
+  COMPLIANCE_NOT_ASSESSED_SOURCE,
+  COMPLIANCE_NOT_ASSESSED_STUDY,
   hasLatencyOrThroughputWithoutCost,
+  hasSourceComplianceAssessment,
+  isEvaluationQualityStudy,
   isNonToolNewsOrMarketSignal,
+  stripUnbackedComplianceClaims,
   stripUnbackedNumericClaims,
 } from './provenance';
 import {
@@ -56,19 +61,31 @@ function sanitizeHorizonNumbers(
   horizon: BlastOrderConsequence,
   signal: SpatialSignal
 ): BlastOrderConsequence {
-  const corpus = [
+  const numCorpus = [
     signal.title || '',
     signal.rawAbstract || '',
     ...(signal.streetQuotes || []).map((q) => q.text || ''),
     ...(signal.supportingSources || []).map((s) => s.title || ''),
   ].join(' ');
+  const rawComplianceCorpus = [
+    signal.title || '',
+    signal.rawAbstract || '',
+    ...(signal.streetQuotes || []).map((q) => q.text || ''),
+  ].join(' ');
+  const compFallback = isEvaluationQualityStudy(signal)
+    ? `Compliance: ${COMPLIANCE_NOT_ASSESSED_STUDY}.`
+    : `Compliance: ${COMPLIANCE_NOT_ASSESSED_SOURCE}.`;
+
+  const cleanField = (val: string) => {
+    const n = stripUnbackedNumericClaims(val, numCorpus).cleaned || val;
+    return stripUnbackedComplianceClaims(n, rawComplianceCorpus, compFallback).cleaned;
+  };
   return {
     ...horizon,
-    title: stripUnbackedNumericClaims(horizon.title, corpus).cleaned || horizon.title,
-    consequence: stripUnbackedNumericClaims(horizon.consequence, corpus).cleaned || horizon.consequence,
-    consultantAction:
-      stripUnbackedNumericClaims(horizon.consultantAction, corpus).cleaned || horizon.consultantAction,
-    kpiMetric: stripUnbackedNumericClaims(horizon.kpiMetric, corpus).cleaned || horizon.kpiMetric,
+    title: cleanField(horizon.title),
+    consequence: cleanField(horizon.consequence),
+    consultantAction: cleanField(horizon.consultantAction),
+    kpiMetric: cleanField(horizon.kpiMetric),
   };
 }
 
@@ -191,7 +208,6 @@ export function computeProportionateBlast(
 
   const client =
     CLIENT_INDUSTRIES.find((c) => c.id === clientIndustry) || CLIENT_INDUSTRIES[0];
-  const regAnchor = client.regulatoryFocus.split(',')[0];
 
   const sec30 = ARCH_TARGETS[signal.primarySector] || 'ARC';
   const sec60 = GOV_TARGETS[signal.primarySector] || 'GOV';
@@ -200,16 +216,14 @@ export function computeProportionateBlast(
   const stackTarget = signal.affectedEnterpriseStacks[0] || 'AI Gateway & Eval Pipeline';
   const isEvalStudy =
     /\b(citation|excerpt|relevance|source coverage|grading criteria)\b/i.test(hay);
+  const sourceHasCompliance = hasSourceComplianceAssessment(signal);
 
   const order1: BlastOrderConsequence = {
     horizon: '30D',
     orderLabel: '1ST ORDER · 30d PILOT SCOPING',
     title: `Benchmark ${stackTarget}`,
     targetSector: sec30,
-    consequence:
-      signal.readiness === 'GA'
-        ? `Shadow-test ${signal.shortLabel} behind existing ${client.shortLabel} gateway controls on representative internal tasks within 30 days.`
-        : `Evaluate ${signal.shortLabel} in an isolated sandbox harness against your current domain baseline before committing interfaces.`,
+    consequence: `Evaluate ${signal.shortLabel} in an isolated ${client.shortLabel} sandbox harness against your current domain baseline within 30 days.`,
     consultantAction: signal.architectBrief.integrationPattern,
     kpiMetric: isEvalStudy
       ? 'Target: Verify citation precision & task pass criteria'
@@ -219,14 +233,16 @@ export function computeProportionateBlast(
   const order2: BlastOrderConsequence = {
     horizon: '60D',
     orderLabel: '2ND ORDER · 60d GOVERNANCE',
-    title: `${regAnchor} Review`,
+    title: 'Security & Governance Review',
     targetSector: sec60,
-    consequence:
-      signal.risk === 'HIGH'
-        ? `Complete data-egress, access-control, and ${regAnchor} threat review with InfoSec before any regulated pilot traffic.`
-        : `Document model lineage, fallback routing, and ${regAnchor} audit logging prior to expanding team access.`,
-    consultantAction: `Complete ${regAnchor} sign-off checklist with engineering and compliance stakeholders.`,
-    kpiMetric: `Risk Posture: ${signal.risk} · Pre-Prod Check`,
+    consequence: sourceHasCompliance
+      ? `Review source-cited data-handling and security controls with InfoSec before any trial traffic.`
+      : `Compliance: ${COMPLIANCE_NOT_ASSESSED_SOURCE} — complete independent InfoSec and privacy review before any trial traffic.`,
+    consultantAction:
+      'Complete internal security and data-boundary checklist with engineering and governance leads.',
+    kpiMetric: sourceHasCompliance
+      ? `Risk Posture: ${signal.risk} · Pre-Prod Check`
+      : `Compliance: ${COMPLIANCE_NOT_ASSESSED_SOURCE}`,
   };
 
   const order3: BlastOrderConsequence = {

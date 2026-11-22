@@ -26,9 +26,14 @@ import {
   SourceCategory,
   SpatialSignal,
   StaticGalaxySnapshot,
+  StaticSignalArchive,
   SynthesisEngineId,
   SynthesisEngineStatus,
 } from '../shared/types';
+import {
+  ArchivedPermalinkCard,
+  type ArchivedPermalinkState,
+} from './components/ArchivedPermalinkCard';
 import { CommandPalette } from './components/CommandPalette';
 import { CosmosDecoderHUD, TourStageInfo } from './components/CosmosDecoderHUD';
 import {
@@ -304,6 +309,12 @@ export const App: React.FC = () => {
   }, []);
 
   const [onlyNewFilterActive, setOnlyNewFilterActive] = useState(false);
+  const [archivedPermalink, setArchivedPermalink] = useState<ArchivedPermalinkState>({
+    status: 'IDLE',
+  });
+  const archivedPermalinkStatusRef = useRef<ArchivedPermalinkState['status']>('IDLE');
+  archivedPermalinkStatusRef.current = archivedPermalink.status;
+  const liveBatchHydratedRef = useRef<boolean>(false);
   const [deepLinkLevelOverride, setDeepLinkLevelOverride] = useState<{
     signalId: string;
     level: LiteracyLevel;
@@ -1077,6 +1088,9 @@ export const App: React.FC = () => {
   // Stage 6: Mark clicked orb as seen, play Cockpit Micro-Acoustics chime/pulse, and sync URL deep-link (?orb=<id>&lens=<1-5>)
   useEffect(() => {
     if (selectedNodeIdx < 0) {
+      if (pendingDeepLinkRef.current.signalId || archivedPermalinkStatusRef.current !== 'IDLE') {
+        return;
+      }
       const srch = window.location.search;
       if (srch.includes('orb=') || srch.includes('signal=') || srch.includes('lens=')) {
         const u = new URL(window.location.href);
@@ -1087,6 +1101,11 @@ export const App: React.FC = () => {
         window.history.replaceState(null, '', u.pathname + u.search + u.hash);
       }
       return;
+    }
+
+    if (archivedPermalinkStatusRef.current !== 'IDLE') {
+      archivedPermalinkStatusRef.current = 'IDLE';
+      setArchivedPermalink({ status: 'IDLE' });
     }
 
     const sig = signalsRef.current[selectedNodeIdx];
@@ -1438,6 +1457,7 @@ export const App: React.FC = () => {
     }
 
     let autoFocusFallbackTimer: ReturnType<typeof setTimeout> | null = null;
+    let archivedDeepLinkTimer: ReturnType<typeof setTimeout> | null = null;
 
     const tryAutoFocusTopDesktopSignal = (allowSeedFallback = false) => {
       if (
@@ -1445,6 +1465,7 @@ export const App: React.FC = () => {
         isMobileViewportRef.current ||
         initialDeepLinkRef.current.signalId ||
         pendingDeepLinkRef.current.signalId ||
+        archivedPermalinkStatusRef.current !== 'IDLE' ||
         selectedNodeIdxRef.current >= 0
       ) {
         return;
@@ -1490,11 +1511,60 @@ export const App: React.FC = () => {
       physicsWorker.postMessage({ type: 'SELECT_NODE', nodeIndex: bestIdx });
     };
 
+    const resolveArchivedPermalinkIfUnresolved = () => {
+      const targetId = pendingDeepLinkRef.current.signalId;
+      if (!targetId) return;
+      if (matchSignalByDeepLinkParam(signalsRef.current, targetId) >= 0) return;
+      if (archivedPermalinkStatusRef.current !== 'IDLE') return;
+
+      hasAutoSelectedInitialRef.current = true;
+      setShowWelcomeModal(false);
+      archivedPermalinkStatusRef.current = 'LOADING';
+      setArchivedPermalink({ status: 'LOADING', requestedId: targetId });
+
+      const base =
+        (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env?.BASE_URL || './';
+      const archiveUrl = `${base.endsWith('/') ? base : `${base}/`}data/signal-archive.json`;
+      void fetch(archiveUrl)
+        .then((res) => (res.ok ? (res.json() as Promise<StaticSignalArchive>) : null))
+        .then((archive) => {
+          if (!pendingDeepLinkRef.current.signalId) return;
+          const entries = archive?.entries || [];
+          const lower = targetId.toLowerCase();
+          const matchedEntry =
+            entries.find((e) => e.id === targetId) ||
+            entries.find(
+              (e) => e.id.toLowerCase() === lower || e.id.toLowerCase().includes(lower)
+            );
+          pendingDeepLinkRef.current.signalId = null;
+          if (matchedEntry) {
+            archivedPermalinkStatusRef.current = 'ARCHIVED';
+            setArchivedPermalink({
+              status: 'ARCHIVED',
+              requestedId: targetId,
+              entry: matchedEntry,
+            });
+          } else {
+            archivedPermalinkStatusRef.current = 'NOT_FOUND';
+            setArchivedPermalink({ status: 'NOT_FOUND', requestedId: targetId });
+          }
+        })
+        .catch(() => {
+          if (!pendingDeepLinkRef.current.signalId) return;
+          pendingDeepLinkRef.current.signalId = null;
+          archivedPermalinkStatusRef.current = 'NOT_FOUND';
+          setArchivedPermalink({ status: 'NOT_FOUND', requestedId: targetId });
+        });
+    };
+
     const tryResolvePendingDeepLink = () => {
       const targetId = pendingDeepLinkRef.current.signalId;
       if (!targetId) return;
       const idx = matchSignalByDeepLinkParam(signalsRef.current, targetId);
       if (idx < 0) return;
+
+      archivedPermalinkStatusRef.current = 'IDLE';
+      setArchivedPermalink({ status: 'IDLE' });
 
       const matched = signalsRef.current[idx];
       const requestedLvl = pendingDeepLinkRef.current.level;
@@ -1545,13 +1615,29 @@ export const App: React.FC = () => {
         });
         tryResolvePendingDeepLink();
         if (autoFocusFallbackTimer) clearTimeout(autoFocusFallbackTimer);
+        if (archivedDeepLinkTimer) {
+          clearTimeout(archivedDeepLinkTimer);
+          archivedDeepLinkTimer = null;
+        }
         autoFocusFallbackTimer = setTimeout(() => {
           tryAutoFocusTopDesktopSignal(true);
         }, 1400);
+        if (pendingDeepLinkRef.current.signalId && !archivedDeepLinkTimer) {
+          archivedDeepLinkTimer = setTimeout(() => {
+            if (!liveBatchHydratedRef.current) {
+              resolveArchivedPermalinkIfUnresolved();
+            }
+          }, 3500);
+        }
       } else if (msg.type === 'LIVE_BATCH_HYDRATED') {
+        liveBatchHydratedRef.current = true;
         if (autoFocusFallbackTimer) {
           clearTimeout(autoFocusFallbackTimer);
           autoFocusFallbackTimer = null;
+        }
+        if (archivedDeepLinkTimer) {
+          clearTimeout(archivedDeepLinkTimer);
+          archivedDeepLinkTimer = null;
         }
         const liveBatch = msg.signals as SpatialSignal[];
         signalsRef.current = [...signalsRef.current, ...liveBatch];
@@ -1575,6 +1661,7 @@ export const App: React.FC = () => {
           physicsWorker.postMessage({ type: 'SET_SHOW_DEMO_SEED', show: false });
         }
         tryResolvePendingDeepLink();
+        resolveArchivedPermalinkIfUnresolved();
         tryAutoFocusTopDesktopSignal(false);
       } else if (msg.type === 'LIVE_SIGNAL_INBOUND') {
         const sig = msg.signal as SpatialSignal;
@@ -1986,6 +2073,7 @@ export const App: React.FC = () => {
       setRenderLoopActiveRef.current = null;
       if (rafId) cancelAnimationFrame(rafId);
       if (autoFocusFallbackTimer) clearTimeout(autoFocusFallbackTimer);
+      if (archivedDeepLinkTimer) clearTimeout(archivedDeepLinkTimer);
       if ('speechSynthesis' in window) {
         try {
           window.speechSynthesis.cancel();
@@ -2890,8 +2978,30 @@ export const App: React.FC = () => {
       )}
 
       {/* Z-28: Zero-Friction Cold-Visit Smoked-Obsidian Coachmark */}
+      {archivedPermalink.status !== 'IDLE' && !focusedSignal && (
+        <ArchivedPermalinkCard
+          state={archivedPermalink}
+          isMobileViewport={isMobileViewport}
+          onBrowseLiveSignals={() => {
+            pendingDeepLinkRef.current.signalId = null;
+            pendingDeepLinkRef.current.level = null;
+            archivedPermalinkStatusRef.current = 'IDLE';
+            setArchivedPermalink({ status: 'IDLE' });
+            setViewMode('FEED');
+            const u = new URL(window.location.href);
+            u.searchParams.delete('orb');
+            u.searchParams.delete('lens');
+            u.searchParams.delete('signal');
+            u.searchParams.delete('level');
+            window.history.replaceState(null, '', u.pathname + u.search + u.hash);
+          }}
+        />
+      )}
+
+      {/* Z-28: Zero-Friction Cold-Visit Smoked-Obsidian Coachmark */}
       {showCoachmark &&
         !focusedSignal &&
+        archivedPermalink.status === 'IDLE' &&
         !battlecardPair &&
         !standupFusion &&
         viewMode === 'RADAR' && (

@@ -998,36 +998,133 @@ function normalizeRangeSeparator(raw: string): string {
     .trim();
 }
 
-function inferPercentageLabel(sentence: string, matchIndex: number): { label: string; context?: string } {
+function extractMetricSubject(
+  sentence: string,
+  sigTitle: string,
+  matchIndex: number
+): { subject?: string; isFeatured?: boolean } {
+  const cleanTitle = stripHtmlMarkupAndEntities(sigTitle || '');
+  const titleLower = cleanTitle.toLowerCase();
+  const sentenceBefore = sentence.slice(0, matchIndex);
+  const clauseStart = Math.max(0, sentenceBefore.lastIndexOf(';'));
+  const localClause = sentenceBefore.slice(clauseStart).trim();
+  const isBaselineSentence =
+    /\b(strongest\s+general-purpose|baseline|best\s+alternative|compared\s+with|compared\s+to|\bvs\.?\b|incumbent|previous\s+sota|alternative\s+tested)\b/i.test(
+      sentence
+    );
+
+  // 1. Explicit named model / system at start of sentence or clause (e.g., "Squoosh UX-1, a model...", "Qwen3 Next 80B, the strongest...")
+  const leadModelMatch = localClause.match(
+    /^(?:In\s+[^,]+,\s+)?((?:Squoosh\s+)?[A-Z][A-Za-z0-9]*(?:[-.][A-Za-z0-9]+)*(?:\s+(?:Next|Astra|Pro|Ultra|Flash|Mini|Nano|Turbo|Max|Plus|Omni|\d+(?:\.\d+)?[BM]))*)\b/
+  );
+  if (leadModelMatch) {
+    let subj = leadModelMatch[1].trim();
+    if (/^Squoosh\s+(UX-\d+)/i.test(subj)) {
+      subj = subj.replace(/^Squoosh\s+/i, '');
+    }
+    if (
+      !/^(?:In|It|We|The|This|Our|Each|Page|Across|Implemented|Evaluated|Experimentation|While|However|These|Those)$/i.test(
+        subj
+      ) &&
+      (/[A-Z].*[-.\d]/.test(subj) ||
+        titleLower.includes(subj.toLowerCase()) ||
+        /^(?:Qwen|UX-\d+|GPT|Claude|Gemini|Llama|DeepSeek|Mistral|TideCache|Actuator|Frostbite|Hebbia)/i.test(
+          subj
+        ))
+    ) {
+      const inTitle = titleLower.includes(subj.toLowerCase());
+      return {
+        subject: subj,
+        isFeatured: isBaselineSentence ? false : inTitle ? true : undefined,
+      };
+    }
+  }
+
+  // 2. Fallback: look for well-known model/product tokens in the sentence itself or title
+  const knownModelInSentence = sentence.match(
+    /\b(UX-\d+|Qwen\d*(?:\.\d+)?(?:\s+Next)?(?:\s+\d+[BM])?|GPT-\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Claude\s+\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Gemini\s+\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|Actuator-\d+[BM]|TideCache|Frostbite|DeepSeek[- ]?[A-Z]?\d*|Llama[- ]?\d+(?:\.\d+)?)\b/
+  );
+  if (knownModelInSentence) {
+    const subj = knownModelInSentence[1].trim();
+    const inTitle = titleLower.includes(subj.toLowerCase());
+    return {
+      subject: subj,
+      isFeatured: isBaselineSentence ? false : inTitle ? true : undefined,
+    };
+  }
+
+  // 3. When sentence refers to the title's primary model implicitly ("In the live tests, 118 of those variants won (93.7%)")
+  const titleEntity = cleanTitle.match(
+    /\b(UX-\d+|Qwen[\w.-]*|GPT-\d+(?:\.\d+)?(?:\s+[A-Z][a-z]+)?|TideCache|Actuator-\d+[BM]|Frostbite|Ollama|vLLM|AgentRoboCritic)\b/
+  );
+  if (titleEntity && !isBaselineSentence) {
+    return {
+      subject: titleEntity[1].trim(),
+      isFeatured: true,
+    };
+  }
+
+  return isBaselineSentence ? { isFeatured: false } : {};
+}
+
+function extractConfidenceIntervalNote(sentence: string): string | undefined {
+  const ciMatch = sentence.match(
+    /\b(\d+%)\s*(?:wilson|confidence)\s+interval\s+(\d+(?:\.\d+)?)\s*(?:--|–|—|-|\bto\b)\s*(\d+(?:\.\d+)?)%/i
+  );
+  if (ciMatch) {
+    return `${ciMatch[1]} Wilson CI ${ciMatch[2]}–${ciMatch[3]}%`;
+  }
+  return undefined;
+}
+
+function inferPercentageLabel(
+  sentence: string,
+  matchIndex: number,
+  isFeatured?: boolean
+): { label: string; context?: string } {
   const lower = sentence.toLowerCase();
-  const nearbyStart = Math.max(0, matchIndex - 65);
+  const nearbyStart = Math.max(0, matchIndex - 75);
   const nearbyEnd = Math.min(sentence.length, matchIndex + 75);
   const windowStr = sentence.slice(nearbyStart, nearbyEnd).toLowerCase();
   const baseline = extractComparisonBaseline(sentence);
+  const ciNote = extractConfidenceIntervalNote(sentence);
+  const combinedContext = [ciNote, baseline].filter(Boolean).join(' · ') || undefined;
 
   if (/\b(?:excerpt|citation|cited)\b/.test(windowStr) && /\brelevan\w*\b/.test(windowStr)) {
     return { label: 'Cited excerpt relevance', context: 'Relevant cited excerpts in evaluation' };
   }
   if (/\bpresentation\s+requirements?\b/.test(windowStr)) {
-    return { label: 'Presentation requirements met', context: baseline };
+    return { label: 'Presentation requirements met', context: combinedContext };
   }
   if (/\brequired\s+(?:types?\s+of\s+)?sources?\b|\bsource\s+coverage\b/.test(lower)) {
-    return { label: 'Source coverage score', context: baseline };
+    return { label: 'Source coverage score', context: combinedContext };
   }
-  if (/\bswe-bench\b/.test(windowStr)) return { label: 'SWE-bench score', context: baseline };
-  if (/\baccuracy\b/.test(windowStr)) return { label: 'Reported accuracy', context: baseline };
+  if (/\bswe-bench\b/.test(windowStr)) return { label: 'SWE-bench score', context: combinedContext };
+  if (/\bvariants?\s+won\b/.test(windowStr)) return { label: 'Variant win rate', context: combinedContext };
+  if (/\bcorrectly\s+classified\b|\boutcomes?\b|\boutcome\s+accuracy\b/.test(lower)) {
+    return {
+      label: isFeatured === false ? 'Baseline accuracy' : 'Outcome accuracy',
+      context: combinedContext,
+    };
+  }
+  if (/\baccuracy\b/.test(windowStr)) {
+    return {
+      label: isFeatured === false ? 'Baseline accuracy' : 'Reported accuracy',
+      context: combinedContext,
+    };
+  }
   if (/\b(?:latency|ttft|tpot|per-token)\b/.test(windowStr) && /\breduc\w*|\blower|\bcut|\bdrop/.test(windowStr)) {
-    return { label: 'Latency reduction', context: baseline };
+    return { label: 'Latency reduction', context: combinedContext };
   }
   if (/\b(?:memory|hbm|vram)\b/.test(windowStr) && /\breduc\w*|\blower|\bsaving/.test(windowStr)) {
-    return { label: 'Memory reduction', context: baseline };
+    return { label: 'Memory reduction', context: combinedContext };
   }
   if (/\breduction\b|\bfaster\b|\bcheaper\b|\blower\b|\bcut\b|\bdrop\b|\bsaving\w*\b/.test(windowStr)) {
     const word = windowStr.match(/\b(reduction|faster|cheaper|lower|cut|drop|saving\w*)\b/)?.[1];
-    return { label: word ? `Reported ${word}` : 'Reported delta', context: baseline };
+    return { label: word ? `Reported ${word}` : 'Reported delta', context: combinedContext };
   }
-  if (/\bverified\b|\bpass(?:ed|@\d+)?\b/.test(windowStr)) return { label: 'Evaluation pass rate', context: baseline };
-  return { label: 'Source-reported percentage', context: baseline };
+  if (/\bverified\b|\bpass(?:ed|@\d+)?\b/.test(windowStr)) return { label: 'Evaluation pass rate', context: combinedContext };
+  return { label: 'Source-reported percentage', context: combinedContext };
 }
 
 function inferPercentagePointLabel(sentence: string, matchIndex: number): { label: string; context?: string } {
@@ -1043,7 +1140,8 @@ function inferPercentagePointLabel(sentence: string, matchIndex: number): { labe
 
 /**
  * Extracts quantitative metrics verbatim from ingested source text along with the exact
- * supporting sentence (`quote`) and comparison baseline so UI pills preserve full ranges.
+ * supporting sentence (`quote`), comparison baseline, and subject attribution, ordering
+ * featured systems before comparison baselines.
  */
 export function extractSourceVerifiedMetrics(
   sig: Pick<SpatialSignal, 'title' | 'rawAbstract'>
@@ -1053,12 +1151,14 @@ export function extractSourceVerifiedMetrics(
     ...splitExactSourceSentences(sig.title || ''),
   ];
   const out: VerifiedSourceMetric[] = [];
-  const seenValues = new Set<string>();
+  const seenKeys = new Set<string>();
 
   const pushMetric = (metric: VerifiedSourceMetric) => {
-    const key = metric.value.toLowerCase().replace(/\s+/g, ' ').trim();
-    if (seenValues.has(key) || out.length >= 5) return;
-    seenValues.add(key);
+    const subjKey = (metric.subject || '').toLowerCase().trim();
+    const valKey = metric.value.toLowerCase().replace(/\s+/g, ' ').trim();
+    const dedupKey = `${subjKey}|${valKey}`;
+    if (seenKeys.has(dedupKey) || out.length >= 6) return;
+    seenKeys.add(dedupKey);
     out.push(metric);
   };
 
@@ -1072,32 +1172,47 @@ export function extractSourceVerifiedMetrics(
       const numRaw = m[1];
       const valStr = numRaw.startsWith('+') || numRaw.startsWith('-') ? `${numRaw} percentage points` : `+${numRaw} percentage points`;
       const meta = inferPercentagePointLabel(sentence, m.index);
+      const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       pushMetric({
         value: valStr,
         label: meta.label,
         quote: sentence,
         context: meta.context,
+        subject: subjMeta.subject,
+        isFeatured: subjMeta.isFeatured,
       });
     }
 
-    // 2. Percentages & full numeric ranges (e.g., "20--59%", "20–59%", "99.5%")
+    // 2. Percentages & full numeric ranges (e.g., "20--59%", "84.0%", "61.6%", skipping CI bounds)
     const pctRegex = /\b(\d{1,3}(?:\.\d+)?(?:\s*%?\s*(?:--|–|—|-|\bto\b)\s*\d{1,3}(?:\.\d+)?)?)%/gi;
     while ((m = pctRegex.exec(sentence)) !== null) {
+      const afterSlice = sentence.slice(m.index + m[0].length, m.index + m[0].length + 28).toLowerCase();
+      const beforeSlice = sentence.slice(Math.max(0, m.index - 28), m.index).toLowerCase();
+      if (
+        /^\s*(?:wilson|confidence)\s+interval\b|^\s*ci\b/.test(afterSlice) ||
+        /(?:wilson|confidence)\s+interval\s*$|\bci\s*$/.test(beforeSlice)
+      ) {
+        continue;
+      }
+
       const windowLower = sentence
-        .slice(Math.max(0, m.index - 65), Math.min(sentence.length, m.index + m[0].length + 75))
+        .slice(Math.max(0, m.index - 75), Math.min(sentence.length, m.index + m[0].length + 75))
         .toLowerCase();
       const hasEvalContext =
-        /\b(excerpts?|cited|relevan\w*|presentation|requirements?|sources?|coverage|verified|reduc\w*|faster|cheaper|lower|cut|drop|accuracy|score|swe-bench|mmlu|gpqa|pass|recall|precision|benchmark|utilization|overhead|gain|improv\w*|latency|ttft|tpot|throughput|memory|vram|hbm)\b/.test(
+        /\b(excerpts?|cited|relevan\w*|presentation|requirements?|sources?|coverage|verified|reduc\w*|faster|cheaper|lower|cut|drop|accuracy|score|swe-bench|mmlu|gpqa|pass|recall|precision|benchmark|utilization|overhead|gain|improv\w*|latency|ttft|tpot|throughput|memory|vram|hbm|correctly\s+classified|classified|classification|outcomes?|win\s+rate|variants?\s+won|\bwon\b|simulated|shoppers)\b/.test(
           windowLower
         );
       if (!hasEvalContext) continue;
-      const meta = inferPercentageLabel(sentence, m.index);
+      const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
+      const meta = inferPercentageLabel(sentence, m.index, subjMeta.isFeatured);
       const normNum = normalizeRangeSeparator(m[1]);
       pushMetric({
         value: `${normNum}%`,
         label: meta.label,
         quote: sentence,
         context: meta.context,
+        subject: subjMeta.subject,
+        isFeatured: subjMeta.isFeatured,
       });
     }
 
@@ -1106,11 +1221,14 @@ export function extractSourceVerifiedMetrics(
       /\b(\d+(?:\.\d+)?(?:\s*(?:--|–|—|-|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(?:tokens\s+per\s+second|tok\/s|t\/s|tokens\/s)\b/gi;
     while ((m = tokRegex.exec(sentence)) !== null) {
       const rangeClean = normalizeRangeSeparator(m[1]);
+      const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       pushMetric({
         value: `${rangeClean} tokens/s`,
         label: 'Measured throughput',
         quote: sentence,
         context: baseline || 'Source-reported token generation rate',
+        subject: subjMeta.subject,
+        isFeatured: subjMeta.isFeatured,
       });
     }
 
@@ -1140,11 +1258,14 @@ export function extractSourceVerifiedMetrics(
         : /\bturns?\b/i.test(windowLower)
         ? 'Task completion speedup'
         : 'Measured speedup';
+      const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       pushMetric({
         value: unitClean ? `${normNum}${sym} ${unitClean}` : `${normNum}${sym}`,
         label,
         quote: sentence,
         context: baseline,
+        subject: subjMeta.subject,
+        isFeatured: subjMeta.isFeatured,
       });
     }
 
@@ -1157,11 +1278,14 @@ export function extractSourceVerifiedMetrics(
       if (!/\b(latency|ttft|tpot|response|delay|time|inference|turnaround)\b/.test(windowLower)) {
         continue;
       }
+      const subjMeta = extractMetricSubject(sentence, sig.title || '', m.index);
       pushMetric({
         value: `${normalizeRangeSeparator(m[1])} ms`,
         label: 'Reported latency',
         quote: sentence,
         context: baseline,
+        subject: subjMeta.subject,
+        isFeatured: subjMeta.isFeatured,
       });
     }
 
@@ -1175,7 +1299,16 @@ export function extractSourceVerifiedMetrics(
     }
   }
 
-  return out;
+  // Order featured systems FIRST, then neutral metrics, then comparison baselines
+  return out
+    .map((m, idx) => ({ m, idx }))
+    .sort((a, b) => {
+      const rank = (x: VerifiedSourceMetric) =>
+        x.isFeatured === true ? 0 : x.isFeatured === false ? 2 : 1;
+      return rank(a.m) - rank(b.m) || a.idx - b.idx;
+    })
+    .map((x) => x.m)
+    .slice(0, 5);
 }
 
 /**
@@ -1625,4 +1758,239 @@ export function isEligibleForNewBadge(
   if (isUpstreamUpdatedSignal(sig)) return false;
   if (typeof sig.publishedAtMs !== 'number' || !Number.isFinite(sig.publishedAtMs)) return false;
   return sig.publishedAtMs > baselineTs && nowMs - sig.publishedAtMs <= NEW_BADGE_WINDOW_MS;
+}
+
+// =============================================================================
+// CORTEX v2.5: ZERO UNBACKED COMPLIANCE CLAIMS & SUMMARY ACTOR/SCOPE GUARD
+// =============================================================================
+
+export const COMPLIANCE_NOT_ASSESSED_STUDY = 'Not assessed in this study';
+export const COMPLIANCE_NOT_ASSESSED_SOURCE = 'Not assessed in source';
+
+const SOURCE_COMPLIANCE_ASSESSMENT_REGEX =
+  /\b(?:soc\s*2|zero[- ]retention|zero\s+training\s+retention|hipaa|gdpr|fedramp|iso\s*42001|pci[- ]dss|compliance\s+audit|security\s+clearance|enterprise[- ]ready|ready\s+for\s+(?:an?\s+|governed\s+)?enterprise\s+pilot)\b/i;
+
+const UNBACKED_COMPLIANCE_RULES: Array<{ label: string; textRx: RegExp; corpusRx: RegExp }> = [
+  { label: 'SOC 2', textRx: /\bsoc\s*2\b/i, corpusRx: /\bsoc\s*2\b/i },
+  {
+    label: 'zero-retention',
+    textRx: /\bzero[- ]retention\b/i,
+    corpusRx: /\bzero[- ]retention\b|\bzero\s+training\s+retention\b/i,
+  },
+  { label: 'HIPAA', textRx: /\bhipaa\b/i, corpusRx: /\bhipaa\b/i },
+  { label: 'GDPR', textRx: /\bgdpr\b/i, corpusRx: /\bgdpr\b/i },
+  {
+    label: 'ready for an enterprise pilot',
+    textRx: /\bready\s+for\s+(?:an?\s+|governed\s+)?enterprise\s+pilot\b/i,
+    corpusRx: /\bready\s+for\s+(?:an?\s+|governed\s+)?enterprise\s+pilot\b/i,
+  },
+  {
+    label: 'enterprise-ready',
+    textRx: /\benterprise[- ]ready\b/i,
+    corpusRx: /\benterprise[- ]ready\b/i,
+  },
+];
+
+export function hasSourceComplianceAssessment(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract' | 'streetQuotes'>
+): boolean {
+  const hay = [
+    sig.title || '',
+    sig.rawAbstract || '',
+    ...(sig.streetQuotes || []).map((q) => q.text || ''),
+  ].join(' ');
+  return SOURCE_COMPLIANCE_ASSESSMENT_REGEX.test(hay);
+}
+
+export function findUnbackedComplianceClaims(text: string, rawSourceCorpus: string): string[] {
+  if (!text) return [];
+  const corpus = stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(rawSourceCorpus || ''));
+  const found: string[] = [];
+  for (const rule of UNBACKED_COMPLIANCE_RULES) {
+    if (rule.textRx.test(text) && !rule.corpusRx.test(corpus)) {
+      found.push(rule.label);
+    }
+  }
+  return found;
+}
+
+export function stripUnbackedComplianceClaims(
+  text: string,
+  rawSourceCorpus: string,
+  fallbackNote: string
+): { cleaned: string; removedClaims: string[] } {
+  const removedClaims = findUnbackedComplianceClaims(text, rawSourceCorpus);
+  if (removedClaims.length === 0) {
+    return { cleaned: text, removedClaims: [] };
+  }
+
+  const corpus = stripUiChromeBoilerplate(stripHtmlMarkupAndEntities(rawSourceCorpus || ''));
+  const hasClaimInSentence = (sentence: string) =>
+    UNBACKED_COMPLIANCE_RULES.some((r) => r.textRx.test(sentence) && !r.corpusRx.test(corpus));
+
+  let out = text.replace(/\([^()]{3,160}\)/g, (paren) =>
+    hasClaimInSentence(paren) ? '' : paren
+  );
+  if (findUnbackedComplianceClaims(out, corpus).length > 0) {
+    const sentences = out.split(/(?<=[.!?])\s+/);
+    const kept = sentences.filter((s) => !hasClaimInSentence(s));
+    if (kept.length > 0) {
+      out = kept.join(' ');
+    } else {
+      out = '';
+    }
+  }
+
+  out = out
+    .replace(/\s+([.,;!?])/g, '$1')
+    .replace(/([.,;])\s*[.,;]+/g, '$1')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  if (!out || findUnbackedComplianceClaims(out, corpus).length > 0) {
+    out = fallbackNote;
+  }
+
+  return { cleaned: out, removedClaims };
+}
+
+export function extractNamedLegalInstitution(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract' | 'url'>
+): string | null {
+  const urlLower = (sig.url || '').toLowerCase();
+  if (urlLower.includes('echr.coe.int') || urlLower.includes('hudoc.echr.coe.int')) {
+    return 'European Court of Human Rights';
+  }
+  if (urlLower.includes('curia.europa.eu')) {
+    return 'Court of Justice of the European Union';
+  }
+  if (urlLower.includes('supremecourt.gov')) {
+    return 'U.S. Supreme Court';
+  }
+
+  const hay = `${sig.title || ''} ${stripUiChromeBoilerplate(sig.rawAbstract || '').slice(0, 700)}`;
+  const explicitMatch = hay.match(
+    /\b(European Court of Human Rights|Court of Justice of the European Union|U\.S\. Supreme Court|Supreme Court of [A-Z][A-Za-z]+|Court of Appeals for the [A-Za-z0-9\s]+ Circuit|U\.S\. District Court(?:\s+for\s+the\s+[A-Z][A-Za-z\s]+)?|Federal Trade Commission|Securities and Exchange Commission|European Commission|European rights court)\b/i
+  );
+  return explicitMatch ? explicitMatch[1].trim() : null;
+}
+
+function textMentionsLegalInstitution(text: string, institution: string): boolean {
+  const low = (text || '').toLowerCase();
+  if (low.includes(institution.toLowerCase())) return true;
+  if (
+    institution === 'European Court of Human Rights' &&
+    (/\beuropean rights court\b/i.test(low) || /\bechr\b/i.test(low))
+  ) {
+    return true;
+  }
+  if (
+    institution === 'European rights court' &&
+    (/\beuropean court of human rights\b/i.test(low) || /\bechr\b/i.test(low))
+  ) {
+    return true;
+  }
+  if (institution === 'U.S. Supreme Court' && /\bsupreme court\b/i.test(low)) {
+    return true;
+  }
+  return false;
+}
+
+export function validateSummaryProseScope(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract' | 'url'>,
+  summaryText: string
+): { valid: boolean; reason?: string } {
+  const txt = (summaryText || '').trim();
+  if (!txt) return { valid: true };
+
+  if (isConditionalPolicyHeadline(sig)) {
+    const invertedPolicyRegex =
+      /\b(?:block|ban)(?:s|ing)?\s+schools\s+from\s+(?:using\s+)?(?:gemini|ai)\b/i;
+    if (invertedPolicyRegex.test(txt)) {
+      return { valid: false, reason: 'Summary inverted conditional policy target' };
+    }
+  }
+
+  if (isLegalOrCourtRulingSignal(sig)) {
+    const inst = extractNamedLegalInstitution(sig);
+    const sourceHay = `${sig.title || ''} ${sig.rawAbstract || ''}`.toLowerCase();
+    const sourceHasGeneralPracticeBan =
+      /\b(?:practicing\s+law|practice\s+of\s+law|disbarred)\b/i.test(sourceHay);
+
+    if (
+      !sourceHasGeneralPracticeBan &&
+      /\b(?:barred|banned|suspended)\s+from\s+practicing(?:\s+law)?\b|\bdisbarred\b/i.test(txt)
+    ) {
+      return {
+        valid: false,
+        reason: 'Summary broadened court sanction to practicing law ban',
+      };
+    }
+
+    if (inst) {
+      if (/\b(?:representing\s+(?:clients|applicants|litigants)\s+in\s+court|(?:barred|banned|excluded)\s+from\s+court)\b/i.test(txt)) {
+        return {
+          valid: false,
+          reason: `Summary flattened "${inst}" into generic "in court"`,
+        };
+      }
+      if (
+        /\b(?:bar(?:s|red)?|ban(?:s|ned)?|exclud(?:e|es|ed)|sanction\w*|decision|ruling)\b/i.test(
+          txt
+        ) &&
+        !textMentionsLegalInstitution(txt, inst)
+      ) {
+        return {
+          valid: false,
+          reason: `Summary omitted named institution "${inst}"`,
+        };
+      }
+    }
+  }
+
+  return { valid: true };
+}
+
+export function repairSummaryProseScope(
+  sig: Pick<SpatialSignal, 'title' | 'rawAbstract' | 'url'>,
+  text: string
+): string {
+  if (!text || !isLegalOrCourtRulingSignal(sig)) return text;
+  const inst = extractNamedLegalInstitution(sig);
+  const targetLabel = inst || 'that court';
+
+  let out = text;
+  const sourceHay = `${sig.title || ''} ${sig.rawAbstract || ''}`.toLowerCase();
+  const sourceHasGeneralPracticeBan =
+    /\b(?:practicing\s+law|practice\s+of\s+law|disbarred)\b/i.test(sourceHay);
+
+  if (!sourceHasGeneralPracticeBan) {
+    out = out
+      .replace(
+        /\b(?:barred|banned|suspended)\s+from\s+practicing(?:\s+law)?\b/gi,
+        `barred from representing applicants before the ${targetLabel}`
+      )
+      .replace(/\bdisbarred\b/gi, `barred before the ${targetLabel}`);
+  }
+
+  out = out
+    .replace(
+      /\brepresenting\s+(?:clients|applicants|litigants)\s+in\s+court\b/gi,
+      `representing applicants before the ${targetLabel}`
+    )
+    .replace(
+      /\b((?:barred|banned|excluded|suspended))\s+from\s+court\b/gi,
+      `$1 before the ${targetLabel}`
+    )
+    .replace(/\bThe court's decision\b/gi, `The ${targetLabel}'s decision`)
+    .replace(/\bthe court's decision\b/gi, `the ${targetLabel}'s decision`);
+
+  if (inst && !textMentionsLegalInstitution(out, inst)) {
+    out = out.replace(
+      /\bbefore the Court\b/g,
+      `before the ${inst}`
+    );
+  }
+
+  return out;
 }

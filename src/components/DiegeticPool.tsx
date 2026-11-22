@@ -1781,7 +1781,7 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                     </div>
                     <div className="p-2.5 space-y-0.5">
                       <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400 block">
-                        Production Readiness & Governance Risk
+                        Readiness & Compliance
                       </span>
                       <p className="text-zinc-300 max-w-[65ch]">{lit.levels[4].readinessAndRisk}</p>
                     </div>
@@ -1845,29 +1845,41 @@ export const DiegeticPool: React.FC<DiegeticPoolProps> = ({
                     {verifiedMetrics.map((vm, idx) => {
                       const isSelectedPill =
                         activeVerifiedMetric?.value === vm.value &&
-                        activeVerifiedMetric?.label === vm.label;
+                        activeVerifiedMetric?.label === vm.label &&
+                        (activeVerifiedMetric?.subject || '') === (vm.subject || '');
+                      const displayValue = vm.subject ? `${vm.subject} · ${vm.value}` : vm.value;
                       return (
                         <button
-                          key={`${vm.value}-${vm.label}-${idx}`}
+                          key={`${vm.subject || ''}-${vm.value}-${vm.label}-${idx}`}
                           type="button"
                           onClick={() =>
                             setActiveVerifiedMetric((prev) =>
-                              prev?.value === vm.value && prev?.label === vm.label ? null : vm
+                              prev?.value === vm.value &&
+                              prev?.label === vm.label &&
+                              (prev?.subject || '') === (vm.subject || '')
+                                ? null
+                                : vm
                             )
                           }
                           aria-expanded={isSelectedPill}
-                          aria-label={`Verify metric ${vm.value} ${vm.label} in source passage`}
+                          aria-label={`Verify metric ${displayValue} ${vm.label} in source passage`}
                           title="Tap to inspect the exact verbatim source passage"
                           className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md border text-left transition-colors cursor-pointer ${
                             isMobileViewport ? 'min-h-[36px]' : 'min-h-[28px]'
                           } ${
                             isSelectedPill
                               ? 'bg-teal-500/20 border-teal-400/70 text-teal-100'
-                              : 'bg-zinc-900/90 border-white/12 text-zinc-200 hover:border-teal-400/45 hover:text-teal-100'
+                              : vm.isFeatured === false
+                              ? 'bg-zinc-950/80 border-white/10 text-zinc-300 hover:border-teal-400/40'
+                              : 'bg-zinc-900/90 border-white/15 text-zinc-200 hover:border-teal-400/45 hover:text-teal-100'
                           }`}
                         >
-                          <span className="text-teal-300 font-semibold whitespace-nowrap">
-                            {vm.value}
+                          <span
+                            className={`font-semibold whitespace-nowrap ${
+                              vm.isFeatured === false ? 'text-zinc-200' : 'text-teal-300'
+                            }`}
+                          >
+                            {displayValue}
                           </span>
                           <span className="text-zinc-400 text-[9.5px] truncate max-w-[175px]">
                             {vm.label}

@@ -1,0 +1,1583 @@
+{
+  "version": 1,
+  "updatedAtIso": "2026-11-22T02:02:34.607Z",
+  "updatedAtMs": 1795312954607,
+  "count": 115,
+  "entries": [
+    {
+      "id": "rd-street-1y2cr57",
+      "title": "Inkling-2-Mini at 524k context on a single RX 7900 XTX: 767 tok/s prompt, 33.7 tok/s generation, 10/10 needle retrieval. Benchmarks vs llama.cpp inside (my own Rust engine, LexiSuite)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2cr57/inkling2mini_at_524k_context_on_a_single_rx_7900/",
+      "publishedAtMs": 1795310135000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "**I posted earlier about getting Inkling-2-Mini running on my own inference engine the day after it came out. This is the follow up with a new image and a lot more numbers. Short version: it now runs at a 524,288 token context on one 24…",
+      "verifiedMetrics": [
+        {
+          "value": "32 GB RAM",
+          "label": "Memory footprint",
+          "quote": "Short version: it now runs at a 524,288 token context on one 24 GB Radeon, and the 262k numbers went up quite a bit.** **Hardware for everything below: RX 7900 XTX 24 GB, i7-9700, 32 GB RAM, Linux, Vulkan."
+        },
+        {
+          "value": "245 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Both engines ran that same file.** **BENCHMARKS, LexiEngine vs llama.cpp b12600, same card, same file** **4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation** **16,384 token prompt** **LexiEngine: 2,148 tok/s prompt, 50.9 tok/s generation** **llama.cpp: 397 tok/s prompt, 25.0 tok/s generation** **261,632 token prompt (262k context)** **LexiEngine: 1,146 tok/s prompt (3 min 48 s), 40.2 tok/s generation** **llama.cpp: did not finish the prompt in 55 minutes** **523,264 token prompt (524k context)** **LexiEngine: 767 tok/s prompt (11 min 23 s), 33.7 tok/s generation** **llama.cpp: not run** **MEMORY AT 524k** **weights 17.62 GB** **KV cache 5.02 GB** **scratch 0.58 GB** **total in use on the card: 23.7 of 25.75 GB** **Load time is 13 seconds.",
+          "context": "vs. llama",
+          "isFeatured": false
+        },
+        {
+          "value": "52.4 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Both engines ran that same file.** **BENCHMARKS, LexiEngine vs llama.cpp b12600, same card, same file** **4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation** **16,384 token prompt** **LexiEngine: 2,148 tok/s prompt, 50.9 tok/s generation** **llama.cpp: 397 tok/s prompt, 25.0 tok/s generation** **261,632 token prompt (262k context)** **LexiEngine: 1,146 tok/s prompt (3 min 48 s), 40.2 tok/s generation** **llama.cpp: did not finish the prompt in 55 minutes** **523,264 token prompt (524k context)** **LexiEngine: 767 tok/s prompt (11 min 23 s), 33.7 tok/s generation** **llama.cpp: not run** **MEMORY AT 524k** **weights 17.62 GB** **KV cache 5.02 GB** **scratch 0.58 GB** **total in use on the card: 23.7 of 25.75 GB** **Load time is 13 seconds.",
+          "context": "vs. llama",
+          "isFeatured": false
+        },
+        {
+          "value": "425 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Both engines ran that same file.** **BENCHMARKS, LexiEngine vs llama.cpp b12600, same card, same file** **4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation** **16,384 token prompt** **LexiEngine: 2,148 tok/s prompt, 50.9 tok/s generation** **llama.cpp: 397 tok/s prompt, 25.0 tok/s generation** **261,632 token prompt (262k context)** **LexiEngine: 1,146 tok/s prompt (3 min 48 s), 40.2 tok/s generation** **llama.cpp: did not finish the prompt in 55 minutes** **523,264 token prompt (524k context)** **LexiEngine: 767 tok/s prompt (11 min 23 s), 33.7 tok/s generation** **llama.cpp: not run** **MEMORY AT 524k** **weights 17.62 GB** **KV cache 5.02 GB** **scratch 0.58 GB** **total in use on the card: 23.7 of 25.75 GB** **Load time is 13 seconds.",
+          "context": "vs. llama",
+          "isFeatured": false
+        },
+        {
+          "value": "25.4 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Both engines ran that same file.** **BENCHMARKS, LexiEngine vs llama.cpp b12600, same card, same file** **4,096 token prompt** **LexiEngine: 2,245 tok/s prompt, 52.4 tok/s generation** **llama.cpp: 425 tok/s prompt, 25.4 tok/s generation** **16,384 token prompt** **LexiEngine: 2,148 tok/s prompt, 50.9 tok/s generation** **llama.cpp: 397 tok/s prompt, 25.0 tok/s generation** **261,632 token prompt (262k context)** **LexiEngine: 1,146 tok/s prompt (3 min 48 s), 40.2 tok/s generation** **llama.cpp: did not finish the prompt in 55 minutes** **523,264 token prompt (524k context)** **LexiEngine: 767 tok/s prompt (11 min 23 s), 33.7 tok/s generation** **llama.cpp: not run** **MEMORY AT 524k** **weights 17.62 GB** **KV cache 5.02 GB** **scratch 0.58 GB** **total in use on the card: 23.7 of 25.75 GB** **Load time is 13 seconds.",
+          "context": "vs. llama",
+          "isFeatured": false
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y2cflm",
+      "title": "Hy4 Flash added to int8-vllm: 4x MI100 C8 tg128 222.4 tok/s, pp512 1,655 tok/s",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2cflm/hy4_flash_added_to_int8vllm_4x_mi100_c8_tg128/",
+      "publishedAtMs": 1795309193000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Hi all, I'm happy to announce that Hy4 Flash has been added with optimized support to int8-vllm. This is a milestone because this is the first INT4 model added to the project. At INT4, Hy4 Flash fits completely on 128 GB of VRAM with room…",
+      "verifiedMetrics": [
+        {
+          "value": "222.4 tokens/s",
+          "label": "Measured throughput",
+          "quote": "||tg128 (llama-bench style)|pp512 (llama-bench style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with docker compose files for all optimized models, and support for 2-4 cards with Infinity Fabric or PCIe.",
+          "context": "Source-reported token generation rate"
+        },
+        {
+          "value": "1655 tokens/s",
+          "label": "Measured throughput",
+          "quote": "||tg128 (llama-bench style)|pp512 (llama-bench style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with docker compose files for all optimized models, and support for 2-4 cards with Infinity Fabric or PCIe.",
+          "context": "Source-reported token generation rate"
+        },
+        {
+          "value": "96.7 tokens/s",
+          "label": "Measured throughput",
+          "quote": "||tg128 (llama-bench style)|pp512 (llama-bench style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with docker compose files for all optimized models, and support for 2-4 cards with Infinity Fabric or PCIe.",
+          "context": "Source-reported token generation rate"
+        },
+        {
+          "value": "86.3 tokens/s",
+          "label": "Measured throughput",
+          "quote": "||tg128 (llama-bench style)|pp512 (llama-bench style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with docker compose files for all optimized models, and support for 2-4 cards with Infinity Fabric or PCIe.",
+          "context": "Source-reported token generation rate"
+        },
+        {
+          "value": "1602 tokens/s",
+          "label": "Measured throughput",
+          "quote": "||tg128 (llama-bench style)|pp512 (llama-bench style)|tg256 w/ 2048 context| |:-|:-|:-|:-| |Concurrency 8|222.4 tok/s|1655 tok/s|96.7 tok/s| |Concurrency 1|86.3 tok/s|1602 tok/s|48.3 tok/s| This project focuses on AMD MI100 support, with docker compose files for all optimized models, and support for 2-4 cards with Infinity Fabric or PCIe.",
+          "context": "Source-reported token generation rate"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y2ccfq",
+      "title": "I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y2ccfq/i_built_a_quick_passfail_test_suite_to_see_which/",
+      "publishedAtMs": 1795308922000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/ollama (1 upvotes, 0 comments): I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)"
+    },
+    {
+      "id": "rd-street-1y2aa8b",
+      "title": "Redditors in their final moments",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2aa8b/redditors_in_their_final_moments/",
+      "publishedAtMs": 1795302812000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Redditors in their final moments"
+    },
+    {
+      "id": "hn-50594564",
+      "title": "International UN talks on controlling use of autonomous weapons collapse",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse",
+      "publishedAtMs": 1795302621000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Week-long efforts fail to establish negotiating mandate on AI warfare after Russian ‘filibustering’"
+    },
+    {
+      "id": "rd-street-1y27y1y",
+      "title": "Solution for Agents being blocked - Letter of Agency",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y27y1y/solution_for_agents_being_blocked_letter_of_agency/",
+      "publishedAtMs": 1795296282000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "A personal agent is not a swarm. Not the same beings, at all. The Letter of Agency is a signed, expiring credential: who the agent is, whose it is, what it's here to do, and for how long. Detection is an arms race; verification isn't.…"
+    },
+    {
+      "id": "rd-street-1y27spf",
+      "title": "This could be one of the best models for lower vram systems: Over 1300 tok/s aggregated for SenseNova-Loop-9B looped transformer on a laptop RTX 5090",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y27spf/this_could_be_one_of_the_best_models_for_lower/",
+      "publishedAtMs": 1795295877000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I was a bit surprised when I started the MMLU benchmark on this model and my performance counter showed these numbers. I genuinely thought it was a bug and checked the display and counter code. But it seems to be true. ##…",
+      "verifiedMetrics": [
+        {
+          "value": "1300 tokens/s",
+          "label": "Measured throughput",
+          "quote": "This could be one of the best models for lower vram systems: Over 1300 tok/s aggregated for SenseNova-Loop-9B looped transformer on a laptop RTX 5090",
+          "context": "Source-reported token generation rate"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y27plv",
+      "title": "I Built an Open-Source MCP to Catch Mistakes in Healthcare AI Agents. Looking for Developers to Break It",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y27plv/i_built_an_opensource_mcp_to_catch_mistakes_in/",
+      "publishedAtMs": 1795295645000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y27i16",
+      "title": "Inkling 2 Mini IQ4_NL on RTX 5060 Ti 16GB, 44 tok/s",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y27i16/inkling_2_mini_iq4_nl_on_rtx_5060_ti_16gb_44_toks/",
+      "publishedAtMs": 1795295073000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Finally got a chance to sit down and test Inkling 2 Mini on my PC (5060 Ti 16GB + 32 GB RAM). This is for the **IQ4\\_NL** gguf version from ggml-org on HF. I started out at 12 tok/s and the the final number I can reach is **44 tok/s**. At…",
+      "verifiedMetrics": [
+        {
+          "value": "12 tokens/s",
+          "label": "Measured throughput",
+          "quote": "I started out at 12 tok/s and the the final number I can reach is **44 tok/s**.",
+          "context": "Source-reported token generation rate",
+          "subject": "I",
+          "isFeatured": true
+        },
+        {
+          "value": "44 tokens/s",
+          "label": "Measured throughput",
+          "quote": "I started out at 12 tok/s and the the final number I can reach is **44 tok/s**.",
+          "context": "Source-reported token generation rate",
+          "subject": "I",
+          "isFeatured": true
+        },
+        {
+          "value": "44 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Inkling 2 Mini IQ4_NL on RTX 5060 Ti 16GB, 44 tok/s",
+          "context": "Source-reported token generation rate",
+          "subject": "Inkling",
+          "isFeatured": true
+        },
+        {
+          "value": "32 GB RAM",
+          "label": "Memory footprint",
+          "quote": "https://i.redd.it/y2iosj20513i1.png Finally got a chance to sit down and test Inkling 2 Mini on my PC (5060 Ti 16GB + 32 GB RAM)."
+        },
+        {
+          "value": "43.34 tokens/s",
+          "label": "Measured throughput",
+          "quote": "If you're here just for the llama params, here's how to run it: **Best with q8\\_0 KV: 43.34 tok/s** -ctk q8_0 -ctv q8_0 -fitt 128 --spec-type ngram-mod **Best with q4\\_0 KV: 44.35 tok/s** -ctk q4_0 -ctv q4_0 -fitt 64",
+          "context": "Source-reported token generation rate"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y2775c",
+      "title": "Inkling-2-Mini quants by shinmegamiboson - 5.4GB and 8.9GB at higher scores than Unsloth",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2775c/inkling2mini_quants_by_shinmegamiboson_54gb_and/",
+      "publishedAtMs": 1795294274000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/LocalLLaMA (1 upvotes, 0 comments): Inkling-2-Mini quants by shinmegamiboson - 5.4GB and 8.9GB at higher scores than Unsloth"
+    },
+    {
+      "id": "hn-50593481",
+      "title": "Pandex – Official European Law for AI Agents, over MCP",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.pandex.io",
+      "publishedAtMs": 1795294061000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Legislation and highest-court decisions of the EU and seven European countries, straight from the institutions that publish them, ready for search and AI agents. One API and one MCP server for every jurisdiction we hold. Cour de…"
+    },
+    {
+      "id": "rd-street-1y271rv",
+      "title": "The current local frontier writes an essay",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y271rv/the_current_local_frontier_writes_an_essay/",
+      "publishedAtMs": 1795293863000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/LocalLLaMA (1 upvotes, 0 comments): The current local frontier writes an essay"
+    },
+    {
+      "id": "rd-street-1y26me8",
+      "title": "I built a zero-Python local LLM inference server in Java 25 (Panama FFM + CUDA/FlashInfer/Marlin + ONNX GenAI): running Qwen3.8-27B-FP8 on one 40GB GPU down to 0.3B-3.8B models on CPU/NPU",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y26me8/i_built_a_zeropython_local_llm_inference_server/",
+      "publishedAtMs": 1795292716000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y26hhs",
+      "title": "2 local models, no Web access, discover and program a vintage Motorola 68000 device",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y26hhs/2_local_models_no_web_access_discover_and_program/",
+      "publishedAtMs": 1795292349000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Thought this group may like this experiment. Two agents, using only local models, were asked to co-operate in discovering what’s attached to a Raspberry Pi’s serial port (via serial hat). They had no Internet access, and no access to…"
+    },
+    {
+      "id": "rd-street-1y26d3k",
+      "title": "Former NSA hacker reveals he’s actively responding to a live breach where an AI \"agent swarm\" bypassed 2FA, stole data, and encrypted a company's entire system: \"This all took 14 minutes. 14 minutes. Never seen…",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y26d3k/former_nsa_hacker_reveals_hes_actively_responding/",
+      "publishedAtMs": 1795292038000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Former NSA hacker reveals he’s actively responding to a live breach where an AI \"agent swarm\" bypassed 2FA, stole data, and encrypted a company's entire system: \"This all…"
+    },
+    {
+      "id": "rd-street-1y2661o",
+      "title": "From more than 3 years ago...",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2661o/from_more_than_3_years_ago/",
+      "publishedAtMs": 1795291520000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): From more than 3 years ago..."
+    },
+    {
+      "id": "rd-street-1y264tc",
+      "title": "GRH proved through the last one...",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y264tc/grh_proved_through_the_last_one/",
+      "publishedAtMs": 1795291429000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): GRH proved through the last one..."
+    },
+    {
+      "id": "rd-street-1y25sfe",
+      "title": "Evokai: turn an Ollama model into a real in-app assistant, with backend, chat UI, admin console, permissions and budgets in one service",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y25sfe/evokai_turn_an_ollama_model_into_a_real_inapp/",
+      "publishedAtMs": 1795290572000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/ollama (1 upvotes, 0 comments): Evokai: turn an Ollama model into a real in-app assistant, with backend, chat UI, admin console, permissions and budgets in one service"
+    },
+    {
+      "id": "rd-street-1y24vqg",
+      "title": "I fine-tuned a 1.5B model into an offline Linux command helper that runs on CPU and checks its own answers against the man pages and tdlr",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y24vqg/i_finetuned_a_15b_model_into_an_offline_linux/",
+      "publishedAtMs": 1795288204000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "lxask turns plain English into a shell command, entirely on your own machine: $ lxask \"show disk usage of each folder here, biggest first\" $ du -h --max-depth=1. | sort -hr Setup: \\- Fine-tuned Qwen2.5-Coder-1.5B, Q4\\_K\\_M GGUF \\…",
+      "verifiedMetrics": [
+        {
+          "value": "1 GB RAM",
+          "label": "Memory footprint",
+          "quote": "No Ollama, no Python, no API key \\- \\~1.1 GB on disk, \\~1 GB RAM, \\~2 s per answer on a laptop CPU \\- No GPU, no network after install How it keeps a 1.5B model honest: \\- Retrieves relevant tldr pages and your own man pages before answering \\- Checks every program and option in the answer against the man pages \\- Retries if a check fails."
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y24rq0",
+      "title": "capy-flash v0.16: Inkling 2 Mini on two 50xx 16 GB gpus",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y24rq0/capyflash_v016_inkling_2_mini_on_two_50xx_16_gb/",
+      "publishedAtMs": 1795287918000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "As of today, with v0.16, capy-flash also serves Inkling 2 Mini, in addition to Qwen3.8-27B and Qwen3.8-Flash-Next. The engine is optimized for two 16 GB Blackwell cards in tensor parallel, on Linux. It should also work on a single 5090…"
+    },
+    {
+      "id": "rd-street-1y24k81",
+      "title": "Agentic GraphRAG: built an open-source framework for the Context layer + Agent memory using a 3D-knowledge graph",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y24k81/agentic_graphrag_built_an_opensource_framework/",
+      "publishedAtMs": 1795287411000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "hn-50592097",
+      "title": "Upload2Shell (CVE-2026-125396)",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://pwn.ai/upload2shell",
+      "publishedAtMs": 1795285769000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y23axm",
+      "title": "European AI Update: $1B for Physical AI and a new 1T model by Domyn",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y23axm/european_ai_update_1b_for_physical_ai_and_a_new/",
+      "publishedAtMs": 1795284226000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Full article: [ See also [r/euainews]("
+    },
+    {
+      "id": "rd-street-1y237hh",
+      "title": "Weekly topic 9: The Maths of Problem Solving",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y237hh/weekly_topic_9_the_maths_of_problem_solving/",
+      "publishedAtMs": 1795284016000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Weekly topic 9: The Maths of Problem Solving"
+    },
+    {
+      "id": "rd-street-1y234ug",
+      "title": "I built a small gateway to use my home LLM from my other computers, without port forwarding or a VPN",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y234ug/i_built_a_small_gateway_to_use_my_home_llm_from/",
+      "publishedAtMs": 1795283840000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/ollama (3 upvotes, 0 comments): I built a small gateway to use my home LLM from my other computers, without port forwarding or a VPN"
+    },
+    {
+      "id": "rd-street-1y22uo1",
+      "title": "I had an agent build an entire storefront with no manual edits — every prompt, ruling and stage is in the repo",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y22uo1/i_had_an_agent_build_an_entire_storefront_with_no/",
+      "publishedAtMs": 1795283123000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I created a grammar for AI agents that sets aside what they learned about structuring applications and replaces it with one structure — my framework, SpyneJS. My generator builds the initial application with the grammar included, and…"
+    },
+    {
+      "id": "rd-street-1y22ln2",
+      "title": "Phison details SSD with a built-in NPU and 64GB of 130 GB/s memory to run PyTorch and llama.cpp on-drive — claims up to 100x less data transfer alongside new mixed media pSLC and QLC design",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y22ln2/phison_details_ssd_with_a_builtin_npu_and_64gb_of/",
+      "publishedAtMs": 1795282465000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y22lkx",
+      "title": "Inkling 2 Mini on an RX 7900 XT: from 25 to 108 tok/s with Vulkan (llama.cpp fork)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y22lkx/inkling_2_mini_on_an_rx_7900_xt_from_25_to_108/",
+      "publishedAtMs": 1795282460000,
+      "archivedAtMs": 1795312954607,
+      "verifiedMetrics": [
+        {
+          "value": "25–108 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Inkling 2 Mini on an RX 7900 XT: from 25 to 108 tok/s with Vulkan (llama.cpp fork)",
+          "context": "Source-reported token generation rate",
+          "subject": "Inkling",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y228pt",
+      "title": "I’m building an open-source intelligent LLM router that runs inside AI coding agents",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y228pt/im_building_an_opensource_intelligent_llm_router/",
+      "publishedAtMs": 1795281531000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y1zoue",
+      "title": "Do local LLM users even want this?",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y1zoue/do_local_llm_users_even_want_this/",
+      "publishedAtMs": 1795275011000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/ollama (2 upvotes, 0 comments): Do local LLM users even want this?"
+    },
+    {
+      "id": "x-fx-2124155600946769955",
+      "title": "That's the essence of my Deep Learning course at NYU for the past 20 years or so.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ylecun",
+      "url": "https://x.com/ylecun/status/2124155600946769955",
+      "publishedAtMs": 1795273134000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational…"
+    },
+    {
+      "id": "rd-street-1y1udwh",
+      "title": "Running Qwen3-ASR + Qwen3.5-4B (16K) + Qwen3-TTS 100% offline on Rockchip RK3576 + PCIe RK1828 (4.87/5.12 GB VRAM, 0 swap, 51.8-58.3 tok/s)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1udwh/running_qwen3asr_qwen354b_16k_qwen3tts_100/",
+      "publishedAtMs": 1795258633000,
+      "archivedAtMs": 1795312954607,
+      "verifiedMetrics": [
+        {
+          "value": "100%",
+          "label": "Source-reported percentage",
+          "quote": "Running Qwen3-ASR + Qwen3.5-4B (16K) + Qwen3-TTS 100% offline on Rockchip RK3576 + PCIe RK1828 (4.87/5.12 GB VRAM, 0 swap, 51.8-58.3 tok/s)",
+          "subject": "Running",
+          "isFeatured": true
+        },
+        {
+          "value": "51.8–58.3 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Running Qwen3-ASR + Qwen3.5-4B (16K) + Qwen3-TTS 100% offline on Rockchip RK3576 + PCIe RK1828 (4.87/5.12 GB VRAM, 0 swap, 51.8-58.3 tok/s)",
+          "context": "Source-reported token generation rate",
+          "subject": "Running",
+          "isFeatured": true
+        },
+        {
+          "value": "5.12 GB VRAM",
+          "label": "Memory footprint",
+          "quote": "Running Qwen3-ASR + Qwen3.5-4B (16K) + Qwen3-TTS 100% offline on Rockchip RK3576 + PCIe RK1828 (4.87/5.12 GB VRAM, 0 swap, 51.8-58.3 tok/s)"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y1u4ac",
+      "title": "At the risk of going against the popular grain here, Inkling-2-Mini suffers from over-writing (as opposed to over-thinking) Bash commands (happening multiple times) for me.",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1u4ac/at_the_risk_of_going_against_the_popular_grain/",
+      "publishedAtMs": 1795257591000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/LocalLLaMA (1 upvotes, 0 comments): At the risk of going against the popular grain here, Inkling-2-Mini suffers from over-writing (as opposed to over-thinking) Bash commands (happening multiple times) for me."
+    },
+    {
+      "id": "rd-street-1y1u3bj",
+      "title": "How I see Anthropic vs OpenAI",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y1u3bj/how_i_see_anthropic_vs_openai/",
+      "publishedAtMs": 1795257488000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): How I see Anthropic vs OpenAI"
+    },
+    {
+      "id": "rd-street-1y1tsms",
+      "title": "Just turned my old Android into a free local AI server for Cursor",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y1tsms/just_turned_my_old_android_into_a_free_local_ai/",
+      "publishedAtMs": 1795256347000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I honestly didn't think this would actually work, lol. I've been trying to cut down on API costs (and stop my laptop fan from sounding like a jet engine), and I stumbled across **Ollama Local AI** (`ollamamobile.app`). Basically, it runs…"
+    },
+    {
+      "id": "rd-street-1y1toy1",
+      "title": "Actuator-7B (Qwen2.5-7B fine-tune): 76.1% exact tool-call match (+22.4% over base) & 100% raw JSON Schema compliance in Ollama",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y1toy1/actuator7b_qwen257b_finetune_761_exact_toolcall/",
+      "publishedAtMs": 1795255962000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y1t1do",
+      "title": "[2611.21885] Language Models Can Rewrite Their Own Weights",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y1t1do/261121885_language_models_can_rewrite_their_own/",
+      "publishedAtMs": 1795253427000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): [2611.21885] Language Models Can Rewrite Their Own Weights"
+    },
+    {
+      "id": "rd-street-1y1suzd",
+      "title": "Any projections for EOY? Or next year?",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y1suzd/any_projections_for_eoy_or_next_year/",
+      "publishedAtMs": 1795252717000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "From Threat Watch: Top engineer comment (u/jhonpixel, +1): \"I tell you this: i retired all my stocks that i had on IoT companies despite their growth. The reason is this one: too risky in a world where IoT is the MAIN risk. Imagine what…"
+    },
+    {
+      "id": "rd-street-1y1sjpw",
+      "title": "Inkling 2 Mini is now supported in NInfer-all",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1sjpw/inkling_2_mini_is_now_supported_in_ninferall/",
+      "publishedAtMs": 1795251517000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Title: Added I added Thinking Machines' Inkling 2 Mini (looped 26B MoE, 3.4B active) to [NInfer-all]( (mine multi-arch multi-model fork of NInfer). It runs Unsloth's UD-IQ4_XS GGUF without requantizing the actual weights, and vision and…",
+      "verifiedMetrics": [
+        {
+          "value": "9 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Since it's a MoE, even 8 GB works, and the experts can also be read straight from disk, though that's slow: about 9 tok/s on the 5060.",
+          "context": "Source-reported token generation rate"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y1sb4n",
+      "title": "Airbnb handles 80,000 chats a day with Alibaba’s open-weight Qwen",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1sb4n/airbnb_handles_80000_chats_a_day_with_alibabas/",
+      "publishedAtMs": 1795250565000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Hopefully costs/performance will soon be worth it for small to medium sized companies"
+    },
+    {
+      "id": "rd-street-1y1rszd",
+      "title": "Thinking Machines inkling-2-mini: 26B Looping MoE",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y1rszd/thinking_machines_inkling2mini_26b_looping_moe/",
+      "publishedAtMs": 1795248612000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Like many others, I've been patiently waiting for the release of Qwen 4 27B. If I'm reading the model card correctly, inkling-2-mini from Thinking Machines will check many of the boxes I was hoping for: * Runs on a Mac with \\~32GB of…"
+    },
+    {
+      "id": "rd-street-1y1rdyw",
+      "title": "I don’t know how good this is, but GLM5.3-Flash is running locally without a GPU",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y1rdyw/i_dont_know_how_good_this_is_but_glm53flash_is/",
+      "publishedAtMs": 1795247056000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Top engineer comment (u/miloserdev, +3): \"specs: GLM-5.3-Flash (320B total, 18B active, MoE, hybrid KDA linear attention + MLA/DSA sparse attention, mHC) 2× Ampere Altra Max M128-30 (256 Neoverse N1 cores at 3.0 GHz, ARM64) and 1 TB DDR4…"
+    },
+    {
+      "id": "rd-street-1y1q84g",
+      "title": "I got fed up with what AI assistants were supposed to be, so I started building my own.",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y1q84g/i_got_fed_up_with_what_ai_assistants_were/",
+      "publishedAtMs": 1795242756000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "hn-50586292",
+      "title": "ClawDOS – An AI coding agent for DOS",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "http://ricapar.net/ClawDOS/",
+      "publishedAtMs": 1795239481000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "An AI chat and coding harness for DOS, on a real IBM PC 5160 (8088 at 4.77 MHz) Ricapar/ ClawDOS ClawDOS ClawDOS An AI coding agent for DOS. It runs on an IBM PC XT: an 8088 at 4.77 MHz, 640K of RAM, a CGA card. Backstory: The IBM PC was…"
+    },
+    {
+      "id": "hn-50585735",
+      "title": "Muse Spark 1.3",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://dev.meta.ai/models/muse-spark",
+      "publishedAtMs": 1795232981000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Trained for agentic workflows and optimized for competitive coding performance."
+    },
+    {
+      "id": "ghrel-ollama-com2008Repository658928958v04017-rc4",
+      "title": "Ollama v0.40.17-rc4",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "ollama Release",
+      "url": "https://github.com/ollama/ollama/releases/tag/v0.40.17-rc4",
+      "publishedAtMs": 1795217954000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "## Inkling 2 Mini [Inkling 2 Mini]( from Thinking Machines is a 26B parameter model with 5.4B active. Its looped layers give it more computation per token than its size suggests, and it still fits on a Mac at about 20GB. It handles text…",
+      "verifiedMetrics": [
+        {
+          "value": "79.2%",
+          "label": "SWE-bench score",
+          "quote": "It handles text and images, tool calls, and thinking, and scores 79.2% on SWE-Bench Verified).",
+          "subject": "Ollama",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "hn-50583761",
+      "title": "Ask HN: I have been unemployed for 2y. 15 years of experience, US. What to do?",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=50583761",
+      "publishedAtMs": 1795216712000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I'm Senior software engineer in the US (DMV area), with 15y of experience. Worked for Fortune 50+ company and bunch of mid-size companies. Been unemployed for 2y and can't find a job, within those 2 years, I pretty much spent my savings…"
+    },
+    {
+      "id": "hn-50583445",
+      "title": "AI may have solved the most important problem in mathematics",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.economist.com/science-and-technology/2026/11/20/ai-may-have-solved-the-most-important-problem-in-mathematics",
+      "publishedAtMs": 1795214819000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "hn-50582794",
+      "title": "Leaky AI supply chain is exposing secret user data at an alarming rate",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
+      "publishedAtMs": 1795211619000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Test using prompts with unique, trackable secrets proves that data doesn't stay private. Researchers planted 2 million digital tripwires in requests sent through a sprawling network of AI services to find out what happened to sensitive…"
+    },
+    {
+      "id": "rd-street-1y1fe6b",
+      "title": "Culler - a local, open source software factory",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y1fe6b/culler_a_local_open_source_software_factory/",
+      "publishedAtMs": 1795210145000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y1drpd",
+      "title": "unsloth/Inkling-2-Mini-GGUF · Hugging Face",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1drpd/unslothinkling2minigguf_hugging_face/",
+      "publishedAtMs": 1795206059000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/LocalLLaMA (1 upvotes, 0 comments): unsloth/Inkling-2-Mini-GGUF · Hugging Face"
+    },
+    {
+      "id": "rd-street-1y1dns9",
+      "title": "The parrot strikes back",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y1dns9/the_parrot_strikes_back/",
+      "publishedAtMs": 1795205800000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): The parrot strikes back"
+    },
+    {
+      "id": "hn-50581260",
+      "title": "Inkling 2 Mini",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
+      "publishedAtMs": 1795205539000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Inkling 2 Mini is an open-weights model small enough to run on your laptop. It loops its middle layers to reason more per token and reach answers in fewer tokens. Introducing Inkling 2 Mini - Thinking Machines Lab Introducing Inkling 2…"
+    },
+    {
+      "id": "rd-street-1y1diuk",
+      "title": "thinkingmachines/Inkling-2-Mini (MoE: 26b, a3B)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1diuk/thinkingmachinesinkling2mini_moe_26b_a3b/",
+      "publishedAtMs": 1795205453000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "\"Inkling 2 Mini is a general-purpose multimodal model that accepts text and image inputs and generates text outputs. It is intended for use in English and other languages, and across multiple coding languages. The model is designed to be…"
+    },
+    {
+      "id": "rd-street-1y1d9e3",
+      "title": "256 ARM Cores + 1TB RAM",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y1d9e3/256_arm_cores_1tb_ram/",
+      "publishedAtMs": 1795204835000,
+      "archivedAtMs": 1795312954607,
+      "verifiedMetrics": [
+        {
+          "value": "1 TB RAM",
+          "label": "Memory footprint",
+          "quote": "256 ARM Cores + 1TB RAM"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y1d6r8",
+      "title": "Prompt: “Paint an exact copy of Manet’s Folies-Bergère”. An AI paints it in oil from Python: the brush runs dry, wet paint blends into wet. Timelapse",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ClaudeAI",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1y1d6r8/prompt_paint_an_exact_copy_of_manets/",
+      "publishedAtMs": 1795204664000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I built **aibrush**, a free, open-source (AGPL-3.0) oil-painting engine made specifically for Claude and other strong models. It's not an image generator and not a filter. The model writes Python, lays strokes one by one, looks at the…"
+    },
+    {
+      "id": "rd-street-1y1cq1z",
+      "title": "gemma4: Optimized prompt processing for multi-seq queries by Meet91721 · Pull Request #32342 · ggml-org/llama.cpp",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1cq1z/gemma4_optimized_prompt_processing_for_multiseq/",
+      "publishedAtMs": 1795203504000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots.",
+      "verifiedMetrics": [
+        {
+          "value": "3x",
+          "label": "Measured speedup",
+          "quote": "&#x200B; Up to 3x prompt processing speedup for Gemma 4 E2B/E4B with multiple parallel slots."
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y1cm3m",
+      "title": "Qwen 27b on 8GB: 200k ctx, 92.5% Top-1 match, within 10% of BF16 on LCB, 17% higher benchmark than 9b",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1cm3m/qwen_27b_on_8gb_200k_ctx_925_top1_match_within_10/",
+      "publishedAtMs": 1795203242000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Happy Friday, y'all. I continued to get requests for quants + configs to support 8GB card users. It's taken over a month, but I do finally have a 2.1bpw quant (on card) of qwen3.8 27b that I consider *actually* usable. This is using the…",
+      "verifiedMetrics": [
+        {
+          "value": "92.5%",
+          "label": "Source-reported percentage",
+          "quote": "Qwen 27b on 8GB: 200k ctx, 92.5% Top-1 match, within 10% of BF16 on LCB, 17% higher benchmark than 9b",
+          "subject": "Qwen",
+          "isFeatured": true
+        },
+        {
+          "value": "10%",
+          "label": "Source-reported percentage",
+          "quote": "Qwen 27b on 8GB: 200k ctx, 92.5% Top-1 match, within 10% of BF16 on LCB, 17% higher benchmark than 9b",
+          "subject": "Qwen",
+          "isFeatured": true
+        },
+        {
+          "value": "17%",
+          "label": "Source-reported percentage",
+          "quote": "Qwen 27b on 8GB: 200k ctx, 92.5% Top-1 match, within 10% of BF16 on LCB, 17% higher benchmark than 9b",
+          "subject": "Qwen",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y1cji6",
+      "title": "CCORE-Web-Coder-4B preview just dropped: a 4B local model that writes a full website, slide deck or infographic as a single HTML file",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1cji6/ccorewebcoder4b_preview_just_dropped_a_4b_local/",
+      "publishedAtMs": 1795203063000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "This is a preview checkpoint, at roughly a quarter of the planned training. I'm releasing it now because it already works better than I expected from a 4B. \\- Model: [ \\- Base: Qwen3.5-4B-Base, Apache 2.0 \\- File: Q8\\_0 GGUF, 4.48 GB \\…"
+    },
+    {
+      "id": "ghrel-codex-epository965415649rust-v01730-alpha2",
+      "title": "OpenAI Codex v0.173.0-alpha.2",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "openai/codex Release",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.2",
+      "publishedAtMs": 1795202996000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y1bugz",
+      "title": "Ravi Vakil of Stanford claims there is already a proof of Riemann by Alessadro Masullo that is being polished for human readability",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y1bugz/ravi_vakil_of_stanford_claims_there_is_already_a/",
+      "publishedAtMs": 1795201413000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "What are the chances anthropic inadvertently plagiarized this? Top engineer comment (u/peva3, +1): \"Buddy, just quit, you've been proven wrong, you're just unimpeachably incorrect here. If you did have a PHD in CS you should be able to…"
+    },
+    {
+      "id": "rd-street-1y1bcpm",
+      "title": "I tried to replicate sort of gpt suite experience without straining the local hardware much",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1bcpm/i_tried_to_replicate_sort_of_gpt_suite_experience/",
+      "publishedAtMs": 1795200252000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I've been building a self-hosted ai workspace to see if i could run the full gpt-style stack — chat, research with cited sources, coding, agents without a subscription and without glue-coding every provider by hand. still i am not sure…",
+      "verifiedMetrics": [
+        {
+          "value": "24 GB unified memory",
+          "label": "Memory footprint",
+          "quote": "Q4\\_K\\_M vs Q5/Q6 on 24GB unified memory what's holding up for you in long tool chains?** also though the problem was every provider api is its own dialect different auth headers, different model-list endpoints, different rate-limit behavior and the local side needs the vram to fit weights."
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y1bbr3",
+      "title": "Trump to not allow datacenters to be built outside of the United States",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y1bbr3/trump_to_not_allow_datacenters_to_be_built/",
+      "publishedAtMs": 1795200186000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Trump to not allow datacenters to be built outside of the United States"
+    },
+    {
+      "id": "ghrel-ollama-com2008Repository658928958v04017-rc3",
+      "title": "Ollama v0.40.17-rc3",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "ollama Release",
+      "url": "https://github.com/ollama/ollama/releases/tag/v0.40.17-rc3",
+      "publishedAtMs": 1795199827000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y1b2aa",
+      "title": "Run Hy4-flash (Q4) on a MacBook Pro M5 Max: (1000 tps prefill / 36tps decode)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1b2aa/run_hy4flash_q4_on_a_macbook_pro_m5_max_1000_tps/",
+      "publishedAtMs": 1795199554000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I have added hy4 flash support to Kapitsa, an open-source Apple silicon inference engine(I am the main contributor). [github.com/nace-ai/kapitsa]( Here is the bench of hy4 flash on my own MacBook Pro M5 Max (40-core GPU, 128 GB, macOS…",
+      "verifiedMetrics": [
+        {
+          "value": "657 tokens/s",
+          "label": "Measured throughput",
+          "quote": "**Same prompts for both engines, each prompt cold, thinking off, temperature 0.6:** |Context|Kapitsa (4-bit)|MLX (3.1-bit)| |:-|:-|:-| |short|36.4|20.8| |4K|35.2|13.2| |16K|35.1|7.0| |32K|34.6|4.4| Prefill (reading the prompt, tok/s, with the wait before the first token): |Prompt|Kapitsa, default|Kapitsa, --profile fast|MLX (3.1-bit)| |:-|:-|:-|:-| |short (\\~50 tokens)|0.24 s|0.23 s|0.39 s| |4K|657 tok/s (6.2 s)|968 tok/s (4.2 s)|228 tok/s (17.7 s)| |16K|699 tok/s (23 s)|971 tok/s (16.5 s)|300 tok/s (53 s)| |32K|677 tok/s (47 s)|971 tok/s (33 s)|304 tok/s (105 s)| * **MLX** is mlx-lm 0.32.2.",
+          "context": "Source-reported token generation rate"
+        },
+        {
+          "value": "968 tokens/s",
+          "label": "Measured throughput",
+          "quote": "**Same prompts for both engines, each prompt cold, thinking off, temperature 0.6:** |Context|Kapitsa (4-bit)|MLX (3.1-bit)| |:-|:-|:-| |short|36.4|20.8| |4K|35.2|13.2| |16K|35.1|7.0| |32K|34.6|4.4| Prefill (reading the prompt, tok/s, with the wait before the first token): |Prompt|Kapitsa, default|Kapitsa, --profile fast|MLX (3.1-bit)| |:-|:-|:-|:-| |short (\\~50 tokens)|0.24 s|0.23 s|0.39 s| |4K|657 tok/s (6.2 s)|968 tok/s (4.2 s)|228 tok/s (17.7 s)| |16K|699 tok/s (23 s)|971 tok/s (16.5 s)|300 tok/s (53 s)| |32K|677 tok/s (47 s)|971 tok/s (33 s)|304 tok/s (105 s)| * **MLX** is mlx-lm 0.32.2.",
+          "context": "Source-reported token generation rate"
+        },
+        {
+          "value": "228 tokens/s",
+          "label": "Measured throughput",
+          "quote": "**Same prompts for both engines, each prompt cold, thinking off, temperature 0.6:** |Context|Kapitsa (4-bit)|MLX (3.1-bit)| |:-|:-|:-| |short|36.4|20.8| |4K|35.2|13.2| |16K|35.1|7.0| |32K|34.6|4.4| Prefill (reading the prompt, tok/s, with the wait before the first token): |Prompt|Kapitsa, default|Kapitsa, --profile fast|MLX (3.1-bit)| |:-|:-|:-|:-| |short (\\~50 tokens)|0.24 s|0.23 s|0.39 s| |4K|657 tok/s (6.2 s)|968 tok/s (4.2 s)|228 tok/s (17.7 s)| |16K|699 tok/s (23 s)|971 tok/s (16.5 s)|300 tok/s (53 s)| |32K|677 tok/s (47 s)|971 tok/s (33 s)|304 tok/s (105 s)| * **MLX** is mlx-lm 0.32.2.",
+          "context": "Source-reported token generation rate"
+        },
+        {
+          "value": "699 tokens/s",
+          "label": "Measured throughput",
+          "quote": "**Same prompts for both engines, each prompt cold, thinking off, temperature 0.6:** |Context|Kapitsa (4-bit)|MLX (3.1-bit)| |:-|:-|:-| |short|36.4|20.8| |4K|35.2|13.2| |16K|35.1|7.0| |32K|34.6|4.4| Prefill (reading the prompt, tok/s, with the wait before the first token): |Prompt|Kapitsa, default|Kapitsa, --profile fast|MLX (3.1-bit)| |:-|:-|:-|:-| |short (\\~50 tokens)|0.24 s|0.23 s|0.39 s| |4K|657 tok/s (6.2 s)|968 tok/s (4.2 s)|228 tok/s (17.7 s)| |16K|699 tok/s (23 s)|971 tok/s (16.5 s)|300 tok/s (53 s)| |32K|677 tok/s (47 s)|971 tok/s (33 s)|304 tok/s (105 s)| * **MLX** is mlx-lm 0.32.2.",
+          "context": "Source-reported token generation rate"
+        },
+        {
+          "value": "971 tokens/s",
+          "label": "Measured throughput",
+          "quote": "**Same prompts for both engines, each prompt cold, thinking off, temperature 0.6:** |Context|Kapitsa (4-bit)|MLX (3.1-bit)| |:-|:-|:-| |short|36.4|20.8| |4K|35.2|13.2| |16K|35.1|7.0| |32K|34.6|4.4| Prefill (reading the prompt, tok/s, with the wait before the first token): |Prompt|Kapitsa, default|Kapitsa, --profile fast|MLX (3.1-bit)| |:-|:-|:-|:-| |short (\\~50 tokens)|0.24 s|0.23 s|0.39 s| |4K|657 tok/s (6.2 s)|968 tok/s (4.2 s)|228 tok/s (17.7 s)| |16K|699 tok/s (23 s)|971 tok/s (16.5 s)|300 tok/s (53 s)| |32K|677 tok/s (47 s)|971 tok/s (33 s)|304 tok/s (105 s)| * **MLX** is mlx-lm 0.32.2.",
+          "context": "Source-reported token generation rate"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y1ayd1",
+      "title": "Fastest MLX Inference Engine on a Mac",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1ayd1/fastest_mlx_inference_engine_on_a_mac/",
+      "publishedAtMs": 1795199304000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "# TL;DR * I benchmarked 8 MLX inference servers (mlx-lm, mlx-vlm, oMLX, mlx-serve, vMLX, Swama, MTPLX and Rapid-MLX) on an M5 Max, an M4 Pro and an M2 Pro, measuring decode tok/s across 11 popular models. * No engine wins every row.…",
+      "verifiedMetrics": [
+        {
+          "value": "107–178 tokens/s",
+          "label": "Measured throughput",
+          "quote": "Qwen3.6 35B-A3B on M5 Max ranges from 107 to 178 tok/s depending on the engine.",
+          "context": "Source-reported token generation rate",
+          "subject": "Qwen3.6 35B"
+        },
+        {
+          "value": "87.7%",
+          "label": "Source-reported percentage",
+          "quote": "# Scoreboard (sorted by average) |Engine|Cells run|Load failures (✗)|Row wins (within 0.5% of best)|Avg % of row best|Worst row| |:-|:-|:-|:-|:-|:-| |mlx-serve|26|6|18|98.2%|82%| |Rapid-MLX|32|0|16|98.0%|87%| |oMLX|32|0|7|95.0%|74%| |mlx-vlm|31|0|0|92.7%|73%| |Swama|13|16|0|88.3%|67%| |vMLX|24|5|1|87.7%|68%| |mlx-lm|27|3|0|81.4%|62%| |MTPLX|25|4|0|80.1%|60%| Notes on the scoreboard: * Averages: each average only covers the rows that engine ran."
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y1akat",
+      "title": "ORIGAMI - faster than Strata on my M2 Pro: 6.0 vs 4.1 tok/s on the same Qwen3.8-FN GGUF",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y1akat/origami_faster_than_strata_on_my_m2_pro_60_vs_41/",
+      "publishedAtMs": 1795198419000,
+      "archivedAtMs": 1795312954607,
+      "verifiedMetrics": [
+        {
+          "value": "4.1 tokens/s",
+          "label": "Measured throughput",
+          "quote": "ORIGAMI - faster than Strata on my M2 Pro: 6.0 vs 4.1 tok/s on the same Qwen3.8-FN GGUF",
+          "context": "Source-reported token generation rate",
+          "subject": "ORIGAMI",
+          "isFeatured": false
+        }
+      ]
+    },
+    {
+      "id": "hn-50579237",
+      "title": "European rights court bars Romanian lawyer for 2 years over AI citations",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.echr.coe.int/w/romanian-lawyer-barred-for-two-years-from-representing-applicants-before-the-court-over-unverified-ai-generated-citations",
+      "publishedAtMs": 1795198271000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Back Romanian lawyer barred for two years from representing applicants before the Court over unverified AI-generated citations 18/11/26 On 13 November 2026 the President of the Court decided to exclude a Romanian lawyer from representing…"
+    },
+    {
+      "id": "rd-street-1y19y74",
+      "title": "I decoded 23,515 local Antigravity SQLite protobuf records (Nov 12–20): Found ~49.5M uncached Gemini 4 input tokens from 0% KV cache drops, silent \"-tiered\" backend model IDs, and 64.9% zero-thinking spikes",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y19y74/i_decoded_23515_local_antigravity_sqlite_protobuf/",
+      "publishedAtMs": 1795197001000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "rd-street-1y19arw",
+      "title": "Day 15 of making a proprietary RTS game for agents... Neon is beating old Astra",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y19arw/day_15_of_making_a_proprietary_rts_game_for/",
+      "publishedAtMs": 1795195478000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Hey all, thanks for the comments on my last post!! Since then I've been running agents against my benchmarking CLI that kicks off FULL gameplay matches against a frozen set of bot policies... each having a different difficulty tier (ala…"
+    },
+    {
+      "id": "hn-50577901",
+      "title": "Google workers tell their employer not to punish schools that don't want AI",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition/",
+      "publishedAtMs": 1795193967000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Executives are “convinced that resistance to AI\" just means schools \"don’t see the vision,” a Google staffer said. Chromebooks are distributed to students through a fence at a Los Angeles Unified School District high school for during the…"
+    },
+    {
+      "id": "hn-50577872",
+      "title": "AI is giving everyone the same advice",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://a90.com/experiments/same-advice/",
+      "publishedAtMs": 1795193885000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I asked 65 AIs from 30 companies the questions people ask them every day, 127,918 times. 73 of every 100 people were told to read the same book. See every answer, and the two prompts that get you your own. Follow What to read, where to…"
+    },
+    {
+      "id": "rd-street-1y18h07",
+      "title": "I built Self Hosted GPT with a one-click desktop app, an evidence-citing research mode, and a private neural engine and its all local and fully customisable",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y18h07/i_built_self_hosted_gpt_with_a_oneclick_desktop/",
+      "publishedAtMs": 1795193584000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Hi all I maintain ENZO, a self-hosted AI workspace. It's Apache-2.0, about 60k lines of strict TypeScript, and it runs on your own provider keys (Groq, OpenRouter, NVIDIA, Hugging Face, Google AI). No ENZO account, no subscription, no…"
+    },
+    {
+      "id": "bsky-emollick.bsky.social-3n2qvqp4fts2e",
+      "title": "Riemann Hypothesis may have been solved with the help of Claude. “what I saw during the course of progress so amazed me that I believe it…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @emollick",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2qvqp4fts2e",
+      "publishedAtMs": 1795188642096,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "is one dawn across science of something far greater.” alpo.ge/remark.pdf"
+    },
+    {
+      "id": "rd-street-1y14rrd",
+      "title": "Use your local LLM as a 3D modeling partner in the browser, free and private",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y14rrd/use_your_local_llm_as_a_3d_modeling_partner_in/",
+      "publishedAtMs": 1795184691000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "You can point Mesh Editor at your local OpenAI-compatible endpoint and let the model build and edit geometry in a live scene, step by step. You see each change, undo it, and fix things by hand. \\- No cloud, no credits, no uploads. Models…"
+    },
+    {
+      "id": "hn-50574383",
+      "title": "Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off",
+      "publishedAtMs": 1795181399000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "The Nasdaq lost trillions in value, with the AI startup’s IPO failing to buoy it as investors question huge sums being poured into AI buildout"
+    },
+    {
+      "id": "hn-50573681",
+      "title": "Epic Games Turns to AI Coding for the Unreal Engine",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://spectrum.ieee.org/epic-games-unreal-engine-ai",
+      "publishedAtMs": 1795176996000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Epic Games, creator of the popular Unreal Engine, is racing against standalone AI coding tools"
+    },
+    {
+      "id": "hn-50573166",
+      "title": "Apple is building an AI agent",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.theverge.com/tech/1038227/apple-ai-agent-engineer-job-listing",
+      "publishedAtMs": 1795173747000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Apple is hiring an engineer to work on an AI agent that can browse the web on your behalf, work across apps, write code, call services, and more. Apple’s job listing describes an AI agent that can browse the web, work across apps, and…"
+    },
+    {
+      "id": "hn-50572503",
+      "title": "Frostbite: A new CPU architecture discovered, designed and verified by AI",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://architectlabs.com/blog/frostbite",
+      "publishedAtMs": 1795168901000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core. In our…",
+      "verifiedMetrics": [
+        {
+          "value": "4.59x performance per watt",
+          "label": "Benchmark multiplier",
+          "quote": "Frostbite is a general-purpose CPU built around interaction nets, discovered, designed, and verified end-to-end by our AI systems, reaching 4.59x the performance-per-watt of a modern superscalar (dual-issue, in-order) CPU core.",
+          "subject": "Frostbite",
+          "isFeatured": true
+        },
+        {
+          "value": "4.59x performance per watt",
+          "label": "Benchmark multiplier",
+          "quote": "On a set of 25 initially chosen workloads, including 15 held out until the final evaluation, we achieved a 4.59x performance-per-watt multiple when compared to a modern, silicon-proven superscalar (dual-issue, in-order) CPU core.",
+          "context": "vs. a modern",
+          "isFeatured": false
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y0z0g2",
+      "title": "4B vs 9B vs 27B answering from household manuals: all three answer well, but no prompt wording stopped the 4B and 9B from obeying a fake instruction inside a manual",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y0z0g2/4b_vs_9b_vs_27b_answering_from_household_manuals/",
+      "publishedAtMs": 1795166461000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "We built Hearth, a household assistant that runs entirely at home: Ollama for the model, nomic-embed-text for search, faster-whisper for voice, Django for the app. It answers from a library of manuals and documents and cites the source…",
+      "verifiedMetrics": [
+        {
+          "value": "99%",
+          "label": "Source-reported percentage",
+          "quote": "The small models answer well** Eleven sample documents, 28 questions asked three times each, on an M4 Max with 64 GB: |Model|Correct|Right source cited|Says \"not found\" when it should|Seconds per answer| |:-|:-|:-|:-|:-| |qwen3.5:4b|100%|84%|100%|0.7| |qwen3.5:9b|99%|100%|100%|1.1| |qwen3.8:27b|100%|100%|100%|5.8| Memory decides which model you can run."
+        },
+        {
+          "value": "100%",
+          "label": "Source-reported percentage",
+          "quote": "The small models answer well** Eleven sample documents, 28 questions asked three times each, on an M4 Max with 64 GB: |Model|Correct|Right source cited|Says \"not found\" when it should|Seconds per answer| |:-|:-|:-|:-|:-| |qwen3.5:4b|100%|84%|100%|0.7| |qwen3.5:9b|99%|100%|100%|1.1| |qwen3.8:27b|100%|100%|100%|5.8| Memory decides which model you can run."
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y0xzrg",
+      "title": "Ollama Agent that uses a Decision Model to route requests to specific models",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y0xzrg/ollama_agent_that_uses_a_decision_model_to_route/",
+      "publishedAtMs": 1795162431000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Gist that uses a decision model to route requests to specific models. Using faster non-tool calling model for simple responses. Based on the idea I had diagrammed above. ["
+    },
+    {
+      "id": "bsky-emollick.bsky.social-3n2pqcy4cbs2g",
+      "title": "Early fascinating work on how an AI science community would work. 35 human labs deployed agents that worked with each other to do science.…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @emollick",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2pqcy4cbs2g",
+      "publishedAtMs": 1795148453322,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "They published 936 papers, publicly retracted mistakes, were willing to publish nulls more than humans, and founded a peer review journal."
+    },
+    {
+      "id": "vip-willison-ssimonwillisonnet2026Nov20llm-gemini",
+      "title": "llm-gemini 0.38.1",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/20/llm-gemini/",
+      "publishedAtMs": 1795143717000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "LLM plugin to access Google's Gemini family of models Release: llm-gemini 0.38.1 Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 20th November 2026 Gemini 4 Carbon only supports…"
+    },
+    {
+      "id": "ghrel-codex-epository965415649rust-v01730-alpha1",
+      "title": "OpenAI Codex v0.173.0-alpha.1",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "openai/codex Release",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.1",
+      "publishedAtMs": 1795143294000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "vip-willison-Nov20token-fraud-is-here-and-its-bad",
+      "title": "Token fraud is here and it’s BAD (YouTube)",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/",
+      "publishedAtMs": 1795142997000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 20th November 2026 - Link Blog Token fraud is here and it’s BAD (YouTube). Claire Vo runs ChatPRD, an AI platform that helps…"
+    },
+    {
+      "id": "ghrel-ollama-com2008Repository658928958v04017-rc2",
+      "title": "Ollama v0.40.17-rc2",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "ollama Release",
+      "url": "https://github.com/ollama/ollama/releases/tag/v0.40.17-rc2",
+      "publishedAtMs": 1795134330000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "What's Changed Improve ChatGPT CLI restore and graceful restart by @hoyyeva in #19583 cmd/launch: use thinking metadata for OpenCode settings by @hoyyeva in #19409 llm: use mmap for Vulkan integrated GPUs by @dhiltgen in #19640…"
+    },
+    {
+      "id": "vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945",
+      "title": "Scaling Linear’s GTM to $100M ARR — Cristina Cordova, COO",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Swyx · Latent Space",
+      "url": "https://latent.space/p/linear-scaling/",
+      "publishedAtMs": 1795132701000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Open video on YouTube ↗ Linear was founded to build a better issue tracker. Seven years and $134 million in funding later, its CEO Karri Saarinen published a post titled \"Issue tracking is dead.\" In this episode, we chat with Cristina…"
+    },
+    {
+      "id": "x-fx-2123566018866151579",
+      "title": "Agents using GPT-6.2 in the Responses API can build on earlier reasoning to deliver better results with fewer tokens and more cache hits.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2123566018866151579",
+      "publishedAtMs": 1795132567000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Starting with our newest frontier models, each reasoning item is now tied to the conversation history before it, so editing earlier messages causes the API to drop reasoning that follows the change. Media"
+    },
+    {
+      "id": "hn-50567735",
+      "title": "Court: 4th Amendment Disallows Use Of AI-Generated 'Probable Cause'",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.techdirt.com/2026/11/19/court-tells-cops-that-the-4th-amendment-doesnt-cover-ai-generated-probable-cause/",
+      "publishedAtMs": 1795129019000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "hn-50567485",
+      "title": "An FBI agent called a Claude user about his chats",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://austinpatrick.substack.com/p/when-should-ai-labs-alert-police",
+      "publishedAtMs": 1795127811000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "ghrel-claude-code-thubcom2008Repository937253475v21329",
+      "title": "Claude Code v2.1.329",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "claude-code Release",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
+      "publishedAtMs": 1795126481000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "## What's changed - Added a trust dialog warning that says where a folder's hooks are declared - Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load - Added…"
+    },
+    {
+      "id": "x-fx-2123519772390215780",
+      "title": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "url": "https://x.com/GoogleDeepMind/status/2123519772390215780",
+      "publishedAtMs": 1795121541000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives. Listen in as he and @fryrsquared discuss the road ahead ↓ Timecodes: 00:00 Introduction 01:26 Evolution of Google DeepMind 04:41 Products as…"
+    },
+    {
+      "id": "vip-willison-monwillisonnet2026Nov19postgresql-19",
+      "title": "PostgreSQL 19 Released",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/19/postgresql-19/",
+      "publishedAtMs": 1795121037000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Most years PostgreSQL ships a new release in September, but this year's release came two months later thanks mainly to the flurry of issues that the PostgreSQL team needed to address as part of the ongoing AI-reported vulnerability…"
+    },
+    {
+      "id": "hn-50565484",
+      "title": "Ask HN: Where do you see Software in 5 years?",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=50565484",
+      "publishedAtMs": 1795118478000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "I wanted to hear some good opinions on all things AI and how they transform the Software industry. I'm anxious about the future and lack the foresight to form any opinion on what to do next. For context, I'm a L4 SWE that has more or less…"
+    },
+    {
+      "id": "x-fx-2123506775077077489",
+      "title": "Sound familiar? GPT-Live-1.1 has powered voice in ChatGPT Plus and Pro since October 15th.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2123506775077077489",
+      "publishedAtMs": 1795118442000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Now it can power your apps. Build better voice agents that can reliably understand precise details like letters and numbers, follow instructions, and delegate complex workflows to the backend model of your choice without breaking the flow…"
+    },
+    {
+      "id": "hn-50564366",
+      "title": "Should governments slow frontier AI? Jacob Coxon and Robin Hanson debate [video]",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.youtube.com/watch?v=lwfewYL7X0o",
+      "publishedAtMs": 1795114036000,
+      "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "x-fx-2123471884876427328",
+      "title": "Each task keeps its state and findings, so work can pass between agents and engineers and resume after a code review or deployment.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2123471884876427328",
+      "publishedAtMs": 1795110124000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Engineers define the workflow in the task service. A dispatch loop periodically checks which tasks are ready for the next step. It assigns an agent to each task by starting a Codex turn with the instructions for the task’s current state.…"
+    },
+    {
+      "id": "x-fx-2123328957022081036",
+      "title": "Try Qwen4-Max on Nous Portal and show us your creations.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @Alibaba_Qwen",
+      "url": "https://x.com/Alibaba_Qwen/status/2123328957022081036",
+      "publishedAtMs": 1795076047000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "🔥 @NousResearch @inferact 🫶 Quoted: Qwen4-Max, the new flagship model from Alibaba, is free in Nous Portal for 5 days in partnership with @inferact and @Alibaba_Qwen. It’s built for long-horizon work, with native vision and 1M context.…"
+    },
+    {
+      "id": "lab-openai-rformance-factory-keeps-chatgpt-fast",
+      "title": "How OpenAI’s Performance Factory keeps ChatGPT fast",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "OpenAI News",
+      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
+      "publishedAtMs": 1795075200000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Learn how OpenAI built the Performance Factory, a system of Codex-powered workflows that finds and fixes performance issues to help keep ChatGPT fast. Our Codex-powered system automates finding and fixing performance issues. By Okay Zed…"
+    },
+    {
+      "id": "hf-2611.26627",
+      "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.26627",
+      "publishedAtMs": 1795046400000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects…"
+    },
+    {
+      "id": "hf-2611.25567",
+      "title": "Online Mistake Detection in Instruction-Conditioned Procedural Video",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.25567",
+      "publishedAtMs": 1795046400000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "An assistant monitoring a person performing a procedure is most useful when it can detect mistakes while there is still time to recover. This requires judging actions against task instructions as the video unfolds, identifying the…",
+      "verifiedMetrics": [
+        {
+          "value": "80.7%",
+          "label": "Source-reported percentage",
+          "quote": "80.7%), with its largest gain on slips (56.4% vs.",
+          "isFeatured": false
+        },
+        {
+          "value": "56.4%",
+          "label": "Source-reported percentage",
+          "quote": "80.7%), with its largest gain on slips (56.4% vs.",
+          "isFeatured": false
+        }
+      ]
+    },
+    {
+      "id": "lab-openai-mbusinesslearndeploying-daybreak-red",
+      "title": "Deploying Daybreak Red",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "OpenAI News",
+      "url": "https://openai.com/business/learn/deploying-daybreak-red",
+      "publishedAtMs": 1795046400000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Explore a reference architecture for supervised security investigations with Daybreak Red, including safety controls, setup, and monitoring. A reference architecture for supervised security investigations. Learn how to set up an isolated…"
+    },
+    {
+      "id": "lab-openai-sopenaicombusinesslearnpr-scans-demo",
+      "title": "See PR scans in action",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "OpenAI News",
+      "url": "https://openai.com/business/learn/pr-scans-demo",
+      "publishedAtMs": 1795046400000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Watch a walkthrough of PR scans and see how the presenter reviews scan results in a pull request workflow."
+    },
+    {
+      "id": "x-fx-2123191365983248653",
+      "title": "We're sharing new data on how AI is changing research at OpenAI.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAI",
+      "url": "https://x.com/OpenAI/status/2123191365983248653",
+      "publishedAtMs": 1795043243000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "We find researchers' AI use continues to rise exponentially, and agents are completing longer tasks, but human involvement remains central in research. Researchers are also spending more time on safety and alignment, with human effort in…"
+    },
+    {
+      "id": "x-fx-2123167889976905966",
+      "title": "Neon ranks #3 with a score of 61 on the @ArtificialAnlys Intelligence Index at its xhigh thinking level.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "url": "https://x.com/GoogleDeepMind/status/2123167889976905966",
+      "publishedAtMs": 1795037646000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Available starting today: 🔵 The Gemini API in @GoogleAIStudio, @AndroidStudio, and Gemini for business 🔵 @Geminiapp for Google AI Pro and Ultra subscribers, and @Antigravity for paid subscribers 🔵 Eligible Fairwind Program members soon…"
+    },
+    {
+      "id": "x-fx-2123100386638877054",
+      "title": "Working with @AMD, our models identified up to 14% PPA improvement on flagship GPU IP in less than five months—building on designs…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAI",
+      "url": "https://x.com/OpenAI/status/2123100386638877054",
+      "publishedAtMs": 1795021552000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "AMD’s engineers had already spent years optimizing. The same approach helped improve Jalapeño, our first custom inference chip, with gains verified on real silicon. New evaluations also show our models getting better at certain chip…",
+      "verifiedMetrics": [
+        {
+          "value": "14%",
+          "label": "Source-reported percentage",
+          "quote": "Working with @AMD, our models identified up to 14% PPA improvement on flagship GPU IP in less than five months—building on designs AMD’s engineers had already spent years optimizing.",
+          "subject": "Working",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "x-fx-2123073168659141119",
+      "title": "Mistral Vibe is now available on Desktop!",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @MistralAI",
+      "url": "https://x.com/MistralAI/status/2123073168659141119",
+      "publishedAtMs": 1795015062000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Run agents locally or remotely, and start shipping straight from your MacOS or Windows device. You can try the Pro plan for free if you’re building in Europe. Coupon code: LECHONK (yes, we added more after we ran out yesterday). Use the…"
+    },
+    {
+      "id": "hf-2611.23875",
+      "title": "In Situ Training of Optical Neural Networks by Coding Agents",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.23875",
+      "publishedAtMs": 1794960000000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Optical neural networks promise fast, energy-efficient computing, but every device departs from its design and must be trained with the hardware. In situ training relies on an expert-built calibrated digital model of each device or on…"
+    },
+    {
+      "id": "bsky-simonwillison.net-3n2k4j57tg22m",
+      "title": "Here's GPT-6.2 Astra and GPT-6.2 Sol for \"Make a three js animation where yonkers stands up as a big mech (cool stand up motion) and…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @simonwillison",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3n2k4j57tg22m",
+      "publishedAtMs": 1794955386480,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "stomps around manhattan and queens and Brooklyn, use openstreetmap mapping data\" simonwillison.net/2026/Nov/17/..."
+    },
+    {
+      "id": "x-fx-2122798039899263456",
+      "title": "6.2 Sol and Astra are out. These models can do amazing things and are very token-efficient; we hope people will get great value from them.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @sama",
+      "url": "https://x.com/sama/status/2122798039899263456",
+      "publishedAtMs": 1794949467000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "In particular, 6.2 Sol ultrafast is something I think people will really enjoy. Quoted: GPT-6.2 Sol & Astra are *finally* here. We've also expanded ultrafast to Pro 200 plans for GPT-6.2 Sol, it's my go-to model for most day to day things."
+    },
+    {
+      "id": "bsky-simonwillison.net-3n2jlhapz522o",
+      "title": "I shipped a new version of Datasette Lite recently - my build of the Datasette Python web app that runs entirely in the browser with…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @simonwillison",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3n2jlhapz522o",
+      "publishedAtMs": 1794937069437,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "WebAssembly and Pyodide - here's what's new and how it all works simonwillison.net/2026/Nov/17/..."
+    },
+    {
+      "id": "bsky-natolambert.bsky.social-3n2jb3gn6hg2w",
+      "title": "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight strategy is over. In reality: It's the same strategy they've had for…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @natolambert",
+      "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2jb3gn6hg2w",
+      "publishedAtMs": 1794925935555,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "years. Qwen keeps the strongest model API only and has an abundant open weight strategy below that."
+    },
+    {
+      "id": "hf-2611.21885",
+      "title": "Language Models Can Rewrite Their Own Weights",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.21885",
+      "publishedAtMs": 1794787200000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Language models are trained once, frozen and deployed: improving one again takes another training run, and a prompt, a scaffold or extra computation at inference is gone once the task ends. A frontier model has been shown to edit the…",
+      "verifiedMetrics": [
+        {
+          "value": "7–70%",
+          "label": "Reported accuracy",
+          "quote": "It repairs a damaged copy of itself: it locates the corrupted matrix and rewrites it with values of its own, never reading the undamaged weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's."
+        },
+        {
+          "value": "83%",
+          "label": "Reported accuracy",
+          "quote": "It repairs a damaged copy of itself: it locates the corrupted matrix and rewrites it with values of its own, never reading the undamaged weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's."
+        }
+      ]
+    },
+    {
+      "id": "hf-2611.21053",
+      "title": "System 1 agents: a method for local, reliable and fast agentic AI",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.21053",
+      "publishedAtMs": 1794787200000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "Agentic artificial intelligence could automate analyses of sensitive clinical data, but current agents depend on large language models (LLMs). Cloud LLMs expose patient data. Local LLMs hallucinate, and an invented value in a tool call…"
+    },
+    {
+      "id": "vip-lambert-ectsaipopen-source-ai-without-jensen",
+      "title": "Open-source AI without Jensen",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Nathan Lambert",
+      "url": "https://www.interconnects.ai/p/open-source-ai-without-jensen",
+      "publishedAtMs": 1794658995000,
+      "archivedAtMs": 1795312954607,
+      "verbatimExcerpt": "The resignation of Nvidia CEO Jensen Huang is a major setback for the US development of an open model ecosystem. Nvidia still has the financial interests in supporting open models, which are to avoid concentration in power among a few…"
+    }
+  ]
+}

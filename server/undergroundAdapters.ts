@@ -13,8 +13,10 @@ import {
   classifyEvidenceScope,
   extractBenchmarkClaimSpec,
   extractFrozenEntities,
+  extractNamedLegalInstitution,
   getSignalReleaseMetadata,
   hasLatencyOrThroughputWithoutCost,
+  hasSourceComplianceAssessment,
   hasTechnicalEngineeringContent,
   isEvaluationQualityStudy,
   isHedgedOrUnverifiedClaim,
@@ -1662,7 +1664,7 @@ export async function runTriEngineTextSynthesis(params: {
 
   // Deterministic rules engine (instant <2ms)
   const t0 = Date.now();
-  const deterministicBrief = `Deterministic ${industry} Advisory: Canary behind an MCP / LiteLLM gateway at 5% shadow traffic, enforce zero-retention audit telemetry, and validate unit-token latency & VRAM floor against current production SLAs before broad cutover.`;
+  const deterministicBrief = `Deterministic ${industry} Advisory: Evaluate behind an internal AI gateway on test traffic, verify compliance posture directly from the source, and measure task accuracy and resource usage against your current workload before broad rollout.`;
   const latencyMs = Math.max(1, Date.now() - t0);
   deterministicTelemetry.lastLatencyMs = latencyMs;
   return {
@@ -1926,6 +1928,8 @@ export async function runTriEngineLiteracySpectrum(params: {
   const isEvalStudy = isEvaluationQualityStudy(params.signal);
   const needsVerbatimHeadline = requiresVerbatimPublisherHeadline(params.signal);
   const latencyWithoutCost = hasLatencyOrThroughputWithoutCost(params.signal);
+  const legalInstitution = extractNamedLegalInstitution(params.signal);
+  const sourceHasCompliance = hasSourceComplianceAssessment(params.signal);
 
   const normPrimaryUrl = (params.signal.url || '')
     .trim()
@@ -1973,6 +1977,12 @@ export async function runTriEngineLiteracySpectrum(params: {
     frozenEntities.length > 0 ? `Named entities to keep verbatim: ${frozenEntities.join(', ')}.` : '',
     needsVerbatimHeadline
       ? 'HEADLINE MEANING & SCOPE LOCK: Preserve conditional cause/effect clauses (disabled tool vs. lost product) and legal/court scope qualifiers verbatim — keep plainTitle/plainFullTitle aligned to the exact publisher headline without broadening bans or swapping blocked products.'
+      : '',
+    legalInstitution
+      ? `LEGAL JURISDICTION SUMMARY LOCK: Name "${legalInstitution}" explicitly in Levels 1-5 summaries whenever describing the sanction, exclusion, or decision — NEVER flatten it to generic "in court" or "barred from practicing law".`
+      : '',
+    !sourceHasCompliance
+      ? `ZERO UNBACKED COMPLIANCE CLAIMS: Source does NOT assess compliance or enterprise clearance. NEVER mention SOC 2, zero-retention, HIPAA, GDPR, enterprise-ready, or ready for an enterprise pilot; in Level 4 readinessAndRisk explicitly note "${scope === 'research_paper' || isEvalStudy ? 'Not assessed in this study' : 'Not assessed in source'}".`
       : '',
     isEvalStudy
       ? 'EVALUATION STUDY FRAMING: This source evaluates research/citation/retrieval quality rather than inference speed; frame L5 around evaluation methodology and exact reported scores instead of latency/throughput.'
