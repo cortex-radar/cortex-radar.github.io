@@ -6,16 +6,8 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2026 06:15:12 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 06:16:20 GMT</lastBuildDate>
     <ttl>180</ttl>
-    <item>
-      <title>A Proof Has Hit the Riemann Hypothesis</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2hfqj&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2hfqj&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 05:26:36 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>A proof of the Riemann Hypothesis has been claimed, a long-standing conjecture in mathematics. This proof may have significant implications for various fields, including finance. The proof addresses a fundamental problem in number theory, potentially leading to advancements in areas such as encryption and financial modeling. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2hfqj/a_proof_has_hit_the_riemann_hypothesis/</description>
-    </item>
     <item>
       <title>Inkling&apos;s 200 decode tokens/s and 6,700 tok prefill on 2x3090 high-speed computer chips…</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y2gxo7&amp;lens=2</link>
@@ -25,12 +17,12 @@
       <description>Inkling, a model ported to vLLM on Ampere high-speed computer chips, achieved 196k token context and 200 decode tokens/s speed. The project aims to improve the performance of AI models in banking applications, addressing the need for faster and more efficient processing. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2gxo7/inkling_absolutely_rips_200_toks_decode_6700/</description>
     </item>
     <item>
-      <title>Tool allows using non-Claude models with Claude Desktop for local AI integration</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2gdls&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2gdls&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 04:27:33 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>A user developed a tool that enables non-Claude models to be used with Claude Desktop, bypassing the default restrictions. The tool addresses the limitation of Claude Desktop, which blocks non-Claude models by default, allowing for more diverse AI model integration. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/</description>
+      <title>Riemann Hypothesis proved.twice independently</title>
+      <link>https://cortex-radar.github.io/?orb=vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 05:02:13 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper. On DeepSWE, CodeAF finished #1 of ten on the same open model, ahead of Claude Code, at the lowest cost per fix. — Upstream (Swyx · Latent Space): https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/</description>
     </item>
     <item>
       <title>Claude Code v2.1.330</title>
@@ -169,14 +161,6 @@
       <description>The effective end of easy distillation from OpenAI and Anthropic models may be behind the relative slowdown in open weights model progress. This slowdown affects the speed at which developers can incorporate new model features into their applications. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225</description>
     </item>
     <item>
-      <title>Approving an agent&apos;s command doesn&apos;t limit what it can touch. We added OS sandboxing and real…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2f7wq&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2f7wq&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 03:23:44 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>I contribute to Cluaiz, an open-source AI engine that runs models, tools, universal app connector servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve &quot;npm test&quot;, nothing stopped that command from reading \~/.ssh or \~/.aws. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/AI_Agents): https://www.reddit.com/r/AI_Agents/comments/1y2f7wq/approving_an_agents_command_doesnt_limit_what_it/</description>
-    </item>
-    <item>
       <title>I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)</title>
       <link>https://cortex-radar.github.io/?orb=rd-street-1y2ccfq&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2ccfq&amp;lens=2</guid>
@@ -193,12 +177,12 @@
       <description>Published on economist.com (discussed on Hacker News) published &quot;AI may have solved the most important problem in mathematics&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around AI may have solved the most important problem in mathematics. — Upstream (Hacker News): https://www.economist.com/science-and-technology/2026/11/20/ai-may-have-solved-the-most-important-problem-in-mathematics</description>
     </item>
     <item>
-      <title>I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2gdsw&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2gdsw&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 04:27:53 GMT</pubDate>
+      <title>I put together a tool to use non Claude models with Claude Desktop</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y2gdls&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2gdls&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 04:27:33 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2gdsw/i_asked_muse_to_update_avatar_to_look_like_lucia/</description>
+      <description>I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/</description>
     </item>
     <item>
       <title>The most useful thing about the pelican riding a bicycle test continues to be illustrating the…</title>
@@ -207,6 +191,22 @@
       <pubDate>Thu, 19 Nov 2026 06:40:15 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
       <description>The most useful thing about the pelican riding a bicycle test continues to be illustrating the differences between models in the same family running at different effort levels - here&apos;s Gemini 4 Carbon, the new Gemini 4 Neon, and Gemini 4 Hydrogen at low, medium, and high. Addresses practical workflow friction around The most useful thing about the pelican riding a bicycle test continues to be illustrating the. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q</description>
+    </item>
+    <item>
+      <title>WikiLLM: Browse language model weights like an encyclopedia</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y2hpg8&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2hpg8&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 05:42:03 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>r/LocalLLaMA Engineering Community published &quot;WikiLLM: Browse language model weights like an encyclopedia&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around WikiLLM: Browse language model weights like an encyclopedia. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2hpg8/wikillm_browse_language_model_weights_like_an/</description>
+    </item>
+    <item>
+      <title>Muse Spark 1.3</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50585735&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50585735&amp;lens=2</guid>
+      <pubDate>Sat, 21 Nov 2026 03:49:41 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Trained for self-directed workflows and optimized for competitive coding performance. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://dev.meta.ai/models/muse-spark</description>
     </item>
   </channel>
 </rss>

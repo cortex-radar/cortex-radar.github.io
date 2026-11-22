@@ -1,9 +1,52 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-22T06:15:12.289Z",
-  "updatedAtMs": 1795328112289,
-  "count": 116,
+  "updatedAtIso": "2026-11-22T06:16:20.725Z",
+  "updatedAtMs": 1795328180725,
+  "count": 117,
   "entries": [
+    {
+      "id": "rd-street-1y2hxv5",
+      "title": "I tracked 3,236 open-source AI Agent & MCP repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y2hxv5/i_tracked_3236_opensource_ai_agent_mcp_repos_over/",
+      "publishedAtMs": 1795326964000,
+      "archivedAtMs": 1795328180725
+    },
+    {
+      "id": "rd-street-1y2hfqj",
+      "title": "A Proof Has Hit the Riemann Hypothesis",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2hfqj/a_proof_has_hit_the_riemann_hypothesis/",
+      "publishedAtMs": 1795325196000,
+      "archivedAtMs": 1795328180725,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis"
+    },
+    {
+      "id": "rd-street-1y2gdsw",
+      "title": "I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2gdsw/i_asked_muse_to_update_avatar_to_look_like_lucia/",
+      "publishedAtMs": 1795321673000,
+      "archivedAtMs": 1795328180725,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results."
+    },
+    {
+      "id": "rd-street-1y2f7wq",
+      "title": "Approving an agent's command doesn't limit what it can touch. We added OS sandboxing and real machines broke it 3 times",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y2f7wq/approving_an_agents_command_doesnt_limit_what_it/",
+      "publishedAtMs": 1795317824000,
+      "archivedAtMs": 1795328180725,
+      "verbatimExcerpt": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped…"
+    },
     {
       "id": "rd-street-1y2f2kz",
       "title": "AI-Assisted Proof Claims To Solve Riemann Hypothesis",
@@ -704,17 +747,6 @@
       "archivedAtMs": 1795312954607
     },
     {
-      "id": "vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539",
-      "title": "[AINews] Riemann Hypothesis proved...twice independently",
-      "source": "VIPBlog",
-      "sourceCategory": "VIP_VOICE",
-      "originFeedName": "Swyx · Latent Space",
-      "url": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/",
-      "publishedAtMs": 1795237333000,
-      "archivedAtMs": 1795318068704,
-      "verbatimExcerpt": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his…"
-    },
-    {
       "id": "ghrel-ollama-com2008Repository658928958v04017-rc4",
       "title": "Ollama v0.40.17-rc4",
       "source": "GHRelease",
@@ -1274,17 +1306,6 @@
       "verbatimExcerpt": "What's Changed Improve ChatGPT CLI restore and graceful restart by @hoyyeva in #19583 cmd/launch: use thinking metadata for OpenCode settings by @hoyyeva in #19409 llm: use mmap for Vulkan integrated GPUs by @dhiltgen in #19640…"
     },
     {
-      "id": "x-fx-2123567986565173289",
-      "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @demishassabis",
-      "url": "https://x.com/demishassabis/status/2123567986565173289",
-      "publishedAtMs": 1795133036000,
-      "archivedAtMs": 1795328112289,
-      "verbatimExcerpt": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪"
-    },
-    {
       "id": "vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945",
       "title": "Scaling Linear’s GTM to $100M ARR — Cristina Cordova, COO",
       "source": "VIPBlog",
@@ -1336,17 +1357,6 @@
       "publishedAtMs": 1795126481000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "## What's changed - Added a trust dialog warning that says where a folder's hooks are declared - Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load - Added…"
-    },
-    {
-      "id": "x-fx-2123519772390215780",
-      "title": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @GoogleDeepMind",
-      "url": "https://x.com/GoogleDeepMind/status/2123519772390215780",
-      "publishedAtMs": 1795121541000,
-      "archivedAtMs": 1795328112289,
-      "verbatimExcerpt": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives. Listen in as he and @fryrsquared discuss the road ahead ↓ Timecodes: 00:00 Introduction 01:26 Evolution of Google DeepMind 04:41 Products as…"
     },
     {
       "id": "vip-willison-monwillisonnet2026Nov19postgresql-19",
@@ -1593,14 +1603,14 @@
         {
           "value": "from 7% to 70%",
           "label": "Baseline accuracy",
-          "quote": "weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "context": "Before-and-after transition",
           "isFeatured": false
         },
         {
           "value": "83%",
           "label": "Baseline accuracy",
-          "quote": "math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "isFeatured": false
         }
       ]

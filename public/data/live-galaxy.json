@@ -1,203 +1,11 @@
 {
   "version": 1,
   "promptVersion": "v2.5.3",
-  "bakedAtIso": "2026-11-22T06:15:12.289Z",
-  "bakedAtMs": 1795328112289,
-  "synthesizedBy": "LOCAL_OLLAMA_qwen2.5:7b",
-  "signalCount": 55,
+  "bakedAtIso": "2026-11-22T06:16:20.725Z",
+  "bakedAtMs": 1795328180725,
+  "synthesizedBy": "GITHUB_MODELS_GPT-4O-MINI",
+  "signalCount": 54,
   "signals": [
-    {
-      "id": "rd-street-1y2hfqj",
-      "title": "A Proof Has Hit the Riemann Hypothesis",
-      "shortLabel": "A Proof Has Hit",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/singularity",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "r/singularity",
-        "Swyx · Latent Space",
-        "Hacker News"
-      ],
-      "networkFamilies": [
-        "Reddit",
-        "VIP/Lab",
-        "HackerNews"
-      ],
-      "canonicalEntity": "ent:hit+proof+riemann",
-      "isSupernova": true,
-      "supernovaLevel": 2,
-      "divergence": {
-        "hypeScore": 62,
-        "streetScore": 64,
-        "divergenceDelta": -2,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (62 hype / 64 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://preview.redd.it/q4u79bzin33i1.png?auto=webp&s=d051eab80d7f2ab3b823616af37488bab5a255d4",
-          "caption": "r/singularity benchmark / architecture attachment",
-          "sourceNetwork": "r/singularity"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "rd-street-1y2hfqj-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/singularity",
-          "author": "r/singularity",
-          "text": "Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795325196000,
-          "url": "https://www.reddit.com/r/singularity/comments/1y2hfqj/a_proof_has_hit_the_riemann_hypothesis/"
-        },
-        {
-          "id": "vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Swyx · Latent Space",
-          "author": "Swyx · Latent Space",
-          "text": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ).",
-          "score": 165,
-          "sentiment": "HYPE",
-          "publishedAtMs": 1795237333000,
-          "url": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/"
-        },
-        {
-          "id": "hn-50595812-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Hacker News",
-          "author": "Hacker News",
-          "text": "Since last year, we asked: \"What if AI solved the Riemann Hypothesis?\"",
-          "score": 60,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795316795000,
-          "url": "https://www.youtube.com/watch?v=zqzk43bSdDI"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 25,
-        "commentsOrReplies": 7,
-        "velocityPerHour": 13,
-        "badgeText": "25 pts · 7 comments"
-      },
-      "url": "https://www.reddit.com/r/singularity/comments/1y2hfqj/a_proof_has_hit_the_riemann_hypothesis/",
-      "publishedAtMs": 1795325196000,
-      "firstSeenAtMs": 1795326309605,
-      "isLiveInbound": true,
-      "primarySector": "GOV",
-      "secondarySectors": [
-        "ARC",
-        "SCI"
-      ],
-      "mass": 5.1,
-      "readiness": "GA",
-      "risk": "HIGH",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis",
-      "architectBrief": {
-        "summary": "Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis",
-        "stackImpact": [
-          "GOV Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis",
-        "talkingPoints": [
-          "Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis",
-          "Readiness: GA (r/singularity)."
-        ],
-        "industryLens": {
-          "BANKING": "Financial Services (A Proof Has Hit): Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis — maintains neutral unit token economics (elevated operational risk noted; security & compliance require independent review).",
-          "HEALTHCARE": "Clinical & Life-Sci (A Proof Has Hit): Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis — maintains neutral unit token economics (elevated operational risk noted; security & compliance require independent review).",
-          "FINOPS": "Platform FinOps (A Proof Has Hit): Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis — maintains neutral unit token economics; prioritize workload benchmarking (elevated operational risk noted; security & compliance require independent review).",
-          "RETAIL": "Commerce & CX (A Proof Has Hit): Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis — maintains neutral unit token economics (elevated operational risk noted; security & compliance require independent review).",
-          "PUBLIC": "Public Sector (A Proof Has Hit): Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis — maintains neutral unit token economics (elevated operational risk noted; security & compliance require independent review).",
-          "SAAS": "B2B SaaS Product (A Proof Has Hit): Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis — evaluate per-tenant unit margins (maintains neutral unit token economics; elevated operational risk noted; security & compliance require independent review)."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "AI Governance & Audit",
-        "Enterprise Policy Guardrails"
-      ],
-      "evidenceScope": "discussion_or_personal",
-      "verifiedMetrics": [],
-      "literacy": {
-        "plainTitle": "Proof of Riemann Hypothesis",
-        "plainFullTitle": "A Proof Has Hit the Riemann Hypothesis",
-        "levels": {
-          "1": {
-            "analogy": "Imagine a highway lane where every car must follow a precise speed limit, ensuring smooth traffic flow. This proof is like discovering a new rule that all cars must follow, making the highway safer and more efficient.",
-            "everydayWhy": "This discovery could lead to breakthroughs in cryptography, finance, and other fields, potentially improving security and efficiency."
-          },
-          "2": {
-            "whatHappened": "A proof of the Riemann Hypothesis has been claimed, a long-standing conjecture in mathematics. This proof may have significant implications for various fields, including finance.",
-            "whoBuiltIt": "The specific lab team or organization is not mentioned in the source.",
-            "problemSolved": "The proof addresses a fundamental problem in number theory, potentially leading to advancements in areas such as encryption and financial modeling."
-          },
-          "3": {
-            "bridgeSummary": "The proof, if verified, could enhance the security and efficiency of financial systems, particularly in cryptography and risk management, by providing deeper insights into number theory."
-          },
-          "4": {
-            "roiAndFinOps": "Personal or community discussion (r/singularity) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
-            "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
-            "clientAdvice": "Read the original discussion directly on r/singularity for first-hand human context."
-          },
-          "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. The proof addresses a fundamental mathematical problem, potentially impacting areas like cryptography and financial modeling.",
-            "specsAndCaveats": "The proof's validity and practical application are still uncertain, and no specific technical benchmarks or metrics are provided.",
-            "streetConsensus": "The community is awaiting further verification and practical applications of the proof, as indicated by the lack of comments and discussions on the thread."
-          }
-        },
-        "glossary": [],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "r/singularity",
-          "title": "A Proof Has Hit the Riemann Hypothesis",
-          "url": "https://www.reddit.com/r/singularity/comments/1y2hfqj/a_proof_has_hit_the_riemann_hypothesis/",
-          "publishedAt": "2026-11-22T05:26:36.000Z",
-          "publishedAtMs": 1795325196000,
-          "isPrimary": false,
-          "relation": "same_event"
-        },
-        {
-          "source": "r/singularity",
-          "title": "Retrospective of mathematicians/physicists speculating on what a machine proof of the Riemann Hypothesis would mean",
-          "url": "https://www.reddit.com/r/singularity/comments/1y2g41d/retrospective_of_mathematiciansphysicists/",
-          "publishedAt": "2026-11-22T04:12:57.000Z",
-          "publishedAtMs": 1795320777000,
-          "isPrimary": false,
-          "relation": "same_event"
-        },
-        {
-          "source": "Hacker News",
-          "title": "Since last year, we asked: \"What if AI solved the Riemann Hypothesis?\"",
-          "url": "https://www.youtube.com/watch?v=zqzk43bSdDI",
-          "publishedAt": "2026-11-22T03:06:35.000Z",
-          "publishedAtMs": 1795316795000,
-          "isPrimary": false,
-          "relation": "same_event"
-        },
-        {
-          "source": "Swyx · Latent Space",
-          "title": "[AINews] Riemann Hypothesis proved...twice independently",
-          "url": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/",
-          "publishedAt": "2026-11-21T05:02:13.000Z",
-          "publishedAtMs": 1795237333000,
-          "isPrimary": false,
-          "relation": "same_event"
-        }
-      ],
-      "lastUpdatedAtMs": 1795325196000
-    },
     {
       "id": "rd-street-1y2gxo7",
       "title": "Inkling absolutely rips. ~200 tok/s decode, ~6,700 prefill on 2x3090s",
@@ -217,10 +25,10 @@
       "supernovaLevel": 1,
       "divergence": {
         "hypeScore": 57,
-        "streetScore": 90,
-        "divergenceDelta": -33,
+        "streetScore": 73,
+        "divergenceDelta": -16,
         "verdictLabel": "SLEEPER GEM",
-        "summary": "Engineer benchmarks (90/100) beat social hype (57/100) — high-ROI under-the-radar infrastructure upgrade."
+        "summary": "Engineer benchmarks (73/100) beat social hype (57/100) — high-ROI under-the-radar infrastructure upgrade."
       },
       "mediaItems": [
         {
@@ -243,44 +51,22 @@
           "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gxo7/inkling_absolutely_rips_200_toks_decode_6700/"
         },
         {
-          "id": "rd-as-c-19t07bdaz0ler",
+          "id": "rd-street-1y2h62x-self-quote",
           "network": "Reddit",
           "originLabel": "r/LocalLLaMA",
-          "author": "u/Equivalent-Ear-8016",
-          "text": "I'm not downloading a new insecure, untested OS just to run your inference engine mate. In fact, I don't trust your OS at all to be installed on my machine, but you do you. Just honest feedback: If you focus on the engine instead of a whole OS, your posts might gain more traction Edit: He blocked me lmao.",
+          "author": "r/LocalLLaMA",
+          "text": "I posted earlier about getting Inkling-2-Mini running on my own inference engine the day after it came out.",
           "score": 3,
           "sentiment": "VERIFIED",
-          "publishedAtMs": 1795325124000,
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2h62x"
-        },
-        {
-          "id": "rd-as-c-19t07xap2361u",
-          "network": "Reddit",
-          "originLabel": "r/LocalLLaMA",
-          "author": "u/LearningRocketMan",
-          "text": "It seems he wants to make money from his OS, according to his website?",
-          "score": 2,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795325943000,
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2h62x"
-        },
-        {
-          "id": "rd-as-c-19t06oxjmbpes",
-          "network": "Reddit",
-          "originLabel": "r/LocalLLaMA",
-          "author": "u/stylome-ai-detection",
-          "text": "**Notice:** This post appears to be AI generated. --- Stylome AI detector · [scan results](https://stylome.io/r/de3b6567dcde5faf).",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795324285000,
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2h62x"
+          "publishedAtMs": 1795324277000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2h62x/inkling2mini_on_one_rx_7900_xtx_80_toks_with_its/"
         }
       ],
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 13,
-        "badgeText": "13/hr · 1 up · 0 comments"
+        "velocityPerHour": 12,
+        "badgeText": "12/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gxo7/inkling_absolutely_rips_200_toks_decode_6700/",
       "publishedAtMs": 1795323527000,
@@ -413,86 +199,87 @@
       "lastUpdatedAtMs": 1795324277000
     },
     {
-      "id": "rd-street-1y2gdls",
-      "title": "I put together a tool to use non Claude models with Claude Desktop",
-      "shortLabel": "I put together a tool",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/LocalLLaMA",
+      "id": "vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539",
+      "title": "[AINews] Riemann Hypothesis proved...twice independently",
+      "shortLabel": "Riemann Hypothesis…",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Swyx · Latent Space",
       "isDemoSeed": false,
       "sourceProvenance": [
-        "r/LocalLLaMA",
-        "r/ClaudeAI"
+        "Swyx · Latent Space",
+        "Hacker News"
       ],
       "networkFamilies": [
-        "Reddit"
+        "VIP/Lab",
+        "HackerNews"
       ],
-      "canonicalEntity": "ent:put+together+use",
+      "canonicalEntity": "ent:hypothesis+proved...twice+riemann",
       "isSupernova": true,
       "supernovaLevel": 1,
       "divergence": {
-        "hypeScore": 51,
-        "streetScore": 55,
-        "divergenceDelta": -4,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (51 hype / 55 street) — validate on domain workload before broad rollout."
+        "hypeScore": 82,
+        "streetScore": 63,
+        "divergenceDelta": 19,
+        "verdictLabel": "HYPE > REALITY",
+        "summary": "X launch excitement (82/100) outpaces engineer street-verdict (63/100) — check VRAM & quantization caveats before cutover."
       },
       "mediaItems": [
         {
           "type": "image",
-          "url": "https://external-preview.redd.it/jZY3Vlts2UR9Sei4OIUZ4G3mC37ilRlvqBWtkU4GKKc.png?auto=webp&s=076407524025f692b6ef6a22c4ec5f3ff798357e",
-          "caption": "r/LocalLLaMA benchmark / architecture attachment",
-          "sourceNetwork": "r/LocalLLaMA"
+          "url": "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/46cbd562-7369-4863-b0a8-00306043d65a/image.png?t=1795236179",
+          "caption": "Swyx · Latent Space figure",
+          "sourceNetwork": "Swyx · Latent Space"
         }
       ],
       "streetQuotes": [
         {
-          "id": "rd-street-1y2gdls-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/LocalLLaMA",
-          "author": "r/LocalLLaMA",
-          "text": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795321653000,
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/"
+          "id": "vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Swyx · Latent Space",
+          "author": "Swyx · Latent Space",
+          "text": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ).",
+          "score": 165,
+          "sentiment": "HYPE",
+          "publishedAtMs": 1795237333000,
+          "url": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/"
         },
         {
-          "id": "rd-street-1y2hv4o-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/ClaudeAI",
-          "author": "r/ClaudeAI",
-          "text": "[removed]",
-          "score": 3,
+          "id": "hn-50595812-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Hacker News",
+          "author": "Hacker News",
+          "text": "Since last year, we asked: \"What if AI solved the Riemann Hypothesis?\"",
+          "score": 60,
           "sentiment": "VERIFIED",
-          "publishedAtMs": 1795326685000,
-          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y2hv4o/i_got_tired_of_claude_desktop_not_being_able_to/"
+          "publishedAtMs": 1795316795000,
+          "url": "https://www.youtube.com/watch?v=zqzk43bSdDI"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 1,
-        "commentsOrReplies": 0,
-        "velocityPerHour": 9,
-        "badgeText": "9/hr · 1 up · 0 comments"
+        "likesOrUps": 25,
+        "commentsOrReplies": 7,
+        "velocityPerHour": 12,
+        "badgeText": "25 pts · 7 comments"
       },
-      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/",
-      "publishedAtMs": 1795321653000,
-      "firstSeenAtMs": 1795326309605,
+      "url": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/",
+      "publishedAtMs": 1795237333000,
+      "firstSeenAtMs": 1795328179128,
       "isLiveInbound": true,
-      "primarySector": "ARC",
+      "primarySector": "REL",
       "secondarySectors": [
         "ECO",
-        "REL"
+        "ARC"
       ],
       "mass": 4.6,
       "readiness": "GA",
       "risk": "LOW",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. This tool fixes that. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode. Feel free to take a look, fork it, make your own spin. This tool is Windows only. If you want a Linux version, ask your agent to fork this repo and make it work on Linux. https://github.com/phly95/claude-endpoint-mapper",
+      "finOps": "INTENSIVE",
+      "rawAbstract": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper. Elliot Glazer confirms that the formalized statement is GRH and puts the chance of a Lean bug well under 1%. So if it finishes compiling with no extra axioms, it is probably correct, and no human will ever have read all of it… …prompting Alessandro Masullo to release his 940 page, 100% human, work in progress proof he had been working on for the last 12 years (and had been undergoing secret manual review and revision per Kevin Hartnett ). This is the third in the trilogy of frontier math breakthroughs, following from the Navier Stokes solutions and the Quasi-Riemann bounding, but it doesn’t feel over. OpenAI's September Navier-Stokes claim is still the cautionary tale: critics argued that its Lean proof did not match the natural-language result. Both AI-claimed Millennium Prize results will take years to verify. Apart from the incredible accomplishment of the most famous problem in mathematics, one cannot miss the contrast that the AI-written solution is probably correct but incomprehensible, and the other solution is probably technically incorrect but understandable. Sponsored by Agentfield.AI Open models are ready. Most coding harnesses aren’t. On DeepSWE, CodeAF finished #1 of ten on the same open model, ahead of Claude Code, at the lowest cost per fix. Try CodeAF! As Levent eloquently put it: “ Claude far outpaced me near the finish line. No, Claude flew, and danced, and sparkled near that finish line.” This also ties into other AI themes we’ve covered on the podcast and on this newsletter: The nature of Slop : Levent says “ I am presenting the world with a complete argument before having mastered a massive neighbourhood around its mathematics. It being obviously inappropriate to attempt to post some massive unreadable travesty of \"slop\", I decided to only present Lean. ” One of the key tenets of the No Slop Manifesto is that you should understand what you ship (“ Slop is when we put less effort into producing something than we ask the consumer to spend understanding it. ”). And yet, this giant pile of Lean is verifiably correct and is incredibly significant in human history. Should we have delayed its release by a decade simply because we didn’t understand every single bit of it? Weak to Strong alignment : the typical experience of using agents is Strong to Weak - we are general intelligences guiding not-as-smart AI to do things we know how to do well. We also often expect AI to automate most work “within distribution”, and expect it to run into more trouble at the limits of capability where the “centaur” pattern of human-AI-collaboration is required. Levent’s lived experience is the opposite - collaborating with Claude only in the early stages and then leaving him far behind with the critical parts involving automorphic forms on higher-rank groups. We are starting to need Weak to Strong",
       "architectBrief": {
-        "summary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude…",
+        "summary": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page…",
         "stackImpact": [
-          "ARC Pipeline",
+          "REL Pipeline",
           "AI Gateway / Router",
           "Observability & EvalOps"
         ],
@@ -500,83 +287,79 @@
         "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
       },
       "cSuiteBrief": {
-        "headlineSoWhat": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when…",
+        "headlineSoWhat": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ).",
         "talkingPoints": [
-          "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box…",
-          "It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
-          "Readiness: GA (r/LocalLLaMA)."
+          "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific…",
+          "Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper.",
+          "Readiness: GA (Swyx · Latent Space)."
         ],
         "industryLens": {
-          "BANKING": "Financial Services (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "HEALTHCARE": "Clinical & Life-Sci (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "FINOPS": "Platform FinOps (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
-          "RETAIL": "Commerce & CX (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "PUBLIC": "Public Sector (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "SAAS": "B2B SaaS Product (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
+          "BANKING": "Financial Services (Riemann Hypothesis…): Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
+          "HEALTHCARE": "Clinical & Life-Sci (Riemann Hypothesis…): Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
+          "FINOPS": "Platform FinOps (Riemann Hypothesis…): Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). — requires strict FinOps quota guardrails on multi-turn loops; prioritize workload benchmarking (compliance posture: not assessed in source).",
+          "RETAIL": "Commerce & CX (Riemann Hypothesis…): Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
+          "PUBLIC": "Public Sector (Riemann Hypothesis…): Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
+          "SAAS": "B2B SaaS Product (Riemann Hypothesis…): Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). — evaluate per-tenant unit margins (requires strict FinOps quota guardrails on multi-turn loops; compliance posture: not assessed in source)."
         }
       },
       "affectedEnterpriseStacks": [
-        "Agent Tooling / MCP",
-        "Autonomous Workflow Runtime"
+        "AI Software Engineering & IDE",
+        "Post-Training & EvalOps",
+        "AI FinOps & Compute Routing"
       ],
-      "evidenceScope": "single_user_experiment",
+      "evidenceScope": "software_release",
       "verifiedMetrics": [],
       "literacy": {
-        "plainTitle": "Tool enables non-Claude models on Claude Desktop",
-        "plainFullTitle": "Tool allows using non-Claude models with Claude Desktop for local AI integration",
+        "plainTitle": "Riemann Hypothesis proved.twice independently",
+        "plainFullTitle": "Riemann Hypothesis proved.twice independently",
         "levels": {
           "1": {
-            "analogy": "Think of it like a kitchen prep line where different ingredients (AI models) can be mixed and matched to create unique dishes (custom applications).",
-            "everydayWhy": "This allows users to combine various AI tools, enhancing flexibility and creativity in their projects."
+            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ).",
+            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
           },
           "2": {
-            "whatHappened": "A user developed a tool that enables non-Claude models to be used with Claude Desktop, bypassing the default restrictions.",
-            "whoBuiltIt": "A user from r/LocalLLaMA",
-            "problemSolved": "The tool addresses the limitation of Claude Desktop, which blocks non-Claude models by default, allowing for more diverse AI model integration."
+            "whatHappened": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper.",
+            "whoBuiltIt": "Latent Space (Swyx & Alessio) · Cross-surfaced on Hacker News",
+            "problemSolved": "On DeepSWE, CodeAF finished #1 of ten on the same open model, ahead of Claude Code, at the lowest cost per fix."
           },
           "3": {
-            "bridgeSummary": "The tool provides a graphical user interface (GUI) that allows users to select and add non-Claude models to Claude Desktop, effectively patching the software to support additional models in gateway mode."
+            "bridgeSummary": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
           },
           "4": {
-            "roiAndFinOps": "This tool can save time and effort by allowing users to integrate multiple AI models without needing to switch between different platforms, potentially increasing productivity.",
-            "readinessAndRisk": "The tool is currently only available for Windows, and its readiness for enterprise use has not been assessed, requiring further testing and validation. Compliance: Not assessed in source.",
-            "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
+            "roiAndFinOps": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). (Operational/market development — no direct token-cost or compute telemetry in source).",
+            "readinessAndRisk": "General release reported by source · LOW Governance Attention. Compliance: Not assessed in source.",
+            "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of Riemann Hypothesis proved.twice independently with legal and procurement leads."
           },
           "5": {
-            "architectureBrief": "The tool patches Claude Desktop to support non-Claude models via a GUI, which allows users to select and add models in gateway mode.",
-            "specsAndCaveats": "The tool is Windows-only and provides a GUI for model selection, but no specific technical benchmarks or performance metrics are provided in the source.",
-            "streetConsensus": "The community is interested in the tool but awaits further validation and testing to ensure its reliability and compatibility with various AI models."
+            "architectureBrief": "Source provides no technical specifications or architecture details. Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Swyx · Latent Space) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
           }
         },
-        "glossary": [
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-          }
-        ],
-        "generatedBy": "OLLAMA"
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
       },
       "supportingSources": [
         {
-          "source": "r/ClaudeAI",
-          "title": "I got tired of Claude Desktop not being able to scrape React sites, so I built a $0.05 serverless headless browser MCP server",
-          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y2hv4o/i_got_tired_of_claude_desktop_not_being_able_to/",
-          "publishedAt": "2026-11-22T05:51:25.000Z",
-          "publishedAtMs": 1795326685000,
+          "source": "Hacker News",
+          "title": "Since last year, we asked: \"What if AI solved the Riemann Hypothesis?\"",
+          "url": "https://www.youtube.com/watch?v=zqzk43bSdDI",
+          "publishedAt": "2026-11-22T03:06:35.000Z",
+          "publishedAtMs": 1795316795000,
           "isPrimary": false,
           "relation": "same_event"
         },
         {
-          "source": "r/LocalLLaMA",
-          "title": "I put together a tool to use non Claude models with Claude Desktop",
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/",
-          "publishedAt": "2026-11-22T04:27:33.000Z",
-          "publishedAtMs": 1795321653000,
+          "source": "Swyx · Latent Space",
+          "title": "[AINews] Riemann Hypothesis proved...twice independently",
+          "url": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/",
+          "publishedAt": "2026-11-21T05:02:13.000Z",
+          "publishedAtMs": 1795237333000,
           "isPrimary": false,
           "relation": "same_event"
         }
       ],
-      "lastUpdatedAtMs": 1795326685000
+      "lastUpdatedAtMs": 1795316795000
     },
     {
       "id": "ghrel-claude-code-thubcom2008Repository937253475v21330",
@@ -1059,17 +842,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "OpenRouter off-boarded three providers, removed 125 endpoints from Zero Data Retention eligibility, and notified potentially affected customers after canary token research on inference providers.",
-          "score": 115,
+          "score": 116,
           "sentiment": "HYPE",
           "publishedAtMs": 1795313654000,
           "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 80,
+        "likesOrUps": 81,
         "commentsOrReplies": 30,
         "velocityPerHour": 35,
-        "badgeText": "80 pts · 30 comments"
+        "badgeText": "81 pts · 30 comments"
       },
       "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/",
       "publishedAtMs": 1795313654000,
@@ -1080,7 +863,7 @@
         "ARC",
         "ECO"
       ],
-      "mass": 3.1394535962298478,
+      "mass": 3.141897692997497,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "REDUCER",
@@ -1200,9 +983,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 663,
-        "commentsOrReplies": 757,
+        "commentsOrReplies": 758,
         "velocityPerHour": 70,
-        "badgeText": "663 pts · 757 comments"
+        "badgeText": "663 pts · 758 comments"
       },
       "url": "https://news.ycombinator.com/item?id=50583761",
       "publishedAtMs": 1795216712000,
@@ -1486,9 +1269,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 59,
-        "commentsOrReplies": 10,
-        "velocityPerHour": 8,
-        "badgeText": "59 pts · 10 comments"
+        "commentsOrReplies": 11,
+        "velocityPerHour": 9,
+        "badgeText": "59 pts · 11 comments"
       },
       "url": "https://www.pandex.io",
       "publishedAtMs": 1795294061000,
@@ -1905,9 +1688,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 22,
-        "commentsOrReplies": 50,
+        "commentsOrReplies": 51,
         "velocityPerHour": 30,
-        "badgeText": "22 pts · 50 comments"
+        "badgeText": "22 pts · 51 comments"
       },
       "url": "https://www.noemamag.com/the-mythology-of-conscious-ai/",
       "publishedAtMs": 1795313402000,
@@ -2037,10 +1820,10 @@
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 576,
+        "likesOrUps": 577,
         "commentsOrReplies": 33,
         "velocityPerHour": 23,
-        "badgeText": "576 likes · 33 replies"
+        "badgeText": "577 likes · 33 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m",
       "publishedAtMs": 1795238564733,
@@ -2672,170 +2455,6 @@
       "lastUpdatedAtMs": 1795204732119
     },
     {
-      "id": "rd-street-1y2f7wq",
-      "title": "Approving an agent's command doesn't limit what it can touch. We added OS sandboxing and real machines broke it 3 times",
-      "shortLabel": "Approving an agent s command",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/AI_Agents",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "r/AI_Agents"
-      ],
-      "networkFamilies": [
-        "Reddit"
-      ],
-      "canonicalEntity": "ent:approving+command+doesn",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 56,
-        "streetScore": 57,
-        "divergenceDelta": -1,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (56 hype / 57 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [],
-      "streetQuotes": [
-        {
-          "id": "rd-as-c-19t03p8ivderm",
-          "network": "Reddit",
-          "originLabel": "r/AI_Agents",
-          "author": "u/Right-Interview8600",
-          "text": "approval and the sandbox are doing different jobs, and the writable project folder is the hole i'd look at first. a command you already allowed can still drop a git hook or an npm script that a later unsandboxed step will run. i'd make only the paths the task named writable, and keep .git/hooks plus shell rc files deni.",
-          "score": 2,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795320261000,
-          "url": "https://www.reddit.com/r/AI_Agents/comments/1y2f7wq"
-        },
-        {
-          "id": "rd-as-c-19t042s8tnh1f",
-          "network": "Reddit",
-          "originLabel": "r/AI_Agents",
-          "author": "u/CommissionOdd3082",
-          "text": "Good catch, and you're right about the project folder. Shell rc files are already out of reach: inside the sandbox $HOME is an empty tmpfs, so a write to \\~/.bashrc never reaches the host (that's one of the checks in the logs).",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795320767000,
-          "url": "https://www.reddit.com/r/AI_Agents/comments/1y2f7wq"
-        },
-        {
-          "id": "rd-as-c-19t01xodljpxf",
-          "network": "Reddit",
-          "originLabel": "r/AI_Agents",
-          "author": "u/CommissionOdd3082",
-          "text": "Raw logs and setup scripts: Linux VM: [https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-21-run28-linux-os-sandbox](https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-21-run28-linux-os-sandbox) Windows: [https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-20-run27-windows.",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795317886000,
-          "url": "https://www.reddit.com/r/AI_Agents/comments/1y2f7wq"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 2,
-        "commentsOrReplies": 5,
-        "velocityPerHour": 5,
-        "badgeText": "5/hr · 2 ups · 5 comments"
-      },
-      "url": "https://www.reddit.com/r/AI_Agents/comments/1y2f7wq/approving_an_agents_command_doesnt_limit_what_it/",
-      "publishedAtMs": 1795317824000,
-      "firstSeenAtMs": 1795317942050,
-      "isLiveInbound": true,
-      "primarySector": "ARC",
-      "secondarySectors": [
-        "REL"
-      ],
-      "mass": 2.5014678099309564,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or \\~/.aws. Approval decides whether something runs. It doesn't decide what it can touch. So we added a second layer: every agent command, MCP server and native plugin now runs inside an OS sandbox (bubblewrap on Linux, sandbox-exec on macOS, AppContainer on Windows). The project folder is writable, the rest of the disk is read-only, home and secrets are hidden. Network stays on for commands you approved, since installing packages needs it. A tool that declares it needs no network gets none. Then we tested it on real machines, and it broke three times: 1. Stock Ubuntu 24.04 blocked it before a single command ran. AppArmor restricts unprivileged user namespaces, so bubblewrap failed with \"setting up uid map: Permission denied\". A startup probe caught it and auto mode fell back to running unconfined with a warning, instead of failing every command. 2. With an AppArmor profile for bubblewrap, every command failed with \"Can't mkdir \\~/.cargo/credentials: Read-only file system\". We were hiding a secret file that didn't exist on that machine. Now only existing ones are masked. 3. In CI on GitHub's Ubuntu runner, every command failed with \"Can't find source path /home/runner/.local/bin\". That folder was on PATH but didn't exist. Same class of bug, different place. After the fixes: 9 of 9 checks pass on macOS and Ubuntu runners, 8 of 8 on an Ubuntu VM. Windows works too, with a catch: Node.js and a per-user Python install can't even start inside an AppContainer, so on Windows it's opt-in. Turning it on by default would break normal agent commands. Not done yet: the full path through the agent and MCP servers in strict mode is covered by unit tests only, and it's on main, not in the 0.1.0 release. The question I keep going back and forth on: when the sandbox can't start (stock Ubuntu, WSL1, inside a container), should an agent refuse to run anything, or run with a warning? We picked \"warn\" by default and \"refuse\" in strict mode. How do you handle this in your agents? Test logs and setup scripts are in the first comment. Top engineer comment (u/Right-Interview8600, +2): \"approval and the sandbox are doing different jobs, and the writable project folder is the hole i'd look at first. a command you already allowed can still drop a git hook or an npm script that a later unsandboxed step will run. i'd make only the paths the task named writable, and keep.git/hooks plus shell rc files deni.\"",
-      "architectBrief": {
-        "summary": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or \\~/.aws.",
-        "stackImpact": [
-          "ARC Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent.",
-        "talkingPoints": [
-          "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent.",
-          "Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or…",
-          "Readiness: GA (r/AI_Agents)."
-        ],
-        "industryLens": {
-          "BANKING": "Financial Services (Approving an agent s command): I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "HEALTHCARE": "Clinical & Life-Sci (Approving an agent s command): I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "FINOPS": "Platform FinOps (Approving an agent s command): I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
-          "RETAIL": "Commerce & CX (Approving an agent s command): I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "PUBLIC": "Public Sector (Approving an agent s command): I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "SAAS": "B2B SaaS Product (Approving an agent s command): I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Agent Tooling / MCP",
-        "Autonomous Workflow Runtime",
-        "AI Software Engineering & IDE"
-      ],
-      "evidenceScope": "single_user_experiment",
-      "verifiedMetrics": [],
-      "literacy": {
-        "plainTitle": "Approving an agent's command doesn't limit…",
-        "plainFullTitle": "Approving an agent's command doesn't limit what it can touch. We added OS sandboxing and real…",
-        "levels": {
-          "1": {
-            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, I contribute to Cluaiz, an open-source AI engine that runs models, tools, universal app connector servers and an agent.",
-            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
-          },
-          "2": {
-            "whatHappened": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, universal app connector servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or \\~/.aws.",
-            "whoBuiltIt": "Community thread in r/AI_Agents (top contributor: u/Right-Interview8600)",
-            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
-          },
-          "3": {
-            "bridgeSummary": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or \\~/.aws. In stack terms, this connects to MCP, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-          },
-          "4": {
-            "roiAndFinOps": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. (Individual benchmark/project — no enterprise unit-cost projection).",
-            "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
-            "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
-          },
-          "5": {
-            "architectureBrief": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or \\~/.aws. Approval decides whether something runs. It doesn't decide what it can touch. So we added a second layer: every agent command, MCP server and native plugin now runs inside an OS sandbox (bubblewrap on Linux, sandbox-exec on macOS, AppContainer on Windows).",
-            "specsAndCaveats": "Not done yet: the full path through the agent and MCP servers in strict mode is covered by unit tests only, and it's on main, not in the 0.1.0 release.",
-            "streetConsensus": "[r/AI_Agents · u/Right-Interview8600, +2] \"approval and the sandbox are doing different jobs, and the writable project folder is the hole i'd look at first. a command you already allowed can still drop a git hook or an npm script that a later unsandboxed step will run. i'd make only the paths the task named writable, and keep.git/hooks plus shell rc files deni.— [r/AI_Agents · u/CommissionOdd3082, +1]Good catch, and you're right about the project folder. Shell rc files are already out of reach: inside the sandbox $HOME is an empty tmpfs, so a write to \\~/.bashrc never reaches the host (that's one of the checks in the logs).— [r/AI_Agents · u/CommissionOdd3082, +1]Raw logs and setup scripts: Linux VM: [https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-21-run28-linux-os-sandbox](https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-21-run28-linux-os-sandbox) Windows: [https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-20-run27-windows.\""
-          }
-        },
-        "glossary": [
-          {
-            "term": "MCP",
-            "definition": "Model Context Protocol (MCP) is a universal plug-and-play standard—like a USB-C port for AI—that lets AI assistants safely read databases, Slack, GitHub, and business tools."
-          },
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-          }
-        ],
-        "generatedBy": "DETERMINISTIC"
-      },
-      "supportingSources": [
-        {
-          "source": "r/AI_Agents",
-          "title": "Approving an agent's command doesn't limit what it can touch. We added OS sandboxing and real machines broke it 3 times",
-          "url": "https://www.reddit.com/r/AI_Agents/comments/1y2f7wq/approving_an_agents_command_doesnt_limit_what_it/",
-          "publishedAt": "2026-11-22T03:23:44.000Z",
-          "publishedAtMs": 1795317824000,
-          "isPrimary": false,
-          "relation": "same_event"
-        }
-      ],
-      "lastUpdatedAtMs": 1795317824000
-    },
-    {
       "id": "rd-street-1y2ccfq",
       "title": "I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)",
       "shortLabel": "I built a quick pass",
@@ -3108,48 +2727,48 @@
       "lastUpdatedAtMs": 1795214819000
     },
     {
-      "id": "rd-street-1y2gdsw",
-      "title": "I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
-      "shortLabel": "I asked muse to update",
+      "id": "rd-street-1y2gdls",
+      "title": "I put together a tool to use non Claude models with Claude Desktop",
+      "shortLabel": "I put together a tool",
       "source": "Reddit",
       "sourceCategory": "REDDIT",
-      "originFeedName": "r/singularity",
+      "originFeedName": "r/LocalLLaMA",
       "isDemoSeed": false,
       "sourceProvenance": [
-        "r/singularity"
+        "r/LocalLLaMA"
       ],
       "networkFamilies": [
         "Reddit"
       ],
-      "canonicalEntity": "ent:asked+avatar+muse",
+      "canonicalEntity": "ent:put+together+use",
       "isSupernova": false,
       "supernovaLevel": 0,
       "divergence": {
-        "hypeScore": 50,
-        "streetScore": 56,
-        "divergenceDelta": -6,
+        "hypeScore": 51,
+        "streetScore": 55,
+        "divergenceDelta": -4,
         "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (50 hype / 56 street) — validate on domain workload before broad rollout."
+        "summary": "Balanced signal (51 hype / 55 street) — validate on domain workload before broad rollout."
       },
       "mediaItems": [
         {
           "type": "image",
-          "url": "https://external-preview.redd.it/OGZwcnVrOTk5MzNpMYt64Sg9rntO94-mjVKp7yrRO6vz9b_qvUfvujPqxowm.png?format=pjpg&auto=webp&s=3e632642e5b9b52e3b9f5325174e0e15084b501c",
-          "caption": "r/singularity benchmark / architecture attachment",
-          "sourceNetwork": "r/singularity"
+          "url": "https://external-preview.redd.it/jZY3Vlts2UR9Sei4OIUZ4G3mC37ilRlvqBWtkU4GKKc.png?auto=webp&s=076407524025f692b6ef6a22c4ec5f3ff798357e",
+          "caption": "r/LocalLLaMA benchmark / architecture attachment",
+          "sourceNetwork": "r/LocalLLaMA"
         }
       ],
       "streetQuotes": [
         {
-          "id": "rd-street-1y2gdsw-self-quote",
+          "id": "rd-street-1y2gdls-self-quote",
           "network": "Reddit",
-          "originLabel": "r/singularity",
-          "author": "r/singularity",
-          "text": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
+          "originLabel": "r/LocalLLaMA",
+          "author": "r/LocalLLaMA",
+          "text": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
           "score": 1,
           "sentiment": "VERIFIED",
-          "publishedAtMs": 1795321673000,
-          "url": "https://www.reddit.com/r/singularity/comments/1y2gdsw/i_asked_muse_to_update_avatar_to_look_like_lucia/"
+          "publishedAtMs": 1795321653000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/"
         }
       ],
       "engagementVelocity": {
@@ -3158,21 +2777,22 @@
         "velocityPerHour": 9,
         "badgeText": "9/hr · 1 up · 0 comments"
       },
-      "url": "https://www.reddit.com/r/singularity/comments/1y2gdsw/i_asked_muse_to_update_avatar_to_look_like_lucia/",
-      "publishedAtMs": 1795321673000,
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/",
+      "publishedAtMs": 1795321653000,
       "firstSeenAtMs": 1795326309605,
       "isLiveInbound": true,
       "primarySector": "ARC",
       "secondarySectors": [
-        "GOV"
+        "ECO",
+        "REL"
       ],
       "mass": 2.45,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
-      "rawAbstract": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
+      "rawAbstract": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. This tool fixes that. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode. Feel free to take a look, fork it, make your own spin. This tool is Windows only. If you want a Linux version, ask your agent to fork this repo and make it work on Linux. https://github.com/phly95/claude-endpoint-mapper",
       "architectBrief": {
-        "summary": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
+        "summary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude…",
         "stackImpact": [
           "ARC Pipeline",
           "AI Gateway / Router",
@@ -3182,18 +2802,19 @@
         "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
       },
       "cSuiteBrief": {
-        "headlineSoWhat": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
+        "headlineSoWhat": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when…",
         "talkingPoints": [
-          "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the…",
-          "Readiness: GA (r/singularity)."
+          "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box…",
+          "It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
+          "Readiness: GA (r/LocalLLaMA)."
         ],
         "industryLens": {
-          "BANKING": "Financial Services (I asked muse to update): Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "HEALTHCARE": "Clinical & Life-Sci (I asked muse to update): Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "FINOPS": "Platform FinOps (I asked muse to update): Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
-          "RETAIL": "Commerce & CX (I asked muse to update): Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "PUBLIC": "Public Sector (I asked muse to update): Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "SAAS": "B2B SaaS Product (I asked muse to update): Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
+          "BANKING": "Financial Services (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "HEALTHCARE": "Clinical & Life-Sci (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "FINOPS": "Platform FinOps (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
+          "RETAIL": "Commerce & CX (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "PUBLIC": "Public Sector (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "SAAS": "B2B SaaS Product (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
         }
       },
       "affectedEnterpriseStacks": [
@@ -3203,168 +2824,33 @@
       "evidenceScope": "single_user_experiment",
       "verifiedMetrics": [],
       "literacy": {
-        "plainTitle": "I asked muse to update avatar to look like…",
-        "plainFullTitle": "I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am…",
+        "plainTitle": "I put together a tool to use non Claude models…",
+        "plainFullTitle": "I put together a tool to use non Claude models with Claude Desktop",
         "levels": {
           "1": {
-            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
-            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
+            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
           },
           "2": {
-            "whatHappened": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
-            "whoBuiltIt": "r/singularity Engineering Community",
+            "whatHappened": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
+            "whoBuiltIt": "r/LocalLLaMA Engineering Community",
             "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
           },
           "3": {
-            "bridgeSummary": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+            "bridgeSummary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. In stack terms, this connects to Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
           },
           "4": {
-            "roiAndFinOps": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. (Individual benchmark/project — no enterprise unit-cost projection).",
+            "roiAndFinOps": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. (Individual benchmark/project — no enterprise unit-cost projection).",
             "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
             "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
           },
           "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
-            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (r/singularity) — no model weights, API specs, latency figures, or code parameters were published.",
+            "architectureBrief": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode.",
+            "specsAndCaveats": "Feel free to take a look, fork it, make your own spin. This tool is Windows only.",
             "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
           }
         },
-        "glossary": [],
-        "generatedBy": "DETERMINISTIC"
-      },
-      "supportingSources": [
-        {
-          "source": "r/singularity",
-          "title": "I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
-          "url": "https://www.reddit.com/r/singularity/comments/1y2gdsw/i_asked_muse_to_update_avatar_to_look_like_lucia/",
-          "publishedAt": "2026-11-22T04:27:53.000Z",
-          "publishedAtMs": 1795321673000,
-          "isPrimary": false,
-          "relation": "same_event"
-        }
-      ],
-      "lastUpdatedAtMs": 1795321673000
-    },
-    {
-      "id": "rd-street-1y2hxv5",
-      "title": "I tracked 3,236 open-source AI Agent & MCP repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived",
-      "shortLabel": "I tracked 3 236 open-source",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/AI_Agents",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "r/AI_Agents"
-      ],
-      "networkFamilies": [
-        "Reddit"
-      ],
-      "canonicalEntity": "ent:mcp+repos+tracked",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 55,
-        "streetScore": 48,
-        "divergenceDelta": 7,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (55 hype / 48 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [],
-      "streetQuotes": [
-        {
-          "id": "rd-street-1y2hxv5-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/AI_Agents",
-          "author": "r/AI_Agents",
-          "text": "[removed]",
-          "score": 3,
-          "sentiment": "HYPE",
-          "publishedAtMs": 1795326964000,
-          "url": "https://www.reddit.com/r/AI_Agents/comments/1y2hxv5/i_tracked_3236_opensource_ai_agent_mcp_repos_over/"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 1,
-        "commentsOrReplies": 1,
-        "velocityPerHour": 7,
-        "badgeText": "7/hr · 1 up · 1 comment"
-      },
-      "url": "https://www.reddit.com/r/AI_Agents/comments/1y2hxv5/i_tracked_3236_opensource_ai_agent_mcp_repos_over/",
-      "publishedAtMs": 1795326964000,
-      "firstSeenAtMs": 1795328005172,
-      "isLiveInbound": true,
-      "primarySector": "ARC",
-      "secondarySectors": [
-        "REL"
-      ],
-      "mass": 2.45,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "REDUCER",
-      "rawAbstract": "[removed]",
-      "architectBrief": {
-        "summary": "[removed]",
-        "stackImpact": [
-          "ARC Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Targets unit-cost and latency reduction on matching enterprise workloads."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "[removed]",
-        "talkingPoints": [
-          "[removed]",
-          "Readiness: GA (r/AI_Agents)."
-        ],
-        "industryLens": {
-          "BANKING": "Financial Services (I tracked 3 236 open-source): [removed] — targets lower compute overhead on matching workloads (verify per-request cost empirically) (compliance posture: not assessed in source).",
-          "HEALTHCARE": "Clinical & Life-Sci (I tracked 3 236 open-source): [removed] — targets lower compute overhead on matching workloads (verify per-request cost empirically) (compliance posture: not assessed in source).",
-          "FINOPS": "Platform FinOps (I tracked 3 236 open-source): [removed] — targets lower compute overhead on matching workloads (verify per-request cost empirically); prioritize workload benchmarking (compliance posture: not assessed in source).",
-          "RETAIL": "Commerce & CX (I tracked 3 236 open-source): [removed] — targets lower compute overhead on matching workloads (verify per-request cost empirically) (compliance posture: not assessed in source).",
-          "PUBLIC": "Public Sector (I tracked 3 236 open-source): [removed] — targets lower compute overhead on matching workloads (verify per-request cost empirically) (compliance posture: not assessed in source).",
-          "SAAS": "B2B SaaS Product (I tracked 3 236 open-source): [removed] — evaluate per-tenant unit margins (targets lower compute overhead on matching workloads (verify per-request cost empirically); compliance posture: not assessed in source)."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Agent Tooling / MCP",
-        "Autonomous Workflow Runtime"
-      ],
-      "evidenceScope": "single_user_experiment",
-      "verifiedMetrics": [],
-      "literacy": {
-        "plainTitle": "I tracked 3,236 open-source digital helpers &…",
-        "plainFullTitle": "I tracked 3,236 open-source digital helpers & universal app connector repos over the last 30…",
-        "levels": {
-          "1": {
-            "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity.",
-            "everydayWhy": "Digital tools respond faster and cost noticeably less to run for everyday users and organizations."
-          },
-          "2": {
-            "whatHappened": "r/AI_Agents Engineering Community published I tracked 3,236 open-source digital helpers & universal app connector repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived. Open the linked third-party source above for the full upstream breakdown.",
-            "whoBuiltIt": "r/AI_Agents Engineering Community",
-            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
-          },
-          "3": {
-            "bridgeSummary": "[removed] In stack terms, this connects to MCP, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-          },
-          "4": {
-            "roiAndFinOps": "I tracked 3,236 open-source AI Agent & MCP repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived (Individual benchmark/project — no enterprise unit-cost projection).",
-            "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
-            "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
-          },
-          "5": {
-            "architectureBrief": "I tracked 3,236 open-source AI Agent & MCP repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived.",
-            "specsAndCaveats": "Community field report on r/AI_Agents (7/hr · 1 up · 1 comment) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
-            "streetConsensus": "Thread has 1 reply on r/AI_Agents — top engineer comments."
-          }
-        },
         "glossary": [
-          {
-            "term": "MCP",
-            "definition": "Model Context Protocol (MCP) is a universal plug-and-play standard—like a USB-C port for AI—that lets AI assistants safely read databases, Slack, GitHub, and business tools."
-          },
           {
             "term": "Agentic Tool Use",
             "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
@@ -3374,16 +2860,16 @@
       },
       "supportingSources": [
         {
-          "source": "r/AI_Agents",
-          "title": "I tracked 3,236 open-source AI Agent & MCP repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived",
-          "url": "https://www.reddit.com/r/AI_Agents/comments/1y2hxv5/i_tracked_3236_opensource_ai_agent_mcp_repos_over/",
-          "publishedAt": "2026-11-22T05:56:04.000Z",
-          "publishedAtMs": 1795326964000,
+          "source": "r/LocalLLaMA",
+          "title": "I put together a tool to use non Claude models with Claude Desktop",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/",
+          "publishedAt": "2026-11-22T04:27:33.000Z",
+          "publishedAtMs": 1795321653000,
           "isPrimary": false,
           "relation": "same_event"
         }
       ],
-      "lastUpdatedAtMs": 1795326964000
+      "lastUpdatedAtMs": 1795321653000
     },
     {
       "id": "rd-street-1y2hpg8",
@@ -3433,8 +2919,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 1,
-        "velocityPerHour": 7,
-        "badgeText": "7/hr · 1 up · 1 comment"
+        "velocityPerHour": 6,
+        "badgeText": "6/hr · 1 up · 1 comment"
       },
       "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2hpg8/wikillm_browse_language_model_weights_like_an/",
       "publishedAtMs": 1795326123000,
@@ -3503,7 +2989,7 @@
           },
           "5": {
             "architectureBrief": "WikiLLM: Browse language model weights like an encyclopedia.",
-            "specsAndCaveats": "Community field report on r/LocalLLaMA (7/hr · 1 up · 1 comment) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
+            "specsAndCaveats": "Community field report on r/LocalLLaMA (6/hr · 1 up · 1 comment) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
             "streetConsensus": "Thread has 1 reply on r/LocalLLaMA — top engineer comments."
           }
         },
@@ -3522,6 +3008,178 @@
         }
       ],
       "lastUpdatedAtMs": 1795326123000
+    },
+    {
+      "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon",
+      "title": "Introducing Gemini 4 Neon",
+      "shortLabel": "Introducing Gemini 4 Neon",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "Google DeepMind",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @GoogleDeepMind",
+        "Google DeepMind",
+        "Bluesky · @natolambert"
+      ],
+      "networkFamilies": [
+        "X",
+        "VIP/Lab",
+        "Bluesky"
+      ],
+      "canonicalEntity": "ent:coded+gemini+neon",
+      "isSupernova": true,
+      "supernovaLevel": 2,
+      "divergence": {
+        "hypeScore": 66,
+        "streetScore": 62,
+        "divergenceDelta": 4,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (66 hype / 62 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-4-neon__blog-header__sm.width-1300.png",
+          "caption": "Google DeepMind article visual",
+          "sourceNetwork": "Google DeepMind"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon-self-quote",
+          "network": "HackerNews",
+          "originLabel": "Google DeepMind",
+          "author": "Google DeepMind",
+          "text": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "score": 165,
+          "sentiment": "HYPE",
+          "publishedAtMs": 1795037743000,
+          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/"
+        },
+        {
+          "id": "bsky-natolambert.bsky.social-3n2qhmcehf32z-self-quote",
+          "network": "Bluesky",
+          "originLabel": "Bluesky · @natolambert",
+          "author": "Bluesky · @natolambert",
+          "text": "Tried Gemini Neon in Antigravity.",
+          "score": 122,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795173462110,
+          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 23,
+        "commentsOrReplies": 6,
+        "velocityPerHour": 1,
+        "badgeText": "23 likes · 6 replies"
+      },
+      "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+      "publishedAtMs": 1795037743000,
+      "firstSeenAtMs": 1795037743000,
+      "isLiveInbound": true,
+      "primarySector": "REL",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 4.85,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "INTENSIVE",
+      "rawAbstract": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news See all in Company news Outreach & initiatives",
+      "architectBrief": {
+        "summary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news…",
+        "stackImpact": [
+          "REL Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+        "talkingPoints": [
+          "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms…",
+          "Readiness: GA (Google DeepMind)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
+          "HEALTHCARE": "Clinical & Life-Sci (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
+          "FINOPS": "Platform FinOps (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops; prioritize workload benchmarking (compliance posture: not assessed in source).",
+          "RETAIL": "Commerce & CX (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
+          "PUBLIC": "Public Sector (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
+          "SAAS": "B2B SaaS Product (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — evaluate per-tenant unit margins (requires strict FinOps quota guardrails on multi-turn loops; compliance posture: not assessed in source)."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "AI FinOps & Compute Routing",
+        "Model Evaluation & Telemetry"
+      ],
+      "evidenceScope": "enterprise_launch",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "Introducing Gemini 4 Neon",
+        "plainFullTitle": "Introducing Gemini 4 Neon",
+        "levels": {
+          "1": {
+            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+          },
+          "2": {
+            "whatHappened": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+            "whoBuiltIt": "Google DeepMind Research & Product Team · Cross-surfaced on X · @GoogleDeepMind + Bluesky · @natolambert",
+            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+          },
+          "3": {
+            "bridgeSummary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+          },
+          "4": {
+            "roiAndFinOps": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. (Operational/market development — no direct token-cost or compute telemetry in source).",
+            "readinessAndRisk": "General release reported by source · LOW Governance Attention. Compliance: Not assessed in source.",
+            "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"Introducing Gemini 4 Neon\" with legal and procurement leads."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Google DeepMind) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "Google DeepMind",
+          "title": "Introducing Gemini 4 Neon",
+          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+          "publishedAt": "2026-11-18T21:35:43.000Z",
+          "publishedAtMs": 1795037743000,
+          "isPrimary": true,
+          "relation": "same_event"
+        },
+        {
+          "source": "X · @GoogleDeepMind",
+          "title": "Gemini 4 Neon coded a ski simulator based on real Mont Blanc terrain.",
+          "url": "https://x.com/GoogleDeepMind/status/2123826572385833119",
+          "publishedAt": "2026-11-20T17:11:28.000Z",
+          "publishedAtMs": 1795194688000,
+          "isPrimary": false,
+          "relation": "same_event"
+        },
+        {
+          "source": "Bluesky · @natolambert",
+          "title": "Tried Gemini Neon in Antigravity. Felt in distribution of Claude Code & Codex, in a good way. Excited to get to know these new models more!",
+          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z",
+          "publishedAt": "2026-11-20T11:17:42.110Z",
+          "publishedAtMs": 1795173462110,
+          "isPrimary": false,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795194688000
     },
     {
       "id": "hn-50585735",
@@ -3550,7 +3208,7 @@
       "mediaItems": [
         {
           "type": "image",
-          "url": "https://scontent-sea5-1.xx.fbcdn.net/v/t39.2365-6/741888780_1335161144859187_4416712401061192452_n.png?_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa6a2f&_nc_ohc=aXn_6axTxg8Q7kNvwE7ifbj&_nc_oc=AdrYH0SdoOGQKr-076BOgZ-QhcSxfQDE7UIfGcBV515QCjhjJE2rRxEWH3TckCoZNnQ&_nc_zt=14&_nc_ht=scontent-sea5-1.xx&edm=ADsB9xMEAAAA&_nc_gid=RTqwpoqdllgpB2O_WbOXcg&oh=00_AQQpoN_gaG22u7rWGjmITY335Tka21r_XlPHodG8gZ3plg&oe=6B084711",
+          "url": "https://scontent-sea5-1.xx.fbcdn.net/v/t39.2365-6/741888780_1335161144859187_4416712401061192452_n.png?_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa6a2f&_nc_ohc=aXn_6axTxg8Q7kNvwE7ifbj&_nc_oc=AdrYH0SdoOGQKr-076BOgZ-QhcSxfQDE7UIfGcBV515QCjhjJE2rRxEWH3TckCoZNnQ&_nc_zt=14&_nc_ht=scontent-sea5-1.xx&edm=ADsB9xMEAAAA&_nc_gid=3lDeRqHawW5WLHfK-0jmwg&oh=00_AQQYJP_Uf3GiNMttDnXZDZOrJejfDh3q18TgDgxBP9VERQ&oe=6B084711",
           "caption": "Linked article figure",
           "sourceNetwork": "Hacker News"
         }
@@ -3969,167 +3627,6 @@
         }
       ],
       "lastUpdatedAtMs": 1795130180000
-    },
-    {
-      "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon",
-      "title": "Introducing Gemini 4 Neon",
-      "shortLabel": "Introducing Gemini 4 Neon",
-      "source": "LabRelease",
-      "sourceCategory": "AI_LAB",
-      "originFeedName": "Google DeepMind",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "Google DeepMind",
-        "Bluesky · @natolambert"
-      ],
-      "networkFamilies": [
-        "VIP/Lab",
-        "Bluesky"
-      ],
-      "canonicalEntity": "ent:gemini+neon",
-      "isSupernova": true,
-      "supernovaLevel": 1,
-      "divergence": {
-        "hypeScore": 66,
-        "streetScore": 62,
-        "divergenceDelta": 4,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (66 hype / 62 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-4-neon__blog-header__sm.width-1300.png",
-          "caption": "Google DeepMind article visual",
-          "sourceNetwork": "Google DeepMind"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "lab-deepmind-dgoogleblogintroducing-gemini-4-neon-self-quote",
-          "network": "HackerNews",
-          "originLabel": "Google DeepMind",
-          "author": "Google DeepMind",
-          "text": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
-          "score": 165,
-          "sentiment": "HYPE",
-          "publishedAtMs": 1795037743000,
-          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/"
-        },
-        {
-          "id": "bsky-natolambert.bsky.social-3n2qhmcehf32z-self-quote",
-          "network": "Bluesky",
-          "originLabel": "Bluesky · @natolambert",
-          "author": "Bluesky · @natolambert",
-          "text": "Tried Gemini Neon in Antigravity.",
-          "score": 122,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795173462110,
-          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 23,
-        "commentsOrReplies": 6,
-        "velocityPerHour": 1,
-        "badgeText": "23 likes · 6 replies"
-      },
-      "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
-      "publishedAtMs": 1795037743000,
-      "firstSeenAtMs": 1795037743000,
-      "isLiveInbound": true,
-      "primarySector": "REL",
-      "secondarySectors": [
-        "ECO"
-      ],
-      "mass": 4.6,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "INTENSIVE",
-      "rawAbstract": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. See what's new. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news See all in Company news Outreach & initiatives",
-      "architectBrief": {
-        "summary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms Products Company news…",
-        "stackImpact": [
-          "REL Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
-        "talkingPoints": [
-          "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
-          "Innovation & AI See all in Innovation & AI Google DeepMind Innovation & AI See all in Innovation & AI Models & Research Products & platforms See all in Products & platforms…",
-          "Readiness: GA (Google DeepMind)."
-        ],
-        "industryLens": {
-          "BANKING": "Financial Services (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
-          "HEALTHCARE": "Clinical & Life-Sci (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
-          "FINOPS": "Platform FinOps (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops; prioritize workload benchmarking (compliance posture: not assessed in source).",
-          "RETAIL": "Commerce & CX (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
-          "PUBLIC": "Public Sector (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — requires strict FinOps quota guardrails on multi-turn loops (compliance posture: not assessed in source).",
-          "SAAS": "B2B SaaS Product (Introducing Gemini 4 Neon): Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. — evaluate per-tenant unit margins (requires strict FinOps quota guardrails on multi-turn loops; compliance posture: not assessed in source)."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "AI FinOps & Compute Routing",
-        "Model Evaluation & Telemetry"
-      ],
-      "evidenceScope": "enterprise_launch",
-      "verifiedMetrics": [],
-      "literacy": {
-        "plainTitle": "Gemini 4 Neon for coding and analysis",
-        "plainFullTitle": "Google introduces Gemini 4 Neon for complex coding and analysis at a lower cost",
-        "levels": {
-          "1": {
-            "analogy": "Think of it like a well-stocked library where you can find the exact book you need for your coding and analysis projects, but with a wider variety and faster access.",
-            "everydayWhy": "This means easier and more efficient coding and analysis, saving time and resources for developers and analysts."
-          },
-          "2": {
-            "whatHappened": "Google has introduced Gemini 4 Neon, a new AI model designed for complex coding and analysis tasks at a lower cost.",
-            "whoBuiltIt": "Google DeepMind",
-            "problemSolved": "The new model aims to provide advanced AI capabilities for coding and analysis tasks, making these processes more accessible and cost-effective."
-          },
-          "3": {
-            "bridgeSummary": "Gemini 4 Neon enhances the accessibility and efficiency of AI-driven coding and analysis, potentially improving productivity and reducing costs for developers and analysts."
-          },
-          "4": {
-            "roiAndFinOps": "By offering advanced AI capabilities at a lower cost, Gemini 4 Neon could lead to significant cost savings and improved ROI for banking organizations looking to enhance their coding and analysis processes.",
-            "readinessAndRisk": "While the model is new, it has shown promise in early trials, but its full readiness and potential risks for banking applications are yet to be fully assessed. Compliance: Not assessed in source.",
-            "clientAdvice": "BANKING leadership teams should monitor the development and performance of Gemini 4 Neon, considering its potential to streamline coding and analysis tasks while keeping an eye on any emerging risks."
-          },
-          "5": {
-            "architectureBrief": "Source provides no technical specifications or architecture details. The model is designed to deliver advanced coding and analysis capabilities at a lower cost.",
-            "specsAndCaveats": "No specific technical specs or benchmarks are provided in the source. The model's performance and capabilities are yet to be fully detailed.",
-            "streetConsensus": "Early feedback from users, such as @natolambert, suggests that Gemini 4 Neon may offer a good balance between performance and cost, but more peer validation is needed."
-          }
-        },
-        "glossary": [],
-        "generatedBy": "OLLAMA"
-      },
-      "supportingSources": [
-        {
-          "source": "Google DeepMind",
-          "title": "Introducing Gemini 4 Neon",
-          "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
-          "publishedAt": "2026-11-18T21:35:43.000Z",
-          "publishedAtMs": 1795037743000,
-          "isPrimary": true,
-          "relation": "same_event"
-        },
-        {
-          "source": "Bluesky · @natolambert",
-          "title": "Tried Gemini Neon in Antigravity. Felt in distribution of Claude Code & Codex, in a good way. Excited to get to know these new models more!",
-          "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2qhmcehf32z",
-          "publishedAt": "2026-11-20T11:17:42.110Z",
-          "publishedAtMs": 1795173462110,
-          "isPrimary": false,
-          "relation": "same_event"
-        }
-      ],
-      "lastUpdatedAtMs": 1795173462110
     },
     {
       "id": "x-fx-2123862344422088794",
@@ -6066,6 +5563,260 @@
         }
       ],
       "lastUpdatedAtMs": 1794955386480
+    },
+    {
+      "id": "x-fx-2123567986565173289",
+      "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+      "shortLabel": "Apology accepted so this was",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @demishassabis",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @demishassabis"
+      ],
+      "networkFamilies": [
+        "X"
+      ],
+      "canonicalEntity": "ent:accepted+apology+sholtodouglas",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 49,
+        "streetScore": 51,
+        "divergenceDelta": -2,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (49 hype / 51 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123567986565173289-self-quote",
+          "network": "X",
+          "originLabel": "X · @demishassabis",
+          "author": "X · @demishassabis",
+          "text": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "score": 140,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795133036000,
+          "url": "https://x.com/demishassabis/status/2123567986565173289"
+        }
+      ],
+      "url": "https://x.com/demishassabis/status/2123567986565173289",
+      "publishedAtMs": 1795133036000,
+      "firstSeenAtMs": 1795328179128,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 3.194983223190855,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
+      "architectBrief": {
+        "summary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+        "talkingPoints": [
+          "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
+          "Readiness: GA (X · @demishassabis)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "HEALTHCARE": "Clinical & Life-Sci (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "FINOPS": "Platform FinOps (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
+          "RETAIL": "Commerce & CX (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "PUBLIC": "Public Sector (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "SAAS": "B2B SaaS Product (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
+      ],
+      "evidenceScope": "discussion_or_personal",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "🤣 💙 Apology accepted (so this was…",
+        "plainFullTitle": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+          },
+          "2": {
+            "whatHappened": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "whoBuiltIt": "X · @demishassabis",
+            "problemSolved": "Addresses practical workflow friction around 🤣 💙 Apology accepted (so this was @_sholtodouglas then?."
+          },
+          "3": {
+            "bridgeSummary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+          },
+          "4": {
+            "roiAndFinOps": "Personal or community discussion (X · @demishassabis) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
+            "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
+            "clientAdvice": "Read the original discussion directly on X · @demishassabis for first-hand human context."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. 🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @demishassabis) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "X · @demishassabis",
+          "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+          "url": "https://x.com/demishassabis/status/2123567986565173289",
+          "publishedAt": "2026-11-20T00:03:56.000Z",
+          "publishedAtMs": 1795133036000,
+          "isPrimary": false,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795133036000
+    },
+    {
+      "id": "x-fx-2123519772390215780",
+      "title": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.",
+      "shortLabel": "Our SVP koraykv believes there",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @GoogleDeepMind"
+      ],
+      "networkFamilies": [
+        "X"
+      ],
+      "canonicalEntity": "ent:believes+koraykv+svp",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 52,
+        "streetScore": 53,
+        "divergenceDelta": -1,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (52 hype / 53 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123519772390215780-self-quote",
+          "network": "X",
+          "originLabel": "X · @GoogleDeepMind",
+          "author": "X · @GoogleDeepMind",
+          "text": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+          "score": 140,
+          "sentiment": "HYPE",
+          "publishedAtMs": 1795121541000,
+          "url": "https://x.com/GoogleDeepMind/status/2123519772390215780"
+        }
+      ],
+      "url": "https://x.com/GoogleDeepMind/status/2123519772390215780",
+      "publishedAtMs": 1795121541000,
+      "firstSeenAtMs": 1795328179128,
+      "isLiveInbound": true,
+      "primarySector": "GOV",
+      "secondarySectors": [
+        "ECO",
+        "ARC"
+      ],
+      "mass": 3.194983223190855,
+      "readiness": "GA",
+      "risk": "HIGH",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI. Instead, progress looks like models becoming less spiky and more reliable across our daily lives. Listen in as he and @fryrsquared discuss the road ahead ↓ Timecodes: 00:00 Introduction 01:26 Evolution of Google DeepMind 04:41 Products as a path to AGI 13:01 Architectures and models 24:40 Recursive self improvement 30:50 Safety and agent teams 40:35 Benchmarks Media",
+      "architectBrief": {
+        "summary": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives. Listen in as he and @fryrsquared discuss the road ahead ↓ Timecodes: 00:00 Introduction 01:26 Evolution of Google DeepMind 04:41 Products as a path to AGI 13:01 Architectures and models 24:40 Recursive self improvement…",
+        "stackImpact": [
+          "GOV Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+        "talkingPoints": [
+          "Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+          "Listen in as he and @fryrsquared discuss the road ahead ↓ Timecodes: 00:00 Introduction 01:26 Evolution of Google DeepMind 04:41 Products as a path to AGI 13:01 Architectures and…",
+          "Readiness: GA (X · @GoogleDeepMind)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (Our SVP koraykv believes there): Instead, progress looks like models becoming less spiky and more reliable across our daily lives. — maintains neutral unit token economics (elevated operational risk noted; security & compliance require independent review).",
+          "HEALTHCARE": "Clinical & Life-Sci (Our SVP koraykv believes there): Instead, progress looks like models becoming less spiky and more reliable across our daily lives. — maintains neutral unit token economics (elevated operational risk noted; security & compliance require independent review).",
+          "FINOPS": "Platform FinOps (Our SVP koraykv believes there): Instead, progress looks like models becoming less spiky and more reliable across our daily lives. — maintains neutral unit token economics; prioritize workload benchmarking (elevated operational risk noted; security & compliance require independent review).",
+          "RETAIL": "Commerce & CX (Our SVP koraykv believes there): Instead, progress looks like models becoming less spiky and more reliable across our daily lives. — maintains neutral unit token economics (elevated operational risk noted; security & compliance require independent review).",
+          "PUBLIC": "Public Sector (Our SVP koraykv believes there): Instead, progress looks like models becoming less spiky and more reliable across our daily lives. — maintains neutral unit token economics (elevated operational risk noted; security & compliance require independent review).",
+          "SAAS": "B2B SaaS Product (Our SVP koraykv believes there): Instead, progress looks like models becoming less spiky and more reliable across our daily lives. — evaluate per-tenant unit margins (maintains neutral unit token economics; elevated operational risk noted; security & compliance require independent review)."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Agent Tooling / MCP",
+        "Autonomous Workflow Runtime",
+        "Post-Training & EvalOps"
+      ],
+      "evidenceScope": "discussion_or_personal",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "Our SVP @koraykv believes there won't be a…",
+        "plainFullTitle": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've…",
+        "levels": {
+          "1": {
+            "analogy": "Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool. Specifically, Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+            "everydayWhy": "Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships."
+          },
+          "2": {
+            "whatHappened": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+            "whoBuiltIt": "X · @GoogleDeepMind",
+            "problemSolved": "Shapes vendor governance, funding expectations, or enterprise buying decisions around \"Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.\" rather than shipping a software tool."
+          },
+          "3": {
+            "bridgeSummary": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+          },
+          "4": {
+            "roiAndFinOps": "Personal or community discussion (X · @GoogleDeepMind) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
+            "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
+            "clientAdvice": "Read the original discussion directly on X · @GoogleDeepMind for first-hand human context."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI. Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @GoogleDeepMind) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "X · @GoogleDeepMind",
+          "title": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.",
+          "url": "https://x.com/GoogleDeepMind/status/2123519772390215780",
+          "publishedAt": "2026-11-19T20:52:21.000Z",
+          "publishedAtMs": 1795121541000,
+          "isPrimary": false,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795121541000
     },
     {
       "id": "arxiv-httparxivorgabs261126627v1",
@@ -8014,36 +7765,6 @@
     }
   ],
   "literacyBySignalId": {
-    "rd-street-1y2hfqj": {
-      "plainTitle": "Proof of Riemann Hypothesis",
-      "plainFullTitle": "A Proof Has Hit the Riemann Hypothesis",
-      "levels": {
-        "1": {
-          "analogy": "Imagine a highway lane where every car must follow a precise speed limit, ensuring smooth traffic flow. This proof is like discovering a new rule that all cars must follow, making the highway safer and more efficient.",
-          "everydayWhy": "This discovery could lead to breakthroughs in cryptography, finance, and other fields, potentially improving security and efficiency."
-        },
-        "2": {
-          "whatHappened": "A proof of the Riemann Hypothesis has been claimed, a long-standing conjecture in mathematics. This proof may have significant implications for various fields, including finance.",
-          "whoBuiltIt": "The specific lab team or organization is not mentioned in the source.",
-          "problemSolved": "The proof addresses a fundamental problem in number theory, potentially leading to advancements in areas such as encryption and financial modeling."
-        },
-        "3": {
-          "bridgeSummary": "The proof, if verified, could enhance the security and efficiency of financial systems, particularly in cryptography and risk management, by providing deeper insights into number theory."
-        },
-        "4": {
-          "roiAndFinOps": "Personal or community discussion (r/singularity) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
-          "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
-          "clientAdvice": "Read the original discussion directly on r/singularity for first-hand human context."
-        },
-        "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. The proof addresses a fundamental mathematical problem, potentially impacting areas like cryptography and financial modeling.",
-          "specsAndCaveats": "The proof's validity and practical application are still uncertain, and no specific technical benchmarks or metrics are provided.",
-          "streetConsensus": "The community is awaiting further verification and practical applications of the proof, as indicated by the lack of comments and discussions on the thread."
-        }
-      },
-      "glossary": [],
-      "generatedBy": "OLLAMA"
-    },
     "lab-anthropic-httpswwwanthropiccomnewsipo-close": {
       "plainTitle": "Anthropic IPO Closing",
       "plainFullTitle": "Anthropic Announces IPO Closing and Concurrent Private Placement",
@@ -8164,6 +7885,36 @@
       "glossary": [],
       "generatedBy": "OLLAMA"
     },
+    "x-fx-2123519772390215780": {
+      "plainTitle": "Our SVP @koraykv believes there won't be a…",
+      "plainFullTitle": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've…",
+      "levels": {
+        "1": {
+          "analogy": "Think of a major company filing financial or policy paperwork — it shapes budgets, governance, and industry expectations rather than releasing a new software tool. Specifically, Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+          "everydayWhy": "Business, funding, and policy shifts change vendor stability, pricing leverage, and compliance rules even when no new engineering software ships."
+        },
+        "2": {
+          "whatHappened": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+          "whoBuiltIt": "X · @GoogleDeepMind",
+          "problemSolved": "Shapes vendor governance, funding expectations, or enterprise buying decisions around \"Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.\" rather than shipping a software tool."
+        },
+        "3": {
+          "bridgeSummary": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+        },
+        "4": {
+          "roiAndFinOps": "Personal or community discussion (X · @GoogleDeepMind) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
+          "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
+          "clientAdvice": "Read the original discussion directly on X · @GoogleDeepMind for first-hand human context."
+        },
+        "5": {
+          "architectureBrief": "Source provides no technical specifications or architecture details. Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI. Instead, progress looks like models becoming less spiky and more reliable across our daily lives.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @GoogleDeepMind) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
     "lab-deepmind-ndgooglebloggenie-4-is-now-available": {
       "plainTitle": "Interactive Worlds Generation",
       "plainFullTitle": "Google AI Ultra subscribers now access Genie 4 for interactive worlds with real-time audio and…",
@@ -8241,40 +7992,35 @@
       ],
       "generatedBy": "OLLAMA"
     },
-    "rd-street-1y2gdls": {
-      "plainTitle": "Tool enables non-Claude models on Claude Desktop",
-      "plainFullTitle": "Tool allows using non-Claude models with Claude Desktop for local AI integration",
+    "vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539": {
+      "plainTitle": "Riemann Hypothesis proved.twice independently",
+      "plainFullTitle": "Riemann Hypothesis proved.twice independently",
       "levels": {
         "1": {
-          "analogy": "Think of it like a kitchen prep line where different ingredients (AI models) can be mixed and matched to create unique dishes (custom applications).",
-          "everydayWhy": "This allows users to combine various AI tools, enhancing flexibility and creativity in their projects."
+          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ).",
+          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
         },
         "2": {
-          "whatHappened": "A user developed a tool that enables non-Claude models to be used with Claude Desktop, bypassing the default restrictions.",
-          "whoBuiltIt": "A user from r/LocalLLaMA",
-          "problemSolved": "The tool addresses the limitation of Claude Desktop, which blocks non-Claude models by default, allowing for more diverse AI model integration."
+          "whatHappened": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper.",
+          "whoBuiltIt": "Latent Space (Swyx & Alessio) · Cross-surfaced on Hacker News",
+          "problemSolved": "On DeepSWE, CodeAF finished #1 of ten on the same open model, ahead of Claude Code, at the lowest cost per fix."
         },
         "3": {
-          "bridgeSummary": "The tool provides a graphical user interface (GUI) that allows users to select and add non-Claude models to Claude Desktop, effectively patching the software to support additional models in gateway mode."
+          "bridgeSummary": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
         },
         "4": {
-          "roiAndFinOps": "This tool can save time and effort by allowing users to integrate multiple AI models without needing to switch between different platforms, potentially increasing productivity.",
-          "readinessAndRisk": "The tool is currently only available for Windows, and its readiness for enterprise use has not been assessed, requiring further testing and validation. Compliance: Not assessed in source.",
-          "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
+          "roiAndFinOps": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). (Operational/market development — no direct token-cost or compute telemetry in source).",
+          "readinessAndRisk": "General release reported by source · LOW Governance Attention. Compliance: Not assessed in source.",
+          "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of Riemann Hypothesis proved.twice independently with legal and procurement leads."
         },
         "5": {
-          "architectureBrief": "The tool patches Claude Desktop to support non-Claude models via a GUI, which allows users to select and add models in gateway mode.",
-          "specsAndCaveats": "The tool is Windows-only and provides a GUI for model selection, but no specific technical benchmarks or performance metrics are provided in the source.",
-          "streetConsensus": "The community is interested in the tool but awaits further validation and testing to ensure its reliability and compatibility with various AI models."
+          "architectureBrief": "Source provides no technical specifications or architecture details. Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Swyx · Latent Space) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
         }
       },
-      "glossary": [
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-        }
-      ],
-      "generatedBy": "OLLAMA"
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
     },
     "ghrel-claude-code-thubcom2008Repository937253475v21330": {
       "plainTitle": "Claude Code v2.1.330",
@@ -8345,6 +8091,36 @@
       "glossary": [],
       "generatedBy": "DETERMINISTIC"
     },
+    "lab-deepmind-dgoogleblogintroducing-gemini-4-neon": {
+      "plainTitle": "Introducing Gemini 4 Neon",
+      "plainFullTitle": "Introducing Gemini 4 Neon",
+      "levels": {
+        "1": {
+          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+        },
+        "2": {
+          "whatHappened": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "whoBuiltIt": "Google DeepMind Research & Product Team · Cross-surfaced on X · @GoogleDeepMind + Bluesky · @natolambert",
+          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+        },
+        "3": {
+          "bridgeSummary": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+        },
+        "4": {
+          "roiAndFinOps": "Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost. (Operational/market development — no direct token-cost or compute telemetry in source).",
+          "readinessAndRisk": "General release reported by source · LOW Governance Attention. Compliance: Not assessed in source.",
+          "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of \"Introducing Gemini 4 Neon\" with legal and procurement leads."
+        },
+        "5": {
+          "architectureBrief": "Source provides no technical specifications or architecture details. Google introduces Gemini 4 Neon, delivering frontier-level intelligence for complex coding and analysis at a lower cost.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Google DeepMind) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
     "ghrel-langchain-tory552661142langchain-openrouter030": {
       "plainTitle": "langchain-openrouter==0.3.0",
       "plainFullTitle": "langchain-openrouter==0.3.0",
@@ -8370,36 +8146,6 @@
           "architectureBrief": "The update involves changes to the software dependencies, specifically the minimum supported Python version and langchain-core version, to ensure compatibility with the latest standards.",
           "specsAndCaveats": "Source provides no technical specifications or architecture details. The update is focused on version compatibility and does not include detailed performance benchmarks or architectural changes.",
           "streetConsensus": "Awaiting community benchmark runs (newly indexed repository release)"
-        }
-      },
-      "glossary": [],
-      "generatedBy": "OLLAMA"
-    },
-    "lab-deepmind-dgoogleblogintroducing-gemini-4-neon": {
-      "plainTitle": "Gemini 4 Neon for coding and analysis",
-      "plainFullTitle": "Google introduces Gemini 4 Neon for complex coding and analysis at a lower cost",
-      "levels": {
-        "1": {
-          "analogy": "Think of it like a well-stocked library where you can find the exact book you need for your coding and analysis projects, but with a wider variety and faster access.",
-          "everydayWhy": "This means easier and more efficient coding and analysis, saving time and resources for developers and analysts."
-        },
-        "2": {
-          "whatHappened": "Google has introduced Gemini 4 Neon, a new AI model designed for complex coding and analysis tasks at a lower cost.",
-          "whoBuiltIt": "Google DeepMind",
-          "problemSolved": "The new model aims to provide advanced AI capabilities for coding and analysis tasks, making these processes more accessible and cost-effective."
-        },
-        "3": {
-          "bridgeSummary": "Gemini 4 Neon enhances the accessibility and efficiency of AI-driven coding and analysis, potentially improving productivity and reducing costs for developers and analysts."
-        },
-        "4": {
-          "roiAndFinOps": "By offering advanced AI capabilities at a lower cost, Gemini 4 Neon could lead to significant cost savings and improved ROI for banking organizations looking to enhance their coding and analysis processes.",
-          "readinessAndRisk": "While the model is new, it has shown promise in early trials, but its full readiness and potential risks for banking applications are yet to be fully assessed. Compliance: Not assessed in source.",
-          "clientAdvice": "BANKING leadership teams should monitor the development and performance of Gemini 4 Neon, considering its potential to streamline coding and analysis tasks while keeping an eye on any emerging risks."
-        },
-        "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. The model is designed to deliver advanced coding and analysis capabilities at a lower cost.",
-          "specsAndCaveats": "No specific technical specs or benchmarks are provided in the source. The model's performance and capabilities are yet to be fully detailed.",
-          "streetConsensus": "Early feedback from users, such as @natolambert, suggests that Gemini 4 Neon may offer a good balance between performance and cost, but more peer validation is needed."
         }
       },
       "glossary": [],
@@ -8844,45 +8590,6 @@
       ],
       "generatedBy": "OLLAMA"
     },
-    "rd-street-1y2f7wq": {
-      "plainTitle": "Approving an agent's command doesn't limit…",
-      "plainFullTitle": "Approving an agent's command doesn't limit what it can touch. We added OS sandboxing and real…",
-      "levels": {
-        "1": {
-          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, I contribute to Cluaiz, an open-source AI engine that runs models, tools, universal app connector servers and an agent.",
-          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
-        },
-        "2": {
-          "whatHappened": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, universal app connector servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or \\~/.aws.",
-          "whoBuiltIt": "Community thread in r/AI_Agents (top contributor: u/Right-Interview8600)",
-          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
-        },
-        "3": {
-          "bridgeSummary": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or \\~/.aws. In stack terms, this connects to MCP, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-        },
-        "4": {
-          "roiAndFinOps": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. (Individual benchmark/project — no enterprise unit-cost projection).",
-          "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
-          "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
-        },
-        "5": {
-          "architectureBrief": "I contribute to Cluaiz, an open-source AI engine that runs models, tools, MCP servers and an agent. Something that bugged us: the agent asks before running a command (allow / ask / deny), but once you approve \"npm test\", nothing stopped that command from reading \\~/.ssh or \\~/.aws. Approval decides whether something runs. It doesn't decide what it can touch. So we added a second layer: every agent command, MCP server and native plugin now runs inside an OS sandbox (bubblewrap on Linux, sandbox-exec on macOS, AppContainer on Windows).",
-          "specsAndCaveats": "Not done yet: the full path through the agent and MCP servers in strict mode is covered by unit tests only, and it's on main, not in the 0.1.0 release.",
-          "streetConsensus": "[r/AI_Agents · u/Right-Interview8600, +2] \"approval and the sandbox are doing different jobs, and the writable project folder is the hole i'd look at first. a command you already allowed can still drop a git hook or an npm script that a later unsandboxed step will run. i'd make only the paths the task named writable, and keep.git/hooks plus shell rc files deni.— [r/AI_Agents · u/CommissionOdd3082, +1]Good catch, and you're right about the project folder. Shell rc files are already out of reach: inside the sandbox $HOME is an empty tmpfs, so a write to \\~/.bashrc never reaches the host (that's one of the checks in the logs).— [r/AI_Agents · u/CommissionOdd3082, +1]Raw logs and setup scripts: Linux VM: [https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-21-run28-linux-os-sandbox](https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-21-run28-linux-os-sandbox) Windows: [https://github.com/cluaiz/cluaiz/tree/main/test/cloud/runs/2026-11-20-run27-windows.\""
-        }
-      },
-      "glossary": [
-        {
-          "term": "MCP",
-          "definition": "Model Context Protocol (MCP) is a universal plug-and-play standard—like a USB-C port for AI—that lets AI assistants safely read databases, Slack, GitHub, and business tools."
-        },
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-        }
-      ],
-      "generatedBy": "DETERMINISTIC"
-    },
     "rd-street-1y2ccfq": {
       "plainTitle": "I built a quick pass/fail test suite to see which small local models…",
       "plainFullTitle": "I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)",
@@ -8943,34 +8650,39 @@
       "glossary": [],
       "generatedBy": "DETERMINISTIC"
     },
-    "rd-street-1y2gdsw": {
-      "plainTitle": "I asked muse to update avatar to look like…",
-      "plainFullTitle": "I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am…",
+    "rd-street-1y2gdls": {
+      "plainTitle": "I put together a tool to use non Claude models…",
+      "plainFullTitle": "I put together a tool to use non Claude models with Claude Desktop",
       "levels": {
         "1": {
-          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
-          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
+          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
         },
         "2": {
-          "whatHappened": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
-          "whoBuiltIt": "r/singularity Engineering Community",
+          "whatHappened": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
+          "whoBuiltIt": "r/LocalLLaMA Engineering Community",
           "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
         },
         "3": {
-          "bridgeSummary": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+          "bridgeSummary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. In stack terms, this connects to Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
         },
         "4": {
-          "roiAndFinOps": "Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. (Individual benchmark/project — no enterprise unit-cost projection).",
+          "roiAndFinOps": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. (Individual benchmark/project — no enterprise unit-cost projection).",
           "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
           "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
         },
         "5": {
-          "architectureBrief": "Source provides no technical specifications or architecture details. Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results.",
-          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (r/singularity) — no model weights, API specs, latency figures, or code parameters were published.",
+          "architectureBrief": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode.",
+          "specsAndCaveats": "Feel free to take a look, fork it, make your own spin. This tool is Windows only.",
           "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
         }
       },
-      "glossary": [],
+      "glossary": [
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+        }
+      ],
       "generatedBy": "DETERMINISTIC"
     },
     "bsky-simonwillison.net-3n2nhnbueh22q": {
@@ -9003,45 +8715,6 @@
       "glossary": [],
       "generatedBy": "DETERMINISTIC"
     },
-    "rd-street-1y2hxv5": {
-      "plainTitle": "I tracked 3,236 open-source digital helpers &…",
-      "plainFullTitle": "I tracked 3,236 open-source digital helpers & universal app connector repos over the last 30…",
-      "levels": {
-        "1": {
-          "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity.",
-          "everydayWhy": "Digital tools respond faster and cost noticeably less to run for everyday users and organizations."
-        },
-        "2": {
-          "whatHappened": "r/AI_Agents Engineering Community published I tracked 3,236 open-source digital helpers & universal app connector repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived. Open the linked third-party source above for the full upstream breakdown.",
-          "whoBuiltIt": "r/AI_Agents Engineering Community",
-          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
-        },
-        "3": {
-          "bridgeSummary": "[removed] In stack terms, this connects to MCP, Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-        },
-        "4": {
-          "roiAndFinOps": "I tracked 3,236 open-source AI Agent & MCP repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived (Individual benchmark/project — no enterprise unit-cost projection).",
-          "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
-          "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
-        },
-        "5": {
-          "architectureBrief": "I tracked 3,236 open-source AI Agent & MCP repos over the last 30 days: fastest risers, and the 10k+ star repos that quietly went stale or archived.",
-          "specsAndCaveats": "Community field report on r/AI_Agents (7/hr · 1 up · 1 comment) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
-          "streetConsensus": "Thread has 1 reply on r/AI_Agents — top engineer comments."
-        }
-      },
-      "glossary": [
-        {
-          "term": "MCP",
-          "definition": "Model Context Protocol (MCP) is a universal plug-and-play standard—like a USB-C port for AI—that lets AI assistants safely read databases, Slack, GitHub, and business tools."
-        },
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-        }
-      ],
-      "generatedBy": "DETERMINISTIC"
-    },
     "rd-street-1y2hpg8": {
       "plainTitle": "WikiLLM: Browse language model weights like an…",
       "plainFullTitle": "WikiLLM: Browse language model weights like an encyclopedia",
@@ -9065,7 +8738,7 @@
         },
         "5": {
           "architectureBrief": "WikiLLM: Browse language model weights like an encyclopedia.",
-          "specsAndCaveats": "Community field report on r/LocalLLaMA (7/hr · 1 up · 1 comment) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
+          "specsAndCaveats": "Community field report on r/LocalLLaMA (6/hr · 1 up · 1 comment) — single-run observation without controlled multi-seed benchmark tables; check linked sources for independent reproduction.",
           "streetConsensus": "Thread has 1 reply on r/LocalLLaMA — top engineer comments."
         }
       },
@@ -9424,6 +9097,36 @@
         "5": {
           "architectureBrief": "Source provides no technical specifications or architecture details. Here's GPT-6.2 Astra and GPT-6.2 Sol for \"Make a three js animation where yonkers stands up as a big mech (cool stand up motion) and stomps around manhattan and queens and Brooklyn, use openstreetmap mapping data\" simonwillison.net/2026/Nov/17/.",
           "specsAndCaveats": "Non-engineering business, policy, or commentary signal (Bluesky · @simonwillison) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "x-fx-2123567986565173289": {
+      "plainTitle": "🤣 💙 Apology accepted (so this was…",
+      "plainFullTitle": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+      "levels": {
+        "1": {
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+        },
+        "2": {
+          "whatHappened": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "whoBuiltIt": "X · @demishassabis",
+          "problemSolved": "Addresses practical workflow friction around 🤣 💙 Apology accepted (so this was @_sholtodouglas then?."
+        },
+        "3": {
+          "bridgeSummary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+        },
+        "4": {
+          "roiAndFinOps": "Personal or community discussion (X · @demishassabis) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
+          "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
+          "clientAdvice": "Read the original discussion directly on X · @demishassabis for first-hand human context."
+        },
+        "5": {
+          "architectureBrief": "Source provides no technical specifications or architecture details. 🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @demishassabis) — no model weights, API specs, latency figures, or code parameters were published.",
           "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
         }
       },
