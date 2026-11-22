@@ -1,10 +1,10 @@
 {
   "version": 1,
   "promptVersion": "v2.5.2",
-  "bakedAtIso": "2026-11-22T05:47:08.097Z",
-  "bakedAtMs": 1795326428097,
-  "synthesizedBy": "LOCAL_OLLAMA_qwen2.5:7b",
-  "signalCount": 49,
+  "bakedAtIso": "2026-11-22T05:51:48.178Z",
+  "bakedAtMs": 1795326708178,
+  "synthesizedBy": "GITHUB_MODELS_GPT-4O-MINI",
+  "signalCount": 56,
   "signals": [
     {
       "id": "rd-street-1y2hfqj",
@@ -79,9 +79,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 24,
-        "commentsOrReplies": 4,
+        "commentsOrReplies": 5,
         "velocityPerHour": 12,
-        "badgeText": "24 pts · 4 comments"
+        "badgeText": "24 pts · 5 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y2hfqj/a_proof_has_hit_the_riemann_hypothesis/",
       "publishedAtMs": 1795325196000,
@@ -217,10 +217,10 @@
       "supernovaLevel": 2,
       "divergence": {
         "hypeScore": 58,
-        "streetScore": 85,
-        "divergenceDelta": -27,
+        "streetScore": 84,
+        "divergenceDelta": -26,
         "verdictLabel": "SLEEPER GEM",
-        "summary": "Engineer benchmarks (85/100) beat social hype (58/100) — high-ROI under-the-radar infrastructure upgrade."
+        "summary": "Engineer benchmarks (84/100) beat social hype (58/100) — high-ROI under-the-radar infrastructure upgrade."
       },
       "mediaItems": [
         {
@@ -279,8 +279,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 21,
-        "badgeText": "21/hr · 1 up · 0 comments"
+        "velocityPerHour": 18,
+        "badgeText": "18/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gxo7/inkling_absolutely_rips_200_toks_decode_6700/",
       "publishedAtMs": 1795323527000,
@@ -420,6 +420,172 @@
         }
       ],
       "lastUpdatedAtMs": 1795324277000
+    },
+    {
+      "id": "rd-street-1y2gdls",
+      "title": "I put together a tool to use non Claude models with Claude Desktop",
+      "shortLabel": "I put together a tool",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "r/LocalLLaMA",
+        "r/ClaudeAI"
+      ],
+      "networkFamilies": [
+        "Reddit"
+      ],
+      "canonicalEntity": "ent:put+together+use",
+      "isSupernova": true,
+      "supernovaLevel": 1,
+      "divergence": {
+        "hypeScore": 52,
+        "streetScore": 56,
+        "divergenceDelta": -4,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (52 hype / 56 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://external-preview.redd.it/jZY3Vlts2UR9Sei4OIUZ4G3mC37ilRlvqBWtkU4GKKc.png?auto=webp&s=076407524025f692b6ef6a22c4ec5f3ff798357e",
+          "caption": "r/LocalLLaMA benchmark / architecture attachment",
+          "sourceNetwork": "r/LocalLLaMA"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "rd-street-1y2gdls-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/LocalLLaMA",
+          "author": "r/LocalLLaMA",
+          "text": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
+          "score": 1,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795321653000,
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/"
+        },
+        {
+          "id": "rd-street-1y2hv4o-self-quote",
+          "network": "Reddit",
+          "originLabel": "r/ClaudeAI",
+          "author": "r/ClaudeAI",
+          "text": "[removed]",
+          "score": 3,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795326685000,
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y2hv4o/i_got_tired_of_claude_desktop_not_being_able_to/"
+        }
+      ],
+      "engagementVelocity": {
+        "likesOrUps": 1,
+        "commentsOrReplies": 0,
+        "velocityPerHour": 11,
+        "badgeText": "11/hr · 1 up · 0 comments"
+      },
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/",
+      "publishedAtMs": 1795321653000,
+      "firstSeenAtMs": 1795326309605,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "ECO",
+        "REL"
+      ],
+      "mass": 4.6,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. This tool fixes that. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode. Feel free to take a look, fork it, make your own spin. This tool is Windows only. If you want a Linux version, ask your agent to fork this repo and make it work on Linux. https://github.com/phly95/claude-endpoint-mapper",
+      "architectBrief": {
+        "summary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude…",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when…",
+        "talkingPoints": [
+          "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box…",
+          "It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
+          "Readiness: GA (r/LocalLLaMA)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "HEALTHCARE": "Clinical & Life-Sci (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "FINOPS": "Platform FinOps (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
+          "RETAIL": "Commerce & CX (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "PUBLIC": "Public Sector (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "SAAS": "B2B SaaS Product (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Agent Tooling / MCP",
+        "Autonomous Workflow Runtime"
+      ],
+      "evidenceScope": "single_user_experiment",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "I put together a tool to use non Claude models…",
+        "plainFullTitle": "I put together a tool to use non Claude models with Claude Desktop",
+        "levels": {
+          "1": {
+            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
+            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+          },
+          "2": {
+            "whatHappened": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
+            "whoBuiltIt": "r/LocalLLaMA Engineering Community · Cross-surfaced on r/ClaudeAI",
+            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+          },
+          "3": {
+            "bridgeSummary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. In stack terms, this connects to Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+          },
+          "4": {
+            "roiAndFinOps": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. (Individual benchmark/project — no enterprise unit-cost projection).",
+            "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
+            "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
+          },
+          "5": {
+            "architectureBrief": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode.",
+            "specsAndCaveats": "Feel free to take a look, fork it, make your own spin. This tool is Windows only.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "r/ClaudeAI",
+          "title": "I got tired of Claude Desktop not being able to scrape React sites, so I built a $0.05 serverless headless browser MCP server",
+          "url": "https://www.reddit.com/r/ClaudeAI/comments/1y2hv4o/i_got_tired_of_claude_desktop_not_being_able_to/",
+          "publishedAt": "2026-11-22T05:51:25.000Z",
+          "publishedAtMs": 1795326685000,
+          "isPrimary": false,
+          "relation": "same_event"
+        },
+        {
+          "source": "r/LocalLLaMA",
+          "title": "I put together a tool to use non Claude models with Claude Desktop",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/",
+          "publishedAt": "2026-11-22T04:27:33.000Z",
+          "publishedAtMs": 1795321653000,
+          "isPrimary": false,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795326685000
     },
     {
       "id": "ghrel-claude-code-thubcom2008Repository937253475v21330",
@@ -895,17 +1061,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "I'm Senior software engineer in the US (DMV area), with 15y of experience.",
-          "score": 693,
+          "score": 696,
           "sentiment": "HYPE",
           "publishedAtMs": 1795216712000,
           "url": "https://news.ycombinator.com/item?id=50583761"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 658,
-        "commentsOrReplies": 748,
+        "likesOrUps": 661,
+        "commentsOrReplies": 749,
         "velocityPerHour": 71,
-        "badgeText": "658 pts · 748 comments"
+        "badgeText": "661 pts · 749 comments"
       },
       "url": "https://news.ycombinator.com/item?id=50583761",
       "publishedAtMs": 1795216712000,
@@ -915,7 +1081,7 @@
       "secondarySectors": [
         "ARC"
       ],
-      "mass": 3.6464766024976747,
+      "mass": 3.6476960057468655,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -1034,17 +1200,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "OpenRouter off-boarded three providers, removed 125 endpoints from Zero Data Retention eligibility, and notified potentially affected customers after canary token research on inference providers.",
-          "score": 105,
+          "score": 107,
           "sentiment": "HYPE",
           "publishedAtMs": 1795313654000,
           "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 70,
-        "commentsOrReplies": 28,
+        "likesOrUps": 72,
+        "commentsOrReplies": 29,
         "velocityPerHour": 36,
-        "badgeText": "70 pts · 28 comments"
+        "badgeText": "72 pts · 29 comments"
       },
       "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/",
       "publishedAtMs": 1795313654000,
@@ -1055,7 +1221,7 @@
         "ARC",
         "ECO"
       ],
-      "mass": 3.11377304439546,
+      "mass": 3.1190994554953866,
       "readiness": "GA",
       "risk": "HIGH",
       "finOps": "REDUCER",
@@ -1321,17 +1487,17 @@
           "originLabel": "Hacker News",
           "author": "Hacker News",
           "text": "Legislation and highest-court decisions of the EU and seven European countries, straight from the institutions that publish them, ready for search and AI agents.",
-          "score": 91,
+          "score": 92,
           "sentiment": "VERIFIED",
           "publishedAtMs": 1795294061000,
           "url": "https://www.pandex.io"
         }
       ],
       "engagementVelocity": {
-        "likesOrUps": 56,
+        "likesOrUps": 57,
         "commentsOrReplies": 10,
         "velocityPerHour": 8,
-        "badgeText": "56 pts · 10 comments"
+        "badgeText": "57 pts · 10 comments"
       },
       "url": "https://www.pandex.io",
       "publishedAtMs": 1795294061000,
@@ -1342,7 +1508,7 @@
         "GOV",
         "CRT"
       ],
-      "mass": 3.073376905008711,
+      "mass": 3.076462087774611,
       "readiness": "GA",
       "risk": "LOW",
       "finOps": "NEUTRAL",
@@ -1479,7 +1645,7 @@
       "engagementVelocity": {
         "likesOrUps": 41,
         "commentsOrReplies": 24,
-        "velocityPerHour": 14,
+        "velocityPerHour": 13,
         "badgeText": "41 pts · 24 comments"
       },
       "url": "https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse",
@@ -1748,9 +1914,9 @@
       ],
       "engagementVelocity": {
         "likesOrUps": 18,
-        "commentsOrReplies": 46,
-        "velocityPerHour": 31,
-        "badgeText": "18 pts · 46 comments"
+        "commentsOrReplies": 47,
+        "velocityPerHour": 30,
+        "badgeText": "18 pts · 47 comments"
       },
       "url": "https://www.noemamag.com/the-mythology-of-conscious-ai/",
       "publishedAtMs": 1795313402000,
@@ -1882,7 +2048,7 @@
       "engagementVelocity": {
         "likesOrUps": 575,
         "commentsOrReplies": 33,
-        "velocityPerHour": 24,
+        "velocityPerHour": 23,
         "badgeText": "575 likes · 33 replies"
       },
       "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m",
@@ -2834,8 +3000,8 @@
       "engagementVelocity": {
         "likesOrUps": 1,
         "commentsOrReplies": 0,
-        "velocityPerHour": 12,
-        "badgeText": "12/hr · 1 up · 0 comments"
+        "velocityPerHour": 11,
+        "badgeText": "11/hr · 1 up · 0 comments"
       },
       "url": "https://www.reddit.com/r/singularity/comments/1y2gdsw/i_asked_muse_to_update_avatar_to_look_like_lucia/",
       "publishedAtMs": 1795321673000,
@@ -2923,151 +3089,6 @@
         }
       ],
       "lastUpdatedAtMs": 1795321673000
-    },
-    {
-      "id": "rd-street-1y2gdls",
-      "title": "I put together a tool to use non Claude models with Claude Desktop",
-      "shortLabel": "I put together a tool",
-      "source": "Reddit",
-      "sourceCategory": "REDDIT",
-      "originFeedName": "r/LocalLLaMA",
-      "isDemoSeed": false,
-      "sourceProvenance": [
-        "r/LocalLLaMA"
-      ],
-      "networkFamilies": [
-        "Reddit"
-      ],
-      "canonicalEntity": "ent:put+together+use",
-      "isSupernova": false,
-      "supernovaLevel": 0,
-      "divergence": {
-        "hypeScore": 52,
-        "streetScore": 56,
-        "divergenceDelta": -4,
-        "verdictLabel": "CONSENSUS",
-        "summary": "Balanced signal (52 hype / 56 street) — validate on domain workload before broad rollout."
-      },
-      "mediaItems": [
-        {
-          "type": "image",
-          "url": "https://external-preview.redd.it/jZY3Vlts2UR9Sei4OIUZ4G3mC37ilRlvqBWtkU4GKKc.png?auto=webp&s=076407524025f692b6ef6a22c4ec5f3ff798357e",
-          "caption": "r/LocalLLaMA benchmark / architecture attachment",
-          "sourceNetwork": "r/LocalLLaMA"
-        }
-      ],
-      "streetQuotes": [
-        {
-          "id": "rd-street-1y2gdls-self-quote",
-          "network": "Reddit",
-          "originLabel": "r/LocalLLaMA",
-          "author": "r/LocalLLaMA",
-          "text": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
-          "score": 1,
-          "sentiment": "VERIFIED",
-          "publishedAtMs": 1795321653000,
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/"
-        }
-      ],
-      "engagementVelocity": {
-        "likesOrUps": 1,
-        "commentsOrReplies": 0,
-        "velocityPerHour": 12,
-        "badgeText": "12/hr · 1 up · 0 comments"
-      },
-      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/",
-      "publishedAtMs": 1795321653000,
-      "firstSeenAtMs": 1795326309605,
-      "isLiveInbound": true,
-      "primarySector": "ARC",
-      "secondarySectors": [
-        "ECO",
-        "REL"
-      ],
-      "mass": 2.45,
-      "readiness": "GA",
-      "risk": "LOW",
-      "finOps": "NEUTRAL",
-      "rawAbstract": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. This tool fixes that. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode. Feel free to take a look, fork it, make your own spin. This tool is Windows only. If you want a Linux version, ask your agent to fork this repo and make it work on Linux. https://github.com/phly95/claude-endpoint-mapper",
-      "architectBrief": {
-        "summary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude…",
-        "stackImpact": [
-          "ARC Pipeline",
-          "AI Gateway / Router",
-          "Observability & EvalOps"
-        ],
-        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
-        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
-      },
-      "cSuiteBrief": {
-        "headlineSoWhat": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when…",
-        "talkingPoints": [
-          "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box…",
-          "It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
-          "Readiness: GA (r/LocalLLaMA)."
-        ],
-        "industryLens": {
-          "BANKING": "Financial Services (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "HEALTHCARE": "Clinical & Life-Sci (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "FINOPS": "Platform FinOps (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
-          "RETAIL": "Commerce & CX (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "PUBLIC": "Public Sector (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — maintains neutral unit token economics (compliance posture: not assessed in source).",
-          "SAAS": "B2B SaaS Product (I put together a tool): I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when… — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
-        }
-      },
-      "affectedEnterpriseStacks": [
-        "Agent Tooling / MCP",
-        "Autonomous Workflow Runtime"
-      ],
-      "evidenceScope": "single_user_experiment",
-      "verifiedMetrics": [],
-      "literacy": {
-        "plainTitle": "I put together a tool to use non Claude models…",
-        "plainFullTitle": "I put together a tool to use non Claude models with Claude Desktop",
-        "levels": {
-          "1": {
-            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
-            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
-          },
-          "2": {
-            "whatHappened": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
-            "whoBuiltIt": "r/LocalLLaMA Engineering Community",
-            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
-          },
-          "3": {
-            "bridgeSummary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. In stack terms, this connects to Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-          },
-          "4": {
-            "roiAndFinOps": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. (Individual benchmark/project — no enterprise unit-cost projection).",
-            "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
-            "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
-          },
-          "5": {
-            "architectureBrief": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode.",
-            "specsAndCaveats": "Feel free to take a look, fork it, make your own spin. This tool is Windows only.",
-            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
-          }
-        },
-        "glossary": [
-          {
-            "term": "Agentic Tool Use",
-            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-          }
-        ],
-        "generatedBy": "DETERMINISTIC"
-      },
-      "supportingSources": [
-        {
-          "source": "r/LocalLLaMA",
-          "title": "I put together a tool to use non Claude models with Claude Desktop",
-          "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/",
-          "publishedAt": "2026-11-22T04:27:33.000Z",
-          "publishedAtMs": 1795321653000,
-          "isPrimary": false,
-          "relation": "same_event"
-        }
-      ],
-      "lastUpdatedAtMs": 1795321653000
     },
     {
       "id": "rd-street-1y2hpg8",
@@ -3570,7 +3591,7 @@
       "mediaItems": [
         {
           "type": "image",
-          "url": "https://scontent-sea5-1.xx.fbcdn.net/v/t39.2365-6/741888780_1335161144859187_4416712401061192452_n.png?_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa6a2f&_nc_ohc=aXn_6axTxg8Q7kNvwE7ifbj&_nc_oc=AdrYH0SdoOGQKr-076BOgZ-QhcSxfQDE7UIfGcBV515QCjhjJE2rRxEWH3TckCoZNnQ&_nc_zt=14&_nc_ht=scontent-sea5-1.xx&edm=ADsB9xMEAAAA&_nc_gid=kqw0AEt8qAE0nckZEMr73w&oh=00_AQTnRRMS5dwM8AYGljiDhr6JBNUwRDplN965uFqXacnWMw&oe=6B084711",
+          "url": "https://scontent-sea5-1.xx.fbcdn.net/v/t39.2365-6/741888780_1335161144859187_4416712401061192452_n.png?_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa6a2f&_nc_ohc=aXn_6axTxg8Q7kNvwE7ifbj&_nc_oc=AdrYH0SdoOGQKr-076BOgZ-QhcSxfQDE7UIfGcBV515QCjhjJE2rRxEWH3TckCoZNnQ&_nc_zt=14&_nc_ht=scontent-sea5-1.xx&edm=ADsB9xMEAAAA&_nc_gid=NDMpMV0tXi-MT-KWqZORKw&oh=00_AQQuqcP7qt83Vc9VUXI2bHMYttsHjgHmEiRa_FeOtdw6yw&oe=6B084711",
           "caption": "Linked article figure",
           "sourceNetwork": "Hacker News"
         }
@@ -4787,6 +4808,135 @@
       "lastUpdatedAtMs": 1795168800000
     },
     {
+      "id": "x-fx-2123889582303281557",
+      "title": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with…",
+      "shortLabel": "Inkling 2 Mini from…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ollama",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @ollama"
+      ],
+      "networkFamilies": [
+        "X"
+      ],
+      "canonicalEntity": "ent:inkling+ollama+thinkymachines",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 47,
+        "streetScore": 59,
+        "divergenceDelta": -12,
+        "verdictLabel": "SLEEPER GEM",
+        "summary": "Engineer benchmarks (59/100) beat social hype (47/100) — high-ROI under-the-radar infrastructure upgrade."
+      },
+      "mediaItems": [],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123889582303281557-self-quote",
+          "network": "X",
+          "originLabel": "X · @ollama",
+          "author": "X · @ollama",
+          "text": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory.",
+          "score": 152,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795209711000,
+          "url": "https://x.com/ollama/status/2123889582303281557"
+        }
+      ],
+      "url": "https://x.com/ollama/status/2123889582303281557",
+      "publishedAtMs": 1795209711000,
+      "firstSeenAtMs": 1795326706214,
+      "isLiveInbound": true,
+      "primarySector": "REL",
+      "secondarySectors": [
+        "ARC",
+        "INN"
+      ],
+      "mass": 3.2181983321641026,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. Each token loops through its middle layers three times so it reasons deeper at just 5.4B active parameters. Built for coding, agentic workflows such as, computer use, design with strong visual reasoning, and finance tasks. Here’s Inkling 2 Mini playing 2048 by making decisions in real-time 💨 Run it with Ollama fully locally: ollama run inkling-2-mini Run it in Pi: ollama launch pi --model inkling-2-mini Media",
+      "architectBrief": {
+        "summary": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. Each token loops through its middle layers three times so it reasons deeper at just 5.4B active parameters.",
+        "stackImpact": [
+          "REL Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory.",
+        "talkingPoints": [
+          "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory.",
+          "Each token loops through its middle layers three times so it reasons deeper at just 5.4B active parameters.",
+          "Readiness: GA (X · @ollama)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (Inkling 2 Mini from…): Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "HEALTHCARE": "Clinical & Life-Sci (Inkling 2 Mini from…): Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "FINOPS": "Platform FinOps (Inkling 2 Mini from…): Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
+          "RETAIL": "Commerce & CX (Inkling 2 Mini from…): Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "PUBLIC": "Public Sector (Inkling 2 Mini from…): Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "SAAS": "B2B SaaS Product (Inkling 2 Mini from…): Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "LLM Serving & vLLM",
+        "GPU Kernel & Inference Infra",
+        "Agent Tooling / MCP",
+        "Autonomous Workflow Runtime"
+      ],
+      "evidenceScope": "software_release",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17…",
+        "plainFullTitle": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in…",
+        "levels": {
+          "1": {
+            "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory.",
+            "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+          },
+          "2": {
+            "whatHappened": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. Built for coding, self-directed workflows such as, computer use, design with strong visual reasoning, and finance tasks.",
+            "whoBuiltIt": "X · @ollama",
+            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+          },
+          "3": {
+            "bridgeSummary": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. Built for coding, agentic workflows such as, computer use, design with strong visual reasoning, and finance tasks. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+          },
+          "4": {
+            "roiAndFinOps": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. (Operational/market development — no direct token-cost or compute telemetry in source).",
+            "readinessAndRisk": "General release reported by source · LOW Governance Attention. Compliance: Not assessed in source.",
+            "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17… with legal and procurement leads."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. Each token loops through its middle layers three times so it reasons deeper at just 5.4B active parameters.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @ollama) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "X · @ollama",
+          "title": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with…",
+          "url": "https://x.com/ollama/status/2123889582303281557",
+          "publishedAt": "2026-11-20T21:21:51.000Z",
+          "publishedAtMs": 1795209711000,
+          "isPrimary": false,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795209711000
+    },
+    {
       "id": "ghrel-ollama-thubcom2008Repository658928958v04017",
       "title": "Ollama v0.40.17",
       "shortLabel": "Ollama v0.40.17",
@@ -5798,6 +5948,132 @@
       "lastUpdatedAtMs": 1794955386480
     },
     {
+      "id": "x-fx-2123567986565173289",
+      "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+      "shortLabel": "Apology accepted so this was",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @demishassabis",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "X · @demishassabis"
+      ],
+      "networkFamilies": [
+        "X"
+      ],
+      "canonicalEntity": "ent:accepted+apology+sholtodouglas",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 49,
+        "streetScore": 51,
+        "divergenceDelta": -2,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (49 hype / 51 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [],
+      "streetQuotes": [
+        {
+          "id": "x-fx-2123567986565173289-self-quote",
+          "network": "X",
+          "originLabel": "X · @demishassabis",
+          "author": "X · @demishassabis",
+          "text": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "score": 140,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795133036000,
+          "url": "https://x.com/demishassabis/status/2123567986565173289"
+        }
+      ],
+      "url": "https://x.com/demishassabis/status/2123567986565173289",
+      "publishedAtMs": 1795133036000,
+      "firstSeenAtMs": 1795326706214,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "ECO"
+      ],
+      "mass": 3.194983223190855,
+      "readiness": "GA",
+      "risk": "LOW",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
+      "architectBrief": {
+        "summary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+        "talkingPoints": [
+          "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "Amazing work from the Gemini & GDM teams, always great to see folks enjoy our cooking!👨‍🍳🧪",
+          "Readiness: GA (X · @demishassabis)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "HEALTHCARE": "Clinical & Life-Sci (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "FINOPS": "Platform FinOps (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics; prioritize workload benchmarking (compliance posture: not assessed in source).",
+          "RETAIL": "Commerce & CX (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "PUBLIC": "Public Sector (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — maintains neutral unit token economics (compliance posture: not assessed in source).",
+          "SAAS": "B2B SaaS Product (Apology accepted so this was): 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. — evaluate per-tenant unit margins (maintains neutral unit token economics; compliance posture: not assessed in source)."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Enterprise AI Application Layer",
+        "Model Gateway & EvalOps"
+      ],
+      "evidenceScope": "discussion_or_personal",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "🤣 💙 Apology accepted (so this was…",
+        "plainFullTitle": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+          },
+          "2": {
+            "whatHappened": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "whoBuiltIt": "X · @demishassabis",
+            "problemSolved": "Addresses practical workflow friction around 🤣 💙 Apology accepted (so this was @_sholtodouglas then?."
+          },
+          "3": {
+            "bridgeSummary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+          },
+          "4": {
+            "roiAndFinOps": "Personal or community discussion (X · @demishassabis) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
+            "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
+            "clientAdvice": "Read the original discussion directly on X · @demishassabis for first-hand human context."
+          },
+          "5": {
+            "architectureBrief": "Source provides no technical specifications or architecture details. 🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+            "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @demishassabis) — no model weights, API specs, latency figures, or code parameters were published.",
+            "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "X · @demishassabis",
+          "title": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+          "url": "https://x.com/demishassabis/status/2123567986565173289",
+          "publishedAt": "2026-11-20T00:03:56.000Z",
+          "publishedAtMs": 1795133036000,
+          "isPrimary": false,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795133036000
+    },
+    {
       "id": "x-fx-2123519772390215780",
       "title": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.",
       "shortLabel": "Our SVP koraykv believes there",
@@ -5924,6 +6200,752 @@
         }
       ],
       "lastUpdatedAtMs": 1795121541000
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126627v1",
+      "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+      "shortLabel": "RL Post-Training in Diffusion…",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "arXiv"
+      ],
+      "networkFamilies": [
+        "Research"
+      ],
+      "canonicalEntity": "arxiv:2611.26627",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 46,
+        "streetScore": 59,
+        "divergenceDelta": -13,
+        "verdictLabel": "SLEEPER GEM",
+        "summary": "Engineer benchmarks (59/100) beat social hype (46/100) — high-ROI under-the-radar infrastructure upgrade."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://arxiv.org/html/2611.26627v1/shared-shift.png",
+          "caption": "arXiv HTML paper Figure 1",
+          "sourceNetwork": "arXiv"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "arxiv-httparxivorgabs261126627v1-self-quote",
+          "network": "HackerNews",
+          "originLabel": "arXiv",
+          "author": "arXiv",
+          "text": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers.",
+          "score": 120,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795114793000,
+          "url": "https://arxiv.org/abs/2611.26627v1"
+        }
+      ],
+      "url": "https://arxiv.org/abs/2611.26627v1",
+      "publishedAtMs": 1795114793000,
+      "firstSeenAtMs": 1795326706214,
+      "isLiveInbound": true,
+      "primarySector": "SCI",
+      "secondarySectors": [
+        "GOV",
+        "CRT"
+      ],
+      "mass": 3.1514678099309563,
+      "readiness": "RESEARCH",
+      "risk": "MODERATE",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations. To isolate how much of these gains an input-independent shift explains, we probe each RL-tuned model with a deliberately simple parameterization: a fixed set of steering vectors added to the block outputs of the frozen base model. On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned LoRA (0.29M against 18.8M). We fit them to match the velocity predictions of public RL-tuned checkpoints, with no reward in the objective. Although the vectors are identical for every prompt, token, and sampling seed, they recover 90.0-96.3% of the reward gains of six RL-tuned image models, and 89.8% and 111.9% on two RL-tuned video models. Initialized at zero and trained with online RL, the vectors alone exceed the reward gains of weight-based RL on text rendering (OCR) and human preference (PickScore) on SD3.5-M. A constant shift thus suffices for most of the gain of policy-gradient RL post-training: without new input-dependent transformations, it steers the pretrained generator toward what it can already compute.",
+      "architectBrief": {
+        "summary": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them…",
+        "stackImpact": [
+          "SCI Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers.",
+        "talkingPoints": [
+          "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers.",
+          "Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning…",
+          "Readiness: RESEARCH (arXiv)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (RL Post-Training in Diffusion…): Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "HEALTHCARE": "Clinical & Life-Sci (RL Post-Training in Diffusion…): Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "FINOPS": "Platform FinOps (RL Post-Training in Diffusion…): Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. — maintains neutral unit token economics; prioritize workload benchmarking (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "RETAIL": "Commerce & CX (RL Post-Training in Diffusion…): Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "PUBLIC": "Public Sector (RL Post-Training in Diffusion…): Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "SAAS": "B2B SaaS Product (RL Post-Training in Diffusion…): Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. — evaluate per-tenant unit margins (maintains neutral unit token economics; requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation",
+        "Post-Training & EvalOps"
+      ],
+      "evidenceScope": "research_paper",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "RL Post-Training in Diffusion Transformers Is…",
+        "plainFullTitle": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+        "levels": {
+          "1": {
+            "analogy": "Imagine a test kitchen testing a new cooking method side-by-side and publishing the exact measurements so every chef can reproduce the improvement reliably. Specifically, Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers.",
+            "everydayWhy": "Peer-tested research findings translate into more accurate, dependable everyday software."
+          },
+          "2": {
+            "whatHappened": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned lightweight skill add-on (0.29M against 18.8M).",
+            "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+            "problemSolved": "Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations."
+          },
+          "3": {
+            "bridgeSummary": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned LoRA (0.29M against 18.8M). Stack integration: Prototype in isolated R&D harness against domain benchmarks before committing production SLAs."
+          },
+          "4": {
+            "roiAndFinOps": "On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned LoRA (0.29M against 18.8M). (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · MODERATE Governance Attention. Compliance: Not assessed in this study.",
+            "clientAdvice": "Financial Services (RL Post-Training in Diffusion…): Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+          },
+          "5": {
+            "architectureBrief": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations.",
+            "specsAndCaveats": "Although the vectors are identical for every prompt, token, and sampling seed, they recover 90.0-96.3% of the reward gains of six RL-tuned image models, and 89.8% and 111.9% on two RL-tuned video models. (Quality, citation relevance, and grading-criteria evaluation without latency telemetry).",
+            "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "LoRA",
+            "definition": "Low-Rank Adaptation (LoRA) teaches an existing AI model a specialized company skill by training a tiny plug-in layer instead of retraining the entire model from scratch."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "arXiv",
+          "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+          "url": "https://arxiv.org/abs/2611.26627v1",
+          "publishedAt": "2026-11-19T18:59:53.000Z",
+          "publishedAtMs": 1795114793000,
+          "isPrimary": true,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795114793000
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126624v1",
+      "title": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+      "shortLabel": "PlayCraft Designing Engaging…",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "arXiv"
+      ],
+      "networkFamilies": [
+        "Research"
+      ],
+      "canonicalEntity": "arxiv:2611.26624",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 56,
+        "streetScore": 50,
+        "divergenceDelta": 6,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (56 hype / 50 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://arxiv.org/html/2611.26624v1/figures/screenshots/flappy-bird.jpg",
+          "caption": "arXiv HTML paper Figure 1",
+          "sourceNetwork": "arXiv"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "arxiv-httparxivorgabs261126624v1-self-quote",
+          "network": "HackerNews",
+          "originLabel": "arXiv",
+          "author": "arXiv",
+          "text": "Recent AI agents can generate playable games, but these games are not necessarily engaging.",
+          "score": 120,
+          "sentiment": "HYPE",
+          "publishedAtMs": 1795114774000,
+          "url": "https://arxiv.org/abs/2611.26624v1"
+        }
+      ],
+      "url": "https://arxiv.org/abs/2611.26624v1",
+      "publishedAtMs": 1795114774000,
+      "firstSeenAtMs": 1795326706214,
+      "isLiveInbound": true,
+      "primarySector": "ARC",
+      "secondarySectors": [
+        "SCI",
+        "GOV"
+      ],
+      "mass": 3.1514678099309563,
+      "readiness": "RESEARCH",
+      "risk": "MODERATE",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Recent AI agents can generate playable games, but these games are not necessarily engaging. Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning. We propose PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery. Starting from an initial game, PlayCraft alternates between playing and crafting. In the playing stage, a player agent watches the game screen, uses the controls, and pursues the game objective over repeated episodes while retaining memory. After each episode, it reports its progress, outcomes, decisions, and reflections. In the crafting stage, a crafter agent uses these reports to revise the game. It estimates player abilities, predicts performance at different proficiency levels, and compares those predictions with a target learning progression. It diagnoses the game and addresses the gaps by giving players meaningful opportunities to improve through better decisions and execution. We evaluate games in fresh runs with player agents across three intelligence settings, measuring learning gain and learning slope. Compared with the initial games, PlayCraft yields larger learning gains and steeper learning slopes in most games. It also outperforms the baselines on the macro-average of each metric at every intelligence setting.",
+      "architectBrief": {
+        "summary": "Recent AI agents can generate playable games, but these games are not necessarily engaging. Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning.",
+        "stackImpact": [
+          "ARC Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Recent AI agents can generate playable games, but these games are not necessarily engaging.",
+        "talkingPoints": [
+          "Recent AI agents can generate playable games, but these games are not necessarily engaging.",
+          "Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning.",
+          "Readiness: RESEARCH (arXiv)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (PlayCraft Designing Engaging…): Recent AI agents can generate playable games, but these games are not necessarily engaging. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "HEALTHCARE": "Clinical & Life-Sci (PlayCraft Designing Engaging…): Recent AI agents can generate playable games, but these games are not necessarily engaging. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "FINOPS": "Platform FinOps (PlayCraft Designing Engaging…): Recent AI agents can generate playable games, but these games are not necessarily engaging. — maintains neutral unit token economics; prioritize workload benchmarking (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "RETAIL": "Commerce & CX (PlayCraft Designing Engaging…): Recent AI agents can generate playable games, but these games are not necessarily engaging. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "PUBLIC": "Public Sector (PlayCraft Designing Engaging…): Recent AI agents can generate playable games, but these games are not necessarily engaging. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "SAAS": "B2B SaaS Product (PlayCraft Designing Engaging…): Recent AI agents can generate playable games, but these games are not necessarily engaging. — evaluate per-tenant unit margins (maintains neutral unit token economics; requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation",
+        "Agent Tooling / MCP",
+        "Autonomous Workflow Runtime"
+      ],
+      "evidenceScope": "research_paper",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "PlayCraft: Designing Engaging Games from Agent…",
+        "plainFullTitle": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+        "levels": {
+          "1": {
+            "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, Recent digital helpers can generate playable games, but these games are not necessarily engaging.",
+            "everydayWhy": "We propose PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery."
+          },
+          "2": {
+            "whatHappened": "Recent digital helpers can generate playable games, but these games are not necessarily engaging. researchers introduce PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery.",
+            "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+          },
+          "3": {
+            "bridgeSummary": "Recent AI agents can generate playable games, but these games are not necessarily engaging. We propose PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery. In stack terms, this connects to Agentic Tool Use (Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.)"
+          },
+          "4": {
+            "roiAndFinOps": "Recent AI agents can generate playable games, but these games are not necessarily engaging. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · MODERATE Governance Attention. Compliance: Not assessed in this study.",
+            "clientAdvice": "Financial Services (PlayCraft Designing Engaging…): Recent AI agents can generate playable games, but these games are not necessarily engaging. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+          },
+          "5": {
+            "architectureBrief": "Recent AI agents can generate playable games, but these games are not necessarily engaging. Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning. We propose PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery. Starting from an initial game, PlayCraft alternates between playing and crafting.",
+            "specsAndCaveats": "It estimates player abilities, predicts performance at different proficiency levels, and compares those predictions with a target learning progression. It diagnoses the game and addresses the gaps by giving players meaningful opportunities to improve through better decisions and execution.",
+            "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "arXiv",
+          "title": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+          "url": "https://arxiv.org/abs/2611.26624v1",
+          "publishedAt": "2026-11-19T18:59:34.000Z",
+          "publishedAtMs": 1795114774000,
+          "isPrimary": true,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795114774000
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126619v1",
+      "title": "TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming",
+      "shortLabel": "TideCache Efficient Hybrid…",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "arXiv"
+      ],
+      "networkFamilies": [
+        "Research"
+      ],
+      "canonicalEntity": "arxiv:2611.26619",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 54,
+        "streetScore": 58,
+        "divergenceDelta": -4,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (54 hype / 58 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://arxiv.org/html/2611.26619v1/fig_teaser_repartition.png",
+          "caption": "arXiv HTML paper Figure 1",
+          "sourceNetwork": "arXiv"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "arxiv-httparxivorgabs261126619v1-self-quote",
+          "network": "HackerNews",
+          "originLabel": "arXiv",
+          "author": "arXiv",
+          "text": "Hybrid architectures have become mainstream among open-weight language models.",
+          "score": 120,
+          "sentiment": "HYPE",
+          "publishedAtMs": 1795114711000,
+          "url": "https://arxiv.org/abs/2611.26619v1"
+        }
+      ],
+      "url": "https://arxiv.org/abs/2611.26619v1",
+      "publishedAtMs": 1795114711000,
+      "firstSeenAtMs": 1795326706214,
+      "isLiveInbound": true,
+      "primarySector": "ECO",
+      "secondarySectors": [
+        "REL",
+        "SCI"
+      ],
+      "mass": 3.1514678099309563,
+      "readiness": "RESEARCH",
+      "risk": "MODERATE",
+      "finOps": "REDUCER",
+      "rawAbstract": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency. We present TideCache, a serving system on CPU--GPU superchips with three components for allocating GPU memory among caches and managing their residency across GPU and host memory. The Transparent Cache Pool redistributes physical pages among cache components behind fixed virtual addresses, preserving cache layouts and backend interfaces. The Cache Streamer uses computation intervals provided by bounded-state layers to prefetch the next global-attention layer's prefix into GPU slots shared across global-attention layers, reducing GPU residency while overlapping layer-wise transfers with computation. Generated KV remains resident. The Request Scheduler selects resident or streamed execution and triggers capacity adjustments according to request size and queue state. Together, they let HBM released by streaming accommodate other cache components and additional requests. Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+      "architectBrief": {
+        "summary": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency.",
+        "stackImpact": [
+          "ECO Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.",
+        "latencyAndCostNote": "Latency and throughput gains do not automatically establish end-to-end savings — ask: What happens to cost per completed request on your workload?"
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Hybrid architectures have become mainstream among open-weight language models.",
+        "talkingPoints": [
+          "Hybrid architectures have become mainstream among open-weight language models.",
+          "Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency.",
+          "Readiness: RESEARCH (arXiv)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (TideCache Efficient Hybrid…): Hybrid architectures have become mainstream among open-weight language models. — targets lower compute overhead on matching workloads (verify per-request cost empirically) (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "HEALTHCARE": "Clinical & Life-Sci (TideCache Efficient Hybrid…): Hybrid architectures have become mainstream among open-weight language models. — targets lower compute overhead on matching workloads (verify per-request cost empirically) (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "FINOPS": "Platform FinOps (TideCache Efficient Hybrid…): Hybrid architectures have become mainstream among open-weight language models. — targets lower compute overhead on matching workloads (verify per-request cost empirically); prioritize workload benchmarking (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "RETAIL": "Commerce & CX (TideCache Efficient Hybrid…): Hybrid architectures have become mainstream among open-weight language models. — targets lower compute overhead on matching workloads (verify per-request cost empirically) (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "PUBLIC": "Public Sector (TideCache Efficient Hybrid…): Hybrid architectures have become mainstream among open-weight language models. — targets lower compute overhead on matching workloads (verify per-request cost empirically) (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "SAAS": "B2B SaaS Product (TideCache Efficient Hybrid…): Hybrid architectures have become mainstream among open-weight language models. — evaluate per-tenant unit margins (targets lower compute overhead on matching workloads (verify per-request cost empirically); requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "LLM Serving & vLLM",
+        "GPU Kernel & Inference Infra",
+        "Agent Tooling / MCP",
+        "Autonomous Workflow Runtime"
+      ],
+      "evidenceScope": "research_paper",
+      "verifiedMetrics": [
+        {
+          "value": "20–59%",
+          "label": "Latency reduction",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        },
+        {
+          "value": "2.04x",
+          "label": "Task completion speedup",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        },
+        {
+          "value": "1.40–3.05x",
+          "label": "TTFT speedup",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        }
+      ],
+      "literacy": {
+        "plainTitle": "TideCache: Efficient Hybrid AI assistants…",
+        "plainFullTitle": "TideCache: Efficient Hybrid AI assistants Serving with Transparent Cache Management and…",
+        "levels": {
+          "1": {
+            "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity. Specifically, Hybrid architectures have become mainstream among open-weight language models.",
+            "everydayWhy": "Digital tools can respond faster when tasks queue less often, though real savings depend on workload patterns."
+          },
+          "2": {
+            "whatHappened": "Hybrid architectures have become mainstream among open-weight language models. Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token response wait time by 20--59%, and improves agent P50 first-response wait time by 1.40--3.05x compared with SGLang with HiCache.",
+            "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+            "problemSolved": "Introduces TideCache, a serving system on CPU--high-speed computer chips superchips with three components for allocating high-speed computer chips memory among caches and managing their residency across high-speed computer chips and host memory."
+          },
+          "3": {
+            "bridgeSummary": "Hybrid architectures have become mainstream among open-weight language models. Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache. In stack terms, this connects to VRAM, Context Window, TTFT, Agentic Tool Use (Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.)"
+          },
+          "4": {
+            "roiAndFinOps": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache. Latency and throughput gains do not establish end-to-end cost savings — ask: What happens to cost per completed request on your workload?",
+            "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · MODERATE Governance Attention. Compliance: Not assessed in this study.",
+            "clientAdvice": "Before assuming infrastructure savings, test on representative traffic and ask: What happens to cost per completed request on your workload?"
+          },
+          "5": {
+            "architectureBrief": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency. We present TideCache, a serving system on CPU--GPU superchips with three components for allocating GPU memory among caches and managing their residency across GPU and host memory. The Transparent Cache Pool redistributes physical pages among cache components behind fixed virtual addresses, preserving cache layouts and backend interfaces.",
+            "specsAndCaveats": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+            "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "VRAM",
+            "definition": "VRAM (Video RAM) is the ultra-fast memory soldered directly onto an AI graphics chip—the single biggest bottleneck determining how large an AI model you can run."
+          },
+          {
+            "term": "Context Window",
+            "definition": "A Context Window is how much text, code, or video an AI can hold in its head during a single conversation before older details start dropping out."
+          },
+          {
+            "term": "TTFT",
+            "definition": "Time-To-First-Token (TTFT) measures the milliseconds between pressing Enter and seeing the AI’s very first word appear on screen."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "arXiv",
+          "title": "TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming",
+          "url": "https://arxiv.org/abs/2611.26619v1",
+          "publishedAt": "2026-11-19T18:58:31.000Z",
+          "publishedAtMs": 1795114711000,
+          "isPrimary": true,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795114711000
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126617v1",
+      "title": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent Action Learning",
+      "shortLabel": "One Prior Two Dynamics…",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "arXiv"
+      ],
+      "networkFamilies": [
+        "Research"
+      ],
+      "canonicalEntity": "arxiv:2611.26617",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 49,
+        "streetScore": 52,
+        "divergenceDelta": -3,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (49 hype / 52 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://arxiv.org/html/2611.26617v1/paradigm_comp.png",
+          "caption": "arXiv HTML paper Figure 1",
+          "sourceNetwork": "arXiv"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "arxiv-httparxivorgabs261126617v1-self-quote",
+          "network": "HackerNews",
+          "originLabel": "arXiv",
+          "author": "arXiv",
+          "text": "Videos reveal how the world changes, but rarely the actions that cause those changes.",
+          "score": 120,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795114694000,
+          "url": "https://arxiv.org/abs/2611.26617v1"
+        }
+      ],
+      "url": "https://arxiv.org/abs/2611.26617v1",
+      "publishedAtMs": 1795114694000,
+      "firstSeenAtMs": 1795326706214,
+      "isLiveInbound": true,
+      "primarySector": "SCI",
+      "secondarySectors": [
+        "GOV",
+        "CRT"
+      ],
+      "mass": 3.1514678099309563,
+      "readiness": "RESEARCH",
+      "risk": "MODERATE",
+      "finOps": "NEUTRAL",
+      "rawAbstract": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch. We ask whether a pretrained video generator can instead provide the prior for both inverse and forward dynamics. We introduce O$^{2}$LaF, built on a simple principle: one prior, two dynamics. We initialize both models from the same pretrained video DiT and adapt them to their distinct roles: a feed-forward transition encoder with learnable action queries for inverse dynamics, and a causal, action-conditioned video generator for forward dynamics. By controlling information access and optimizing both dynamics end-to-end through a compact bottleneck, O$^{2}$LaF learns transferable actions from unlabeled videos. Across navigation and robotic manipulation, O$^{2}$LaF sets a new state of the art in few-shot action probing and enables stronger zero-shot action transfer across visual contexts and embodiments. Beyond generative video priors, we further extend our framework to predictive representation priors such as V-JEPA2, achieving competitive performance. Our findings suggest a broader paradigm for latent-action learning: repurposing pretrained video models to discover transferable actions and predict their consequences.",
+      "architectBrief": {
+        "summary": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch.",
+        "stackImpact": [
+          "SCI Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Videos reveal how the world changes, but rarely the actions that cause those changes.",
+        "talkingPoints": [
+          "Videos reveal how the world changes, but rarely the actions that cause those changes.",
+          "Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch.",
+          "Readiness: RESEARCH (arXiv)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (One Prior Two Dynamics…): Videos reveal how the world changes, but rarely the actions that cause those changes. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "HEALTHCARE": "Clinical & Life-Sci (One Prior Two Dynamics…): Videos reveal how the world changes, but rarely the actions that cause those changes. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "FINOPS": "Platform FinOps (One Prior Two Dynamics…): Videos reveal how the world changes, but rarely the actions that cause those changes. — maintains neutral unit token economics; prioritize workload benchmarking (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "RETAIL": "Commerce & CX (One Prior Two Dynamics…): Videos reveal how the world changes, but rarely the actions that cause those changes. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "PUBLIC": "Public Sector (One Prior Two Dynamics…): Videos reveal how the world changes, but rarely the actions that cause those changes. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source)).",
+          "SAAS": "B2B SaaS Product (One Prior Two Dynamics…): Videos reveal how the world changes, but rarely the actions that cause those changes. — evaluate per-tenant unit margins (maintains neutral unit token economics; requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation"
+      ],
+      "evidenceScope": "research_paper",
+      "verifiedMetrics": [],
+      "literacy": {
+        "plainTitle": "One Prior, Two Dynamics: Repurposing Video…",
+        "plainFullTitle": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent…",
+        "levels": {
+          "1": {
+            "analogy": "Imagine a test kitchen testing a new cooking method side-by-side and publishing the exact measurements so every chef can reproduce the improvement reliably. Specifically, Videos reveal how the world changes, but rarely the actions that cause those changes.",
+            "everydayWhy": "Peer-tested research findings translate into more accurate, dependable everyday software."
+          },
+          "2": {
+            "whatHappened": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch.",
+            "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+            "problemSolved": "Provides reproducible empirical benchmarks and architectural methods that downstream engineering teams can evaluate against current baselines."
+          },
+          "3": {
+            "bridgeSummary": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch. Stack integration: Prototype in isolated R&D harness against domain benchmarks before committing production SLAs."
+          },
+          "4": {
+            "roiAndFinOps": "Videos reveal how the world changes, but rarely the actions that cause those changes. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · MODERATE Governance Attention. Compliance: Not assessed in this study.",
+            "clientAdvice": "Financial Services (One Prior Two Dynamics…): Videos reveal how the world changes, but rarely the actions that cause those changes. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+          },
+          "5": {
+            "architectureBrief": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch. We ask whether a pretrained video generator can instead provide the prior for both inverse and forward dynamics. We introduce O$^{2}$LaF, built on a simple principle: one prior, two dynamics.",
+            "specsAndCaveats": "By controlling information access and optimizing both dynamics end-to-end through a compact bottleneck, O$^{2}$LaF learns transferable actions from unlabeled videos.",
+            "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+          }
+        },
+        "glossary": [],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "arXiv",
+          "title": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent Action Learning",
+          "url": "https://arxiv.org/abs/2611.26617v1",
+          "publishedAt": "2026-11-19T18:58:14.000Z",
+          "publishedAtMs": 1795114694000,
+          "isPrimary": true,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795114694000
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126613v1",
+      "title": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
+      "shortLabel": "AgentRoboCritic Understanding…",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "isDemoSeed": false,
+      "sourceProvenance": [
+        "arXiv"
+      ],
+      "networkFamilies": [
+        "Research"
+      ],
+      "canonicalEntity": "arxiv:2611.26613",
+      "isSupernova": false,
+      "supernovaLevel": 0,
+      "divergence": {
+        "hypeScore": 54,
+        "streetScore": 52,
+        "divergenceDelta": 2,
+        "verdictLabel": "CONSENSUS",
+        "summary": "Balanced signal (54 hype / 52 street) — validate on domain workload before broad rollout."
+      },
+      "mediaItems": [
+        {
+          "type": "image",
+          "url": "https://arxiv.org/html/2611.26613v1/teaser_figure.png",
+          "caption": "arXiv HTML paper Figure 1",
+          "sourceNetwork": "arXiv"
+        }
+      ],
+      "streetQuotes": [
+        {
+          "id": "arxiv-httparxivorgabs261126613v1-self-quote",
+          "network": "HackerNews",
+          "originLabel": "arXiv",
+          "author": "arXiv",
+          "text": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives.",
+          "score": 120,
+          "sentiment": "VERIFIED",
+          "publishedAtMs": 1795114645000,
+          "url": "https://arxiv.org/abs/2611.26613v1"
+        }
+      ],
+      "url": "https://arxiv.org/abs/2611.26613v1",
+      "publishedAtMs": 1795114645000,
+      "firstSeenAtMs": 1795326706214,
+      "isLiveInbound": true,
+      "primarySector": "GOV",
+      "secondarySectors": [
+        "REL",
+        "ECO"
+      ],
+      "mass": 3.1514678099309563,
+      "readiness": "RESEARCH",
+      "risk": "HIGH",
+      "finOps": "INTENSIVE",
+      "rawAbstract": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail. In this paper, we present a systematic action-level analysis of frontier agents on direct robot control across 12 manipulation benchmarks. We introduce AgentRoboCritic, an intent-grounded critique framework in which the policy agent states a local intent alongside each action, and a critic evaluates the action's outcome and failure mode against this intent. Our action-level analysis demonstrates the promising capabilities of frontier agents on direct robot control, including closed-loop recovery from local execution failures, reliable semantic grounding across diverse scenes, and strong zero-shot manipulation without task-specific adaptation. It also identifies their current limitations, including task-relevant physical execution bottlenecks such as grasping and alignment, and uneven recovery across failure modes. Finally, we validate our critic on a 400-action human-annotated benchmark and release a dataset of 12,844 annotated actions alongside a fine-tuned open-source critic, Muse-Glimmer-30B, whose failure-mode accuracy rises from 32.58% to 74.24%, enabling low-cost action-level analysis.",
+      "architectBrief": {
+        "summary": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they…",
+        "stackImpact": [
+          "GOV Pipeline",
+          "AI Gateway / Router",
+          "Observability & EvalOps"
+        ],
+        "integrationPattern": "Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.",
+        "latencyAndCostNote": "Validate task completion accuracy and per-workflow unit economics against current baseline."
+      },
+      "cSuiteBrief": {
+        "headlineSoWhat": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives.",
+        "talkingPoints": [
+          "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level…",
+          "However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail.",
+          "Readiness: RESEARCH (arXiv)."
+        ],
+        "industryLens": {
+          "BANKING": "Financial Services (AgentRoboCritic Understanding…): Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. — requires strict FinOps quota guardrails on multi-turn loops (elevated operational risk noted; security & compliance require independent review).",
+          "HEALTHCARE": "Clinical & Life-Sci (AgentRoboCritic Understanding…): Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. — requires strict FinOps quota guardrails on multi-turn loops (elevated operational risk noted; security & compliance require independent review).",
+          "FINOPS": "Platform FinOps (AgentRoboCritic Understanding…): Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. — requires strict FinOps quota guardrails on multi-turn loops; prioritize workload benchmarking (elevated operational risk noted; security & compliance require independent review).",
+          "RETAIL": "Commerce & CX (AgentRoboCritic Understanding…): Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. — requires strict FinOps quota guardrails on multi-turn loops (elevated operational risk noted; security & compliance require independent review).",
+          "PUBLIC": "Public Sector (AgentRoboCritic Understanding…): Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. — requires strict FinOps quota guardrails on multi-turn loops (elevated operational risk noted; security & compliance require independent review).",
+          "SAAS": "B2B SaaS Product (AgentRoboCritic Understanding…): Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. — evaluate per-tenant unit margins (requires strict FinOps quota guardrails on multi-turn loops; elevated operational risk noted; security & compliance require independent review)."
+        }
+      },
+      "affectedEnterpriseStacks": [
+        "Computer Vision & Diffusion",
+        "Multimodal Generation",
+        "Agent Tooling / MCP",
+        "Autonomous Workflow Runtime"
+      ],
+      "evidenceScope": "research_paper",
+      "verifiedMetrics": [
+        {
+          "value": "32.58–74.24%",
+          "label": "Reported accuracy",
+          "quote": "d actions alongside a fine-tuned open-source critic, Muse-Glimmer-30B, whose failure-mode accuracy rises from 32.58% to 74.24%, enabling low-cost action-level analysis.",
+          "subject": "AgentRoboCritic",
+          "isFeatured": true
+        }
+      ],
+      "literacy": {
+        "plainTitle": "AgentRoboCritic: Understanding the Capability…",
+        "plainFullTitle": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
+        "levels": {
+          "1": {
+            "analogy": "Picture a hospital or airport safety checkpoint with tamper-proof ID badges and a clear visitor logbook before anyone enters restricted rooms. Specifically, Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives.",
+            "everydayWhy": "Personal data, private records, and workplace accounts stay protected as automated software takes on bigger tasks."
+          },
+          "2": {
+            "whatHappened": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail.",
+            "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+            "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+          },
+          "3": {
+            "bridgeSummary": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail. In stack terms, this connects to LoRA, Agentic Tool Use (Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.)"
+          },
+          "4": {
+            "roiAndFinOps": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+            "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · HIGH Governance Attention. Compliance: Not assessed in this study.",
+            "clientAdvice": "Financial Services (AgentRoboCritic Understanding…): Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. — requires strict FinOps quota guardrails on multi-turn loops (elevated operational risk noted; security & compliance require independent review)."
+          },
+          "5": {
+            "architectureBrief": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail. In this paper, we present a systematic action-level analysis of frontier agents on direct robot control across 12 manipulation benchmarks.",
+            "specsAndCaveats": "Our action-level analysis demonstrates the promising capabilities of frontier agents on direct robot control, including closed-loop recovery from local execution failures, reliable semantic grounding across diverse scenes, and strong zero-shot manipulation without task-specific adaptation.",
+            "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+          }
+        },
+        "glossary": [
+          {
+            "term": "LoRA",
+            "definition": "Low-Rank Adaptation (LoRA) teaches an existing AI model a specialized company skill by training a tiny plug-in layer instead of retraining the entire model from scratch."
+          },
+          {
+            "term": "Agentic Tool Use",
+            "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+          }
+        ],
+        "generatedBy": "DETERMINISTIC"
+      },
+      "supportingSources": [
+        {
+          "source": "arXiv",
+          "title": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
+          "url": "https://arxiv.org/abs/2611.26613v1",
+          "publishedAt": "2026-11-19T18:57:25.000Z",
+          "publishedAtMs": 1795114645000,
+          "isPrimary": true,
+          "relation": "same_event"
+        }
+      ],
+      "lastUpdatedAtMs": 1795114645000
     },
     {
       "id": "hf-2611.26239",
@@ -7381,6 +8403,41 @@
       ],
       "generatedBy": "OLLAMA"
     },
+    "rd-street-1y2gdls": {
+      "plainTitle": "I put together a tool to use non Claude models…",
+      "plainFullTitle": "I put together a tool to use non Claude models with Claude Desktop",
+      "levels": {
+        "1": {
+          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
+          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+        },
+        "2": {
+          "whatHappened": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
+          "whoBuiltIt": "r/LocalLLaMA Engineering Community · Cross-surfaced on r/ClaudeAI",
+          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+        },
+        "3": {
+          "bridgeSummary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. In stack terms, this connects to Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
+        },
+        "4": {
+          "roiAndFinOps": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. (Individual benchmark/project — no enterprise unit-cost projection).",
+          "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
+          "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
+        },
+        "5": {
+          "architectureBrief": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode.",
+          "specsAndCaveats": "Feel free to take a look, fork it, make your own spin. This tool is Windows only.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
     "ghrel-claude-code-thubcom2008Repository937253475v21330": {
       "plainTitle": "Claude Code v2.1.330",
       "plainFullTitle": "Claude Code v2.1.330",
@@ -8039,41 +9096,6 @@
       "glossary": [],
       "generatedBy": "DETERMINISTIC"
     },
-    "rd-street-1y2gdls": {
-      "plainTitle": "I put together a tool to use non Claude models…",
-      "plainFullTitle": "I put together a tool to use non Claude models with Claude Desktop",
-      "levels": {
-        "1": {
-          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway.",
-          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
-        },
-        "2": {
-          "whatHappened": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop.",
-          "whoBuiltIt": "r/LocalLLaMA Engineering Community",
-          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
-        },
-        "3": {
-          "bridgeSummary": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. In stack terms, this connects to Agentic Tool Use (Canary behind enterprise AI gateway with audit logging and domain accuracy assertions.)"
-        },
-        "4": {
-          "roiAndFinOps": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. (Individual benchmark/project — no enterprise unit-cost projection).",
-          "readinessAndRisk": "Single-User / Local Hardware Experiment (reproduce locally before team reliance) · Independent multi-hardware verification not yet established. Compliance: Not assessed in source.",
-          "clientAdvice": "If this offline or local workflow matches a need on your team, reproduce the run on target hardware and measure latency and accuracy directly."
-        },
-        "5": {
-          "architectureBrief": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. It patches Claude Desktop to support those extra models in gateway mode.",
-          "specsAndCaveats": "Feel free to take a look, fork it, make your own spin. This tool is Windows only.",
-          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
-        }
-      },
-      "glossary": [
-        {
-          "term": "Agentic Tool Use",
-          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
-        }
-      ],
-      "generatedBy": "DETERMINISTIC"
-    },
     "bsky-simonwillison.net-3n2nhnbueh22q": {
       "plainTitle": "The most useful thing about the pelican riding…",
       "plainFullTitle": "The most useful thing about the pelican riding a bicycle test continues to be illustrating the…",
@@ -8367,6 +9389,36 @@
       "glossary": [],
       "generatedBy": "DETERMINISTIC"
     },
+    "x-fx-2123889582303281557": {
+      "plainTitle": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17…",
+      "plainFullTitle": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in…",
+      "levels": {
+        "1": {
+          "analogy": "Think of a master carpenter having an attentive apprentice who lays out blueprints, measures every board twice, and checks that cabinet doors close cleanly before anything is nailed down. Specifically, Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory.",
+          "everydayWhy": "Software teams ship bug fixes and useful new features faster with fewer broken updates."
+        },
+        "2": {
+          "whatHappened": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. Built for coding, self-directed workflows such as, computer use, design with strong visual reasoning, and finance tasks.",
+          "whoBuiltIt": "X · @ollama",
+          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+        },
+        "3": {
+          "bridgeSummary": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. Built for coding, agentic workflows such as, computer use, design with strong visual reasoning, and finance tasks. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+        },
+        "4": {
+          "roiAndFinOps": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. (Operational/market development — no direct token-cost or compute telemetry in source).",
+          "readinessAndRisk": "General release reported by source · LOW Governance Attention. Compliance: Not assessed in source.",
+          "clientAdvice": "For Banking & FinServ: track vendor, regulatory, and counterparty implications of Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17… with legal and procurement leads."
+        },
+        "5": {
+          "architectureBrief": "Source provides no technical specifications or architecture details. Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with 32GB+ memory. Each token loops through its middle layers three times so it reasons deeper at just 5.4B active parameters.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @ollama) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
     "lab-openai-naicombusinesscustomer-storieshebbia": {
       "plainTitle": "Hebbia sees improvements in financial research with GPT-6 Astra",
       "plainFullTitle": "Hebbia sees improvements in financial research with GPT-6 Astra",
@@ -8499,6 +9551,222 @@
         }
       },
       "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "x-fx-2123567986565173289": {
+      "plainTitle": "🤣 💙 Apology accepted (so this was…",
+      "plainFullTitle": "🤣 💙 Apology accepted (so this was @_sholtodouglas then?",
+      "levels": {
+        "1": {
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "everydayWhy": "Routine reading, coordination, and problem-solving work finishes faster with higher consistency."
+        },
+        "2": {
+          "whatHappened": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "whoBuiltIt": "X · @demishassabis",
+          "problemSolved": "Addresses practical workflow friction around 🤣 💙 Apology accepted (so this was @_sholtodouglas then?."
+        },
+        "3": {
+          "bridgeSummary": "😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box. Non-technical market/policy update — no developer SDKs, model parameters, or software architecture specs are included in the source."
+        },
+        "4": {
+          "roiAndFinOps": "Personal or community discussion (X · @demishassabis) — no software ROI, infrastructure cost projection, or technical benchmark applies.",
+          "readinessAndRisk": "Community / Personal Discussion Thread (no software artifact or enterprise rollout implied) — read the linked thread directly rather than treating it as an engineering or financial specification. Compliance: Not assessed in source.",
+          "clientAdvice": "Read the original discussion directly on X · @demishassabis for first-hand human context."
+        },
+        "5": {
+          "architectureBrief": "Source provides no technical specifications or architecture details. 🤣 💙 Apology accepted (so this was @_sholtodouglas then? 😅 ), but I think you missed checking the 'Underestimated the cracked Google DeepMind team' box.",
+          "specsAndCaveats": "Non-engineering business, policy, or commentary signal (X · @demishassabis) — no model weights, API specs, latency figures, or code parameters were published.",
+          "streetConsensus": "Awaiting independent coverage confirmation (newly indexed publication)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "arxiv-httparxivorgabs261126627v1": {
+      "plainTitle": "RL Post-Training in Diffusion Transformers Is…",
+      "plainFullTitle": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+      "levels": {
+        "1": {
+          "analogy": "Imagine a test kitchen testing a new cooking method side-by-side and publishing the exact measurements so every chef can reproduce the improvement reliably. Specifically, Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers.",
+          "everydayWhy": "Peer-tested research findings translate into more accurate, dependable everyday software."
+        },
+        "2": {
+          "whatHappened": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned lightweight skill add-on (0.29M against 18.8M).",
+          "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+          "problemSolved": "Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations."
+        },
+        "3": {
+          "bridgeSummary": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned LoRA (0.29M against 18.8M). Stack integration: Prototype in isolated R&D harness against domain benchmarks before committing production SLAs."
+        },
+        "4": {
+          "roiAndFinOps": "On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned LoRA (0.29M against 18.8M). (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · MODERATE Governance Attention. Compliance: Not assessed in this study.",
+          "clientAdvice": "Financial Services (RL Post-Training in Diffusion…): Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+        },
+        "5": {
+          "architectureBrief": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations.",
+          "specsAndCaveats": "Although the vectors are identical for every prompt, token, and sampling seed, they recover 90.0-96.3% of the reward gains of six RL-tuned image models, and 89.8% and 111.9% on two RL-tuned video models. (Quality, citation relevance, and grading-criteria evaluation without latency telemetry).",
+          "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "LoRA",
+          "definition": "Low-Rank Adaptation (LoRA) teaches an existing AI model a specialized company skill by training a tiny plug-in layer instead of retraining the entire model from scratch."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "arxiv-httparxivorgabs261126624v1": {
+      "plainTitle": "PlayCraft: Designing Engaging Games from Agent…",
+      "plainFullTitle": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+      "levels": {
+        "1": {
+          "analogy": "Imagine having an organized research librarian who reads through long folders of notes in seconds and hands back a clear, structured checklist ready for action. Specifically, Recent digital helpers can generate playable games, but these games are not necessarily engaging.",
+          "everydayWhy": "We propose PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery."
+        },
+        "2": {
+          "whatHappened": "Recent digital helpers can generate playable games, but these games are not necessarily engaging. researchers introduce PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery.",
+          "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+        },
+        "3": {
+          "bridgeSummary": "Recent AI agents can generate playable games, but these games are not necessarily engaging. We propose PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery. In stack terms, this connects to Agentic Tool Use (Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.)"
+        },
+        "4": {
+          "roiAndFinOps": "Recent AI agents can generate playable games, but these games are not necessarily engaging. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · MODERATE Governance Attention. Compliance: Not assessed in this study.",
+          "clientAdvice": "Financial Services (PlayCraft Designing Engaging…): Recent AI agents can generate playable games, but these games are not necessarily engaging. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+        },
+        "5": {
+          "architectureBrief": "Recent AI agents can generate playable games, but these games are not necessarily engaging. Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning. We propose PlayCraft, an automated framework that uses a vision-based agent to play games and draws on its detailed play experience to revise them for mastery. Starting from an initial game, PlayCraft alternates between playing and crafting.",
+          "specsAndCaveats": "It estimates player abilities, predicts performance at different proficiency levels, and compares those predictions with a target learning progression. It diagnoses the game and addresses the gaps by giving players meaningful opportunities to improve through better decisions and execution.",
+          "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "arxiv-httparxivorgabs261126619v1": {
+      "plainTitle": "TideCache: Efficient Hybrid AI assistants…",
+      "plainFullTitle": "TideCache: Efficient Hybrid AI assistants Serving with Transparent Cache Management and…",
+      "levels": {
+        "1": {
+          "analogy": "Think of switching a building from hot, power-hungry halogen bulbs to modern LED lighting—you get the same bright workspace while using a fraction of the electricity. Specifically, Hybrid architectures have become mainstream among open-weight language models.",
+          "everydayWhy": "Digital tools can respond faster when tasks queue less often, though real savings depend on workload patterns."
+        },
+        "2": {
+          "whatHappened": "Hybrid architectures have become mainstream among open-weight language models. Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token response wait time by 20--59%, and improves agent P50 first-response wait time by 1.40--3.05x compared with SGLang with HiCache.",
+          "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+          "problemSolved": "Introduces TideCache, a serving system on CPU--high-speed computer chips superchips with three components for allocating high-speed computer chips memory among caches and managing their residency across high-speed computer chips and host memory."
+        },
+        "3": {
+          "bridgeSummary": "Hybrid architectures have become mainstream among open-weight language models. Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache. In stack terms, this connects to VRAM, Context Window, TTFT, Agentic Tool Use (Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.)"
+        },
+        "4": {
+          "roiAndFinOps": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache. Latency and throughput gains do not establish end-to-end cost savings — ask: What happens to cost per completed request on your workload?",
+          "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · MODERATE Governance Attention. Compliance: Not assessed in this study.",
+          "clientAdvice": "Before assuming infrastructure savings, test on representative traffic and ask: What happens to cost per completed request on your workload?"
+        },
+        "5": {
+          "architectureBrief": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency. We present TideCache, a serving system on CPU--GPU superchips with three components for allocating GPU memory among caches and managing their residency across GPU and host memory. The Transparent Cache Pool redistributes physical pages among cache components behind fixed virtual addresses, preserving cache layouts and backend interfaces.",
+          "specsAndCaveats": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "VRAM",
+          "definition": "VRAM (Video RAM) is the ultra-fast memory soldered directly onto an AI graphics chip—the single biggest bottleneck determining how large an AI model you can run."
+        },
+        {
+          "term": "Context Window",
+          "definition": "A Context Window is how much text, code, or video an AI can hold in its head during a single conversation before older details start dropping out."
+        },
+        {
+          "term": "TTFT",
+          "definition": "Time-To-First-Token (TTFT) measures the milliseconds between pressing Enter and seeing the AI’s very first word appear on screen."
+        },
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+        }
+      ],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "arxiv-httparxivorgabs261126617v1": {
+      "plainTitle": "One Prior, Two Dynamics: Repurposing Video…",
+      "plainFullTitle": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent…",
+      "levels": {
+        "1": {
+          "analogy": "Imagine a test kitchen testing a new cooking method side-by-side and publishing the exact measurements so every chef can reproduce the improvement reliably. Specifically, Videos reveal how the world changes, but rarely the actions that cause those changes.",
+          "everydayWhy": "Peer-tested research findings translate into more accurate, dependable everyday software."
+        },
+        "2": {
+          "whatHappened": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch.",
+          "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+          "problemSolved": "Provides reproducible empirical benchmarks and architectural methods that downstream engineering teams can evaluate against current baselines."
+        },
+        "3": {
+          "bridgeSummary": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch. Stack integration: Prototype in isolated R&D harness against domain benchmarks before committing production SLAs."
+        },
+        "4": {
+          "roiAndFinOps": "Videos reveal how the world changes, but rarely the actions that cause those changes. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · MODERATE Governance Attention. Compliance: Not assessed in this study.",
+          "clientAdvice": "Financial Services (One Prior Two Dynamics…): Videos reveal how the world changes, but rarely the actions that cause those changes. — maintains neutral unit token economics (requires human-in-the-loop review before autonomous actions (compliance: not assessed in source))."
+        },
+        "5": {
+          "architectureBrief": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch. We ask whether a pretrained video generator can instead provide the prior for both inverse and forward dynamics. We introduce O$^{2}$LaF, built on a simple principle: one prior, two dynamics.",
+          "specsAndCaveats": "By controlling information access and optimizing both dynamics end-to-end through a compact bottleneck, O$^{2}$LaF learns transferable actions from unlabeled videos.",
+          "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+        }
+      },
+      "glossary": [],
+      "generatedBy": "DETERMINISTIC"
+    },
+    "arxiv-httparxivorgabs261126613v1": {
+      "plainTitle": "AgentRoboCritic: Understanding the Capability…",
+      "plainFullTitle": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
+      "levels": {
+        "1": {
+          "analogy": "Picture a hospital or airport safety checkpoint with tamper-proof ID badges and a clear visitor logbook before anyone enters restricted rooms. Specifically, Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives.",
+          "everydayWhy": "Personal data, private records, and workplace accounts stay protected as automated software takes on bigger tasks."
+        },
+        "2": {
+          "whatHappened": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail.",
+          "whoBuiltIt": "Academic & Lab Research Authors (arXiv Preprint)",
+          "problemSolved": "Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools."
+        },
+        "3": {
+          "bridgeSummary": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail. In stack terms, this connects to LoRA, Agentic Tool Use (Prototype in isolated R&D harness against domain benchmarks before committing production SLAs.)"
+        },
+        "4": {
+          "roiAndFinOps": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. (Validate task completion accuracy and per-workflow unit economics against current baseline.)",
+          "readinessAndRisk": "R&D Research Horizon (evaluate in isolated benchmark harness before committing SLAs) · HIGH Governance Attention. Compliance: Not assessed in this study.",
+          "clientAdvice": "Financial Services (AgentRoboCritic Understanding…): Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. — requires strict FinOps quota guardrails on multi-turn loops (elevated operational risk noted; security & compliance require independent review)."
+        },
+        "5": {
+          "architectureBrief": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only episode-level success rates, which show neither how these agents succeed nor where they fail. In this paper, we present a systematic action-level analysis of frontier agents on direct robot control across 12 manipulation benchmarks.",
+          "specsAndCaveats": "Our action-level analysis demonstrates the promising capabilities of frontier agents on direct robot control, including closed-loop recovery from local execution failures, reliable semantic grounding across diverse scenes, and strong zero-shot manipulation without task-specific adaptation.",
+          "streetConsensus": "Awaiting peer replication (newly indexed paper/release)"
+        }
+      },
+      "glossary": [
+        {
+          "term": "LoRA",
+          "definition": "Low-Rank Adaptation (LoRA) teaches an existing AI model a specialized company skill by training a tiny plug-in layer instead of retraining the entire model from scratch."
+        },
+        {
+          "term": "Agentic Tool Use",
+          "definition": "Agentic Tool Use means the AI does more than chat—it plans multi-step tasks, runs terminal commands, edits files, and calls software tools on your behalf."
+        }
+      ],
       "generatedBy": "DETERMINISTIC"
     },
     "hf-2611.26239": {

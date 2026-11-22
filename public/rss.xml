@@ -6,7 +6,7 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2026 05:47:08 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 05:51:48 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
       <title>A Proof Has Hit the Riemann Hypothesis</title>
@@ -23,6 +23,14 @@
       <pubDate>Sun, 22 Nov 2026 04:58:47 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
       <description>The Inkling model achieved a 196k token context window using the original weights without additional compact packing on 2x3090 high-speed computer chips, outperforming the initial on llama.cpp. It addresses the need for improved token processing speed and context handling in AI applications, particularly in banking where large volumes of data need to be processed quickly. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2gxo7/inkling_absolutely_rips_200_toks_decode_6700/</description>
+    </item>
+    <item>
+      <title>I put together a tool to use non Claude models with Claude Desktop</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y2gdls&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2gdls&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 04:27:33 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/</description>
     </item>
     <item>
       <title>Claude Code v2.1.330</title>
@@ -183,14 +191,6 @@
       <pubDate>Sun, 22 Nov 2026 04:27:53 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>Active engineering thread in r/singularity (1 upvotes, 0 comments): I asked muse to update avatar to look like Lucia from gta6 as the muse agent and I am surprised with the results. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2gdsw/i_asked_muse_to_update_avatar_to_look_like_lucia/</description>
-    </item>
-    <item>
-      <title>I put together a tool to use non Claude models with Claude Desktop</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2gdls&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2gdls&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 04:27:33 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. It gives you a GUI that allows you to select your models of choice and add them to Claude Desktop. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2gdls/i_put_together_a_tool_to_use_non_claude_models/</description>
     </item>
     <item>
       <title>The most useful thing about the pelican riding a bicycle test continues to be illustrating the…</title>
