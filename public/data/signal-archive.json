@@ -1,9 +1,150 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-22T19:36:08.554Z",
-  "updatedAtMs": 1795376168554,
-  "count": 140,
+  "updatedAtIso": "2026-11-23T01:40:50.315Z",
+  "updatedAtMs": 1795398050315,
+  "count": 165,
   "entries": [
+    {
+      "id": "rd-street-1y2xr78",
+      "title": "Today we're introducing Claude for marketing.",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ClaudeAI",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1y2xr78/today_were_introducing_claude_for_marketing/",
+      "publishedAtMs": 1795375952000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Enter your website and it deploys a team of marketing agents to help you get traffic and users. Try it free google \"tryhoox\""
+    },
+    {
+      "id": "rd-street-1y2xqfz",
+      "title": "GPT 6.2 Astra Confirmed As The Model That Solved Navier-Stokes.",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2xqfz/gpt_62_astra_confirmed_as_the_model_that_solved/",
+      "publishedAtMs": 1795375899000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): GPT 6.2 Astra Confirmed As The Model That Solved Navier-Stokes."
+    },
+    {
+      "id": "rd-street-1y2xnyh",
+      "title": "Run Qwen 3.8 FN with 8x200k streams at 480tk/s @ 6.2k prefill on 4 x 3090 (technically 5x3090) by offloading KV Cache to system RAM",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2xnyh/run_qwen_38_fn_with_8x200k_streams_at_480tks_62k/",
+      "publishedAtMs": 1795375724000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Strata and other engines are great to run a model at decent speeds that doesn't fit in your VRAM. But what if you have just enough VRAM to fit a large model but then no room left for decent context size? I built this experimental overlay…"
+    },
+    {
+      "id": "rd-street-1y2x5o6",
+      "title": "Enable ignore_merges for Inkling 2 by rinpatch · Pull Request #32799 · ggml-org/llama.cpp",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y2x5o6/enable_ignore_merges_for_inkling_2_by_rinpatch/",
+      "publishedAtMs": 1795374452000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "first fixes for Inkling 2 are coming"
+    },
+    {
+      "id": "rd-street-1y2wrmm",
+      "title": "Agentic GraphRAG: built an open-source framework for the Context layer + Agent memory using a 3D-knowledge graph",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y2wrmm/agentic_graphrag_built_an_opensource_framework/",
+      "publishedAtMs": 1795373508000,
+      "archivedAtMs": 1795398050315
+    },
+    {
+      "id": "rd-street-1y2wgg8",
+      "title": "Anthropic employees this morning",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2wgg8/anthropic_employees_this_morning/",
+      "publishedAtMs": 1795372750000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Anthropic employees this morning"
+    },
+    {
+      "id": "rd-street-1y2vc9m",
+      "title": "OpenAI's Chief Scientist Is Expecting An Avalanche of Fundamental AI Breakthroughs In 2027, But Calls For Pacing Further Development",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y2vc9m/openais_chief_scientist_is_expecting_an_avalanche/",
+      "publishedAtMs": 1795369953000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": ">As Soon as 2027 We Could Conceivably See a Similar Avalanche of Fundamental Pretraining Advancements.\""
+    },
+    {
+      "id": "rd-street-1y2ukqs",
+      "title": "Lumen v2.1.0 – Open-source Windows workspace for Ollama (@codebase diffs, offline PDF RAG, Alt+Space spotlight)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y2ukqs/lumen_v210_opensource_windows_workspace_for/",
+      "publishedAtMs": 1795368023000,
+      "archivedAtMs": 1795398050315
+    },
+    {
+      "id": "rd-street-1y2s0co",
+      "title": "Modular SKILL.md rules vs.cursorrules: 281 open-source coding agent workflows (Comparison Table)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y2s0co/modular_skillmd_rules_vs_cursorrules_281/",
+      "publishedAtMs": 1795361518000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Comparing modular SKILL.md rules vs.cursorrules highlights a major trade-off in token economy. While.cursorrules injects entire rulebooks into every chat interaction and degrades model focus, modular SKILL.md files load bounded context…"
+    },
+    {
+      "id": "rd-street-1y2q3j2",
+      "title": "Using local Ollama (qwen2.5-coder:14b + gemma4) as a 0-token \"Judgment Kernel\" and AST diff auditor for coding agents",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y2q3j2/using_local_ollama_qwen25coder14b_gemma4_as_a/",
+      "publishedAtMs": 1795356309000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "We have been experimenting with offloading the heaviest token sinks in agentic coding loops to local Ollama models (\\`qwen2.5-coder:14b\\` for diff security reviews and \\`gemma4\\` as a test-failure Judgment Kernel). When we profiled why…"
+    },
+    {
+      "id": "rd-street-1y2q0yq",
+      "title": "otomode: a skill for unattended runs. Hooks deny every prompt, subagents work in worktrees, it pauses at 85% usage and resumes after the reset",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y2q0yq/otomode_a_skill_for_unattended_runs_hooks_deny/",
+      "publishedAtMs": 1795356106000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "I wanted to leave Claude Code working for a few hours without coming back to either a stuck permission prompt or a pile of unreviewable changes. otomode is the skill I ended up with. The start is the only interactive part. It asks one…"
+    },
+    {
+      "id": "rd-street-1y2pm94",
+      "title": "I put a digital bridge between OpenWeb-UI and Hailo-Ollama, and I need feedback and help!!",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y2pm94/i_put_a_digital_bridge_between_openwebui_and/",
+      "publishedAtMs": 1795354952000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "I run a collection of ***small*** local LLMs on my home network. It is a Raspberry Pi 5 with the Hailo AI Hat 2+. Using this mainly as a self teaching device, I quickly ran into a hard limitation. The pre-compiled HEF models that operate…"
+    },
+    {
+      "id": "hn-50598277",
+      "title": "AI People Are Extremely Rich",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.noahpinion.blog/p/ai-people-are-very-very-very-very",
+      "publishedAtMs": 1795343749000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "What should we think about that? Noah Smith Nov 22, 2026 ∙ Paid As you may have heard, Anthropic had its IPO this past Thursday. At a valuation of $1.5 trillion, it was actually just the second most valuable IPO in history, just behind…"
+    },
     {
       "id": "rd-street-1y2mdo9",
       "title": "“What if AI solved the Riemann Hypothesis but it was incomprehensible to humans?”",
@@ -14,6 +155,56 @@
       "publishedAtMs": 1795343706000,
       "archivedAtMs": 1795376168554,
       "verbatimExcerpt": "I think this shows that the Riemann Hypothesis isn't really solved at all. The point is to find elegant proofs, not just break it down in all possible cases and bash every possible statement. No one was doubting that RH was true, what…"
+    },
+    {
+      "id": "rd-street-1y2m8ui",
+      "title": "[Release] Caphlon-2 (4.52 GiB): Running full 64-layer Qwen 3.8 27B on 6GB VRAM / 8GB MacBooks without distillation (80% GPQA-Diamond)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y2m8ui/release_caphlon2_452_gib_running_full_64layer/",
+      "publishedAtMs": 1795343181000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Hey everyone, We are sharing Caphlon-2, a lightweight 27B model family built to run full 27B reasoning on laptops with 8 GB RAM and older GPUs with 6 GB VRAM. Website and live demo: [ Hugging Face models: [ [ ollama models: [ GitHub repo…",
+      "verifiedMetrics": [
+        {
+          "value": "80.0%",
+          "label": "Source-reported percentage",
+          "quote": "BENCHMARK RESULTS Caphlon-2 (4.52 GiB): \\- GPQA-Diamond: 48 / 60 (80.0%) \\- Halu-270 (Hallucination benchmark): 236 / 270 (87.4%) with ITI steering, 232 / 270 (85.9%) pure \\- EN-40: 32 / 40 (80.0%) \\- Inference speed: 277.95 tok/s prompt processing (pp512) and 16.33 tok/s generation on Tesla T4.",
+          "subject": "Qwen",
+          "isFeatured": true
+        },
+        {
+          "value": "87.4%",
+          "label": "Source-reported percentage",
+          "quote": "BENCHMARK RESULTS Caphlon-2 (4.52 GiB): \\- GPQA-Diamond: 48 / 60 (80.0%) \\- Halu-270 (Hallucination benchmark): 236 / 270 (87.4%) with ITI steering, 232 / 270 (85.9%) pure \\- EN-40: 32 / 40 (80.0%) \\- Inference speed: 277.95 tok/s prompt processing (pp512) and 16.33 tok/s generation on Tesla T4.",
+          "subject": "Qwen",
+          "isFeatured": true
+        },
+        {
+          "value": "85.9%",
+          "label": "Source-reported percentage",
+          "quote": "BENCHMARK RESULTS Caphlon-2 (4.52 GiB): \\- GPQA-Diamond: 48 / 60 (80.0%) \\- Halu-270 (Hallucination benchmark): 236 / 270 (87.4%) with ITI steering, 232 / 270 (85.9%) pure \\- EN-40: 32 / 40 (80.0%) \\- Inference speed: 277.95 tok/s prompt processing (pp512) and 16.33 tok/s generation on Tesla T4.",
+          "subject": "Qwen",
+          "isFeatured": true
+        },
+        {
+          "value": "277.95 prompt tokens/s",
+          "label": "Prompt throughput",
+          "quote": "BENCHMARK RESULTS Caphlon-2 (4.52 GiB): \\- GPQA-Diamond: 48 / 60 (80.0%) \\- Halu-270 (Hallucination benchmark): 236 / 270 (87.4%) with ITI steering, 232 / 270 (85.9%) pure \\- EN-40: 32 / 40 (80.0%) \\- Inference speed: 277.95 tok/s prompt processing (pp512) and 16.33 tok/s generation on Tesla T4.",
+          "context": "Source-reported token generation rate",
+          "subject": "Qwen",
+          "isFeatured": true
+        },
+        {
+          "value": "16.33 generation tokens/s",
+          "label": "Generation throughput",
+          "quote": "BENCHMARK RESULTS Caphlon-2 (4.52 GiB): \\- GPQA-Diamond: 48 / 60 (80.0%) \\- Halu-270 (Hallucination benchmark): 236 / 270 (87.4%) with ITI steering, 232 / 270 (85.9%) pure \\- EN-40: 32 / 40 (80.0%) \\- Inference speed: 277.95 tok/s prompt processing (pp512) and 16.33 tok/s generation on Tesla T4.",
+          "context": "Source-reported token generation rate",
+          "subject": "Qwen",
+          "isFeatured": true
+        }
+      ]
     },
     {
       "id": "rd-street-1y2lwga",
@@ -110,6 +301,24 @@
       "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Gemini 4 Neon ranked a SOLID 1st at livebench"
     },
     {
+      "id": "hn-50597612",
+      "title": "87% of the Anthropic power will come from gas and 11% from coal in 2028",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/",
+      "publishedAtMs": 1795337854000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "A case study of Anthropic's total power use and emissions. We find the company could emit 32 million metric tons of carbon dioxide in 2028. In The AI Gas Rush: Risks and Implications of “Bring Your Own Power”, we dug into how data centers…",
+      "verifiedMetrics": [
+        {
+          "value": "20%",
+          "label": "Source-reported percentage",
+          "quote": "Conversely, we found renewables are much less common than gas for BYOP: we estimate that for current proposals, less than 20% of energy generation will come from renewable sources by 2032."
+        }
+      ]
+    },
+    {
       "id": "rd-street-1y2jmbj",
       "title": "Easy MCP — run Neon / Hydrogen / Astra / Opus on your PC through web AI (free, open source)",
       "source": "Reddit",
@@ -162,6 +371,17 @@
       "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): A Proof Has Hit the Riemann Hypothesis"
     },
     {
+      "id": "hn-50596511",
+      "title": "AI Supply Chain Security: What Canary Tokens Found",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+      "publishedAtMs": 1795324303000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "We seeded two million AI prompts with canary tokens and found three provider breaches, prompt theft, and ignored Zero Data Retention settings. Blog Three breaches, endless leaks: Your AI supply chain needs canaries November 19, 2026 08:00…"
+    },
+    {
       "id": "rd-street-1y2gxo7",
       "title": "Inkling absolutely rips. ~200 tok/s decode, ~6,700 prefill on 2x3090s",
       "source": "Reddit",
@@ -211,6 +431,17 @@
       "verbatimExcerpt": "I wanted to use the other models offered via Tokenharbor (this can be used for local models too) on Claude Desktop after I already added Haiku, but Claude Desktop out of the box blocks non-Claude models when setting a gateway. This tool…"
     },
     {
+      "id": "hn-50595940",
+      "title": "Current Efforts Aren't Enough to Slow the AI Cyber Virus",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.bridgewater.com/research-and-insights/current-efforts-arent-enough-to-slow-the-ai-cyber-virus",
+      "publishedAtMs": 1795318128000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Despite unprecedented efforts to patch vulnerabilities, AI is helping attackers exploit bugs faster than defenders can fix them. With policy responses lagging, we see the pressures lining up for the cyber epidemic to worsen. We don’t have…"
+    },
+    {
       "id": "rd-street-1y2f7wq",
       "title": "Approving an agent's command doesn't limit what it can touch. We added OS sandboxing and real machines broke it 3 times",
       "source": "Reddit",
@@ -231,6 +462,17 @@
       "publishedAtMs": 1795317351000,
       "archivedAtMs": 1795326428097,
       "verbatimExcerpt": "Active engineering thread in r/singularity (15 upvotes, 0 comments): AI-Assisted Proof Claims To Solve Riemann Hypothesis"
+    },
+    {
+      "id": "hn-50595816",
+      "title": "Together.ai: Prompt Leakage for Requests",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026",
+      "publishedAtMs": 1795316847000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "We are notifying customers about a security incident involving a subset of prompts submitted to Together AI’s serverless inference service in June and July 2026. Security event: Prompt leakage for requests in June and July of 2026…"
     },
     {
       "id": "rd-street-1y2evnh",
@@ -1418,6 +1660,17 @@
       "verbatimExcerpt": "Hi all I maintain ENZO, a self-hosted AI workspace. It's Apache-2.0, about 60k lines of strict TypeScript, and it runs on your own provider keys (Groq, OpenRouter, NVIDIA, Hugging Face, Google AI). No ENZO account, no subscription, no…"
     },
     {
+      "id": "vip-willison-monwillisonnet2026Nov20levent-alpoge",
+      "title": "Quoting Levent Alpöge",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/20/levent-alpoge/",
+      "publishedAtMs": 1795192248000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "A quote from Levent Alpöge Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 20th November 2026 I believe I have, working with Claude, discovered a proof of the Riemann…"
+    },
+    {
       "id": "bsky-emollick.bsky.social-3n2qvqp4fts2e",
       "title": "Riemann Hypothesis may have been solved with the help of Claude. “what I saw during the course of progress so amazed me that I believe it…",
       "source": "Bluesky",
@@ -1663,6 +1916,17 @@
       "verbatimExcerpt": "## What's changed - Added a trust dialog warning that says where a folder's hooks are declared - Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load - Added…"
     },
     {
+      "id": "x-fx-2123519772390215780",
+      "title": "Our SVP @koraykv believes there won't be a single test or benchmark that tells us we've reached AGI.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "url": "https://x.com/GoogleDeepMind/status/2123519772390215780",
+      "publishedAtMs": 1795121541000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Instead, progress looks like models becoming less spiky and more reliable across our daily lives. Listen in as he and @fryrsquared discuss the road ahead ↓ Timecodes: 00:00 Introduction 01:26 Evolution of Google DeepMind 04:41 Products as…"
+    },
+    {
       "id": "vip-willison-monwillisonnet2026Nov19postgresql-19",
       "title": "PostgreSQL 19 Released",
       "source": "VIPBlog",
@@ -1694,6 +1958,98 @@
       "publishedAtMs": 1795118442000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Now it can power your apps. Build better voice agents that can reliably understand precise details like letters and numbers, follow instructions, and delegate complex workflows to the backend model of your choice without breaking the flow…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126627v1",
+      "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26627v1",
+      "publishedAtMs": 1795114793000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126624v1",
+      "title": "PlayCraft: Designing Engaging Games from Agent Play Experience",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26624v1",
+      "publishedAtMs": 1795114774000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Recent AI agents can generate playable games, but these games are not necessarily engaging. Mastery is a key source of engagement, yet designing for it requires extensive human play and tuning. We propose PlayCraft, an automated framework…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126619v1",
+      "title": "TideCache: Efficient Hybrid LLM Serving with Transparent Cache Management and Layer-Wise Streaming",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26619v1",
+      "publishedAtMs": 1795114711000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Hybrid architectures have become mainstream among open-weight language models. Their global-attention and bounded-state layers maintain heterogeneous caches whose demands vary with context length and concurrency. We present TideCache, a…",
+      "verifiedMetrics": [
+        {
+          "value": "20–59%",
+          "label": "Latency reduction",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        },
+        {
+          "value": "2.04x",
+          "label": "Task completion speedup",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        },
+        {
+          "value": "1.40–3.05x",
+          "label": "TTFT speedup",
+          "quote": "Implemented in SGLang and evaluated on GB300 and GH200 across seven model/platform configurations, TideCache completes up to 2.04x as many agent turns, reduces overall P50 per-token latency by 20--59%, and improves agent P50 TTFT by 1.40--3.05x compared with SGLang with HiCache.",
+          "context": "vs. SGLang with HiCache · across seven model/platform configurations",
+          "subject": "TideCache",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126617v1",
+      "title": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent Action Learning",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26617v1",
+      "publishedAtMs": 1795114694000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Videos reveal how the world changes, but rarely the actions that cause those changes. Latent action learning recovers such supervision from visual transitions, yet often learns the underlying dynamics largely from scratch. We ask whether…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261126613v1",
+      "title": "AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.26613v1",
+      "publishedAtMs": 1795114645000,
+      "archivedAtMs": 1795398050315,
+      "verbatimExcerpt": "Frontier multimodal language agents such as GPT-6 Astra have demonstrated strong capabilities in controlling robots directly via low-level numerical actions without high-level primitives. However, existing benchmarks report only…",
+      "verifiedMetrics": [
+        {
+          "value": "rose from 32.58% to 74.24%",
+          "label": "Failure-mode accuracy",
+          "quote": "Finally, we validate our critic on a 400-action human-annotated benchmark and release a dataset of 12,844 annotated actions alongside a fine-tuned open-source critic, Muse-Glimmer-30B, whose failure-mode accuracy rises from 32.58% to 74.24%, enabling low-cost action-level analysis.",
+          "context": "Before-and-after transition (after fine-tuning)",
+          "subject": "Muse-Glimmer-30B",
+          "isFeatured": true,
+          "condition": "after fine-tuning"
+        }
+      ]
     },
     {
       "id": "hn-50564366",
@@ -1907,14 +2263,14 @@
         {
           "value": "from 7% to 70%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "context": "Before-and-after transition",
           "isFeatured": false
         },
         {
           "value": "83%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "isFeatured": false
         }
       ]

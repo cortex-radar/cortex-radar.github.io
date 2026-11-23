@@ -6,39 +6,23 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2026 19:36:08 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 01:40:50 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
-      <title>Today we&apos;re introducing Claude for marketing.</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2xr78&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2xr78&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 19:32:32 GMT</pubDate>
+      <title>Progress map for the Lean formalization of Alessandro Masullo&apos;s manuscript</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50605045&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50605045&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 23:12:10 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Enter your website and it deploys a team of marketing agents to help you get traffic and users. Addresses practical workflow friction around Today we&apos;re introducing Claude for marketing. — Upstream (r/ClaudeAI): https://www.reddit.com/r/ClaudeAI/comments/1y2xr78/today_were_introducing_claude_for_marketing/</description>
+      <description>Published on claude.ai (discussed on Hacker News) published &quot;Progress map for the Lean formalization of Alessandro Masullo&apos;s manuscript&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Progress map for the Lean formalization of Alessandro Masullo&apos;s manuscript. — Upstream (Hacker News): https://claude.ai/artifact/CtQyX8qfYAF822bgHJHHE3</description>
     </item>
     <item>
-      <title>Muru: AI-Assisted Rust Server for Python Web Apps</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-httpssimonwillisonnet2026Nov21muru&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-httpssimonwillisonnet2026Nov21muru&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 23:56:28 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Graham Dumpleton, creator of mod_wsgi, has developed Muru, an AI-assisted Rust server designed to serve ASGI and WSGI Python applications. The goal is to provide a robust and efficient solution for running Python web applications, both in development and production, leveraging AI to enhance the process. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/21/muru/</description>
-    </item>
-    <item>
-      <title>Riemann Hypothesis proved.twice independently</title>
-      <link>https://cortex-radar.github.io/?orb=vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-3976c9e6-ac0c-4bf2-92c8-c83510a92539&amp;lens=2</guid>
-      <pubDate>Sat, 21 Nov 2026 05:02:13 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alpöge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper. On DeepSWE, CodeAF finished #1 of ten on the same open model, ahead of Claude Code, at the lowest cost per fix. — Upstream (Swyx · Latent Space): https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/</description>
-    </item>
-    <item>
-      <title>87% of the Anthropic power will come from gas and 11% from coal in 2028</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50597612&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50597612&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 08:57:34 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>A case study of Anthropic&apos;s total power use and emissions. We find the company could emit 32 million metric tons of carbon dioxide in 2028. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;87% of the Anthropic power will come from gas and 11% from coal in 2028&quot; rather than shipping a software tool. — Upstream (Hacker News): https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/</description>
+      <title>A Beginner&apos;s Guide to Local AI with Inkling, Qwen, and Unsloth</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50603845&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50603845&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 21:01:16 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>Set up your own free personal ChatGPT on your PC with Unsloth and Inkling or Qwen. I&apos;m using an RTX 5090 with 32GB computer memory for this setup. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;A Beginner&apos;s Guide to Local AI with Inkling, Qwen, and Unsloth&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth</description>
     </item>
     <item>
       <title>Claude Code v2.1.330</title>
@@ -57,20 +41,12 @@
       <description>OpenAI Codex v0.173.0-alpha.4 · Alpha was published on GitHub (openai/codex). No release notes extracted — see linked release. No release notes extracted — see linked release — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4</description>
     </item>
     <item>
-      <title>Anthropic Announces IPO Closing and Concurrent Private Placement</title>
-      <link>https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-anthropic-httpswwwanthropiccomnewsipo-close&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+      <title>Do Not Accept</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50604959&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50604959&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 23:02:20 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>Anthropic completed its initial public offering and concurrent private placement, raising approximately $119.5 billion. The company aimed to raise capital to support its growth and development. — Upstream (Anthropic News): https://www.anthropic.com/news/ipo-close</description>
-    </item>
-    <item>
-      <title>AI is becoming a disaster for the climate</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50598961&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50598961&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 12:19:46 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>Two new studies reveal the exploding carbon emissions of the AI industry, while Silicon Valley pushes to kill communities’ means of protesting data centers and the impacts on human health mount. Data Centers Already Rival Entire Countries, Study Reveals.&quot; I was less glad to see BAAJA, a permitting reform bill designed to overturn key environmental protections in the name of making it easier for developers to build energy infrastructure and data centers, pass the Senate. — Upstream (Hacker News): https://www.bloodinthemachine.com/p/ai-is-becoming-a-disaster-for-the</description>
+      <description>AI companies are deciding on our future. See what you’re being signed up for. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Do Not Accept&quot; rather than shipping a software tool. — Upstream (Hacker News): https://donotaccept.ai/</description>
     </item>
     <item>
       <title>Ask HN: Are the trades a safe career transition?</title>
@@ -81,6 +57,22 @@
       <description>Hacker News Engineering Community published &quot;Ask HN: Are the trades a safe career transition?&quot;. Open the linked third-party source above for the full upstream breakdown. Im thinking of jumping ship because i dont see much of a future in the career. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50600771</description>
     </item>
     <item>
+      <title>Harvard CS 2881R AI Safety</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50602153&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50602153&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 18:01:54 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>Harvard CS 2881R Fall 2026 — registration and Homework Zero Everyone who wants to be considered for the course must fill out the Fall 2026 course registration form. In-person attendance will be mandatory for students enrolled in the course. Addresses practical workflow friction around Harvard CS 2881R AI Safety. — Upstream (Hacker News): https://boazbk.github.io/mltheoryseminar/</description>
+    </item>
+    <item>
+      <title>Why Are We at the Mercy of the World&apos;s Weirdest Men?</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50603360&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50603360&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 20:04:56 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Published on nytimes.com (discussed on Hacker News) published &quot;Why Are We at the Mercy of the World&apos;s Weirdest Men?&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Why Are We at the Mercy of the World&apos;s Weirdest Men?. — Upstream (Hacker News): https://www.nytimes.com/2026/11/22/opinion/jensen-huang-ai-ethics-cold-war.html</description>
+    </item>
+    <item>
       <title>Human language&apos;s surprising effectiveness at modeling the universe for AI predictions</title>
       <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2seaj2c4c2m&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2seaj2c4c2m&amp;lens=2</guid>
@@ -89,28 +81,36 @@
       <description>The post claims that human language has proven to be surprisingly effective in modeling the universe, allowing AI systems to predict the next word in a sentence. It addresses the challenge of making AI systems understand and predict human language, which is crucial for natural language processing applications. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m</description>
     </item>
     <item>
-      <title>AI People Are Extremely Rich</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50598277&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50598277&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 10:35:49 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Published on noahpinion.blog (discussed on Hacker News) published &quot;AI People Are Extremely Rich&quot;. Open the linked third-party source above for the full upstream breakdown. Andrew Benson had a good breakdown of exactly who would get what, if the company hit its initial valuation target of $2 trillion: Who actually gets rich if Anthropic lists at $2 trillion?… - $199B for the 7 controlling co-founders, about 10% - $28B for Ben Mann, if his stake. — Upstream (Hacker News): https://www.noahpinion.blog/p/ai-people-are-very-very-very-very</description>
+      <title>AI is becoming a disaster for the climate</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50598961&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50598961&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 12:19:46 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>Two new studies reveal the exploding carbon emissions of the AI industry, while Silicon Valley pushes to kill communities’ means of protesting data centers and the impacts on human health mount. Data Centers Already Rival Entire Countries, Study Reveals.&quot; I was less glad to see BAAJA, a permitting reform bill designed to overturn key environmental protections in the name of making it easier for developers to build energy infrastructure and data centers, pass the Senate. — Upstream (Hacker News): https://www.bloodinthemachine.com/p/ai-is-becoming-a-disaster-for-the</description>
     </item>
     <item>
-      <title>AI Supply Chain Security: What Canary Tokens Found</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50596511&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50596511&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 05:11:43 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>We seeded two million AI prompts with canary tokens and found three provider breaches, prompt theft, and ignored Zero Data Retention settings. Blog Three breaches, endless leaks: Your AI supply chain needs canaries November 19, 2026 08:00 AM 15 min read HD Moore Table of Contents Following live answering work data Privacy settings and retention policies were ignored HD Moore, Chief Research Officer, will be regularly sharing. — Upstream (Hacker News): https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens</description>
+      <title>0rwx – A simple model of AI usage, inspired by Unix permissions</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50605445&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50605445&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 23:53:00 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>A simple model of AI usage, inspired by unix permissions. We need new language to talk about large language models. Addresses practical workflow friction around 0rwx – A simple model of AI usage, inspired by Unix permissions. — Upstream (Hacker News): https://0rwx.com/</description>
     </item>
     <item>
-      <title>By attacking Chinese Al industry, the US has burst its own Al bubble</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50598681&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50598681&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 11:35:11 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>China Translated - Briefing #79 Robert Wu Nov 21, 2026 People on my side of the Pacific woke up on Saturday morning to something quite shocking. Nvidia down a whopping 14%, and the multi-trillion-dollar darling crown-jewel of AI has halved in value in a matter of a few weeks. Addresses practical workflow friction around By attacking Chinese Al industry, the US has burst its own Al bubble. — Upstream (Hacker News): https://www.china-translated.com/p/by-attacking-chinese-ai-industry</description>
+      <title>SFO will flood this week from tides, federal expert says</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50603397&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50603397&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 20:09:16 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Published on sfchronicle.com (discussed on Hacker News) published &quot;SFO will flood this week from tides, federal expert says&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around SFO will flood this week from tides, federal expert says. — Upstream (Hacker News): https://www.sfchronicle.com/travel/article/sfo-airport-flood-weather-22543280.php</description>
+    </item>
+    <item>
+      <title>Hy4 from @TencentHunyuan is now on Ollama Cloud.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2124669766723920377&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2124669766723920377&amp;lens=2</guid>
+      <pubDate>Mon, 23 Nov 2026 01:02:01 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Hosted in the US with zero data retention 🔒 770B parameters with 49B active per token. It&apos;s the first Hy model that supports vision and computer use. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Hy4 from @TencentHunyuan is now on Ollama Cloud.&quot; rather than shipping a software tool. — Upstream (X · @ollama): https://x.com/ollama/status/2124669766723920377</description>
     </item>
     <item>
       <title>Combining expertise and AI allows for significant achievements in problem-solving</title>
@@ -121,6 +121,14 @@
       <description>People with mathematical expertise are achieving breakthroughs in solving complex problems, with AI acting as a powerful tool rather than a replacement. The post suggests that AI, when combined with human expertise, can solve problems that current AI models alone cannot handle, particularly in the field of mathematics. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2tj5d6rwc2m</description>
     </item>
     <item>
+      <title>&quot;I believe frontier model developers should jointly endeavour to establish shared norms for…</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2124551883130114403&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2124551883130114403&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 17:13:35 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>&quot;I believe frontier model developers should jointly endeavour to establish shared norms for how to evaluate such models and red-team safety cases for them by the time they are first used, including shared transparency standards. I further propose common limits, based on prediction error and other measurements, that developers are committed to not crossing until our ability to understand and monitor AI behavior achieves a certain concrete milestone (such as the development of a successor to CoT monitors). — Upstream (X · @sama): https://x.com/sama/status/2124551883130114403</description>
+    </item>
+    <item>
       <title>Dario&apos;s spiel since GPT-2 has always been about hyping the dangers so that open models would…</title>
       <link>https://cortex-radar.github.io/?orb=x-fx-2124550037912920090&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2124550037912920090&amp;lens=2</guid>
@@ -129,28 +137,20 @@
       <description>Dario&apos;s spiel since GPT-2 has always been about hyping the dangers so that open models would be made illegal and *he* would stay in control. He left OpenAI because he wasn&apos;t going to have control. Addresses practical workflow friction around Dario&apos;s spiel since GPT-2 has always been about hyping the dangers so that open models would. — Upstream (X · @ylecun): https://x.com/ylecun/status/2124550037912920090</description>
     </item>
     <item>
-      <title>Modular SKILL.md rules vs.cursorrules: 281 open-source coding agent workflows (Comparison Table)</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2s0co&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2s0co&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 15:31:58 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Comparing modular SKILL.md rules vs.cursorrules highlights a major trade-off in token economy. While.cursorrules injects entire rulebooks into every chat interaction and degrades model focus, modular SKILL.md files load bounded context and deterministic Python validation scripts only when specific tasks execute, keeping coding agents fast and reliable. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ChatGPTCoding): https://www.reddit.com/r/ChatGPTCoding/comments/1y2s0co/modular_skillmd_rules_vs_cursorrules_281/</description>
+      <title>This is the most important thing OpenAI has published in awhile.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2124551594691932405&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2124551594691932405&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 17:12:27 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>We are providing a lot of transparency into our pretraining progress and hope we can agree as a frield to common limits. I think that would be very wise and help ensure safety and control. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;This is the most important thing OpenAI has published in awhile.&quot; rather than shipping a software tool. — Upstream (X · @sama): https://x.com/sama/status/2124551594691932405</description>
     </item>
     <item>
-      <title>Together.ai: Prompt Leakage for Requests</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50595816&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50595816&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 03:07:27 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>We are notifying customers about a security incident involving a subset of prompts submitted to Together AI’s serverless live answering work service in June and July 2026. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (Hacker News): https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026</description>
-    </item>
-    <item>
-      <title>Caphlon-2 (4.52 GiB): Running full 64-layer Qwen 3.8 27B on 6GB computer memory / 8GB MacBooks…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2m8ui&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2m8ui&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 10:26:21 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Hey everyone, We are sharing Caphlon-2, a lightweight 27B model family built to run full 27B reasoning on laptops with 8 GB RAM and older high-speed computer chips with 6 GB computer memory. Vocabulary was trimmed from 151,936 down to 83,200 active tokens (V83K), which saved around 1.1 GiB without hurting English or coding quality. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y2m8ui/release_caphlon2_452_gib_running_full_64layer/</description>
+      <title>Select Styling Specimens</title>
+      <link>https://cortex-radar.github.io/?orb=vip-willison-onwillisonnet2026Nov22select-styling&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-onwillisonnet2026Nov22select-styling&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 19:45:06 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Tool: Select Styling Specimens Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 22nd November 2026 I got frustrated at how HTML boxes default to looking different in different browsers, and are (I think) quite ugly in Chrome: So I had Claude Fable 5.2 build me this page showing all of the ways they can be styled: Build an HTML page that shows all of the ways a. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/22/select-styling/</description>
     </item>
     <item>
       <title>Gemini 4 Hydrogen performance varies significantly with &apos;high&apos; vs &apos;xhigh&apos; effort levels</title>
@@ -161,20 +161,12 @@
       <description>Gemini 4 Hydrogen on &apos;high&apos; effort used 5,311 output tokens and cost 3.99 cents, while on &apos;xhigh&apos; effort it used 31,477 output tokens and cost 23.61 cents. It highlights the trade-off between cost and output quality in AI model usage. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n2tsb6pguk27</description>
     </item>
     <item>
-      <title>Current Efforts Aren&apos;t Enough to Slow the AI Cyber Virus</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50595940&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50595940&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 03:28:48 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Despite unprecedented efforts to patch vulnerabilities, AI is helping attackers exploit bugs faster than defenders can fix them. With policy responses lagging, we see the pressures lining up for the cyber epidemic to worsen. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Current Efforts Aren&apos;t Enough to Slow the AI Cyber Virus&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.bridgewater.com/research-and-insights/current-efforts-arent-enough-to-slow-the-ai-cyber-virus</description>
-    </item>
-    <item>
-      <title>Open-Weights models may slow down due to distillation limits from OpenAI and Anthropic</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2req7quy225&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2req7quy225&amp;lens=2</guid>
-      <pubDate>Fri, 20 Nov 2026 19:58:52 GMT</pubDate>
+      <title>By attacking Chinese Al industry, the US has burst its own Al bubble</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50598681&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50598681&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 11:35:11 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>The effective end of easy distillation from OpenAI and Anthropic models may be behind the relative slowdown in open weights model progress. This slowdown affects the speed at which developers can incorporate new model features into their applications. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225</description>
+      <description>China Translated - Briefing #79 Robert Wu Nov 21, 2026 People on my side of the Pacific woke up on Saturday morning to something quite shocking. Nvidia down a whopping 14%, and the multi-trillion-dollar darling crown-jewel of AI has halved in value in a matter of a few weeks. Addresses practical workflow friction around By attacking Chinese Al industry, the US has burst its own Al bubble. — Upstream (Hacker News): https://www.china-translated.com/p/by-attacking-chinese-ai-industry</description>
     </item>
     <item>
       <title>New insights on post-training challenges and the field&apos;s progress</title>
@@ -185,28 +177,36 @@
       <description>A new slide deck discusses the biggest open problems in post-training and the field&apos;s current state. It addresses challenges that arise after initial training, ensuring models can continue to learn and adapt effectively. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n2tdrggx2o27</description>
     </item>
     <item>
-      <title>Run Qwen 3.8 FN with 8x200k streams at 480tk/s @ 6.2k prefill on 4 x 3090 (technically 5x3090)…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2xnyh&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2xnyh&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 19:28:44 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>Strata and other engines are great to run a model at decent speeds that doesn&apos;t fit in your computer memory. I built this experimental overlay for vLLM to run Intel/Qwen3.8-Flash-Next-W4A16-AutoRound on my 4x3090 machine with 256GB DDR4 and 1.6M short-term working notes cache budget at competitive speeds. But what if you have just enough computer memory to fit a large model but then no room left for decent context size? — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2xnyh/run_qwen_38_fn_with_8x200k_streams_at_480tks_62k/</description>
+      <title>I built a drop-in caching proxy for Ollama in C: repeated prompts come back in under 1 ms</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y326rn&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y326rn&amp;lens=2</guid>
+      <pubDate>Sun, 22 Nov 2026 22:46:07 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>I&apos;m a CS student and got tired of waiting on my local model to answer the same prompts over and over while testing. If the exact same request comes again, the proxy replays the saved response from memory. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y326rn/i_built_a_dropin_caching_proxy_for_ollama_in_c/</description>
     </item>
     <item>
-      <title>Enable ignore_merges for Inkling 2 by rinpatch · Pull Request #32799 · ggml-org/llama.cpp</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2x5o6&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2x5o6&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 19:07:32 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>r/LocalLLaMA Engineering Community published &quot;Enable ignore_merges for Inkling 2 by rinpatch · Pull Request #32799 · ggml-org/llama.cpp&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Enable ignore_merges for Inkling 2 by rinpatch · Pull Request #32799 · ggml-org/llama.cpp. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y2x5o6/enable_ignore_merges_for_inkling_2_by_rinpatch/</description>
+      <title>Inkling 2 Mini Abliteration</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y35elv&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y35elv&amp;lens=2</guid>
+      <pubDate>Mon, 23 Nov 2026 01:19:18 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>I know it has been a bit late coming sorry it took so long, but I&apos;m releasing my abliterated versions of Inkling 2 Mini. As I&apos;ve said before, the goal is to reduce refusals without lobotomizing the model or sacrificing quality. Addresses practical workflow friction around Inkling 2 Mini Abliteration. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y35elv/inkling_2_mini_abliteration/</description>
     </item>
     <item>
-      <title>GPT 6.2 Astra Confirmed As The Model That Solved Navier-Stokes.</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y2xqfz&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y2xqfz&amp;lens=2</guid>
-      <pubDate>Sun, 22 Nov 2026 19:31:39 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Active engineering thread in r/singularity (1 upvotes, 0 comments): GPT 6.2 Astra Confirmed As The Model That Solved Navier-Stokes. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y2xqfz/gpt_62_astra_confirmed_as_the_model_that_solved/</description>
+      <title>A 125B model that runs on a 12GB GPU — Linger is a free open-source personal agent from an ex-DeepSeek researcher</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y35c1r&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y35c1r&amp;lens=2</guid>
+      <pubDate>Mon, 23 Nov 2026 01:15:40 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>r/LocalLLaMA Engineering Community published A 125B model that runs on a 12GB high-speed computer chips — Linger is a free open-source personal agent from an ex-DeepSeek researcher. Open the linked third-party source above for the full upstream breakdown. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y35c1r/a_125b_model_that_runs_on_a_12gb_gpu_linger_is_a/</description>
+    </item>
+    <item>
+      <title>Did AI show that the pursuit of simple and elegant mathematical expressions was fundamentally…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y35ivb&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y35ivb&amp;lens=2</guid>
+      <pubDate>Mon, 23 Nov 2026 01:25:27 GMT</pubDate>
+      <category>Market &amp; Strategy</category>
+      <description>Humans had always assumed that behind every important problem in the universe, there is always a simple and elegant mathematical expression, such as Einstein&apos;s E = mc\^2. 250k pages of paper, 17M lines of Lean, cooked up by machines, validated by machines. Shapes vendor governance, funding expectations, or enterprise buying decisions around Did AI show that the pursuit of simple and elegant mathematical expressions was fundamentally a. rather than shipping a software tool. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y35ivb/did_ai_show_that_the_pursuit_of_simple_and/</description>
     </item>
   </channel>
 </rss>
