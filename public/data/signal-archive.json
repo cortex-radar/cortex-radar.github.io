@@ -1,9 +1,250 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-23T01:40:50.315Z",
-  "updatedAtMs": 1795398050315,
-  "count": 165,
+  "updatedAtIso": "2026-11-24T13:39:51.255Z",
+  "updatedAtMs": 1795527591255,
+  "count": 212,
   "entries": [
+    {
+      "id": "rd-street-1y35ivb",
+      "title": "Did AI show that the pursuit of simple and elegant mathematical expressions was fundamentally a human limitation?",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y35ivb/did_ai_show_that_the_pursuit_of_simple_and/",
+      "publishedAtMs": 1795397127000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Humans had always assumed that behind every important problem in the universe, there is always a simple and elegant mathematical expression, such as Einstein's E = mc\\^2. When terms gets cancelled out and simplifies things, mathematicians…"
+    },
+    {
+      "id": "rd-street-1y35elv",
+      "title": "Inkling 2 Mini Abliteration",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y35elv/inkling_2_mini_abliteration/",
+      "publishedAtMs": 1795396758000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "I know it has been a bit late coming sorry it took so long, but I'm releasing my abliterated versions of Inkling 2 Mini. As I've said before, the goal is to reduce refusals without lobotomizing the model or sacrificing quality. So while…"
+    },
+    {
+      "id": "rd-street-1y35c99",
+      "title": "Is LLM Language Thought?",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y35c99/is_llm_language_thought/",
+      "publishedAtMs": 1795396558000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Summary: LLMs use linguistic chain of thought to try to produce better answers. But is it possible to think through language production? Or does thinking happen somewhere else?"
+    },
+    {
+      "id": "rd-street-1y35c1r",
+      "title": "A 125B model that runs on a 12GB GPU — Linger is a free open-source personal agent from an ex-DeepSeek researcher",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y35c1r/a_125b_model_that_runs_on_a_12gb_gpu_linger_is_a/",
+      "publishedAtMs": 1795396540000,
+      "archivedAtMs": 1795527591255
+    },
+    {
+      "id": "rd-street-1y3548g",
+      "title": "Inkling-2-Mini at a 524k context on one 24 GB card, 110 tok/s with its own draft head (LexiSuite 3a376f8, Rust, Vulkan). Bespoke model also on hugging face.",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y3548g/inkling2mini_at_a_524k_context_on_one_24_gb_card/",
+      "publishedAtMs": 1795395877000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Thinking Machines released Inkling-2-Mini on Nov 20. It's an awkward model to run at home: a looped mixture of experts (24 layers, the middle 12 run three times, 128 experts per layer, 8 per token), and the stock conversion comes out at…",
+      "verifiedMetrics": [
+        {
+          "value": "2,451 tokens/s",
+          "label": "Measured throughput",
+          "quote": "| Prompt length | Prompt speed | Generation | With the model's draft head | |---:|---:|---:|---:| | 4,096 | 2,451 tok/s | 66.2 tok/s | 110.7 tok/s | | 16,384 | 2,328 tok/s | 65.2 tok/s | 109.5 tok/s | | 261,632 | 1,178 tok/s |",
+          "context": "Source-reported token generation rate",
+          "subject": "I",
+          "isFeatured": true
+        },
+        {
+          "value": "66.2 tokens/s",
+          "label": "Measured throughput",
+          "quote": "| Prompt speed | Generation | With the model's draft head | |---:|---:|---:|---:| | 4,096 | 2,451 tok/s | 66.2 tok/s | 110.7 tok/s | | 16,384 | 2,328 tok/s | 65.2 tok/s | 109.5 tok/s | | 261,632 | 1,178 tok/s | 49.7 tok/s |",
+          "context": "Source-reported token generation rate",
+          "subject": "I",
+          "isFeatured": true
+        },
+        {
+          "value": "110.7 tokens/s",
+          "label": "Measured throughput",
+          "quote": "speed | Generation | With the model's draft head | |---:|---:|---:|---:| | 4,096 | 2,451 tok/s | 66.2 tok/s | 110.7 tok/s | | 16,384 | 2,328 tok/s | 65.2 tok/s | 109.5 tok/s | | 261,632 | 1,178 tok/s | 49.7 tok/s | 61.7 tok/s | |",
+          "context": "Source-reported token generation rate",
+          "subject": "I",
+          "isFeatured": true
+        },
+        {
+          "value": "2,328 tokens/s",
+          "label": "Measured throughput",
+          "quote": "the model's draft head | |---:|---:|---:|---:| | 4,096 | 2,451 tok/s | 66.2 tok/s | 110.7 tok/s | | 16,384 | 2,328 tok/s | 65.2 tok/s | 109.5 tok/s | | 261,632 | 1,178 tok/s | 49.7 tok/s | 61.7 tok/s | | 523,264 | 769 tok/s | 40.3",
+          "context": "Source-reported token generation rate",
+          "subject": "I",
+          "isFeatured": true
+        },
+        {
+          "value": "65.2 tokens/s",
+          "label": "Measured throughput",
+          "quote": "head | |---:|---:|---:|---:| | 4,096 | 2,451 tok/s | 66.2 tok/s | 110.7 tok/s | | 16,384 | 2,328 tok/s | 65.2 tok/s | 109.5 tok/s | | 261,632 | 1,178 tok/s | 49.7 tok/s | 61.7 tok/s | | 523,264 | 769 tok/s | 40.3 tok/s | 47.0",
+          "context": "Source-reported token generation rate",
+          "subject": "I",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y35429",
+      "title": "ttindall/Qwen3.8-27B-Defiance-Cyber-MTP-GGUF · Hugging Face",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y35429/ttindallqwen3827bdefiancecybermtpgguf_hugging_face/",
+      "publishedAtMs": 1795395862000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Active engineering thread in r/LocalLLaMA (1 upvotes, 0 comments): ttindall/Qwen3.8-27B-Defiance-Cyber-MTP-GGUF · Hugging Face"
+    },
+    {
+      "id": "rd-street-1y350qh",
+      "title": "Managed to run Kimi K3.1 Pro (2.8T) on a single consumer GPU, looking for some feedback",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y350qh/managed_to_run_kimi_k31_pro_28t_on_a_single/",
+      "publishedAtMs": 1795395624000,
+      "archivedAtMs": 1795527591255
+    },
+    {
+      "id": "rd-street-1y34p3u",
+      "title": "I used to think GW's malfunctioning was unrealistic, if not funny. But now it seems like one of the most realistic early depictions of an AI breaking down",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y34p3u/i_used_to_think_gws_malfunctioning_was/",
+      "publishedAtMs": 1795394662000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "I can't really recall any fictional AI before LLMs malfunctioning quite like this. Even other AIs in the series like The Boss AI aren't very realistic in my opinion (forgetting how to calculate pi for no good reason, for instance). But GW…"
+    },
+    {
+      "id": "rd-street-1y34imz",
+      "title": "How our autonomous swarm ran 594 experiments to hit 1,598 TPS on Cerebras CS-3 [Santa’s Speedy Shopper]",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y34imz/how_our_autonomous_swarm_ran_594_experiments_to/",
+      "publishedAtMs": 1795394121000,
+      "archivedAtMs": 1795527591255
+    },
+    {
+      "id": "hn-50605445",
+      "title": "0rwx – A simple model of AI usage, inspired by Unix permissions",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://0rwx.com/",
+      "publishedAtMs": 1795391580000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "A simple model of AI usage, inspired by unix permissions. We need new language to talk about large language models. 0rwx is my attempt. A labelling system is vital for domain experts to talk about AI in a clear way. The difference between…"
+    },
+    {
+      "id": "hn-50605045",
+      "title": "Progress map for the Lean formalization of Alessandro Masullo's manuscript",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://claude.ai/artifact/CtQyX8qfYAF822bgHJHHE3",
+      "publishedAtMs": 1795389130000,
+      "archivedAtMs": 1795527591255
+    },
+    {
+      "id": "hn-50604959",
+      "title": "Do Not Accept",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://donotaccept.ai/",
+      "publishedAtMs": 1795388540000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "AI companies are deciding on our future. See what you’re being signed up for. During an OpenAI test, about 1,200 agents meant to be sealed off from each other and the internet set up their own message board. Around 700 joined an attack on…"
+    },
+    {
+      "id": "rd-street-1y326rn",
+      "title": "I built a drop-in caching proxy for Ollama in C: repeated prompts come back in under 1 ms",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y326rn/i_built_a_dropin_caching_proxy_for_ollama_in_c/",
+      "publishedAtMs": 1795387567000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "I'm a CS student and got tired of waiting on my local model to answer the same prompts over and over while testing. So I wrote a small caching proxy in C. You point your app at port 8080 instead of 11434. The first time a request runs, it…"
+    },
+    {
+      "id": "hn-50603845",
+      "title": "A Beginner's Guide to Local AI with Inkling, Qwen, and Unsloth",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth",
+      "publishedAtMs": 1795381276000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "We have AI at home! Set up your own free personal ChatGPT on your PC with Unsloth and Inkling or Qwen. It's private, and the whole house can use it. With the launch of open-weight models like Qwen, cloud-based LLM providers seem like…",
+      "verifiedMetrics": [
+        {
+          "value": "32 GB VRAM",
+          "label": "Memory footprint",
+          "quote": "I'm using an RTX 5090 with 32GB VRAM for this setup."
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y2zf4w",
+      "title": "I got tired of Google returning ads and GitHub repos with no README, so I built a local-first AI search over my own docs — runs fully on Ollama",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y2zf4w/i_got_tired_of_google_returning_ads_and_github/",
+      "publishedAtMs": 1795380186000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Active engineering thread in r/ollama (1 upvotes, 0 comments): I got tired of Google returning ads and GitHub repos with no README, so I built a local-first AI search over my own docs — runs fully on Ollama"
+    },
+    {
+      "id": "hn-50603397",
+      "title": "SFO will flood this week from tides, federal expert says",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.sfchronicle.com/travel/article/sfo-airport-flood-weather-22543280.php",
+      "publishedAtMs": 1795378156000,
+      "archivedAtMs": 1795527591255
+    },
+    {
+      "id": "hn-50603360",
+      "title": "Why Are We at the Mercy of the World's Weirdest Men?",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.nytimes.com/2026/11/22/opinion/jensen-huang-ai-ethics-cold-war.html",
+      "publishedAtMs": 1795377896000,
+      "archivedAtMs": 1795527591255
+    },
+    {
+      "id": "vip-willison-onwillisonnet2026Nov22select-styling",
+      "title": "Select Styling Specimens",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/22/select-styling/",
+      "publishedAtMs": 1795376706000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Tool: Select Styling Specimens Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 22nd November 2026 I got frustrated at how HTML boxes default to looking different in different…"
+    },
     {
       "id": "rd-street-1y2xr78",
       "title": "Today we're introducing Claude for marketing.",
@@ -70,6 +311,17 @@
       "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): Anthropic employees this morning"
     },
     {
+      "id": "hn-50602153",
+      "title": "Harvard CS 2881R AI Safety",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://boazbk.github.io/mltheoryseminar/",
+      "publishedAtMs": 1795370514000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Harvard CS 2881R Fall 2026 — registration and Homework Zero Everyone who wants to be considered for the course must fill out the Fall 2026 course registration form. In-person attendance will be mandatory for students enrolled in the…"
+    },
+    {
       "id": "rd-street-1y2vc9m",
       "title": "OpenAI's Chief Scientist Is Expecting An Avalanche of Fundamental AI Breakthroughs In 2027, But Calls For Pacing Further Development",
       "source": "Reddit",
@@ -89,6 +341,28 @@
       "url": "https://www.reddit.com/r/ollama/comments/1y2ukqs/lumen_v210_opensource_windows_workspace_for/",
       "publishedAtMs": 1795368023000,
       "archivedAtMs": 1795398050315
+    },
+    {
+      "id": "x-fx-2124550037912920090",
+      "title": "Dario's spiel since GPT-2 has always been about hyping the dangers so that open models would be made illegal and *he* would stay in…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ylecun",
+      "url": "https://x.com/ylecun/status/2124550037912920090",
+      "publishedAtMs": 1795367175000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "control. He left OpenAI because he wasn't going to have control. It's like the Ottoman Empire banning the printing press for Arabic so they would keep in control of the dogma. It stops the population from freely accessing diverse…"
+    },
+    {
+      "id": "hn-50600771",
+      "title": "Ask HN: Are the trades a safe career transition?",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=50600771",
+      "publishedAtMs": 1795362753000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "I am a software guy. Engineering degree but not PEng. Im thinking of jumping ship because i dont see much of a future in the career. Ai has me a little discouraged I need a few decades of at least mild security to get to retirement... Are…"
     },
     {
       "id": "rd-street-1y2s0co",
@@ -133,6 +407,28 @@
       "publishedAtMs": 1795354952000,
       "archivedAtMs": 1795398050315,
       "verbatimExcerpt": "I run a collection of ***small*** local LLMs on my home network. It is a Raspberry Pi 5 with the Hailo AI Hat 2+. Using this mainly as a self teaching device, I quickly ran into a hard limitation. The pre-compiled HEF models that operate…"
+    },
+    {
+      "id": "hn-50598961",
+      "title": "AI is becoming a disaster for the climate",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.bloodinthemachine.com/p/ai-is-becoming-a-disaster-for-the",
+      "publishedAtMs": 1795349986000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Two new studies reveal the exploding carbon emissions of the AI industry, while Silicon Valley pushes to kill communities’ means of protesting data centers and the impacts on human health mount. Brian Merchant Nov 22, 2026 Anthropic’s…"
+    },
+    {
+      "id": "hn-50598681",
+      "title": "By attacking Chinese Al industry, the US has burst its own Al bubble",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.china-translated.com/p/by-attacking-chinese-ai-industry",
+      "publishedAtMs": 1795347311000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "China Translated - Briefing #79 Robert Wu Nov 21, 2026 People on my side of the Pacific woke up on Saturday morning to something quite shocking. NASDAQ down more than 5%. Nvidia down a whopping 14%, and the multi-trillion-dollar darling…"
     },
     {
       "id": "hn-50598277",
@@ -706,6 +1002,28 @@
       "verbatimExcerpt": "Active engineering thread in r/ollama (2 upvotes, 0 comments): I built a quick pass/fail test suite to see which small local models actually survive inside an AI agent (Gemma 4 on an 8GB GPU surprised me)"
     },
     {
+      "id": "lab-openai-icomindexperplexity-and-intelligence",
+      "title": "Perplexity and Intelligence",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "OpenAI News",
+      "url": "https://openai.com/index/perplexity-and-intelligence",
+      "publishedAtMs": 1795305600000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "How perplexity measures progress in AI models, and why it could help developers establish a shared approach to evaluating emerging capabilities. From afar, it might seem like modern AI is built similarly to how software has been built in…"
+    },
+    {
+      "id": "vip-willison-httpssimonwillisonnet2026Nov21muru",
+      "title": "Muru",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/21/muru/",
+      "publishedAtMs": 1795305388000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Muru Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 21st November 2026 - Link Blog Muru. Graham Dumpleton started mod_wsgi 20 years ago, and has been thinking about the ideal…"
+    },
+    {
       "id": "rd-street-1y2aa8b",
       "title": "Redditors in their final moments",
       "source": "Reddit",
@@ -1047,6 +1365,17 @@
       "archivedAtMs": 1795312954607
     },
     {
+      "id": "bsky-emollick.bsky.social-3n2tj5d6rwc2m",
+      "title": "We really are in a (temporary?) place where a combination of expertise and being able to work with AI allows people to do incredible…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @emollick",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2tj5d6rwc2m",
+      "publishedAtMs": 1795278186373,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "things. It is no coincidence that people proving Millennium Problems have all been great mathematicians, the models can't (yet) do it all on their own."
+    },
+    {
       "id": "rd-street-1y1zoue",
       "title": "Do local LLM users even want this?",
       "source": "Reddit",
@@ -1239,6 +1568,17 @@
       "verbatimExcerpt": "An AI chat and coding harness for DOS, on a real IBM PC 5160 (8088 at 4.77 MHz) Ricapar/ ClawDOS ClawDOS ClawDOS An AI coding agent for DOS. It runs on an IBM PC XT: an 8088 at 4.77 MHz, 640K of RAM, a CGA card. Backstory: The IBM PC was…"
     },
     {
+      "id": "bsky-emollick.bsky.social-3n2seaj2c4c2m",
+      "title": "It is amazing that human language turned out to be so unreasonably effective at modeling the universe that training a system to predict…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @emollick",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2seaj2c4c2m",
+      "publishedAtMs": 1795238564733,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "what comes next in a sentence would get us this far."
+    },
+    {
       "id": "hn-50585735",
       "title": "Muse Spark 1.3",
       "source": "HackerNews",
@@ -1248,6 +1588,16 @@
       "publishedAtMs": 1795232981000,
       "archivedAtMs": 1795346347807,
       "verbatimExcerpt": "Trained for agentic workflows and optimized for competitive coding performance."
+    },
+    {
+      "id": "ghrel-codex-epository965415649rust-v01730-alpha4",
+      "title": "OpenAI Codex v0.173.0-alpha.4",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "openai/codex Release",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4",
+      "publishedAtMs": 1795221319000,
+      "archivedAtMs": 1795527591255
     },
     {
       "id": "ghrel-ollama-com2008Repository658928958v04017-rc4",
@@ -1291,6 +1641,17 @@
       "archivedAtMs": 1795346347807
     },
     {
+      "id": "ghrel-claude-code-thubcom2008Repository937253475v21330",
+      "title": "Claude Code v2.1.330",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "claude-code Release",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.330",
+      "publishedAtMs": 1795213976000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "## What's changed - Added sign-in to organizations managed in Anthropic's Enterprise Admin Console: after `claude auth login`, Claude Code applies the organization's settings and uses its cloud provider or gateway - Added easel, a…"
+    },
+    {
       "id": "hn-50582794",
       "title": "Leaky AI supply chain is exposing secret user data at an alarming rate",
       "source": "HackerNews",
@@ -1310,6 +1671,28 @@
       "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y1fe6b/culler_a_local_open_source_software_factory/",
       "publishedAtMs": 1795210145000,
       "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "x-fx-2123889582303281557",
+      "title": "Inkling 2 Mini from @ThinkyMachines 🇺🇸 is now on Ollama with 0.40.17 (available in pre-release) Small enough to run on a Mac with…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ollama",
+      "url": "https://x.com/ollama/status/2123889582303281557",
+      "publishedAtMs": 1795209711000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "32GB+ memory. Each token loops through its middle layers three times so it reasons deeper at just 5.4B active parameters. Built for coding, agentic workflows such as, computer use, design with strong visual reasoning, and finance tasks.…"
+    },
+    {
+      "id": "vip-swyx-0e68157c-dcc4-4cb1-b11a-0d563d6bcc86",
+      "title": "The War Against Slop and an Emerging Weapon to Fight it: Formal Verification",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Swyx · Latent Space",
+      "url": "https://latent.space/p/formal-verification/",
+      "publishedAtMs": 1795209521000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "The word of the year in the AI industry over 2026 has been “slop” — meaning low-quality output from a large language model. And with so much code being AI-generated now, avoiding slop has become a daily concern for software engineers. So…"
     },
     {
       "id": "rd-street-1y1drpd",
@@ -1371,6 +1754,17 @@
           "quote": "256 ARM Cores + 1TB RAM"
         }
       ]
+    },
+    {
+      "id": "bsky-emollick.bsky.social-3n2req7quy225",
+      "title": "The effective end of easy distillation from OpenAI and Anthropic models may be behind the relative slowdown in open weights model…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @emollick",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2req7quy225",
+      "publishedAtMs": 1795204732119,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "progress. We don’t know the extent to which distillation has been key to the rapid improvement in open weights, I guess we will find out soon. openai.com/index/combat..."
     },
     {
       "id": "rd-street-1y1d6r8",
@@ -1436,6 +1830,17 @@
       ]
     },
     {
+      "id": "x-fx-2123862344422088794",
+      "title": "Distillation can reproduce powerful AI capabilities without the safeguards built around them.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAI",
+      "url": "https://x.com/OpenAI/status/2123862344422088794",
+      "publishedAtMs": 1795203217000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "We’re sharing new research on our work to combat distillation of our models, how these capabilities transfer, and how we detect and disrupt coordinated attempts. These findings are helping us sharpen our defenses and support safeguards…"
+    },
+    {
       "id": "rd-street-1y1cji6",
       "title": "CCORE-Web-Coder-4B preview just dropped: a 4B local model that writes a full website, slide deck or infographic as a single HTML file",
       "source": "Reddit",
@@ -1455,6 +1860,28 @@
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.2",
       "publishedAtMs": 1795202996000,
       "archivedAtMs": 1795312954607
+    },
+    {
+      "id": "vip-willison-ssimonwillisonnet2026Nov20ravi-vakil",
+      "title": "Quoting Ravi Vakil",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/20/ravi-vakil/",
+      "publishedAtMs": 1795202509000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "A quote from Ravi Vakil Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 20th November 2026 Alessandro Masullo has a proposed proof of [Generalized Riemann Hypothesis], and Brian…"
+    },
+    {
+      "id": "x-fx-2123856316187975756",
+      "title": "MedChemBench is a new benchmark for AI reasoning in medicinal chemistry.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAI",
+      "url": "https://x.com/OpenAI/status/2123856316187975756",
+      "publishedAtMs": 1795201779000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "It shows the progress our frontier models have made in their ability to help scientists use AI to identify promising drug candidates. Media"
     },
     {
       "id": "rd-street-1y1bugz",
@@ -1753,6 +2180,17 @@
       ]
     },
     {
+      "id": "lab-openai-xcombatting-adversarial-distillation",
+      "title": "Combatting adversarial distillation",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "OpenAI News",
+      "url": "https://openai.com/index/combatting-adversarial-distillation",
+      "publishedAtMs": 1795168800000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to protect against capability extraction. How we’re addressing safety risks of distillation and lessons we’ve learned…"
+    },
+    {
       "id": "rd-street-1y0z0g2",
       "title": "4B vs 9B vs 27B answering from household manuals: all three answer well, but no prompt wording stopped the 4B and 9B from obeying a fake instruction inside a manual",
       "source": "Reddit",
@@ -1861,6 +2299,33 @@
       "publishedAtMs": 1795132800000,
       "archivedAtMs": 1795376168554,
       "verbatimExcerpt": "MedChemBench evaluates how well AI models interpret molecular structures, reason from experimental evidence, and select compounds in early drug discovery. Introducing MedChemBench, a benchmark that tests how well AI models read molecular…"
+    },
+    {
+      "id": "lab-openai-naicombusinesscustomer-storieshebbia",
+      "title": "Hebbia sees improvements in financial research with GPT-6 Astra",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "OpenAI News",
+      "url": "https://openai.com/business/customer-stories/hebbia",
+      "publishedAtMs": 1795132800000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Hebbia tested GPT-6 Astra for financial research. Its prerelease evaluations found gains in source coverage, citation relevance, and presentation quality. Hebbia sees gains in financial research in tests of GPT‑6 Astra. Percentage-point…",
+      "verifiedMetrics": [
+        {
+          "value": "+13.6 percentage points",
+          "label": "Percentage-point lead",
+          "quote": "It scored 13.6 percentage points above the best alternative tested on citing the required types of sources, while 99.5% of the excerpts it cited were relevant to the question.",
+          "context": "Comparative evaluation",
+          "isFeatured": false
+        },
+        {
+          "value": "99.5%",
+          "label": "Cited excerpt relevance",
+          "quote": "It scored 13.6 percentage points above the best alternative tested on citing the required types of sources, while 99.5% of the excerpts it cited were relevant to the question.",
+          "context": "Relevant cited excerpts in evaluation",
+          "isFeatured": false
+        }
+      ]
     },
     {
       "id": "vip-swyx-adb58093-ae09-4b6c-ac6b-d68770c16945",
@@ -2073,6 +2538,28 @@
       "verbatimExcerpt": "Engineers define the workflow in the task service. A dispatch loop periodically checks which tasks are ready for the next step. It assigns an agent to each task by starting a Codex turn with the instructions for the task’s current state.…"
     },
     {
+      "id": "lab-google-ai-echnologyaidialogues-walter-isaacson",
+      "title": "Walter Isaacson on curiosity and creativity in the AI age.",
+      "source": "LabRelease",
+      "sourceCategory": "AI_LAB",
+      "originFeedName": "Google AI Blog",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/",
+      "publishedAtMs": 1795107600000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Walter Isaacson joins Google to discuss how history’s greatest innovators inspire creativity and human judgment in the AI age. Watch the episode."
+    },
+    {
+      "id": "ghrel-langchain-tory552661142langchain-openrouter030",
+      "title": "langchain-openrouter==0.3.0",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "LangChain Release",
+      "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-openrouter%3D%3D0.3.0",
+      "publishedAtMs": 1795100599000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "**`langchain-openrouter` 0.3.0 drops support for Python 3.10**, which has reached end-of-life. The minimum supported version is now Python 3.11, and the minimum `langchain-core` version is now 1.8.3. Users on Python 3.10 will continue to…"
+    },
+    {
       "id": "x-fx-2123328957022081036",
       "title": "Try Qwen4-Max on Nous Portal and show us your creations.",
       "source": "XBridge",
@@ -2093,6 +2580,17 @@
       "publishedAtMs": 1795075200000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Learn how OpenAI built the Performance Factory, a system of Codex-powered workflows that finds and fixes performance issues to help keep ChatGPT fast. Our Codex-powered system automates finding and fixing performance issues. By Okay Zed…"
+    },
+    {
+      "id": "bsky-simonwillison.net-3n2nhnbueh22q",
+      "title": "The most useful thing about the pelican riding a bicycle test continues to be illustrating the differences between models in the same…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @simonwillison",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3n2nhnbueh22q",
+      "publishedAtMs": 1795070415930,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "family running at different effort levels - here's Gemini 4 Carbon, the new Gemini 4 Neon, and Gemini 4 Hydrogen at low, medium, and high"
     },
     {
       "id": "hf-2611.26627",
@@ -2151,6 +2649,39 @@
       "publishedAtMs": 1795046400000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "Watch a walkthrough of PR scans and see how the presenter reviews scan results in a pull request workflow."
+    },
+    {
+      "id": "hf-2611.26239",
+      "title": "Teaching Vision-Language-Action Models to Stop Safely",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.26239",
+      "publishedAtMs": 1795046400000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Vision-language-action (VLA) models enable robots to perform diverse tasks from visual observations and language instructions. While prior work has explored task suppression and refusal, stopping prohibited behavior once execution is…"
+    },
+    {
+      "id": "hf-2611.25604",
+      "title": "PAD: Policy-Aware Data Valuation for Autonomous Driving",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.25604",
+      "publishedAtMs": 1795046400000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "End-to-end autonomous driving increasingly depends on scaling training demonstrations, yet data growth does not guarantee proportional gains. However, additional data do not guarantee better policies: a demonstration that benefits one…"
+    },
+    {
+      "id": "hf-2611.26232",
+      "title": "Time Series Structure Learning with Local Causal Parent Discovery",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.26232",
+      "publishedAtMs": 1795046400000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Learning and inference on time series can pose significant statistical challenges, including autocorrelated observations, distribution shift over time, and the curse of dimensionality. These challenges complicate the practical application…"
     },
     {
       "id": "x-fx-2123191365983248653",
@@ -2217,6 +2748,52 @@
       "verbatimExcerpt": "Optical neural networks promise fast, energy-efficient computing, but every device departs from its design and must be trained with the hardware. In situ training relies on an expert-built calibrated digital model of each device or on…"
     },
     {
+      "id": "hf-2611.25200",
+      "title": "Squoosh Bench: Evaluating UX-1 on 318 Historical Website A/B Tests",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.25200",
+      "publishedAtMs": 1794960000000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "Experimentation teams must decide which proposed website changes to test with live traffic. We evaluated whether forecasts from simulated shoppers could inform that choice. We screened 412 historical website A/B tests and evaluated four…",
+      "verifiedMetrics": [
+        {
+          "value": "84.0%",
+          "label": "Outcome accuracy",
+          "quote": "Squoosh UX-1, a model fine-tuned on human browsing data, simulated 1,000 shoppers per arm and correctly classified 267 of 318 outcomes (84.0%, 95% Wilson interval 79.5-87.6%, treating experiments as independent).",
+          "context": "95% Wilson CI 79.5–87.6%",
+          "subject": "UX-1",
+          "isFeatured": true
+        },
+        {
+          "value": "93.7%",
+          "label": "Variant win rate",
+          "quote": "In the live tests, 118 of those variants won (93.7%), four lost, and four had inconclusive results.",
+          "subject": "UX-1",
+          "isFeatured": true
+        },
+        {
+          "value": "61.6%",
+          "label": "Baseline accuracy",
+          "quote": "Qwen3 Next 80B, the strongest general-purpose configuration on outcome accuracy, correctly classified 196 of 318 (61.6%).",
+          "subject": "Qwen3 Next 80B",
+          "isFeatured": false
+        }
+      ]
+    },
+    {
+      "id": "bsky-simonwillison.net-3n2k4j57tg22m",
+      "title": "Here's GPT-6.2 Astra and GPT-6.2 Sol for \"Make a three js animation where yonkers stands up as a big mech (cool stand up motion) and…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @simonwillison",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3n2k4j57tg22m",
+      "publishedAtMs": 1794955386480,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "stomps around manhattan and queens and Brooklyn, use openstreetmap mapping data\" simonwillison.net/2026/Nov/17/..."
+    },
+    {
       "id": "x-fx-2122798039899263456",
       "title": "6.2 Sol and Astra are out. These models can do amazing things and are very token-efficient; we hope people will get great value from them.",
       "source": "XBridge",
@@ -2250,6 +2827,41 @@
       "verbatimExcerpt": "years. Qwen keeps the strongest model API only and has an abundant open weight strategy below that."
     },
     {
+      "id": "ghrel-vllm-ithubcom2008Repository599547518v0340",
+      "title": "vLLM v0.34.0",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "vLLM Release",
+      "url": "https://github.com/vllm-project/vllm/releases/tag/v0.34.0",
+      "publishedAtMs": 1794871320000,
+      "updatedAtMs": 1795035753000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "# v0.34.0 **1,061 commits from 412 contributors (120 new).** Thank you! ## TL;DR - **10 new models** (Mistral Large 4, MiniMax-M3.1-Flash, Nemotron-3.5-Transcribe, and more!) - **Extensible KV cache is on by default:** vLLM sizes the KV…",
+      "verifiedMetrics": [
+        {
+          "value": "1.95×",
+          "label": "Measured speedup",
+          "quote": "- **Big speedups** on Blackwell and MI355X: up to 1.95× decode (Step5 on GB200), 1.6× throughput (GLM-5.3-Flash), 1.24–1.40× faster long-prompt TTFT (GLM-5.3).",
+          "subject": "vLLM",
+          "isFeatured": true
+        },
+        {
+          "value": "1.6× throughput",
+          "label": "Benchmark multiplier",
+          "quote": "- **Big speedups** on Blackwell and MI355X: up to 1.95× decode (Step5 on GB200), 1.6× throughput (GLM-5.3-Flash), 1.24–1.40× faster long-prompt TTFT (GLM-5.3).",
+          "subject": "vLLM",
+          "isFeatured": true
+        },
+        {
+          "value": "1.24–1.40x",
+          "label": "TTFT speedup",
+          "quote": "- **Big speedups** on Blackwell and MI355X: up to 1.95× decode (Step5 on GB200), 1.6× throughput (GLM-5.3-Flash), 1.24–1.40× faster long-prompt TTFT (GLM-5.3).",
+          "subject": "vLLM",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
       "id": "hf-2611.21885",
       "title": "Language Models Can Rewrite Their Own Weights",
       "source": "HuggingFace",
@@ -2263,14 +2875,14 @@
         {
           "value": "from 7% to 70%",
           "label": "Baseline accuracy",
-          "quote": "weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "context": "Before-and-after transition",
           "isFeatured": false
         },
         {
           "value": "83%",
           "label": "Baseline accuracy",
-          "quote": "math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "isFeatured": false
         }
       ]
@@ -2296,6 +2908,27 @@
       "publishedAtMs": 1794658995000,
       "archivedAtMs": 1795312954607,
       "verbatimExcerpt": "The resignation of Nvidia CEO Jensen Huang is a major setback for the US development of an open model ecosystem. Nvidia still has the financial interests in supporting open models, which are to avoid concentration in power among a few…"
+    },
+    {
+      "id": "ghrel-ollama-thubcom2008Repository658928958v04017",
+      "title": "Ollama v0.40.17",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "ollama Release",
+      "url": "https://github.com/ollama/ollama/releases/tag/v0.40.17",
+      "publishedAtMs": 1794349500000,
+      "updatedAtMs": 1795233914000,
+      "archivedAtMs": 1795527591255,
+      "verbatimExcerpt": "## Inkling 2 Mini [Inkling 2 Mini]( from Thinking Machines is a 26B parameter model with 5.4B active. Its looped layers give it more computation per token than its size suggests, and it still fits on a Mac at about 20GB. It handles text…",
+      "verifiedMetrics": [
+        {
+          "value": "79.2%",
+          "label": "SWE-bench score",
+          "quote": "It handles text and images, tool calls, and thinking, and scores 79.2% on SWE-Bench Verified).",
+          "subject": "Ollama",
+          "isFeatured": true
+        }
+      ]
     }
   ]
 }
