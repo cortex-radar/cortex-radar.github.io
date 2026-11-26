@@ -1,9 +1,125 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-26T03:33:06.955Z",
-  "updatedAtMs": 1795663986955,
-  "count": 292,
+  "updatedAtIso": "2026-11-26T16:51:35.103Z",
+  "updatedAtMs": 1795711895103,
+  "count": 313,
   "entries": [
+    {
+      "id": "rd-street-1y5qc4u",
+      "title": "I built a minimal, token-efficient AI coding workbench for myself and made it open source (no telemetry, no accounts)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y5qc4u/i_built_a_minimal_tokenefficient_ai_coding/",
+      "publishedAtMs": 1795662288000,
+      "archivedAtMs": 1795711895103
+    },
+    {
+      "id": "x-fx-2125779541952246039",
+      "title": "I asked Claude to populate a Civilization-style game map with real data from the US.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @karpathy",
+      "url": "https://x.com/karpathy/status/2125779541952246039",
+      "publishedAtMs": 1795660312000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Opus 5.5 downloaded and parse a ton of public data and 7 hours and 45K lines of code later... it works :) - 31 real data sources including Census, BEA, BLS, EIA, NOAA, USGS, DoD, NPS, FAA, FEMA, CDC... - Real elevation, land cover, GDP…"
+    },
+    {
+      "id": "vip-willison-onwillisonnet2026Nov25scott-aaronson",
+      "title": "Quoting Scott Aaronson",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/25/scott-aaronson/",
+      "publishedAtMs": 1795649192000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "A quote from Scott Aaronson Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 25th November 2026 It’s now obvious that we’ll be getting, not one-off solutions to this or that…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261133749v1",
+      "title": "Teaching Students to Stand on Their Own: Distilling Vision Foundation Models for Fine-Grained Few-Shot Class-Incremental Learning",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.33749v1",
+      "publishedAtMs": 1795579853000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Fine-grained few-shot class-incremental learning (FG-FSCIL) aims to incrementally learn visually similar new classes from limited images without catastrophic forgetting. Prior work typically learns strong representations on base classes…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261133748v1",
+      "title": "REFORGE: LLM-Assisted RTL Bug Repair with Structured Context and Verification Feedback",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.33748v1",
+      "publishedAtMs": 1795579723000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Large language models (LLMs) can write and repair RTL, but successful compilation or testbench execution does not establish defect removal, behavioral preservation, security, or implementation feasibility. Existing LLM-based RTL repair…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261133747v1",
+      "title": "Tells of a Lying Machine: Analyzing LLM-Generated Strategic Dialogue in Chinese Werewolf",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.33747v1",
+      "publishedAtMs": 1795579700000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Social-deduction games give models opposing objectives, but they also give roles different information and speaking obligations. We analyze 5,404 public utterances from 150 Chinese Werewolf games played by 12 models, comparing ordinary…",
+      "verifiedMetrics": [
+        {
+          "value": "60.8–70.2%",
+          "label": "Reported accuracy",
+          "quote": "Three annotators' ratings of 392 utterances show higher wolf scores on four behavioral dimensions, and five LLM judges reach 60.8%-70.2% accuracy on a shared evaluation set."
+        }
+      ]
+    },
+    {
+      "id": "arxiv-httparxivorgabs261133745v1",
+      "title": "WhatIf: Counterfactual World Models over Action-Grounded Causal Graphs for Robotic Manipulation",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.33745v1",
+      "publishedAtMs": 1795579571000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "World models predict what happens under an action, but choosing between actions requires comparing their outcomes in the same physical situation. Factual transitions alone determine action-wise marginal futures and average effects, but…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261133743v1",
+      "title": "OrbACE: Orbital and Atomic Cluster Expansion",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.33743v1",
+      "publishedAtMs": 1795579484000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Accurate electronic-structure reference data are expensive, motivating interatomic potentials that learn effectively from limited training sets. We introduce OrbACE (Orbital and Atomic Cluster Expansion), a framework that supplements an…"
+    },
+    {
+      "id": "hn-50637507",
+      "title": "Bosses who pushed AI at work are now drowning in \"workslop\"",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.businessinsider.com/ai-generated-workslop-leads-to-policies-firings-boss-fed-up-2026-11",
+      "publishedAtMs": 1795572528000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Bosses are fed up with your grammatically perfect, needlessly verbose memos."
+    },
+    {
+      "id": "hf-2611.33915",
+      "title": "SEEK: Self-Evolution through Execution Knowledge for Agentic Robot Manipulation",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.33915",
+      "publishedAtMs": 1795564800000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "General-purpose multimodal foundation models enable robots to adapt during deployment from observations and execution feedback, without task-specific demonstrations or training. However, the robot retains what it learns only in the…"
+    },
     {
       "id": "rd-street-1y4s93l",
       "title": "Inkling 2 Mini in Ollama, one line",
@@ -16,6 +132,17 @@
       "verbatimExcerpt": "Hey guys, our Astral-Q GGUFs of Inkling 2 Mini run straight from Hugging Face: ollama run [hf.co/synthetic-minds/Inkling-2-Mini-Astral-GGUF:Q4\\_K\\_M]( Swap the tag for Q5\\_K\\_S up to Q8\\_0. GGUF: ["
     },
     {
+      "id": "x-fx-2125371062880022536",
+      "title": "Gemini 4 Hydrogen built an interactive 3D globe that turns live lightning strikes into ambient music.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "url": "https://x.com/GoogleDeepMind/status/2125371062880022536",
+      "publishedAtMs": 1795562923000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Gemini 4 Hydrogen built an interactive 3D globe that turns live lightning strikes into ambient music. Try it here → Media"
+    },
+    {
       "id": "x-fx-2125365268381929637",
       "title": "New Anthropic Fellows research: Returning to the neuron basis for interpretability Understanding what’s happening inside an AI model…",
       "source": "XBridge",
@@ -25,6 +152,17 @@
       "publishedAtMs": 1795561542000,
       "archivedAtMs": 1795663986955,
       "verbatimExcerpt": "helps to make it safer. One obvious place to look is its neurons, or the simple units it’s built from. Early interpretability work did just that, but over the past couple years, researchers largely moved on from that idea, for three…"
+    },
+    {
+      "id": "vip-willison-sonnet2026Nov24llm-inflection-points",
+      "title": "Three LLM inflection points in twelve months",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
+      "publishedAtMs": 1795561327000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works Three LLM inflection points in twelve months 24th November 2026 I gave a keynote at the AI Engineer Code Summit a couple of weeks…"
     },
     {
       "id": "ghrel-codex-epository965415649rust-v01740-alpha4",
@@ -96,6 +234,17 @@
       "url": "https://www.governor.ny.gov/news/consumers-begin-their-holiday-shopping-season-governor-hochul-signs-five-year-ban-ai-chatbot",
       "publishedAtMs": 1795556990000,
       "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "hn-50634734",
+      "title": "Working with AI",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.anthropic.com/research/working-with-ai",
+      "publishedAtMs": 1795554458000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "We interviewed people at 58 companies that use Claude about how AI is changing their work. They described few layoffs but reduced hiring, and said the most valuable uses of AI often involved reorganizing roles and workplaces around it.…"
     },
     {
       "id": "rd-street-1y4ofy8",
@@ -214,6 +363,17 @@
       "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y4irlg/run_claude_code_codex_and_gemini_cli_side_by_side/",
       "publishedAtMs": 1795540251000,
       "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "vip-willison-net2026Nov24astra-historical-mystery",
+      "title": "GPT 6.2 Astra Solves a Historical Mystery",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/24/astra-historical-mystery/",
+      "publishedAtMs": 1795539239000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 24th November 2026 - Link Blog GPT 6.2 Astra Solves a Historical Mystery. Here's an interesting case-study in using GPT-6.2 Astra…"
     },
     {
       "id": "hn-50630809",
@@ -393,6 +553,17 @@
       "verbatimExcerpt": "I built an HR dashboard from an Excel workbook using two ChatGPT prompts. The first created the dashboard. In the second, I gave ChatGPT links to three animated Flaticon faces for the favourable, neutral and unfavourable satisfaction…"
     },
     {
+      "id": "bsky-emollick.bsky.social-3n2zykguajs2g",
+      "title": "Two kinds of people: those watching the AI agent swarm trying to crack P=NP and those watching the AI agent swarm trying to (illegally)…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @emollick",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3n2zykguajs2g",
+      "publishedAtMs": 1795500890987,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "port the Xbox version of GTA 6 to the PC. Here is the P=NP one: pequalnp.com"
+    },
+    {
       "id": "rd-street-1y45395",
       "title": "Looking for VLM suggestions for OCR (English, Math, and Urdu) that run easily on an RTX 3090 (24GB)",
       "source": "Reddit",
@@ -443,6 +614,18 @@
       "verbatimExcerpt": "A charting plugin for Datasette Release: datasette-charts 0.2a0 Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 24th November 2026 I introduced this new charting plugin for…"
     },
     {
+      "id": "ghrel-ollama-thubcom2008Repository658928958v04018",
+      "title": "Ollama v0.40.18",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "ollama Release",
+      "url": "https://github.com/ollama/ollama/releases/tag/v0.40.18",
+      "publishedAtMs": 1795493893000,
+      "updatedAtMs": 1795508864000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "## What's Changed * mlx: fuse Inkling residual mixing on Metal by @dhiltgen in * mlxrunner: share tensor helpers and model setup across architectures by @jaingaurav in * llama.cpp: version bump b12651 + remove jetpack5 support by @pdevine…"
+    },
+    {
       "id": "vip-swyx-7482e5b8-089f-4955-b288-dfe47c243039",
       "title": "[AINews] Jensen Is Back! and OpenAI Shows Its Pretraining Curve, joined by Microsoft",
       "source": "VIPBlog",
@@ -487,6 +670,46 @@
       "verbatimExcerpt": "incognide is an integrated development environment for researchers and developers. it lets users seamlessly write code, run commands in terminals, browse the web, open photos, videos, docx, xlsx, pptx, mark up PDFs, write and compile…"
     },
     {
+      "id": "hf-2611.33144",
+      "title": "PyRUA-Dex: Learning Programmatic Policies for Dexterous Bimanual Manipulation with Coding Agents",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.33144",
+      "publishedAtMs": 1795478400000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Learning for dexterous manipulation is limited by the scarcity of high-quality demonstrations: retargeting from human video is imprecise, teleoperation gives no force feedback to the operator, and exoskeleton-based collection is hard to…",
+      "verifiedMetrics": [
+        {
+          "value": "81.0%",
+          "label": "Source-reported percentage",
+          "quote": "In simulated environments, PyRUA-Dex achieves SOTA on Bench2Dex with a score of 72.9 and reaches 81.0% success on DexJoCo under full randomization, ahead of every trained policy on both benchmarks.",
+          "subject": "PyRUA-Dex",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "hf-2611.33143",
+      "title": "ROAM-Bench: Evaluating Embodied Active Spatial Intelligence through Evidence Verification",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.33143",
+      "publishedAtMs": 1795478400000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Embodied spatial intelligence requires agents to gather information through exploration and interaction, then use it to reason and act. Existing benchmarks insufficiently distinguish correct outcomes from completion of these task…",
+      "verifiedMetrics": [
+        {
+          "value": "84%",
+          "label": "Outcome accuracy",
+          "quote": "Human evaluators achieve 84% strict task success on 100 sampled tasks, with every correct outcome satisfying the required checks.",
+          "subject": "evaluators",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
       "id": "hn-50619973",
       "title": "16-Year-Old Founded an AI Missile Startup. He's Targeting 'Cost per Kill'",
       "source": "HackerNews",
@@ -498,15 +721,15 @@
       "verbatimExcerpt": "Henrijs Dandzbergs dropped out of high school to join startup accelerator Y Combinator. With a new breed of missile, he wants to make killing as efficient as possible for the US and its military allies."
     },
     {
-      "id": "x-fx-2124981063487492379",
-      "title": "What would you build with the owner of your favorite neighborhood shop?",
+      "id": "x-fx-2124980590717911527",
+      "title": "We’re introducing Shirudo, an open-source Linux runtime allowing agents to defend systems without downtime.",
       "source": "XBridge",
       "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @OpenAIDevs",
-      "url": "https://x.com/OpenAIDevs/status/2124981063487492379",
-      "publishedAtMs": 1795469940000,
-      "archivedAtMs": 1795663986955,
-      "verbatimExcerpt": "Apply to OpenWorks to get funded to help local business owners build and use AI tools to solve problems they choose. Quoted: two months ago, i joined @openai. today, we launch openworks. we fund local AI experts to work alongside small…"
+      "originFeedName": "X · @OpenAI",
+      "url": "https://x.com/OpenAI/status/2124980590717911527",
+      "publishedAtMs": 1795469827000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "It lets agents write dynamic eBPF controls to shield systems from exploits, giving defenders more time to test and roll out patches. Built by @cisco together with OpenAI. Shirudo is a first step toward self-defending infrastructure that…"
     },
     {
       "id": "ghrel-claude-code-thubcom2008Repository937253475v21331",
@@ -539,17 +762,6 @@
       "url": "https://www.theatlantic.com/newsletters/2026/11/jensen-huang-ai-apology-nvidia/689366/",
       "publishedAtMs": 1795465987000,
       "archivedAtMs": 1795564401578
-    },
-    {
-      "id": "x-fx-2124944225955639430",
-      "title": "GPT-6.2 can make sense of the world around us, simulate how things work, and help you build worlds of your own.",
-      "source": "XBridge",
-      "sourceCategory": "X_BRIDGE",
-      "originFeedName": "X · @OpenAIDevs",
-      "url": "https://x.com/OpenAIDevs/status/2124944225955639430",
-      "publishedAtMs": 1795461157000,
-      "archivedAtMs": 1795663986955,
-      "verbatimExcerpt": "This might look like a film reel from San Francisco’s 1915 World’s Fair, but we made the whole thing in Blender. Here’s how builders are pushing the limits in 3D: Media"
     },
     {
       "id": "arxiv-httparxivorgabs261131240v1",
@@ -642,6 +854,28 @@
       "url": "https://www.nbcchicago.com/news/local/ground-stop-issued-at-ohare-airport-due-to-staffing-at-start-of-busy-holiday-week/4020413/",
       "publishedAtMs": 1795456777000,
       "archivedAtMs": 1795564401578
+    },
+    {
+      "id": "x-fx-2124922133545714160",
+      "title": "Through our new program OpenWorks, we fund local AI experts to help small businesses develop the tools and skills they need to grow…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAI",
+      "url": "https://x.com/OpenAI/status/2124922133545714160",
+      "publishedAtMs": 1795455890000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "their own business, at no cost to them. We invite AI experts who love teaching others and small business owners who want to learn to implement AI to join us at Quoted: two months ago, i joined @openai. today, we launch openworks. we fund…"
+    },
+    {
+      "id": "x-fx-2124911075875258776",
+      "title": "Working in parallel and meeting every four hours to debate ideas, they used formal proof assistant Lean to verify that optimizations…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "url": "https://x.com/GoogleDeepMind/status/2124911075875258776",
+      "publishedAtMs": 1795453254000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "were mathematically sound. We’re open-sourcing our verified solutions & Lean library on GitHub. Find out more → Media"
     },
     {
       "id": "ghrel-langchain-552661142langchain-text-splitters120",
@@ -964,6 +1198,44 @@
       "publishedAtMs": 1795392000000,
       "archivedAtMs": 1795663986955,
       "verbatimExcerpt": "Given a single text and a simple zero-shot prompt (no web access, tools, candidate lists, or writing samples), frontier models can answer \"who wrote this?\" at three increasingly specific levels: (1) whether an AI or human wrote it, (2) if…"
+    },
+    {
+      "id": "hf-2611.30844",
+      "title": "DyLoMo-DiT: Dynamic Looped Mixture-of-Experts Diffusion Transformers",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.30844",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Diffusion Transformers (DiTs) scale model capacity by increasing both parameter count and computation. Mixture-of-Experts (MoE) variants expand parameter capacity while keeping per-token computation roughly fixed, but still require…",
+      "verifiedMetrics": [
+        {
+          "value": "11–24%",
+          "label": "Source-reported percentage",
+          "quote": "On ImageNet 256times256, DyLoMo-DiT reduces FID by 11-24% relative to DiT and 36-56% relative to DiT-MoE at matched parameter and compute budgets.",
+          "subject": "DyLoMo-DiT",
+          "isFeatured": true
+        },
+        {
+          "value": "36–56%",
+          "label": "Source-reported percentage",
+          "quote": "On ImageNet 256times256, DyLoMo-DiT reduces FID by 11-24% relative to DiT and 36-56% relative to DiT-MoE at matched parameter and compute budgets.",
+          "subject": "DyLoMo-DiT",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "hf-2611.30472",
+      "title": "Target-Part Preference Optimization for Part-Aware 3D Generation",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.30472",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795711895103,
+      "verbatimExcerpt": "Part-aware 3D generation requires not only globally plausible objects but also complete, well-separated semantic parts, yet high-quality part decompositions remain too scarce to support large-scale supervised fine-tuning. We study whether…"
     },
     {
       "id": "hn-50605445",
@@ -3883,14 +4155,14 @@
         {
           "value": "from 7% to 70%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "context": "Before-and-after transition",
           "isFeatured": false
         },
         {
           "value": "83%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "isFeatured": false
         }
       ]

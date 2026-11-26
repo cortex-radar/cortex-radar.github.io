@@ -6,15 +6,47 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Nov 2026 03:33:06 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 16:51:35 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
-      <title>New York bans AI toys, including those using internet to talk to children</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50644909&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50644909&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 17:27:05 GMT</pubDate>
+      <title>The New York Times warns photographers not to update Photoshop over AI features</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50647673&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50647673&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 21:18:02 GMT</pubDate>
+      <category>Innovation &amp; ROI</category>
+      <description>The New York Times is warning freelance photographers against using the latest version of Adobe Photoshop, saying it uses AI &quot;in ways that may not be apparent to users.&quot; An email sent to freelance photographers says Photoshop’s latest update uses AI ‘in ways that may not be apparent.’ The New York Times is asking freelance photographers. It’s not always clear which tools in Adobe’s apps are AI-powered, and even some older options like automated selection tools may now be considered part of the AI suite. — Upstream (Hacker News): https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features</description>
+    </item>
+    <item>
+      <title>My local Ollama chat client — now it has thinking mode, local web search, file attachments and…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y65f4s&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y65f4s&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 16:29:12 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Published on theguardian.com (discussed on Hacker News) published &quot;New York bans AI toys, including those using internet to talk to children&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around New York bans AI toys, including those using internet to talk to children. — Upstream (Hacker News): https://www.theguardian.com/us-news/2026/nov/25/new-york-bans-ai-toys</description>
+      <description>Active engineering thread in r/ollama (1 upvotes, 0 comments): My local Ollama chat client — now it has thinking mode, local web search, file attachments and persistent memory. Addresses practical workflow friction around My local Ollama chat client — now it has thinking mode, local web search, file attachments and. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y65f4s/my_local_ollama_chat_client_now_it_has_thinking/</description>
+    </item>
+    <item>
+      <title>I made a graph based sub agent deployment tool</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y65vsf&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y65vsf&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 16:48:53 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>r/LocalLLaMA Engineering Community · Cross-surfaced on r/ClaudeAI published &quot;I made a graph based sub agent deployment tool&quot;. Open the linked third-party source above for the full upstream breakdown. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y65vsf/i_made_a_graph_based_sub_agent_deployment_tool/</description>
+    </item>
+    <item>
+      <title>We ran 8,850 live agent runs inside a 40-table ERP/CRM app — 100% of database-integrity…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y65nrl&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y65nrl&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 16:39:19 GMT</pubDate>
+      <category>Innovation &amp; ROI</category>
+      <description>The scariest failure mode for tool-calling agents in production isn&apos;t a crash — it&apos;s a polite, confident *&quot;Done!&quot;* when the underlying database record is silently broken. We just published BenchSaaS V1.0, evaluating 10 AI assistants × 3 reasoning tiers (30 configs) across 100 real-world CRM, Inventory, and Finance tasks inside a live 40-table / 18,014-record business app (8,850 valid runs out of 9,000 planned, 3 repeats/task, hard caps of 31 turns &amp; 30 tool calls). — Upstream (r/AI_Agents): https://www.reddit.com/r/AI_Agents/comments/1y65nrl/we_ran_8850_live_agent_runs_inside_a_40table/</description>
+    </item>
+    <item>
+      <title>Ollama v0.40.19-rc0 · Release candidate</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04019-rc0&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04019-rc0&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 06:20:48 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Ollama v0.40.19-rc0 · Release candidate was published on GitHub (ollama/ollama). No release notes extracted — see linked release. No release notes extracted — see linked release — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.19-rc0</description>
     </item>
     <item>
       <title>Download the latest version of Ollama: ollama run inkling-2-mini</title>
@@ -36,25 +68,9 @@
       <title>OpenAI Codex v0.174.0-alpha.7 · Alpha</title>
       <link>https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha7&amp;lens=2</link>
       <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha7&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 02:55:12 GMT</pubDate>
+      <pubDate>Thu, 26 Nov 2026 04:36:47 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
       <description>OpenAI Codex v0.174.0-alpha.7 · Alpha was published on GitHub (openai/codex). No release notes extracted — see linked release. No release notes extracted — see linked release — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.7</description>
-    </item>
-    <item>
-      <title>The New York Times warns photographers not to update Photoshop over AI features</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50647673&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50647673&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 21:18:02 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>The New York Times is warning freelance photographers against using the latest version of Adobe Photoshop, saying it uses AI &quot;in ways that may not be apparent to users.&quot; An email sent to freelance photographers says Photoshop’s latest update uses AI ‘in ways that may not be apparent.’ The New York Times is asking freelance photographers. It’s not always clear which tools in Adobe’s apps are AI-powered, and even some older options like automated selection tools may now be considered part of the AI suite. — Upstream (Hacker News): https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features</description>
-    </item>
-    <item>
-      <title>Ollama v0.40.18</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-ollama-thubcom2008Repository658928958v04018&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-thubcom2008Repository658928958v04018&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 04:18:13 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>What&apos;s Changed * mlx: fuse Inkling residual mixing on Metal by @dhiltgen in https://github.com/ollama/ollama/pull/19808 * mlxrunner: share tensor helpers and model setup across architectures by @jaingaurav in https://github.com/ollama/ollama/pull/19805 * llama.cpp: version bump b12651 + remove jetpack5 support by @pdevine in. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.18</description>
     </item>
     <item>
       <title>Claude Code v2.1.332</title>
@@ -65,12 +81,36 @@
       <description>What&apos;s changed - Added skills from universal app connector servers (beta). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.332</description>
     </item>
     <item>
-      <title>Spending 35B Opus 5.5 Tokens to Write a Symphony</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50646662&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50646662&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 19:57:08 GMT</pubDate>
+      <title>Moat: Your OpenRouter Replacement</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50652184&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50652184&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 06:32:48 GMT</pubDate>
       <category>Economics &amp; FinOps</category>
-      <description>Published on danprice.ai (discussed on Hacker News) published &quot;Spending 35B Opus 5.5 Tokens to Write a Symphony&quot;. Open the linked third-party source above for the full upstream breakdown. Product manager building AI tools for lawyers. — Upstream (Hacker News): https://danprice.ai/blog/opus-symphony</description>
+      <description>Published on commandcode.ai (discussed on Hacker News) published &quot;Moat: Your OpenRouter Replacement&quot;. Open the linked third-party source above for the full upstream breakdown. Get 100+ open models of the highest quality at wholesale prices, the cheapest you can get. — Upstream (Hacker News): https://commandcode.ai/moat</description>
+    </item>
+    <item>
+      <title>Google Will Make digital helpers Use Its universal app connector Servers. The Gmail One Can&apos;t…</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50653477&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50653477&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 09:44:23 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>From February 2027, Google&apos;s terms require digital helpers to reach Gmail, Drive and the rest of Workspace through Google&apos;s own universal app connector servers. The addendum also adds data rules that matter to anyone building an agent with memory: Workspace data may only be processed &quot;to fulfill active, user-authorized tasks&quot;, and must be deleted when the user disconnects. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://techstackups.com/articles/google-workspace-ai-agents-mcp/</description>
+    </item>
+    <item>
+      <title>How can people make money as AI replaces intellectual jobs?</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50651911&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50651911&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 05:46:33 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>As AI automates more knowledge work, what practical ways are there to earn a living through this transition? Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;How can people make money as AI replaces intellectual jobs?&quot; rather than shipping a software tool. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50651911</description>
+    </item>
+    <item>
+      <title>Model names and numbers have never been less useful in determining ability levels. In part…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n36uicn6lc2z&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n36uicn6lc2z&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 04:45:23 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Model names and numbers have never been less useful in determining ability levels. Addresses practical workflow friction around Model names and numbers have never been less useful in determining ability levels. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n36uicn6lc2z</description>
     </item>
     <item>
       <title>Marginalia Search, Money, C++, Rust, AI, Stuff</title>
@@ -81,76 +121,44 @@
       <description>Title possibly signs checks the article doesn&apos;t have backing for. SerpApi sponsored the project with $10k a while back. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Marginalia Search, Money, C++, Rust, AI, Stuff&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.marginalia.nu/log/a_141_marginalia_update/</description>
     </item>
     <item>
-      <title>When the Air Force Needed a Supercomputer, They Built It Out of PS3 Consoles</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50646073&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50646073&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 19:08:28 GMT</pubDate>
+      <title>Spending 35B Opus 5.5 Tokens to Write a Symphony</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50646662&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50646662&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 19:57:08 GMT</pubDate>
       <category>Economics &amp; FinOps</category>
-      <description>Air Force built their own supercomputer that would drastically reduce the time needed for pattern recognition, image analysis, and artificial intelligence research. It was for these reasons that the PS3 was used by researchers, who wanted to possess large amounts of computing power without the large costs associated with traditional supercomputers. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;When the Air Force Needed a Supercomputer, They Built It Out of PS3 Consoles&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.warhistoryonline.com/war-articles/ps3-supercomputer.html</description>
+      <description>Published on danprice.ai (discussed on Hacker News) published &quot;Spending 35B Opus 5.5 Tokens to Write a Symphony&quot;. Open the linked third-party source above for the full upstream breakdown. Product manager building AI tools for lawyers. — Upstream (Hacker News): https://danprice.ai/blog/opus-symphony</description>
     </item>
     <item>
-      <title>I asked Claude to populate a Civilization-style game map with real data from the US.</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2125779541952246039&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125779541952246039&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 02:31:52 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Opus 5.5 downloaded and parse a ton of public data and 7 hours and 45K lines of code later. It&apos;s deployed here: https://karpathy.ai/usaciv/ and the &quot;?&quot; has the source link too. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;I asked Claude to populate a Civilization-style game map with real data from the US.&quot; rather than shipping a software tool. — Upstream (X · @karpathy): https://x.com/karpathy/status/2125779541952246039</description>
-    </item>
-    <item>
-      <title>We recently migrated our Messages software connections from Python to Rust.</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2125627317263466739&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125627317263466739&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 16:26:59 GMT</pubDate>
+      <title>New York bans AI toys, including those using internet to talk to children</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50644909&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50644909&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 17:27:05 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>Anthropic published We recently migrated our Messages software connections from Python to Rust. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around We recently migrated our Messages software connections from Python to Rust. — Upstream (X · @AnthropicAI): https://x.com/AnthropicAI/status/2125627317263466739</description>
+      <description>Published on theguardian.com (discussed on Hacker News) published &quot;New York bans AI toys, including those using internet to talk to children&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around New York bans AI toys, including those using internet to talk to children. — Upstream (Hacker News): https://www.theguardian.com/us-news/2026/nov/25/new-york-bans-ai-toys</description>
     </item>
     <item>
-      <title>Thing I am hearing from a number of big firms, from manufacturers to financial services: we…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n333h3yyoc2g&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n333h3yyoc2g&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 16:39:19 GMT</pubDate>
+      <title>Point taken 📍 Mistral Large 4 finds the exact match and outlines it on the map.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2125915743212761359&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125915743212761359&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 11:33:05 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>Thing I am hearing from a number of big firms, from manufacturers to financial services: we have scattered teams of 2-3 people using AI that are doing the work of dozens of folks in a fraction of the time, creating large-scale management fights over the implications and politics for the organization. Shapes vendor governance, funding expectations, or enterprise buying decisions around Thing I am hearing from a number of big firms, from manufacturers to financial services: we have. rather than shipping a software tool. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n333h3yyoc2g</description>
+      <description>On visual grounding tasks, Le Chonk beats even closed frontier models. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Point taken 📍 Mistral Large 4 finds the exact match and outlines it on the map.&quot; rather than shipping a software tool. — Upstream (X · @MistralAI): https://x.com/MistralAI/status/2125915743212761359</description>
     </item>
     <item>
-      <title>Two kinds of people: those watching the digital helpers swarm trying to crack P=NP and those…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2zykguajs2g&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2zykguajs2g&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 06:14:50 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Two kinds of people: those watching the digital helpers swarm trying to crack P=NP and those watching the digital helpers swarm trying to (illegally) port the Xbox version of GTA 6 to the PC. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2zykguajs2g</description>
-    </item>
-    <item>
-      <title>Quoting Scott Aaronson</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-onwillisonnet2026Nov25scott-aaronson&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-onwillisonnet2026Nov25scott-aaronson&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 23:26:32 GMT</pubDate>
+      <title>Quoting Jack Despain Zhou</title>
+      <link>https://cortex-radar.github.io/?orb=vip-willison-illisonnet2026Nov26jack-despain-zhou&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-illisonnet2026Nov26jack-despain-zhou&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 15:09:31 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>A quote from Scott Aaronson Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 25th November 2026 It’s now obvious that we’ll be getting, not one-off solutions to this or that complexity question, but a whole new continent of mathematical truth, one that we’d previously only glimpsed through fog. Addresses practical workflow friction around Quoting Scott Aaronson. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/25/scott-aaronson/</description>
+      <description>A quote from Jack Despain Zhou Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 26th November 2026 Among the many already existing effects of AI has been a great de-individualization. Addresses practical workflow friction around Quoting Jack Despain Zhou. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/26/jack-despain-zhou/</description>
     </item>
     <item>
-      <title>The Revolution vs The Renaissance — Thariq Shihipar, OpenAI</title>
-      <link>https://cortex-radar.github.io/?orb=vip-swyx-01a214b9-5541-758c-b9a3-1d85f48144ff&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-01a214b9-5541-758c-b9a3-1d85f48144ff&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 22:28:01 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>AI can make software cheap enough to produce by the thousand and still give you more time to make one thing feel right. At AI Engineer CODE, Thariq Shihipar shows how those two futures can coexist. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Swyx · Latent Space): https://latent.space/p/the_revolution_vs_the_renaissance_thariq_shihipar_openai/</description>
-    </item>
-    <item>
-      <title>Math Proofs Are Landing Faster Than We Can Read Them</title>
-      <link>https://cortex-radar.github.io/?orb=vip-swyx-b346515a-5480-4fa6-830e-a144eacab773&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-b346515a-5480-4fa6-830e-a144eacab773&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 22:23:41 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>AINews by Latent Space Scott Aaronson was still trying to digest two proofs of VP ≠ VNP at dinner. Before dessert, an OpenAI paper claimed that the square matrix multiplication exponent ω is exactly 9/4. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Math Proofs Are Landing Faster Than We Can Read Them&quot; rather than shipping a software tool. — Upstream (Swyx · Latent Space): https://latent.space/p/ainews-math-proofs-are-landing-faster-than-we-can-read-them/</description>
-    </item>
-    <item>
-      <title>There is a lot of focus on AI-aided discoveries in quantitative fields, but they can do other…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n32whiabcc27&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n32whiabcc27&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 15:10:04 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>There is a lot of focus on AI-aided discoveries in quantitative fields, but they can do other work, too: Historian Mark Humphries asked GPT-6.2 Astra to look at an anonymous 1808 sketchbook at Yale and it found the author, an obscure French aristocrat. generativehistory.substack.com/p/gpt-62-ast. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n32whiabcc27</description>
+      <title>sqlite3_rsync: Database Remote-Copy Tool For SQLite</title>
+      <link>https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov26sqlite3-rsync&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-monwillisonnet2026Nov26sqlite3-rsync&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 06:08:25 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>sqlite3_rsync: Database Remote-Copy Tool For SQLite Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 26th November 2026 - Link Blog sqlite3_rsync: Database Remote-Copy Tool For SQLite. Addresses practical workflow friction around sqlite3_rsync: Database Remote-Copy Tool For SQLite. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/26/sqlite3-rsync/</description>
     </item>
     <item>
       <title>Top open problems in mathematics ranked by AI assistants-assessed importance</title>
@@ -169,44 +177,36 @@
       <description>To accompany the video from my recent talk at @aiDotEngineer, here&apos;s an expanded version of my argument that we&apos;ve seen three key inflection points with AI assistants over the past twelve months simonwillison.net/2026/Nov/24/. Shapes vendor governance, funding expectations, or enterprise buying decisions around To accompany the video from my recent talk at @aiDotEngineer, here&apos;s an expanded version of my. rather than shipping a software tool. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n33rvdsius2a</description>
     </item>
     <item>
-      <title>Working with AI</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50634734&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50634734&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 21:07:38 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>We interviewed people at 58 companies that use Claude about how AI is changing their work. They described few layoffs but reduced hiring, and said the most valuable uses of AI often involved reorganizing roles and workplaces around it. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://www.anthropic.com/research/working-with-ai</description>
-    </item>
-    <item>
-      <title>I built a minimal, token-efficient AI coding workbench for myself and made it open source (no…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y5qc4u&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y5qc4u&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 03:04:48 GMT</pubDate>
+      <title>When the Air Force Needed a Supercomputer, They Built It Out of PS3 Consoles</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50646073&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50646073&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 19:08:28 GMT</pubDate>
       <category>Economics &amp; FinOps</category>
-      <description>r/ChatGPTCoding Engineering Community published &quot;I built a minimal, token-efficient AI coding workbench for myself and made it open source (no telemetry, no accounts)&quot;. Open the linked third-party source above for the full upstream breakdown. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ChatGPTCoding): https://www.reddit.com/r/ChatGPTCoding/comments/1y5qc4u/i_built_a_minimal_tokenefficient_ai_coding/</description>
+      <description>Air Force built their own supercomputer that would drastically reduce the time needed for pattern recognition, image analysis, and artificial intelligence research. It was for these reasons that the PS3 was used by researchers, who wanted to possess large amounts of computing power without the large costs associated with traditional supercomputers. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;When the Air Force Needed a Supercomputer, They Built It Out of PS3 Consoles&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.warhistoryonline.com/war-articles/ps3-supercomputer.html</description>
     </item>
     <item>
-      <title>Teaching Students to Stand on Their Own: Distilling Vision Foundation Models for Fine-Grained…</title>
-      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133749v1&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133749v1&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 04:10:53 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>Fine-grained out-of-the-box class-incremental learning (FG-FSCIL) aims to incrementally learn visually similar new classes from limited images without catastrophic forgetting. However, VFM backbones incur high computational costs and do not guarantee fine-grained recognition. Provides reproducible empirical benchmarks and architectural methods that downstream engineering teams can evaluate against current baselines. — Upstream (arXiv): https://arxiv.org/abs/2611.33749v1</description>
+      <title>Thing I am hearing from a number of big firms, from manufacturers to financial services: we…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n333h3yyoc2g&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n333h3yyoc2g&amp;lens=2</guid>
+      <pubDate>Tue, 24 Nov 2026 16:39:19 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Thing I am hearing from a number of big firms, from manufacturers to financial services: we have scattered teams of 2-3 people using AI that are doing the work of dozens of folks in a fraction of the time, creating large-scale management fights over the implications and politics for the organization. Shapes vendor governance, funding expectations, or enterprise buying decisions around Thing I am hearing from a number of big firms, from manufacturers to financial services: we have. rather than shipping a software tool. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n333h3yyoc2g</description>
     </item>
     <item>
-      <title>REFORGE: AI assistants-Assisted RTL Bug Repair with Structured Context and Verification Feedback</title>
-      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133748v1&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133748v1&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 04:08:43 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>Large language models (AI assistants) can write and repair RTL, but successful compilation or testbench execution does not establish defect removal, behavioral preservation, security, or implementation feasibility. Existing AI assistants-based RTL repair methods often report a single repair rate without retaining separate evidence for these properties, limiting reproducible comparison and integration into hardware design flows. — Upstream (arXiv): https://arxiv.org/abs/2611.33748v1</description>
-    </item>
-    <item>
-      <title>Tells of a Lying Machine: Analyzing AI assistants-Generated Strategic Dialogue in Chinese…</title>
-      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133747v1&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133747v1&amp;lens=2</guid>
-      <pubDate>Wed, 25 Nov 2026 04:08:20 GMT</pubDate>
+      <title>TontaubeV1.1 Flash, an open-source, AI assistants-based TTS model that runs in real time in…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y65vp0&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y65vp0&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 16:48:46 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>Social-deduction games give models opposing objectives, but they also give roles different information and speaking obligations. Three annotators&apos; ratings of 392 utterances show higher wolf scores on four behavioral dimensions, and five AI assistants judges reach 60.8%-70.2% accuracy on a shared evaluation set. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (arXiv): https://arxiv.org/abs/2611.33747v1</description>
+      <description>We just released TontaubeV1.1 Flash, an open-source TTS model (Apache-2.0) that achieves \~10ms TTFA streaming on consumer high-speed computer chips and runs realtime in your browser on CPU. It is a single-speaker model we distilled from our bigger V1.1 model. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y65vp0/tontaubev11_flash_an_opensource_llmbased_tts/</description>
+    </item>
+    <item>
+      <title>🎙️ New multilingual capabilities are here for Qwen-Audio-3.1!</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2125798914490249411&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125798914490249411&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 03:48:51 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>X · @Alibaba_Qwen published &quot;🎙️ New multilingual capabilities are here for Qwen-Audio-3.1!&quot;. Open the linked third-party source above for the full upstream breakdown. We previously released the Qwen-Audio-3.1 series of speech foundation models. — Upstream (X · @Alibaba_Qwen): https://x.com/Alibaba_Qwen/status/2125798914490249411</description>
     </item>
   </channel>
 </rss>
