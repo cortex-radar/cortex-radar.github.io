@@ -1,9 +1,253 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-24T23:53:21.578Z",
-  "updatedAtMs": 1795564401578,
-  "count": 252,
+  "updatedAtIso": "2026-11-26T03:33:06.955Z",
+  "updatedAtMs": 1795663986955,
+  "count": 292,
   "entries": [
+    {
+      "id": "rd-street-1y4s93l",
+      "title": "Inkling 2 Mini in Ollama, one line",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y4s93l/inkling_2_mini_in_ollama_one_line/",
+      "publishedAtMs": 1795563126000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Hey guys, our Astral-Q GGUFs of Inkling 2 Mini run straight from Hugging Face: ollama run [hf.co/synthetic-minds/Inkling-2-Mini-Astral-GGUF:Q4\\_K\\_M]( Swap the tag for Q5\\_K\\_S up to Q8\\_0. GGUF: ["
+    },
+    {
+      "id": "x-fx-2125365268381929637",
+      "title": "New Anthropic Fellows research: Returning to the neuron basis for interpretability Understanding what’s happening inside an AI model…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @AnthropicAI",
+      "url": "https://x.com/AnthropicAI/status/2125365268381929637",
+      "publishedAtMs": 1795561542000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "helps to make it safer. One obvious place to look is its neurons, or the simple units it’s built from. Early interpretability work did just that, but over the past couple years, researchers largely moved on from that idea, for three…"
+    },
+    {
+      "id": "ghrel-codex-epository965415649rust-v01740-alpha4",
+      "title": "OpenAI Codex v0.174.0-alpha.4",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "openai/codex Release",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.4",
+      "publishedAtMs": 1795561311000,
+      "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "rd-street-1y4rhws",
+      "title": "Inkling Mini's bench scores improved by as much as 10% for FREE by Apple's LoopCD paper",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y4rhws/inkling_minis_bench_scores_improved_by_as_much_as/",
+      "publishedAtMs": 1795561049000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Ok it's not free-free the same way a magical \"press to smartize the model\" would be, but you can pick * Either have a slightly smarter model for something between 2-32% FLOPs cost (they didn't measure tok/s, and this method is primarily…",
+      "verifiedMetrics": [
+        {
+          "value": "Up to 10%",
+          "label": "Source-reported percentage",
+          "quote": "Inkling Mini's bench scores improved by as much as 10% for FREE by Apple's LoopCD paper",
+          "subject": "Inkling Mini",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y4r3we",
+      "title": "Small Python eval CLI for local Ollama fine-tunes (string checks + blind gemma4:26b judge)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y4r3we/small_python_eval_cli_for_local_ollama_finetunes/",
+      "publishedAtMs": 1795560027000,
+      "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "rd-street-1y4qtod",
+      "title": "The great pirating boycott",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y4qtod/the_great_pirating_boycott/",
+      "publishedAtMs": 1795559284000,
+      "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "rd-street-1y4qmr1",
+      "title": "To the person who deliberately made their visualization of the RH proof resemble a nervous system",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y4qmr1/to_the_person_who_deliberately_made_their/",
+      "publishedAtMs": 1795558787000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): To the person who deliberately made their visualization of the RH proof resemble a nervous system"
+    },
+    {
+      "id": "hn-50635246",
+      "title": "New York Ban AI Toys for 5 Years",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.governor.ny.gov/news/consumers-begin-their-holiday-shopping-season-governor-hochul-signs-five-year-ban-ai-chatbot",
+      "publishedAtMs": 1795556990000,
+      "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "rd-street-1y4ofy8",
+      "title": "I used qwen3.5:4b via Ollama as a \"director\" to make real demo videos of web apps (fully local, MIT)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y4ofy8/i_used_qwen354b_via_ollama_as_a_director_to_make/",
+      "publishedAtMs": 1795553440000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "I wanted a free way to make a product demo video without learning video editing. Video models hallucinate UI, so I split the roles: a small model through Ollama only **plans** the video (scenes, captions, pacing, and what each button…"
+    },
+    {
+      "id": "hn-50634426",
+      "title": "Launch HN: Versine (YC F26) – MCP to send and receive money",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=50634426",
+      "publishedAtMs": 1795553055000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Hey HN, we’re Harshith, Param, and Vishnu and we're building Versine ( ). Versine lets you send and request money just by talking or texting with your AI (think Venmo with an MCP). We’re software engineers who have worked on distributed…"
+    },
+    {
+      "id": "rd-street-1y4nyzg",
+      "title": "Ollama Quota usage dropped by another 50-60% 😡 (grandfathered plans)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y4nyzg/ollama_quota_usage_dropped_by_another_5060/",
+      "publishedAtMs": 1795552291000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Anyone else seeing this? Same exact workflows, I usually 20% at this time of the week (Tuesday). Same models and yet here we are.... Please drop alternatives as this is getting ridiculous. Top engineer comment (u/EvolvingDior, +4): \"Seems…"
+    },
+    {
+      "id": "x-fx-2125317662612041819",
+      "title": ".@llama_index just launched OCRia-1, a 4B document-parsing language model based on Qwen.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ollama",
+      "url": "https://x.com/ollama/status/2125317662612041819",
+      "publishedAtMs": 1795550191000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "It's made to process images and turn it into markdown with tables and charts. Get started with the model: ollama pull llamaindex/ocria-1:bf16 Media"
+    },
+    {
+      "id": "rd-street-1y4n266",
+      "title": "I built a Sessions History panel for Herdr – pick up where you left off",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y4n266/i_built_a_sessions_history_panel_for_herdr_pick/",
+      "publishedAtMs": 1795550186000,
+      "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "hn-50632998",
+      "title": "Compiling web applications into verified operations for AI agents",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://protocolis.co/paper/",
+      "publishedAtMs": 1795547522000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "A deterministic compiler turns a web page, on first contact and with no model call, into typed operations that an AI agent invokes, each returning a verified result. Compared with widely used browser tools and agents, across three task…"
+    },
+    {
+      "id": "rd-street-1y4lmlh",
+      "title": "I made a Chrome extension that lets your Ollama models browse, read files and fill forms (built for 8B models)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y4lmlh/i_made_a_chrome_extension_that_lets_your_ollama/",
+      "publishedAtMs": 1795546823000,
+      "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "rd-street-1y4k6xe",
+      "title": "Qwen WebCoder 4B: This Tiny AI Builds Complete React Apps in 1-Shot!",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y4k6xe/qwen_webcoder_4b_this_tiny_ai_builds_complete/",
+      "publishedAtMs": 1795543473000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "hey everyone, i released [CCORE Web Coder 4B]( yesterday, and Ray Codes made a video showing how to run it locally with Ollama and what it generates from a single prompt. I trained it to turn a brief into a complete React page in one…"
+    },
+    {
+      "id": "hn-50631691",
+      "title": "Anthropic and OpenAI employees fear unreleased AI models too unsafe to release",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://tech.yahoo.com/ai/claude/articles/scoop-anthropic-openai-employees-fear-104505580.html",
+      "publishedAtMs": 1795542401000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Scoop: Anthropic and OpenAI employees fear unreleased AI models are too unsafe to release Skip to main content Advertisement Advertisement Advertisement Illustration: Brendan Lynch/Axios. Stock: Getty Images Anthropic and OpenAI are…"
+    },
+    {
+      "id": "rd-street-1y4iyd3",
+      "title": "Skills and plugins for coding agents, with notes on which agents each one supports",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y4iyd3/skills_and_plugins_for_coding_agents_with_notes/",
+      "publishedAtMs": 1795540659000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Many of these tools are built for Claude Code first, so I've noted which ones also work in Cursor, Codex or Copilot, along with installation steps. Sharing in case it's helpful. [ Top engineer comment (u/ChatGPTCoding-ModTeam, +1): \"This…"
+    },
+    {
+      "id": "rd-street-1y4irlg",
+      "title": "Run Claude Code, Codex and Gemini CLI side by side in one app (free, open source)",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ChatGPTCoding",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y4irlg/run_claude_code_codex_and_gemini_cli_side_by_side/",
+      "publishedAtMs": 1795540251000,
+      "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "hn-50630809",
+      "title": "Ask HN: Anthropic is accusing my company of distilling. How can I prove I'm not?",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://news.ycombinator.com/item?id=50630809",
+      "publishedAtMs": 1795538744000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Basically the title. Anthropic is accusing me and my company of using their API for distillation. We are not. We do not train our own models. Our only usage which I think could get us flagged is automated regression benchmarks whenever we…"
+    },
+    {
+      "id": "hn-50630309",
+      "title": "Tidal bans AI-generated music",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://variety.com/2026/music/news/tidal-bans-ai-generated-music-1236956924/",
+      "publishedAtMs": 1795536758000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "The music streaming service Tidal said Tuesday that it would ban tracks it believes are completely AI-generated starting next month,"
+    },
+    {
+      "id": "hn-50630294",
+      "title": "Show HN: Mason – A lightweight Postgres read-replica, built on columnar storage",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://masondata.ai/",
+      "publishedAtMs": 1795536712000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Hi HN! TLDR: we’ve built an open-source drop-in replacement for a postgres read-replica, powered by duckdb’s columnar compute engine. It’s very fast. And it looks like postgres. So, this started out as: let’s just connect Clickhouse to…"
+    },
     {
       "id": "rd-street-1y4dgyy",
       "title": "review: a few sessions into editing our d&d actual play with claude + the free invideo editor over MCP (came from premiere)",
@@ -86,6 +330,16 @@
       "verbatimExcerpt": "I've been building LokalBot to tie local speech, summarization, autocomplete, and semantic search into one app instead of juggling separate scripts and cloud subscriptions. Default app local AI stack: - **ASR:** Qwen3-ASR 1.7B GGUF Q8_0…"
     },
     {
+      "id": "hn-50627131",
+      "title": "Quit Internet Videos Before AI Perfects Them",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://nomagicpill.substack.com/p/quit-internet-videos-before-ai-perfects",
+      "publishedAtMs": 1795522815000,
+      "archivedAtMs": 1795663986955
+    },
+    {
       "id": "x-fx-2125201709852934598",
       "title": "We worked with @mencap_charity and people with learning disabilities to build the Easy Read Co-Creator Tool with Gemini.",
       "source": "XBridge",
@@ -106,6 +360,26 @@
       "publishedAtMs": 1795516967000,
       "archivedAtMs": 1795564401578,
       "verbatimExcerpt": "Top engineer comment (u/Minetorpia, +1): \"It was the math community itself that demanded this.\""
+    },
+    {
+      "id": "hn-50625888",
+      "title": "Jevons Paradox in AI: Cheaper Tokens Won't Pay for Capex",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://philippdubach.com/posts/cheaper-ai-tokens-wont-pay-for-capex/",
+      "publishedAtMs": 1795513190000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Google processes 330 times more tokens than two years ago, yet prices fall almost as fast. Why the Jevons paradox alone won Token volume and token prices are moving at roughly the same speed, so cheaper inference on its own does not grow…",
+      "verifiedMetrics": [
+        {
+          "value": "13x",
+          "label": "Measured speedup",
+          "quote": "On the price side, MIT researchers find that the price of reaching a fixed benchmark score falls 5 to 10x a year, and Epoch AI finds that cost per task at fixed performance falls about 13x a year.",
+          "subject": "task",
+          "isFeatured": true
+        }
+      ]
     },
     {
       "id": "rd-street-1y494ev",
@@ -158,6 +432,28 @@
       "archivedAtMs": 1795564401578
     },
     {
+      "id": "vip-willison-willisonnet2026Nov24datasette-charts",
+      "title": "datasette-charts 0.2a0",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Simon Willison",
+      "url": "https://simonwillison.net/2026/Nov/24/datasette-charts/",
+      "publishedAtMs": 1795494269000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "A charting plugin for Datasette Release: datasette-charts 0.2a0 Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 24th November 2026 I introduced this new charting plugin for…"
+    },
+    {
+      "id": "vip-swyx-7482e5b8-089f-4955-b288-dfe47c243039",
+      "title": "[AINews] Jensen Is Back! and OpenAI Shows Its Pretraining Curve, joined by Microsoft",
+      "source": "VIPBlog",
+      "sourceCategory": "VIP_VOICE",
+      "originFeedName": "Swyx · Latent Space",
+      "url": "https://latent.space/p/ainews-jensen-is-back-and-openai-shows-its-pretraining-curve-joined-by-microsoft/",
+      "publishedAtMs": 1795493656000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Congrats to Sierra on tripling last year’s $10B valuation, and to Z.ai for releasing GLM 5.4, their first looped transformer following Thinking Machine’s much smaller Inkling Mini 2 from last week. However all these are outshone by…"
+    },
+    {
       "id": "vip-willison-nwillisonnet2026Nov24datasette-agent",
       "title": "datasette-agent 0.7a1",
       "source": "VIPBlog",
@@ -202,6 +498,28 @@
       "verbatimExcerpt": "Henrijs Dandzbergs dropped out of high school to join startup accelerator Y Combinator. With a new breed of missile, he wants to make killing as efficient as possible for the US and its military allies."
     },
     {
+      "id": "x-fx-2124981063487492379",
+      "title": "What would you build with the owner of your favorite neighborhood shop?",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2124981063487492379",
+      "publishedAtMs": 1795469940000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Apply to OpenWorks to get funded to help local business owners build and use AI tools to solve problems they choose. Quoted: two months ago, i joined @openai. today, we launch openworks. we fund local AI experts to work alongside small…"
+    },
+    {
+      "id": "ghrel-claude-code-thubcom2008Repository937253475v21331",
+      "title": "Claude Code v2.1.331",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "claude-code Release",
+      "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+      "publishedAtMs": 1795469681000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "## What's changed - Added Code Mode support in terminal sessions on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and Claude Platform on AWS - Added `oidc.groups_jsonpath` to the Claude apps gateway, to read groups from…"
+    },
+    {
       "id": "lab-openai-tpsopenaicomindexintroducing-shirudo",
       "title": "OpenAI and Cisco introduce Shirudo",
       "source": "LabRelease",
@@ -223,6 +541,99 @@
       "archivedAtMs": 1795564401578
     },
     {
+      "id": "x-fx-2124944225955639430",
+      "title": "GPT-6.2 can make sense of the world around us, simulate how things work, and help you build worlds of your own.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2124944225955639430",
+      "publishedAtMs": 1795461157000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "This might look like a film reel from San Francisco’s 1915 World’s Fair, but we made the whole thing in Blender. Here’s how builders are pushing the limits in 3D: Media"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261131240v1",
+      "title": "Pruning Autonomous Driving VLAs: What to Preserve for Reasoning and Action",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.31240v1",
+      "publishedAtMs": 1795460392000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Reasoning vision-language-action (VLA) models for autonomous driving use chain-of-thought (CoT) reasoning to guide action generation, but incur substantial memory and computational costs. We study structured pruning for these models…",
+      "verifiedMetrics": [
+        {
+          "value": "24.0%",
+          "label": "Reported reduction",
+          "quote": "At 24.0% total parameter reduction, VLM-only pruning with MoOP performs comparably to or slightly better than the strongest baselines in driving, while retaining 94.0% of the dense model's LingoQA score, far above all other methods."
+        },
+        {
+          "value": "30.0%",
+          "label": "Reported reduction",
+          "quote": "At a higher reduction of 30.0%, MoOP degrades much less than every other method, as it is the only one whose reasoning does not collapse."
+        },
+        {
+          "value": "93.75%",
+          "label": "Reported reduction",
+          "quote": "Removing 93.75% of expert MLP channels increases total parameter reduction to 39.4%, with nearly unchanged open-loop errors relative to VLM-only pruning and competitive closed-loop performance."
+        },
+        {
+          "value": "39.4%",
+          "label": "Reported reduction",
+          "quote": "Removing 93.75% of expert MLP channels increases total parameter reduction to 39.4%, with nearly unchanged open-loop errors relative to VLM-only pruning and competitive closed-loop performance."
+        },
+        {
+          "value": "36.6%",
+          "label": "Memory reduction",
+          "quote": "The resulting model achieves a 1.37x end-to-end inference speedup and 36.6% lower peak memory than the dense model, without post-pruning fine-tuning."
+        }
+      ]
+    },
+    {
+      "id": "arxiv-httparxivorgabs261131237v1",
+      "title": "Let Vision-Language Models Generate Images through Their Representations",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.31237v1",
+      "publishedAtMs": 1795460372000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Recent unified multimodal models aim to combine visual understanding and generation within a single model, yet effectively integrating the two capabilities remains challenging. Leveraging pretrained vision-language models offers a way to…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261131233v1",
+      "title": "TowerBridge: Bridging the Dual-Encoder Modality Gap via Weight-Space Programming",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.31233v1",
+      "publishedAtMs": 1795460353000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "CLIP-style dual encoders map images and text through two separate towers into a shared embedding space, where the two modalities occupy distinct regions separated by a modality gap. Retrieval fails when wrong matches, or hard negatives…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261131228v1",
+      "title": "Language Models Steer on Injected Uncertainty Tokens, but Fail to Self-Monitor In Situ",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.31228v1",
+      "publishedAtMs": 1795460332000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Prompting language models to verbalize stepwise numerical confidence during generation is an increasingly popular approach for triggering backtracking and error correction in agentic reasoning. This strategy presupposes two capabilities…"
+    },
+    {
+      "id": "arxiv-httparxivorgabs261131227v1",
+      "title": "How Far Can Linear Go? BiPert, a Unified Framework for Single-Cell Perturbation Modelling",
+      "source": "arXiv",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "arXiv",
+      "url": "https://arxiv.org/abs/2611.31227v1",
+      "publishedAtMs": 1795460312000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Understanding how genetic perturbations affect cellular behaviour is essential for studying gene function and regulatory mechanisms. Large-scale CRISPR screens measure these effects across thousands of genes, but cover relatively few…"
+    },
+    {
       "id": "hn-50616177",
       "title": "Chicago FAA Ground stop due to staffing",
       "source": "HackerNews",
@@ -231,6 +642,17 @@
       "url": "https://www.nbcchicago.com/news/local/ground-stop-issued-at-ohare-airport-due-to-staffing-at-start-of-busy-holiday-week/4020413/",
       "publishedAtMs": 1795456777000,
       "archivedAtMs": 1795564401578
+    },
+    {
+      "id": "ghrel-langchain-552661142langchain-text-splitters120",
+      "title": "langchain-text-splitters==1.2.0",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "LangChain Release",
+      "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-text-splitters%3D%3D1.2.0",
+      "publishedAtMs": 1795450304000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Changes since langchain-text-splitters==1.1.3 release(text-splitters): 1.2.0 (#41998) chore(text-splitters): bump mistune from 3.3.3 to 3.3.4 in /libs/text-splitters (#42006) chore(infra): update vulnerable development dependencies…"
     },
     {
       "id": "bsky-emollick.bsky.social-3n2yixn4gps2g",
@@ -427,6 +849,17 @@
       "verbatimExcerpt": "Active engineering thread in r/LocalLLaMA (1 upvotes, 0 comments): ttindall/Qwen3.8-27B-Defiance-Cyber-MTP-GGUF · Hugging Face"
     },
     {
+      "id": "x-fx-2124669766723920377",
+      "title": "Hy4 from @TencentHunyuan is now on Ollama Cloud.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ollama",
+      "url": "https://x.com/ollama/status/2124669766723920377",
+      "publishedAtMs": 1795395721000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Hosted in the US with zero data retention 🔒 770B parameters with 49B active per token. It's the first Hy model that supports vision and computer use. Best fit for: - frontend and game development - finance research and valuation models…"
+    },
+    {
       "id": "rd-street-1y350qh",
       "title": "Managed to run Kimi K3.1 Pro (2.8T) on a single consumer GPU, looking for some feedback",
       "source": "Reddit",
@@ -478,6 +911,59 @@
       "publishedAtMs": 1795392000000,
       "archivedAtMs": 1795564401578,
       "verbatimExcerpt": "Recent multimodal search agents use reasoning, vision, and live web search across many turns to answer questions beyond parametric knowledge by orchestrating a small library of hand-crafted search and visual tools. However, the library is…"
+    },
+    {
+      "id": "hf-2611.30900",
+      "title": "GlanceNav: Efficient Vision-and-Language Navigation with Streaming Memory and Counterfactual Rewind",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.30900",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Multimodal large language models (MLLMs) have become strong policies for vision-and-language navigation (VLN). However, most of them encode a sample of past frames again at every decision and are trained on isolated decisions, so…"
+    },
+    {
+      "id": "hf-2611.31225",
+      "title": "Self-Supervised Dataset Distillation via Mutual Information Maximization",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.31225",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Dataset distillation (DD) aims to compress a large dataset into a small synthetic one that remains effective for training neural networks. Despite its success in supervised learning, DD remains underexplored in self-supervised learning…"
+    },
+    {
+      "id": "hf-2611.30235",
+      "title": "PixelOne: From Options to Pixels in a Single Forward for GUI Grounding",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.30235",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "GUI grounding requires precise clicks at low latency. Recent models such as GUI-Decisions and GUI-Swift predict coordinates in one forward pass using fixed global bins with local refinement. However, screenshot downsampling removes detail…",
+      "verifiedMetrics": [
+        {
+          "value": "83.8%",
+          "label": "Reported accuracy",
+          "quote": "Across four benchmarks, PixelOne-Pro-35B-A3B achieves 83.8% mean accuracy, the highest among the evaluated single-forward grounders, with a mean latency of 0.43 s per target.",
+          "subject": "PixelOne-Pro-35B-A3B",
+          "isFeatured": true
+        }
+      ]
+    },
+    {
+      "id": "hf-2611.26216",
+      "title": "Frontier models need only one text to unmask its human or AI author",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.26216",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "Given a single text and a simple zero-shot prompt (no web access, tools, candidate lists, or writing samples), frontier models can answer \"who wrote this?\" at three increasingly specific levels: (1) whether an AI or human wrote it, (2) if…"
     },
     {
       "id": "hn-50605445",
@@ -678,6 +1164,17 @@
       "url": "https://www.reddit.com/r/ollama/comments/1y2ukqs/lumen_v210_opensource_windows_workspace_for/",
       "publishedAtMs": 1795368023000,
       "archivedAtMs": 1795398050315
+    },
+    {
+      "id": "x-fx-2124551883130114403",
+      "title": "\"I believe frontier model developers should jointly endeavour to establish shared norms for how to evaluate such models and red-team…",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @sama",
+      "url": "https://x.com/sama/status/2124551883130114403",
+      "publishedAtMs": 1795367615000,
+      "archivedAtMs": 1795663986955,
+      "verbatimExcerpt": "safety cases for them by the time they are first used, including shared transparency standards. I further propose common limits, based on perplexity and other measurements, that developers are committed to not crossing until our ability…"
     },
     {
       "id": "x-fx-2124551594691932405",
@@ -1798,17 +2295,6 @@
       "publishedAtMs": 1795273134000,
       "archivedAtMs": 1795376168554,
       "verbatimExcerpt": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational…"
-    },
-    {
-      "id": "bsky-natolambert.bsky.social-3n2tdrggx2o27",
-      "title": "New slide deck on the biggest open problems in post-training and how the field got to where it is today. Largely, this is a statement of…",
-      "source": "Bluesky",
-      "sourceCategory": "SOCIAL_BLUESKY",
-      "originFeedName": "Bluesky · @natolambert",
-      "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2tdrggx2o27",
-      "publishedAtMs": 1795272418415,
-      "archivedAtMs": 1795564401578,
-      "verbatimExcerpt": "my goals with Trillium Labs (not that we can do every project at once). Stay in touch if you're working on any of these in the open!"
     },
     {
       "id": "rd-street-1y1udwh",
@@ -3397,14 +3883,14 @@
         {
           "value": "from 7% to 70%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "context": "Before-and-after transition",
           "isFeatured": false
         },
         {
           "value": "83%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "isFeatured": false
         }
       ]

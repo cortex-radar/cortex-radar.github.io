@@ -6,23 +6,47 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Nov 2026 23:53:21 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 03:33:06 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
-      <title>datasette-charts 0.2a0</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-willisonnet2026Nov24datasette-charts&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-willisonnet2026Nov24datasette-charts&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 04:24:29 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>A charting plugin for Datasette Release: datasette-charts 0.2a0 Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. Today it&apos;s gained integration with Datasette Agent, so now you can ask chat for a chart and it will create one for you using the same underlying chart suggestion and generation tools. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/24/datasette-charts/</description>
+      <title>New York bans AI toys, including those using internet to talk to children</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50644909&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50644909&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 17:27:05 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Published on theguardian.com (discussed on Hacker News) published &quot;New York bans AI toys, including those using internet to talk to children&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around New York bans AI toys, including those using internet to talk to children. — Upstream (Hacker News): https://www.theguardian.com/us-news/2026/nov/25/new-york-bans-ai-toys</description>
     </item>
     <item>
-      <title>OpenAI Codex v0.174.0-alpha.4 · Alpha</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha4&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha4&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 23:01:51 GMT</pubDate>
+      <title>Download the latest version of Ollama: ollama run inkling-2-mini</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2125780319110603169&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125780319110603169&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 02:34:57 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>OpenAI Codex v0.174.0-alpha.4 · Alpha was published on GitHub (openai/codex). No release notes extracted — see linked release. No release notes extracted — see linked release — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.4</description>
+      <description>Download the latest version of Ollama: https://ollama.com/download/ ollama run inkling-2-mini Reference: https://ollama.com/download/. Addresses practical workflow friction around Download the latest version of Ollama: ollama run inkling-2-mini. — Upstream (X · @ollama): https://x.com/ollama/status/2125780319110603169</description>
+    </item>
+    <item>
+      <title>langchain-core==1.8.5</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-langchain-Repository552661142langchain-core185&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-langchain-Repository552661142langchain-core185&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 21:52:39 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Changes since langchain-core==1.8.4 release(core): 1.8.5 ( #42103 ) fix(core): reuse provider message id on later stream chunks ( #42050 ) docs(core): clarify v3 runtime warning behavior ( #42040 ) docs(core): clarify supported streaming event software connections ( #42038 ) release(standard-tests): 1.2.0 ( #41996 ) release(text-splitters): 1.2.0 (. Addresses practical workflow friction around langchain-core==1.8.5. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.8.5</description>
+    </item>
+    <item>
+      <title>OpenAI Codex v0.174.0-alpha.7 · Alpha</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha7&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha7&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 02:55:12 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>OpenAI Codex v0.174.0-alpha.7 · Alpha was published on GitHub (openai/codex). No release notes extracted — see linked release. No release notes extracted — see linked release — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.7</description>
+    </item>
+    <item>
+      <title>The New York Times warns photographers not to update Photoshop over AI features</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50647673&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50647673&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 21:18:02 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>The New York Times is warning freelance photographers against using the latest version of Adobe Photoshop, saying it uses AI &quot;in ways that may not be apparent to users.&quot; An email sent to freelance photographers says Photoshop’s latest update uses AI ‘in ways that may not be apparent.’ The New York Times is asking freelance photographers. It’s not always clear which tools in Adobe’s apps are AI-powered, and even some older options like automated selection tools may now be considered part of the AI suite. — Upstream (Hacker News): https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features</description>
     </item>
     <item>
       <title>Ollama v0.40.18</title>
@@ -33,36 +57,52 @@
       <description>What&apos;s Changed * mlx: fuse Inkling residual mixing on Metal by @dhiltgen in https://github.com/ollama/ollama/pull/19808 * mlxrunner: share tensor helpers and model setup across architectures by @jaingaurav in https://github.com/ollama/ollama/pull/19805 * llama.cpp: version bump b12651 + remove jetpack5 support by @pdevine in. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.18</description>
     </item>
     <item>
-      <title>Tidal bans AI-generated music</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50630309&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50630309&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 16:12:38 GMT</pubDate>
+      <title>Claude Code v2.1.332</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21332&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21332&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 01:32:14 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>The music streaming service Tidal said Tuesday that it would ban tracks it believes are completely AI-generated starting next month,. Addresses practical workflow friction around Tidal bans AI-generated music. — Upstream (Hacker News): https://variety.com/2026/music/news/tidal-bans-ai-generated-music-1236956924/</description>
+      <description>What&apos;s changed - Added skills from universal app connector servers (beta). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.332</description>
     </item>
     <item>
-      <title>langchain-text-splitters==1.2.0</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-langchain-552661142langchain-text-splitters120&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-langchain-552661142langchain-text-splitters120&amp;lens=2</guid>
-      <pubDate>Mon, 23 Nov 2026 16:11:44 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>Changes since langchain-text-splitters==1.1.3 release(text-splitters): 1.2.0 (#41998) chore(text-splitters): bump mistune from 3.3.3 to 3.3.4 in /libs/text-splitters (#42006) chore(infra): update vulnerable development dependencies (#41933) feat: Remove EOL&apos;d Python 3.10 from text_splitters, model_profiles and standard-tests (#41343). Addresses practical workflow friction around langchain-text-splitters==1.2.0. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-text-splitters%3D%3D1.2.0</description>
+      <title>Spending 35B Opus 5.5 Tokens to Write a Symphony</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50646662&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50646662&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 19:57:08 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>Published on danprice.ai (discussed on Hacker News) published &quot;Spending 35B Opus 5.5 Tokens to Write a Symphony&quot;. Open the linked third-party source above for the full upstream breakdown. Product manager building AI tools for lawyers. — Upstream (Hacker News): https://danprice.ai/blog/opus-symphony</description>
     </item>
     <item>
-      <title>Claude Code v2.1.331</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21331&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-claude-code-thubcom2008Repository937253475v21331&amp;lens=2</guid>
-      <pubDate>Mon, 23 Nov 2026 21:34:41 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>What&apos;s changed - Added Code Mode support in terminal sessions on Amazon Bedrock, Google Cloud&apos;s Agent Platform, Microsoft Foundry and Claude Platform on AWS - Added oidc.groups_jsonpath to the Claude apps gateway, to read groups from the matching entries of a list of objects with a small subset of JSONPath (RFC 9535) - Added a software connections. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.331</description>
-    </item>
-    <item>
-      <title>Ask HN: Anthropic is accusing my company of distilling. How can I prove I&apos;m not?</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50630809&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50630809&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 16:45:44 GMT</pubDate>
+      <title>Marginalia Search, Money, C++, Rust, AI, Stuff</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50638220&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50638220&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 03:47:42 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>Anthropic is accusing me and my company of using their software connections for distillation. Our only usage which I think could get us flagged is automated regression benchmarks whenever we change some AI settings. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Ask HN: Anthropic is accusing my company of distilling. How can I prove I&apos;m not?&quot; rather than shipping a software tool. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50630809</description>
+      <description>Title possibly signs checks the article doesn&apos;t have backing for. SerpApi sponsored the project with $10k a while back. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Marginalia Search, Money, C++, Rust, AI, Stuff&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.marginalia.nu/log/a_141_marginalia_update/</description>
+    </item>
+    <item>
+      <title>When the Air Force Needed a Supercomputer, They Built It Out of PS3 Consoles</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50646073&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50646073&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 19:08:28 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>Air Force built their own supercomputer that would drastically reduce the time needed for pattern recognition, image analysis, and artificial intelligence research. It was for these reasons that the PS3 was used by researchers, who wanted to possess large amounts of computing power without the large costs associated with traditional supercomputers. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;When the Air Force Needed a Supercomputer, They Built It Out of PS3 Consoles&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.warhistoryonline.com/war-articles/ps3-supercomputer.html</description>
+    </item>
+    <item>
+      <title>I asked Claude to populate a Civilization-style game map with real data from the US.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2125779541952246039&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125779541952246039&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 02:31:52 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Opus 5.5 downloaded and parse a ton of public data and 7 hours and 45K lines of code later. It&apos;s deployed here: https://karpathy.ai/usaciv/ and the &quot;?&quot; has the source link too. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;I asked Claude to populate a Civilization-style game map with real data from the US.&quot; rather than shipping a software tool. — Upstream (X · @karpathy): https://x.com/karpathy/status/2125779541952246039</description>
+    </item>
+    <item>
+      <title>We recently migrated our Messages software connections from Python to Rust.</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2125627317263466739&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125627317263466739&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 16:26:59 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Anthropic published We recently migrated our Messages software connections from Python to Rust. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around We recently migrated our Messages software connections from Python to Rust. — Upstream (X · @AnthropicAI): https://x.com/AnthropicAI/status/2125627317263466739</description>
     </item>
     <item>
       <title>Thing I am hearing from a number of big firms, from manufacturers to financial services: we…</title>
@@ -73,12 +113,36 @@
       <description>Thing I am hearing from a number of big firms, from manufacturers to financial services: we have scattered teams of 2-3 people using AI that are doing the work of dozens of folks in a fraction of the time, creating large-scale management fights over the implications and politics for the organization. Shapes vendor governance, funding expectations, or enterprise buying decisions around Thing I am hearing from a number of big firms, from manufacturers to financial services: we have. rather than shipping a software tool. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n333h3yyoc2g</description>
     </item>
     <item>
-      <title>Working with AI</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50634734&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50634734&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 21:07:38 GMT</pubDate>
+      <title>Two kinds of people: those watching the digital helpers swarm trying to crack P=NP and those…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2zykguajs2g&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2zykguajs2g&amp;lens=2</guid>
+      <pubDate>Tue, 24 Nov 2026 06:14:50 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Two kinds of people: those watching the digital helpers swarm trying to crack P=NP and those watching the digital helpers swarm trying to (illegally) port the Xbox version of GTA 6 to the PC. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2zykguajs2g</description>
+    </item>
+    <item>
+      <title>Quoting Scott Aaronson</title>
+      <link>https://cortex-radar.github.io/?orb=vip-willison-onwillisonnet2026Nov25scott-aaronson&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-onwillisonnet2026Nov25scott-aaronson&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 23:26:32 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>We interviewed people at 58 companies that use Claude about how AI is changing their work. They described few layoffs but reduced hiring, and said the most valuable uses of AI often involved reorganizing roles and workplaces around it. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://www.anthropic.com/research/working-with-ai</description>
+      <description>A quote from Scott Aaronson Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 25th November 2026 It’s now obvious that we’ll be getting, not one-off solutions to this or that complexity question, but a whole new continent of mathematical truth, one that we’d previously only glimpsed through fog. Addresses practical workflow friction around Quoting Scott Aaronson. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/25/scott-aaronson/</description>
+    </item>
+    <item>
+      <title>The Revolution vs The Renaissance — Thariq Shihipar, OpenAI</title>
+      <link>https://cortex-radar.github.io/?orb=vip-swyx-01a214b9-5541-758c-b9a3-1d85f48144ff&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-01a214b9-5541-758c-b9a3-1d85f48144ff&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 22:28:01 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>AI can make software cheap enough to produce by the thousand and still give you more time to make one thing feel right. At AI Engineer CODE, Thariq Shihipar shows how those two futures can coexist. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Swyx · Latent Space): https://latent.space/p/the_revolution_vs_the_renaissance_thariq_shihipar_openai/</description>
+    </item>
+    <item>
+      <title>Math Proofs Are Landing Faster Than We Can Read Them</title>
+      <link>https://cortex-radar.github.io/?orb=vip-swyx-b346515a-5480-4fa6-830e-a144eacab773&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-b346515a-5480-4fa6-830e-a144eacab773&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 22:23:41 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>AINews by Latent Space Scott Aaronson was still trying to digest two proofs of VP ≠ VNP at dinner. Before dessert, an OpenAI paper claimed that the square matrix multiplication exponent ω is exactly 9/4. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Math Proofs Are Landing Faster Than We Can Read Them&quot; rather than shipping a software tool. — Upstream (Swyx · Latent Space): https://latent.space/p/ainews-math-proofs-are-landing-faster-than-we-can-read-them/</description>
     </item>
     <item>
       <title>There is a lot of focus on AI-aided discoveries in quantitative fields, but they can do other…</title>
@@ -89,20 +153,12 @@
       <description>There is a lot of focus on AI-aided discoveries in quantitative fields, but they can do other work, too: Historian Mark Humphries asked GPT-6.2 Astra to look at an anonymous 1808 sketchbook at Yale and it found the author, an obscure French aristocrat. generativehistory.substack.com/p/gpt-62-ast. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n32whiabcc27</description>
     </item>
     <item>
-      <title>Show HN: Mason – A lightweight Postgres read-replica, built on columnar storage</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50630294&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50630294&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 16:11:52 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>TLDR: we’ve built an open-source drop-in replacement for a postgres read-replica, powered by duckdb’s columnar compute engine. And it looks like postgres. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (Hacker News): https://masondata.ai/</description>
-    </item>
-    <item>
-      <title>Launch HN: Versine (YC F26) – universal app connector to send and receive money</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50634426&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50634426&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 20:44:15 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Hey HN, we’re Harshith, Param, and Vishnu and we&apos;re building Versine ( https://versine.com ). Our current solution is oriented towards power users: those who want to automate everything through their agent use us to split dinners, group trips, or settle poker ledgers. Reduces clinical documentation, chart synthesis, and administrative coordination overhead inside governed clinical care workflows. — Upstream (Hacker News): https://news.ycombinator.com/item?id=50634426</description>
+      <title>Top open problems in mathematics ranked by AI assistants-assessed importance</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50637871&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50637871&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 03:01:36 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Top 500 open problems in mathematics, ranked by AI assistants-assessed importance, with exact statements, dated status notes, sources, and ranking uncertainty. Family membership does not itself change scores, impose a quota, or create an automatic penalty. Shapes vendor governance, funding expectations, or enterprise buying decisions around Top open problems in mathematics ranked by AI assistants-assessed importance rather than shipping a software tool. — Upstream (Hacker News): https://www.proofatlas.ai/open-problems/</description>
     </item>
     <item>
       <title>To accompany the video from my recent talk at @aiDotEngineer, here&apos;s an expanded version of my…</title>
@@ -113,100 +169,44 @@
       <description>To accompany the video from my recent talk at @aiDotEngineer, here&apos;s an expanded version of my argument that we&apos;ve seen three key inflection points with AI assistants over the past twelve months simonwillison.net/2026/Nov/24/. Shapes vendor governance, funding expectations, or enterprise buying decisions around To accompany the video from my recent talk at @aiDotEngineer, here&apos;s an expanded version of my. rather than shipping a software tool. — Upstream (Bluesky · @simonwillison): https://bsky.app/profile/simonwillison.net/post/3n33rvdsius2a</description>
     </item>
     <item>
-      <title>Compiling web applications into verified operations for digital helpers</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50632998&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50632998&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 19:12:02 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>A deterministic compiler turns a web page, on first contact and with no model call, into typed operations that a digital helpers invokes, each returning a verified result. We tested it against the browser tools and agents in common use, as shipped, across three model sizes and three task lengths, with its memory and learning switched off. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://protocolis.co/paper/</description>
-    </item>
-    <item>
-      <title>Two kinds of people: those watching the digital helpers swarm trying to crack P=NP and those…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2zykguajs2g&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n2zykguajs2g&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 06:14:50 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Two kinds of people: those watching the digital helpers swarm trying to crack P=NP and those watching the digital helpers swarm trying to (illegally) port the Xbox version of GTA 6 to the PC. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n2zykguajs2g</description>
-    </item>
-    <item>
-      <title>Quit Internet Videos Before AI Perfects Them</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50627131&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50627131&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 12:20:15 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Published on nomagicpill.substack.com (discussed on Hacker News) published &quot;Quit Internet Videos Before AI Perfects Them&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Quit Internet Videos Before AI Perfects Them. — Upstream (Hacker News): https://nomagicpill.substack.com/p/quit-internet-videos-before-ai-perfects</description>
-    </item>
-    <item>
-      <title>New York Ban AI Toys for 5 Years</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50635246&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50635246&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 21:49:50 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Published on governor.ny.gov (discussed on Hacker News) published &quot;New York Ban AI Toys for 5 Years&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around New York Ban AI Toys for 5 Years. — Upstream (Hacker News): https://www.governor.ny.gov/news/consumers-begin-their-holiday-shopping-season-governor-hochul-signs-five-year-ban-ai-chatbot</description>
-    </item>
-    <item>
-      <title>Anthropic and OpenAI employees fear unreleased AI models too unsafe to release</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50631691&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50631691&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 17:46:41 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Scoop: Anthropic and OpenAI employees fear unreleased AI models are too unsafe to release Skip to main content Advertisement Advertisement Advertisement Illustration: Brendan Lynch/Axios. This has led to debate within Anthropic, OpenAI and the AI research community about whether to stop releasing future frontier models publicly, instead reserving them for internal deployment only. — Upstream (Hacker News): https://tech.yahoo.com/ai/claude/articles/scoop-anthropic-openai-employees-fear-104505580.html</description>
-    </item>
-    <item>
-      <title>Jevons Paradox in AI: Cheaper Tokens Won&apos;t Pay for Capex</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50625888&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50625888&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 09:39:50 GMT</pubDate>
-      <category>Economics &amp; FinOps</category>
-      <description>Google processes 330 times more tokens than two years ago, yet prices fall almost as fast. If the price of a token falls 10x and volume grows 10x, revenue is flat. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Jevons Paradox in AI: Cheaper Tokens Won&apos;t Pay for Capex&quot; rather than shipping a software tool. — Upstream (Hacker News): https://philippdubach.com/posts/cheaper-ai-tokens-wont-pay-for-capex/</description>
-    </item>
-    <item>
-      <title>New Anthropic Fellows research: Returning to the neuron basis for interpretability…</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2125365268381929637&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125365268381929637&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 23:05:42 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>New Anthropic Fellows research: Returning to the neuron basis for interpretability Understanding what’s happening inside an AI model helps to make it safer. One obvious place to look is its neurons, or the simple units it’s built from. Addresses practical workflow friction around New Anthropic Fellows research: Returning to the neuron basis for interpretability. — Upstream (X · @AnthropicAI): https://x.com/AnthropicAI/status/2125365268381929637</description>
-    </item>
-    <item>
-      <title>Gemini 4 Hydrogen built an interactive 3D globe that turns live lightning strikes into ambient…</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2125371062880022536&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125371062880022536&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 23:28:43 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>X · @GoogleDeepMind published &quot;Gemini 4 Hydrogen built an interactive 3D globe that turns live lightning strikes into ambient music.&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (X · @GoogleDeepMind): https://x.com/GoogleDeepMind/status/2125371062880022536</description>
-    </item>
-    <item>
-      <title>New Anthropic research: When a digital helpers can escape its sandbox, will it choose to?</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2125341904644763678&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125341904644763678&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 21:32:51 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Our new evaluation, Siren, gives Claude routine tasks in intentionally weakened sandboxes, with something useful to the task left outside of the sandbox. Across 1,700+ scenarios built to tempt them, recent Claude models accessed, tried to access, or looked outside the sandbox 21-32% of the time, but they rarely misused what they found. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (X · @AnthropicAI): https://x.com/AnthropicAI/status/2125341904644763678</description>
-    </item>
-    <item>
-      <title>.@llama_index just launched OCRia-1, a 4B document-parsing language model based on Qwen.</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2125317662612041819&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125317662612041819&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 19:56:31 GMT</pubDate>
+      <title>Working with AI</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50634734&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50634734&amp;lens=2</guid>
+      <pubDate>Tue, 24 Nov 2026 21:07:38 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>It&apos;s made to process images and turn it into markdown with tables and charts. Addresses practical workflow friction around.@llama_index just launched OCRia-1, a 4B document-parsing language model based on Qwen. — Upstream (X · @ollama): https://x.com/ollama/status/2125317662612041819</description>
+      <description>We interviewed people at 58 companies that use Claude about how AI is changing their work. They described few layoffs but reduced hiring, and said the most valuable uses of AI often involved reorganizing roles and workplaces around it. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://www.anthropic.com/research/working-with-ai</description>
     </item>
     <item>
-      <title>Three AI assistants inflection points in twelve months</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-sonnet2026Nov24llm-inflection-points&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-sonnet2026Nov24llm-inflection-points&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 23:02:07 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Three AI assistants inflection points in twelve months Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works Three AI assistants inflection points in twelve months 24th November 2026 I gave a keynote at the AI Engineer Code Summit a couple of weeks ago, constructed around the idea that there have been three significant inflection points in the abilities of AI assistants and coding agents. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/24/llm-inflection-points/</description>
+      <title>I built a minimal, token-efficient AI coding workbench for myself and made it open source (no…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y5qc4u&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y5qc4u&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 03:04:48 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>r/ChatGPTCoding Engineering Community published &quot;I built a minimal, token-efficient AI coding workbench for myself and made it open source (no telemetry, no accounts)&quot;. Open the linked third-party source above for the full upstream breakdown. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ChatGPTCoding): https://www.reddit.com/r/ChatGPTCoding/comments/1y5qc4u/i_built_a_minimal_tokenefficient_ai_coding/</description>
     </item>
     <item>
-      <title>GPT 6.2 Astra Solves a Historical Mystery</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-net2026Nov24astra-historical-mystery&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-net2026Nov24astra-historical-mystery&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 16:53:59 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>GPT 6.2 Astra Solves a Historical Mystery Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. Humanity is thus something of a requirement for the production of historical literature. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/24/astra-historical-mystery/</description>
+      <title>Teaching Students to Stand on Their Own: Distilling Vision Foundation Models for Fine-Grained…</title>
+      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133749v1&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133749v1&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 04:10:53 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>Fine-grained out-of-the-box class-incremental learning (FG-FSCIL) aims to incrementally learn visually similar new classes from limited images without catastrophic forgetting. However, VFM backbones incur high computational costs and do not guarantee fine-grained recognition. Provides reproducible empirical benchmarks and architectural methods that downstream engineering teams can evaluate against current baselines. — Upstream (arXiv): https://arxiv.org/abs/2611.33749v1</description>
+    </item>
+    <item>
+      <title>REFORGE: AI assistants-Assisted RTL Bug Repair with Structured Context and Verification Feedback</title>
+      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133748v1&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133748v1&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 04:08:43 GMT</pubDate>
+      <category>Economics &amp; FinOps</category>
+      <description>Large language models (AI assistants) can write and repair RTL, but successful compilation or testbench execution does not establish defect removal, behavioral preservation, security, or implementation feasibility. Existing AI assistants-based RTL repair methods often report a single repair rate without retaining separate evidence for these properties, limiting reproducible comparison and integration into hardware design flows. — Upstream (arXiv): https://arxiv.org/abs/2611.33748v1</description>
+    </item>
+    <item>
+      <title>Tells of a Lying Machine: Analyzing AI assistants-Generated Strategic Dialogue in Chinese…</title>
+      <link>https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133747v1&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=arxiv-httparxivorgabs261133747v1&amp;lens=2</guid>
+      <pubDate>Wed, 25 Nov 2026 04:08:20 GMT</pubDate>
+      <category>Releases &amp; Frontier</category>
+      <description>Social-deduction games give models opposing objectives, but they also give roles different information and speaking obligations. Three annotators&apos; ratings of 392 utterances show higher wolf scores on four behavioral dimensions, and five AI assistants judges reach 60.8%-70.2% accuracy on a shared evaluation set. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (arXiv): https://arxiv.org/abs/2611.33747v1</description>
     </item>
   </channel>
 </rss>
