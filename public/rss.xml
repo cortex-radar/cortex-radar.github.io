@@ -6,47 +6,55 @@
     <atom:link href="https://cortex-radar.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <description>Top 25 momentum-ranked AI breakthroughs synthesized across Analogy, Plain, Builder, R&amp;D, and Dev lenses every 3 hours.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Nov 2026 12:13:18 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 21:16:07 GMT</lastBuildDate>
     <ttl>180</ttl>
     <item>
-      <title>Year-end check: which Ollama models have we all pulled the most? 😅</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y6pet3&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y6pet3&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 09:48:08 GMT</pubDate>
+      <title>US Air Force&apos;s cloud computing platform hacked</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50666375&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50666375&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 12:54:11 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>r/ollama Engineering Community published &quot;Year-end check: which Ollama models have we all pulled the most? 😅&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Year-end check: which Ollama models have we all pulled the most? 😅. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y6pet3/yearend_check_which_ollama_models_have_we_all/</description>
+      <description>Published on news.sky.com (discussed on Hacker News) published &quot;US Air Force&apos;s cloud computing platform hacked&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around US Air Force&apos;s cloud computing platform hacked. — Upstream (Hacker News): https://news.sky.com/story/us-air-forces-cloud-computing-platform-hacked-13617163</description>
     </item>
     <item>
-      <title>Ollama v0.40.19-rc0 · Release candidate</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04019-rc0&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-com2008Repository658928958v04019-rc0&amp;lens=2</guid>
+      <title>I built a free, open-source Claude Code alternative for macOS using Ollama + DeepSeek (with…</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y73h2r&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y73h2r&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 20:39:09 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Active engineering thread in r/ollama (1 upvotes, 0 comments): I built a free, open-source Claude Code alternative for macOS using Ollama + DeepSeek (with stdio universal app connector support and 0 lines of AI-written code). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ollama): https://www.reddit.com/r/ollama/comments/1y73h2r/i_built_a_free_opensource_claude_code_alternative/</description>
+    </item>
+    <item>
+      <title>OpenAI Codex v0.174.0-alpha.9 · Alpha</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha9&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha9&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 16:56:00 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>OpenAI Codex v0.174.0-alpha.9 · Alpha was published on GitHub (openai/codex). No release notes extracted — see linked release. No release notes extracted — see linked release — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.9</description>
+    </item>
+    <item>
+      <title>I&apos;m Scared of AI</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50669561&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50669561&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 17:45:31 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>A stranger writes to the whole list every morning. Nobody picks them for being interesting. Addresses practical workflow friction around I&apos;m Scared of AI. — Upstream (Hacker News): https://thesoapbox.email/archive/3</description>
+    </item>
+    <item>
+      <title>Show HN: bouncemarket – a live prediction market game for a bouncing ball</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50667726&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50667726&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 15:01:50 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Some technical details: The entire drop of the ball is simulated server-side, then streamed to each client as server-sent events with a small buffer. Every drop is deterministic from its starting position, so rounds can be replayed exactly for later analysis, but tiny variations in starting position can change the ultimate outcome. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Show HN: bouncemarket – a live prediction market game for a bouncing ball&quot; rather than shipping a software tool. — Upstream (Hacker News): https://bouncemarket.minhanhday.com/</description>
+    </item>
+    <item>
+      <title>Ollama v0.40.19</title>
+      <link>https://cortex-radar.github.io/?orb=ghrel-ollama-thubcom2008Repository658928958v04019&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-ollama-thubcom2008Repository658928958v04019&amp;lens=2</guid>
       <pubDate>Thu, 26 Nov 2026 17:52:02 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>What&apos;s Changed * inkling2: faster short histories, draft proposals and conv snapshots by @dhiltgen in https://github.com/ollama/ollama/pull/19881 * mlxrunner: compact Engram history buffers by @pdevine in https://github.com/ollama/ollama/pull/19913 * bump llama-server by @pdevine in https://github.com/ollama/ollama/pull/19917 Full. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.19-rc0</description>
-    </item>
-    <item>
-      <title>OpenAI Codex v0.174.0-alpha.8 · Alpha</title>
-      <link>https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha8&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=ghrel-codex-epository965415649rust-v01740-alpha8&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 21:56:07 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>OpenAI Codex v0.174.0-alpha.8 · Alpha was published on GitHub (openai/codex). No release notes extracted — see linked release. No release notes extracted — see linked release — Upstream (openai/codex Release): https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.8</description>
-    </item>
-    <item>
-      <title>The group chat where your AI talks behind your back</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50663595&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50663595&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 06:44:34 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>A ChatGPT prompt that makes the model leak its private opinion of you - as a WhatsApp group chat where the AIs gossip. Funny, and a little too revealing. Addresses practical workflow friction around The group chat where your AI talks behind your back. — Upstream (Hacker News): https://construct22.com/</description>
-    </item>
-    <item>
-      <title>Download the latest version of Ollama: ollama run inkling-2-mini</title>
-      <link>https://cortex-radar.github.io/?orb=x-fx-2125780319110603169&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2125780319110603169&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 02:34:57 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Download the latest version of Ollama: https://ollama.com/download/ ollama run inkling-2-mini Reference: https://ollama.com/download/. Addresses practical workflow friction around Download the latest version of Ollama: ollama run inkling-2-mini. — Upstream (X · @ollama): https://x.com/ollama/status/2125780319110603169</description>
+      <description>What&apos;s Changed * inkling2: faster short histories, draft proposals and conv snapshots by @dhiltgen in https://github.com/ollama/ollama/pull/19881 * mlxrunner: compact Engram history buffers by @pdevine in https://github.com/ollama/ollama/pull/19913 * bump llama-server by @pdevine in https://github.com/ollama/ollama/pull/19917 Full. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (ollama Release): https://github.com/ollama/ollama/releases/tag/v0.40.19</description>
     </item>
     <item>
       <title>langchain-core==1.8.5</title>
@@ -57,28 +65,12 @@
       <description>Changes since langchain-core==1.8.4 release(core): 1.8.5 ( #42103 ) fix(core): reuse provider message id on later stream chunks ( #42050 ) docs(core): clarify v3 runtime warning behavior ( #42040 ) docs(core): clarify supported streaming event software connections ( #42038 ) release(standard-tests): 1.2.0 ( #41996 ) release(text-splitters): 1.2.0 (. Addresses practical workflow friction around langchain-core==1.8.5. — Upstream (LangChain Release): https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.8.5</description>
     </item>
     <item>
-      <title>AI made self-hosting fun again</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50660180&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50660180&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 21:47:45 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>I’ve been self-hosting things for many years. There were times when I was quite enthusiastic about it, constantly trying out new software and tinkering with my infrastructure. Addresses practical workflow friction around AI made self-hosting fun again. — Upstream (Hacker News): https://janlukas.blog/posts/ai-self-hosting</description>
-    </item>
-    <item>
-      <title>Fields-winning mathematicians worried about eerie silence over AI and encryption</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50665488&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50665488&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 11:09:04 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Published on thetimes.com (discussed on Hacker News) published &quot;Fields-winning mathematicians worried about eerie silence over AI and encryption&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Fields-winning mathematicians worried about eerie silence over AI and encryption. — Upstream (Hacker News): https://www.thetimes.com/uk/technology-uk/article/ai-making-online-security-useless-smr73d3n8</description>
-    </item>
-    <item>
-      <title>GPT-6 models demonstrate intrinsic protein-design capabilities</title>
-      <link>https://cortex-radar.github.io/?orb=lab-openai-ntrinsic-protein-design-capabilities&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=lab-openai-ntrinsic-protein-design-capabilities&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 13:00:00 GMT</pubDate>
-      <category>Certifications &amp; Labs</category>
-      <description>GPT-6 models design protein structures and sequences using reasoning and code. Lab tests found evidence of binding across five targets. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (OpenAI News): https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities</description>
+      <title>Kimi for Science: More scientific ideas, made possible</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50665920&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50665920&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 12:03:11 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Published on kimi.ai (discussed on Hacker News) published &quot;Kimi for Science: More scientific ideas, made possible&quot;. Open the linked third-party source above for the full upstream breakdown. More cohorts will open soon. — Upstream (Hacker News): https://www.kimi.ai/news/kimi-for-science-program</description>
     </item>
     <item>
       <title>Claude Code v2.1.332</title>
@@ -89,60 +81,76 @@
       <description>What&apos;s changed - Added skills from universal app connector servers (beta). Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (claude-code Release): https://github.com/anthropics/claude-code/releases/tag/v2.1.332</description>
     </item>
     <item>
-      <title>New AI research suggests AI bubble bursting and to expect major market collapse</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50662153&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50662153&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 02:44:12 GMT</pubDate>
+      <title>AI on brink of making online security useless, mathematicians fear</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50665488&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50665488&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 11:09:04 GMT</pubDate>
+      <category>Governance &amp; Security</category>
+      <description>Published on thetimes.com (discussed on Hacker News) published &quot;AI on brink of making online security useless, mathematicians fear&quot;. Open the linked third-party source above for the full upstream breakdown. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;AI on brink of making online security useless, mathematicians fear&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.thetimes.com/uk/technology-uk/article/ai-making-online-security-useless-smr73d3n8</description>
+    </item>
+    <item>
+      <title>Black Friday / holiday gift ideas for ai nerds in your life: - Mac Studio with ultra chip…</title>
+      <link>https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n3cmxi5tru2o&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-natolambert.bsky.social-3n3cmxi5tru2o&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 16:41:21 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Black Friday / holiday gift ideas for ai nerds in your life: - Mac Studio with ultra chip - Apple Vision Pro so their honeypot girlfriend can’t steal trade secrets - guided training book to look like they know math - cute puppy to make them touch grass - interconnects subscription &amp; merch - bunker in Wyoming. Addresses practical workflow friction around Black Friday / holiday gift ideas for ai nerds in your life: - Mac Studio with ultra chip. — Upstream (Bluesky · @natolambert): https://bsky.app/profile/natolambert.bsky.social/post/3n3cmxi5tru2o</description>
+    </item>
+    <item>
+      <title>Stanford Physicist Uses AI to Tackle Quantum Gravity Problem</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50667664&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50667664&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 14:55:57 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>A Stanford physicist proposed a quantum theory of gravity that uses the paths of light to calculate how spacetime can fluctuate. Cuts live answering work compute overhead and tail response wait time on production workloads without sacrificing task accuracy. — Upstream (Hacker News): https://thequantuminsider.com/2026/11/26/stanford-physicist-uses-ai-to-tackle-quantum-gravity-problem/</description>
+    </item>
+    <item>
+      <title>The NFL Player Who Left Football for Math</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50669963&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50669963&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 18:17:20 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Published on nytimes.com (discussed on Hacker News) published &quot;The NFL Player Who Left Football for Math&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around The NFL Player Who Left Football for Math. — Upstream (Hacker News): https://www.nytimes.com/2026/11/26/science/john-urschel-ai-nfl-math.html</description>
+    </item>
+    <item>
+      <title>Pizza history: digital helpers&apos;s cardless purchase is a first for UK</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50665732&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50665732&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 11:41:11 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Published on theguardian.com (discussed on Hacker News) published Pizza history: digital helpers&apos;s cardless purchase is a first for UK. Open the linked third-party source above for the full upstream breakdown. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (Hacker News): https://www.theguardian.com/business/2026/nov/27/ai-agent-cardless-transaction-pizza-papa-john-uk-fca-truelayer</description>
+    </item>
+    <item>
+      <title>Dungeons and Dragons maker will pass AI settlement money to authors</title>
+      <link>https://cortex-radar.github.io/?orb=hn-50669073&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50669073&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 17:05:45 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Published on seattletimes.com (discussed on Hacker News) published &quot;Dungeons and Dragons maker will pass AI settlement money to authors&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Dungeons and Dragons maker will pass AI settlement money to authors. — Upstream (Hacker News): https://www.seattletimes.com/business/dungeons-dragons-maker-will-pass-ai-settlement-money-to-authors/</description>
+    </item>
+    <item>
+      <title>Build a voice agent with GPT-Live-1.1</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2126372241201848462&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2126372241201848462&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 17:47:03 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>New research suggests AI bubble bursting and to expect major market collapse A recent study covering 170 years of financial journalism reveals we are 97% likely in an AI financial bubble, and that leaders should prepare for a crash. Financial press, rather than the stock market, predict far more crashes than occur. Addresses practical workflow friction around New AI research suggests AI bubble bursting and to expect major market collapse. — Upstream (Hacker News): https://www.london.edu/think/ai-bubble-about-to-burst</description>
+      <description>Build a voice agent with GPT-Live-1.1: https://developers.openai.com/software connections/docs/models/gpt-live-1.1 Reference: https://developers.openai.com/software connections/docs/models/gpt-live-1.1. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2126372241201848462</description>
     </item>
     <item>
-      <title>Linus Torvalds: &quot;Tell Your AI Companion to Get Its Act Together&quot;</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50662164&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50662164&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 02:46:19 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Published on phoronix.com (discussed on Hacker News) published &quot;Linus Torvalds: &quot;Tell Your AI Companion to Get Its Act Together&quot;&quot;. Open the linked third-party source above for the full upstream breakdown. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;Linus Torvalds: &quot;Tell Your AI Companion to Get Its Act Together&quot;&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.phoronix.com/news/Linus-Torvalds-EXT4-AI-Big</description>
-    </item>
-    <item>
-      <title>The USA as a Civilizations-esque map</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50658997&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50658997&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 19:53:58 GMT</pubDate>
+      <title>&quot;Can we get those 40 welcome kits to San Francisco any sooner?&quot; Here’s how we built a merch store you can talk to: • GPT-Live-1.1…</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2126372238853112227&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2126372238853112227&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 17:47:02 GMT</pubDate>
       <category>Architecture &amp; Infra</category>
-      <description>The real United States drawn like a 4X strategy map: hex terrain, cities with yields, lenses and resources, all from public data. Addresses practical workflow friction around The USA as a Civilizations-esque map. — Upstream (Hacker News): https://karpathy.ai/usaciv/</description>
+      <description>&quot;Can we get those 40 welcome kits to San Francisco any sooner?&quot; Here’s how we built a merch store you can talk to: • GPT-Live-1.1 reads out the rush fee and delivery estimate. • The Decisions software connections scores damage to a returned mug. Addresses practical workflow friction around &quot;Can we get those 40 welcome kits to San Francisco any sooner?&quot; Here’s how we built a merch. — Upstream (X · @OpenAIDevs): https://x.com/OpenAIDevs/status/2126372238853112227</description>
     </item>
     <item>
-      <title>digital helpers now control part of DeepMind&apos;s compute for Gemini experiments</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50661218&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50661218&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 00:03:18 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Google Deepmind uses digital helpers to run experiments on their own for upcoming Gemini models. Kavukcuoglu measures AGI by everyday user trust rather than benchmarks. Addresses auditability, policy enforcement, and data-boundary risks before automated workflows touch regulated systems. — Upstream (Hacker News): https://the-decoder.com/ai-agents-now-control-part-of-deepminds-compute-for-gemini-experiments-but-recursive-self-improvement-remains-distant/</description>
-    </item>
-    <item>
-      <title>Top-cited AI scientists at four US companies compared</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50658910&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50658910&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 19:44:31 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>The typical top-cited AI scientist at Anthropic received 4,830 citations in 2025. At OpenAI it was 2,150, at Google 1,481 and at Meta 1,295. Addresses practical workflow friction around Top-cited AI scientists at four US companies compared. — Upstream (Hacker News): https://topcitedscientists.com/figures/ai-at-four-us-companies/</description>
-    </item>
-    <item>
-      <title>Poland to create no-fly zone at border after repeated airspace violations</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50658549&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50658549&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 19:09:14 GMT</pubDate>
-      <category>Architecture &amp; Infra</category>
-      <description>Published on france24.com (discussed on Hacker News) published &quot;Poland to create no-fly zone at border after repeated airspace violations&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Poland to create no-fly zone at border after repeated airspace violations. — Upstream (Hacker News): https://www.france24.com/en/poland-says-will-create-no-fly-zone-at-ukraine-border-after-repeated-airspace-violations</description>
-    </item>
-    <item>
-      <title>The US Government Is Under AI Cyberattack</title>
-      <link>https://cortex-radar.github.io/?orb=hn-50660004&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=hn-50660004&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 21:26:33 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Published on forbes.com (discussed on Hacker News) published &quot;The US Government Is Under AI Cyberattack&quot;. Open the linked third-party source above for the full upstream breakdown. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;The US Government Is Under AI Cyberattack&quot; rather than shipping a software tool. — Upstream (Hacker News): https://www.forbes.com/sites/the-wiretap/2026/11/25/us-government-under-ai-cyberattack</description>
+      <title>Excited to join White Circle&apos;s post-training competition with two Hugging Face tracks!</title>
+      <link>https://cortex-radar.github.io/?orb=x-fx-2126319136766611630&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=x-fx-2126319136766611630&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 14:16:01 GMT</pubDate>
+      <category>Certifications &amp; Labs</category>
+      <description>🤗 Bring us your best post-trained models or help level up Halo&apos;s Hugging Face integrations. $1.5M in compute, $200k+ in prizes, Dec 1–10. Addresses practical workflow friction around Excited to join White Circle&apos;s post-training competition with two Hugging Face tracks!. — Upstream (X · @huggingface): https://x.com/huggingface/status/2126319136766611630</description>
     </item>
     <item>
       <title>Model names and numbers have never been less useful in determining ability levels. In part…</title>
@@ -153,60 +161,52 @@
       <description>Model names and numbers have never been less useful in determining ability levels. Addresses practical workflow friction around Model names and numbers have never been less useful in determining ability levels. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n36uicn6lc2z</description>
     </item>
     <item>
-      <title>Thing I am hearing from a number of big firms, from manufacturers to financial services: we…</title>
-      <link>https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n333h3yyoc2g&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=bsky-emollick.bsky.social-3n333h3yyoc2g&amp;lens=2</guid>
-      <pubDate>Tue, 24 Nov 2026 16:39:19 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Thing I am hearing from a number of big firms, from manufacturers to financial services: we have scattered teams of 2-3 people using AI that are doing the work of dozens of folks in a fraction of the time, creating large-scale management fights over the implications and politics for the organization. Shapes vendor governance, funding expectations, or enterprise buying decisions around Thing I am hearing from a number of big firms, from manufacturers to financial services: we have. rather than shipping a software tool. — Upstream (Bluesky · @emollick): https://bsky.app/profile/emollick.bsky.social/post/3n333h3yyoc2g</description>
-    </item>
-    <item>
-      <title>P=NP community swarm to try to tackle rare diseases.</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y6ri16&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y6ri16&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 11:56:42 GMT</pubDate>
-      <category>Governance &amp; Security</category>
-      <description>Active engineering thread in r/singularity (1 upvotes, 0 comments): P=NP community swarm to try to tackle rare diseases. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;P=NP community swarm to try to tackle rare diseases.&quot; rather than shipping a software tool. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y6ri16/pnp_community_swarm_to_try_to_tackle_rare_diseases/</description>
-    </item>
-    <item>
-      <title>Gemini 4 Carbon found a proof of Hadwiger&apos;s 3D Covering Conjecture, an open geometry problem…</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y6r8mh&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y6r8mh&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 11:41:16 GMT</pubDate>
-      <category>Science &amp; Research</category>
-      <description>A new preprint went up on arXiv (2611.32334) claiming a complete, unconditional proof of Hadwiger&apos;s Covering Conjecture in 3D, a famous unsolved geometry problem from 1957. Hadwiger&apos;s conjecture is a famous open problem in discrete geometry, not some obscure toy benchmark, and the authors are legit. Addresses practical workflow friction around Gemini 4 Carbon found a proof of Hadwiger&apos;s 3D Covering Conjecture, an open geometry problem. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y6r8mh/gemini_4_carbon_found_a_proof_of_hadwigers_3d/</description>
-    </item>
-    <item>
-      <title>pi-sessions 1.0.0 : a local TUI to browse, search and resume your pi coding agent sessions</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y6r7bf&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y6r7bf&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 11:39:04 GMT</pubDate>
+      <title>EU-built coding models as a software connections, beyond Mistral?</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y6vdnr&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y6vdnr&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 15:02:54 GMT</pubDate>
       <category>Releases &amp; Frontier</category>
-      <description>For those running the pi https://pi.dev coding agent with local models: pi-sessions is a TUI built to manage Pi sessions on your machine. * Local only: it reads pi&apos;s session files from disk. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y6r7bf/release_pisessions_100_a_local_tui_to_browse/</description>
+      <description>So, I&apos;m hunting for European-built AI assistants that actually hold up in a coding agent (opencode, Cline…), served as a software connections. Devstral is the obvious one. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/ChatGPTCoding): https://www.reddit.com/r/ChatGPTCoding/comments/1y6vdnr/eubuilt_coding_models_as_an_api_beyond_mistral/</description>
     </item>
     <item>
-      <title>A Deterministic Subexponential-time Algorithm for the Discrete Logarithm Problem</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y6r2ih&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y6r2ih&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 11:31:00 GMT</pubDate>
+      <title>The Last Boring Slide.</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y7420s&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y7420s&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 21:04:29 GMT</pubDate>
       <category>Governance &amp; Security</category>
-      <description>r/singularity Engineering Community published &quot;A Deterministic Subexponential-time Algorithm for the Discrete Logarithm Problem&quot;. Open the linked third-party source above for the full upstream breakdown. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;A Deterministic Subexponential-time Algorithm for the Discrete Logarithm Problem&quot; rather than shipping a software tool. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y6r2ih/a_deterministic_subexponentialtime_algorithm_for/</description>
+      <description>Absolute Cinema.Man I found this gem and i am unable to figure out how many itterations might be needed to get this done dude. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;The Last Boring Slide.&quot; rather than shipping a software tool. — Upstream (r/ClaudeAI): https://www.reddit.com/r/ClaudeAI/comments/1y7420s/the_last_boring_slide/</description>
     </item>
     <item>
-      <title>EmbeddingGemma 2 on iPhone to search through your notes + AI keyboard</title>
-      <link>https://cortex-radar.github.io/?orb=rd-street-1y6qqyz&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y6qqyz&amp;lens=2</guid>
-      <pubDate>Fri, 27 Nov 2026 11:11:17 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>We built an AI voice recorder with diarization that also remembers your speakers. Initially, we relied on the on-device Apple Intelligence and Gemma 4 to search through notes, but the performance was less than optimal. Addresses practical workflow friction around EmbeddingGemma 2 on iPhone to search through your notes + AI keyboard. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y6qqyz/embeddinggemma_2_on_iphone_to_search_through_your/</description>
+      <title>AMD-specific llama.cpp patch nearly doubles prefill/decode</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y73gcc&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y73gcc&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 20:38:17 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>I know we&apos;re all a bit faded on the vibe-coded live answering work engines (as incredible as Strata/Splash/Basalt/Halogen/Gufo/etc. are for their specific models/hardware), but this is different enough that I thought it was worth sharing the write-up I stumbled across about llama-cpp-rdna-boosts. Eliminates manual context switching and bespoke glue scripts across multi-file repositories and external developer tools. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y73gcc/amdspecific_llamacpp_patch_nearly_doubles/</description>
     </item>
     <item>
-      <title>Quoting Jack Despain Zhou</title>
-      <link>https://cortex-radar.github.io/?orb=vip-willison-illisonnet2026Nov26jack-despain-zhou&amp;lens=2</link>
-      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-willison-illisonnet2026Nov26jack-despain-zhou&amp;lens=2</guid>
-      <pubDate>Thu, 26 Nov 2026 15:09:31 GMT</pubDate>
-      <category>Releases &amp; Frontier</category>
-      <description>A quote from Jack Despain Zhou Simon Willison’s Weblog Newsletter Sponsored by: WorkOS — Auth.md: signup built for agents. See how it works 26th November 2026 Among the many already existing effects of AI has been a great de-individualization. Addresses practical workflow friction around Quoting Jack Despain Zhou. — Upstream (Simon Willison): https://simonwillison.net/2026/Nov/26/jack-despain-zhou/</description>
+      <title>Map of LOTR Middle Earth as AI Frontier Labs.</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y73ekm&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y73ekm&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 20:36:11 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>r/singularity Engineering Community published &quot;Map of LOTR Middle Earth as AI Frontier Labs.&quot;. Open the linked third-party source above for the full upstream breakdown. Addresses practical workflow friction around Map of LOTR Middle Earth as AI Frontier Labs. — Upstream (r/singularity): https://www.reddit.com/r/singularity/comments/1y73ekm/map_of_lotr_middle_earth_as_ai_frontier_labs/</description>
+    </item>
+    <item>
+      <title>Anyone interested in serious home AGI collaboration?</title>
+      <link>https://cortex-radar.github.io/?orb=rd-street-1y72sdi&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=rd-street-1y72sdi&amp;lens=2</guid>
+      <pubDate>Fri, 27 Nov 2026 20:10:00 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>What I mean by AGI is practical enrichment of many areas of one&apos;s live rather than just talking to roleplay chatbots and writing code. But the projects I am currently focused on are: * Run a REALLY beefy/smart model like GLM 5.3 Flash on my 128GB unified memory box with good speed. I have a game that uses an embedding model to evaluate my pronunciation of lesson phrases and a chatbot that can talk to me in Japanese despite my accent. — Upstream (r/LocalLLaMA): https://www.reddit.com/r/LocalLLaMA/comments/1y72sdi/anyone_interested_in_serious_home_agi/</description>
+    </item>
+    <item>
+      <title>How Clay Builds GTM Agents — Jeff Barg, Head of AI</title>
+      <link>https://cortex-radar.github.io/?orb=vip-swyx-da868ce2-6565-4f67-8686-e33c78bee319&amp;lens=2</link>
+      <guid isPermaLink="true">https://cortex-radar.github.io/?orb=vip-swyx-da868ce2-6565-4f67-8686-e33c78bee319&amp;lens=2</guid>
+      <pubDate>Thu, 26 Nov 2026 23:02:48 GMT</pubDate>
+      <category>Architecture &amp; Infra</category>
+      <description>Open video on YouTube ↗ Clay wants you to get about the same results whether you use its own agent or point Claude Code at Clay. Since then, the business has grown roughly 10x, and the team is up to around 600 people. Shapes vendor governance, funding expectations, or enterprise buying decisions around &quot;How Clay Builds GTM Agents — Jeff Barg, Head of AI&quot; rather than shipping a software tool. — Upstream (Swyx · Latent Space): https://latent.space/p/how-clay-builds-gtm-agents-jeff-barg-head-of-ai/</description>
     </item>
   </channel>
 </rss>

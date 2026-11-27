@@ -1,9 +1,235 @@
 {
   "version": 1,
-  "updatedAtIso": "2026-11-27T12:13:18.475Z",
-  "updatedAtMs": 1795781598475,
-  "count": 339,
+  "updatedAtIso": "2026-11-27T21:16:07.880Z",
+  "updatedAtMs": 1795814167880,
+  "count": 372,
   "entries": [
+    {
+      "id": "rd-street-1y6rktn",
+      "title": "I run three agents at once on one Mac mini now, here's the setup",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y6rktn/i_run_three_agents_at_once_on_one_mac_mini_now/",
+      "publishedAtMs": 1795780843000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "For a while I thought running more than one local agent at a time meant buying a bigger machine. I'm on an M4 Pro Mac mini with 48GB and I run three now: a planner, a coder and a small one that only writes tests and commit messages. The…",
+      "verifiedMetrics": [
+        {
+          "value": "120 tokens/s",
+          "label": "Measured throughput",
+          "quote": "The planner and coder share Qwen 3.6 35B at 4-bit, about 120 tok/s for one session.",
+          "context": "Source-reported token generation rate",
+          "subject": "Qwen"
+        }
+      ]
+    },
+    {
+      "id": "rd-street-1y6ri16",
+      "title": "P=NP community swarm to try to tackle rare diseases.",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y6ri16/pnp_community_swarm_to_try_to_tackle_rare_diseases/",
+      "publishedAtMs": 1795780602000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "Active engineering thread in r/singularity (1 upvotes, 0 comments): P=NP community swarm to try to tackle rare diseases."
+    },
+    {
+      "id": "rd-street-1y6rar3",
+      "title": "I built a banking agent reference architecture where the LLM has no write path to money — not \"guarded,\" just no tool",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/AI_Agents",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1y6rar3/i_built_a_banking_agent_reference_architecture/",
+      "publishedAtMs": 1795779895000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "**TL;DR:** Reference architecture for agent-assisted banking where the LLM has zero write tools (`agent_callable: false` on all money ops, read-only MCP, server-derived identity, and source-overwritten UI values). It's a synthetic…"
+    },
+    {
+      "id": "rd-street-1y6r8mh",
+      "title": "Gemini 4 Carbon found a proof of Hadwiger's 3D Covering Conjecture, an open geometry problem from 1957",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y6r8mh/gemini_4_carbon_found_a_proof_of_hadwigers_3d/",
+      "publishedAtMs": 1795779676000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "A new [preprint]( went up on arXiv (2611.32334) claiming a complete, unconditional proof of Hadwiger's Covering Conjecture in 3D, a famous unsolved geometry problem from 1957. at the end of the abstract, they write: \"The proof was…"
+    },
+    {
+      "id": "rd-street-1y6r7bf",
+      "title": "[RELEASE] pi-sessions 1.0.0 : a local TUI to browse, search and resume your pi coding agent sessions",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y6r7bf/release_pisessions_100_a_local_tui_to_browse/",
+      "publishedAtMs": 1795779544000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "For those running the pi [ coding agent with local models: pi-sessions is a TUI built to manage Pi sessions on your machine. * **Local only**: it reads pi's session files from disk. **No account, no telemetry**. The only network call is…"
+    },
+    {
+      "id": "rd-street-1y6r2ih",
+      "title": "A Deterministic Subexponential-time Algorithm for the Discrete Logarithm Problem",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/singularity",
+      "url": "https://www.reddit.com/r/singularity/comments/1y6r2ih/a_deterministic_subexponentialtime_algorithm_for/",
+      "publishedAtMs": 1795779060000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "This is bit worrying for bitcoin."
+    },
+    {
+      "id": "rd-street-1y6qqyz",
+      "title": "EmbeddingGemma 2 on iPhone to search through your notes + AI keyboard",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1y6qqyz/embeddinggemma_2_on_iphone_to_search_through_your/",
+      "publishedAtMs": 1795777877000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "We built an AI voice recorder with diarization that also remembers your speakers. Initially, we relied on the on-device Apple Intelligence and Gemma 4 to search through notes, but the performance was less than optimal. By using…"
+    },
+    {
+      "id": "rd-street-1y6pet3",
+      "title": "Year-end check: which Ollama models have we all pulled the most? 😅",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y6pet3/yearend_check_which_ollama_models_have_we_all/",
+      "publishedAtMs": 1795772888000,
+      "archivedAtMs": 1795814167880
+    },
+    {
+      "id": "rd-street-1y6ns7w",
+      "title": "I built easy way for online Gpu to run your coding tasks -> copy past link",
+      "source": "Reddit",
+      "sourceCategory": "REDDIT",
+      "originFeedName": "r/ollama",
+      "url": "https://www.reddit.com/r/ollama/comments/1y6ns7w/i_built_easy_way_for_online_gpu_to_run_your/",
+      "publishedAtMs": 1795766546000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "Active engineering thread in r/ollama (1 upvotes, 0 comments): I built easy way for online Gpu to run your coding tasks -> copy past link"
+    },
+    {
+      "id": "hn-50663595",
+      "title": "The group chat where your AI talks behind your back",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://construct22.com/",
+      "publishedAtMs": 1795761874000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "A ChatGPT prompt that makes the model leak its private opinion of you - as a WhatsApp group chat where the AIs gossip. Funny, and a little too revealing. A one-line prompt that makes ChatGPT leak its private opinion of you, in the worst…"
+    },
+    {
+      "id": "hn-50662164",
+      "title": "Linus Torvalds: \"Tell Your AI Companion to Get Its Act Together\"",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.phoronix.com/news/Linus-Torvalds-EXT4-AI-Big",
+      "publishedAtMs": 1795747579000,
+      "archivedAtMs": 1795814167880
+    },
+    {
+      "id": "hn-50662153",
+      "title": "New AI research suggests AI bubble bursting and to expect major market collapse",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.london.edu/think/ai-bubble-about-to-burst",
+      "publishedAtMs": 1795747452000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "New research suggests AI bubble bursting and to expect major market collapse A recent study covering 170 years of financial journalism reveals we are 97% likely in an AI financial bubble, and that leaders should prepare for a crash.…"
+    },
+    {
+      "id": "hn-50661218",
+      "title": "AI agents now control part of DeepMind's compute for Gemini experiments",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://the-decoder.com/ai-agents-now-control-part-of-deepminds-compute-for-gemini-experiments-but-recursive-self-improvement-remains-distant/",
+      "publishedAtMs": 1795737798000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "Google Deepmind uses AI agents to run experiments on their own for upcoming Gemini models. Research chief Koray Kavukcuoglu says the lab is still far from recursive self-improvement. For oversight, Deepmind intentionally leaves the…"
+    },
+    {
+      "id": "ghrel-codex-epository965415649rust-v01740-alpha8",
+      "title": "OpenAI Codex v0.174.0-alpha.8",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "openai/codex Release",
+      "url": "https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.8",
+      "publishedAtMs": 1795730167000,
+      "updatedAtMs": 1795730544000,
+      "archivedAtMs": 1795814167880
+    },
+    {
+      "id": "hn-50660180",
+      "title": "AI made self-hosting fun again",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://janlukas.blog/posts/ai-self-hosting",
+      "publishedAtMs": 1795729665000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "I’ve been self-hosting things for many years. There were times when I was quite enthusiastic about it, constantly trying out new software and tinkering with my infrastructure. But at some point, that enthusiasm faded a bit."
+    },
+    {
+      "id": "hn-50660004",
+      "title": "The US Government Is Under AI Cyberattack",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.forbes.com/sites/the-wiretap/2026/11/25/us-government-under-ai-cyberattack",
+      "publishedAtMs": 1795728393000,
+      "archivedAtMs": 1795814167880
+    },
+    {
+      "id": "hn-50658997",
+      "title": "The USA as a Civilizations-esque map",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://karpathy.ai/usaciv/",
+      "publishedAtMs": 1795722838000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "The real United States drawn like a 4X strategy map: hex terrain, cities with yields, lenses and resources, all from public data."
+    },
+    {
+      "id": "hn-50658910",
+      "title": "Top-cited AI scientists at four US companies compared",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://topcitedscientists.com/figures/ai-at-four-us-companies/",
+      "publishedAtMs": 1795722271000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "The typical top-cited AI scientist at Anthropic received 4,830 citations in 2025. At OpenAI it was 2,150, at Google 1,481 and at Meta 1,295."
+    },
+    {
+      "id": "hn-50658549",
+      "title": "Poland to create no-fly zone at border after repeated airspace violations",
+      "source": "HackerNews",
+      "sourceCategory": "HN_COMMUNITY",
+      "originFeedName": "Hacker News",
+      "url": "https://www.france24.com/en/poland-says-will-create-no-fly-zone-at-ukraine-border-after-repeated-airspace-violations",
+      "publishedAtMs": 1795720154000,
+      "archivedAtMs": 1795814167880
+    },
+    {
+      "id": "ghrel-ollama-com2008Repository658928958v04019-rc0",
+      "title": "Ollama v0.40.19-rc0",
+      "source": "GHRelease",
+      "sourceCategory": "GH_RELEASE",
+      "originFeedName": "ollama Release",
+      "url": "https://github.com/ollama/ollama/releases/tag/v0.40.19-rc0",
+      "publishedAtMs": 1795715522000,
+      "updatedAtMs": 1795508864000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "## What's Changed * inkling2: faster short histories, draft proposals and conv snapshots by @dhiltgen in * mlxrunner: compact Engram history buffers by @pdevine in * bump llama-server by @pdevine in **Full Changelog**:"
+    },
     {
       "id": "rd-street-1y65vsf",
       "title": "I made a graph based sub agent deployment tool",
@@ -109,6 +335,17 @@
       "verbatimExcerpt": "A few days ago I shared CTV here, a tool where a small local model only directs a demo video of your web app while Playwright records the real UI. In the comments u/bi4key suggested trying Gemma 4, so I did, and the results changed the…"
     },
     {
+      "id": "x-fx-2125915743212761359",
+      "title": "Point taken 📍 Mistral Large 4 finds the exact match and outlines it on the map.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @MistralAI",
+      "url": "https://x.com/MistralAI/status/2125915743212761359",
+      "publishedAtMs": 1795692785000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "On visual grounding tasks, Le Chonk beats even closed frontier models. Media"
+    },
+    {
       "id": "hn-50653477",
       "title": "Google Will Make AI Agents Use Its MCP Servers. The Gmail One Can't Send Email",
       "source": "HackerNews",
@@ -153,6 +390,17 @@
       "archivedAtMs": 1795781598475
     },
     {
+      "id": "x-fx-2125798914490249411",
+      "title": "🎙️ New multilingual capabilities are here for Qwen-Audio-3.1!",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @Alibaba_Qwen",
+      "url": "https://x.com/Alibaba_Qwen/status/2125798914490249411",
+      "publishedAtMs": 1795664931000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "Especially for Chinese dialects. We previously released the Qwen-Audio-3.1 series of speech foundation models. Today, we are bringing the enhanced multilingual capabilities, with a strong focus on Chinese dialects. Our multilingual…"
+    },
+    {
       "id": "rd-street-1y5qc4u",
       "title": "I built a minimal, token-efficient AI coding workbench for myself and made it open source (no telemetry, no accounts)",
       "source": "Reddit",
@@ -161,6 +409,27 @@
       "url": "https://www.reddit.com/r/ChatGPTCoding/comments/1y5qc4u/i_built_a_minimal_tokenefficient_ai_coding/",
       "publishedAtMs": 1795662288000,
       "archivedAtMs": 1795711895103
+    },
+    {
+      "id": "x-fx-2125780319110603169",
+      "title": "Download the latest version of Ollama: ollama run inkling-2-mini",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @ollama",
+      "url": "https://x.com/ollama/status/2125780319110603169",
+      "publishedAtMs": 1795660497000,
+      "archivedAtMs": 1795814167880
+    },
+    {
+      "id": "x-fx-2125779541952246039",
+      "title": "I asked Claude to populate a Civilization-style game map with real data from the US.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @karpathy",
+      "url": "https://x.com/karpathy/status/2125779541952246039",
+      "publishedAtMs": 1795660312000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "Opus 5.5 downloaded and parse a ton of public data and 7 hours and 45K lines of code later... it works :) - 31 real data sources including Census, BEA, BLS, EIA, NOAA, USGS, DoD, NPS, FAA, FEMA, CDC... - Real elevation, land cover, GDP…"
     },
     {
       "id": "vip-willison-onwillisonnet2026Nov25scott-aaronson",
@@ -226,6 +495,17 @@
       "url": "https://www.theguardian.com/us-news/2026/nov/25/new-york-bans-ai-toys",
       "publishedAtMs": 1795627625000,
       "archivedAtMs": 1795781598475
+    },
+    {
+      "id": "x-fx-2125627317263466739",
+      "title": "We recently migrated our Messages API from Python to Rust.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @AnthropicAI",
+      "url": "https://x.com/AnthropicAI/status/2125627317263466739",
+      "publishedAtMs": 1795624019000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "On our engineering blog, we share how we used the existing service to verify the new one, with teams of Claude agents tracking down and fixing differences between the two versions."
     },
     {
       "id": "arxiv-httparxivorgabs261133749v1",
@@ -479,6 +759,17 @@
       "archivedAtMs": 1795663986955
     },
     {
+      "id": "x-fx-2125341904644763678",
+      "title": "New Anthropic research: When an AI agent can escape its sandbox, will it choose to?",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @AnthropicAI",
+      "url": "https://x.com/AnthropicAI/status/2125341904644763678",
+      "publishedAtMs": 1795555971000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "Our new evaluation, Siren, gives Claude routine tasks in intentionally weakened sandboxes, with something useful to the task left outside of the sandbox. Across 1,700+ scenarios built to tempt them, recent Claude models accessed, tried to…"
+    },
+    {
       "id": "hn-50634734",
       "title": "Working with AI",
       "source": "HackerNews",
@@ -553,6 +844,17 @@
       "publishedAtMs": 1795547522000,
       "archivedAtMs": 1795663986955,
       "verbatimExcerpt": "A deterministic compiler turns a web page, on first contact and with no model call, into typed operations that an AI agent invokes, each returning a verified result. Compared with widely used browser tools and agents, across three task…"
+    },
+    {
+      "id": "x-fx-2125305608597590018",
+      "title": "Kevin used Codex to build a program that searched for observations of about 100,000 stars from NASA’s Kepler telescope.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @OpenAI",
+      "url": "https://x.com/OpenAI/status/2125305608597590018",
+      "publishedAtMs": 1795547318000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "One star in the constellation Lyra dimmed every 13.8 days. If a planet is causing that dip, the amount of light it blocks suggests it could be about 2.4 times as wide as Earth. An astronomer at the SETI Institute independently found the…"
     },
     {
       "id": "rd-street-1y4lmlh",
@@ -741,6 +1043,17 @@
       "url": "https://nomagicpill.substack.com/p/quit-internet-videos-before-ai-perfects",
       "publishedAtMs": 1795522815000,
       "archivedAtMs": 1795663986955
+    },
+    {
+      "id": "x-fx-2125201709852934598",
+      "title": "We worked with @mencap_charity and people with learning disabilities to build the Easy Read Co-Creator Tool with Gemini.",
+      "source": "XBridge",
+      "sourceCategory": "X_BRIDGE",
+      "originFeedName": "X · @GoogleDeepMind",
+      "url": "https://x.com/GoogleDeepMind/status/2125201709852934598",
+      "publishedAtMs": 1795522546000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "It turns complex health, finance and everyday documents into clear words and images in minutes rather than weeks – with human experts reviewing every version. ↓"
     },
     {
       "id": "rd-street-1y4a5ph",
@@ -1531,6 +1844,39 @@
       "publishedAtMs": 1795392000000,
       "archivedAtMs": 1795781598475,
       "verbatimExcerpt": "Entity disambiguation (mapping ambiguous mentions in text to entities in a knowledge base) is a foundational step in tasks such as knowledge graph construction, question answering, and information extraction. Recent work has applied LLMs…"
+    },
+    {
+      "id": "hf-2611.31619",
+      "title": "What a Forecasting Leaderboard Can Establish: Resolution Reporting for Zero-Shot Time-Series Models",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.31619",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "A foundation model for time series is pretrained once and then asked to forecast series it has never seen, so the evidence for it is its score on held-out datasets. Such datasets are scarce, and a few public leaderboards carry most…"
+    },
+    {
+      "id": "hf-2611.31155",
+      "title": "So Many Ways to Multiply 3times3 Matrices: A Large Dataset of Rank-23 Schemes",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.31155",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "A publicly available dataset of 62029 rank-23 schemes for 3times3 matrix multiplication is presented. Every scheme in it has its own rank pattern, an invariant formed by the ranks of the factor matrices of a scheme, so all schemes are…"
+    },
+    {
+      "id": "hf-2611.31491",
+      "title": "Pretrained Tabular Features and the Measurement of Financial Proximity",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.31491",
+      "publishedAtMs": 1795392000000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "Spatial arbitrage pricing theory (S-APT) extends factor models to allow returns to spill over between connected firms, beyond what common risk factors explain. In recent years, tabular foundation models (TFMs) have matched or outperformed…"
     },
     {
       "id": "hn-50605445",
@@ -2864,6 +3210,17 @@
       "verbatimExcerpt": "Everything can be understood within the unified framework of energy-based models, including classification, regression, structured prediction, unsupervised and self-supervised learning (clustering, auto-encoders, denoising AE, variational…"
     },
     {
+      "id": "bsky-natolambert.bsky.social-3n2tdrggx2o27",
+      "title": "New slide deck on the biggest open problems in post-training and how the field got to where it is today. Largely, this is a statement of…",
+      "source": "Bluesky",
+      "sourceCategory": "SOCIAL_BLUESKY",
+      "originFeedName": "Bluesky · @natolambert",
+      "url": "https://bsky.app/profile/natolambert.bsky.social/post/3n2tdrggx2o27",
+      "publishedAtMs": 1795272418415,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "my goals with Trillium Labs (not that we can do every project at once). Stay in touch if you're working on any of these in the open!"
+    },
+    {
       "id": "rd-street-1y1udwh",
       "title": "Running Qwen3-ASR + Qwen3.5-4B (16K) + Qwen3-TTS 100% offline on Rockchip RK3576 + PCIe RK1828 (4.87/5.12 GB VRAM, 0 swap, 51.8-58.3 tok/s)",
       "source": "Reddit",
@@ -3075,6 +3432,25 @@
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.173.0-alpha.4",
       "publishedAtMs": 1795221319000,
       "archivedAtMs": 1795527591255
+    },
+    {
+      "id": "hf-2611.28849",
+      "title": "Guarding with Judgment: Learning to Intervene for Multimodal Safety",
+      "source": "HuggingFace",
+      "sourceCategory": "RESEARCH",
+      "originFeedName": "HF Daily Papers",
+      "url": "https://huggingface.co/papers/2611.28849",
+      "publishedAtMs": 1795219200000,
+      "archivedAtMs": 1795814167880,
+      "verbatimExcerpt": "When visual context makes an ordinary request unsafe to answer as asked, a blanket refusal may leave the user's need unresolved. Choosing how to help requires distinguishing an established hazard from a condition that still needs…",
+      "verifiedMetrics": [
+        {
+          "value": "+28 percentage points",
+          "label": "Percentage-point lead",
+          "quote": "On JudiBench, JudiAct improves request and answer Macro-F1 by more than 28 percentage points over its 4B backbone.",
+          "context": "Comparative evaluation"
+        }
+      ]
     },
     {
       "id": "ghrel-ollama-com2008Repository658928958v04017-rc4",
@@ -4461,14 +4837,14 @@
         {
           "value": "from 7% to 70%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "context": "Before-and-after transition",
           "isFeatured": false
         },
         {
           "value": "83%",
           "label": "Baseline accuracy",
-          "quote": "A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
+          "quote": "A frontier model has been shown to edit the… A frontier model has been shown to edit the… weights; found on text math problems alone, the repair lifts the copy on six image benchmarks it never saw from 7% to 70% accuracy, 83% of the undamaged model's.",
           "isFeatured": false
         }
       ]
